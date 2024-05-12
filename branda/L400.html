@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="lt" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ketvirtas Brandos Lygis(L400) &mdash; Duomenų struktūros aprašas  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/tabs.css?v=a5c4661c" />
+      <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=7be03173"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/translations.js?v=3b848cde"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Indeksas" href="../genindex.html" />
+    <link rel="search" title="Paieška" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            Duomenų struktūros aprašas
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Ieškoti dokumentuose" aria-label="Ieškoti dokumentuose" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigacijos meniu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../modelis.html">Duomenų modeliavimas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../formatas.html">Lentelės formatas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../formatas.html#lenteles-struktura">Lentelės struktūra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../formatas.html#vardu-erdves">Vardų erdvės</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../formatas.html#reliatyvus-pavadinimai">Reliatyvūs pavadinimai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dimensijos.html">Dimensijos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../dimensijos.html#papildomos-dimensijos">Papildomos dimensijos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tipai.html">Duomenų tipai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../pavadinimai.html">Kodiniai pavadinimai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../vienetai.html">Matavimo vienetai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../identifikatoriai.html">Ryšiai tarp modelių</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../branda.html">Brandos lygiai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../prieiga.html">Prieigos lygiai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../saltiniai.html">Duomenų šaltiniai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../zodynai.html">Išoriniai žodynai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../formules.html">Formulės</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../savokos.html">Sąvokos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../keitimai.html">Keitimų istorija</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobilios navigacijos meniu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Duomenų struktūros aprašas</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Puslapių navigacija">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Ketvirtas Brandos Lygis(L400)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/branda/L400.rst.txt" rel="nofollow"> Žiūrėti puslapio šaltinį</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ketvirtas-brandos-lygis-l400">
+<span id="level4"></span><h1>Ketvirtas Brandos Lygis(L400)<a class="headerlink" href="#ketvirtas-brandos-lygis-l400" title="Link to this heading"></a></h1>
+<section id="identifikuojama">
+<h2><strong>Identifikuojama</strong><a class="headerlink" href="#identifikuojama" title="Link to this heading"></a></h2>
+<p>Duomenų objektai turi aiškius, unikalius identifikatorius. Užpildyti
+<a class="reference internal" href="../dimensijos.html#model.ref" title="model.ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">model.ref</span></code></a> ir <a class="reference internal" href="../dimensijos.html#property.ref" title="property.ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">property.ref</span></code></a> stulpeliai.</p>
+<div class="admonition note">
+<p class="admonition-title">Pastaba</p>
+<p><a class="reference internal" href="../dimensijos.html#property.ref" title="property.ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">property.ref</span></code></a> stulpelis pildomas šiais atvejais:</p>
+<ul class="simple">
+<li><p>Jei duomenų laukas yra išorinis raktas (žiūrėti <a class="reference internal" href="../tipai.html#ref-types"><span class="std std-ref">Išoriniai raktai</span></a>).</p></li>
+<li><p>Jei duomenų laukas yra kiekybinis ir turi matavimo vienetus
+(žiūrėti <a class="reference internal" href="../vienetai.html#matavimo-vienetai"><span class="std std-ref">Matavimo vienetai</span></a>).</p></li>
+<li><p>Jei duomenų laukas žymi laiką ar vietą (žiūrėti
+<a class="reference internal" href="../tipai.html#temporal-types"><span class="std std-ref">Data ir laikas</span></a> ir <a class="reference internal" href="../tipai.html#spatial-types"><span class="std std-ref">Erdviniai duomenys</span></a>).</p></li>
+</ul>
+</div>
+<p>Plačiau apie brandos lygio kėlimą skaitykite skyriuje <span class="xref std std-ref">to-level-4</span>.</p>
+<p>Ketvirtas duomenų brandos lygis labiau susijęs ne su pačių duomenų
+formatu, bet su metaduomenimis, kurie lydi duomenis.</p>
+<p>Duomenų struktūros apraše <a class="reference internal" href="../dimensijos.html#model.ref" title="model.ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">model.ref</span></code></a> stulpelyje, pateikiamas
+objektą unikaliai identifikuojančių laukų sąrašas, o
+<a class="reference internal" href="../dimensijos.html#property.type" title="property.type"><code class="xref py py-data docutils literal notranslate"><span class="pre">property.type</span></code></a> stulpelyje įrašomas <code class="docutils literal notranslate"><span class="pre">ref</span></code> tipas, kuris nurodo
+ryšį tarp dviejų objektų.</p>
+<p><strong>Pavyzdžiai</strong></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head" colspan="4"><p>Imone</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p>_id</p></th>
+<th class="head"><p>id</p></th>
+<th class="head"><p>pavadinimas&#64;lt</p></th>
+<th class="head"><p>rusis</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>26510da5-f6a6-45b0-a9b9-27b3d0090a58</p></td>
+<td><p>42</p></td>
+<td><p>UAB &quot;Įmonė&quot;</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Filialas</p></th>
+<th class="head"></th>
+<th class="head" colspan="6"></th>
+</tr>
+<tr class="row-even"><th class="head"><p>_id</p></th>
+<th class="head"><p>id</p></th>
+<th class="head"><p>ikurta</p></th>
+<th class="head"><p>atstumas</p></th>
+<th class="head"><p>imone._id</p></th>
+<th class="head"><p>imone.id</p></th>
+<th class="head"><p>imone.pavadinimas&#64;lt</p></th>
+<th class="head"><p>tel_nr</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>63161bd2-158f-4d62-9804-636573abb9c7</p></td>
+<td><p>1</p></td>
+<td><p>2021-09-01</p></td>
+<td><p>1</p></td>
+<td><p>26510da5-f6a6-45b0-a9b9-27b3d0090a58</p></td>
+<td><p>42</p></td>
+<td><p>UAB &quot;Įmonė&quot;</p></td>
+<td><p>+37011111111</p></td>
+</tr>
+<tr class="row-even"><td><p>65ec7208-fb97-41a8-9cfc-dfedd197ced6</p></td>
+<td><p>2</p></td>
+<td><p>2021-09-02</p></td>
+<td><p>2</p></td>
+<td><p>26510da5-f6a6-45b0-a9b9-27b3d0090a58</p></td>
+<td><p>42</p></td>
+<td><p>UAB &quot;Įmonė&quot;</p></td>
+<td><p>+37022222222</p></td>
+</tr>
+<tr class="row-odd"><td><p>2b8cdfa6-1396-431a-851c-c7c6eb7aa433</p></td>
+<td><p>3</p></td>
+<td><p>2021-09-03</p></td>
+<td><p>3</p></td>
+<td><p>26510da5-f6a6-45b0-a9b9-27b3d0090a58</p></td>
+<td><p>42</p></td>
+<td><p>UAB &quot;Įmonė&quot;</p></td>
+<td><p>+37033333333</p></td>
+</tr>
+<tr class="row-even"><td><p>1882bb9e-73ee-4057-b04d-d4af47f0aae8</p></td>
+<td><p>4</p></td>
+<td><p>2021-09-04</p></td>
+<td><p>4</p></td>
+<td><p>26510da5-f6a6-45b0-a9b9-27b3d0090a58</p></td>
+<td><p>42</p></td>
+<td><p>UAB &quot;Įmonė&quot;</p></td>
+<td><p>+37044444444</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head" colspan="10"><p>Struktūros aprašas</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p>d</p></th>
+<th class="head"><p>r</p></th>
+<th class="head"><p>b</p></th>
+<th class="head"><p>m</p></th>
+<th class="head"><p>property</p></th>
+<th class="head"><p>type</p></th>
+<th class="head"><p>ref</p></th>
+<th class="head"><p>level</p></th>
+<th class="head"><p>prepare</p></th>
+<th class="head"><p>title</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td colspan="5"><p>example</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td></td>
+<td colspan="2"><p>JuridinisAsmuo</p></td>
+<td></td>
+<td><p>kodas</p></td>
+<td><p>4</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>kodas</p></td>
+<td><p>integer</p></td>
+<td></td>
+<td><p>4</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>pavadinimas&#64;lt</p></td>
+<td><p>text</p></td>
+<td></td>
+<td><p>4</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td colspan="3"><p>JuridinisAsmuo</p></td>
+<td></td>
+<td></td>
+<td><p>4</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td></td>
+<td colspan="2"><p>Imone</p></td>
+<td></td>
+<td><p>kodas</p></td>
+<td><p>4</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>id</p></td>
+<td><p>integer</p></td>
+<td></td>
+<td><p>4</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>pavadinimas&#64;lt</p></td>
+<td><p>text</p></td>
+<td></td>
+<td><p>4</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>rusis</p></td>
+<td><p>integer</p></td>
+<td></td>
+<td><p>4</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>enum</p></td>
+<td></td>
+<td></td>
+<td><p>1</p></td>
+<td><p>Juridinis</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>2</p></td>
+<td><p>Fizinis</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td colspan="3"><p>/</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td></td>
+<td colspan="2"><p>Filialas</p></td>
+<td></td>
+<td><p>id</p></td>
+<td><p>4</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>id</p></td>
+<td><p>integer</p></td>
+<td></td>
+<td><p>4</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>ikurta</p></td>
+<td><p>date</p></td>
+<td><p>D</p></td>
+<td><p>4</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>atstumas</p></td>
+<td><p>integer</p></td>
+<td><p>km</p></td>
+<td><p>4</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>imone</p></td>
+<td><p>ref</p></td>
+<td><p>Imone</p></td>
+<td><p>4</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>imone.id</p></td>
+<td></td>
+<td></td>
+<td><p>4</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>imone.pavadinimas&#64;lt</p></td>
+<td></td>
+<td></td>
+<td><p>4</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>tel_nr</p></td>
+<td><p>string</p></td>
+<td></td>
+<td><p>4</p></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="reikalavimas-1-l401">
+<span id="level401"></span><h2>Reikalavimas 1 (L401)<a class="headerlink" href="#reikalavimas-1-l401" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>Nesusieta su standartiniu žodynu</strong> - ketvirtu brandos lygiu žimimi
+duomenys, kurie nėra susieti su standartiniais žodynais ar
+ontologijomis. Siejimas su žodynais atliekamas <code class="docutils literal notranslate"><span class="pre">model.uri</span></code> ir
+<code class="docutils literal notranslate"><span class="pre">property.uri</span></code> stulpeluose.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019-2024, IVPK.</p>
+  </div>
+
+  Surinkta su <a href="https://www.sphinx-doc.org/">Sphinx</a> naudojant
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">temą</a>
+    pateiktą <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="lt" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Duomenų struktūros aprašas &mdash; Duomenų struktūros aprašas  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=a5c4661c" />
+      <link rel="stylesheet" type="text/css" href="_static/style.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=7be03173"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/translations.js?v=3b848cde"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Indeksas" href="genindex.html" />
+    <link rel="search" title="Paieška" href="search.html" />
+    <link rel="next" title="Duomenų modeliavimas" href="modelis.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            Duomenų struktūros aprašas
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Ieškoti dokumentuose" aria-label="Ieškoti dokumentuose" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigacijos meniu">
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="modelis.html">Duomenų modeliavimas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="formatas.html">Lentelės formatas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="formatas.html#lenteles-struktura">Lentelės struktūra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="formatas.html#vardu-erdves">Vardų erdvės</a></li>
+<li class="toctree-l1"><a class="reference internal" href="formatas.html#reliatyvus-pavadinimai">Reliatyvūs pavadinimai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dimensijos.html">Dimensijos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dimensijos.html#papildomos-dimensijos">Papildomos dimensijos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tipai.html">Duomenų tipai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pavadinimai.html">Kodiniai pavadinimai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vienetai.html">Matavimo vienetai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="identifikatoriai.html">Ryšiai tarp modelių</a></li>
+<li class="toctree-l1"><a class="reference internal" href="branda.html">Brandos lygiai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prieiga.html">Prieigos lygiai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="saltiniai.html">Duomenų šaltiniai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zodynai.html">Išoriniai žodynai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="formules.html">Formulės</a></li>
+<li class="toctree-l1"><a class="reference internal" href="savokos.html">Sąvokos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="keitimai.html">Keitimų istorija</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobilios navigacijos meniu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Duomenų struktūros aprašas</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Puslapių navigacija">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Duomenų struktūros aprašas</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> Žiūrėti puslapio šaltinį</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="duomenu-strukturos-aprasas">
+<h1>Duomenų struktūros aprašas<a class="headerlink" href="#duomenu-strukturos-aprasas" title="Link to this heading"></a></h1>
+<p>Čia rasite pilna duomenų struktūros aprašo (<a class="reference internal" href="savokos.html#term-DSA"><span class="xref std std-term">DSA</span></a>) lentelės specifikaciją.
+..
+<a class="reference internal" href="savokos.html#term-DSA"><span class="xref std std-term">Duomenų struktūros aprašas</span></a> yra lentelė, kurią galima redaguoti
+skaičiuoklės pagalba. Lentelėje pateikiama informacija apie vieno ar kelių
+duomenų šaltinių struktūrą.</p>
+<p><a class="reference internal" href="savokos.html#term-DSA"><span class="xref std std-term">Duomenų struktūros aprašas</span></a> skirtas tam, kad būtų galima
+automatizuoti duomenų atvėrimo veiklas. Įstaigoms, atveriančioms duomenis,
+daugeliu atveju turėtu užtekti paruošti tik <a class="reference internal" href="savokos.html#term-DSA"><span class="xref std std-term">DSA</span></a> lentelę. Turint parengtą
+<a class="reference internal" href="savokos.html#term-DSA"><span class="xref std std-term">DSA</span></a> lentelę, visos kitos veiklos yra pilnai automatizuojamos.</p>
+<p>Vieninga aprašų struktūros parengimo metodika sudaro galimybę automatizuoti
+duomenų atvėrimo ir publikavimo procesus bei užtikrinti atveriamų duomenų
+kokybę, vientisumą ir viso proceso stebėseną.</p>
+<p><a class="reference internal" href="savokos.html#term-DSA"><span class="xref std std-term">Duomenų struktūros aprašas</span></a> gali būti rengiamas jau atvertiems
+duomenims (<a class="reference internal" href="savokos.html#term-ADSA"><span class="xref std std-term">ADSA</span></a>) ir dar neatvertiems duomenims (<a class="reference internal" href="savokos.html#term-SDSA"><span class="xref std std-term">ŠDSA</span></a>).</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="modelis.html">Duomenų modeliavimas</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="modelis.html#koncepcinis-modelis">Koncepcinis modelis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelis.html#loginis-modelis">Loginis modelis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="modelis.html#fizinis-modelis">Fizinis modelis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="formatas.html">Lentelės formatas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="formatas.html#lenteles-struktura">Lentelės struktūra</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="formatas.html#id"><code class="docutils literal notranslate"><span class="pre">id</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="formatas.html#dimensijos">Dimensijos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="formatas.html#metaduomenys">Metaduomenys</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="formatas.html#vardu-erdves">Vardų erdvės</a></li>
+<li class="toctree-l1"><a class="reference internal" href="formatas.html#reliatyvus-pavadinimai">Reliatyvūs pavadinimai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dimensijos.html">Dimensijos</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dimensijos.html#duomenu-rinkinys">Duomenų rinkinys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dimensijos.html#duomenu-saltinis">Duomenų šaltinis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dimensijos.html#modelio-baze">Modelio bazė</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dimensijos.html#duomenu-modelis">Duomenų modelis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dimensijos.html#savybe">Savybė</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="dimensijos.html#papildomos-dimensijos">Papildomos dimensijos</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="dimensijos.html#isoriniu-zodynu-prefiksai">Išorinių žodynų prefiksai</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dimensijos.html#klasifikatoriai">Klasifikatoriai</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dimensijos.html#parametrai">Parametrai</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dimensijos.html#reiksmiu-sukeitimas">Reikšmių sukeitimas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dimensijos.html#komentavimas">Komentavimas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dimensijos.html#daugiakalbiskumas">Daugiakalbiškumas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dimensijos.html#strukturos-keitimas">Struktūros keitimas</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tipai.html">Duomenų tipai</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tipai.html#absent"><code class="docutils literal notranslate"><span class="pre">absent</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipai.html#boolean"><code class="docutils literal notranslate"><span class="pre">boolean</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipai.html#integer"><code class="docutils literal notranslate"><span class="pre">integer</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipai.html#number"><code class="docutils literal notranslate"><span class="pre">number</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipai.html#binary"><code class="docutils literal notranslate"><span class="pre">binary</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipai.html#tekstiniai-duomenys">Tekstiniai duomenys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipai.html#data-ir-laikas">Data ir laikas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipai.html#erdviniai-duomenys">Erdviniai duomenys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipai.html#valiuta">Valiuta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipai.html#failai">Failai</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipai.html#isoriniai-raktai">Išoriniai raktai</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipai.html#sudetiniai-tipai">Sudėtiniai tipai</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tipai.html#kiti-tipai">Kiti tipai</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pavadinimai.html">Kodiniai pavadinimai</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pavadinimai.html#vardu-erdviu">Vardų erdvių</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pavadinimai.html#modeliai">Modeliai</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pavadinimai.html#duomenu-laukai">Duomenų laukai</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vienetai.html">Matavimo vienetai</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="vienetai.html#apibreztis-laike">Apibrėžtis laike</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vienetai.html#apibreztis-erdveje">Apibrėžtis erdvėje</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vienetai.html#kokybiniai-duomenys">Kokybiniai duomenys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="vienetai.html#kiekybiniai-duomenys">Kiekybiniai duomenys</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="identifikatoriai.html">Ryšiai tarp modelių</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="identifikatoriai.html#jungimas-per-pirmini-rakta">Jungimas per pirminį raktą</a></li>
+<li class="toctree-l2"><a class="reference internal" href="identifikatoriai.html#jungimas-per-nepirmini-rakta">Jungimas per nepirminį raktą</a></li>
+<li class="toctree-l2"><a class="reference internal" href="identifikatoriai.html#jungimas-per-kompozicini-rakta">Jungimas per kompozicinį raktą</a></li>
+<li class="toctree-l2"><a class="reference internal" href="identifikatoriai.html#jungimas-atgaliniu-rysiu">Jungimas atgaliniu ryšiu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="identifikatoriai.html#polimorfinis-jungimas">Polimorfinis jungimas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="identifikatoriai.html#denormalizuoti-duomenys">Denormalizuoti duomenys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="identifikatoriai.html#brandos-lygis">Brandos lygis</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="branda.html">Brandos lygiai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prieiga.html">Prieigos lygiai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="saltiniai.html">Duomenų šaltiniai</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="saltiniai.html#sql">SQL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="saltiniai.html#csv">CSV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="saltiniai.html#json">JSON</a></li>
+<li class="toctree-l2"><a class="reference internal" href="saltiniai.html#xml">XML</a></li>
+<li class="toctree-l2"><a class="reference internal" href="saltiniai.html#xlsx">XLSX</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="zodynai.html">Išoriniai žodynai</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="zodynai.html#subjekto-uri">Subjekto URI</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="formules.html">Formulės</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="formules.html#gramatika">Gramatika</a></li>
+<li class="toctree-l2"><a class="reference internal" href="formules.html#sintakses-medis">Sintaksės medis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="formules.html#funkciju-iskvietimas">Funkcijų iškvietimas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="formules.html#poziciniai-argumentai">Poziciniai argumentai</a></li>
+<li class="toctree-l2"><a class="reference internal" href="formules.html#vardiniai-argumentai">Vardiniai argumentai</a></li>
+<li class="toctree-l2"><a class="reference internal" href="formules.html#alternatyvus-funkcijos-iskvietimas">Alternatyvus funkcijos iškvietimas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="formules.html#module-func">Standartinės funkcijos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="formules.html#failai">Failai</a></li>
+<li class="toctree-l2"><a class="reference internal" href="formules.html#stulpeliai-lenteleje">Stulpeliai lentelėje</a></li>
+<li class="toctree-l2"><a class="reference internal" href="formules.html#duomenu-atranka">Duomenų atranka</a></li>
+<li class="toctree-l2"><a class="reference internal" href="formules.html#periodiskumas">Periodiškumas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="formules.html#statines-reiksmes">Statinės reikšmės</a></li>
+<li class="toctree-l2"><a class="reference internal" href="formules.html#transformavimas">Transformavimas</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="savokos.html">Sąvokos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="keitimai.html">Keitimų istorija</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="keitimai.html#id1">1.0.0 (2024-04-19)</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Poraštė">
+        <a href="modelis.html" class="btn btn-neutral float-right" title="Duomenų modeliavimas" accesskey="n" rel="next">Kitas <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019-2024, IVPK.</p>
+  </div>
+
+  Surinkta su <a href="https://www.sphinx-doc.org/">Sphinx</a> naudojant
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">temą</a>
+    pateiktą <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

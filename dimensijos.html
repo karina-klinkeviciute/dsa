@@ -1,0 +1,2729 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="lt" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dimensijos &mdash; Duomenų struktūros aprašas  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=a5c4661c" />
+      <link rel="stylesheet" type="text/css" href="_static/style.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=7be03173"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/translations.js?v=3b848cde"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Indeksas" href="genindex.html" />
+    <link rel="search" title="Paieška" href="search.html" />
+    <link rel="next" title="Duomenų tipai" href="tipai.html" />
+    <link rel="prev" title="Lentelės formatas" href="formatas.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Duomenų struktūros aprašas
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Ieškoti dokumentuose" aria-label="Ieškoti dokumentuose" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigacijos meniu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="modelis.html">Duomenų modeliavimas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="formatas.html">Lentelės formatas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="formatas.html#lenteles-struktura">Lentelės struktūra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="formatas.html#vardu-erdves">Vardų erdvės</a></li>
+<li class="toctree-l1"><a class="reference internal" href="formatas.html#reliatyvus-pavadinimai">Reliatyvūs pavadinimai</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Dimensijos</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#duomenu-rinkinys">Duomenų rinkinys</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#dataset.source"><code class="docutils literal notranslate"><span class="pre">dataset.source</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dataset.prepare"><code class="docutils literal notranslate"><span class="pre">dataset.prepare</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dataset.type"><code class="docutils literal notranslate"><span class="pre">dataset.type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dataset.ref"><code class="docutils literal notranslate"><span class="pre">dataset.ref</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dataset.level"><code class="docutils literal notranslate"><span class="pre">dataset.level</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dataset.access"><code class="docutils literal notranslate"><span class="pre">dataset.access</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dataset.title"><code class="docutils literal notranslate"><span class="pre">dataset.title</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dataset.description"><code class="docutils literal notranslate"><span class="pre">dataset.description</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#duomenu-saltinis">Duomenų šaltinis</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#resource.type"><code class="docutils literal notranslate"><span class="pre">resource.type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#resource.source"><code class="docutils literal notranslate"><span class="pre">resource.source</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#resource.ref"><code class="docutils literal notranslate"><span class="pre">resource.ref</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#resource.level"><code class="docutils literal notranslate"><span class="pre">resource.level</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#resource.access"><code class="docutils literal notranslate"><span class="pre">resource.access</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#resource.title"><code class="docutils literal notranslate"><span class="pre">resource.title</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#resource.description"><code class="docutils literal notranslate"><span class="pre">resource.description</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#modelio-baze">Modelio bazė</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#base.source"><code class="docutils literal notranslate"><span class="pre">base.source</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#base.prepare"><code class="docutils literal notranslate"><span class="pre">base.prepare</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#base.type"><code class="docutils literal notranslate"><span class="pre">base.type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#base.ref"><code class="docutils literal notranslate"><span class="pre">base.ref</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#base.level"><code class="docutils literal notranslate"><span class="pre">base.level</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#base.access"><code class="docutils literal notranslate"><span class="pre">base.access</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#duomenu-modelis">Duomenų modelis</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#model.source"><code class="docutils literal notranslate"><span class="pre">model.source</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#model.prepare"><code class="docutils literal notranslate"><span class="pre">model.prepare</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#model.type"><code class="docutils literal notranslate"><span class="pre">model.type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#model.ref"><code class="docutils literal notranslate"><span class="pre">model.ref</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#model.level"><code class="docutils literal notranslate"><span class="pre">model.level</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#model.access"><code class="docutils literal notranslate"><span class="pre">model.access</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#model.uri"><code class="docutils literal notranslate"><span class="pre">model.uri</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#model.title"><code class="docutils literal notranslate"><span class="pre">model.title</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#model.description"><code class="docutils literal notranslate"><span class="pre">model.description</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#model.property"><code class="docutils literal notranslate"><span class="pre">model.property</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#savybe">Savybė</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#property.source"><code class="docutils literal notranslate"><span class="pre">property.source</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#property.prepare"><code class="docutils literal notranslate"><span class="pre">property.prepare</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#property.type"><code class="docutils literal notranslate"><span class="pre">property.type</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#property.ref"><code class="docutils literal notranslate"><span class="pre">property.ref</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#property.level"><code class="docutils literal notranslate"><span class="pre">property.level</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#property.access"><code class="docutils literal notranslate"><span class="pre">property.access</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#property.uri"><code class="docutils literal notranslate"><span class="pre">property.uri</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#property.title"><code class="docutils literal notranslate"><span class="pre">property.title</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#property.description"><code class="docutils literal notranslate"><span class="pre">property.description</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#property.enum"><code class="docutils literal notranslate"><span class="pre">property.enum</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="#papildomos-dimensijos">Papildomos dimensijos</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#isoriniu-zodynu-prefiksai">Išorinių žodynų prefiksai</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#prefix"><code class="docutils literal notranslate"><span class="pre">prefix</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#prefix.ref"><code class="docutils literal notranslate"><span class="pre">prefix.ref</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#prefix.uri"><code class="docutils literal notranslate"><span class="pre">prefix.uri</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#prefix.title"><code class="docutils literal notranslate"><span class="pre">prefix.title</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#prefix.description"><code class="docutils literal notranslate"><span class="pre">prefix.description</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#klasifikatoriai">Klasifikatoriai</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id0"><code class="docutils literal notranslate"><span class="pre">enum</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#enum.ref"><code class="docutils literal notranslate"><span class="pre">enum.ref</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enum.source"><code class="docutils literal notranslate"><span class="pre">enum.source</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enum.prepare"><code class="docutils literal notranslate"><span class="pre">enum.prepare</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enum.access"><code class="docutils literal notranslate"><span class="pre">enum.access</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enum.title"><code class="docutils literal notranslate"><span class="pre">enum.title</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enum.description"><code class="docutils literal notranslate"><span class="pre">enum.description</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#parametrai">Parametrai</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id7"><code class="docutils literal notranslate"><span class="pre">param</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#param.ref"><code class="docutils literal notranslate"><span class="pre">param.ref</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#param.prepare"><code class="docutils literal notranslate"><span class="pre">param.prepare</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#param.source"><code class="docutils literal notranslate"><span class="pre">param.source</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#range"><code class="docutils literal notranslate"><span class="pre">range()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#scalar"><code class="docutils literal notranslate"><span class="pre">scalar()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#reiksmiu-sukeitimas">Reikšmių sukeitimas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#switch"><code class="docutils literal notranslate"><span class="pre">switch</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#switch.source"><code class="docutils literal notranslate"><span class="pre">switch.source</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#switch.prepare"><code class="docutils literal notranslate"><span class="pre">switch.prepare</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#komentavimas">Komentavimas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#comment"><code class="docutils literal notranslate"><span class="pre">comment</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#comment.id"><code class="docutils literal notranslate"><span class="pre">comment.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#comment.ref"><code class="docutils literal notranslate"><span class="pre">comment.ref</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#comment.source"><code class="docutils literal notranslate"><span class="pre">comment.source</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#comment.prepare"><code class="docutils literal notranslate"><span class="pre">comment.prepare</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#comment.level"><code class="docutils literal notranslate"><span class="pre">comment.level</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#comment.access"><code class="docutils literal notranslate"><span class="pre">comment.access</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#comment.uri"><code class="docutils literal notranslate"><span class="pre">comment.uri</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#comment.title"><code class="docutils literal notranslate"><span class="pre">comment.title</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#comment.description"><code class="docutils literal notranslate"><span class="pre">comment.description</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#daugiakalbiskumas">Daugiakalbiškumas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#lang"><code class="docutils literal notranslate"><span class="pre">lang</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#lang.ref"><code class="docutils literal notranslate"><span class="pre">lang.ref</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lang.title"><code class="docutils literal notranslate"><span class="pre">lang.title</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lang.description"><code class="docutils literal notranslate"><span class="pre">lang.description</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#strukturos-keitimas">Struktūros keitimas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#migrate"><code class="docutils literal notranslate"><span class="pre">migrate</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#migrate.id"><code class="docutils literal notranslate"><span class="pre">migrate.id</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#migrate.ref"><code class="docutils literal notranslate"><span class="pre">migrate.ref</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#migrate.prepare"><code class="docutils literal notranslate"><span class="pre">migrate.prepare</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#migrate.create"><code class="docutils literal notranslate"><span class="pre">migrate.create()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#migrate.title"><code class="docutils literal notranslate"><span class="pre">migrate.title</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#migrate.description"><code class="docutils literal notranslate"><span class="pre">migrate.description</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#update"><code class="docutils literal notranslate"><span class="pre">update()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#delete"><code class="docutils literal notranslate"><span class="pre">delete()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#filter"><code class="docutils literal notranslate"><span class="pre">filter()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tipai.html">Duomenų tipai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pavadinimai.html">Kodiniai pavadinimai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vienetai.html">Matavimo vienetai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="identifikatoriai.html">Ryšiai tarp modelių</a></li>
+<li class="toctree-l1"><a class="reference internal" href="branda.html">Brandos lygiai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prieiga.html">Prieigos lygiai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="saltiniai.html">Duomenų šaltiniai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zodynai.html">Išoriniai žodynai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="formules.html">Formulės</a></li>
+<li class="toctree-l1"><a class="reference internal" href="savokos.html">Sąvokos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="keitimai.html">Keitimų istorija</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobilios navigacijos meniu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Duomenų struktūros aprašas</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Puslapių navigacija">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Dimensijos</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/dimensijos.rst.txt" rel="nofollow"> Žiūrėti puslapio šaltinį</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="dimensijos">
+<span id="id1"></span><h1>Dimensijos<a class="headerlink" href="#dimensijos" title="Link to this heading"></a></h1>
+<p><a class="reference internal" href="savokos.html#term-dimensija"><span class="xref std std-term">Dimensijos</span></a> apibrėžia duomenų metaduomenų detalumo lygį.
+Stulpeliai <a class="reference internal" href="formatas.html#dataset" title="dataset"><code class="xref py py-data docutils literal notranslate"><span class="pre">dataset</span></code></a>, <a class="reference internal" href="formatas.html#resource" title="resource"><code class="xref py py-data docutils literal notranslate"><span class="pre">resource</span></code></a>, <a class="reference internal" href="formatas.html#base" title="base"><code class="xref py py-data docutils literal notranslate"><span class="pre">base</span></code></a>, <a class="reference internal" href="formatas.html#model" title="model"><code class="xref py py-data docutils literal notranslate"><span class="pre">model</span></code></a> ir
+<a class="reference internal" href="formatas.html#property" title="property"><code class="xref py py-data docutils literal notranslate"><span class="pre">property</span></code></a> yra naudojami kaip <a class="reference internal" href="savokos.html#term-DSA"><span class="xref std std-term">DSA</span></a> dimensijos. <a class="reference internal" href="formatas.html#dataset" title="dataset"><code class="xref py py-data docutils literal notranslate"><span class="pre">dataset</span></code></a> yra
+aukščiausia dimensija, <a class="reference internal" href="formatas.html#property" title="property"><code class="xref py py-data docutils literal notranslate"><span class="pre">property</span></code></a> žemiausia. <a class="reference internal" href="formatas.html#dataset" title="dataset"><code class="xref py py-data docutils literal notranslate"><span class="pre">dataset</span></code></a> ir
+<a class="reference internal" href="formatas.html#resource" title="resource"><code class="xref py py-data docutils literal notranslate"><span class="pre">resource</span></code></a> dimensijos atitinka <a class="reference external" href="https://www.w3.org/TR/vocab-dcat-2/">DCAT</a> žodyną ir užtikrina trečia duomenų
+brandos lygį, o žemiau esantys <a class="reference internal" href="formatas.html#base" title="base"><code class="xref py py-data docutils literal notranslate"><span class="pre">base</span></code></a>, <a class="reference internal" href="formatas.html#model" title="model"><code class="xref py py-data docutils literal notranslate"><span class="pre">model</span></code></a> ir <a class="reference internal" href="formatas.html#property" title="property"><code class="xref py py-data docutils literal notranslate"><span class="pre">property</span></code></a>
+atitinka <a class="reference external" href="https://www.w3.org/TR/rdf-schema/">RDFS</a> žodyną ir užtikrina penktą duomenų brandos lygį. Vienoje lentelės
+eilutėje gali būti užpildytas ne daugiau kaip vienas dimensijos stulpelis.
+Užpildytasis dimensijos stulpelis nustato visų kitų stulpelių prasmę.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>id</p></th>
+<th class="head"><p>d</p></th>
+<th class="head"><p>r</p></th>
+<th class="head"><p>b</p></th>
+<th class="head"><p>m</p></th>
+<th class="head"><p>property</p></th>
+<th class="head"><p>title</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td colspan="5"><p>datasets/gov/ivpk/adk</p></td>
+<td><p>Atvirų duomenų katalogas</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td></td>
+<td colspan="4"><p>adk</p></td>
+<td><p>Atvirų duomenų katalogo
+duomenų bazė</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td></td>
+<td></td>
+<td colspan="3"><p>/dcat/dataset</p></td>
+<td><p>Duomenų rinkinys</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td colspan="2"><p>dataset</p></td>
+<td><p>Duomenų rinkinys</p></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>title</p></td>
+<td><p>Duomenų rinkinio pavadinimas</p></td>
+</tr>
+</tbody>
+</table>
+<p>Pavyzdyje aukščiau, taupant vietą, dalies dimensijų pavadinimai sutrumpinti iki
+vienos raidės ir įtraukti ne visi stulpeliai, o tik <a class="reference internal" href="formatas.html#id" title="id"><code class="xref py py-data docutils literal notranslate"><span class="pre">id</span></code></a> ir <a class="reference internal" href="formatas.html#title" title="title"><code class="xref py py-data docutils literal notranslate"><span class="pre">title</span></code></a>
+metaduomenų stulpeliai. Pavyzdyje matome, kad vienoje eilutėje užpildytas tik
+vienas dimensijos stulpelis, o <a class="reference internal" href="formatas.html#title" title="title"><code class="xref py py-data docutils literal notranslate"><span class="pre">title</span></code></a> stulpelio prasmė keičiasi
+priklausomai nuo dimensijos reikšmės. Toliau specifikacijoje konkrečios
+dimensijos stulpeliai įvardijami pateikiant tiek dimensijos, tiek metaduomens
+stulpelio pavadinimus, kad būtų aiškiau apie kurios dimensijos metaduomenį
+kalbama, pavyzdžiui <a class="reference internal" href="#model.title" title="model.title"><code class="xref py py-data docutils literal notranslate"><span class="pre">model.title</span></code></a> leidžia suprasti kad kalbama apie
+„Duomenų rinkinys“ reikšmę 4-oje eilutėje.</p>
+<p>Be minėtų dimensijų stulpelių <a class="reference internal" href="savokos.html#term-DSA"><span class="xref std std-term">DSA</span></a> lentelėje gali būti naudojami
+papildomos metaduomenų dimensijos, kai nurodoma <a class="reference internal" href="formatas.html#type" title="type"><code class="xref py py-data docutils literal notranslate"><span class="pre">type</span></code></a> reikšmė ir
+nepateikiama nei viena dimensijos stulpelio reikšmė. Pavyzdžiui:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>id</p></th>
+<th class="head"><p>d</p></th>
+<th class="head"><p>r</p></th>
+<th class="head"><p>b</p></th>
+<th class="head"><p>m</p></th>
+<th class="head"><p>property</p></th>
+<th class="head"><p>type</p></th>
+<th class="head"><p>ref</p></th>
+<th class="head"><p>uri</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>prefix</p></td>
+<td><p>dcat</p></td>
+<td><p>http://www.w3.org/ns/dcat#</p></td>
+</tr>
+</tbody>
+</table>
+<p>Šiuo atveju <a class="reference internal" href="#prefix" title="prefix"><code class="xref py py-data docutils literal notranslate"><span class="pre">prefix</span></code></a> tampa dar viena dimensija, leidžianti pateikti
+metaduomenis apie naudojamų URI prefiksus. Analogiškai, kaip ir su kitomis
+dimensijomis, dimensijos ir metaduomens pavadinimus galima apjungti, pavyzdžiui
+<a class="reference internal" href="#prefix.ref" title="prefix.ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">prefix.ref</span></code></a> apibūdina tik <a class="reference internal" href="#prefix" title="prefix"><code class="xref py py-data docutils literal notranslate"><span class="pre">prefix</span></code></a> dimensijai priklausančius
+<a class="reference internal" href="tipai.html#ref" title="ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">ref</span></code></a> stulpelius.</p>
+<p>Dimensijos leidžia suskirstyti metaduomenis į hierarchinę struktūrą. Todėl
+<a class="reference internal" href="savokos.html#term-DSA"><span class="xref std std-term">DSA</span></a> lentelės eilučių eiliškumas yra svarbus, kadangi žemiau esančios
+eilutės priklauso aukščiau esančiai dimensijai. Tas pats galioja ir pagalbinėms
+<a class="reference internal" href="savokos.html#term-dimensija"><span class="xref std std-term">dimensijoms</span></a>.</p>
+<p>Nors lentelėje sudaro tik 15 stulpelių, tačiau pasitelkiant 5 pagrindinius
+dimensijas ir keletą papildomų dimensijų, atsiranda galimybė išsamiai aprašyti
+visą duomenų šaltinio struktūrą.</p>
+<section id="duomenu-rinkinys">
+<span id="dataset"></span><h2>Duomenų rinkinys<a class="headerlink" href="#duomenu-rinkinys" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="savokos.html#term-DSA"><span class="xref std std-term">DSA</span></a> lentelėje <a class="reference internal" href="savokos.html#term-duomenu-rinkinys"><span class="xref std std-term">duomenų rinkinys</span></a> nurodomas tam, kad būtų
+išlaikomas ryšys tarp <a class="reference internal" href="savokos.html#term-DSA"><span class="xref std std-term">DSA</span></a> ir <a class="reference internal" href="savokos.html#term-ADK"><span class="xref std std-term">ADK</span></a>. Atliekant duomenų
+inventorizaciją, automatiškai generuota <a class="reference internal" href="savokos.html#term-DSA"><span class="xref std std-term">DSA</span></a> lentelė turi būti
+suskirstoma į <a class="reference internal" href="savokos.html#term-duomenu-rinkinys"><span class="xref std std-term">duomenų rinkinius</span></a>. Tada priemonių
+pagalba automatiškai sukuriami pirminiai <a class="reference internal" href="savokos.html#term-ADK"><span class="xref std std-term">ADK</span></a> metaduomenys apie
+<a class="reference internal" href="savokos.html#term-duomenu-rinkinys"><span class="xref std std-term">duomenų rinkinius</span></a>, kuriuos vėliau reikia papildyti
+rankiniu būdu prisijungus prie ADK. Automatizuota priemonė sukūrus duomenų
+rinkinių įrašus <a class="reference internal" href="savokos.html#term-ADK"><span class="xref std std-term">ADK</span></a>, papildys <a class="reference internal" href="savokos.html#term-DSA"><span class="xref std std-term">DSA</span></a> lentelę, į <a class="reference internal" href="#dataset.ref" title="dataset.ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">dataset.ref</span></code></a>
+įrašant <a class="reference internal" href="savokos.html#term-ADK"><span class="xref std std-term">ADK</span></a> sukurto duomenų rinkinio identifikatorių. Tokiu būdu,
+sekantį kartą vykdant sinchronizaciją, jei <a class="reference internal" href="#dataset.ref" title="dataset.ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">dataset.ref</span></code></a> yra užpildytas,
+bus atnaujinami jau sukurti <a class="reference internal" href="savokos.html#term-ADK"><span class="xref std std-term">ADK</span></a> <a class="reference internal" href="savokos.html#term-duomenu-rinkinys"><span class="xref std std-term">duomenų rinkinių</span></a> įrašai.</p>
+<p>Į <a class="reference internal" href="savokos.html#term-ADK"><span class="xref std std-term">ADK</span></a> turi būti publikuojami tik tie duomenų rinkiniai iš DSA, kurių
+<a class="reference internal" href="#dataset.access" title="dataset.access"><code class="xref py py-data docutils literal notranslate"><span class="pre">dataset.access</span></code></a> reikšmė yra <code class="docutils literal notranslate"><span class="pre">public</span></code> arba <code class="docutils literal notranslate"><span class="pre">open</span></code>.</p>
+<dl class="py data">
+<dt class="sig sig-object py" id="dataset.source">
+<span class="sig-prename descclassname"><span class="pre">dataset.</span></span><span class="sig-name descname"><span class="pre">source</span></span><a class="headerlink" href="#dataset.source" title="Link to this definition"></a></dt>
+<dd><p>Jei nenurodyta, naudoti https://data.gov.lt/ adresą.</p>
+<p>Nenaudojama, jei <code class="docutils literal notranslate"><span class="pre">dataset.type</span></code> yra <code class="docutils literal notranslate"><span class="pre">ns</span></code>.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="dataset.prepare">
+<span class="sig-prename descclassname"><span class="pre">dataset.</span></span><span class="sig-name descname"><span class="pre">prepare</span></span><a class="headerlink" href="#dataset.prepare" title="Link to this definition"></a></dt>
+<dd><p>Nenaudojama.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="dataset.type">
+<span class="sig-prename descclassname"><span class="pre">dataset.</span></span><span class="sig-name descname"><span class="pre">type</span></span><a class="headerlink" href="#dataset.type" title="Link to this definition"></a></dt>
+<dd><p>Jei nenurodyta, naudoti <code class="docutils literal notranslate"><span class="pre">ivpk</span></code> reikšmę. type nurodo <a class="reference internal" href="savokos.html#term-API"><span class="xref std std-term">API</span></a>
+formatą, kuriuo automatiškai pildomi duomenų rinkinių metaduomenys atvirų
+duomenų portale.</p>
+<p>Galimos reikšmės:</p>
+<dl class="describe">
+<dt class="sig sig-object">
+<span class="sig-name descname"><span class="pre">ns</span></span></dt>
+<dd><p>Atitinka vardų erdvę, kurioje pateikiami duomenų rinkiniai. Naudojamas
+tais atvejais, kai norima pateiki papildomus metaduomenis vardų erdvei,
+pavydžui pavadinimą ar parašymą.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt class="sig sig-object">
+<span class="sig-name descname"><span class="pre">ckan</span></span></dt>
+<dd><p>Atitinka duomenų rinkinį iš <a class="reference external" href="https://ckan.org/">CKAN</a> duomenų katalogo.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt class="sig sig-object">
+<span class="sig-name descname"><span class="pre">ivpk</span></span></dt>
+<dd><p>Atitinka duomenų rinkinį iš <a class="reference external" href="https://data.gov.lt/">data.gov.lt</a> duomenų katalogo.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="dataset.ref">
+<span class="sig-prename descclassname"><span class="pre">dataset.</span></span><span class="sig-name descname"><span class="pre">ref</span></span><a class="headerlink" href="#dataset.ref" title="Link to this definition"></a></dt>
+<dd><p><a class="reference internal" href="savokos.html#term-duomenu-rinkinys"><span class="xref std std-term">Duomenų rinkinio</span></a> duomenų kataloge
+identifikatorius.</p>
+<p>Nenaudojamas jei <a class="reference internal" href="#dataset.type" title="dataset.type"><code class="xref py py-data docutils literal notranslate"><span class="pre">dataset.type</span></code></a> yra <code class="docutils literal notranslate"><span class="pre">ns</span></code>.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="dataset.level">
+<span class="sig-prename descclassname"><span class="pre">dataset.</span></span><span class="sig-name descname"><span class="pre">level</span></span><a class="headerlink" href="#dataset.level" title="Link to this definition"></a></dt>
+<dd><p>Nenaudojamas.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="dataset.access">
+<span class="sig-prename descclassname"><span class="pre">dataset.</span></span><span class="sig-name descname"><span class="pre">access</span></span><a class="headerlink" href="#dataset.access" title="Link to this definition"></a></dt>
+<dd><p>Viso duomenų rinkinio ar vardų erdvės <a class="reference internal" href="prieiga.html#access"><span class="std std-ref">Prieigos lygiai</span></a>. Paveldimas.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="dataset.title">
+<span class="sig-prename descclassname"><span class="pre">dataset.</span></span><span class="sig-name descname"><span class="pre">title</span></span><a class="headerlink" href="#dataset.title" title="Link to this definition"></a></dt>
+<dd><p>Duomenų rinkinio ar vardų erdvės pavadinimas.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="dataset.description">
+<span class="sig-prename descclassname"><span class="pre">dataset.</span></span><span class="sig-name descname"><span class="pre">description</span></span><a class="headerlink" href="#dataset.description" title="Link to this definition"></a></dt>
+<dd><p>Duomenų rinkinio ar vardų erdvės aprašymas.</p>
+</dd></dl>
+
+<p>Skaidymas į <a class="reference internal" href="savokos.html#term-duomenu-rinkinys"><span class="xref std std-term">duomenų rinkinius</span></a> turi būti atliekamas
+tokiu principu, kad visi tarpusavyje susiję <a class="reference internal" href="savokos.html#term-modelis"><span class="xref std std-term">modeliai</span></a> patektų į
+vieną <a class="reference internal" href="savokos.html#term-duomenu-rinkinys"><span class="xref std std-term">duomenų rinkinį</span></a>. Teoriškai, absoliučiai visi
+<a class="reference internal" href="savokos.html#term-modelis"><span class="xref std std-term">modeliai</span></a> gali būti susiję tarpusavyje, skaidymą reikėtų daryti
+pagal tematinį <a class="reference internal" href="savokos.html#term-modelis"><span class="xref std std-term">modelių</span></a> tarpusavio ryšį, o ne pagal reliacinius
+ryšius.</p>
+<p>Jei duomenys yra išskaidyti pagal laiką, vietove ar kitus kriterijus į
+skirtingus duomenų šaltinius, tokie duomenys turėtų būti apjungti į vieną modelį
+<a class="reference internal" href="#base"><span class="std std-ref">Modelio bazė</span></a> pagalba ir turėtų priklausyti vienam <a class="reference internal" href="savokos.html#term-duomenu-rinkinys"><span class="xref std std-term">duomenų rinkiniui</span></a>. Tą pačią semantinę prasmę turintys duomenys neturėtų būti
+išskaidyti keliuose <a class="reference internal" href="savokos.html#term-duomenu-rinkinys"><span class="xref std std-term">duomenų rinkiniuose</span></a>.</p>
+<p>Pavyzdys:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>d</p></th>
+<th class="head"><p>r</p></th>
+<th class="head"><p>b</p></th>
+<th class="head"><p>m</p></th>
+<th class="head"><p>property</p></th>
+<th class="head"><p>type</p></th>
+<th class="head"></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td colspan="5"><p>datasets/gov/ivpk</p></td>
+<td><p>ns</p></td>
+<td><p>Informacinės visuomenės plėtros komitetas</p></td>
+</tr>
+<tr class="row-odd"><td colspan="5"><p>datasets/gov/ivpk/adp</p></td>
+<td><p>ns</p></td>
+<td><p>Lietuvos atvirų duomenų portalas</p></td>
+</tr>
+<tr class="row-even"><td colspan="5"><p>datasets/gov/ivpk/adp/catalog</p></td>
+<td></td>
+<td><p>Lietuvos atvirų duomenų katalogas</p></td>
+</tr>
+<tr class="row-odd"><td colspan="5"><p>datasets/gov/ivpk/adp/store</p></td>
+<td></td>
+<td><p>Lietuvos atvirų duomenų saugykla</p></td>
+</tr>
+</tbody>
+</table>
+<p>Šiame pavyzdyje apibrėžtos dvi vardų erdvės ir du rinkiniai.</p>
+<p>Kiekviena organizacija turėtu deklaruoti tik savo vardų erdvės metaduomenis.
+Globalios vardų erdvės, tokios kaip <code class="docutils literal notranslate"><span class="pre">datasets</span></code> ir <code class="docutils literal notranslate"><span class="pre">datasets/gov</span></code> yra
+administruojamos vyriausiojo duomenų atvėrimo koordinatoriaus.</p>
+</section>
+<section id="duomenu-saltinis">
+<span id="id2"></span><h2>Duomenų šaltinis<a class="headerlink" href="#duomenu-saltinis" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="savokos.html#term-SDSA"><span class="xref std std-term">ŠDSA</span></a> atveju <a class="reference internal" href="savokos.html#term-duomenu-saltinis"><span class="xref std std-term">duomenų šaltinis</span></a> bus vidinis duomenų bazių serveris,
+kažkoks vidinis katalogas kuriame yra lentelių failai ar koks nors vidinis API.</p>
+<p><a class="reference internal" href="savokos.html#term-ADSA"><span class="xref std std-term">ADSA</span></a> atveju, <a class="reference internal" href="savokos.html#term-duomenu-saltinis"><span class="xref std std-term">duomenų šaltinis</span></a> gali būti nenurodytas, tai
+reiškia, kad duomenų rinkinio duomenys dar nėra publikuoti. Jei duomenys jau yra
+publikuoti, tada <a class="reference internal" href="savokos.html#term-ADSA"><span class="xref std std-term">ADSA</span></a> <a class="reference internal" href="savokos.html#term-duomenu-saltinis"><span class="xref std std-term">duomenų šaltinis</span></a> turi rodyti į publikuotus
+atvertus duomenis, tai gali būti nuorodos į CSV failus, į viešą JSON API ir pan.</p>
+<p><a class="reference internal" href="savokos.html#term-duomenu-saltinis"><span class="xref std std-term">Duomenų šaltinio</span></a> įrašas taip pat naudojamas tam, kad
+automatiškai atnaujinti <a class="reference internal" href="savokos.html#term-ADK"><span class="xref std std-term">ADK</span></a> esančius <a class="reference internal" href="savokos.html#term-duomenu-rinkinys"><span class="xref std std-term">duomenų rinkinius</span></a>, patelkiant konkrečias nuorodas į konkrečius duomenų failus.
+Analogiškai kaip ir <a class="reference internal" href="#dataset"><span class="std std-ref">Duomenų rinkinys</span></a> atveju, <a class="reference internal" href="#resource.ref" title="resource.ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">resource.ref</span></code></a> stulpelyje
+nurodomas duomenų šaltinio identifikatorius iš <a class="reference internal" href="savokos.html#term-ADK"><span class="xref std std-term">ADK</span></a>.</p>
+<dl class="py data">
+<dt class="sig sig-object py" id="resource.type">
+<span class="sig-prename descclassname"><span class="pre">resource.</span></span><span class="sig-name descname"><span class="pre">type</span></span><a class="headerlink" href="#resource.type" title="Link to this definition"></a></dt>
+<dd><p>Duomenų šaltinio tipas. Galimos reikšmės:</p>
+<dl class="describe">
+<dt class="sig sig-object">
+<span class="sig-name descname"><span class="pre">sql</span></span></dt>
+<dd><p>Reliacinės duomenų bazės</p>
+</dd></dl>
+
+<dl class="describe">
+<dt class="sig sig-object">
+<span class="sig-name descname"><span class="pre">csv</span></span></dt>
+<dd><p>CSV lentelės</p>
+</dd></dl>
+
+<dl class="describe">
+<dt class="sig sig-object">
+<span class="sig-name descname"><span class="pre">tsv</span></span></dt>
+<dd><p>TSV lentelės</p>
+</dd></dl>
+
+<dl class="describe">
+<dt class="sig sig-object">
+<span class="sig-name descname"><span class="pre">json</span></span></dt>
+<dd><p>JSON resursai</p>
+</dd></dl>
+
+<dl class="describe">
+<dt class="sig sig-object">
+<span class="sig-name descname"><span class="pre">jsonl</span></span></dt>
+<dd><p>JSON lines resursai</p>
+</dd></dl>
+
+<dl class="describe">
+<dt class="sig sig-object">
+<span class="sig-name descname"><span class="pre">geojson</span></span></dt>
+<dd><p>GeoJSON failai</p>
+</dd></dl>
+
+<dl class="describe">
+<dt class="sig sig-object">
+<span class="sig-name descname"><span class="pre">xml</span></span></dt>
+<dd><p>XML resursai</p>
+</dd></dl>
+
+<dl class="describe">
+<dt class="sig sig-object">
+<span class="sig-name descname"><span class="pre">html</span></span></dt>
+<dd><p>HTML puslapiai</p>
+</dd></dl>
+
+<dl class="describe">
+<dt class="sig sig-object">
+<span class="sig-name descname"><span class="pre">xlsx</span></span></dt>
+<dd><p>Excel lentelės (naujasis <a class="reference external" href="https://en.wikipedia.org/wiki/Office_Open_XML">OOXML</a> formatas)</p>
+</dd></dl>
+
+<dl class="describe">
+<dt class="sig sig-object">
+<span class="sig-name descname"><span class="pre">xls</span></span></dt>
+<dd><p>Excel lentelės (senasis formatas)</p>
+</dd></dl>
+
+<dl class="describe">
+<dt class="sig sig-object">
+<span class="sig-name descname"><span class="pre">ods</span></span></dt>
+<dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/OpenDocument">ODT</a> skaičiuoklės formatas</p>
+</dd></dl>
+
+<dl class="describe">
+<dt class="sig sig-object">
+<span class="sig-name descname"><span class="pre">zip</span></span></dt>
+<dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/ZIP_(file_format)">ZIP</a> failų archyvas.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="resource.source">
+<span class="sig-prename descclassname"><span class="pre">resource.</span></span><span class="sig-name descname"><span class="pre">source</span></span><a class="headerlink" href="#resource.source" title="Link to this definition"></a></dt>
+<dd><p>Priklauso nuo <a class="reference internal" href="#resource.source" title="resource.source"><code class="xref py py-data docutils literal notranslate"><span class="pre">resource.source</span></code></a>. Žiūrėti <a class="reference internal" href="saltiniai.html#resource"><span class="std std-ref">Duomenų šaltiniai</span></a>.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="resource.ref">
+<span class="sig-prename descclassname"><span class="pre">resource.</span></span><span class="sig-name descname"><span class="pre">ref</span></span><a class="headerlink" href="#resource.ref" title="Link to this definition"></a></dt>
+<dd><p>Resurso kodinis pavadinimas, kuris yra apibrėžtas atskirai duomenų
+struktūros apraše, ar konfigūracijos failuose.</p>
+<p>Kai vienas resursas nurodo kitą, tuomet aprašomas resursas išplečia kitą
+resursą į kurį rodo arba naudoja kitą resursą, kaip konteinerį, kuriame
+saugomi duomenys.</p>
+<p>Išplėtimo atveju, galima pateikti tam tikro resurso konfidencialius
+duomenis, tokius, kaip slaptažodis, atskirai nuo duomenų struktūros aprašo,
+konfigūracijos failuose, o duomenų struktūros apraše išplėsti resursą,
+pateikiant ne konfidencialius duomenis.</p>
+<p>Tokiais atvejais, kaip duomenų failai saugomi ZIP archyvuose arba FTP
+serveryje, galima atskirai aprašyti ZIP ar FTP resursą, o po to, aprašant
+konkretų duomenų failo resursą, pateikti nuorodą, kuriame kitame resurse
+aprašomas failas yra.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="resource.level">
+<span class="sig-prename descclassname"><span class="pre">resource.</span></span><span class="sig-name descname"><span class="pre">level</span></span><a class="headerlink" href="#resource.level" title="Link to this definition"></a></dt>
+<dd><p>Duomenų šaltinio brandos lygis, vertinant tik pagal formatą, nežiūrint į
+šaltinyje esančių duomenų turinį.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="resource.access">
+<span class="sig-prename descclassname"><span class="pre">resource.</span></span><span class="sig-name descname"><span class="pre">access</span></span><a class="headerlink" href="#resource.access" title="Link to this definition"></a></dt>
+<dd><p>Viso duomenų šaltinio prieigos lygis. Paveldimas.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="resource.title">
+<span class="sig-prename descclassname"><span class="pre">resource.</span></span><span class="sig-name descname"><span class="pre">title</span></span><a class="headerlink" href="#resource.title" title="Link to this definition"></a></dt>
+<dd><p>Duomenų šaltinio pavadinimas.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="resource.description">
+<span class="sig-prename descclassname"><span class="pre">resource.</span></span><span class="sig-name descname"><span class="pre">description</span></span><a class="headerlink" href="#resource.description" title="Link to this definition"></a></dt>
+<dd><p>Duomenų šaltinio aprašymas.</p>
+</dd></dl>
+
+<p>Duomenų šaltinio <a class="reference internal" href="#resource.type" title="resource.type"><code class="xref py py-data docutils literal notranslate"><span class="pre">resource.type</span></code></a> reikšmė apibrėžia kokią <a class="reference internal" href="savokos.html#term-ETL"><span class="xref std std-term">ETL</span></a>
+priemonę naudoti skaitant duomenis iš duomenų šaltinio. Automatizuota duomenų
+priemonė skirta įstaigos duomenų atvėrimui turėtų palaikyti tik tokius duomenų
+šaltinius, kurie naudojami įstaigos vidinėje infrastruktūroje.</p>
+<p>Esant poreikiui gali būti įgyvendintas palaikymas naujiems duomenų šaltiniams.</p>
+</section>
+<section id="modelio-baze">
+<span id="base"></span><h2>Modelio bazė<a class="headerlink" href="#modelio-baze" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Pastaba</p>
+<p>Kol kas modelių apjungimas naudojant vieną bazę nėra įgyvendintas.</p>
+</div>
+<p>Modelio bazė naudojama kelių modelių (lentelių) susiejimui arba apjungimui.
+Kadangi įvairiuose duomenų šaltiniuose dažnai pasitaiko duomenų, kuriuose
+saugomos tą pačią semantinę prasmę turinčios lentelės, <a class="reference internal" href="formatas.html#base" title="base"><code class="xref py py-data docutils literal notranslate"><span class="pre">base</span></code></a> stulpelyje
+galima nurodyti kaip skirtingos lentelės siejasi tarpusavyje.</p>
+<p><a class="reference internal" href="#base.type" title="base.type"><code class="xref py py-data docutils literal notranslate"><span class="pre">base.type</span></code></a> stulpelyje nurodoma kokiu būdu lentelės yra susiję.
+<a class="reference internal" href="savokos.html#term-ETL"><span class="xref std std-term">ETL</span></a> priemonė vadovaujantis <a class="reference internal" href="formatas.html#base" title="base"><code class="xref py py-data docutils literal notranslate"><span class="pre">base</span></code></a> informacija duomenis
+automatiškai transformuoja ir sujungia kelias lenteles į vieną.</p>
+<p>Modeliai ne tik susiejami semantiškai tarpusavyje, bet taip pat suliejami ir
+dviejų modelių duomenys naudojant laukų sąrašą nurodytą <a class="reference internal" href="#base.ref" title="base.ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">base.ref</span></code></a>
+stulpelyje. <a class="reference internal" href="#base.ref" title="base.ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">base.ref</span></code></a> stulpelyje nurodyti laukai naudojami norint
+unikaliai identifikuoti <a class="reference internal" href="formatas.html#model" title="model"><code class="xref py py-data docutils literal notranslate"><span class="pre">model</span></code></a> lentelėje esančią eilutę, kuri atitinka
+<a class="reference internal" href="formatas.html#base" title="base"><code class="xref py py-data docutils literal notranslate"><span class="pre">base</span></code></a> lentelėje esančią eilutę. Tai reiškia, kad modelis ir jo bazė turi
+vienodus identifikatorius.</p>
+<p>Siejant <a class="reference internal" href="formatas.html#model" title="model"><code class="xref py py-data docutils literal notranslate"><span class="pre">model</span></code></a> ir <a class="reference internal" href="formatas.html#base" title="base"><code class="xref py py-data docutils literal notranslate"><span class="pre">base</span></code></a> duomenis tarpusavyje, <a class="reference internal" href="formatas.html#model" title="model"><code class="xref py py-data docutils literal notranslate"><span class="pre">model</span></code></a>
+lentelė įgauna lygiai tokius pačius unikalius identifikatorius, kurie yra base
+lentelėje. Tai reiškia, kad <a class="reference internal" href="formatas.html#model" title="model"><code class="xref py py-data docutils literal notranslate"><span class="pre">model</span></code></a> lentelėje negali būti duomenų, kurių
+nėra <a class="reference internal" href="formatas.html#base" title="base"><code class="xref py py-data docutils literal notranslate"><span class="pre">base</span></code></a> lentelėje.</p>
+<p><a class="reference internal" href="#model.property" title="model.property"><code class="xref py py-data docutils literal notranslate"><span class="pre">model.property</span></code></a> laukams, kurie sutampa su <a class="reference internal" href="formatas.html#base" title="base"><code class="xref py py-data docutils literal notranslate"><span class="pre">base</span></code></a> modelio laukais,
+nenurodomas <a class="reference internal" href="#property.type" title="property.type"><code class="xref py py-data docutils literal notranslate"><span class="pre">property.type</span></code></a>, tokiu būdu nurodoma, kad
+<a class="reference internal" href="#model.property" title="model.property"><code class="xref py py-data docutils literal notranslate"><span class="pre">model.property</span></code></a> turi tą pačią semantinę prasmę, kaip ir <a class="reference internal" href="formatas.html#base" title="base"><code class="xref py py-data docutils literal notranslate"><span class="pre">base</span></code></a>,
+tačiau <a class="reference internal" href="formatas.html#model" title="model"><code class="xref py py-data docutils literal notranslate"><span class="pre">model</span></code></a> gali turėti ir papildomų laukų, kurių nėra <a class="reference internal" href="formatas.html#base" title="base"><code class="xref py py-data docutils literal notranslate"><span class="pre">base</span></code></a>
+modelyje, tokiu atveju <a class="reference internal" href="#property.type" title="property.type"><code class="xref py py-data docutils literal notranslate"><span class="pre">property.type</span></code></a> turi būti nurodomas.</p>
+<p>Visi <a class="reference internal" href="#base.ref" title="base.ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">base.ref</span></code></a> laukai turi būti aprašyti tiek <a class="reference internal" href="formatas.html#base" title="base"><code class="xref py py-data docutils literal notranslate"><span class="pre">base</span></code></a>, tiek
+<a class="reference internal" href="formatas.html#model" title="model"><code class="xref py py-data docutils literal notranslate"><span class="pre">model</span></code></a> modeliuose, tai reiškia, kad <a class="reference internal" href="#base.ref" title="base.ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">base.ref</span></code></a> gali būti naudojami
+tik tiek laukai, kurie neturi tipo.</p>
+<p>Jei <a class="reference internal" href="formatas.html#base" title="base"><code class="xref py py-data docutils literal notranslate"><span class="pre">base</span></code></a> stulpelyje nurodoma <code class="docutils literal notranslate"><span class="pre">/</span></code> reikšmė, tai reiškia, kad
+<a class="reference internal" href="formatas.html#model" title="model"><code class="xref py py-data docutils literal notranslate"><span class="pre">model</span></code></a> neturi bazės, arba modelio bazė yra panaikinama. <code class="docutils literal notranslate"><span class="pre">/</span></code> naudojamas
+tais atvejais, kai norima vieną ar kelis modelius prijungti prie vienos bazės,
+tačiau sekantys modeliai nebeturi priklausyti jokiai bazei.</p>
+<p><strong>Sinonimai</strong></p>
+<p>Tais atvejais, kai visi <a class="reference internal" href="formatas.html#model" title="model"><code class="xref py py-data docutils literal notranslate"><span class="pre">model</span></code></a> laukai neturi <a class="reference internal" href="#property.type" title="property.type"><code class="xref py py-data docutils literal notranslate"><span class="pre">property.type</span></code></a>, tada
+toks modelis laikomas <a class="reference internal" href="formatas.html#base" title="base"><code class="xref py py-data docutils literal notranslate"><span class="pre">base</span></code></a> sinonimu ir iš esmės saugomas tik
+identifikatorius.</p>
+<p>Tačiau, jei bent vienas <a class="reference internal" href="#property.type" title="property.type"><code class="xref py py-data docutils literal notranslate"><span class="pre">property.type</span></code></a> yra nurodytas, tada modelis įgyja
+fizinę reprezentaciją ir turi vieną ar kelis savo laukus, kurių nėra
+<a class="reference internal" href="formatas.html#base" title="base"><code class="xref py py-data docutils literal notranslate"><span class="pre">base</span></code></a> modelyje.</p>
+<p>Kiekvieną kartą saugant duomenis per kitą modelį į bazę, bazės modelio
+istorijoje išsaugoma informacija iš kokio modelio atėjo duomenys.</p>
+<p><strong>Paveldimumas</strong></p>
+<p><a class="reference internal" href="formatas.html#model" title="model"><code class="xref py py-data docutils literal notranslate"><span class="pre">model</span></code></a> paveldi visus laukus, įskaitant ir tuos, kurie nėra nurodyti prie
+<a class="reference internal" href="formatas.html#model" title="model"><code class="xref py py-data docutils literal notranslate"><span class="pre">model</span></code></a> laukų sąrašo. Tai reiškia, kad galima skaityti ir rašyti duomenis
+į <a class="reference internal" href="formatas.html#base" title="base"><code class="xref py py-data docutils literal notranslate"><span class="pre">base</span></code></a>, per <a class="reference internal" href="formatas.html#model" title="model"><code class="xref py py-data docutils literal notranslate"><span class="pre">model</span></code></a>. Jei skaitomas ar rašomas laukas, kurio nėra
+<a class="reference internal" href="formatas.html#model" title="model"><code class="xref py py-data docutils literal notranslate"><span class="pre">model</span></code></a> laukų sąraše, tada to lauko duomenys sakomi iš arba rašomi į
+<a class="reference internal" href="formatas.html#base" title="base"><code class="xref py py-data docutils literal notranslate"><span class="pre">base</span></code></a> modelį.</p>
+<p>Visi modelio laukai, kurie neturi tipo, fiziškai yra priskiriami <a class="reference internal" href="formatas.html#base" title="base"><code class="xref py py-data docutils literal notranslate"><span class="pre">base</span></code></a>
+modeliui.</p>
+<p><strong>Dubliavimas</strong></p>
+<p>Laukai pavadinimai modelyje, kurie turi tą pačią semantinę prasmę, kaip ir
+bazėje turi sutapti su pavadinimais nurodytais bazėje. Tačiau, jei yra
+nurodomas jų tipas, tada tie duomenys dubliuojami, laikant, kad duomenys
+skiriasi nuo bazės, nepaisant to, kad semantiškai jie yra vienodi.</p>
+<p>Turint tokius dubliuojamus laukus su nurodytais tipais, jei norima pasiekti
+bazės lauką, galima naudoti <code class="docutils literal notranslate"><span class="pre">_base.prop</span></code> išraišką, kuri nurodo, kad norima
+pasiekti bazėje esančius duomenis, laukui tuo pačiu pavadinimu.</p>
+<dl class="py data">
+<dt class="sig sig-object py" id="base.source">
+<span class="sig-prename descclassname"><span class="pre">base.</span></span><span class="sig-name descname"><span class="pre">source</span></span><a class="headerlink" href="#base.source" title="Link to this definition"></a></dt>
+<dd><p>Nenaudojamas.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="base.prepare">
+<span class="sig-prename descclassname"><span class="pre">base.</span></span><span class="sig-name descname"><span class="pre">prepare</span></span><a class="headerlink" href="#base.prepare" title="Link to this definition"></a></dt>
+<dd><p>Išimtiniais atvejais, kai nėra galimybės lentelių susieti ar apjungti
+įprastiniais metodais, galima pasitelkti formules, kurių pagalba galima
+įgyvendinti nestandartinius lentelių apjungimo atvejus.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="base.type">
+<span class="sig-prename descclassname"><span class="pre">base.</span></span><span class="sig-name descname"><span class="pre">type</span></span><a class="headerlink" href="#base.type" title="Link to this definition"></a></dt>
+<dd><p>Nenaudojamas.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="base.ref">
+<span class="sig-prename descclassname"><span class="pre">base.</span></span><span class="sig-name descname"><span class="pre">ref</span></span><a class="headerlink" href="#base.ref" title="Link to this definition"></a></dt>
+<dd><p><a class="reference internal" href="#model.property" title="model.property"><code class="xref py py-data docutils literal notranslate"><span class="pre">model.property</span></code></a> reikšmė, kurios pagalba <a class="reference internal" href="formatas.html#model" title="model"><code class="xref py py-data docutils literal notranslate"><span class="pre">model</span></code></a> objektai
+siejami su <a class="reference internal" href="formatas.html#base" title="base"><code class="xref py py-data docutils literal notranslate"><span class="pre">base</span></code></a> objektais. Jei susiejimas pagal vieną model property
+yra neįmanomas, galima nurodyti kelis <a class="reference internal" href="#model.property" title="model.property"><code class="xref py py-data docutils literal notranslate"><span class="pre">model.property</span></code></a> pavadinimus
+atskirtus kableliu.</p>
+<p>Galima naudoti tik tuos <a class="reference internal" href="#model.property" title="model.property"><code class="xref py py-data docutils literal notranslate"><span class="pre">model.property</span></code></a>, kurie neturi nurodyto
+<a class="reference internal" href="#property.type" title="property.type"><code class="xref py py-data docutils literal notranslate"><span class="pre">property.type</span></code></a>, kas reiškia, kad toks pat laukas turi būti tiek
+<a class="reference internal" href="formatas.html#base" title="base"><code class="xref py py-data docutils literal notranslate"><span class="pre">base</span></code></a>, tiek <a class="reference internal" href="formatas.html#model" title="model"><code class="xref py py-data docutils literal notranslate"><span class="pre">model</span></code></a> laukų sąraše.</p>
+<p>Tais atvejais, kai <a class="reference internal" href="#base.ref" title="base.ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">base.ref</span></code></a> rodo į modelio lauką, kuris turi tipą,
+tada <a class="reference internal" href="#base.level" title="base.level"><code class="xref py py-data docutils literal notranslate"><span class="pre">base.level</span></code></a> negali būti didesnis nei <code class="docutils literal notranslate"><span class="pre">3</span></code>, kadangi jei modelio
+laukas turi tipą, tai reiškia, kad jo duomenys nesutampa su bazės
+duomenimis ir todėl jungimas negali būti daromas.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="base.level">
+<span class="sig-prename descclassname"><span class="pre">base.</span></span><span class="sig-name descname"><span class="pre">level</span></span><a class="headerlink" href="#base.level" title="Link to this definition"></a></dt>
+<dd><p><a class="reference internal" href="branda.html#level"><span class="std std-ref">Brandos lygis</span></a>, nurodantis modelio susiejamumą su nurodytu
+baziniu modeliu. Plačiau žiūrėti <a class="reference internal" href="identifikatoriai.html#ref-level"><span class="std std-ref">Ryšiai tarp modelių | Brandos lygis</span></a>.</p>
+<p>Jei brandos lygis yra žemesnis nei <code class="docutils literal notranslate"><span class="pre">3</span></code>, tada identifikatorių siejimas nėra
+atliekamas, tokiu būdu tiesiog nurodomas semantinis susiejimas metaduomenų,
+o ne duomenų lygmenyje.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="base.access">
+<span class="sig-prename descclassname"><span class="pre">base.</span></span><span class="sig-name descname"><span class="pre">access</span></span><a class="headerlink" href="#base.access" title="Link to this definition"></a></dt>
+<dd><p>Nenaudojamas.</p>
+</dd></dl>
+
+<p>Paaiškinimas, ką reiškia kiekviena savybė.</p>
+<p>Pavyzdys be išorinio duomenų šaltinio:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>d</p></th>
+<th class="head"><p>r</p></th>
+<th class="head"><p>b</p></th>
+<th class="head"><p>m</p></th>
+<th class="head"><p>property</p></th>
+<th class="head"><p>type</p></th>
+<th class="head"><p>ref</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td colspan="5"><p>example</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td></td>
+<td colspan="2"><p>Location</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>name&#64;lt</p></td>
+<td><p>text</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>population</p></td>
+<td><p>integer</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td colspan="3"><p>Location</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td></td>
+<td colspan="2"><p>City</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>name&#64;lt</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>population</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td></td>
+<td colspan="2"><p>Village</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>name&#64;lt</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>population</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>region</p></td>
+<td><p>ref</p></td>
+<td><p>Location</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td colspan="3"><p>/</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td></td>
+<td colspan="2"><p>Country</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>name&#64;lt</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>population</p></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Šiame pavyzdyje:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">City</span></code> ir <code class="docutils literal notranslate"><span class="pre">Village</span></code> priklauso vienai bazei <code class="docutils literal notranslate"><span class="pre">Location</span></code>.</p></li>
+<li><p>Kadangi <code class="docutils literal notranslate"><span class="pre">Location</span></code> turi savybes <code class="docutils literal notranslate"><span class="pre">name&#64;lt</span></code> ir <code class="docutils literal notranslate"><span class="pre">population</span></code>, tai <code class="docutils literal notranslate"><span class="pre">City</span></code> ir
+<code class="docutils literal notranslate"><span class="pre">Village</span></code> modeliuose tą pačią semantinę prasmę turinčios savybės turi turėti
+lygiai tokius pačius pavadinimus, o <a class="reference internal" href="#property.type" title="property.type"><code class="xref py py-data docutils literal notranslate"><span class="pre">property.type</span></code></a> turi būti tuščias.
+Kai <a class="reference internal" href="#property.type" title="property.type"><code class="xref py py-data docutils literal notranslate"><span class="pre">property.type</span></code></a> yra tuščias, tai reiškia, kad savybė ateina iš
+bazinio modelio.</p></li>
+<li><p>Kadangi <code class="docutils literal notranslate"><span class="pre">Village</span></code> turi papildomą <a class="reference internal" href="formatas.html#property" title="property"><code class="xref py py-data docutils literal notranslate"><span class="pre">property</span></code></a> su nurodytu
+<a class="reference internal" href="#property.type" title="property.type"><code class="xref py py-data docutils literal notranslate"><span class="pre">property.type</span></code></a>, tai reiškia, kad <code class="docutils literal notranslate"><span class="pre">name</span></code> ir population` priklauso
+bazei, tačiau <code class="docutils literal notranslate"><span class="pre">region</span></code> priklauso <code class="docutils literal notranslate"><span class="pre">Village</span></code> modeliui ir jo nėra bazėje.</p></li>
+<li><p>Kadangi <code class="docutils literal notranslate"><span class="pre">Country</span></code> semantiškai nėra tas pats, kas <code class="docutils literal notranslate"><span class="pre">Gyvenviete</span></code>, nors ir turi
+tokias pačias savybes, atskiriame ją nuo <code class="docutils literal notranslate"><span class="pre">Location</span></code> bazės, priskirdami <code class="docutils literal notranslate"><span class="pre">/</span></code>
+bazei, kas reiškia, kas bazės nėra.</p></li>
+</ul>
+<p>Pavyzdys su išoriniu duomenų šaltiniu:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>d</p></th>
+<th class="head"><p>r</p></th>
+<th class="head"><p>b</p></th>
+<th class="head"><p>m</p></th>
+<th class="head"><p>property</p></th>
+<th class="head"><p>type</p></th>
+<th class="head"><p>ref</p></th>
+<th class="head"><p>source</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td colspan="5"><p>example</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td></td>
+<td colspan="2"><p>Location</p></td>
+<td></td>
+<td><p>id</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>id</p></td>
+<td><p>integer</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>name&#64;lt</p></td>
+<td><p>text</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>population</p></td>
+<td><p>integer</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td colspan="3"><p>Location</p></td>
+<td></td>
+<td><p>name&#64;lt</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td></td>
+<td colspan="2"><p>City</p></td>
+<td></td>
+<td><p>name&#64;lt</p></td>
+<td><p>CITY</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>name&#64;lt</p></td>
+<td></td>
+<td></td>
+<td><p>NAME</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>population</p></td>
+<td></td>
+<td></td>
+<td><p>POPULATION</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td></td>
+<td colspan="2"><p>Village</p></td>
+<td></td>
+<td><p>name&#64;lt</p></td>
+<td><p>VILLAGE</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>name&#64;lt</p></td>
+<td></td>
+<td></td>
+<td><p>VILLAGE</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>population</p></td>
+<td></td>
+<td></td>
+<td><p>POPULATION</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>region</p></td>
+<td><p>ref</p></td>
+<td><p>Location</p></td>
+<td><p>REGION</p></td>
+</tr>
+</tbody>
+</table>
+<p>Šiame pavyzdyje esminis skirtumas yra tas, kad nurodyta kaip daromas jungimas.
+<code class="docutils literal notranslate"><span class="pre">City</span></code> ir <code class="docutils literal notranslate"><span class="pre">Village</span></code> su <code class="docutils literal notranslate"><span class="pre">Location</span></code> jungiame per <code class="docutils literal notranslate"><span class="pre">name&#64;lt</span></code> lauką.</p>
+</section>
+<section id="duomenu-modelis">
+<span id="id3"></span><h2>Duomenų modelis<a class="headerlink" href="#duomenu-modelis" title="Link to this heading"></a></h2>
+<p>Duomenų modelis apibrėžia duomenų grupę turinčią tas pačias savybes.
+Skirtinguose duomenų šaltiniuose ir formatuose, duomenų modelis gali būti
+išreikštas skirtingomis formomis, pavyzdžiui <code class="docutils literal notranslate"><span class="pre">sql</span></code> duomenų šaltinio atveju,
+modelis aprašo vieną duomenų bazės lentelę.</p>
+<p>Kiekvienas modelis turi turėti pirminį raktą, unikalų modelio duomenų
+identifikatorių. Pirminis raktas aprašomas pateikiant vieną ar kelias
+<a class="reference internal" href="#model.property" title="model.property"><code class="xref py py-data docutils literal notranslate"><span class="pre">model.property</span></code></a> reikšmes <a class="reference internal" href="#model.ref" title="model.ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">model.ref</span></code></a> stulpelyje, kurios kartu
+unikaliai identifikuoja kiekvieną duomenų eilutę.</p>
+<p>Išimtiniais atvejais, kai modelio duomenų laukų reikšmės turi būti generuojamos
+dinamiškai ar kitais nestandartiniais atvejais yra galimybė nurodyti model.type
+reikšmę. Jei <a class="reference internal" href="#model.type" title="model.type"><code class="xref py py-data docutils literal notranslate"><span class="pre">model.type</span></code></a> yra pateiktas, tada už modelio duomenų
+generavimą, įeinančių duomenų tikrinimą ir visos kitos su modeliu susijusios
+dalys gali būti pritaikytos konkretaus modelio atvejui. Tačiau, jei reikia
+keisti tik duomenų pateikimą, užtenka naudoti <a class="reference internal" href="#model.prepare" title="model.prepare"><code class="xref py py-data docutils literal notranslate"><span class="pre">model.prepare</span></code></a> formules.</p>
+<dl class="py data">
+<dt class="sig sig-object py" id="model.source">
+<span class="sig-prename descclassname"><span class="pre">model.</span></span><span class="sig-name descname"><span class="pre">source</span></span><a class="headerlink" href="#model.source" title="Link to this definition"></a></dt>
+<dd><p>Modelio pavadinimas šaltinyje. Prasmė priklauso nuo <a class="reference internal" href="#resource.type" title="resource.type"><code class="xref py py-data docutils literal notranslate"><span class="pre">resource.type</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="model.prepare">
+<span class="sig-prename descclassname"><span class="pre">model.</span></span><span class="sig-name descname"><span class="pre">prepare</span></span><a class="headerlink" href="#model.prepare" title="Link to this definition"></a></dt>
+<dd><p>Formulė skirta duomenų filtravimui ir paruošimui, iš dalies priklauso nuo
+<a class="reference internal" href="#resource.type" title="resource.type"><code class="xref py py-data docutils literal notranslate"><span class="pre">resource.type</span></code></a>.</p>
+<p>Taip pat skaitykite: <a class="reference internal" href="formules.html#duomenu-atranka"><span class="std std-ref">Duomenų atranka</span></a>.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="model.type">
+<span class="sig-prename descclassname"><span class="pre">model.</span></span><span class="sig-name descname"><span class="pre">type</span></span><a class="headerlink" href="#model.type" title="Link to this definition"></a></dt>
+<dd><p>Jei nurodytą, naudoti išplėstą modelio variantą, jei nenurodyta palikti
+tuščią. Jei tuščia, naudoti standartinį modelio variantą.</p>
+<p>Gali būti įrašoma reikšmė <code class="docutils literal notranslate"><span class="pre">absent</span></code>, kuri nurodo, kad modelis buvo ištrintas.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="model.ref">
+<span class="sig-prename descclassname"><span class="pre">model.</span></span><span class="sig-name descname"><span class="pre">ref</span></span><a class="headerlink" href="#model.ref" title="Link to this definition"></a></dt>
+<dd><p>Kableliu atskirtas sąrašas <a class="reference internal" href="#model.property" title="model.property"><code class="xref py py-data docutils literal notranslate"><span class="pre">model.property</span></code></a> reikšmių, kurios kartu
+unikaliai identifikuoja vieną duomenų eilutę (pirminis lentelės raktas).</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="model.level">
+<span class="sig-prename descclassname"><span class="pre">model.</span></span><span class="sig-name descname"><span class="pre">level</span></span><a class="headerlink" href="#model.level" title="Link to this definition"></a></dt>
+<dd><p>Modelio <a class="reference internal" href="branda.html#level"><span class="std std-ref">brandos lygis</span></a>, nusakantis pačio modelio brandos
+lygį, pavyzdžiui ar nurodytas pirminis raktas, ar modelio pavadinimas
+atitinka kodiniams pavadinimams kelimus reikalavimus.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="model.access">
+<span class="sig-prename descclassname"><span class="pre">model.</span></span><span class="sig-name descname"><span class="pre">access</span></span><a class="headerlink" href="#model.access" title="Link to this definition"></a></dt>
+<dd><p>Modeliui priklausančių laukų <a class="reference internal" href="prieiga.html#access"><span class="std std-ref">prieigos lygis</span></a>. Paveldimas.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="model.uri">
+<span class="sig-prename descclassname"><span class="pre">model.</span></span><span class="sig-name descname"><span class="pre">uri</span></span><a class="headerlink" href="#model.uri" title="Link to this definition"></a></dt>
+<dd><p>Sąsaja su <a class="reference internal" href="zodynai.html#vocab"><span class="std std-ref">išoriniu žodynu</span></a>.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="model.title">
+<span class="sig-prename descclassname"><span class="pre">model.</span></span><span class="sig-name descname"><span class="pre">title</span></span><a class="headerlink" href="#model.title" title="Link to this definition"></a></dt>
+<dd><p>Modelio pavadinimas.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="model.description">
+<span class="sig-prename descclassname"><span class="pre">model.</span></span><span class="sig-name descname"><span class="pre">description</span></span><a class="headerlink" href="#model.description" title="Link to this definition"></a></dt>
+<dd><p>Modelio aprašymas.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="model.property">
+<span class="sig-prename descclassname"><span class="pre">model.</span></span><span class="sig-name descname"><span class="pre">property</span></span><a class="headerlink" href="#model.property" title="Link to this definition"></a></dt>
+<dd><p>Modeliui priklausantis duomenų laukas.</p>
+</dd></dl>
+
+</section>
+<section id="savybe">
+<span id="id4"></span><h2>Savybė<a class="headerlink" href="#savybe" title="Link to this heading"></a></h2>
+<p>Duomenų laukas atspindi tam tikrą modelio savybę arba tai gali būti lentelės
+stulpelis, jei duomenų šaltinis yra lentelė.</p>
+<dl class="py data">
+<dt class="sig sig-object py" id="property.source">
+<span class="sig-prename descclassname"><span class="pre">property.</span></span><span class="sig-name descname"><span class="pre">source</span></span><a class="headerlink" href="#property.source" title="Link to this definition"></a></dt>
+<dd><p>Duomenų lauko pavadinimas šaltinyje. Prasmė priklauso nuo
+<a class="reference internal" href="#resource.type" title="resource.type"><code class="xref py py-data docutils literal notranslate"><span class="pre">resource.type</span></code></a>.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="property.prepare">
+<span class="sig-prename descclassname"><span class="pre">property.</span></span><span class="sig-name descname"><span class="pre">prepare</span></span><a class="headerlink" href="#property.prepare" title="Link to this definition"></a></dt>
+<dd><p>Formulė skirta duomenų tikrinimui ir transformavimui arba statinės reikšmės
+pateikimui.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="property.type">
+<span class="sig-prename descclassname"><span class="pre">property.</span></span><span class="sig-name descname"><span class="pre">type</span></span><a class="headerlink" href="#property.type" title="Link to this definition"></a></dt>
+<dd><p>Nurodomas loginis duomenų tipas. Dėl galimų tipų sąrašo žiūrėti
+<a class="reference internal" href="tipai.html#duomenu-tipai"><span class="std std-ref">Duomenų tipai</span></a>.</p>
+<p>Loginis duomenų tipas yra toks tipas, kurį tikitės gauti publikuojant
+duomenis per API. Loginis tipas gali skirtis nuo duomenų šaltinio tipo.</p>
+<p>Visi duomenų tipai gali turėti tokius parametrus:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">required</span></code> - nurodo, kad šis duomenų laukas yra privalomas, tai reiškia,
+kad šio duomenų lauko reikšmė visada turi būti pateikta. Pagal nutylėjimą
+visi modelio duomenų laukai yra neprivalomi.</p></li>
+</ul>
+<p>Kai kurie duomenų tipai, gali turėti konkrečiam duomenų tipui pateikiamus
+papildomus parametrus, tokie parametrai nurodomi skliausteliuose.</p>
+<p>Dupmenų tipų pavyzdžiai:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">integer</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">integer</span> <span class="pre">required</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">geometry</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">geometry(linestringm,</span> <span class="pre">3345)</span> <span class="pre">required</span></code></p></li>
+</ul>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="property.ref">
+<span class="sig-prename descclassname"><span class="pre">property.</span></span><span class="sig-name descname"><span class="pre">ref</span></span><a class="headerlink" href="#property.ref" title="Link to this definition"></a></dt>
+<dd><p>Priklauso nuo <code class="docutils literal notranslate"><span class="pre">property.type</span></code>, nurodo matavimo vienetus, laiko ar vietos
+tikslumą, <a class="reference internal" href="#enum"><span class="std std-ref">klasifikatorių</span></a> arba <a class="reference internal" href="identifikatoriai.html#rysiai"><span class="std std-ref">ryšį su kitais modeliais</span></a>. Ką tiksliai reiškia šis laukas, patikslinta skyrelyje
+<a class="reference internal" href="tipai.html#duomenu-tipai"><span class="std std-ref">Duomenų tipai</span></a>.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="property.level">
+<span class="sig-prename descclassname"><span class="pre">property.</span></span><span class="sig-name descname"><span class="pre">level</span></span><a class="headerlink" href="#property.level" title="Link to this definition"></a></dt>
+<dd><p>Nurodo duomenų lauko brandos lygį. Žiūrėti <a class="reference internal" href="branda.html#level"><span class="std std-ref">Brandos lygiai</span></a>.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="property.access">
+<span class="sig-prename descclassname"><span class="pre">property.</span></span><span class="sig-name descname"><span class="pre">access</span></span><a class="headerlink" href="#property.access" title="Link to this definition"></a></dt>
+<dd><p>Nurodo prieigos prie duomenų lygį. Žiūrėti skyrių <a class="reference internal" href="prieiga.html#access"><span class="std std-ref">Prieigos lygiai</span></a>.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="property.uri">
+<span class="sig-prename descclassname"><span class="pre">property.</span></span><span class="sig-name descname"><span class="pre">uri</span></span><a class="headerlink" href="#property.uri" title="Link to this definition"></a></dt>
+<dd><p>Sąsaja su išoriniu žodynu. Žiūrėti <a class="reference internal" href="zodynai.html#vocab"><span class="std std-ref">Išoriniai žodynai</span></a>.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="property.title">
+<span class="sig-prename descclassname"><span class="pre">property.</span></span><span class="sig-name descname"><span class="pre">title</span></span><a class="headerlink" href="#property.title" title="Link to this definition"></a></dt>
+<dd><p>Duomenų lauko pavadinimas. Šis pavadinimas yra skirtas skaityti žmonėms
+ir bus rodomas duomenų laukų sąrašuose ir antraštėse. Jei nenurodyta, bus
+naudojamas <a class="reference internal" href="formatas.html#property" title="property"><code class="xref py py-data docutils literal notranslate"><span class="pre">property</span></code></a> kodinis pavadinimas.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="property.description">
+<span class="sig-prename descclassname"><span class="pre">property.</span></span><span class="sig-name descname"><span class="pre">description</span></span><a class="headerlink" href="#property.description" title="Link to this definition"></a></dt>
+<dd><p>Duomenų lauko aprašymas.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="property.enum">
+<span class="sig-prename descclassname"><span class="pre">property.</span></span><span class="sig-name descname"><span class="pre">enum</span></span><a class="headerlink" href="#property.enum" title="Link to this definition"></a></dt>
+<dd><p>Žiūrėti <a class="reference internal" href="#enum"><span class="std std-ref">Klasifikatoriai</span></a>.</p>
+</dd></dl>
+
+</section>
+</section>
+<section id="papildomos-dimensijos">
+<span id="id5"></span><h1>Papildomos dimensijos<a class="headerlink" href="#papildomos-dimensijos" title="Link to this heading"></a></h1>
+<section id="isoriniu-zodynu-prefiksai">
+<span id="id6"></span><h2>Išorinių žodynų prefiksai<a class="headerlink" href="#isoriniu-zodynu-prefiksai" title="Link to this heading"></a></h2>
+<p>Sąsają su išoriniais žodynais galima pateikti <a class="reference internal" href="#model.uri" title="model.uri"><code class="xref py py-data docutils literal notranslate"><span class="pre">model.uri</span></code></a> ir
+<a class="reference internal" href="#property.uri" title="property.uri"><code class="xref py py-data docutils literal notranslate"><span class="pre">property.uri</span></code></a> stulpeliuose. Tačiau prieš naudojant žodynus, pirmiausia
+reikia apsirašyti žodynų prefiksus. Žodynų prefiksai aprašomi taip:</p>
+<dl class="py data">
+<dt class="sig sig-object py" id="prefix">
+<span class="sig-name descname"><span class="pre">prefix</span></span><a class="headerlink" href="#prefix" title="Link to this definition"></a></dt>
+<dd><dl class="py data">
+<dt class="sig sig-object py" id="prefix.ref">
+<span class="sig-prename descclassname"><span class="pre">prefix.</span></span><span class="sig-name descname"><span class="pre">ref</span></span><a class="headerlink" href="#prefix.ref" title="Link to this definition"></a></dt>
+<dd><p>Prefikso pavadinimas.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="prefix.uri">
+<span class="sig-prename descclassname"><span class="pre">prefix.</span></span><span class="sig-name descname"><span class="pre">uri</span></span><a class="headerlink" href="#prefix.uri" title="Link to this definition"></a></dt>
+<dd><p>Išorinio žodyno URI.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="prefix.title">
+<span class="sig-prename descclassname"><span class="pre">prefix.</span></span><span class="sig-name descname"><span class="pre">title</span></span><a class="headerlink" href="#prefix.title" title="Link to this definition"></a></dt>
+<dd><p>Prefikso antraštė.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="prefix.description">
+<span class="sig-prename descclassname"><span class="pre">prefix.</span></span><span class="sig-name descname"><span class="pre">description</span></span><a class="headerlink" href="#prefix.description" title="Link to this definition"></a></dt>
+<dd><p>Prefikso aprašymas.</p>
+</dd></dl>
+
+</dd></dl>
+
+<p>Rekomenduojama naudoti <a class="reference external" href="https://lov.linkeddata.es/dataset/lov/">LOV</a> prefiksus.</p>
+<p>Aprašyti prefiksai gali būti naudojami <a class="reference internal" href="#model.uri" title="model.uri"><code class="xref py py-data docutils literal notranslate"><span class="pre">model.uri</span></code></a> ir <a class="reference internal" href="#property.uri" title="property.uri"><code class="xref py py-data docutils literal notranslate"><span class="pre">property.uri</span></code></a>
+stulpeliuose tokiu būdu: <code class="docutils literal notranslate"><span class="pre">prefix:name</span></code>.</p>
+<p>Pavyzdys:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>d</p></th>
+<th class="head"><p>r</p></th>
+<th class="head"><p>b</p></th>
+<th class="head"><p>m</p></th>
+<th class="head"><p>property</p></th>
+<th class="head"><p>type</p></th>
+<th class="head"><p>ref</p></th>
+<th class="head"><p>uri</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td colspan="5"><p>dataset1</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>prefix</p></td>
+<td><p>spinta</p></td>
+<td><p>https://github.com/atviriduomenys/manifest/issues/</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>manifest</p></td>
+<td><p>https://github.com/atviriduomenys/spinta/issues/</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>vadovas</p></td>
+<td><p>https://atviriduomenys.readthedocs.io/</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>dct</p></td>
+<td><p>http://purl.org/dc/dcmitype/</p></td>
+</tr>
+<tr class="row-odd"><td colspan="5"><p>dataset2</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>prefix</p></td>
+<td><p>dcat</p></td>
+<td><p>http://www.w3.org/ns/dcat#</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>dct</p></td>
+<td><p>http://purl.org/dc/terms/</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>dctype</p></td>
+<td><p>http://purl.org/dc/dcmitype/</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>foaf</p></td>
+<td><p>http://xmlns.com/foaf/0.1/</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>owl</p></td>
+<td><p>http://www.w3.org/2002/07/owl#</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>prov</p></td>
+<td><p>http://www.w3.org/ns/prov#</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>rdf</p></td>
+<td><p>http://www.w3.org/1999/02/22-rdf-syntax-ns#</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>rdfs</p></td>
+<td><p>http://www.w3.org/2000/01/rdf-schema#</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>sdo</p></td>
+<td><p>http://schema.org/</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>skos</p></td>
+<td><p>http://www.w3.org/2004/02/skos/core#</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>vcard</p></td>
+<td><p>http://www.w3.org/2006/vcard/ns#</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>xsd</p></td>
+<td><p>http://www.w3.org/2001/XMLSchema#</p></td>
+</tr>
+</tbody>
+</table>
+<p>Prefiksai turi būti apibrėžti duomenų rinkinio kontekste, kadangi skirtingi
+duomenų rinkiniai gali naudoti skirtingus prefiksus, tiems pateims URI.
+Pavyzdžiui abiejusoe rinkinyje pavyzdyje aukščiau, <code class="docutils literal notranslate"><span class="pre">dct</span></code> ir <code class="docutils literal notranslate"><span class="pre">dctype</span></code> rodo į tą
+patį URI.</p>
+</section>
+<section id="klasifikatoriai">
+<span id="enum"></span><h2>Klasifikatoriai<a class="headerlink" href="#klasifikatoriai" title="Link to this heading"></a></h2>
+<p>Tam tikri duomenų laukai turi fiksuotą reikšmių variantų aibę. Dažnai duomenų
+bazėse fiksuotos reikšmės saugomos skaitine forma ar kitais kodiniais
+pavadinimais. Tokias fiksuotas reikšmes duomenų struktūros apraše galima
+pateikti neužpildant hierarchinių stulpelių ir nurodant <code class="docutils literal notranslate"><span class="pre">type</span></code> reikšmę
+<code class="docutils literal notranslate"><span class="pre">enum</span></code>, pavyzdžiui:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>id</p></th>
+<th class="head"><p>d</p></th>
+<th class="head"><p>r</p></th>
+<th class="head"><p>b</p></th>
+<th class="head"><p>m</p></th>
+<th class="head"><p>property</p></th>
+<th class="head"><p>type</p></th>
+<th class="head"><p>ref</p></th>
+<th class="head"><p>source</p></th>
+<th class="head"><p>prepare</p></th>
+<th class="head"><p>level</p></th>
+<th class="head"><p>access</p></th>
+<th class="head"><p>uri</p></th>
+<th class="head"><p>title</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td colspan="5"><p>datasets/example/places</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td></td>
+<td colspan="4"><p>places</p></td>
+<td><p>sql</p></td>
+<td></td>
+<td><p>sqlite://</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td colspan="2"><p>Place</p></td>
+<td></td>
+<td><p>id</p></td>
+<td><p>PLACES</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>id</p></td>
+<td><p>integer</p></td>
+<td></td>
+<td><p>ID</p></td>
+<td></td>
+<td><p>3</p></td>
+<td><p>open</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>type</p></td>
+<td><p>string</p></td>
+<td></td>
+<td><p>CODE</p></td>
+<td></td>
+<td><p>3</p></td>
+<td><p>open</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>enum</p></td>
+<td></td>
+<td><p>1</p></td>
+<td><p>&quot;city&quot;</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>City</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>2</p></td>
+<td><p>&quot;town&quot;</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>Town</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>3</p></td>
+<td><p>&quot;village&quot;</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>Village</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>name</p></td>
+<td><p>string</p></td>
+<td></td>
+<td><p>NAME</p></td>
+<td></td>
+<td><p>3</p></td>
+<td><p>open</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Šiame pavyzdyje <code class="docutils literal notranslate"><span class="pre">Place.type</span></code> laukas yra klasifikatorius, kurio reikšmės yra
+kodai 1, 2 ir 3, kurios duomenų struktūros apraše keičiamos į <code class="docutils literal notranslate"><span class="pre">city</span></code>, <code class="docutils literal notranslate"><span class="pre">town</span></code>
+ir <code class="docutils literal notranslate"><span class="pre">village</span></code>, papildomai <code class="docutils literal notranslate"><span class="pre">title</span></code> stulpelyje nurodant reikšmės pavadinimą.</p>
+<p>Jei tas pats klasifikatorius gali būti naudojamas kelios skirtingose vietos,
+tada galima iškelti klasifikatorių ir suteikti jam pavadinimą, pavyzdžiui:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>id</p></th>
+<th class="head"><p>d</p></th>
+<th class="head"><p>r</p></th>
+<th class="head"><p>b</p></th>
+<th class="head"><p>m</p></th>
+<th class="head"><p>property</p></th>
+<th class="head"><p>type</p></th>
+<th class="head"><p>ref</p></th>
+<th class="head"><p>source</p></th>
+<th class="head"><p>prepare</p></th>
+<th class="head"><p>level</p></th>
+<th class="head"><p>access</p></th>
+<th class="head"><p>uri</p></th>
+<th class="head"><p>title</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td colspan="5"><p>datasets/example/places</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>enum</p></td>
+<td><p>place</p></td>
+<td><p>1</p></td>
+<td><p>&quot;city&quot;</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>City</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>2</p></td>
+<td><p>&quot;town&quot;</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>Town</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>3</p></td>
+<td><p>&quot;village&quot;</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>Village</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td></td>
+<td colspan="4"><p>places</p></td>
+<td><p>sql</p></td>
+<td></td>
+<td><p>sqlite://</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td colspan="2"><p>Place</p></td>
+<td></td>
+<td><p>id</p></td>
+<td><p>PLACES</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>id</p></td>
+<td><p>integer</p></td>
+<td></td>
+<td><p>ID</p></td>
+<td></td>
+<td><p>3</p></td>
+<td><p>open</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>5</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>type</p></td>
+<td><p>string</p></td>
+<td><p>place</p></td>
+<td><p>CODE</p></td>
+<td></td>
+<td><p>3</p></td>
+<td><p>open</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>name</p></td>
+<td><p>string</p></td>
+<td></td>
+<td><p>NAME</p></td>
+<td></td>
+<td><p>3</p></td>
+<td><p>open</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Šiuo atveju, klasifikatoriui buvo suteiktas pavadinimas <code class="docutils literal notranslate"><span class="pre">place</span></code> įrašytas
+<code class="docutils literal notranslate"><span class="pre">enum.ref</span></code> stulpelyje, 6 eilutėje. O <code class="docutils literal notranslate"><span class="pre">Place.type</span></code> laukui, <code class="docutils literal notranslate"><span class="pre">prepare</span></code>
+stulpelyje nurodyta, kad šis laukas naudoja vardinį <code class="docutils literal notranslate"><span class="pre">place</span></code> klasifikatorių.</p>
+<dl class="py data">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">enum</span></span><a class="headerlink" href="#id0" title="Link to this definition"></a></dt>
+<dd><dl class="py data">
+<dt class="sig sig-object py" id="enum.ref">
+<span class="sig-prename descclassname"><span class="pre">enum.</span></span><span class="sig-name descname"><span class="pre">ref</span></span><a class="headerlink" href="#enum.ref" title="Link to this definition"></a></dt>
+<dd><p>Pasirinkimų sąrašo pavadinimas.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="enum.source">
+<span class="sig-prename descclassname"><span class="pre">enum.</span></span><span class="sig-name descname"><span class="pre">source</span></span><a class="headerlink" href="#enum.source" title="Link to this definition"></a></dt>
+<dd><p>Pateikiama originali reikšmė, taip kaip ji saugoma duomenų šaltinyje.
+Pateiktos reikšmės turi būti unikalios ir negali kartotis.</p>
+<p>Jei pageidaujama aprašyti tuščią šaltinio reikšmę, tada
+<a class="reference internal" href="#property.prepare" title="property.prepare"><code class="xref py py-data docutils literal notranslate"><span class="pre">property.prepare</span></code></a> celėje reikia nurodyti formulę, kuri tuščią
+reikšmę pakeičia, į kokią nors kitą. Formulės pavyzdys:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">swap</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="enum.prepare">
+<span class="sig-prename descclassname"><span class="pre">enum.</span></span><span class="sig-name descname"><span class="pre">prepare</span></span><a class="headerlink" href="#enum.prepare" title="Link to this definition"></a></dt>
+<dd><p>Pateikiama reikšmė, tokia kuri bus naudojama atveriant duomenis.
+<a class="reference internal" href="#model.prepare" title="model.prepare"><code class="xref py py-data docutils literal notranslate"><span class="pre">model.prepare</span></code></a> filtruose taip pat bus naudojama būtent ši
+reikšmė.</p>
+<p><code class="docutils literal notranslate"><span class="pre">enum.prepare</span></code> reikšmės gali kartotis, tokiu būdu, kelios skirtingos
+<code class="docutils literal notranslate"><span class="pre">enum.source</span></code> reikšmės bus susietos su viena <code class="docutils literal notranslate"><span class="pre">enum.prepare</span></code> reikšme.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="enum.access">
+<span class="sig-prename descclassname"><span class="pre">enum.</span></span><span class="sig-name descname"><span class="pre">access</span></span><a class="headerlink" href="#enum.access" title="Link to this definition"></a></dt>
+<dd><p>Klasifikatoriams galima nurodyti skirtingas prieigos teises, tokiu
+atveju, naudotojas turintis <code class="docutils literal notranslate"><span class="pre">open</span></code> prieigą matys tik tuos duomenis,
+kurių klasifikatorių reikšmės turi <code class="docutils literal notranslate"><span class="pre">open</span></code> prieigos teises, visi kiti bus
+išfiltruoti.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="enum.title">
+<span class="sig-prename descclassname"><span class="pre">enum.</span></span><span class="sig-name descname"><span class="pre">title</span></span><a class="headerlink" href="#enum.title" title="Link to this definition"></a></dt>
+<dd><p>Fiksuotos reikšmės pavadinimas.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="enum.description">
+<span class="sig-prename descclassname"><span class="pre">enum.</span></span><span class="sig-name descname"><span class="pre">description</span></span><a class="headerlink" href="#enum.description" title="Link to this definition"></a></dt>
+<dd><p>Fiksuotos reikšmės aprašymas.</p>
+</dd></dl>
+
+</dd></dl>
+
+<p>Pagal nutylėjimą, jei <a class="reference internal" href="#property.prepare" title="property.prepare"><code class="xref py py-data docutils literal notranslate"><span class="pre">property.prepare</span></code></a> yra tuščias ir <a class="reference internal" href="formatas.html#property" title="property"><code class="xref py py-data docutils literal notranslate"><span class="pre">property</span></code></a>
+turi <a class="reference internal" href="#enum"><span class="std std-ref">Klasifikatoriai</span></a> sąrašą, tada jei šaltinis turi neaprašytą reikšmę, turėtų
+būti fiksuojama klaida.</p>
+<p>Jei yra poreikis fiksuoti tik tam tikras reikšmes, o visas kitas palikti tokias,
+kokios yra šaltinyje, tada <a class="reference internal" href="#property.prepare" title="property.prepare"><code class="xref py py-data docutils literal notranslate"><span class="pre">property.prepare</span></code></a> stulpelyje reikia įrašyti
+<code class="docutils literal notranslate"><span class="pre">self.choose(self)</span></code>.</p>
+</section>
+<section id="parametrai">
+<span id="param"></span><h2>Parametrai<a class="headerlink" href="#parametrai" title="Link to this heading"></a></h2>
+<p>Parametrai leidžia iškelti tam tikras duomenų paruošimo operacijas į parametrus
+kurie gali būti naudojami <a class="reference internal" href="#dimensijos"><span class="std std-ref">Dimensijos</span></a>, kurioje apibrėžtas parametras
+kontekste. Parametrai gali gražinti <a class="reference internal" href="savokos.html#term-iteratorius"><span class="xref std std-term">iteratorius</span></a>, kurių pagalba galima
+dinamiškai kartoti <a class="reference internal" href="formatas.html#resource" title="resource"><code class="xref py py-data docutils literal notranslate"><span class="pre">resource</span></code></a> duomenų skaitymą, panaudojant aprašytus
+parametrus. Taip pat parametrų pagalba galima sudaryti reikšmių sąrašus, kurių
+pagalba galima kartoti <a class="reference internal" href="formatas.html#resource" title="resource"><code class="xref py py-data docutils literal notranslate"><span class="pre">resource</span></code></a> su kiekviena reikšme.</p>
+<p>Parametrai dažniausiai naudojami žemesnio brandos lygio duomenų šaltiniams
+aprašyti, o taip pat API atvejais, kai duomenys atiduodame dinamiškai.</p>
+<p>Parametrai aprašomi pasitelkiant papildomą <a class="reference internal" href="#param"><span class="std std-ref">Parametrai</span></a> dimensiją.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>id</p></th>
+<th class="head"><p>d</p></th>
+<th class="head"><p>r</p></th>
+<th class="head"><p>b</p></th>
+<th class="head"><p>m</p></th>
+<th class="head"><p>property</p></th>
+<th class="head"><p>type</p></th>
+<th class="head"><p>ref</p></th>
+<th class="head"><p>source</p></th>
+<th class="head"><p>prepare</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td colspan="5"><p>datasets/example/cities</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td></td>
+<td colspan="4"><p>places</p></td>
+<td><p>csv</p></td>
+<td></td>
+<td><p>https://example.com/{}.csv</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td colspan="2"><p>Country</p></td>
+<td></td>
+<td><p>id</p></td>
+<td><p>countries</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>code</p></td>
+<td><p>string</p></td>
+<td></td>
+<td><p>CODE</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>title</p></td>
+<td><p>string</p></td>
+<td></td>
+<td><p>TITLE</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td colspan="2"><p>City</p></td>
+<td></td>
+<td><p>country, title</p></td>
+<td><p>cities/{country.code}</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>param</p></td>
+<td><p>country</p></td>
+<td><p>Country</p></td>
+<td><p>select(code)</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>country</p></td>
+<td><p>ref</p></td>
+<td><p>Country</p></td>
+<td></td>
+<td><p>param(&quot;country&quot;).code</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>title</p></td>
+<td><p>string</p></td>
+<td></td>
+<td><p>TITLE</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<dl class="py data">
+<dt class="sig sig-object py" id="id7">
+<span class="sig-name descname"><span class="pre">param</span></span><a class="headerlink" href="#id7" title="Link to this definition"></a></dt>
+<dd><dl class="py data">
+<dt class="sig sig-object py" id="param.ref">
+<span class="sig-prename descclassname"><span class="pre">param.</span></span><span class="sig-name descname"><span class="pre">ref</span></span><a class="headerlink" href="#param.ref" title="Link to this definition"></a></dt>
+<dd><p>Parametro <a class="reference internal" href="savokos.html#term-kodinis-pavadinimas"><span class="xref std std-term">kodinis pavadinimas</span></a>.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="param.prepare">
+<span class="sig-prename descclassname"><span class="pre">param.</span></span><span class="sig-name descname"><span class="pre">prepare</span></span><a class="headerlink" href="#param.prepare" title="Link to this definition"></a></dt>
+<dd><p>Formulė, kuri grąžina sąrašą reikšmių aprašomam parametrui.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="param.source">
+<span class="sig-prename descclassname"><span class="pre">param.</span></span><span class="sig-name descname"><span class="pre">source</span></span><a class="headerlink" href="#param.source" title="Link to this definition"></a></dt>
+<dd><p>Jei reikšmė pateikta, tada ši reikšmė perduodama formulei kaip <code class="docutils literal notranslate"><span class="pre">self</span></code>.
+Pavyzdžiui, jei <a class="reference internal" href="#param.prepare" title="param.prepare"><code class="xref py py-data docutils literal notranslate"><span class="pre">param.prepare</span></code></a> pateikta formulė <code class="docutils literal notranslate"><span class="pre">select(code)</span></code>, o
+<a class="reference internal" href="#param.source" title="param.source"><code class="xref py py-data docutils literal notranslate"><span class="pre">param.source</span></code></a> nurodyta <code class="docutils literal notranslate"><span class="pre">Country</span></code>, tai formulė bus iškviesta taip
+<code class="docutils literal notranslate"><span class="pre">select(&quot;Country&quot;,</span> <span class="pre">code)</span></code>.</p>
+</dd></dl>
+
+</dd></dl>
+
+<p>Jei parametro reikšmė yra <a class="reference internal" href="savokos.html#term-iteratorius"><span class="xref std std-term">iteratorius</span></a>, tada <a class="reference internal" href="savokos.html#term-dimensija"><span class="xref std std-term">dimensija</span></a>, kurios
+kontekste yra aprašytas <a class="reference internal" href="#param"><span class="std std-ref">parametras</span></a> yra kartojama tiek kartų,
+kiek reikšmių grąžina <a class="reference internal" href="savokos.html#term-iteratorius"><span class="xref std std-term">iteratorius</span></a>.</p>
+<p>Jei yra keli <a class="reference internal" href="#param"><span class="std std-ref">Parametrai</span></a> grąžinantys <a class="reference internal" href="savokos.html#term-iteratorius"><span class="xref std std-term">iteratorius</span></a>, tada iš
+visų <a class="reference internal" href="savokos.html#term-iteratorius"><span class="xref std std-term">iteratorių</span></a> sudaroma <a class="reference external" href="https://lt.wikipedia.org/wiki/Dekarto_sandauga">Dekarto sandauga</a> ir
+<a class="reference internal" href="formatas.html#resource" title="resource"><code class="xref py py-data docutils literal notranslate"><span class="pre">resource</span></code></a> dimensija vykdoma su kiekviena sandaugos rezultato reikšme.</p>
+<p>Jei sekančioje <a class="reference internal" href="savokos.html#term-DSA"><span class="xref std std-term">DSA</span></a> eilutėje, einančioje po eilutės, kurioje aprašytas
+<a class="reference internal" href="#param"><span class="std std-ref">Parametrai</span></a>, nenurodytas <a class="reference internal" href="formatas.html#type" title="type"><code class="xref py py-data docutils literal notranslate"><span class="pre">type</span></code></a> ir neužpildytas joks kitas
+<a class="reference internal" href="savokos.html#term-dimensija"><span class="xref std std-term">dimensijos</span></a> stulpelis, tada parametras tampa
+<a class="reference internal" href="savokos.html#term-iteratorius"><span class="xref std std-term">iteratoriumi</span></a>, kurio reikšmių sąrašą sudaro sekančiose
+eilutėse patektos <a class="reference internal" href="formatas.html#source" title="source"><code class="xref py py-data docutils literal notranslate"><span class="pre">source</span></code></a> ir <a class="reference internal" href="formatas.html#prepare" title="prepare"><code class="xref py py-data docutils literal notranslate"><span class="pre">prepare</span></code></a> reikšmės. Pavyzdžiui
+anksčiau pateiktą pavyzdį galima būtų perdaryti taip:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>id</p></th>
+<th class="head"><p>d</p></th>
+<th class="head"><p>r</p></th>
+<th class="head"><p>b</p></th>
+<th class="head"><p>m</p></th>
+<th class="head"><p>property</p></th>
+<th class="head"><p>type</p></th>
+<th class="head"><p>ref</p></th>
+<th class="head"><p>source</p></th>
+<th class="head"><p>prepare</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td colspan="5"><p>datasets/example/cities</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td></td>
+<td colspan="4"><p>places</p></td>
+<td><p>csv</p></td>
+<td></td>
+<td><p>https://example.com/{}.csv</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td colspan="2"><p>Country</p></td>
+<td></td>
+<td><p>id</p></td>
+<td><p>countries</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>code</p></td>
+<td><p>string</p></td>
+<td></td>
+<td><p>CODE</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>title</p></td>
+<td><p>string</p></td>
+<td></td>
+<td><p>TITLE</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>6</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td colspan="2"><p>City</p></td>
+<td></td>
+<td><p>country, title</p></td>
+<td><p>cities/{country}</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>param</p></td>
+<td><p>country</p></td>
+<td></td>
+<td><p>&quot;lt&quot;</p></td>
+</tr>
+<tr class="row-odd"><td><p>7</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>&quot;lv&quot;</p></td>
+</tr>
+<tr class="row-even"><td><p>7</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>&quot;ee&quot;</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>country</p></td>
+<td><p>ref</p></td>
+<td><p>Country</p></td>
+<td></td>
+<td><p>param(&quot;country&quot;)</p></td>
+</tr>
+<tr class="row-even"><td><p>9</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>title</p></td>
+<td><p>string</p></td>
+<td></td>
+<td><p>TITLE</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Šiame pavyzdyje, parametras <code class="docutils literal notranslate"><span class="pre">country</span></code> grąžins tris šalies kodus: lt, lv ir
+ee, kurie bus panaudojami <code class="docutils literal notranslate"><span class="pre">cities/{country}</span></code> pavadinime, pakeičiant
+<code class="docutils literal notranslate"><span class="pre">{country}</span></code> dalį.</p>
+<p><a class="reference internal" href="#param"><span class="std std-ref">Parametrai</span></a> reikšmės pasiekiamos naudojanti pavadinimą įrašytą
+<a class="reference internal" href="#param.ref" title="param.ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">param.ref</span></code></a> stulpelyje. Pavyzdžiui, jei <a class="reference internal" href="#param.ref" title="param.ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">param.ref</span></code></a> stulpelyje
+įrašyta <code class="docutils literal notranslate"><span class="pre">x</span></code>, tada <code class="docutils literal notranslate"><span class="pre">x</span></code> parametro reikšmę galima gauti taip:</p>
+<dl class="describe">
+<dt class="sig sig-object">
+<span class="sig-name descname"><span class="pre">source</span></span></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">{x}</span></code>.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt class="sig sig-object">
+<span class="sig-name descname"><span class="pre">prepare</span></span></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">x</span></code> arba <code class="docutils literal notranslate"><span class="pre">param(x)</span></code>.</p>
+</dd></dl>
+
+<p>Parametrų generavimui galima naudoti tokias formules:</p>
+<dl class="describe">
+<dt class="sig sig-object">
+<span class="sig-name descname"><span class="pre">param.prepare</span></span></dt>
+<dd><dl class="py function">
+<dt class="sig sig-object py" id="range">
+<span class="sig-name descname"><span class="pre">range</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">stop</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#range" title="Link to this definition"></a></dt>
+<dd><p>Sveikų skaičių generavimas nuo 0 iki <code class="docutils literal notranslate"><span class="pre">stop</span></code>, <code class="docutils literal notranslate"><span class="pre">stop</span></code> neįeina.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py">
+<span class="sig-name descname"><span class="pre">range</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">stop</span></span></em><span class="sig-paren">)</span></dt>
+<dd><blockquote>
+<div><p>Sveikų skaičių generavimas nuo <code class="docutils literal notranslate"><span class="pre">start</span></code> iki <code class="docutils literal notranslate"><span class="pre">stop</span></code>, <code class="docutils literal notranslate"><span class="pre">stop</span></code> neįeina.</p>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="scalar">
+<span class="sig-name descname"><span class="pre">scalar</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#scalar" title="Link to this definition"></a></dt>
+<dd><p>Jei nurodytas <a class="reference internal" href="#param.source" title="param.source"><code class="xref py py-data docutils literal notranslate"><span class="pre">param.source</span></code></a>, tada imama tik <code class="docutils literal notranslate"><span class="pre">name</span></code> lauko reikšmė,
+o ne visi modelio laukai.</p>
+</dd></dl>
+
+</dd></dl>
+
+<p>Jei užpildytas <a class="reference internal" href="#param.source" title="param.source"><code class="xref py py-data docutils literal notranslate"><span class="pre">param.source</span></code></a> stulpelis, tada <a class="reference internal" href="#param.prepare" title="param.prepare"><code class="xref py py-data docutils literal notranslate"><span class="pre">param.prepare</span></code></a>
+stulpelyje galima naudoti filtrą nurodyto <a class="reference internal" href="#param.source" title="param.source"><code class="xref py py-data docutils literal notranslate"><span class="pre">param.source</span></code></a> modelio duomenims
+filtruoti, o naudojant parametrus galima nurodyti ir modelio laukų pavadinimus,
+pavyzdžiui:</p>
+<dl class="describe">
+<dt class="sig sig-object">
+<span class="sig-name descname"><span class="pre">source</span></span></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">{x.field}</span></code>.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt class="sig sig-object">
+<span class="sig-name descname"><span class="pre">prepare</span></span></dt>
+<dd><p><code class="docutils literal notranslate"><span class="pre">x.field</span></code> arba <code class="docutils literal notranslate"><span class="pre">param(x).field</span></code>.</p>
+</dd></dl>
+
+</section>
+<section id="reiksmiu-sukeitimas">
+<h2>Reikšmių sukeitimas<a class="headerlink" href="#reiksmiu-sukeitimas" title="Link to this heading"></a></h2>
+<p>Tam tikrais atvejais duomenis tenka normalizuoti parenkant tam tikrą reikšmę jei
+tenkinama nurodyta sąlyga. Tokias situacijas galima aprašyti pasitelkiant
+<a class="reference internal" href="#switch" title="switch"><code class="xref py py-data docutils literal notranslate"><span class="pre">switch</span></code></a> dimensiją.</p>
+<dl class="py data">
+<dt class="sig sig-object py" id="switch">
+<span class="sig-name descname"><span class="pre">switch</span></span><a class="headerlink" href="#switch" title="Link to this definition"></a></dt>
+<dd><dl class="py data">
+<dt class="sig sig-object py" id="switch.source">
+<span class="sig-prename descclassname"><span class="pre">switch.</span></span><span class="sig-name descname"><span class="pre">source</span></span><a class="headerlink" href="#switch.source" title="Link to this definition"></a></dt>
+<dd><p>Reikšmė, kuri bus atveriama.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="switch.prepare">
+<span class="sig-prename descclassname"><span class="pre">switch.</span></span><span class="sig-name descname"><span class="pre">prepare</span></span><a class="headerlink" href="#switch.prepare" title="Link to this definition"></a></dt>
+<dd><p>Sąlyga, naudojant einamojo modelio laukus. Jei sąlyga tenkinama, tada
+laukui priskiriama <a class="reference internal" href="#switch.source" title="switch.source"><code class="xref py py-data docutils literal notranslate"><span class="pre">switch.source</span></code></a> reikšmė. Jei sąlyga
+netenkinama, tada bandoma tikrinti sekančią sąlygą. Parenkama ta
+reikšmė, kurios pirmoji sąlyga tenkinama.</p>
+<p>Jei <a class="reference internal" href="#switch.prepare" title="switch.prepare"><code class="xref py py-data docutils literal notranslate"><span class="pre">switch.prepare</span></code></a> yra tuščias, tada sąlyga visada teigiama ir
+visada grąžinama <a class="reference internal" href="#switch.source" title="switch.source"><code class="xref py py-data docutils literal notranslate"><span class="pre">switch.source</span></code></a> reikšmė.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="komentavimas">
+<h2>Komentavimas<a class="headerlink" href="#komentavimas" title="Link to this heading"></a></h2>
+<p>Dirbant su <a class="reference internal" href="savokos.html#term-DSA"><span class="xref std std-term">DSA</span></a> yra galimybė komentuoti eilutes, naudojant papildomą
+<a class="reference internal" href="#comment" title="comment"><code class="xref py py-data docutils literal notranslate"><span class="pre">comment</span></code></a> dimensiją, kurią galima naudoti bet kurios kitos dimensijos
+kontekste.</p>
+<dl class="py data">
+<dt class="sig sig-object py" id="comment">
+<span class="sig-name descname"><span class="pre">comment</span></span><a class="headerlink" href="#comment" title="Link to this definition"></a></dt>
+<dd><dl class="py data">
+<dt class="sig sig-object py" id="comment.id">
+<span class="sig-prename descclassname"><span class="pre">comment.</span></span><span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#comment.id" title="Link to this definition"></a></dt>
+<dd><p>Komentaro numeris.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="comment.ref">
+<span class="sig-prename descclassname"><span class="pre">comment.</span></span><span class="sig-name descname"><span class="pre">ref</span></span><a class="headerlink" href="#comment.ref" title="Link to this definition"></a></dt>
+<dd><p>Komentuojamo vieno ar kelių kableliu atskirtų <a class="reference internal" href="formatas.html#property" title="property"><code class="xref py py-data docutils literal notranslate"><span class="pre">property</span></code></a>
+pavadinimai. Galima nurodyti ne tik stulpelio pavadinimą, bet ir
+dimensiją.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="comment.source">
+<span class="sig-prename descclassname"><span class="pre">comment.</span></span><span class="sig-name descname"><span class="pre">source</span></span><a class="headerlink" href="#comment.source" title="Link to this definition"></a></dt>
+<dd><p>Komentaro autorius.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="comment.prepare">
+<span class="sig-prename descclassname"><span class="pre">comment.</span></span><span class="sig-name descname"><span class="pre">prepare</span></span><a class="headerlink" href="#comment.prepare" title="Link to this definition"></a></dt>
+<dd><p>Keitimo pasiūlymas, naudojant <code class="docutils literal notranslate"><span class="pre">create()</span></code>, <code class="docutils literal notranslate"><span class="pre">update</span></code> ir <code class="docutils literal notranslate"><span class="pre">delete()</span></code> funkcijas. Pavyzdžiui:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">update</span><span class="p">(</span><span class="nb">property</span><span class="p">:</span> <span class="s2">&quot;pavadinimas@lt&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="p">:</span> <span class="s2">&quot;text&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Šiuo atveju nurodoma, kad siūloma keisti <code class="docutils literal notranslate"><span class="pre">property</span></code> pavadnimą į
+<code class="docutils literal notranslate"><span class="pre">pavadinimas&#64;lt</span></code>, o <code class="docutils literal notranslate"><span class="pre">type</span></code> į <code class="docutils literal notranslate"><span class="pre">text</span></code>.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="comment.level">
+<span class="sig-prename descclassname"><span class="pre">comment.</span></span><span class="sig-name descname"><span class="pre">level</span></span><a class="headerlink" href="#comment.level" title="Link to this definition"></a></dt>
+<dd><p>Nurodoma, kad patenkinus keitimo sliūlymą, kuris nurodytas
+<a class="reference internal" href="#comment.prepare" title="comment.prepare"><code class="xref py py-data docutils literal notranslate"><span class="pre">comment.prepare</span></code></a> stulplyje, komentuojamai eilutei gali būti
+suteiktas nurodytas brandos lygis.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="comment.access">
+<span class="sig-prename descclassname"><span class="pre">comment.</span></span><span class="sig-name descname"><span class="pre">access</span></span><a class="headerlink" href="#comment.access" title="Link to this definition"></a></dt>
+<dd><p>Nurodoma, ar komentaras gali būti publikuojamas viešai.</p>
+<dl class="simple">
+<dt>private</dt><dd><p>Komentaras negali būti publikuojamas viešai. Šis prieigos lygis
+naudojamas pagal nutylėjimą.</p>
+</dd>
+<dt>open</dt><dd><p>Komentaras gali būti publikuojamas viešai.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="comment.uri">
+<span class="sig-prename descclassname"><span class="pre">comment.</span></span><span class="sig-name descname"><span class="pre">uri</span></span><a class="headerlink" href="#comment.uri" title="Link to this definition"></a></dt>
+<dd><p>Viena ar kelios kableliu atskirtos šaltinio nuorodos, kuri pateikta
+daugiau informacijos apie tai, kas komentuojama. Taip pat gali būti
+nurodytas kito komentaro <a class="reference internal" href="#comment.id" title="comment.id"><code class="xref py py-data docutils literal notranslate"><span class="pre">comment.id</span></code></a>, nurodant, kad tai yra
+atsakymas į ankstesnį komentarą.</p>
+<p>URI pateikiami sutrumpinta forma, naudojant prefikstus. Žiūrėti skrių
+<a class="reference internal" href="zodynai.html#vocab"><span class="std std-ref">Išoriniai žodynai</span></a>.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="comment.title">
+<span class="sig-prename descclassname"><span class="pre">comment.</span></span><span class="sig-name descname"><span class="pre">title</span></span><a class="headerlink" href="#comment.title" title="Link to this definition"></a></dt>
+<dd><p>Komentaro data, <a class="reference external" href="https://en.wikipedia.org/wiki/ISO_8601">ISO 8601</a> formatu.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="comment.description">
+<span class="sig-prename descclassname"><span class="pre">comment.</span></span><span class="sig-name descname"><span class="pre">description</span></span><a class="headerlink" href="#comment.description" title="Link to this definition"></a></dt>
+<dd><p>Komentaro tekstas.</p>
+</dd></dl>
+
+</dd></dl>
+
+<p><strong>Pavyzdys</strong></p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>d</p></th>
+<th class="head"><p>r</p></th>
+<th class="head"><p>b</p></th>
+<th class="head"><p>m</p></th>
+<th class="head"><p>property</p></th>
+<th class="head"><p>type</p></th>
+<th class="head"><p>ref</p></th>
+<th class="head"><p>prepare</p></th>
+<th class="head"><p>level</p></th>
+<th class="head"><p>access</p></th>
+<th class="head"><p>uri</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td colspan="5"><p>example</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>prefix</p></td>
+<td><p>spinta</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>https://github.com/atviriduomenys/manifest/issues/</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>manifest</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>https://github.com/atviriduomenys/spinta/issues/</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>vadovas</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>https://atviriduomenys.readthedocs.io/</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td></td>
+<td colspan="2"><p>Imone</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>2</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>comment</p></td>
+<td><p>base</p></td>
+<td><p>update(base: &quot;/jar/JuridinisAsmuo&quot;, ref: &quot;id&quot;)</p></td>
+<td><p>4</p></td>
+<td><p>open</p></td>
+<td><p>spinta:205, manifest:1290</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>comment</p></td>
+<td><p>ref</p></td>
+<td><p>update(ref: &quot;id&quot;)</p></td>
+<td><p>4</p></td>
+<td><p>open</p></td>
+<td><p>vadovas:dsa/dimensijos.html#model.ref</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>id</p></td>
+<td><p>integer</p></td>
+<td></td>
+<td></td>
+<td><p>4</p></td>
+<td><p>open</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>pavadinimas</p></td>
+<td><p>string</p></td>
+<td></td>
+<td></td>
+<td><p>2</p></td>
+<td><p>open</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>comment</p></td>
+<td><p>ref</p></td>
+<td><p>update(property: &quot;pavadinimas&#64;lt&quot;, type: &quot;text&quot;)</p></td>
+<td><p>4</p></td>
+<td><p>open</p></td>
+<td><p>spinta:204</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="daugiakalbiskumas">
+<h2>Daugiakalbiškumas<a class="headerlink" href="#daugiakalbiskumas" title="Link to this heading"></a></h2>
+<p><a class="reference internal" href="formatas.html#title" title="title"><code class="xref py py-data docutils literal notranslate"><span class="pre">title</span></code></a> ir <a class="reference internal" href="formatas.html#description" title="description"><code class="xref py py-data docutils literal notranslate"><span class="pre">description</span></code></a> stulpeliuose tekstas rašomas lietuvių
+kalba, tačiau galima pateikti tekstą ir kita kalba, panaudojus papildomą
+<a class="reference internal" href="#lang" title="lang"><code class="xref py py-data docutils literal notranslate"><span class="pre">lang</span></code></a> dimensiją, kurią reikia naudoti prieš eilutę, kuriai pateikiamas
+tekstas kita kalba.</p>
+<dl class="py data">
+<dt class="sig sig-object py" id="lang">
+<span class="sig-name descname"><span class="pre">lang</span></span><a class="headerlink" href="#lang" title="Link to this definition"></a></dt>
+<dd><dl class="py data">
+<dt class="sig sig-object py" id="lang.ref">
+<span class="sig-prename descclassname"><span class="pre">lang.</span></span><span class="sig-name descname"><span class="pre">ref</span></span><a class="headerlink" href="#lang.ref" title="Link to this definition"></a></dt>
+<dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes">ISO 639-1</a> dviejų simbolių kalbos kodas.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="lang.title">
+<span class="sig-prename descclassname"><span class="pre">lang.</span></span><span class="sig-name descname"><span class="pre">title</span></span><a class="headerlink" href="#lang.title" title="Link to this definition"></a></dt>
+<dd><p>Pavadinimas <a class="reference internal" href="#lang.ref" title="lang.ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">lang.ref</span></code></a> stulpelyje nurodyta kalba.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="lang.description">
+<span class="sig-prename descclassname"><span class="pre">lang.</span></span><span class="sig-name descname"><span class="pre">description</span></span><a class="headerlink" href="#lang.description" title="Link to this definition"></a></dt>
+<dd><p>Aprašymas <a class="reference internal" href="#lang.ref" title="lang.ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">lang.ref</span></code></a> stulpelyje nurodyta kalba.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="strukturos-keitimas">
+<span id="id8"></span><h2>Struktūros keitimas<a class="headerlink" href="#strukturos-keitimas" title="Link to this heading"></a></h2>
+<p>Laikui einant, pirminių duomenų šaltinių arba jau atvertų duomenų struktūra
+keičiasi, papildoma naujais <a class="reference internal" href="savokos.html#term-modelis"><span class="xref std std-term">modeliais</span></a> ar <a class="reference internal" href="savokos.html#term-savybe"><span class="xref std std-term">savybėmis</span></a>, keliant duomenų brandos lygį seni duomenys keičiami naujais,
+aukštesnio brandos lygio duomenimis.</p>
+<p>Visi šie struktūros ar pačių duomenų pasikeitimai fiksuojami papildomos
+<a class="reference internal" href="#migrate" title="migrate"><code class="xref py py-data docutils literal notranslate"><span class="pre">migrate</span></code></a> dimensijos pagalba, kuri gali būti naudojama, bet kurios kitos
+dimensijos kontekste.</p>
+<div class="admonition note">
+<p class="admonition-title">Pastaba</p>
+<p>Migracijos naudojamos tik tuo atveju, kai keičiasi duomenų struktūra arba
+patys duomenys. Jei keičiasi tik metaduomenys, tai migracijų sąraše
+neatsispindi.</p>
+</div>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>id</p></th>
+<th class="head"><p>d</p></th>
+<th class="head"><p>r</p></th>
+<th class="head"><p>b</p></th>
+<th class="head"><p>m</p></th>
+<th class="head"><p>property</p></th>
+<th class="head"><p>type</p></th>
+<th class="head"><p>ref</p></th>
+<th class="head"><p>prepare</p></th>
+<th class="head"><p>level</p></th>
+<th class="head"><p>title</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>migrate</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>2021-12-21 16:29</p></td>
+<td><p>Pirmoji migracija.</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>migrate</p></td>
+<td><p>1</p></td>
+<td></td>
+<td></td>
+<td><p>2021-12-21 16:33</p></td>
+<td><p>Antroji migracija.</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>migrate</p></td>
+<td><p>2</p></td>
+<td></td>
+<td></td>
+<td><p>2022-06-21 16:41</p></td>
+<td><p>Trečioji migracija.</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td colspan="5"><p>datasets/example/migrate</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td colspan="2"><p>Country</p></td>
+<td></td>
+<td><p>id</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>id</p></td>
+<td><p>integer</p></td>
+<td></td>
+<td></td>
+<td><p>4</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>code</p></td>
+<td><p>string</p></td>
+<td></td>
+<td></td>
+<td><p>3</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>migrate</p></td>
+<td><p>1</p></td>
+<td><p>create(level: 2)</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>migrate</p></td>
+<td><p>3</p></td>
+<td><p>update(level: 3)</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>name</p></td>
+<td><p>string</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>migrate</p></td>
+<td><p>2</p></td>
+<td><p>create()</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Pavyzdyje aukščiau matome, kad šis duomenų struktūros aprašas turi tris
+migracijas:</p>
+<ol class="arabic">
+<li><p>Pirmosios migracijos metu sukuriamas pradinis duomenų struktūros variantas.
+Pirmoji migracija nežymima prie modelių ir duomenų laukų, nebent daromas
+keitimas, tuomet įtraukiam ir pirmoji migracija, kad būtų matoma, kas
+keitėsi. Būtent toks atvejis parodytas prie <code class="docutils literal notranslate"><span class="pre">Country.code</span></code> lauko, kuri
+trečiojo migracijoje keičiamas brandos lygis.</p></li>
+<li><p>Antrosios migracijos metu buvo įtrauktas naujas duomenų laukas
+<code class="docutils literal notranslate"><span class="pre">Country.name</span></code>.</p></li>
+<li><p>Trečiosios migracijos metu, buvo keičiami <code class="docutils literal notranslate"><span class="pre">Country.code</span></code> lauko duomenys,
+pakeitimo metu brandos lygis buvo pakeltas iki trečio. Atkreipkite dėmesį,
+kad metaduomenų pasikeitimas, kaip šiuo atveju, žymimas migracijose tik tuo
+atveju, jei tai yra susiję su pačių duomenų pasikeitimu.</p>
+<p>Jei brandos lygis būtų pakeistas, nekeičiant pačių duomenų, tuomet tokio
+pakeitimo nereikėtų įtraukti į migracijų sąrašą.</p>
+<p>Kadangi trečiojoje migracijoje buvo atliktas su ankstesne versija
+nesuderinamas pakeitimas, tai šios migracijos data yra 6 mėnesiai
+ateityje, kadangi nesuderinamos migracijos pirmiausia paskelbiamos, o
+įgyvendinamos tik praėjus 6 mėnesiams nuo paskelbimo.</p>
+</li>
+</ol>
+<dl class="py data">
+<dt class="sig sig-object py" id="migrate">
+<span class="sig-name descname"><span class="pre">migrate</span></span><a class="headerlink" href="#migrate" title="Link to this definition"></a></dt>
+<dd><dl class="py data">
+<dt class="sig sig-object py" id="migrate.id">
+<span class="sig-prename descclassname"><span class="pre">migrate.</span></span><span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#migrate.id" title="Link to this definition"></a></dt>
+<dd><p>Migracijos numeris (UUID). Kiekvienos migracijos metu gali būti
+atliekama eilė operacijų, visos operacijos fiksuojamos naudojant
+migracijos numerį.</p>
+<p>Visų migracijų sąrašas pateikiamas, kai <a class="reference internal" href="#migrate" title="migrate"><code class="xref py py-data docutils literal notranslate"><span class="pre">migrate</span></code></a> nepriklauso
+jokiam dimensijos kontekstui.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="migrate.ref">
+<span class="sig-prename descclassname"><span class="pre">migrate.</span></span><span class="sig-name descname"><span class="pre">ref</span></span><a class="headerlink" href="#migrate.ref" title="Link to this definition"></a></dt>
+<dd><p>Ankstesnės migracijos numeris, pateiktas <a class="reference internal" href="#migrate.id" title="migrate.id"><code class="xref py py-data docutils literal notranslate"><span class="pre">migrate.id</span></code></a> stulpelyje,
+arba tuščia, jei prieš tai jokių kitų migracijų nebuvo.</p>
+<p>Naudojamas jei <a class="reference internal" href="#migrate" title="migrate"><code class="xref py py-data docutils literal notranslate"><span class="pre">migrate</span></code></a> nepatenka į jokios dimensijos kontekstą.</p>
+<p>Jei <a class="reference internal" href="#migrate" title="migrate"><code class="xref py py-data docutils literal notranslate"><span class="pre">migrate</span></code></a> aprašomas dimensijos kontekste, tada šis stulpelis
+nenaudojamas.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="migrate.prepare">
+<span class="sig-prename descclassname"><span class="pre">migrate.</span></span><span class="sig-name descname"><span class="pre">prepare</span></span><a class="headerlink" href="#migrate.prepare" title="Link to this definition"></a></dt>
+<dd><p>Migracijos operacija. Galimos tokios operacijos:</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="migrate.create">
+<span class="sig-name descname"><span class="pre">create</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#migrate.create" title="Link to this definition"></a></dt>
+<dd><p>Priklausomai nuo dimensijos konteksto, prideda naują modelį, arba
+savybę.</p>
+<p>Funkcijai galima perduoti <code class="docutils literal notranslate"><span class="pre">ref</span></code> ir kitus vardinius argumentus,
+kurie atitinka <a class="reference internal" href="savokos.html#term-DSA"><span class="xref std std-term">DSA</span></a> lentelės metaduomenų stulpelių
+pavadinimus.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="update">
+<span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#update" title="Link to this definition"></a></dt>
+<dd><p>Taikomas tik duomenų laukams ir nurodo, kad buvo pakeistos esamų
+duomenų reikšmės, keičiant reikšmių dimensiją, matavimo vienetus,
+formatą ir kita.</p>
+<p>Funkcijai galima perduoti <code class="docutils literal notranslate"><span class="pre">ref</span></code> ir kitus vardinius argumentus,
+kurie atitinka <a class="reference internal" href="savokos.html#term-DSA"><span class="xref std std-term">DSA</span></a> lentelės metaduomenų stulpelių
+pavadinimus.</p>
+<p>Perduodami tik tie vardiniai argumentai, kuriuos atitinkantys
+metaduomenys keičiasi.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="delete">
+<span class="sig-name descname"><span class="pre">delete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#delete" title="Link to this definition"></a></dt>
+<dd><p>Priklausomai nuo dimensijos konteksto, šalina modelį ar savybę.</p>
+<p>Pašalinto modelio ar savybės <a class="reference internal" href="formatas.html#type" title="type"><code class="xref py py-data docutils literal notranslate"><span class="pre">type</span></code></a> keičiamas į <code class="docutils literal notranslate"><span class="pre">absent</span></code>
+reikšmę.</p>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="filter">
+<span class="sig-name descname"><span class="pre">filter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">where</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#filter" title="Link to this definition"></a></dt>
+<dd><p>Naudojamas <a class="reference internal" href="formatas.html#property" title="property"><code class="xref py py-data docutils literal notranslate"><span class="pre">property</span></code></a> kontekste, kai vykdoma duomenų
+migracija. Nurodo, kad migracija taikoma tik <code class="docutils literal notranslate"><span class="pre">where</span></code> sąlygą
+tenkinantiems duomenims.</p>
+</dd></dl>
+
+<p>Be šių pagrindinių migracijos operacijų, galima naudoti kitas duomenų
+transformavimo operacijas, kurios vykdomos su kiekviena duomenų eilute
+ir atlikus pateiktas transformacijos funkcijas, pakeista reikšmė
+išsaugoma.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="migrate.title">
+<span class="sig-prename descclassname"><span class="pre">migrate.</span></span><span class="sig-name descname"><span class="pre">title</span></span><a class="headerlink" href="#migrate.title" title="Link to this definition"></a></dt>
+<dd><p>Migracijos įvykdymo data ir laikas. Migracijos laikas ir data gali
+būti ir ateityje, tuo atveju, jei daromas nesuderinamas keitimas.</p>
+<p>Naudojamas tik tada, kai <a class="reference internal" href="#migrate" title="migrate"><code class="xref py py-data docutils literal notranslate"><span class="pre">migrate</span></code></a> nepatenka į jokios dimensijos
+kontekstą.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="migrate.description">
+<span class="sig-prename descclassname"><span class="pre">migrate.</span></span><span class="sig-name descname"><span class="pre">description</span></span><a class="headerlink" href="#migrate.description" title="Link to this definition"></a></dt>
+<dd><p>Migracijos atliekamo pakeitimo trumpas aprašymas.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Poraštė">
+        <a href="formatas.html" class="btn btn-neutral float-left" title="Lentelės formatas" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Ankstesnis</a>
+        <a href="tipai.html" class="btn btn-neutral float-right" title="Duomenų tipai" accesskey="n" rel="next">Kitas <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019-2024, IVPK.</p>
+  </div>
+
+  Surinkta su <a href="https://www.sphinx-doc.org/">Sphinx</a> naudojant
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">temą</a>
+    pateiktą <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

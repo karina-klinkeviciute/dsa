@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="lt" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kodiniai pavadinimai &mdash; Duomenų struktūros aprašas  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=a5c4661c" />
+      <link rel="stylesheet" type="text/css" href="_static/style.css" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="_static/jquery.js?v=5d32c60e"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="_static/documentation_options.js?v=7be03173"></script>
+        <script src="_static/doctools.js?v=9a2dae69"></script>
+        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="_static/translations.js?v=3b848cde"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Indeksas" href="genindex.html" />
+    <link rel="search" title="Paieška" href="search.html" />
+    <link rel="next" title="Matavimo vienetai" href="vienetai.html" />
+    <link rel="prev" title="Duomenų tipai" href="tipai.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Duomenų struktūros aprašas
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Ieškoti dokumentuose" aria-label="Ieškoti dokumentuose" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigacijos meniu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="modelis.html">Duomenų modeliavimas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="formatas.html">Lentelės formatas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="formatas.html#lenteles-struktura">Lentelės struktūra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="formatas.html#vardu-erdves">Vardų erdvės</a></li>
+<li class="toctree-l1"><a class="reference internal" href="formatas.html#reliatyvus-pavadinimai">Reliatyvūs pavadinimai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dimensijos.html">Dimensijos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dimensijos.html#papildomos-dimensijos">Papildomos dimensijos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tipai.html">Duomenų tipai</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Kodiniai pavadinimai</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#vardu-erdviu">Vardų erdvių</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#modeliai">Modeliai</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#nekartojame-vardu-erdves">Nekartojame vardų erdvės</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#duomenu-laukai">Duomenų laukai</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#rysiai-tarp-modeliu">Ryšiai tarp modelių</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nekartojame-modelio-pavadinimo">Nekartojame modelio pavadinimo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nekartojame-duomenu-tipo-pavadinimo">Nekartojame duomenų tipo pavadinimo</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="vienetai.html">Matavimo vienetai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="identifikatoriai.html">Ryšiai tarp modelių</a></li>
+<li class="toctree-l1"><a class="reference internal" href="branda.html">Brandos lygiai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prieiga.html">Prieigos lygiai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="saltiniai.html">Duomenų šaltiniai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zodynai.html">Išoriniai žodynai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="formules.html">Formulės</a></li>
+<li class="toctree-l1"><a class="reference internal" href="savokos.html">Sąvokos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="keitimai.html">Keitimų istorija</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobilios navigacijos meniu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Duomenų struktūros aprašas</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Puslapių navigacija">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Kodiniai pavadinimai</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/pavadinimai.rst.txt" rel="nofollow"> Žiūrėti puslapio šaltinį</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="kodiniai-pavadinimai">
+<span id="id1"></span><h1>Kodiniai pavadinimai<a class="headerlink" href="#kodiniai-pavadinimai" title="Link to this heading"></a></h1>
+<p>Kadangi <a class="reference internal" href="savokos.html#term-DSA"><span class="xref std std-term">DSA</span></a> lentelė skirta naudoti tiek žmonėms tiek automatizuotoms
+priemonėms, tam tikros lentelės dalys privalo naudoti sutartinius kodinius
+pavadinimus. Kodiniams pavadinimams keliami griežtesni reikalavimai, kadangi
+šiuos pavadinimus interpretuos automatizuotos priemonės.</p>
+<p>Visi <a class="reference internal" href="savokos.html#term-DSA"><span class="xref std std-term">DSA</span></a> lentelės stulpelių pavadinimai turi būti užrašyti tiksliai
+taip, kaip nurodyta, kad kompiuterio programos galėtų juos atpažinti.</p>
+<p>Kodiniai pavadinimai rašomi naudojant tik lotyniškas raidas. Lietuviškų
+raidžių naudoti negalima, todėl geriausia pavadinimus užrašyti anglų kalba,
+arba pakeičiant lietuviškas raides į lotyniškos raidės analogą.</p>
+<p>Deja, vis dar pasitaiko vietų, kuriose palaikoma tik lotyniška abėcėlė, todėl
+ir keliamas toks reikalavimas, siekiant užtikrinti maksimalų suderinamumą
+tarp skirtingų sistemų.</p>
+<p>Pavadinimai turėtu būti rašomi laikantis tokio stiliaus:</p>
+<section id="vardu-erdviu">
+<h2>Vardų erdvių<a class="headerlink" href="#vardu-erdviu" title="Link to this heading"></a></h2>
+<p>Pavyzdys: <code class="docutils literal notranslate"><span class="pre">datasets/gov/abbr/short/word</span></code></p>
+<p>Visos mažosios raidės, stengiantis naudoti vieno žodžio trumpus
+pavadinimus arba žodžio trumpinius. Kadangi vardų erdvė rašoma prie
+kiekvieno modelio pavadinimo, todėl reikia stengtis vardų erdvių ir
+duomenų rinkinių pavadinimus išlaikyti kiek įmanoma trumpesnius.</p>
+<p>Vardų erdvės pavadinimai užrašomi daugiskaita ir turi prasidėti mažąja raide.</p>
+</section>
+<section id="modeliai">
+<h2>Modeliai<a class="headerlink" href="#modeliai" title="Link to this heading"></a></h2>
+<p>Pavyzdys: <code class="docutils literal notranslate"><span class="pre">UpperCamelCase</span></code></p>
+<p>Kiekvieno modelio pavadinimo pirma raidė didžioji, kitos mažosios.
+Pavadinimo žodžiai atskiriami juos užrašant iš didžiosios raidės. Tarp
+žodžių neturi būti nei tarpų, nei kitų skyrybos ženklų.</p>
+<p>Modelio pavadinimai užrašomi vienaskaita išskyrus atvejus, kai subjekto
+pavadinimas neturi vienaskaitos žodžio formos, pavyzdžiui rašom <code class="docutils literal notranslate"><span class="pre">Pajamos</span></code>, nes
+tokio žodžio kaip <code class="docutils literal notranslate"><span class="pre">Pajama</span></code> nėra.</p>
+<p>Modelio pavadinimas turi prasidėti didžiąja raide.</p>
+<p>Modelio pavadinimas turi atspindėti <a class="reference external" href="https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model#Entity%E2%80%93relationship_model">duomenų subjekto</a> tipą.
+Duomnų subjektas yra dalykas turintis pavadinimą ar unikalų identifikatorių.
+Duomenų subjekto tipas yra subjektų grupė priklausančių tai pačiai kategorijai
+ar <a class="reference external" href="https://en.wikipedia.org/wiki/Class_(knowledge_representation)">klasei</a>.</p>
+<section id="nekartojame-vardu-erdves">
+<h3>Nekartojame vardų erdvės<a class="headerlink" href="#nekartojame-vardu-erdves" title="Link to this heading"></a></h3>
+<p>Modelio pavadinime nekartojamas vardų erdvės, kurioje yra modelis.</p>
+<p>Pavyzdys, kaip nereikėtų daryti: <code class="docutils literal notranslate"><span class="pre">example/planets/EarthPlanet</span></code>. Šioje
+vietoje nereikia kartoti <code class="docutils literal notranslate"><span class="pre">Planet</span></code>, kadangi tai atsispindi vardų erdvės
+pavadinime <code class="docutils literal notranslate"><span class="pre">planets</span></code>.</p>
+</section>
+</section>
+<section id="duomenu-laukai">
+<h2>Duomenų laukai<a class="headerlink" href="#duomenu-laukai" title="Link to this heading"></a></h2>
+<p>Pavyzdys: <code class="docutils literal notranslate"><span class="pre">snake_case</span></code></p>
+<p>Visi duomenų lauko žodžiai rašomi mažosiomis raidėmis, atskiriami pabraukimo
+ženklu <code class="docutils literal notranslate"><span class="pre">_</span></code>.</p>
+<p>Duomenų lauko pavadinimas turi prasidėti mažąja raide.</p>
+<section id="rysiai-tarp-modeliu">
+<h3>Ryšiai tarp modelių<a class="headerlink" href="#rysiai-tarp-modeliu" title="Link to this heading"></a></h3>
+<p><a class="reference internal" href="tipai.html#ref" title="ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">ref</span></code></a> tipo laukai rašomi be <code class="docutils literal notranslate"><span class="pre">id</span></code> ar <code class="docutils literal notranslate"><span class="pre">_id</span></code> galūnės, kadangi jis yra
+perteklinis.</p>
+<p><a class="reference internal" href="tipai.html#ref" title="ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">ref</span></code></a> tipo laukai atspindi ne konkretų identifikatorių, o visą
+objektą. Konkretus identifikatorius yra rezervuotas pavadinimas ir
+duomenų struktūros apraše nenurodomas.</p>
+<p>Pavyzdžiui vietoje <code class="docutils literal notranslate"><span class="pre">country_id</span></code>, kurio tipas yra <code class="docutils literal notranslate"><span class="pre">ref</span></code>, reikėŧų rašyti
+<code class="docutils literal notranslate"><span class="pre">country</span></code>.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>m</p></th>
+<th class="head"><p>property</p></th>
+<th class="head"><p>type</p></th>
+<th class="head"><p>ref</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td colspan="2"><p>Country</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>name&#64;lt</p></td>
+<td><p>text</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td colspan="2"><p>City</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>name&#64;lt</p></td>
+<td><p>text</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>country</p></td>
+<td><p>ref</p></td>
+<td><p>Country</p></td>
+</tr>
+</tbody>
+</table>
+<p>Tais atvejais, kai duomenys yra denormalizuoti, duomenų lauko
+pavadinimas užrašomas su tašku, nurodant duomenų lauką iš siejamo
+modelio. Plačiau apie tai <a class="reference internal" href="identifikatoriai.html#ref-denorm"><span class="std std-ref">Denormalizuoti duomenys</span></a>.</p>
+</section>
+<section id="nekartojame-modelio-pavadinimo">
+<h3>Nekartojame modelio pavadinimo<a class="headerlink" href="#nekartojame-modelio-pavadinimo" title="Link to this heading"></a></h3>
+<p>Visi modelio duomenų laukai yra konkretaus modelio laukai, todėl
+nereikia kartoti duomenų laukuose modelio pavadinimo, pavyzdžiui vietoje
+tokių pavadinimų:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>m</p></th>
+<th class="head"><p>property</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td colspan="2"><p>City</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>city_id</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>city_name</p></td>
+</tr>
+</tbody>
+</table>
+<p>Reikėtų rašyti taip:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>m</p></th>
+<th class="head"><p>property</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td colspan="2"><p>City</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>id</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>name</p></td>
+</tr>
+</tbody>
+</table>
+<p>Jei kiti modeliai siejami su <code class="docutils literal notranslate"><span class="pre">City</span></code>, tada nurodant tarkim <code class="docutils literal notranslate"><span class="pre">city_name</span></code> iš
+kito modelio, reikėtų rašyti <code class="docutils literal notranslate"><span class="pre">city.city_name</span></code>. Todėl <code class="docutils literal notranslate"><span class="pre">city.name</span></code> yra
+aiškesnis pavadinimas, kuriame nesikartoja modelio pavadinimas.</p>
+</section>
+<section id="nekartojame-duomenu-tipo-pavadinimo">
+<h3>Nekartojame duomenų tipo pavadinimo<a class="headerlink" href="#nekartojame-duomenu-tipo-pavadinimo" title="Link to this heading"></a></h3>
+<p>Duomenų lauko pavadinime nereikia kartoti duomenų tipo pavadinimo.</p>
+<p>Pavyzdžiui taip nereikėtų daryti:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>m</p></th>
+<th class="head"><p>property</p></th>
+<th class="head"><p>type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td colspan="2"><p>City</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>founded_date</p></td>
+<td><p>date</p></td>
+</tr>
+</tbody>
+</table>
+<p>Reikėtų rašyti taip:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>m</p></th>
+<th class="head"><p>property</p></th>
+<th class="head"><p>type</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td colspan="2"><p>City</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>founded</p></td>
+<td><p>date</p></td>
+</tr>
+</tbody>
+</table>
+<p>Nėra prasmės kartoti duomenų tipo, lauko pavadinime.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Poraštė">
+        <a href="tipai.html" class="btn btn-neutral float-left" title="Duomenų tipai" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Ankstesnis</a>
+        <a href="vienetai.html" class="btn btn-neutral float-right" title="Matavimo vienetai" accesskey="n" rel="next">Kitas <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2019-2024, IVPK.</p>
+  </div>
+
+  Surinkta su <a href="https://www.sphinx-doc.org/">Sphinx</a> naudojant
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">temą</a>
+    pateiktą <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
