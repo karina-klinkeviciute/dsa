@@ -1,0 +1,403 @@
+# Išoriniai žodynai
+
+Išorinių žodynų pagalba, galima susieti aprašomus duomenis su išoriniais
+žodynais. Susiejimas atliekamas `model.uri` ir `property.uri`, naudojant
+`išorinių žodynų URI prefiksus <išorinių-žodynų-prefiksai>`.
+
+Pavyzdžiui turint tokį duomenų šaltinį:
+
+<table>
+<thead>
+<tr class="header">
+<th>country</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>id name</td>
+</tr>
+<tr class="even">
+<td>=== =========</td>
+</tr>
+<tr class="odd">
+<td>1 Lietuva</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr class="header">
+<th>city</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>id name country</td>
+</tr>
+<tr class="even">
+<td>=== ========= =======</td>
+</tr>
+<tr class="odd">
+<td>1 Vilnius 1</td>
+</tr>
+</tbody>
+</table>
+
+Ir šį šaltinį atitinkančią `DSA` lentelę:
+
+<table style="width:93%;">
+<thead>
+<tr class="header">
+<th>id</th>
+<th>d</th>
+<th>r</th>
+<th>b</th>
+<th>m</th>
+<th>property</th>
+<th>type</th>
+<th>ref</th>
+<th>uri</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>prefix</td>
+<td>locn</td>
+<td>http://www.w3.org/ns/locn#</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>dbpedia-owl</td>
+<td>http://dbpedia.org/ontology/</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td colspan="5">datasets/example/geo</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td colspan="4">salys</td>
+<td>sql</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td colspan="2">Country</td>
+<td></td>
+<td>id</td>
+<td>locn:Location</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>id</td>
+<td>integer</td>
+<td></td>
+<td>dct:identifier</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>name@lt</td>
+<td>text</td>
+<td></td>
+<td>locn:geographicName</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>capital</td>
+<td>ref</td>
+<td>City</td>
+<td>dbpedia-owl:capital</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td colspan="2">City</td>
+<td></td>
+<td>id</td>
+<td>locn:Location</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>id</td>
+<td>integer</td>
+<td></td>
+<td>dct:identifier</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>name@lt</td>
+<td>text</td>
+<td></td>
+<td>locn:geographicName</td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>country</td>
+<td>ref</td>
+<td>Country</td>
+<td>dbpedia-owl:country</td>
+</tr>
+</tbody>
+</table>
+
+Jei `property` pavadinimai turi `@` žymes, tada generuojant RDF, prie
+reikšmės pridedama atitinkama kalbos žymė.
+
+Galima duomenis eksportuoti [RDF
+Turtle](https://en.wikipedia.org/wiki/Turtle_(syntax)) formatu, kas
+atrodytų taip:
+
+``` ttl
+@base <https://get.data.gov.lt/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix dbpedia-owl: <http://dbpedia.org/ontology/> .
+
+<datasets/example/geo/Country/eb09946c-26e1-4698-a298-7bb1e468b165>
+    a locn:Location ;
+    dct:identifier 1 ;
+    locn:geographicName "Lietuva"@lt ;
+    dbpedia-owl:capital <datasets/example/geo/City/b54c21f6-08b8-4bdd-b785-be1cb2e93a98> .
+
+<datasets/example/geo/City/b54c21f6-08b8-4bdd-b785-be1cb2e93a98>
+    a locn:Location ;
+    dct:identifier 1 ;
+    locn:geographicName "Vilnius"@lt ;
+    dbpedia-owl:country <datasets/example/geo/Country/eb09946c-26e1-4698-a298-7bb1e468b165> .
+```
+
+Analogiškai, tie patys duomenys gali būti eksportuojami
+[RDF/XML](https://www.w3.org/TR/rdf-syntax-grammar/) formatu:
+
+``` xml
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+    xml:base="https://get.data.gov.lt/"
+    xmlns:dct="http://purl.org/dc/terms/"
+    xmlns:locn="http://www.w3.org/ns/locn#"
+    xmlns:dbpedia-owl="http://dbpedia.org/ontology/"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+
+    <locn:Location
+        rdf:about="datasets/example/geo/Country/eb09946c-26e1-4698-a298-7bb1e468b165"
+        dct:identifier="1">
+        <locn:geographicName xml:lang="lt">Lietuva</locn:geographicName>
+        <dbpedia-owl:capital
+            rdf:resource="datasets/example/geo/City/b54c21f6-08b8-4bdd-b785-be1cb2e93a98" />
+    </locn:Location>
+
+    <locn:Location
+        rdf:about="datasets/example/geo/City/b54c21f6-08b8-4bdd-b785-be1cb2e93a98"
+        dct:identifier="1">
+        <locn:geographicName xml:lang="lt">Vilnius</locn:geographicName>
+        <dbpedia-owl:country
+            rdf:resource="datasets/example/geo/Country/eb09946c-26e1-4698-a298-7bb1e468b165" />
+    </locn:Location>
+</rdf:RDF>
+```
+
+Išoriniai žodynai suteikia galimybę eksportuoti duomenis `RDF` formatu.
+
+Jei struktūros apraše nėra užpildytas `uri` stulpelis, data, turėtu būti
+generuojamas tokie RDF duomenys:
+
+``` ttl
+@base <https://get.data.gov.lt/> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+@prefix dbpedia-owl: <http://dbpedia.org/ontology/> .
+
+<datasets/example/geo/Country/eb09946c-26e1-4698-a298-7bb1e468b165>
+    a <datasets/example/geo/Country> ;
+    <datasets/example/geo/Country/id> 1 ;
+    <datasets/example/geo/Country/name> "Lietuva"@lt ;
+    <datasets/example/geo/Country/capital> <datasets/example/geo/City/b54c21f6-08b8-4bdd-b785-be1cb2e93a98> .
+
+<datasets/example/geo/City/b54c21f6-08b8-4bdd-b785-be1cb2e93a98>
+    a <datasets/example/geo/City> ;
+    <datasets/example/geo/City/id> 1 ;
+    <datasets/example/geo/City/name> "Vilnius"@lt ;
+    <datasets/example/geo/City/country> <datasets/example/geo/Country/eb09946c-26e1-4698-a298-7bb1e468b165> .
+```
+
+## Subjekto URI
+
+Pagal nutylėjimą `subjekto <subjektas>` URI yra automatiškai
+generuojamas ir atrodo taip:
+
+    https://get.data.gov.lt/datasets/example/geo/Country/eb09946c-26e1-4698-a298-7bb1e468b165
+
+Tačiau naudojant kontroliuojamus žodynus, galima nurodyti kitą
+identifikatorių tokiu būdu:
+
+<table>
+<thead>
+<tr class="header">
+<th>m</th>
+<th>property</th>
+<th>type</th>
+<th>ref</th>
+<th>uri</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Cou</td>
+<td>ntry</td>
+<td></td>
+<td>id</td>
+<td>locn:Location</td>
+</tr>
+<tr class="even">
+<td>---</td>
+<td><p>-----------id uri name@lt</p></td>
+<td><p>---------integer uri text</p></td>
+<td><hr /></td>
+<td><hr />
+<p>locn:Location</p></td>
+</tr>
+</tbody>
+</table>
+
+Jei `property.uri` sutampa su `model.uri` ir `property.type` yra `uri`,
+tada formuojant duomenis RDF formatu naudojame ne generuotą subjekto
+URI, o naudojame lauko reikšmę, kurio `property.uri` sutampa su
+`model.uri`.
+
+Gali būti ne daugiau kaip vienas `property.uri` su `property.type`
+`uri`, kuris sutampa su `model.uri`.
+
+Jei yra keli `uri` tipo laukai, kurie identifikuoja tą patį subjektą,
+tada kitiems atvejams reikia naudoti ne `model.uri`, o
+[owl:sameAs](https://www.w3.org/TR/owl-ref/#sameAs-def).
+
+Jei `uri` reikšmė bus `https://sws.geonames.org/597427/`, tada gautume
+tokius RDF duomenis:
+
+``` ttl
+@base <https://get.data.gov.lt/example/> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+
+<https://sws.geonames.org/597427/>
+    a locn:Location ;
+    <Country/id> 1 ;
+    <Country/name> "Lietuva"@lt .
+```
+
+Atkreipkite dėmesį, kad pats `uri` laukas nėra įtrautkas į RDF duomenis.
+
+Analogiškai, jei `ref` tipo laukas rodo į modelį, kurio `model.uri`
+sutampa su `property.uri` kuris yra `ref` tipo, tada `ref` lauko reikšmė
+taip pat įgyja ne gnenruotą URI, o URI iš duomenų.
+
+Pratęsiant tą patį pavyzdį:
+
+<table>
+<thead>
+<tr class="header">
+<th>m</th>
+<th>property</th>
+<th>type</th>
+<th>ref</th>
+<th>uri</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Cou</td>
+<td>ntry</td>
+<td></td>
+<td>id</td>
+<td>locn:Location</td>
+</tr>
+<tr class="even">
+<td><p>---Cit</p></td>
+<td><p>-----------id uri name@lt y</p></td>
+<td><p>---------integer uri text</p></td>
+<td><hr />
+<p>id</p></td>
+<td><hr />
+<p>locn:Location</p>
+<p>locn:Location</p></td>
+</tr>
+<tr class="odd">
+<td>---</td>
+<td><p>-----------id name@lt</p></td>
+<td><p>---------integer text</p></td>
+<td><hr /></td>
+<td><hr /></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>country</td>
+<td>ref</td>
+<td>Country</td>
+<td>locn:Location</td>
+</tr>
+</tbody>
+</table>
+
+Gautumo tokius duomenis:
+
+``` ttl
+@base <https://get.data.gov.lt/example/> .
+@prefix locn: <http://www.w3.org/ns/locn#> .
+
+<https://sws.geonames.org/597427/>
+    a locn:Location ;
+    <Country/id> 1 ;
+    <Country/name> "Lietuva"@lt .
+
+<City/b54c21f6-08b8-4bdd-b785-be1cb2e93a98>
+    a locn:Location ;
+    <City/id> 1 ;
+    <City/name> "Vilnius"@lt ;
+    <City/country> <https://sws.geonames.org/597427/> .
+```

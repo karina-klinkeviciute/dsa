@@ -1,0 +1,253 @@
+# Kodiniai pavadinimai
+
+Kadangi `DSA` lentelė skirta naudoti tiek žmonėms tiek automatizuotoms
+priemonėms, tam tikros lentelės dalys privalo naudoti sutartinius
+kodinius pavadinimus. Kodiniams pavadinimams keliami griežtesni
+reikalavimai, kadangi šiuos pavadinimus interpretuos automatizuotos
+priemonės.
+
+Visi `DSA` lentelės stulpelių pavadinimai turi būti užrašyti tiksliai
+taip, kaip nurodyta, kad kompiuterio programos galėtų juos atpažinti.
+
+Kodiniai pavadinimai rašomi naudojant tik lotyniškas raidas. Lietuviškų
+raidžių naudoti negalima, todėl geriausia pavadinimus užrašyti anglų
+kalba, arba pakeičiant lietuviškas raides į lotyniškos raidės analogą.
+
+Deja, vis dar pasitaiko vietų, kuriose palaikoma tik lotyniška abėcėlė,
+todėl ir keliamas toks reikalavimas, siekiant užtikrinti maksimalų
+suderinamumą tarp skirtingų sistemų.
+
+Pavadinimai turėtu būti rašomi laikantis tokio stiliaus:
+
+## Vardų erdvių
+
+Pavyzdys: `datasets/gov/abbr/short/word`
+
+Visos mažosios raidės, stengiantis naudoti vieno žodžio trumpus
+pavadinimus arba žodžio trumpinius. Kadangi vardų erdvė rašoma prie
+kiekvieno modelio pavadinimo, todėl reikia stengtis vardų erdvių ir
+duomenų rinkinių pavadinimus išlaikyti kiek įmanoma trumpesnius.
+
+Vardų erdvės pavadinimai užrašomi daugiskaita ir turi prasidėti mažąja
+raide.
+
+## Modeliai
+
+Pavyzdys: `UpperCamelCase`
+
+Kiekvieno modelio pavadinimo pirma raidė didžioji, kitos mažosios.
+Pavadinimo žodžiai atskiriami juos užrašant iš didžiosios raidės. Tarp
+žodžių neturi būti nei tarpų, nei kitų skyrybos ženklų.
+
+Modelio pavadinimai užrašomi vienaskaita išskyrus atvejus, kai subjekto
+pavadinimas neturi vienaskaitos žodžio formos, pavyzdžiui rašom
+`Pajamos`, nes tokio žodžio kaip `Pajama` nėra.
+
+Modelio pavadinimas turi prasidėti didžiąja raide.
+
+Modelio pavadinimas turi atspindėti [duomenų
+subjekto](https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model#Entity%E2%80%93relationship_model)
+tipą. Duomnų subjektas yra dalykas turintis pavadinimą ar unikalų
+identifikatorių. Duomenų subjekto tipas yra subjektų grupė priklausančių
+tai pačiai kategorijai ar
+[klasei](https://en.wikipedia.org/wiki/Class_(knowledge_representation)).
+
+### Nekartojame vardų erdvės
+
+Modelio pavadinime nekartojamas vardų erdvės, kurioje yra modelis.
+
+Pavyzdys, kaip nereikėtų daryti: `example/planets/EarthPlanet`. Šioje
+vietoje nereikia kartoti `Planet`, kadangi tai atsispindi vardų erdvės
+pavadinime `planets`.
+
+## Duomenų laukai
+
+Pavyzdys: `snake_case`
+
+Visi duomenų lauko žodžiai rašomi mažosiomis raidėmis, atskiriami
+pabraukimo ženklu `_`.
+
+Duomenų lauko pavadinimas turi prasidėti mažąja raide.
+
+### Ryšiai tarp modelių
+
+`ref` tipo laukai rašomi be `id` ar `_id` galūnės, kadangi jis yra
+perteklinis.
+
+`ref` tipo laukai atspindi ne konkretų identifikatorių, o visą objektą.
+Konkretus identifikatorius yra rezervuotas pavadinimas ir duomenų
+struktūros apraše nenurodomas.
+
+Pavyzdžiui vietoje `country_id`, kurio tipas yra `ref`, reikėŧų rašyti
+`country`.
+
+<table>
+<thead>
+<tr class="header">
+<th>m</th>
+<th>property</th>
+<th>type</th>
+<th>ref</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Cou</td>
+<td>ntry</td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><p>---Cit</p></td>
+<td><p>----------name@lt y</p></td>
+<td><p>-----text</p></td>
+<td><hr /></td>
+</tr>
+<tr class="odd">
+<td>---</td>
+<td><p>----------name@lt</p></td>
+<td><p>-----text</p></td>
+<td><hr /></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>country</td>
+<td>ref</td>
+<td>Country</td>
+</tr>
+</tbody>
+</table>
+
+Tais atvejais, kai duomenys yra denormalizuoti, duomenų lauko
+pavadinimas užrašomas su tašku, nurodant duomenų lauką iš siejamo
+modelio. Plačiau apie tai `ref-denorm`.
+
+### Nekartojame modelio pavadinimo
+
+Visi modelio duomenų laukai yra konkretaus modelio laukai, todėl
+nereikia kartoti duomenų laukuose modelio pavadinimo, pavyzdžiui vietoje
+tokių pavadinimų:
+
+<table>
+<thead>
+<tr class="header">
+<th>m</th>
+<th>property</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Cit</td>
+<td>y</td>
+</tr>
+<tr class="even">
+<td>---</td>
+<td>------------------</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>city_id</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>city_name</td>
+</tr>
+</tbody>
+</table>
+
+Reikėtų rašyti taip:
+
+<table>
+<thead>
+<tr class="header">
+<th>m</th>
+<th>property</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Cit</td>
+<td>y</td>
+</tr>
+<tr class="even">
+<td>---</td>
+<td>------------------</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>id</td>
+</tr>
+<tr class="even">
+<td></td>
+<td>name</td>
+</tr>
+</tbody>
+</table>
+
+Jei kiti modeliai siejami su `City`, tada nurodant tarkim `city_name` iš
+kito modelio, reikėtų rašyti `city.city_name`. Todėl `city.name` yra
+aiškesnis pavadinimas, kuriame nesikartoja modelio pavadinimas.
+
+### Nekartojame duomenų tipo pavadinimo
+
+Duomenų lauko pavadinime nereikia kartoti duomenų tipo pavadinimo.
+
+Pavyzdžiui taip nereikėtų daryti:
+
+<table>
+<thead>
+<tr class="header">
+<th>m</th>
+<th>property</th>
+<th>type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Cit</td>
+<td>y</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>---</td>
+<td>-----------------</td>
+<td>-----------</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>founded_date</td>
+<td>date</td>
+</tr>
+</tbody>
+</table>
+
+Reikėtų rašyti taip:
+
+<table>
+<thead>
+<tr class="header">
+<th>m</th>
+<th>property</th>
+<th>type</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Cit</td>
+<td>y</td>
+<td></td>
+</tr>
+<tr class="even">
+<td>---</td>
+<td>-----------------</td>
+<td>-----------</td>
+</tr>
+<tr class="odd">
+<td></td>
+<td>founded</td>
+<td>date</td>
+</tr>
+</tbody>
+</table>
+
+Nėra prasmės kartoti duomenų tipo, lauko pavadinime.

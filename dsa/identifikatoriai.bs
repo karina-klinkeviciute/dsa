@@ -1,0 +1,1393 @@
+# Ryšiai tarp modelių
+
+Pateikiant metaduomenis apie ryšius tarp modelių, duomenų `brandos lygis
+<level>` pakeliamas iki ketvirto lygio.
+
+Ryšiai tarp modelių aprašomi tais atvejais, kai vienoje duomenų
+lentelėje naudojami identifikatoriai iš kitos lentelės.
+
+## Jungimas per pirminį raktą
+
+Pavyzdžiui, jei turime tokias dvi duomenų lenteles:
+
+<table>
+<thead>
+<tr class="header">
+<th>Country</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>id name code</td>
+</tr>
+<tr class="even">
+<td>== ======= ====</td>
+</tr>
+<tr class="odd">
+<td>1 Lietuva lt</td>
+</tr>
+<tr class="even">
+<td>2 Latvija lv</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr class="header">
+<th>City</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>id name country</td>
+</tr>
+<tr class="even">
+<td>== ======= =======</td>
+</tr>
+<tr class="odd">
+<td>1 Vilnius lt</td>
+</tr>
+<tr class="even">
+<td>2 Kaunas lt</td>
+</tr>
+<tr class="odd">
+<td>3 Ryga lv</td>
+</tr>
+</tbody>
+</table>
+
+Šiuo atveju, jei norime parengti aukščiau pateiktų duomenų struktūros
+aprašą, jis atrodytų taip:
+
+<table>
+<thead>
+<tr class="header">
+<th>id</th>
+<th>d</th>
+<th>r</th>
+<th>b</th>
+<th>m</th>
+<th>property</th>
+<th>type</th>
+<th>ref</th>
+<th>level</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>dat</td>
+<td>ase</td>
+<td>ts/</td>
+<td>gov</td>
+<td>/example/countries</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><p>--2</p></td>
+<td><p>---</p></td>
+<td><p>---</p></td>
+<td><p>---</p></td>
+<td><p>---Cou</p></td>
+<td><p>------------------ntry</p></td>
+<td><hr /></td>
+<td><p>-----------code</p></td>
+<td><p>-----4</p></td>
+</tr>
+<tr class="odd">
+<td><p>--3 4 5 6</p></td>
+<td><p>--</p></td>
+<td><p>--</p></td>
+<td><p>--</p></td>
+<td><p>---</p>
+<p>Cit</p></td>
+<td><p>------------------id name code y</p></td>
+<td><p>---------integer string string</p></td>
+<td><hr />
+<p>id</p></td>
+<td><p>-----4 4 4 4</p></td>
+</tr>
+<tr class="even">
+<td><p>--7 8 9</p></td>
+<td><p>--</p></td>
+<td><p>--</p></td>
+<td><p>--</p></td>
+<td><p>---</p></td>
+<td><p>------------------id name country</p></td>
+<td><p>---------integer string ref</p></td>
+<td><hr />
+<p>Country</p></td>
+<td><p>-----4 4 4</p></td>
+</tr>
+</tbody>
+</table>
+
+Šiame duomenų struktūros apraše, 9-oje eilutėje `country` stulpelio
+tipas yra `ref`, tai reiškia, kad šis stulpelis yra kito modelio
+išorinis raktas. `property.ref` stulpelyje nurodyta kurio modelio
+išorinis raktas šis stulpelis yra. Šiuo atveju, tai yra `Country`
+modelis, kuris apibrėžtas 2-oje eilutėje.
+
+Pagal nutylėjimą, ryšys su kitu modeliu nustatomas naudojant kitos
+lentelės pirminį raktą nurodytą `model.ref` stulpelyje. Šiuo atveju,
+`City
+.country` yra jungiamas per `Country.code`. Tai reiškia, kad
+`City.country` duomenų tipas turi sutapti su `Country.code` duomenų
+tipu, kuris yra `string`.
+
+`property.ref` reikšmė gali būti pateikiama vienu iš šių variantų:
+
+<div class="describe">
+
+property.ref
+
+<div class="describe">
+
+model
+
+`model` nurodo kito `model` pavadinimą kurio `model.ref` siejamas su
+`property`.
+
+Jei `model.ref` pirminiam raktui naudoja daugiau nei vieną lauką, tada
+`property.source` laukas turi būti tuščias, o `property.prepare` turi
+būti pateikiamos kableliu atskirtos property reikšmės, kurios bus
+naudojamos susiejimui.
+
+</div>
+
+<div class="describe">
+
+model\[property\]
+
+Tais atvejais, kai `property` duomenys nesutampa su siejamo `model.ref`,
+galima nurodyti `property` iš `model`.
+
+</div>
+
+<div class="describe">
+
+model\[\*property\]
+
+Jei susiejimui reikia daugiau nei vieno duomenų lauko ir jie nesutampa
+su model.ref, tada galima nurodyti kelias property reikšmes atskirtas
+kableliu. Tačiau šiuo atveju taip pat būtina nurodyti ir
+`property.prepare` kelias reikšmes atskirtas kableliu, o
+`property.source` reikšmė turi būti tuščia. `property.prepare`
+stulpelyje nurodomi kiti modelio `property` pavadinimai iš kurių duomenų
+reikšmių turi būti formuojamas sudėtinis raktas.
+
+</div>
+
+</div>
+
+## Jungimas per nepirminį raktą
+
+Jei modelius reikia jungti ne per pirminį raktą, o per kitus laukus,
+tada naudojama `model[property]` forma.
+
+Pavyzdžiui, jei turime tokius duomenis:
+
+<table>
+<thead>
+<tr class="header">
+<th>Country</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>id name code</td>
+</tr>
+<tr class="even">
+<td>== ======= ====</td>
+</tr>
+<tr class="odd">
+<td>1 Lietuva lt</td>
+</tr>
+<tr class="even">
+<td>2 Latvija lv</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr class="header">
+<th>City</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>id name country</td>
+</tr>
+<tr class="even">
+<td>== ======= =======</td>
+</tr>
+<tr class="odd">
+<td>1 Vilnius lt</td>
+</tr>
+<tr class="even">
+<td>2 Kaunas lt</td>
+</tr>
+<tr class="odd">
+<td>3 Ryga lv</td>
+</tr>
+</tbody>
+</table>
+
+Kur `Country` pirminis raktas yra `id` ir norime jungti `City.country`
+per `Country.code`, tuomet duomenų struktūros aprašas atrodys taip:
+
+<table>
+<thead>
+<tr class="header">
+<th>d</th>
+<th>d</th>
+<th>r</th>
+<th>b</th>
+<th>m</th>
+<th>property</th>
+<th>type</th>
+<th>ref</th>
+<th>level</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>dat</td>
+<td>ase</td>
+<td>ts/</td>
+<td>gov</td>
+<td>/example/countries</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><p>--2</p></td>
+<td><p>---</p></td>
+<td><p>---</p></td>
+<td><p>---</p></td>
+<td><p>---Cou</p></td>
+<td><p>------------------ntry</p></td>
+<td><hr /></td>
+<td><p>-----------------id</p></td>
+<td><p>-----4</p></td>
+</tr>
+<tr class="odd">
+<td><p>--3 4 5 6</p></td>
+<td><p>--</p></td>
+<td><p>--</p></td>
+<td><p>--</p></td>
+<td><p>---</p>
+<p>Cit</p></td>
+<td><p>------------------id name code y</p></td>
+<td><p>---------integer string string</p></td>
+<td><hr />
+<p>id</p></td>
+<td><p>-----4 4 4 4</p></td>
+</tr>
+<tr class="even">
+<td><p>--7 8 9</p></td>
+<td><p>--</p></td>
+<td><p>--</p></td>
+<td><p>--</p></td>
+<td><p>---</p></td>
+<td><p>------------------id name country</p></td>
+<td><p>---------integer string ref</p></td>
+<td><hr />
+<p>Country[code]</p></td>
+<td><p>-----4 4 4</p></td>
+</tr>
+</tbody>
+</table>
+
+9-oje eilutėje `property.ref` stulpelyje pateikta `Country[code]`
+reikšmė, kuri `Country` nurodo su kokiu modeliu jungiame, o `code`
+nurodo su kokiu `Country` stulpeliu jungiame. Jei pateiktas tik modelis,
+tada jungiama per to modelio pirminį raktą, jei pateiktas stulpelis
+laužtiniuose skliausteliuose, tada jungiama per nurodytą stulpelį.
+
+## Jungimas per kompozicinį raktą
+
+Jei modelius reikia jungti per kelis laukus, tada naudojama
+`model[*property]` forma, kur laužtiniuose skliaustuose pateikiami keli
+stulpeliai atskirti kableliais.
+
+Pavyzdžiui, jei turime tokius duomenis:
+
+<table>
+<thead>
+<tr class="header">
+<th>Country</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>id name code</td>
+</tr>
+<tr class="even">
+<td>== ======= ====</td>
+</tr>
+<tr class="odd">
+<td>1 Lietuva lt</td>
+</tr>
+<tr class="even">
+<td>2 Latvija lv</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr class="header">
+<th>City</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>id name country country_id</td>
+</tr>
+<tr class="even">
+<td>== ======= ======= ==========</td>
+</tr>
+<tr class="odd">
+<td>1 Vilnius lt 1</td>
+</tr>
+<tr class="even">
+<td>2 Kaunas lt 1</td>
+</tr>
+<tr class="odd">
+<td>3 Ryga lv 2</td>
+</tr>
+</tbody>
+</table>
+
+Kur `City` su `Country` yra jungiamas per du `country` ir `country_id`
+stulpelius, tuomet reikia įtraukti išvestinį duomenų lauką, kuriame
+formulės įrašomos į `property.prepare` pagalba apjungiami keli laukai į
+vieną kompozicinį raktą. Šiuo atveju duomenų struktūros aprašas atrodys
+taip:
+
+<table>
+<thead>
+<tr class="header">
+<th>d</th>
+<th>d</th>
+<th>r</th>
+<th>b</th>
+<th>m</th>
+<th>property</th>
+<th>type</th>
+<th>ref</th>
+<th>prepare</th>
+<th>level</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>dat</td>
+<td>ase</td>
+<td>ts/</td>
+<td>gov</td>
+<td>/example/countries</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><p>--2</p></td>
+<td><p>---</p></td>
+<td><p>---</p></td>
+<td><p>---</p></td>
+<td><p>---Cou</p></td>
+<td><p>------------------ntry</p></td>
+<td><hr /></td>
+<td><p>----------------id</p></td>
+<td><hr /></td>
+<td><p>-----4</p></td>
+</tr>
+<tr class="odd">
+<td><p>--3 4 5 6</p></td>
+<td><p>--</p></td>
+<td><p>--</p></td>
+<td><p>--</p></td>
+<td><p>---</p>
+<p>Cit</p></td>
+<td><p>------------------id name code y</p></td>
+<td><p>---------integer string string</p></td>
+<td><hr />
+<p>id</p></td>
+<td><hr /></td>
+<td><p>-----4 4 4 4</p></td>
+</tr>
+<tr class="even">
+<td><p>--7 8 9 10 11</p></td>
+<td><p>--</p></td>
+<td><p>--</p></td>
+<td><p>--</p></td>
+<td><p>---</p></td>
+<td><p>------------------id name country_code country_id
+country</p></td>
+<td><p>---------integer string string integer ref</p></td>
+<td><hr />
+<p>Country[id,code]</p></td>
+<td><hr />
+<p>country_id, country_code</p></td>
+<td><p>-----4 4 4 4 4</p></td>
+</tr>
+</tbody>
+</table>
+
+Čia matome, kad 11-oje eilutėje buvo įtrauktas išvestinis laukas
+`country`, kuris išskaičiuojamas apjungiant `country_id` ir
+`country_code`. O ryšiui su `Country`, laužtiniuose skliausteliuose
+nurodyti du laukai iš jungiamo `Country` modelio. Abiejų jungiamų pusių
+pateiktas laukų sąrašas turi būti vienodo eiliškumo, o jungiami laukai
+turi turėti vienodus tipus.
+
+Jei `Country` pirminis raktas būtų kompozicinis, pavyzdžiui `id, code`,
+tuomet, 11-oje eilutėje `property.ref` užtektu nurodyti tik `Country`.
+
+## Jungimas atgaliniu ryšiu
+
+Jungiant modelius atgaliniu ryšiu kuriamas išvestinis arba virtualus
+laukas, kuriame analogiškai kaip ir paprasto ryšio atveju, apjungiami du
+modeliai, tik šiuo atveju kuriamas daug su vienas tipo ryšys.
+
+Pavyzdžiui, jei turime tokius duomenis:
+
+<table>
+<thead>
+<tr class="header">
+<th>Country</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>id name</td>
+</tr>
+<tr class="even">
+<td>== =======</td>
+</tr>
+<tr class="odd">
+<td>1 Lietuva</td>
+</tr>
+<tr class="even">
+<td>2 Latvija</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr class="header">
+<th>City</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>id name country</td>
+</tr>
+<tr class="even">
+<td>== ======= =======</td>
+</tr>
+<tr class="odd">
+<td>1 Vilnius 1</td>
+</tr>
+<tr class="even">
+<td>2 Kaunas 1</td>
+</tr>
+<tr class="odd">
+<td>3 Ryga 2</td>
+</tr>
+</tbody>
+</table>
+
+Tai norint sukurti atgalinį ryšį iš `City` modelio į `Country` modelį,
+duomenų struktūros aprašas atrodys taip:
+
+<table>
+<thead>
+<tr class="header">
+<th>d</th>
+<th>d</th>
+<th>r</th>
+<th>b</th>
+<th>m</th>
+<th>property</th>
+<th>type</th>
+<th>ref</th>
+<th>level</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>dat</td>
+<td>ase</td>
+<td>ts/</td>
+<td>gov</td>
+<td>/example/countries</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><p>--2</p></td>
+<td><p>---</p></td>
+<td><p>---</p></td>
+<td><p>---</p></td>
+<td><p>---Cou</p></td>
+<td><p>------------------ntry</p></td>
+<td><hr /></td>
+<td><p>----------------id</p></td>
+<td><p>-----4</p></td>
+</tr>
+<tr class="odd">
+<td><p>--3 4 5 6</p></td>
+<td><p>--</p></td>
+<td><p>--</p></td>
+<td><p>--</p></td>
+<td><p>---</p>
+<p>Cit</p></td>
+<td><p>------------------id name cities[] y</p></td>
+<td><p>---------integer string backref</p></td>
+<td><hr />
+<p>City id</p></td>
+<td><p>-----4 4 4 4</p></td>
+</tr>
+<tr class="even">
+<td><p>--7 8 9</p></td>
+<td><p>--</p></td>
+<td><p>--</p></td>
+<td><p>--</p></td>
+<td><p>---</p></td>
+<td><p>------------------id name country</p></td>
+<td><p>---------integer string ref</p></td>
+<td><hr />
+<p>Country</p></td>
+<td><p>-----4 4 4</p></td>
+</tr>
+</tbody>
+</table>
+
+Čia atgalinis ryšys nurodytas 5-oje eilutėje, pateikiant virtualų
+`Country.cities` lauką, kuris jungiamas per `City.country` lauką,
+kadangi `City.country` turi ryšį su `Country`.
+
+Jei `City` modelyje būtų pateikti keli stulpeliai susieti su `Country`,
+tada 5-oje eilutėje `property.ref` reikšmė turėtų nurodyti konkretų
+lauką, per kurį jungiama, pavyzdžiui `City[country]`.
+
+## Polimorfinis jungimas
+
+<div class="note">
+
+<div class="title">
+
+Note
+
+</div>
+
+Tokio tipo jungimas kol kas dar nėra įgyvendintas.
+
+</div>
+
+Polimorfinis jungimas yra toks ryšys tarp modelių, kai vieno modelio
+laukas yra siejamas su daugiau nei vienu kitu modeliu. Tokiam ryšiui
+nurodyti polimorfinis laukas turi dvi reikšmes, išorinio modelio
+pavadinimą ir to modelio stulpelio per kurį jungiama reikšmę.
+
+<table>
+<thead>
+<tr class="header">
+<th>Country</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>id name</td>
+</tr>
+<tr class="even">
+<td>== =======</td>
+</tr>
+<tr class="odd">
+<td>1 Lietuva</td>
+</tr>
+<tr class="even">
+<td>2 Latvija</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr class="header">
+<th>City</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>id name country</td>
+</tr>
+<tr class="even">
+<td>== ======= =======</td>
+</tr>
+<tr class="odd">
+<td>1 Vilnius 1</td>
+</tr>
+<tr class="even">
+<td>2 Ryga 2</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr class="header">
+<th>Event</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>id name object_id object_model</td>
+</tr>
+<tr class="even">
+<td>== ============ =========
+======================================</td>
+</tr>
+<tr class="odd">
+<td>1 Įkūrimas 1 datasets/gov/example/countries/Country</td>
+</tr>
+<tr class="even">
+<td>2 Įkūrimas 2 datasets/gov/example/countries/Country</td>
+</tr>
+<tr class="odd">
+<td>3 Įkūrimas 1 datasets/gov/example/countries/City</td>
+</tr>
+<tr class="even">
+<td>4 Įkūrimas 2 datasets/gov/example/countries/City</td>
+</tr>
+</tbody>
+</table>
+
+Pavyzdyje aukščiau matome, kad yra du modeliai `Country` ir `City`,
+kuriuos jungia `Event` modelis per `object_id` ir `object_model` laukus.
+Pavyzdžiui `Event` kurio `id` yra 1, siejamas su `Country` modeliu,
+kurio `id` yra 1.
+
+Tokių duomenų struktūros aprašas atrodys taip:
+
+<table>
+<thead>
+<tr class="header">
+<th>d</th>
+<th>d</th>
+<th>r</th>
+<th>b</th>
+<th>m</th>
+<th>property</th>
+<th>type</th>
+<th>ref</th>
+<th>prepare</th>
+<th>level</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1</td>
+<td>dat</td>
+<td>ase</td>
+<td>ts/</td>
+<td>gov</td>
+<td>/example/countries</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><p>--2</p></td>
+<td><p>---</p></td>
+<td><p>---</p></td>
+<td><p>---</p></td>
+<td><p>---Cou</p></td>
+<td><p>------------------ntry</p></td>
+<td><hr /></td>
+<td><p>-------id</p></td>
+<td><hr /></td>
+<td><p>-----4</p></td>
+</tr>
+<tr class="odd">
+<td><p>--3 4 5 6</p></td>
+<td><p>--</p></td>
+<td><p>--</p></td>
+<td><p>--</p></td>
+<td><p>---</p>
+<p>Cit</p></td>
+<td><p>------------------id name cities[] y</p></td>
+<td><p>---------integer string backref</p></td>
+<td><hr />
+<p>City id</p></td>
+<td><hr /></td>
+<td><p>-----4 4 4 4</p></td>
+</tr>
+<tr class="even">
+<td><p>--7 8 9 10</p></td>
+<td><p>--</p></td>
+<td><p>--</p></td>
+<td><p>--</p></td>
+<td><p>---</p>
+<p>Eve</p></td>
+<td><p>------------------id name country nt</p></td>
+<td><p>---------integer string ref</p></td>
+<td><hr />
+<p>Country id</p></td>
+<td><hr /></td>
+<td><p>-----4 4 4 4</p></td>
+</tr>
+<tr class="odd">
+<td><p>--11 12 13 14 15 16</p></td>
+<td><p>--</p></td>
+<td><p>--</p></td>
+<td><p>--</p></td>
+<td><p>---</p></td>
+<td><p>------------------id name object_id object_model object</p></td>
+<td><p>---------integer string integer string generic</p></td>
+<td><hr />
+<p>Country City</p></td>
+<td><hr />
+<p>object_model, object_id</p></td>
+<td><p>-----4 4 4 4 4</p></td>
+</tr>
+</tbody>
+</table>
+
+15-oje eilutėje įtrauktas virtualus `Event.object` laukas, kuris 15-oje
+ir 16-oje eilutėse, `property.ref` stulpelyje išvardina du modelius
+`Country` ir City\`, su kuriais jungiamas šis laukas, per `object_model`
+ir `object_id` laukus, kurie aprašyti atskirai.
+
+`object_id` ir `object_model` aprašomi atskirai tik todėl, kad duomenys
+ateina iš išorinio šaltinio. Jie duomenys rašomi tiesiogiai į `Saugyklą
+<saugykla>`, tada atskirai `generic` laukų apsirašyti nereikia.
+
+## Denormalizuoti duomenys
+
+Denormalizuoti duomenų laukai yra tokie laukai, kurie pateikti viename
+modelyje, tačiau pagal semantinę prasmę priklauso skirtingiems
+modeliams.
+
+Dažniausiai duomenų normalizavimas atveriant duomenis yra
+nepageidaujamas ir duomenų struktūra turėtu būti transformuojama į
+skirtingus modelius, pagal semantinę prasmę. Plačiau apie duomenų
+normalizavimą galite skaityti skyriuje `norm`.
+
+Tačiau tais atvejais, kai vis dėlto norima pateikti duomenis
+denormalizuotoje formoje, duomenų struktūros apraše galima nurodyti,
+kurie duomenų laukai yra denormalizuoti.
+
+Pavyzdys, kaip atrodo denormalizuotų duomenų laukų žymėjimas:
+
+<table>
+<thead>
+<tr class="header">
+<th>d</th>
+<th>r</th>
+<th>b</th>
+<th>m</th>
+<th>property</th>
+<th>type</th>
+<th>ref</th>
+<th>level</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>exa</td>
+<td>mpl</td>
+<td>e</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>---</td>
+<td><p>---</p></td>
+<td><p>---</p></td>
+<td><p>---Cou</p></td>
+<td><p>------------------ntry</p></td>
+<td><hr /></td>
+<td><p>-------code</p></td>
+<td><p>-----4</p></td>
+</tr>
+<tr class="odd">
+<td>--</td>
+<td><p>--</p></td>
+<td><p>--</p></td>
+<td><p>---</p>
+<p>Cit</p></td>
+<td><p>------------------code name@en y</p></td>
+<td><p>---------string text</p></td>
+<td><hr /></td>
+<td><p>-----4 4 3</p></td>
+</tr>
+<tr class="even">
+<td>--</td>
+<td><p>--</p></td>
+<td><p>--</p></td>
+<td><p>---</p></td>
+<td><p>------------------name@en country country.code country.name@en
+country.name@lt</p></td>
+<td><p>---------text ref</p>
+<p>text</p></td>
+<td><hr />
+<p>Country</p></td>
+<td><p>-----4 4 2 2 2</p></td>
+</tr>
+</tbody>
+</table>
+
+Šiame pavyzdyje turime tokius laukus:
+
+`country`  
+Šis laukas yra `ref` tipo, tai reiškia, kad šiame lauke saugomas
+`Country` modelio identifikatorius, kurio pagalba `City` galima susieti
+su `Country`.
+
+`ref` tipo duomenys yra sudėtiniai, tai reiškia, kad per `ref` tipo
+lauką galima pasiekti siejamo modelio laukus, nurodant kito modelio
+laukus po taško.
+
+Todėl pagal nutylėjimą `country ref Country` yra tas pats, kas
+`country._id
+ref Country`, tik `._id` dalis nenurodoma.
+
+`country.code` ir `country.name@en`  
+Šie laukai yra denormalizuoti, tai reiškia, kad jie priklauso `Country`
+modeliui, tačiau duomenys yra dubliuojami ir pateikiami dviejose
+vietose, prie `Country` ir prie `City.country`.
+
+Kadangi `City.country` yra `ref` tipo, tai po taško, galima nurodyti
+kitus šiam siejamam modeliui priklausančius laukus iš kito modelio.
+
+Atkreipkite dėmesį, kad denormalizuotiems laukams nepildomas `type`
+stulpelis, kadangi šių laukų tipas turi sutapti su siejamo modelio laukų
+tipais, taip pat turi sutapti ir laukų pavadinimai.
+
+`country.name@lt`  
+Tais atvejais, kai siejamame modelyje (šiuo atveju `Country` modelyje)
+nėra tam tikrų laukų, tuomet galima juose pateikti ir prie
+`City.country`, tačiau tokiu atveju, būtina nurodyti `type`.
+
+## Brandos lygis
+
+Apibrėžiant ryšius tarp modelių, brandos lygis įrašomas `level`
+stulpelyje atlieka svarbų vaidmenį. Nuo brandos lygio, priklauso, kaip
+turi būti interpretuojamas išorinis raktas, siejamas su kitu modeliu.
+
+1 brandos lygis: Susiejimas neįmanomas  
+Duomenys pateikti tokia forma, kurios pagalba dviejų modelių jungimas
+nėra įmanomas.
+
+Pavyzdžiui, pateikta adreso tekstinė forma, kuri nesutampa su tekstine
+forma pateikiama oficialiame adresų registre arba naudojamas toks tam
+tikras identifikatorius, kuris nėra surištas su siejamo modelio pirminiu
+raktu.
+
+2 brandos lygis: Susiejimas nepatikimas  
+Duomenys pateikiami tam tikra forma, kuri neužtikrina patikimo duomenų
+susiejimo, tačiau siejimui atliekamas pagal siejamo modelio atributą,
+kuris negarantuoja unikalaus objekto identifikavimo.
+
+Pavyzdžiui siejimas daromas pagal pavadinimą, kuris gali keistis arba ne
+visais atvejais sutampa.
+
+3 brandos lygis: Susiejimas ne per pirminį raktą  
+Duomenims susieti naudojamas patikimas identifikatorius, kuris yra
+surištas siejamo modelio pirminiu raktu, tačiau naudojamas ne pirminis
+raktas, o kitas identifikatorius.
+
+4 brandos lygis: Susiejimas per pirminį raktą  
+Susiejimas daromas per pirminį raktą.
+
+### Susiejimas neįmanomas
+
+Jei `ref` tipui nurodytas 1 arba žemesnis brandos lygis, tai reiškia,
+duomenų jungimas nėra įmanomas. Tokiu atveju, atveriant duomenis,
+`property` įgaus tokį tipą, koks yra lauko su kuriuo siejamas ryšys
+tipas.
+
+Pavyzdžiui:
+
+<table>
+<thead>
+<tr class="header">
+<th>d</th>
+<th>r</th>
+<th>b</th>
+<th>m</th>
+<th>property</th>
+<th>type</th>
+<th>ref</th>
+<th>level</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>exa</td>
+<td>mpl</td>
+<td>e</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>---</td>
+<td><p>---</p></td>
+<td><p>---</p></td>
+<td><p>---Cou</p></td>
+<td><p>------------------ntry</p></td>
+<td><hr /></td>
+<td><p>---------name@lt</p></td>
+<td><p>-----4</p></td>
+</tr>
+<tr class="odd">
+<td>--</td>
+<td><p>--</p></td>
+<td><p>--</p></td>
+<td><p>---</p>
+<p>Cit</p></td>
+<td><p>------------------name@lt y</p></td>
+<td><p>---------text</p></td>
+<td><hr />
+<p>name</p></td>
+<td><p>-----4 4</p></td>
+</tr>
+<tr class="even">
+<td>--</td>
+<td><p>--</p></td>
+<td><p>--</p></td>
+<td><p>---</p></td>
+<td><p>------------------name@lt country</p></td>
+<td><p>---------text ref</p></td>
+<td><hr />
+<p>Country</p></td>
+<td><p>-----4 1</p></td>
+</tr>
+</tbody>
+</table>
+
+Šiuo atveju, `City.country` yra siejamas su `Country.name`. Kadangi
+`City.country` brandos lygis yra 2, tai reiškia, kad `City.country` ir
+`Country.name` pavadinimai nesutampa ir jungimo atlikti neįmanoma. Tokiu
+atveju, `City.country` tipas bus ne `ref`, o toks pat, kaip
+`Country.name`, t.y. `text`.
+
+Tačiau, metaduomenyse išliks informacija, apie tai, kad šios lentelės
+yra susijusios, tačiau dėl prasto duomenų brandos lygios, realus
+susiejimas nėra įmanomas.
+
+Jei modeliai yra susiję, tačiau, tokio duomenų lauko, per kurį galima
+būtų atlikti susiejimą iš vis nėra, tuomet, tokį lauką galima sukurti,
+nurodant brandos lygį 0. Pavyzdžiui:
+
+<table>
+<thead>
+<tr class="header">
+<th>d</th>
+<th>r</th>
+<th>b</th>
+<th>m</th>
+<th>property</th>
+<th>type</th>
+<th>ref</th>
+<th>level</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>exa</td>
+<td>mpl</td>
+<td>e</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>---</td>
+<td><p>---</p></td>
+<td><p>---</p></td>
+<td><p>---Cou</p></td>
+<td><p>------------------ntry</p></td>
+<td><hr /></td>
+<td><p>-----------------name@lt</p></td>
+<td><p>-----4</p></td>
+</tr>
+<tr class="odd">
+<td>--</td>
+<td><p>--</p></td>
+<td><p>--</p></td>
+<td><p>---</p>
+<p>Cit</p></td>
+<td><p>------------------name@lt name@en y</p></td>
+<td><p>---------text text</p></td>
+<td><hr />
+<p>name</p></td>
+<td><p>-----4 0 4</p></td>
+</tr>
+<tr class="even">
+<td>--</td>
+<td><p>--</p></td>
+<td><p>--</p></td>
+<td><p>---</p></td>
+<td><p>------------------name@en country</p></td>
+<td><p>---------text ref</p></td>
+<td><hr />
+<p>Country[name@en]</p></td>
+<td><p>-----4 1</p></td>
+</tr>
+</tbody>
+</table>
+
+Šioje vietoje `City.country` tampa `country@en`, kurio tipas yra `text`.
+O į `Country` yra įtrauktas papildomas laukas `name@en`, per kurį ir
+atliekamas susiejimas, t.y. per kurį galėtu būti atliktas susiejimas,
+jei toks laukas egzistuotų ne tik `City.country`, bet ir
+`Country.name@en`.
+
+### Susiejimas nepatikimas
+
+Jei `ref` tipui suteiktas 2 brandos lygis, tai reiškia, kad susiejimas
+yra įmanomas, tačiau nėra garantijos, kad jis veiks visais atvejais.
+
+Susiejimas laikomas nepatikimu, tada, kai siejimas atliekamas ne
+patikimo unikalaus identifikatoriaus pagalba, o per pavadinimą ar
+panašiais būdais.
+
+Pavadinimai gali keistis, gali dubliuotis, gal skirtis jų užrašymo
+forma, todėl toks jungimas laikomas nepatikimu.
+
+Toks jungimas ir 2 brandos lygio žymėjimas taikomas tik tais atvejais,
+kai jungimas daromas, per jungiamo modelio atributą. Pavyzdžiui:
+
+<table>
+<thead>
+<tr class="header">
+<th>d</th>
+<th>r</th>
+<th>b</th>
+<th>m</th>
+<th>property</th>
+<th>type</th>
+<th>ref</th>
+<th>level</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>exa</td>
+<td>mpl</td>
+<td>e</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>---</td>
+<td><p>---</p></td>
+<td><p>---</p></td>
+<td><p>---Cou</p></td>
+<td><p>------------------ntry</p></td>
+<td><hr /></td>
+<td><p>---------name@lt</p></td>
+<td><p>-----4</p></td>
+</tr>
+<tr class="odd">
+<td>--</td>
+<td><p>--</p></td>
+<td><p>--</p></td>
+<td><p>---</p>
+<p>Cit</p></td>
+<td><p>------------------name@lt y</p></td>
+<td><p>---------text</p></td>
+<td><hr />
+<p>name</p></td>
+<td><p>-----4 4</p></td>
+</tr>
+<tr class="even">
+<td>--</td>
+<td><p>--</p></td>
+<td><p>--</p></td>
+<td><p>---</p></td>
+<td><p>------------------name@lt country</p></td>
+<td><p>---------text ref</p></td>
+<td><hr />
+<p>Country</p></td>
+<td><p>-----4 2</p></td>
+</tr>
+</tbody>
+</table>
+
+Šiuo atveju, kadangi `City.country` brandos lygis yra `2`, tai reiškia,
+kad `City.country` duomenys yra realiai paimti iš `Country.name@lt`. Jei
+`City.country` būtų paimti ne iš `Country.name@lt`, o iš kokio nors kito
+šaltinio ir gali nesutapti, tada brandos lygis turėtu būti `1`.
+
+Tai reiškia, kad `2` brandos lygis žymimas tik tais atvejais, kai
+išorinis raktas yra paimtas iš siejamo modelio atributo.
+
+### Susiejimas ne per pirminį raktą
+
+Jei `ref` tipui suteiktas 3 ar didesnis brandos lygis, vadinasi
+susiejimas yra patikimas. Duomenys siejami naudojant patikimus unikalius
+identifikatorius, kurie nesidubliuoja, nesikeičia ir užrašomi visada
+vienodai.
+
+Dažniausiai patikimais identifikatoriais laikomi sveiki skaičiai, tam
+tikri sutartiniai kodai ir kiti specializuoti identifikatoriai, tokie
+kaip UUID.
+
+Tačiau, naudojamas ne pirminis raktas, o kitas duomenų laukas.
+Pavyzdžiui:
+
+<table>
+<thead>
+<tr class="header">
+<th>d</th>
+<th>r</th>
+<th>b</th>
+<th>m</th>
+<th>property</th>
+<th>type</th>
+<th>ref</th>
+<th>level</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>exa</td>
+<td>mpl</td>
+<td>e</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>---</td>
+<td><p>---</p></td>
+<td><p>---</p></td>
+<td><p>---Cou</p></td>
+<td><p>------------------ntry</p></td>
+<td><hr /></td>
+<td><p>-------------id</p></td>
+<td><p>-----4</p></td>
+</tr>
+<tr class="odd">
+<td>--</td>
+<td><p>--</p></td>
+<td><p>--</p></td>
+<td><p>---</p>
+<p>Cit</p></td>
+<td><p>------------------id code name@lt y</p></td>
+<td><p>---------integer string text</p></td>
+<td><hr />
+<p>name</p></td>
+<td><p>-----4 4 4 4</p></td>
+</tr>
+<tr class="even">
+<td>--</td>
+<td><p>--</p></td>
+<td><p>--</p></td>
+<td><p>---</p></td>
+<td><p>------------------name@lt country</p></td>
+<td><p>---------text ref</p></td>
+<td><hr />
+<p>Country[code]</p></td>
+<td><p>-----4 3</p></td>
+</tr>
+</tbody>
+</table>
+
+Skirtumas tarp `3` ir `4` brandos lygio iš esmės susijęs su duomenų
+saugojimu Saugykloje ar kitoje vietoje, kur pirminiai raktai yra
+generuojami ir jų negalima keisti. Jei naudojamas `3` brandos lygis,
+tuomet saugykloje saugomas, ne išorinis saugyklos identifikatorius UUID,
+o vidinis duomenų rinkinio identifikatorius.
+
+Publikuojant duomenis iš tam tikro šaltinio, išoriniai raktas visada
+turėtu būti konvertuojami į išorinį pirminį raktą, tačiau tais atvejais,
+jei dėl tam tikrų priežasčių tas nėra daroma, tuomet žymimas 3 brandos
+lygis ir publikuojami ne išoriniai pirminiai raktai, o šaltinio
+vidiniai.
+
+Pavyzdžiui, jei turime tokius duomenis:
+
+<table>
+<thead>
+<tr class="header">
+<th>example/Country</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>_id id code name@lt</td>
+</tr>
+<tr class="even">
+<td>===================================== ==== ===== =========</td>
+</tr>
+<tr class="odd">
+<td>4dbb1b77-a930-4f2a-8ef4-f05b89f0fcfe 1 lt Lietuva</td>
+</tr>
+</tbody>
+</table>
+
+Ir jei `City.country` turi brandos lygį `3`, tada `City` duomenys
+atrodys taip:
+
+<table>
+<thead>
+<tr class="header">
+<th>example/City</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>_id name@lt country._id</td>
+</tr>
+<tr class="even">
+<td>===================================== ========= ============</td>
+</tr>
+<tr class="odd">
+<td>096e054e-7a4c-44cc-8f27-98af815080d5 Vilnius lt</td>
+</tr>
+</tbody>
+</table>
+
+### Susiejimas per pirminį raktą
+
+Šiuo atveju, brandos lygis žymimas `4` ir skirtumas nuo `3` brandos
+lygio yra toks, kad duomenyse naudojamas išorinis pirminis raktas.
+Pavyzdžiui:
+
+<table>
+<thead>
+<tr class="header">
+<th>d</th>
+<th>r</th>
+<th>b</th>
+<th>m</th>
+<th>property</th>
+<th>type</th>
+<th>ref</th>
+<th>level</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>exa</td>
+<td>mpl</td>
+<td>e</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>---</td>
+<td><p>---</p></td>
+<td><p>---</p></td>
+<td><p>---Cou</p></td>
+<td><p>------------------ntry</p></td>
+<td><hr /></td>
+<td><p>--------id</p></td>
+<td><p>-----4</p></td>
+</tr>
+<tr class="odd">
+<td>--</td>
+<td><p>--</p></td>
+<td><p>--</p></td>
+<td><p>---</p>
+<p>Cit</p></td>
+<td><p>------------------id code name@lt y</p></td>
+<td><p>---------integer string text</p></td>
+<td><hr />
+<p>name</p></td>
+<td><p>-----4 4 4 4</p></td>
+</tr>
+<tr class="even">
+<td>--</td>
+<td><p>--</p></td>
+<td><p>--</p></td>
+<td><p>---</p></td>
+<td><p>------------------name@lt country</p></td>
+<td><p>---------text ref</p></td>
+<td><hr />
+<p>Country</p></td>
+<td><p>-----4 4</p></td>
+</tr>
+</tbody>
+</table>
+
+Turint tokį struktūros aprašą, kur `City.country` brandos lygis yra `4`,
+duomenys atrodys taip:
+
+<table>
+<thead>
+<tr class="header">
+<th>example/Country</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>_id id code name@lt</td>
+</tr>
+<tr class="even">
+<td>===================================== ==== ===== =========</td>
+</tr>
+<tr class="odd">
+<td>4dbb1b77-a930-4f2a-8ef4-f05b89f0fcfe 1 lt Lietuva</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr class="header">
+<th>example/City</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>_id name@lt country._id</td>
+</tr>
+<tr class="even">
+<td>===================================== =========
+=====================================</td>
+</tr>
+<tr class="odd">
+<td>096e054e-7a4c-44cc-8f27-98af815080d5 Vilnius
+4dbb1b77-a930-4f2a-8ef4-f05b89f0fcfe</td>
+</tr>
+</tbody>
+</table>
+
+Matome, kad `City.country._id` yra `Country` pirminis raktas. Tai
+reiškia, kad vidiniai duomenų rinkinio raktai konvertuojami į išorinius.

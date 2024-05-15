@@ -1,0 +1,391 @@
+# Duomenų šaltiniai
+
+## SQL
+
+<div id="sql-resource-source">
+
+<div class="describe">
+
+resource.source
+
+Duomenų bazės URI. Duomenų bazės URI formuojamas naudojant tokį [ABNF]()
+šabloną:
+
+``` abnf
+uri = type ["+" driver] "://"
+      [user [":" password] "@"]
+      host [":" port]
+      "/" database ["?" params]
+```
+
+Šablone naudojamų kintamųjų aprašymas:
+
+<div class="describe">
+
+type
+
+Duomenų bazių serverio pavadinimas:
+
+<div class="describe">
+
+sqlite
+
+</div>
+
+<div class="describe">
+
+postgresql
+
+</div>
+
+<div class="describe">
+
+mysql
+
+</div>
+
+<div class="describe">
+
+oracle
+
+</div>
+
+<div class="describe">
+
+mssql
+
+</div>
+
+</div>
+
+<div class="describe">
+
+driver
+
+Konkretaus duomenų bazių serverio tvarkyklė naudojama komunikacijai su
+duomenų baze.
+
+</div>
+
+<div class="describe">
+
+user
+
+Naudotojo vardas jungimuisi prie duomenų bazės.
+
+</div>
+
+<div class="describe">
+
+password
+
+Duomenų bazės naudotojo slaptažodis.
+
+</div>
+
+<div class="describe">
+
+host
+
+Duomenų bazių serverio adresas.
+
+</div>
+
+<div class="describe">
+
+port
+
+Duomenų bazių serverio prievadas.
+
+</div>
+
+<div class="describe">
+
+database
+
+Konkrečios duomenų bazės pavadinimas.
+
+</div>
+
+<div class="describe">
+
+params
+
+Papildomi parametrai Query string formatu.
+
+</div>
+
+</div>
+
+</div>
+
+<div class="describe">
+
+resource.prepare
+
+Formulė skirta papildomiems veiksmams reikalingiems ryšiui su duomenų
+baze užmezgimui ir duomenų bazės paruošimui, kad būtų galima skaityt
+duomenis.
+
+</div>
+
+<div class="describe">
+
+resource.type
+
+Galimos reikšmės: <span class="title-ref">sql</span>.
+
+</div>
+
+<div class="describe">
+
+resource.prepare
+
+<div class="function">
+
+connect(dsn, schema: str = None, encoding: str = 'utf-8')
+
+arg dsn  
+Duomenų bazės URI, kaip nurodyta `resource.source
+<sql-resource-source>`.
+
+arg schema  
+Duomenų bazės schema.
+
+arg encoding  
+Duomenų bazės koduotė.
+
+Naudojama tais atvejais, kai jungiantis prie duomenų bazės reikia
+perduoti papildomus parametrus.
+
+</div>
+
+</div>
+
+<div class="describe">
+
+model.source
+
+Duomenų bazėje esančios lentelės pavadinimas.
+
+</div>
+
+<div class="describe">
+
+property.source
+
+Lentelės stulpelio pavadinimas.
+
+</div>
+
+## CSV
+
+<div class="describe">
+
+resource.type
+
+Galimos reikšmės: <span class="title-ref">csv</span>,
+<span class="title-ref">tsv</span>.
+
+</div>
+
+<div class="describe">
+
+resource.source
+
+Žiūrėti `failai`.
+
+</div>
+
+<div class="describe">
+
+resource.prepare
+
+<div class="function">
+
+tabular(sep: ",")
+
+Nurodoma kaip CSV faile atskirti stulpeliai. Pagal nutylėjimą
+<span class="title-ref">separator</span> reikšmė yra
+<span class="title-ref">,</span>.
+
+</div>
+
+</div>
+
+<div class="describe">
+
+model.source
+
+Nenaudojama, kadangi CSV resursas gali turėti tik vieną lentelę.
+
+</div>
+
+<div class="describe">
+
+model.prepare
+
+Žiūrėti `stulpeliai-lentelėje`.
+
+</div>
+
+<div class="describe">
+
+property.source
+
+Žiūrėti `stulpeliai-lentelėje`.
+
+</div>
+
+## JSON
+
+<div class="describe">
+
+resource.type
+
+Galimos reikšmės: <span class="title-ref">json</span>,
+<span class="title-ref">jsonl</span>.
+
+</div>
+
+<div class="describe">
+
+resource.source
+
+Žiūrėti `failai`.
+
+</div>
+
+<div class="describe">
+
+model.source
+
+JSON objekto savybės pavadinimas, kuri rodo į masyvą reikšmių, kurios
+bus naudojamos kaip modelio duomenų eilutės. Kiekvienas masyvo elementas
+atskirai aprašomas `property` dimensijoje. Jei JSON objektas yra
+kompleksinis žiūrėti `kompleksinės-struktūros`.
+
+</div>
+
+<div class="describe">
+
+property.source
+
+JSON objekto savybė, kurioje pateikiami aprašomo stulpelio duomenys.
+
+</div>
+
+<div class="describe">
+
+property.prepare
+
+Žiūrėti `kompleksinės-struktūros`.
+
+</div>
+
+## XML
+
+<div class="describe">
+
+resource.type
+
+Galimos reikšmės: <span class="title-ref">xml</span>,
+<span class="title-ref">html</span>.
+
+</div>
+
+<div class="describe">
+
+resource.source
+
+Žiūrėti `failai`.
+
+</div>
+
+<div class="describe">
+
+model.source
+
+[XPath](https://en.wikipedia.org/wiki/XPath) iki elementų sąrašo kuriame
+yra modelio duomenys.
+
+</div>
+
+<div class="describe">
+
+model.prepare
+
+Jei neužpildyta, vykdoma `xpath(self) <xml.xpath>` funkcija.
+
+<div class="function">
+
+xpath(expr)
+
+Vykdo nurodyta <span class="title-ref">expr</span>, viso XML dokumento
+kontekste.
+
+</div>
+
+</div>
+
+<div class="describe">
+
+property.source
+
+[XPath](https://en.wikipedia.org/wiki/XPath) iki elemento kuriame yra
+duomenys.
+
+</div>
+
+<div class="describe">
+
+model.prepare
+
+Jei neužpildyta, vykdoma `xpath(self) <xml.xpath>` funkcija, iš `model`
+gauto elemento kontekste.
+
+</div>
+
+## XLSX
+
+<div class="describe">
+
+resource.type
+
+Galimos reikšmės: <span class="title-ref">xlsx</span>,
+<span class="title-ref">xls</span> arba
+<span class="title-ref">odt</span>.
+
+</div>
+
+<div class="describe">
+
+resource.source
+
+Žiūrėti `failai`.
+
+</div>
+
+<div class="describe">
+
+model.source
+
+Skaičiuoklės faile esančio lapo pavadinimas.
+
+</div>
+
+<div class="describe">
+
+model.prepare
+
+Žiūrėti `stulpeliai-lentelėje`.
+
+</div>
+
+<div class="describe">
+
+property.source
+
+Žiūrėti `stulpeliai-lentelėje`.
+
+</div>

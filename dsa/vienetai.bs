@@ -1,0 +1,870 @@
+# Matavimo vienetai
+
+## Apibrėžtis laike
+
+`date` ir `datetime` tipo duomenų laukams gali būti žymimas ir `laiko
+<temporal-types>` duomenų tikslumas, pavyzdžiui:
+
+<table>
+<thead>
+<tr class="header">
+<th>d</th>
+<th>r</th>
+<th>b</th>
+<th>m</th>
+<th>property</th>
+<th>type</th>
+<th>ref</th>
+<th>level</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>dat</td>
+<td>ase</td>
+<td>ts/</td>
+<td>exa</td>
+<td>mple</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>---</td>
+<td><p>---</p></td>
+<td><p>---</p></td>
+<td><p>---Mat</p></td>
+<td><p>-------------avimas</p></td>
+<td><hr /></td>
+<td><p>-----id</p></td>
+<td><hr /></td>
+</tr>
+<tr class="odd">
+<td>--</td>
+<td><p>--</p></td>
+<td><p>--</p></td>
+<td><p>---</p></td>
+<td><p>-------------id</p></td>
+<td><p>-----------------------integer</p></td>
+<td><hr /></td>
+<td><p>-----4</p></td>
+</tr>
+<tr class="even">
+<td>--</td>
+<td><p>--</p></td>
+<td><p>--</p></td>
+<td><p>--</p></td>
+<td><p>-------------laikas vieta</p></td>
+<td><p>-----------------------datetime geometry(point, 4326)</p></td>
+<td><p>-----1S 1m</p></td>
+<td><p>-----4 4</p></td>
+</tr>
+</tbody>
+</table>
+
+Šiuo atveju, nurodyta, kad laukas `laikas` yra 1 sekundės tikslumu, o
+`vieta` 1 metro tikslumu.
+
+Žymint laiko tikslumą, galite naudoti tokius sutartinius simbolius
+(atkreipkite dėmesį, kad šie vienetai veikia tik su `date` ir `datetime`
+tipais):
+
+<table>
+<thead>
+<tr class="header">
+<th>Simbolis</th>
+<th>Prasmė</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Y</td>
+<td>Metai</td>
+</tr>
+<tr class="even">
+<td>Q</td>
+<td>Metų ketvirčiai</td>
+</tr>
+<tr class="odd">
+<td>M</td>
+<td>Mėnesiai</td>
+</tr>
+<tr class="even">
+<td>W</td>
+<td>Savaitės</td>
+</tr>
+<tr class="odd">
+<td>D</td>
+<td>Dienos</td>
+</tr>
+<tr class="even">
+<td>H</td>
+<td>Valandos</td>
+</tr>
+<tr class="odd">
+<td>T</td>
+<td>Minutės</td>
+</tr>
+<tr class="even">
+<td>S</td>
+<td>Sekundės</td>
+</tr>
+<tr class="odd">
+<td>L</td>
+<td>Milisekundės</td>
+</tr>
+<tr class="even">
+<td>U</td>
+<td>Mikrosekundės</td>
+</tr>
+<tr class="odd">
+<td>N</td>
+<td>Nanosekundžės</td>
+</tr>
+</tbody>
+</table>
+
+## Apibrėžtis erdvėje
+
+`geometry` tipo duomenų laukams galibūti žymimas `erdvinių
+<spatial-types>` duomenų tikslumas, pavyzdžiui:
+
+<table>
+<thead>
+<tr class="header">
+<th>Simbolis</th>
+<th>Prasmė</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>nm</td>
+<td>Nanometrai (10⁻⁹ m)</td>
+</tr>
+<tr class="even">
+<td>mm</td>
+<td>Milimetrai (10⁻³ m)</td>
+</tr>
+<tr class="odd">
+<td>cm</td>
+<td>Centimetrai (10⁻² m)</td>
+</tr>
+<tr class="even">
+<td>m</td>
+<td>Metrai</td>
+</tr>
+<tr class="odd">
+<td>km</td>
+<td>Kilometrai (10³ m)</td>
+</tr>
+</tbody>
+</table>
+
+## Kokybiniai duomenys
+
+Kokybiniai duomenys skirstomi į dvi kategorijas:
+
+- pavadinimai ir identifikatoriai
+- kategoriniai duomenys
+
+Pavadinimai ir identifikatoriai `property.ref` stulpelyje neturi jokio
+žymėjimo ir jiems suteikiamas `4` brandos lygis.
+
+Kategoriniai duomenys žymini naudojant papildomą `enum` dimensiję,
+kurioje išvardinamos visos galimos kategorinių duomenų reikšmės.
+
+Jei kategoriniai duomenys yra paliginami, pavyzdžiui:
+
+- puikiai
+- gerai
+- vidutiniškai
+- blogai
+
+Tada, tokiems duomenims, turi būti naudojamas `integer` tipas, kad
+nebūtų prarastos palyginamosios savybės.
+
+Jei duomenys yra nepalyginami, pavyzdžiui:
+
+- raudona
+- geltona
+- žalia
+- mėlyna
+
+tada nebūtina naudoti `integer` tipą.
+
+## Kiekybiniai duomenys
+
+Matavimo vienetai naudojant [SI
+simbolius](https://en.wikipedia.org/wiki/International_System_of_Units),
+[išvestinius SI
+simbolius](https://en.wikipedia.org/wiki/SI_derived_unit) ir [simbolius
+patvirtintus naudojimui su
+SI](https://en.wikipedia.org/wiki/Non-SI_units_mentioned_in_the_SI),
+pateikiami `property.ref` stulpelyje.
+
+Pateikus vienetus, laukui gali būti suteikiamas 4-as brandos lygis.
+
+Pavyzdys:
+
+<table>
+<thead>
+<tr class="header">
+<th>d</th>
+<th>r</th>
+<th>b</th>
+<th>m</th>
+<th>property</th>
+<th>type</th>
+<th>ref</th>
+<th>level</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>dat</td>
+<td>ase</td>
+<td>ts/</td>
+<td>exa</td>
+<td>mple</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>---</td>
+<td><p>---</p></td>
+<td><p>---</p></td>
+<td><p>---Mat</p></td>
+<td><p>-------------avimas</p></td>
+<td><hr /></td>
+<td><p>-----id</p></td>
+<td><hr /></td>
+</tr>
+<tr class="odd">
+<td>--</td>
+<td><p>--</p></td>
+<td><p>--</p></td>
+<td><p>---</p></td>
+<td><p>-------------id</p></td>
+<td><p>--------integer</p></td>
+<td><hr /></td>
+<td><p>-----4</p></td>
+</tr>
+<tr class="even">
+<td>--</td>
+<td><p>--</p></td>
+<td><p>--</p></td>
+<td><p>--</p></td>
+<td><p>-------------temperatura svorlis plotas turis greitis</p></td>
+<td><p>--------number number number number number</p></td>
+<td><p>-----°C kg m² m³ km/h</p></td>
+<td><p>-----4 4 4 4 4</p></td>
+</tr>
+</tbody>
+</table>
+
+Vienetai užrašomi naudojant matematinę notaciją, kurioje galima naudoti
+skaičius, daugybos ir dalybos simbolius, kėlimą laipsniu ir atskirų
+vienetų sudėtį:
+
+<table>
+<thead>
+<tr class="header">
+<th>Žymėjimas</th>
+<th>Reikšmė</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>⋅ · *</td>
+<td>Daugyba</td>
+</tr>
+<tr class="even">
+<td>/</td>
+<td>Dalyba</td>
+</tr>
+<tr class="odd">
+<td>(tarpas)</td>
+<td>Sudėtis</td>
+</tr>
+<tr class="even">
+<td>^<sup>(+-)(skaičius)</sup> arba ⁺ ⁻ ⁰ ¹ ² ³ ⁴ ⁵ ⁶ ⁷ ⁸ ⁹</td>
+<td>Kėlimas laipsniu</td>
+</tr>
+</tbody>
+</table>
+
+Pavyzdžiai:
+
+> m  
+> 1m  
+> 10m  
+> m^2  
+> m²  
+> km¹⁰  
+> kg⋅m²⋅s⁻³⋅A⁻¹  
+> kg\*m^2\*s^-3⋅A^-1  
+> 8kg⋅m²⋅s⁻³⋅A⁻¹  
+> mg/l  
+> g/m^2  
+> mg/m^3  
+> mm  
+> U/m^2  
+> U/m^3  
+> %  
+> ha  
+> min  
+> h  
+> bar  
+> U  
+> 10^6s  
+> 10⁶s  
+> μ/m³  
+> yr  
+> 3mo  
+> yr 2mo 4wk  
+> °C  
+> °
+
+### Prefiksai
+
+Kiekybiniai matavimo vienetai gali turėti tokius prefiksus:
+
+<table>
+<thead>
+<tr class="header">
+<th>Žymėjimas</th>
+<th>10<sup>n</sup></th>
+<th>Priešdėlis</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Y</td>
+<td>10<sup>24</sup></td>
+<td>yotta</td>
+</tr>
+<tr class="even">
+<td>Z</td>
+<td>10<sup>21</sup></td>
+<td>zetta</td>
+</tr>
+<tr class="odd">
+<td>E</td>
+<td>10<sup>18</sup></td>
+<td>exa</td>
+</tr>
+<tr class="even">
+<td>P</td>
+<td>10<sup>15</sup></td>
+<td>peta</td>
+</tr>
+<tr class="odd">
+<td>T</td>
+<td>10<sup>12</sup></td>
+<td>tera</td>
+</tr>
+<tr class="even">
+<td>G</td>
+<td>10<sup>9</sup></td>
+<td>giga</td>
+</tr>
+<tr class="odd">
+<td>M</td>
+<td>10<sup>6</sup></td>
+<td>mega</td>
+</tr>
+<tr class="even">
+<td>k</td>
+<td>10<sup>3</sup></td>
+<td>kilo</td>
+</tr>
+<tr class="odd">
+<td>h</td>
+<td>10<sup>2</sup></td>
+<td>hecto</td>
+</tr>
+<tr class="even">
+<td>da</td>
+<td>10<sup>1</sup></td>
+<td>deca</td>
+</tr>
+<tr class="odd">
+<td>d</td>
+<td>10<sup>-1</sup></td>
+<td>deci</td>
+</tr>
+<tr class="even">
+<td>c</td>
+<td>10<sup>-2</sup></td>
+<td>centi</td>
+</tr>
+<tr class="odd">
+<td>m</td>
+<td>10<sup>-3</sup></td>
+<td>milli</td>
+</tr>
+<tr class="even">
+<td>µ</td>
+<td>10<sup>-6</sup></td>
+<td>micro</td>
+</tr>
+<tr class="odd">
+<td>n</td>
+<td>10<sup>-9</sup></td>
+<td>nano</td>
+</tr>
+<tr class="even">
+<td>p</td>
+<td>10<sup>-12</sup></td>
+<td>pico</td>
+</tr>
+<tr class="odd">
+<td>f</td>
+<td>10<sup>-15</sup></td>
+<td>femto</td>
+</tr>
+<tr class="even">
+<td>a</td>
+<td>10<sup>-18</sup></td>
+<td>atto</td>
+</tr>
+<tr class="odd">
+<td>z</td>
+<td>10<sup>-21</sup></td>
+<td>zepto</td>
+</tr>
+<tr class="even">
+<td>y</td>
+<td>10<sup>-24</sup></td>
+<td>yocto</td>
+</tr>
+</tbody>
+</table>
+
+### Vienetai
+
+#### Specialiejie vienetai
+
+<table>
+<thead>
+<tr class="header">
+<th>Žymėjimas</th>
+<th>Pavadinimas</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>U</td>
+<td>vienetai (keikis vienetais)</td>
+</tr>
+<tr class="even">
+<td>%</td>
+<td>procentai</td>
+</tr>
+</tbody>
+</table>
+
+#### Laiko vienetai
+
+Naudojami tik tais atvejais, kai matuojamas laiko kiekis, o ne data ir
+laikas. Datos ir laiko (`date` ir `datetime` tipai) tikslumui žymėti,
+naudojamos kitos žymės.
+
+<table>
+<thead>
+<tr class="header">
+<th>Žymėjimas</th>
+<th>Pavadinimas</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>s</td>
+<td>sekundė</td>
+</tr>
+<tr class="even">
+<td>min</td>
+<td>minutė</td>
+</tr>
+<tr class="odd">
+<td>h</td>
+<td>valanda</td>
+</tr>
+<tr class="even">
+<td>d</td>
+<td>diena (24 valandos)</td>
+</tr>
+<tr class="odd">
+<td>wk</td>
+<td>savaitė (7 dienos)</td>
+</tr>
+<tr class="even">
+<td>mo</td>
+<td>mėnuo (28-31 diena arba 4 savaitės)</td>
+</tr>
+<tr class="odd">
+<td>yr</td>
+<td>metai (354.37 dienos arba 12 mėnesių)</td>
+</tr>
+</tbody>
+</table>
+
+#### SI Baziniai vienetai
+
+<table>
+<thead>
+<tr class="header">
+<th>Žymėjimas</th>
+<th>Pavadinimas</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>m</td>
+<td>metre</td>
+</tr>
+<tr class="even">
+<td>g</td>
+<td>gram</td>
+</tr>
+<tr class="odd">
+<td>s</td>
+<td>second</td>
+</tr>
+<tr class="even">
+<td>A</td>
+<td>ampere</td>
+</tr>
+<tr class="odd">
+<td>K</td>
+<td>kelvin</td>
+</tr>
+<tr class="even">
+<td>mol</td>
+<td>mole</td>
+</tr>
+<tr class="odd">
+<td>cd</td>
+<td>candela</td>
+</tr>
+</tbody>
+</table>
+
+#### SI Išvestiniai vienetai
+
+<table>
+<thead>
+<tr class="header">
+<th>Žymėjimas</th>
+<th>Pavadinimas</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Hz</td>
+<td>hertz</td>
+</tr>
+<tr class="even">
+<td>rad</td>
+<td>radian</td>
+</tr>
+<tr class="odd">
+<td>sr</td>
+<td>steradian</td>
+</tr>
+<tr class="even">
+<td>N</td>
+<td>newton</td>
+</tr>
+<tr class="odd">
+<td>Pa</td>
+<td>pascal</td>
+</tr>
+<tr class="even">
+<td>J</td>
+<td>joule</td>
+</tr>
+<tr class="odd">
+<td>W</td>
+<td>watt</td>
+</tr>
+<tr class="even">
+<td>C</td>
+<td>coulomb</td>
+</tr>
+<tr class="odd">
+<td>V</td>
+<td>volt</td>
+</tr>
+<tr class="even">
+<td>F</td>
+<td>farad</td>
+</tr>
+<tr class="odd">
+<td>Ω</td>
+<td>ohm</td>
+</tr>
+<tr class="even">
+<td>S</td>
+<td>siemens</td>
+</tr>
+<tr class="odd">
+<td>Wb</td>
+<td>weber</td>
+</tr>
+<tr class="even">
+<td>T</td>
+<td>tesla</td>
+</tr>
+<tr class="odd">
+<td>H</td>
+<td>henry</td>
+</tr>
+<tr class="even">
+<td>°C</td>
+<td>degree Celsius</td>
+</tr>
+<tr class="odd">
+<td>lm</td>
+<td>lumen</td>
+</tr>
+<tr class="even">
+<td>lx</td>
+<td>lux</td>
+</tr>
+<tr class="odd">
+<td>Bq</td>
+<td>becquerel</td>
+</tr>
+<tr class="even">
+<td>Gy</td>
+<td>gray</td>
+</tr>
+<tr class="odd">
+<td>Sv</td>
+<td>sievert</td>
+</tr>
+<tr class="even">
+<td>kat</td>
+<td>katal</td>
+</tr>
+</tbody>
+</table>
+
+#### Kiti vienetai
+
+<table>
+<thead>
+<tr class="header">
+<th>Žymėjimas</th>
+<th>Pavadinimas</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>au</td>
+<td>astronomical unit</td>
+</tr>
+<tr class="even">
+<td>°</td>
+<td>degree</td>
+</tr>
+<tr class="odd">
+<td>′</td>
+<td>arcminute</td>
+</tr>
+<tr class="even">
+<td>″</td>
+<td>arcsecond</td>
+</tr>
+<tr class="odd">
+<td>ha</td>
+<td>hectare</td>
+</tr>
+<tr class="even">
+<td>l</td>
+<td>litre</td>
+</tr>
+<tr class="odd">
+<td>L</td>
+<td>litre</td>
+</tr>
+<tr class="even">
+<td>t</td>
+<td>tonne</td>
+</tr>
+<tr class="odd">
+<td>Da</td>
+<td>dalton</td>
+</tr>
+<tr class="even">
+<td>eV</td>
+<td>electronvolt</td>
+</tr>
+<tr class="odd">
+<td>Np</td>
+<td>neper</td>
+</tr>
+<tr class="even">
+<td>B</td>
+<td>bel</td>
+</tr>
+<tr class="odd">
+<td>dB</td>
+<td>decibel</td>
+</tr>
+<tr class="even">
+<td>Gal</td>
+<td>gal (acceleration)</td>
+</tr>
+<tr class="odd">
+<td>u</td>
+<td>unified atomic mass unit</td>
+</tr>
+<tr class="even">
+<td>var</td>
+<td>volt-ampere reactive</td>
+</tr>
+<tr class="odd">
+<td>pc</td>
+<td>parsec</td>
+</tr>
+<tr class="even">
+<td>c₀ arba c_0</td>
+<td>natural unit of speed</td>
+</tr>
+<tr class="odd">
+<td>ħ</td>
+<td>natural unit of action</td>
+</tr>
+<tr class="even">
+<td>mₑ arba m_e</td>
+<td>natural unit of mass</td>
+</tr>
+<tr class="odd">
+<td>e</td>
+<td>atomic unit of charge</td>
+</tr>
+<tr class="even">
+<td>a₀ arba a_0</td>
+<td>atomic unit of length</td>
+</tr>
+<tr class="odd">
+<td>E_h</td>
+<td>atomic unit of energy</td>
+</tr>
+<tr class="even">
+<td>M</td>
+<td>nautical mile</td>
+</tr>
+<tr class="odd">
+<td>kn</td>
+<td>knot</td>
+</tr>
+<tr class="even">
+<td>Å</td>
+<td>ångström</td>
+</tr>
+<tr class="odd">
+<td>a</td>
+<td>are</td>
+</tr>
+<tr class="even">
+<td>b</td>
+<td>barn</td>
+</tr>
+<tr class="odd">
+<td>bar</td>
+<td>bar</td>
+</tr>
+<tr class="even">
+<td>atm</td>
+<td>standard atmosphere</td>
+</tr>
+<tr class="odd">
+<td>Ci</td>
+<td>curie</td>
+</tr>
+<tr class="even">
+<td>R</td>
+<td>roentgen</td>
+</tr>
+<tr class="odd">
+<td>rem</td>
+<td>rem</td>
+</tr>
+<tr class="even">
+<td>erg</td>
+<td>erg</td>
+</tr>
+<tr class="odd">
+<td>dyn</td>
+<td>dyne</td>
+</tr>
+<tr class="even">
+<td>P</td>
+<td>poise</td>
+</tr>
+<tr class="odd">
+<td>st</td>
+<td>stokes</td>
+</tr>
+<tr class="even">
+<td>Mx</td>
+<td>maxwell</td>
+</tr>
+<tr class="odd">
+<td>G</td>
+<td>gauss</td>
+</tr>
+<tr class="even">
+<td>Oe</td>
+<td>ørsted</td>
+</tr>
+<tr class="odd">
+<td>sb</td>
+<td>stilb</td>
+</tr>
+<tr class="even">
+<td>ph</td>
+<td>phot</td>
+</tr>
+<tr class="odd">
+<td>Torr</td>
+<td>torr</td>
+</tr>
+<tr class="even">
+<td>kgf</td>
+<td>kilogram-force</td>
+</tr>
+<tr class="odd">
+<td>cal</td>
+<td>calorie</td>
+</tr>
+<tr class="even">
+<td>μ</td>
+<td>micron</td>
+</tr>
+<tr class="odd">
+<td>xu</td>
+<td>x-unit</td>
+</tr>
+<tr class="even">
+<td>γ</td>
+<td>gamma (mass, magnetic flux density)</td>
+</tr>
+<tr class="odd">
+<td>λ</td>
+<td>lambda</td>
+</tr>
+<tr class="even">
+<td>Jy</td>
+<td>jansky</td>
+</tr>
+<tr class="odd">
+<td>mmHg</td>
+<td>millimetre of mercury</td>
+</tr>
+</tbody>
+</table>

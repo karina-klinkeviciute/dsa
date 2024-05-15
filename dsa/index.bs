@@ -31,6 +31,8 @@ kokybę, vientisumą ir viso proceso stebėseną.
 DSA gali būti rengiamas jau atvertiems duomenims ADSA ir dar neatvertiems
 duomenims ŠDSA.
 
+<img src="diagrams/test.svg">
+
 
 <!--pre class=include>path: modelis.bs</pre-->
 <pre class=include>path: formatas.bs</pre>

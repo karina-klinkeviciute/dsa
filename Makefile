@@ -3,25 +3,29 @@
 
 # You can set these variables from the command line, and also
 # from the environment for the first two.
-SPHINXOPTS    ?= -c .
-SPHINXBUILD   ?= env/bin/sphinx-build
+SPHINXOPTS   ?= -c .
+SPHINXBUILD  ?= env/bin/sphinx-build
 SOURCEDIR     = dsa
 BUILDDIR      = build
 
+UMLDIR        = dsa/diagrams
+MMDS         := $(wildcard $(DIAGRAMS)/*.mmd)
+SVGS         := $(patsubst $(DIAGRAMS)/%.mmd,$(DIAGRAMS)/%.svg,$(MMDS))
+
+
 export PATH := env/bin:$(PATH)
 
-.PHONY: env
-env: env/done requirements.txt
+all: env/done requirements.txt node_modules/.bin/mmdc $(SVGS)
 
 
+# Python
 .PHONY: upgrade
 upgrade: env/bin/pip-compile
 	env/bin/pip-compile --upgrade requirements.in -o requirements.txt
 
-
 env/done: env/bin/pip requirements.txt
 	env/bin/pip install -r requirements.txt
-	touch env/done
+	touch $@
 
 env/bin/pip:
 	python -m venv env
@@ -37,21 +41,32 @@ requirements.in:
 	true
 
 
-# Put it first so that "make" without argument is like "make help".
+# Sphinx
+%: Makefile
+	@echo $@
+	@echo $(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+
 help:
 	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
-auto: env
+auto: all
 	env/bin/sphinx-autobuild -b html $(SOURCEDIR) $(BUILDDIR)/html $(SPHINXOPTS)
 
 open:
 	xdg-open http://127.0.0.1:8000
 
-.PHONY: help Makefile
 
-# Catch-all target: route all unknown targets to Sphinx using the new
-# "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
-%: Makefile
-	@echo $@
-	@echo $(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
-	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
+
+# Mermaid
+
+node_modules/.bin/mmdc:
+	npm install @mermaid-js/mermaid-cli
+
+
+$(DIAGRAMS)/%.svg: $(DIAGRAMS)/%.mmd
+	npx mmdc -i $< -o $@
+
+
+
+.PHONY: all help Makefile

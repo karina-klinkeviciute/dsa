@@ -1,0 +1,1573 @@
+# Formulės
+
+Formulės rašomos `prepare` stulpelyje. Formulių pagalba galima atlikti
+įvairius duomenų transformavimo, nuasmeninimo, filtravimo ir kokybės
+tikrinimo veiksmus.
+
+Kadangi yra labai didelė įvairovė duomenų formatų ir duomenų valdymo
+mechanizmų, siekiant suvaldyti visą šią įvairovę `DSA` formulės leidžia
+vieningai aprašyti veiksmus su duomenimis. Vėliau formulės verčiamos į
+vieningą [AST](https://en.wikipedia.org/wiki/Abstract_syntax_tree), kurį
+gali interpretuoti automatizuotos priemonės, priklausomai nuo duomenų
+šaltinio ir konteksto ir DSA sluoksnio.
+
+## Gramatika
+
+Formulių sintaksė atitinką šią
+[ABNF](https://en.wikipedia.org/wiki/Augmented_Backus–Naur_form)
+gramatiką:
+
+``` abnf
+formula     = testlist
+testlist    = test *("," test) *1","
+test        = or
+or          = and *("|" and)
+and         = not *("&" not)
+not         = "!" not / comp
+comp        = expr *(compop expr)
+expr        = term *(termop term)
+term        = factor *(factorop factor)
+factor      = sign factor / composition
+composition = atom *trailer
+atom        = "(" *1group ")"
+            / "[" *1list "]"
+            / func / value / name
+group       = test *("," test) *1","
+list        = test *("," test) *1","
+trailer     = "[" *1filter "]" / method / attr
+func        = name call
+method      = "." name call
+call        = "(" *1arglist ")"
+arglist     = argument *("," argument) *1","
+argument    = test / kwarg
+kwarg       = name ":" test
+filter      = test *("," test) *1","
+attr        = "." name
+value       = null / bool / integer / number / string / star
+compop      = ">=" / "<=" / "!=" / "=" / "<" / ">"
+termpop     = "+" / "-"
+factorop    = "*" / "/" / "%"
+sign        = "+" / "-"
+star        = "*"
+name        = ~/[a-z_][a-z0-9_]*/i
+number      = ~/\d+(\.\d+)?/
+integer     = ~/0|[1-9]\d*/
+bool        = "false" / "true"
+null        = "null"
+string      = ~/(?!"").*?(?<!\\)(\\\\)*?"|'(?!'').*?
+                (?<!\\)(\\\\)*?'/i
+```
+
+## Sintaksės medis
+
+Formulės verčiamos į vieningą abstraktų sintaksės medį. Vieningas
+abstraktus sintaksės medis leidžia atskirti formulės skaitymo ir
+interpretavimo veiklas.
+
+Abstraktus sintaksės medis sudarytas iš vienodų elementų turinčių tokias
+savybes:
+
+<div class="describe">
+
+name
+
+Funkcijos pavadinimas.
+
+</div>
+
+<div class="describe">
+
+args
+
+Funkcijos argumentų sąrašas, kurį gali sudaryti konkrečios reikšmės ar
+kiti medžio elementai, veiksmai.
+
+</div>
+
+Visos formulėje naudojamos išraiškos sintaksės medyje verčiamos į
+funkcijų ir argumentų medį. Pavyzdžiui `test("a", "b")` bus verčiamas į:
+
+``` python
+{
+    "name": "test",
+    "args": ["a", "b"],
+}
+```
+
+## Funkcijų iškvietimas
+
+Formulės susideda iš vykdomų funkcijų sekos. Pavyzdžiui funkcijos
+pavadinimu `test` vykdymas formulėje atrodys taip:
+
+``` python
+test()
+```
+
+Aukščiau pavyzdyje pateikta formulė vykdo funkciją `test`, be argumentų.
+Tačiau funkcijos gali turėti pozicinius ir vardinius argumentus.
+
+## Poziciniai argumentai
+
+Poziciniai argumentai perduodami taip:
+
+``` python
+test(a, b, c)
+```
+
+Pavyzdyje, funkcijai `test` perduodami trys argumentai `a`, `b` ir `c`.
+Šioje dokumentacijoje, tais atvejais, kai funkcijos pozicinių argumentų
+skaičius nėra fiksuotas, naudojama `*args` išraiška, kur `*` nurodo, kad
+pozicinių argumentų gali būti 0 ar daugiau.
+
+## Vardiniai argumentai
+
+Vardiniai argumentai funkcijai perduodami taip:
+
+``` python
+test(a: 1, b: 2, c: 3)
+```
+
+Pozicinius argumentus būtina perduoti tiksliai tokia tvarka, kokios
+tikisi funkcija. Tačiau vardinius argumentus, galima perduoti, bet kuria
+tvarka.
+
+Jei vardinių argumentų sąrašas nėra fiksuotas, dokumentacijoje toks
+argumentų sąrašas užrašomas `**kwargs` forma, kur `**` nurodo, kad
+vardinių argumentų gali būti 0 ar daugiau.
+
+## Alternatyvus funkcijos iškvietimas
+
+Funkcijų iškvietimas gali būti užrašomas įprastiniu būdu, pavyzdžiui:
+
+``` python
+test(test(test(a), b), c)
+```
+
+Arba funkcijų grandinės (angl. [Method
+chain](https://en.wikipedia.org/wiki/Method_chaining)) būdu:
+
+``` python
+a.test().test(b).test(c)
+```
+
+Kadangi formulės dažnai naudojamos tam tikros reikšmės transformavimui,
+todėl dažnai formulė yra lengviau skaitoma, naudojant funkcijų grandinę.
+
+`test(a)` yra `a.test()` arba `test(a, b)` ir `a.test(b)` yra
+ekvivalentūs
+([UFCS](https://en.wikipedia.org/wiki/Uniform_Function_Call_Syntax)).
+
+## Standartinės funkcijos
+
+<div class="module">
+
+func
+
+</div>
+
+Priklausomai nuo duomenų šaltinio ar konteksto gali būti naudojami
+skirtingi veiksmai, tačiau žemiau yra pateikti bendrosios paskirties
+veiksmai:
+
+<div class="function">
+
+bind(name)
+
+Rodo į reikšmę pavadinimu `name` iš konteksto. Reikšmės ieškoma tokia
+tvarka:
+
+- `var`
+- `param`
+- `item`
+- `prop`
+
+</div>
+
+<div class="function">
+
+prop(name)
+
+Modelio savybė pavadinimu `name` iš `property` stulpelio.
+
+</div>
+
+<div class="function">
+
+item(name)
+
+Sąrašo elemento savybė pavadinimu `name`.
+
+</div>
+
+<div class="function">
+
+param(name)
+
+Parametras pavadinimu `name`. Žiūrėti `param`.
+
+</div>
+
+<div class="function">
+
+var(name)
+
+Kintamasis apibrėžtas `set` funkcijos pagalba.
+
+</div>
+
+<div class="function">
+
+self
+
+Rodo į aktyvią reikšmę, naudojamas `property.prepare` formulėse.
+
+</div>
+
+<div class="function">
+
+or(\*args)
+
+Taip pat galima naudoti tokia išraiška:
+
+    a | b | c
+
+Grąžiną pirmą netuščią reikšmę. Pirmoji netuščia reikšmė nutraukia
+sekančių `args` argumentų interpretavimą.
+
+</div>
+
+<div class="function">
+
+and(\*args)
+
+Taip pat galima naudoti tokia išraiška:
+
+    a & b & c
+
+Grąžina pirmą tuščią reikšmę arba paskutinę reikšmę, jei prieš tai
+esančios reikšmės netuščios.
+
+</div>
+
+<div class="function">
+
+not(arg)
+
+Taip pat galima naudoti tokia išraiška:
+
+    !arg
+
+Jei `arg` tuščia grąžina `true`, priešingu atveju `false`.
+
+</div>
+
+<div class="function">
+
+eq(a, b)
+
+Taip pat galima naudoti tokia išraiška:
+
+    a = b
+
+`a` lygus `b`.
+
+</div>
+
+<div class="function">
+
+ne(a, b)
+
+Taip pat galima naudoti tokia išraiška:
+
+    a != b
+
+`a` nelygus `b`.
+
+</div>
+
+<div class="function">
+
+lt(a, b)
+
+Taip pat galima naudoti tokia išraiška:
+
+    a < b
+
+`a` mažiau už `b`.
+
+</div>
+
+<div class="function">
+
+le(a, b)
+
+Taip pat galima naudoti tokia išraiška:
+
+    a <= b
+
+`a` mažiau arba lygu už `b`.
+
+</div>
+
+<div class="function">
+
+gt(a, b)
+
+Taip pat galima naudoti tokia išraiška:
+
+    a > b
+
+`a` daugiau už `b`.
+
+</div>
+
+<div class="function">
+
+ge(a, b)
+
+Taip pat galima naudoti tokia išraiška:
+
+    a >= b
+
+`a` daugiau arba lygu už `b`.
+
+</div>
+
+<div class="function">
+
+add(a, b)
+
+Taip pat galima naudoti tokia išraiška:
+
+    a + b
+
+`a` ir `b` suma.
+
+</div>
+
+<div class="function">
+
+sub(a, b)
+
+Taip pat galima naudoti tokia išraiška:
+
+    a - b
+
+`a` ir `b` skirtumas.
+
+</div>
+
+<div class="function">
+
+mul(a, b)
+
+Taip pat galima naudoti tokia išraiška:
+
+    a * b
+
+`a` ir `b` sandauga.
+
+</div>
+
+<div class="function">
+
+div(a, b)
+
+Taip pat galima naudoti tokia išraiška:
+
+    a / b
+
+`a` ir `b` dalyba.
+
+</div>
+
+<div class="function">
+
+mod(a, b)
+
+Taip pat galima naudoti tokia išraiška:
+
+    a % b
+
+`a` ir `b` modulis.
+
+</div>
+
+<div class="function">
+
+positive(a)
+
+Taip pat galima naudoti tokia išraiška:
+
+    +a
+
+Gali būti interpretuojamas skirtingai, priklausomai nuo konteksto.
+Įprastiniu atveju keičia skaičiaus ženklą.
+
+</div>
+
+<div class="function">
+
+negative(a)
+
+Taip pat galima naudoti tokia išraiška:
+
+    -a
+
+Gali būti interpretuojamas skirtingai, priklausomai nuo konteksto.
+Įprastiniu atveju keičia skaičiaus ženklą.
+
+</div>
+
+<div class="function">
+
+tuple(\*args)
+
+Taip pat galima naudoti tokia išraiška:
+
+    (*args)
+
+Grupė argumentų.
+
+()  
+Tuščia grupė.
+
+a, b  
+Tas pats, kas `tuple(a, b)`.
+
+</div>
+
+<div class="function">
+
+list(\*args)
+
+Taip pat galima naudoti tokia išraiška:
+
+    [*args]
+
+Sąrašas reikšmių.
+
+</div>
+
+<div class="function">
+
+getattr(object, attr)
+
+Taip pat galima naudoti tokia išraiška:
+
+    object.attr
+
+Gaunamos reikšmės pagal atributą arba raktą.
+
+</div>
+
+<div class="function">
+
+getitem(object, item)
+
+Taip pat galima naudoti tokia išraiška:
+
+    a[item]
+
+Gaunamos reikšmės pagal atributą arba raktą.
+
+`getitem` gali būti interpretuojamas kaip sąrašo reikšmių filtras:
+
+    a[b > c]
+
+</div>
+
+<div class="function">
+
+dict(\*\*kwargs)
+
+Taip pat galima naudoti tokia išraiška:
+
+    {a: b}
+
+Sudėtinė duomenų struktūra.
+
+</div>
+
+<div class="function">
+
+set(\*\*kwargs)
+
+Taip pat galima naudoti tokia išraiška:
+
+    {a, b}
+
+Reikšmių aibė.
+
+</div>
+
+<div class="function">
+
+op(operator)
+
+Taip pat galima naudoti tokia išraiška:
+
+    a(*)
+
+Operatoriai gali būti naudojami kaip argumentai.
+
+</div>
+
+<div class="function">
+
+stack(columns, values, exclude)
+
+Visus stulpelius išskyrus `exclude` verčia į vieną stulpelių eilutei
+suteikiant `columns` pavadinimą, o reikšmių stulpeliui `values`
+pavadinimą. Pavyzdžiui:
+
+<table>
+<thead>
+<tr class="header">
+<th>vertinimas</th>
+<th>2015P2</th>
+<th>2016P2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Neigiamai</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>Teigiamai</td>
+<td>39</td>
+<td>28</td>
+</tr>
+</tbody>
+</table>
+
+Tokiai lentelei pritaikius `stack("data", "rodiklis", ["vertinimas"])`
+transformaciją, gausime tokį rezultatą:
+
+<table>
+<thead>
+<tr class="header">
+<th>vertinimas</th>
+<th>data</th>
+<th>rodiklis</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Neigiamai</td>
+<td>2015P2</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>Neigiamai</td>
+<td>2016P2</td>
+<td>1</td>
+</tr>
+<tr class="odd">
+<td>Teigiamai</td>
+<td>2015P2</td>
+<td>39</td>
+</tr>
+<tr class="even">
+<td>Teigiamai</td>
+<td>2016P2</td>
+<td>28</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+
+<div class="function">
+
+datetime(str, format)
+
+Parse datetime from str, using [strftime]() format.
+
+</div>
+
+<div class="function">
+
+date(str, format)
+
+Parse date from str, using [strftime]() format.
+
+</div>
+
+<div class="function">
+
+date(datetime)
+
+Return date from datetime.
+
+</div>
+
+## Failai
+
+Dažnai duomenys teikiami failų pavidalu, kurie gali būti saugomi tiek
+lokaliai failų sistemoje, tiek nuotoliniame serveryje. Failai gali būti
+suspausti ir patalpinti į archyvo konteinerius. `DSA` leidžia aprašyti
+įvairius prieigos prie duomenų, saugomų failuose, atvejus.
+
+<div class="describe">
+
+resource.source
+
+Nutolusiame serveryje saugomo failo `URI` arba kelias iki lokalaus
+katalogo. Lokalaus katalogo kelias gali būti pateikiamas tiek `POSIX`,
+tiek `DOS` formatais, priklausomai nuo to, kokioje operacinėje sistemoje
+failai saugomi.
+
+</div>
+
+<div class="describe">
+
+resource.prepare
+
+<div class="function">
+
+file(resource, encoding: "utf-8")
+
+arg resource  
+Kelias arba URI iki failo.
+
+arg encoding  
+Failo koduotę.
+
+Ši funkcija leidžia nurodyti failo koduotę, jei failas yra užkoduotas
+kita, nei UTF-8 koduote. Pilną palaikomų koduočių sąrašą galite rasti
+`šiame sąraše`\_\_.
+
+\_\_ <https://docs.python.org/3/library/codecs.html#standard-encodings>
+
+</div>
+
+<div class="function">
+
+extract(resource, type)
+
+arg resource  
+Kelias arba URI iki archyvo failo arba failo objektas.
+
+arg type  
+Archyvo tipas.
+
+Išpakuoja archyvą, kuriame saugomi failai. Galimos `type` reikšmės:
+
+<div class="describe">
+
+zip
+
+</div>
+
+<div class="describe">
+
+tar
+
+</div>
+
+<div class="describe">
+
+rar
+
+</div>
+
+Funkcijos rezultatas yra archyvo objektas, kuris leidžia pasiekti
+esančius archyvo failus `getitem` funkcijos pagalba.
+
+</div>
+
+<div class="function">
+
+decompress(resource, type)
+
+arg resource  
+Kelias arba URI iki archyvo failo arba failo objektas.
+
+arg type  
+Archyvo tipas.
+
+Taikomas srautinis failo glaudinimo filtras. Galimos `type` reikšmės:
+
+<div class="describe">
+
+gz
+
+</div>
+
+<div class="describe">
+
+bz2
+
+</div>
+
+<div class="describe">
+
+xz
+
+</div>
+
+</div>
+
+</div>
+
+## Stulpeliai lentelėje
+
+CSV ar skaičiuoklių lentelėse stulpelių pavadinimai pateikiami pačioje
+lentelėje. Eilutė, kurioje surašyti pavadinimai nebūtinai gali būti
+pirma. Stulpelių pavadinimai gali būti pateikti keliose eilutėse iš
+kurių formuojamos kompleksinės struktūros (žiūrėti
+`kompleksinės-struktūros`). Įvairias situacijas galima aprašyti formulių
+pagalba.
+
+<div class="describe">
+
+model.prepare
+
+<div class="function">
+
+header(\*line)
+
+<div class="describe">
+
+null
+
+Lentelėje eilučių pavadinimų nėra. Tokiu atveju, `property.source`
+stulpelyje reikia pateikti stulpelio numerį, pradedant skaičiuoti nuo 0.
+
+</div>
+
+<div class="describe">
+
+line
+
+Nurodomas eilutės numeris, pradedant eilutes skaičiuoti nuo 0, kur yra
+pateikti lentelės stulpelių pavadinimai. Pagal nutylėjimą stulpelių
+pavadinimų ieškoma pirmoje eilutėje.
+
+</div>
+
+<div class="describe">
+
+\*line
+
+Jei lentelė turi kompleksinę stulpelių struktūrą, tada galima pateikti
+daugiau nei vieną eilutės numerį iš kurių bus nustatomi stulpelių
+pavadinimai.
+
+</div>
+
+</div>
+
+<div class="function">
+
+head(n)
+
+Praleisti `n` einančių po stulpelių pavadinimų eilutės.
+
+</div>
+
+<div class="function">
+
+tail(n)
+
+Ignoruoti `n` eilučių failo pabaigoje.
+
+</div>
+
+</div>
+
+<div class="describe">
+
+property.source
+
+Jei naudojamas `header(null) <header>`, tada nurodomas stulpelio
+numeris, pradedant nuo 0.
+
+Jei naudojamas `header(line) <header>`, tada nurodomas stulpelio
+pavadinimas, toks koks įrašytas lentelės line eilutėje.
+
+Jei naudojamas `header(*line) <header>`, tada nurodomas stulpelio
+pavadinimas, toks koks įrašymas lentelės pirmajame line argumente.
+
+</div>
+
+<div class="describe">
+
+property.prepare
+
+Jei naudojamas `header(*line)`, žiūrėti `kompleksinės-struktūros`.
+
+</div>
+
+## Duomenų atranka
+
+Duomenų filtravimui naudojamas `model.prepare` stulpelis, kuriame galima
+apriboti iš šaltinio skaitomų duomenų imtį.
+
+Tarkime, jei turime tokias dvi duomenų lenteles:
+
+<table>
+<thead>
+<tr class="header">
+<th>COUNTRIES</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>COUNTRY CODE</td>
+</tr>
+<tr class="even">
+<td>======= =======</td>
+</tr>
+<tr class="odd">
+<td>Lietuva lt</td>
+</tr>
+<tr class="even">
+<td>Latvija lv</td>
+</tr>
+</tbody>
+</table>
+
+<table>
+<thead>
+<tr class="header">
+<th>CITIES</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>ID CITY COUNTRY</td>
+</tr>
+<tr class="even">
+<td>====== ======= =======</td>
+</tr>
+<tr class="odd">
+<td>1 Vilnius lt</td>
+</tr>
+<tr class="even">
+<td>2 Kaunas lt</td>
+</tr>
+<tr class="odd">
+<td>3 Ryga lv</td>
+</tr>
+</tbody>
+</table>
+
+Jei norėtume atveri ne visų šalių duomenis, o tik Lietuvos, tada duomenų
+struktūros aprašas turėtu atrodyti taip:
+
+<table style="width:92%;">
+<thead>
+<tr class="header">
+<th>d</th>
+<th>r</th>
+<th>b</th>
+<th>m</th>
+<th>property</th>
+<th>type</th>
+<th>ref</th>
+<th>source</th>
+<th>prepare</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td colspan="5">datasets/example/countries</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td colspan="4">salys</td>
+<td>sql</td>
+<td></td>
+<td>sqlite://</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td colspan="2">Country</td>
+<td></td>
+<td>code</td>
+<td>COUNTRIES</td>
+<td><strong>code = "lt"</strong></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>name</td>
+<td>string</td>
+<td></td>
+<td>COUNTRY</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>code</td>
+<td>string</td>
+<td></td>
+<td>CODE</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td colspan="2">City</td>
+<td></td>
+<td>id</td>
+<td>CITIES</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>id</td>
+<td>integer</td>
+<td></td>
+<td>ID</td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>name</td>
+<td>string</td>
+<td></td>
+<td>CITY</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>country</td>
+<td>ref</td>
+<td>Country</td>
+<td>COUNTRY</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+Kaip ir visur, formulės reikia naudoti pavadinimus ne iš `source`
+stulpelio, o iš `property`, `model` arba `dataset`.
+
+Jei lentelės yra susijusios ryšiais tarpusavyje, užtenka filtrą nurodyti
+tik vienoje lentelėje, visose kitose susijusios lentelėse filtrai bus
+taikomi automatiškai, kad užtikrinti duomenų vientisumą.
+
+Nurodant filtrus yra galimybė naudoti ne tik vienos lentelės laukus, bet
+ir susijusių lentelių laukus, pavyzdžiui yra galimybė nurodyti tokį
+filtrą:
+
+<table style="width:93%;">
+<thead>
+<tr class="header">
+<th>d</th>
+<th>r</th>
+<th>b</th>
+<th>m</th>
+<th>property</th>
+<th>type</th>
+<th>ref</th>
+<th>source</th>
+<th>prepare</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td></td>
+<td></td>
+<td colspan="2">City</td>
+<td></td>
+<td>id</td>
+<td>CITIES</td>
+<td><strong>country.code = "lt"</strong></td>
+</tr>
+</tbody>
+</table>
+
+Tačiau šiuo atveju, toks filtras būtų perteklinis, nes toks filtras
+generuojamas automatiškai ir susijusio `Country` modelio, kadangi
+negalime publikuoti Latvijos miestų, jei publikuojama tik Lietuvos
+šalis.
+
+Pilnas galimų filtrų sąrašas:
+
+<div class="describe">
+
+model.prepare
+
+<div class="describe">
+
+a = b
+
+`a` ir `b` reikšmės yra lygios.
+
+</div>
+
+<div class="describe">
+
+a != b
+
+`a` nelygu `b`.
+
+</div>
+
+<div class="describe">
+
+a \> b
+
+`a` daugiau už `b`.
+
+</div>
+
+<div class="describe">
+
+a \< b
+
+`a` mažiau už `b`.
+
+</div>
+
+<div class="describe">
+
+a \>= b
+
+`a` daugiau arba lygu `b`.
+
+</div>
+
+<div class="describe">
+
+a \<= b
+
+`a` mažiau arba lygu `b`.
+
+</div>
+
+<div class="describe">
+
+a.in(b)
+
+`a` lygi bent vienai iš `b` sekos reikšmių.
+
+</div>
+
+<div class="describe">
+
+a.notin(b)
+
+`a` nelygi nei vienai iš `b` sekos reikšmių.
+
+</div>
+
+<div class="describe">
+
+a.contains(b)
+
+`a` seka savyje turi `b` seką.
+
+</div>
+
+<div class="describe">
+
+a.startswith(b)
+
+`a` seka prasideda `b` seka.
+
+</div>
+
+<div class="describe">
+
+a.endswith(b)
+
+`a` seka baigiasi `b` seka.
+
+</div>
+
+<div class="describe">
+
+a & b
+
+`a` ir `b`.
+
+</div>
+
+<div class="describe">
+
+a | b
+
+`a` arba `b`.
+
+</div>
+
+<div class="describe">
+
+sort(+a, -b)
+
+Rūšiuoti didėjimo tvarka pagal `a` ir mažėjimo tvarka pagal `b`.
+
+</div>
+
+</div>
+
+## Periodiškumas
+
+Periodiškumui nurodyti naudojamas model.prepare stulpelis, kuriame
+galima naudoti tokias formules:
+
+<div class="describe">
+
+model.prepare
+
+<div class="function">
+
+cron(line)
+
+Duomenų atnaujinimo laikas, analogiškas
+[cron](https://en.wikipedia.org/wiki/Cron) formatui.
+
+`line` argumentas aprašomas taip:
+
+`n`m  
+`n`-toji minutė, `n` ∊ 0-59.
+
+`n`h  
+`n`-toji valanda, `n` ∊ 0-23.
+
+`n`d  
+`n`-toji mėnesio diena, `n` ∊ 1-31.
+
+$d  
+Paskutinė mėnesio diena.
+
+`n`M  
+`n`-tasis mėnuo, `n` ∊ 1-12.
+
+`n`w  
+`n`-toji savaitės diena, `n` ∊ 0-6 (sekmadienis-šeštadienis).
+
+`n`\#`i`w  
+`n`-toji savaitės diena, `i`-toji mėnesio savaitė, `i` ∊ 1-6.
+
+`n`$`i`w  
+`n`-toji savaitės diena, `i`-toji savaitė nuo mėnesio galo, `i` ∊ 1-6.
+
+,  
+Kableliu galim atskirt kelias laiko vertes.
+
+\-  
+Brūkšneliu galima atskirti laiko verčių intervalą.
+
+/  
+Pasvyruoju brūkšniu galima atskirti laiko verčių kartojimo žingsnį.
+
+Laiko vertės atskiriamos tarpo simbolių. Jei laiko vertė nenurodyta,
+reiškia įeina visos įmanomos laiko vertės reikšmės.
+
+</div>
+
+<div class="function">
+
+hourly()
+
+`cron('0m') <cron>`
+
+</div>
+
+<div class="function">
+
+daily()
+
+`cron('0m 0d') <cron>`
+
+</div>
+
+<div class="function">
+
+weekly()
+
+`cron('0m 0h 0w') <cron>`
+
+</div>
+
+<div class="function">
+
+monthly()
+
+`cron('0m 0h 1d') <cron>`
+
+</div>
+
+<div class="function">
+
+yearly()
+
+`cron('0m 0h 1d 1M') <cron>`
+
+</div>
+
+</div>
+
+## Statinės reikšmės
+
+Statinės reikšmės arba konstantos duomenų laukams gali būti nurodomos
+`property.prepare` stulpelyje naudojant formulės sintaksę. Plačiau apie
+formules žiūrėti `formulės` skyrelyje.
+
+## Transformavimas
+
+`property.prepare` stulpelyje gauta šaltinio reikšmė gali būti
+pasiekiama per self kintamąjį.
+
+`property.prepare` formulėje gali būti aprašomos kelios reikšmės
+atskirtos kableliu, tai naudojama ryšio laukams, kai ryšiui aprašyti
+reikia daugiau nei vieno duomenų lauko.
+
+Formulėje galima naudoti kitus to pačio modelio property pavadinimus,
+kai aprašomo `property` reikšmės formuojamos dinamiškai naudojant viena
+ar kelis jau aprašytus laukus.
+
+`property.prepare` stulpelyje galima naudoti tokias formules:
+
+<div class="describe">
+
+property.prepare
+
+<div class="function">
+
+null()
+
+Grąžina `null` reikšmę, jei toliau einančios transformacijos grąžina
+`null`.
+
+</div>
+
+<div class="function">
+
+replace(old, new)
+
+Pakeičia visus `old` į `new` simbolių eilutėje.
+
+</div>
+
+<div class="function">
+
+re(pattern)
+
+Grąžina atitinkančią reguliariosios išraiškos `pattern` reikšmę arba
+pirmos grupės reikšmę jei naudojama tik viena grupė arba reikšmių grupę
+jei `pattern` yra daugiau nei viena grupė.
+
+</div>
+
+<div class="function">
+
+cast(type)
+
+Konvertuoja šaltinio tipą į nurodytą `type` tipą. Tipų konvertavimas yra
+įmanomas tik tam tikrais atvejais. Jei tipų konvertuoti neįmanoma, tada
+metodas turėtų grąžinti klaidą.
+
+</div>
+
+<div class="function">
+
+split()
+
+Dalina simbolių eilutę naudojant `\s+` `reguliariąją išraišką
+<reguliarioji išraiška>`. Grąžina masyvą.
+
+</div>
+
+<div class="function">
+
+strip()
+
+Pašalina tarpo simbolius iš pradžios ir pabaigos.
+
+</div>
+
+<div class="function">
+
+lower()
+
+Verčia visas raides mažosiomis.
+
+</div>
+
+<div class="function">
+
+upper()
+
+Verčia visas raides didžiosiomis.
+
+</div>
+
+<div class="function">
+
+len()
+
+Grąžina elementų skaičių sekoje.
+
+</div>
+
+<div class="function">
+
+choose(default)
+
+Jei šaltinio reikšmė nėra viena iš `enum`, tada grąžinama default
+reikšmė.
+
+Jei `default` nepateiktas, grąžina vieną iš `property.enum` reikšmių,
+jei duomenų šaltinio reikšmė nėra viena iš `property.enum`, tada
+grąžinama klaida.
+
+</div>
+
+<div class="function">
+
+switch(\*cases)
+
+</div>
+
+<div class="function">
+
+case(cond, value)
+
+</div>
+
+<div class="function">
+
+case(default)
+
+Grąžina `value`, jei tenkina `cond` arba `default`. Jei `case(default)`
+nepateiktas, tada grąžina pradinę reikšmę.
+
+Jei, `cases` nepateikti, grąžina vieną iš `switch.source` reikšmių,
+tenkinančių switch prepare sąlygą.
+
+</div>
+
+<div class="function">
+
+swap(old, new)
+
+Swaps an `old` value with `new`, if `self` is equal to `old`.
+
+</div>
+
+<div class="function">
+
+return()
+
+Nutraukia transformacijų grandinę ir grąžina reikšmę.
+
+</div>
+
+<div class="function">
+
+set(name)
+
+Išsaugo reikšmę į kintamąjį `name`.
+
+</div>
+
+<div class="function">
+
+url()
+
+Skaido URI į objektas turintį tokias savybes:
+
+scheme  
+URI schema.
+
+netloc  
+Visada URI dalis tarp scheme ir path.
+
+username  
+Naudotojo vardas.
+
+password  
+Slaptažodis.
+
+host  
+Domeno vardas arba IP adresas.
+
+port  
+Prievado numeris.
+
+path  
+Kelias.
+
+query  
+URL dalis einanti tarp `?` ir `#`.
+
+fragment  
+URL dalis einanti po \#.
+
+</div>
+
+<div class="function">
+
+query()
+
+Skaido URI query dalį į parametrus.
+
+</div>
+
+<div class="function">
+
+path()
+
+Skaido failų sistemos arba URI kelią į tokias savybes:
+
+parts  
+Skaido kelią į dalis (plačiau\_\_).
+
+drive  
+Diskas (plačiau\_\_).
+
+root  
+Šaknis (plačiau\_\_).
+
+</div>
+
+</div>
+
+### Kompleksinės struktūros
+
+Daugelis duomenų šaltiniu turi galimybę saugoti kompleksines struktūros.
+Jei duomenys yra kompleksiniai, tada `property.source` stulpelyje galima
+nurodyti tik duomens pavadinimą iš pirmojo lygmens, gilesniuose
+lygmenyse esančius duomenis galima aprašyti naudojant formules
+`property.prepare` stulpelyje.
+
+Analogiškai duomenų atranką galima daryti ir model eilutėse, jei tai
+leidžia duomenų šaltinis.
+
+Kaip pavyzdį naudosime tokią `JSON` duomenų struktūrą:
+
+``` json
+{
+    "result": {
+        "count": 1,
+        "results": [
+            {
+                "type": "dataset",
+                "tags": ["CSV"]
+            }
+        ]
+    }
+}
+```
+
+<div class="describe">
+
+property.prepare
+
+<div class="function">
+
+getattr(object, name)
+
+Grąžina `object` savybe `name`.
+
+``` python
+>>> self.result.count
+1
+```
+
+</div>
+
+<div class="function">
+
+getitem(object, item)
+
+Grąžina `object` objekto `item` savybę arba `object` masyvo `item`
+elementą.
+
+``` python
+>>> self["result"]["count"]
+1
+```
+
+`getitem` ir `getattr` gali būti naudojami kartu.
+
+``` python
+>>> self.result.results[0].type
+"dataset"
+```
+
+`getitem` gali būti naudojamas, kaip masyvo elementų filtras pateikiant
+filtro sąlygą.
+
+``` python
+>>> self.result.results[tags = "CSV"].type
+["dataset"]
+
+>>> self.result.results[item(tags) = "CSV"].type
+["dataset"]
+```
+
+Norint gauti visus masyvo elementus, galima naudoti tokią išraišką:
+
+``` python
+>>> self.result.results[].tags[]
+["CSV"]
+```
+
+</div>
+
+</div>
+
+Analogiška struktūra gali būti gaunama ir lentelėse, kai stulpelių
+pavadinimai nurodyti keliose eilutėse, pavyzdyje pateiktą struktūrą
+atitiktų tokia lentelė:
+
+<table>
+<tbody>
+<tr class="odd">
+<td><p>result count</p></td>
+<td><p>results</p></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td>type</td>
+<td>tags</td>
+</tr>
+<tr class="odd">
+<td>======</td>
+<td>=======</td>
+<td>====</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>dataset</td>
+<td>CSV</td>
+</tr>
+</tbody>
+</table>
+
+Šioje lentelėje stulpelių pavadinimai pateikti trijose eilutėse, todėl
+model.prepare reikėtų naudoti `header(0, 1, 2) <header>`.

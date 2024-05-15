@@ -1,0 +1,2602 @@
+# Dimensijos
+
+`Dimensijos <dimensija>` apibrėžia duomenų metaduomenų detalumo lygį.
+Stulpeliai `dataset`, `resource`, `base`, `model` ir `property` yra naudojami
+kaip `DSA` dimensijos. `dataset` yra aukščiausia dimensija, `property`
+žemiausia. `dataset` ir `resource` dimensijos atitinka [=DCAT=] žodyną ir
+užtikrina trečia duomenų brandos lygį, o žemiau esantys `base`, `model` ir
+`property` atitinka [=RDFS=] žodyną ir užtikrina penktą duomenų brandos lygį.
+Vienoje lentelės eilutėje gali būti užpildytas ne daugiau kaip vienas
+dimensijos stulpelis. Užpildytasis dimensijos stulpelis nustato visų kitų
+stulpelių prasmę.
+
+<table>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>d</th>
+      <th>r</th>
+      <th>b</th>
+      <th>m</th>
+      <th>property</th>
+      <th>title</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><blockquote><p>1</p></blockquote></td>
+      <td colspan="5">datasets/gov/ivpk/adk</td>
+      <td>Atvirų duomenų katalogas</td>
+    </tr>
+    <tr>
+      <td><blockquote><p>2</p></blockquote></td>
+      <td></td>
+      <td colspan="4">adk</td>
+      <td>Atvirų duomenų katalogo duomenų bazė</td>
+    </tr>
+    <tr>
+      <td><blockquote><p>3</p></blockquote></td>
+      <td></td>
+      <td></td>
+      <td colspan="3">/dcat/dataset</td>
+      <td>Duomenų rinkinys</td>
+    </tr>
+    <tr>
+      <td><blockquote><p>4</p></blockquote></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td colspan="2">dataset</td>
+      <td>Duomenų rinkinys</td>
+    </tr>
+    <tr>
+      <td><blockquote><p>5</p></blockquote></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>title</td>
+      <td>Duomenų rinkinio pavadinimas</td>
+    </tr>
+  </tbody>
+</table>
+
+Pavyzdyje aukščiau, taupant vietą, dalies dimensijų pavadinimai
+sutrumpinti iki vienos raidės ir įtraukti ne visi stulpeliai, o tik `id`
+ir `title` metaduomenų stulpeliai. Pavyzdyje matome, kad vienoje
+eilutėje užpildytas tik vienas dimensijos stulpelis, o `title` stulpelio
+prasmė keičiasi priklausomai nuo dimensijos reikšmės. Toliau
+specifikacijoje konkrečios dimensijos stulpeliai įvardijami pateikiant
+tiek dimensijos, tiek metaduomens stulpelio pavadinimus, kad būtų
+aiškiau apie kurios dimensijos metaduomenį kalbama, pavyzdžiui
+`model.title` leidžia suprasti kad kalbama apie „Duomenų rinkinys“
+reikšmę 4-oje eilutėje.
+
+Be minėtų dimensijų stulpelių `DSA` lentelėje gali būti naudojami
+papildomos metaduomenų dimensijos, kai nurodoma `type` reikšmė ir
+nepateikiama nei viena dimensijos stulpelio reikšmė. Pavyzdžiui:
+
+<table>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>d</th>
+      <th>r</th>
+      <th>b</th>
+      <th>m</th>
+      <th>property</th>
+      <th>type</th>
+      <th>ref</th>
+      <th>uri</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><blockquote><p>1</p></blockquote></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td>prefix</td>
+      <td>dcat</td>
+      <td>http://www.w3.org/ns/dcat#</td>
+    </tr>
+  </tbody>
+</table>
+
+Šiuo atveju `prefix` tampa dar viena dimensija, leidžianti pateikti
+metaduomenis apie naudojamų URI prefiksus. Analogiškai, kaip ir su
+kitomis dimensijomis, dimensijos ir metaduomens pavadinimus galima
+apjungti, pavyzdžiui `prefix.ref` apibūdina tik `prefix` dimensijai
+priklausančius `ref` stulpelius.
+
+Dimensijos leidžia suskirstyti metaduomenis į hierarchinę struktūrą.
+Todėl `DSA` lentelės eilučių eiliškumas yra svarbus, kadangi žemiau
+esančios eilutės priklauso aukščiau esančiai dimensijai. Tas pats
+galioja ir pagalbinėms `dimensijoms <dimensija>`.
+
+Nors lentelėje sudaro tik 15 stulpelių, tačiau pasitelkiant 5
+pagrindinius dimensijas ir keletą papildomų dimensijų, atsiranda
+galimybė išsamiai aprašyti visą duomenų šaltinio struktūrą.
+
+## Duomenų rinkinys
+
+`DSA` lentelėje `duomenų rinkinys` nurodomas tam, kad būtų išlaikomas
+ryšys tarp `DSA` ir `ADK`. Atliekant duomenų inventorizaciją,
+automatiškai generuota `DSA` lentelė turi būti suskirstoma į
+`duomenų rinkinius <duomenų rinkinys>`. Tada priemonių pagalba
+automatiškai sukuriami pirminiai `ADK` metaduomenys apie
+`duomenų rinkinius <duomenų rinkinys>`, kuriuos vėliau reikia papildyti
+rankiniu būdu prisijungus prie ADK. Automatizuota priemonė sukūrus
+duomenų rinkinių įrašus `ADK`, papildys `DSA` lentelę, į `dataset.ref`
+įrašant `ADK` sukurto duomenų rinkinio identifikatorių. Tokiu būdu,
+sekantį kartą vykdant sinchronizaciją, jei `dataset.ref` yra užpildytas,
+bus atnaujinami jau sukurti `ADK` `duomenų rinkinių <duomenų
+rinkinys>` įrašai.
+
+Į `ADK` turi būti publikuojami tik tie duomenų rinkiniai iš DSA, kurių
+`dataset.access` reikšmė yra `public` arba `open`.
+
+<div class="data">
+
+dataset.source
+
+Jei nenurodyta, naudoti https://data.gov.lt/ adresą.
+
+Nenaudojama, jei `dataset.type` yra `ns`.
+
+</div>
+
+<div class="data">
+
+dataset.prepare
+
+Nenaudojama.
+
+</div>
+
+<div class="data">
+
+dataset.type
+
+Jei nenurodyta, naudoti `ivpk` reikšmę. type nurodo `API` formatą,
+kuriuo automatiškai pildomi duomenų rinkinių metaduomenys atvirų duomenų
+portale.
+
+Galimos reikšmės:
+
+<div class="describe">
+
+ns
+
+Atitinka vardų erdvę, kurioje pateikiami duomenų rinkiniai. Naudojamas
+tais atvejais, kai norima pateiki papildomus metaduomenis vardų erdvei,
+pavydžui pavadinimą ar parašymą.
+
+</div>
+
+<div class="describe">
+
+ckan
+
+Atitinka duomenų rinkinį iš <a href="https://ckan.org/">CKAN</a> duomenų katalogo.
+
+</div>
+
+<div class="describe">
+
+ivpk
+
+Atitinka duomenų rinkinį iš [data.gov.lt](https://data.gov.lt/) duomenų
+katalogo.
+
+</div>
+
+</div>
+
+<div class="data">
+
+dataset.ref
+
+`Duomenų rinkinio <duomenų rinkinys>` duomenų kataloge identifikatorius.
+
+Nenaudojamas jei `dataset.type` yra `ns`.
+
+</div>
+
+<div class="data">
+
+dataset.level
+
+Nenaudojamas.
+
+</div>
+
+<div class="data">
+
+dataset.access
+
+Viso duomenų rinkinio ar vardų erdvės `access`. Paveldimas.
+
+</div>
+
+<div class="data">
+
+dataset.title
+
+Duomenų rinkinio ar vardų erdvės pavadinimas.
+
+</div>
+
+<div class="data">
+
+dataset.description
+
+Duomenų rinkinio ar vardų erdvės aprašymas.
+
+</div>
+
+Skaidymas į `duomenų rinkinius <duomenų rinkinys>` turi būti atliekamas
+tokiu principu, kad visi tarpusavyje susiję `modeliai <modelis>` patektų
+į vieną `duomenų rinkinį <duomenų rinkinys>`. Teoriškai, absoliučiai
+visi `modeliai <modelis>` gali būti susiję tarpusavyje, skaidymą reikėtų
+daryti pagal tematinį `modelių <modelis>` tarpusavio ryšį, o ne pagal
+reliacinius ryšius.
+
+Jei duomenys yra išskaidyti pagal laiką, vietove ar kitus kriterijus į
+skirtingus duomenų šaltinius, tokie duomenys turėtų būti apjungti į
+vieną modelį `base` pagalba ir turėtų priklausyti vienam
+`duomenų rinkiniui
+<duomenų rinkinys>`. Tą pačią semantinę prasmę turintys duomenys
+neturėtų būti išskaidyti keliuose
+`duomenų rinkiniuose <duomenų rinkinys>`.
+
+Pavyzdys:
+
+<table style="width:95%;">
+<thead>
+<tr class="header">
+<th>d</th>
+<th>r</th>
+<th>b</th>
+<th>m</th>
+<th>property</th>
+<th>type</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td colspan="5">datasets/gov/ivpk</td>
+<td>ns</td>
+<td>Informacinės visuomenės plėtros komitetas</td>
+</tr>
+<tr class="even">
+<td colspan="5">datasets/gov/ivpk/adp</td>
+<td>ns</td>
+<td>Lietuvos atvirų duomenų portalas</td>
+</tr>
+<tr class="odd">
+<td colspan="5">datasets/gov/ivpk/adp/catalog</td>
+<td></td>
+<td>Lietuvos atvirų duomenų katalogas</td>
+</tr>
+<tr class="even">
+<td colspan="5">datasets/gov/ivpk/adp/store</td>
+<td></td>
+<td>Lietuvos atvirų duomenų saugykla</td>
+</tr>
+</tbody>
+</table>
+
+Šiame pavyzdyje apibrėžtos dvi vardų erdvės ir du rinkiniai.
+
+Kiekviena organizacija turėtu deklaruoti tik savo vardų erdvės
+metaduomenis. Globalios vardų erdvės, tokios kaip `datasets` ir
+`datasets/gov` yra administruojamos vyriausiojo duomenų atvėrimo
+koordinatoriaus.
+
+## Duomenų šaltinis
+
+`ŠDSA` atveju `duomenų šaltinis` bus vidinis duomenų bazių serveris,
+kažkoks vidinis katalogas kuriame yra lentelių failai ar koks nors
+vidinis API.
+
+`ADSA` atveju, `duomenų šaltinis` gali būti nenurodytas, tai reiškia,
+kad duomenų rinkinio duomenys dar nėra publikuoti. Jei duomenys jau yra
+publikuoti, tada `ADSA` `duomenų šaltinis` turi rodyti į publikuotus
+atvertus duomenis, tai gali būti nuorodos į CSV failus, į viešą JSON API
+ir pan.
+
+`Duomenų šaltinio <duomenų šaltinis>` įrašas taip pat naudojamas tam,
+kad automatiškai atnaujinti `ADK` esančius `duomenų rinkinius <duomenų
+rinkinys>`, patelkiant konkrečias nuorodas į konkrečius duomenų failus.
+Analogiškai kaip ir `dataset` atveju, `resource.ref` stulpelyje
+nurodomas duomenų šaltinio identifikatorius iš `ADK`.
+
+<div class="data">
+
+resource.type
+
+Duomenų šaltinio tipas. Galimos reikšmės:
+
+<div class="describe">
+
+sql
+
+Reliacinės duomenų bazės
+
+</div>
+
+<div class="describe">
+
+csv
+
+CSV lentelės
+
+</div>
+
+<div class="describe">
+
+tsv
+
+TSV lentelės
+
+</div>
+
+<div class="describe">
+
+json
+
+JSON resursai
+
+</div>
+
+<div class="describe">
+
+jsonl
+
+JSON lines resursai
+
+</div>
+
+<div class="describe">
+
+geojson
+
+GeoJSON failai
+
+</div>
+
+<div class="describe">
+
+xml
+
+XML resursai
+
+</div>
+
+<div class="describe">
+
+html
+
+HTML puslapiai
+
+</div>
+
+<div class="describe">
+
+xlsx
+
+Excel lentelės (naujasis OOXML formatas)
+
+</div>
+
+<div class="describe">
+
+xls
+
+Excel lentelės (senasis formatas)
+
+</div>
+
+<div class="describe">
+
+ods
+
+ODT skaičiuoklės formatas
+
+</div>
+
+<div class="describe">
+
+zip
+
+ZIP failų archyvas.
+
+</div>
+
+</div>
+
+<div class="data">
+
+resource.source
+
+Priklauso nuo `resource.source`. Žiūrėti `resource`.
+
+</div>
+
+<div class="data">
+
+resource.ref
+
+Resurso kodinis pavadinimas, kuris yra apibrėžtas atskirai duomenų
+struktūros apraše, ar konfigūracijos failuose.
+
+Kai vienas resursas nurodo kitą, tuomet aprašomas resursas išplečia kitą
+resursą į kurį rodo arba naudoja kitą resursą, kaip konteinerį, kuriame
+saugomi duomenys.
+
+Išplėtimo atveju, galima pateikti tam tikro resurso konfidencialius
+duomenis, tokius, kaip slaptažodis, atskirai nuo duomenų struktūros
+aprašo, konfigūracijos failuose, o duomenų struktūros apraše išplėsti
+resursą, pateikiant ne konfidencialius duomenis.
+
+Tokiais atvejais, kaip duomenų failai saugomi ZIP archyvuose arba FTP
+serveryje, galima atskirai aprašyti ZIP ar FTP resursą, o po to,
+aprašant konkretų duomenų failo resursą, pateikti nuorodą, kuriame
+kitame resurse aprašomas failas yra.
+
+</div>
+
+<div class="data">
+
+resource.level
+
+Duomenų šaltinio brandos lygis, vertinant tik pagal formatą, nežiūrint į
+šaltinyje esančių duomenų turinį.
+
+</div>
+
+<div class="data">
+
+resource.access
+
+Viso duomenų šaltinio prieigos lygis. Paveldimas.
+
+</div>
+
+<div class="data">
+
+resource.title
+
+Duomenų šaltinio pavadinimas.
+
+</div>
+
+<div class="data">
+
+resource.description
+
+Duomenų šaltinio aprašymas.
+
+</div>
+
+Duomenų šaltinio `resource.type` reikšmė apibrėžia kokią `ETL` priemonę
+naudoti skaitant duomenis iš duomenų šaltinio. Automatizuota duomenų
+priemonė skirta įstaigos duomenų atvėrimui turėtų palaikyti tik tokius
+duomenų šaltinius, kurie naudojami įstaigos vidinėje infrastruktūroje.
+
+Esant poreikiui gali būti įgyvendintas palaikymas naujiems duomenų
+šaltiniams.
+
+## Modelio bazė
+
+<div class="note">
+
+<div class="title">
+
+Note
+
+</div>
+
+Kol kas modelių apjungimas naudojant vieną bazę nėra įgyvendintas.
+
+</div>
+
+Modelio bazė naudojama kelių modelių (lentelių) susiejimui arba
+apjungimui. Kadangi įvairiuose duomenų šaltiniuose dažnai pasitaiko
+duomenų, kuriuose saugomos tą pačią semantinę prasmę turinčios lentelės,
+`base` stulpelyje galima nurodyti kaip skirtingos lentelės siejasi
+tarpusavyje.
+
+`base.type` stulpelyje nurodoma kokiu būdu lentelės yra susiję. `ETL`
+priemonė vadovaujantis `base` informacija duomenis automatiškai
+transformuoja ir sujungia kelias lenteles į vieną.
+
+Modeliai ne tik susiejami semantiškai tarpusavyje, bet taip pat
+suliejami ir dviejų modelių duomenys naudojant laukų sąrašą nurodytą
+`base.ref` stulpelyje. `base.ref` stulpelyje nurodyti laukai naudojami
+norint unikaliai identifikuoti `model` lentelėje esančią eilutę, kuri
+atitinka `base` lentelėje esančią eilutę. Tai reiškia, kad modelis ir jo
+bazė turi vienodus identifikatorius.
+
+Siejant `model` ir `base` duomenis tarpusavyje, `model` lentelė įgauna
+lygiai tokius pačius unikalius identifikatorius, kurie yra base
+lentelėje. Tai reiškia, kad `model` lentelėje negali būti duomenų, kurių
+nėra `base` lentelėje.
+
+`model.property` laukams, kurie sutampa su `base` modelio laukais,
+nenurodomas `property.type`, tokiu būdu nurodoma, kad `model.property`
+turi tą pačią semantinę prasmę, kaip ir `base`, tačiau `model` gali
+turėti ir papildomų laukų, kurių nėra `base` modelyje, tokiu atveju
+`property.type` turi būti nurodomas.
+
+Visi `base.ref` laukai turi būti aprašyti tiek `base`, tiek `model`
+modeliuose, tai reiškia, kad `base.ref` gali būti naudojami tik tiek
+laukai, kurie neturi tipo.
+
+Jei `base` stulpelyje nurodoma `/` reikšmė, tai reiškia, kad `model`
+neturi bazės, arba modelio bazė yra panaikinama. `/` naudojamas tais
+atvejais, kai norima vieną ar kelis modelius prijungti prie vienos
+bazės, tačiau sekantys modeliai nebeturi priklausyti jokiai bazei.
+
+**Sinonimai**
+
+Tais atvejais, kai visi `model` laukai neturi `property.type`, tada toks
+modelis laikomas `base` sinonimu ir iš esmės saugomas tik
+identifikatorius.
+
+Tačiau, jei bent vienas `property.type` yra nurodytas, tada modelis
+įgyja fizinę reprezentaciją ir turi vieną ar kelis savo laukus, kurių
+nėra `base` modelyje.
+
+Kiekvieną kartą saugant duomenis per kitą modelį į bazę, bazės modelio
+istorijoje išsaugoma informacija iš kokio modelio atėjo duomenys.
+
+**Paveldimumas**
+
+`model` paveldi visus laukus, įskaitant ir tuos, kurie nėra nurodyti
+prie `model` laukų sąrašo. Tai reiškia, kad galima skaityti ir rašyti
+duomenis į `base`, per `model`. Jei skaitomas ar rašomas laukas, kurio
+nėra `model` laukų sąraše, tada to lauko duomenys sakomi iš arba rašomi
+į `base` modelį.
+
+Visi modelio laukai, kurie neturi tipo, fiziškai yra priskiriami `base`
+modeliui.
+
+**Dubliavimas**
+
+Laukai pavadinimai modelyje, kurie turi tą pačią semantinę prasmę, kaip
+ir bazėje turi sutapti su pavadinimais nurodytais bazėje. Tačiau, jei
+yra nurodomas jų tipas, tada tie duomenys dubliuojami, laikant, kad
+duomenys skiriasi nuo bazės, nepaisant to, kad semantiškai jie yra
+vienodi.
+
+Turint tokius dubliuojamus laukus su nurodytais tipais, jei norima
+pasiekti bazės lauką, galima naudoti `_base.prop` išraišką, kuri nurodo,
+kad norima pasiekti bazėje esančius duomenis, laukui tuo pačiu
+pavadinimu.
+
+<div class="data">
+
+base.source
+
+Nenaudojamas.
+
+</div>
+
+<div class="data">
+
+base.prepare
+
+Išimtiniais atvejais, kai nėra galimybės lentelių susieti ar apjungti
+įprastiniais metodais, galima pasitelkti formules, kurių pagalba galima
+įgyvendinti nestandartinius lentelių apjungimo atvejus.
+
+</div>
+
+<div class="data">
+
+base.type
+
+Nenaudojamas.
+
+</div>
+
+<div class="data">
+
+base.ref
+
+`model.property` reikšmė, kurios pagalba `model` objektai siejami su
+`base` objektais. Jei susiejimas pagal vieną model property yra
+neįmanomas, galima nurodyti kelis `model.property` pavadinimus atskirtus
+kableliu.
+
+Galima naudoti tik tuos `model.property`, kurie neturi nurodyto
+`property.type`, kas reiškia, kad toks pat laukas turi būti tiek `base`,
+tiek `model` laukų sąraše.
+
+Tais atvejais, kai `base.ref` rodo į modelio lauką, kuris turi tipą,
+tada `base.level` negali būti didesnis nei `3`, kadangi jei modelio
+laukas turi tipą, tai reiškia, kad jo duomenys nesutampa su bazės
+duomenimis ir todėl jungimas negali būti daromas.
+
+</div>
+
+<div class="data">
+
+base.level
+
+`Brandos lygis <level>`, nurodantis modelio susiejamumą su nurodytu
+baziniu modeliu. Plačiau žiūrėti `Ryšiai tarp modelių | Brandos lygis
+<ref-level>`.
+
+Jei brandos lygis yra žemesnis nei `3`, tada identifikatorių siejimas
+nėra atliekamas, tokiu būdu tiesiog nurodomas semantinis susiejimas
+metaduomenų, o ne duomenų lygmenyje.
+
+</div>
+
+<div class="data">
+
+base.access
+
+Nenaudojamas.
+
+</div>
+
+Paaiškinimas, ką reiškia kiekviena savybė.
+
+Pavyzdys be išorinio duomenų šaltinio:
+
+<table>
+  <thead>
+    <tr>
+      <th>d</th>
+      <th>r</th>
+      <th>b</th>
+      <th>m</th>
+      <th>property</th>
+      <th>type</th>
+      <th>ref</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>exa</td>
+      <td>mpl</td>
+      <td>e</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>---</td>
+      <td><p>---</p></td>
+      <td><p>---</p></td>
+      <td><p>---Loc</p></td>
+      <td><p>-----------ation</p></td>
+      <td><hr></td>
+      <td><hr></td>
+    </tr>
+    <tr>
+      <td>--</td>
+      <td><p>--</p></td>
+      <td><p>--</p><blockquote><p>Lo</p></blockquote></td>
+      <td><p>---</p><p>cat</p></td>
+      <td><p>-----------name@lt population ion</p></td>
+      <td><p>---------text integer</p></td>
+      <td><hr></td>
+    </tr>
+    <tr>
+      <td>--</td>
+      <td><p>--</p></td>
+      <td><p>---</p></td>
+      <td><p>---Cit</p></td>
+      <td><p>-----------y</p></td>
+      <td><hr></td>
+      <td><hr></td>
+    </tr>
+    <tr>
+      <td>--</td>
+      <td><p>--</p></td>
+      <td><p>--</p></td>
+      <td><p>---</p><p>Vil</p></td>
+      <td><p>-----------name@lt population lage</p></td>
+      <td><hr></td>
+      <td><hr></td>
+    </tr>
+    <tr>
+      <td>--</td>
+      <td><p>--</p></td>
+      <td><p>--</p><p>/</p></td>
+      <td><p>---</p></td>
+      <td><p>-----------name@lt population region</p></td>
+      <td><hr><p>ref</p></td>
+      <td><hr>
+    <p>Location</p></td>
+    </tr>
+    <tr>
+      <td>--</td>
+      <td><p>--</p></td>
+      <td><p>---</p></td>
+      <td><p>---Cou</p></td>
+      <td><p>-----------ntry</p></td>
+      <td><hr></td>
+      <td><hr></td>
+    </tr>
+    <tr>
+      <td>--</td>
+      <td><p>--</p></td>
+      <td><p>--</p></td>
+      <td><p>---</p></td>
+      <td><p>-----------name@lt population</p></td>
+      <td><hr></td>
+      <td><hr></td>
+    </tr>
+  </tbody>
+</table>
+
+Šiame pavyzdyje:
+
+- `City` ir `Village` priklauso vienai bazei `Location`.
+- Kadangi `Location` turi savybes `name@lt` ir `population`, tai `City`
+  ir `Village` modeliuose tą pačią semantinę prasmę turinčios savybės
+  turi turėti lygiai tokius pačius pavadinimus, o `property.type` turi
+  būti tuščias. Kai `property.type` yra tuščias, tai reiškia, kad savybė
+  ateina iš bazinio modelio.
+- Kadangi `Village` turi papildomą `property` su nurodytu
+  `property.type`, tai reiškia, kad `name` ir population\` priklauso
+  bazei, tačiau `region` priklauso `Village` modeliui ir jo nėra bazėje.
+- Kadangi `Country` semantiškai nėra tas pats, kas `Gyvenviete`, nors ir
+  turi tokias pačias savybes, atskiriame ją nuo `Location` bazės,
+  priskirdami `/` bazei, kas reiškia, kas bazės nėra.
+
+Pavyzdys su išoriniu duomenų šaltiniu:
+
+<table>
+<thead>
+<tr class="header">
+<th>d</th>
+<th>r</th>
+<th>b</th>
+<th>m</th>
+<th>property</th>
+<th>type</th>
+<th>ref</th>
+<th>source</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>exa</td>
+<td>mpl</td>
+<td>e</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>---</td>
+<td><p>---</p></td>
+<td><p>---</p></td>
+<td><p>---Loc</p></td>
+<td><p>-----------ation</p></td>
+<td><hr></td>
+<td><p>---------id</p></td>
+<td><hr></td>
+</tr>
+<tr class="odd">
+<td>--</td>
+<td><p>--</p></td>
+<td><p>--</p>
+<p>Loc</p></td>
+<td><p>---</p>
+<p>ati</p></td>
+<td><p>-----------id name@lt population on</p></td>
+<td><p>---------integer text integer</p></td>
+<td><hr>
+<p>name@lt</p></td>
+<td><hr></td>
+</tr>
+<tr class="even">
+<td>--</td>
+<td><p>--</p></td>
+<td><p>---</p></td>
+<td><p>---Cit</p></td>
+<td><p>-----------y</p></td>
+<td><hr></td>
+<td><p>---------name@lt</p></td>
+<td><p>------------------CITY</p></td>
+</tr>
+<tr class="odd">
+<td>--</td>
+<td><p>--</p></td>
+<td><p>--</p></td>
+<td><p>---</p>
+<p>Vil</p></td>
+<td><p>-----------name@lt population lage</p></td>
+<td><hr></td>
+<td><hr>
+<p>name@lt</p></td>
+<td><p>------------------NAME POPULATION VILLAGE</p></td>
+</tr>
+<tr class="even">
+<td>--</td>
+<td><p>--</p></td>
+<td><p>--</p></td>
+<td><p>---</p></td>
+<td><p>-----------name@lt population region</p></td>
+<td><hr>
+<p>ref</p></td>
+<td><hr>
+<p>Location</p></td>
+<td><p>------------------VILLAGE POPULATION REGION</p></td>
+</tr>
+</tbody>
+</table>
+
+Šiame pavyzdyje esminis skirtumas yra tas, kad nurodyta kaip daromas
+jungimas. `City` ir `Village` su `Location` jungiame per `name\@lt`
+lauką.
+
+## Duomenų modelis
+
+Duomenų modelis apibrėžia duomenų grupę turinčią tas pačias savybes.
+Skirtinguose duomenų šaltiniuose ir formatuose, duomenų modelis gali
+būti išreikštas skirtingomis formomis, pavyzdžiui `sql` duomenų šaltinio
+atveju, modelis aprašo vieną duomenų bazės lentelę.
+
+Kiekvienas modelis turi turėti pirminį raktą, unikalų modelio duomenų
+identifikatorių. Pirminis raktas aprašomas pateikiant vieną ar kelias
+`model.property` reikšmes `model.ref` stulpelyje, kurios kartu unikaliai
+identifikuoja kiekvieną duomenų eilutę.
+
+Išimtiniais atvejais, kai modelio duomenų laukų reikšmės turi būti
+generuojamos dinamiškai ar kitais nestandartiniais atvejais yra galimybė
+nurodyti model.type reikšmę. Jei `model.type` yra pateiktas, tada už
+modelio duomenų generavimą, įeinančių duomenų tikrinimą ir visos kitos
+su modeliu susijusios dalys gali būti pritaikytos konkretaus modelio
+atvejui. Tačiau, jei reikia keisti tik duomenų pateikimą, užtenka
+naudoti `model.prepare` formules.
+
+<div class="data">
+
+model.source
+
+Modelio pavadinimas šaltinyje. Prasmė priklauso nuo `resource.type`.
+
+</div>
+
+<div class="data">
+
+model.prepare
+
+Formulė skirta duomenų filtravimui ir paruošimui, iš dalies priklauso
+nuo `resource.type`.
+
+Taip pat skaitykite: `duomenų-atranka`.
+
+</div>
+
+<div class="data">
+
+model.type
+
+Jei nurodytą, naudoti išplėstą modelio variantą, jei nenurodyta palikti
+tuščią. Jei tuščia, naudoti standartinį modelio variantą.
+
+Gali būti įrašoma reikšmė `absent`, kuri nurodo, kad modelis buvo
+ištrintas.
+
+</div>
+
+<div class="data">
+
+model.ref
+
+Kableliu atskirtas sąrašas `model.property` reikšmių, kurios kartu
+unikaliai identifikuoja vieną duomenų eilutę (pirminis lentelės raktas).
+
+</div>
+
+<div class="data">
+
+model.level
+
+Modelio `brandos lygis <level>`, nusakantis pačio modelio brandos lygį,
+pavyzdžiui ar nurodytas pirminis raktas, ar modelio pavadinimas atitinka
+kodiniams pavadinimams kelimus reikalavimus.
+
+</div>
+
+<div class="data">
+
+model.access
+
+Modeliui priklausančių laukų `prieigos lygis <access>`. Paveldimas.
+
+</div>
+
+<div class="data">
+
+model.uri
+
+Sąsaja su `išoriniu žodynu <vocab>`.
+
+</div>
+
+<div class="data">
+
+model.title
+
+Modelio pavadinimas.
+
+</div>
+
+<div class="data">
+
+model.description
+
+Modelio aprašymas.
+
+</div>
+
+<div class="data">
+
+model.property
+
+Modeliui priklausantis duomenų laukas.
+
+</div>
+
+## Savybė
+
+Duomenų laukas atspindi tam tikrą modelio savybę arba tai gali būti
+lentelės stulpelis, jei duomenų šaltinis yra lentelė.
+
+<div class="data">
+
+property.source
+
+Duomenų lauko pavadinimas šaltinyje. Prasmė priklauso nuo
+`resource.type`.
+
+</div>
+
+<div class="data">
+
+property.prepare
+
+Formulė skirta duomenų tikrinimui ir transformavimui arba statinės
+reikšmės pateikimui.
+
+</div>
+
+<div class="data">
+
+property.type
+
+Nurodomas loginis duomenų tipas. Dėl galimų tipų sąrašo žiūrėti
+`duomenų-tipai`.
+
+Loginis duomenų tipas yra toks tipas, kurį tikitės gauti publikuojant
+duomenis per API. Loginis tipas gali skirtis nuo duomenų šaltinio tipo.
+
+Visi duomenų tipai gali turėti tokius parametrus:
+
+- `required` - nurodo, kad šis duomenų laukas yra privalomas, tai
+  reiškia, kad šio duomenų lauko reikšmė visada turi būti pateikta.
+  Pagal nutylėjimą visi modelio duomenų laukai yra neprivalomi.
+
+Kai kurie duomenų tipai, gali turėti konkrečiam duomenų tipui
+pateikiamus papildomus parametrus, tokie parametrai nurodomi
+skliausteliuose.
+
+Dupmenų tipų pavyzdžiai:
+
+- `integer`
+- `integer required`
+- `geometry`
+- `geometry(linestringm, 3345) required`
+
+</div>
+
+<div class="data">
+
+property.ref
+
+Priklauso nuo `property.type`, nurodo matavimo vienetus, laiko ar vietos
+tikslumą, `klasifikatorių <enum>` arba `ryšį su kitais modeliais
+<ryšiai>`. Ką tiksliai reiškia šis laukas, patikslinta skyrelyje
+`duomenų-tipai`.
+
+</div>
+
+<div class="data">
+
+property.level
+
+Nurodo duomenų lauko brandos lygį. Žiūrėti `level`.
+
+</div>
+
+<div class="data">
+
+property.access
+
+Nurodo prieigos prie duomenų lygį. Žiūrėti skyrių `access`.
+
+</div>
+
+<div class="data">
+
+property.uri
+
+Sąsaja su išoriniu žodynu. Žiūrėti `vocab`.
+
+</div>
+
+<div class="data">
+
+property.title
+
+Duomenų lauko pavadinimas. Šis pavadinimas yra skirtas skaityti žmonėms
+ir bus rodomas duomenų laukų sąrašuose ir antraštėse. Jei nenurodyta,
+bus naudojamas `property` kodinis pavadinimas.
+
+</div>
+
+<div class="data">
+
+property.description
+
+Duomenų lauko aprašymas.
+
+</div>
+
+<div class="data">
+
+property.enum
+
+Žiūrėti `enum`.
+
+</div>
+
+# Papildomos dimensijos
+
+## Išorinių žodynų prefiksai
+
+Sąsają su išoriniais žodynais galima pateikti `model.uri` ir
+`property.uri` stulpeliuose. Tačiau prieš naudojant žodynus, pirmiausia
+reikia apsirašyti žodynų prefiksus. Žodynų prefiksai aprašomi taip:
+
+<div class="data">
+
+prefix
+
+<div class="data">
+
+prefix.ref
+
+Prefikso pavadinimas.
+
+</div>
+
+<div class="data">
+
+prefix.uri
+
+Išorinio žodyno URI.
+
+</div>
+
+<div class="data">
+
+prefix.title
+
+Prefikso antraštė.
+
+</div>
+
+<div class="data">
+
+prefix.description
+
+Prefikso aprašymas.
+
+</div>
+
+</div>
+
+Rekomenduojama naudoti <a href="https://lov.linkeddata.es/dataset/lov/">LOV</a>
+prefiksus.
+
+Aprašyti prefiksai gali būti naudojami `model.uri` ir `property.uri`
+stulpeliuose tokiu būdu: `prefix:name`.
+
+Pavyzdys:
+
+<table>
+<thead>
+<tr class="header">
+<th>d</th>
+<th>r</th>
+<th>b</th>
+<th>m</th>
+<th>property</th>
+<th>type</th>
+<th>ref</th>
+<th>uri</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>dat</td>
+<td>ase</td>
+<td>t1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><p>---dat</p></td>
+<td><p>---</p>
+<p>ase</p></td>
+<td><p>---</p>
+<p>t2</p></td>
+<td><p>---</p></td>
+<td><hr></td>
+<td><p>--------prefix</p></td>
+<td><p>---------spinta manifest vadovas dct</p></td>
+<td><p>----------------------------------------------------https://github.com/atviriduomenys/manifest/issues/
+https://github.com/atviriduomenys/spinta/issues/
+https://atviriduomenys.readthedocs.io/
+http://purl.org/dc/dcmitype/</p></td>
+</tr>
+<tr class="odd">
+<td>---</td>
+<td><p>---</p></td>
+<td><p>---</p></td>
+<td><p>---</p></td>
+<td><hr></td>
+<td><p>--------prefix</p></td>
+<td><p>---------dcat dct dctype foaf owl prov rdf rdfs sdo skos vcard
+xsd</p></td>
+<td><p>----------------------------------------------------http://www.w3.org/ns/dcat#
+http://purl.org/dc/terms/ http://purl.org/dc/dcmitype/
+http://xmlns.com/foaf/0.1/ http://www.w3.org/2002/07/owl#
+http://www.w3.org/ns/prov# http://www.w3.org/1999/02/22-rdf-syntax-ns#
+http://www.w3.org/2000/01/rdf-schema# http://schema.org/
+http://www.w3.org/2004/02/skos/core# http://www.w3.org/2006/vcard/ns#
+http://www.w3.org/2001/XMLSchema#</p></td>
+</tr>
+</tbody>
+</table>
+
+Prefiksai turi būti apibrėžti duomenų rinkinio kontekste, kadangi
+skirtingi duomenų rinkiniai gali naudoti skirtingus prefiksus, tiems
+pateims URI. Pavyzdžiui abiejusoe rinkinyje pavyzdyje aukščiau, `dct` ir
+`dctype` rodo į tą patį URI.
+
+## Klasifikatoriai
+
+Tam tikri duomenų laukai turi fiksuotą reikšmių variantų aibę. Dažnai
+duomenų bazėse fiksuotos reikšmės saugomos skaitine forma ar kitais
+kodiniais pavadinimais. Tokias fiksuotas reikšmes duomenų struktūros
+apraše galima pateikti neužpildant hierarchinių stulpelių ir nurodant
+`type` reikšmę `enum`, pavyzdžiui:
+
+<table style="width:90%;">
+<thead>
+<tr class="header">
+<th>id</th>
+<th>d</th>
+<th>r</th>
+<th>b</th>
+<th>m</th>
+<th>property</th>
+<th>type</th>
+<th>ref</th>
+<th>source</th>
+<th>prepare</th>
+<th>level</th>
+<th>access</th>
+<th>uri</th>
+<th>title</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><blockquote>
+<p>1</p>
+</blockquote></td>
+<td colspan="5">datasets/example/places</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>2</p>
+</blockquote></td>
+<td></td>
+<td colspan="4">places</td>
+<td>sql</td>
+<td></td>
+<td>sqlite://</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>3</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td colspan="2">Place</td>
+<td></td>
+<td>id</td>
+<td>PLACES</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>4</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>id</td>
+<td>integer</td>
+<td></td>
+<td>ID</td>
+<td></td>
+<td>3</td>
+<td>open</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>5</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>type</td>
+<td>string</td>
+<td></td>
+<td>CODE</td>
+<td></td>
+<td>3</td>
+<td>open</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>6</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>enum</td>
+<td></td>
+<td>1</td>
+<td>"city"</td>
+<td></td>
+<td></td>
+<td></td>
+<td>City</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>7</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>2</td>
+<td>"town"</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Town</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>8</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>3</td>
+<td>"village"</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Village</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>9</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>name</td>
+<td>string</td>
+<td></td>
+<td>NAME</td>
+<td></td>
+<td>3</td>
+<td>open</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+Šiame pavyzdyje `Place.type` laukas yra klasifikatorius, kurio reikšmės
+yra kodai 1, 2 ir 3, kurios duomenų struktūros apraše keičiamos į
+`city`, `town` ir `village`, papildomai `title` stulpelyje nurodant
+reikšmės pavadinimą.
+
+Jei tas pats klasifikatorius gali būti naudojamas kelios skirtingose
+vietos, tada galima iškelti klasifikatorių ir suteikti jam pavadinimą,
+pavyzdžiui:
+
+<table style="width:91%;">
+<thead>
+<tr class="header">
+<th>id</th>
+<th>d</th>
+<th>r</th>
+<th>b</th>
+<th>m</th>
+<th>property</th>
+<th>type</th>
+<th>ref</th>
+<th>source</th>
+<th>prepare</th>
+<th>level</th>
+<th>access</th>
+<th>uri</th>
+<th>title</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><blockquote>
+<p>1</p>
+</blockquote></td>
+<td colspan="5">datasets/example/places</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>6</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>enum</td>
+<td>place</td>
+<td>1</td>
+<td>"city"</td>
+<td></td>
+<td></td>
+<td></td>
+<td>City</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>7</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>2</td>
+<td>"town"</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Town</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>8</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>3</td>
+<td>"village"</td>
+<td></td>
+<td></td>
+<td></td>
+<td>Village</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>2</p>
+</blockquote></td>
+<td></td>
+<td colspan="4">places</td>
+<td>sql</td>
+<td></td>
+<td>sqlite://</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>3</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td colspan="2">Place</td>
+<td></td>
+<td>id</td>
+<td>PLACES</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>4</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>id</td>
+<td>integer</td>
+<td></td>
+<td>ID</td>
+<td></td>
+<td>3</td>
+<td>open</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>5</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>type</td>
+<td>string</td>
+<td>place</td>
+<td>CODE</td>
+<td></td>
+<td>3</td>
+<td>open</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>9</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>name</td>
+<td>string</td>
+<td></td>
+<td>NAME</td>
+<td></td>
+<td>3</td>
+<td>open</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+Šiuo atveju, klasifikatoriui buvo suteiktas pavadinimas `place` įrašytas
+`enum.ref` stulpelyje, 6 eilutėje. O `Place.type` laukui, `prepare`
+stulpelyje nurodyta, kad šis laukas naudoja vardinį `place`
+klasifikatorių.
+
+<div class="data">
+
+enum
+
+<div class="data">
+
+enum.ref
+
+Pasirinkimų sąrašo pavadinimas.
+
+</div>
+
+<div class="data">
+
+enum.source
+
+Pateikiama originali reikšmė, taip kaip ji saugoma duomenų šaltinyje.
+Pateiktos reikšmės turi būti unikalios ir negali kartotis.
+
+Jei pageidaujama aprašyti tuščią šaltinio reikšmę, tada
+`property.prepare` celėje reikia nurodyti formulę, kuri tuščią reikšmę
+pakeičia, į kokią nors kitą. Formulės pavyzdys:
+
+``` python
+swap('', '-')
+```
+
+</div>
+
+<div class="data">
+
+enum.prepare
+
+Pateikiama reikšmė, tokia kuri bus naudojama atveriant duomenis.
+`model.prepare` filtruose taip pat bus naudojama būtent ši reikšmė.
+
+`enum.prepare` reikšmės gali kartotis, tokiu būdu, kelios skirtingos
+`enum.source` reikšmės bus susietos su viena `enum.prepare` reikšme.
+
+</div>
+
+<div class="data">
+
+enum.access
+
+Klasifikatoriams galima nurodyti skirtingas prieigos teises, tokiu
+atveju, naudotojas turintis `open` prieigą matys tik tuos duomenis,
+kurių klasifikatorių reikšmės turi `open` prieigos teises, visi kiti bus
+išfiltruoti.
+
+</div>
+
+<div class="data">
+
+enum.title
+
+Fiksuotos reikšmės pavadinimas.
+
+</div>
+
+<div class="data">
+
+enum.description
+
+Fiksuotos reikšmės aprašymas.
+
+</div>
+
+</div>
+
+Pagal nutylėjimą, jei `property.prepare` yra tuščias ir `property` turi
+`enum` sąrašą, tada jei šaltinis turi neaprašytą reikšmę, turėtų būti
+fiksuojama klaida.
+
+Jei yra poreikis fiksuoti tik tam tikras reikšmes, o visas kitas palikti
+tokias, kokios yra šaltinyje, tada `property.prepare` stulpelyje reikia
+įrašyti `self.choose(self)`.
+
+## Parametrai
+
+Parametrai leidžia iškelti tam tikras duomenų paruošimo operacijas į
+parametrus kurie gali būti naudojami `dimensijos`, kurioje apibrėžtas
+parametras kontekste. Parametrai gali gražinti `iteratorius`, kurių
+pagalba galima dinamiškai kartoti `resource` duomenų skaitymą,
+panaudojant aprašytus parametrus. Taip pat parametrų pagalba galima
+sudaryti reikšmių sąrašus, kurių pagalba galima kartoti `resource` su
+kiekviena reikšme.
+
+Parametrai dažniausiai naudojami žemesnio brandos lygio duomenų
+šaltiniams aprašyti, o taip pat API atvejais, kai duomenys atiduodame
+dinamiškai.
+
+Parametrai aprašomi pasitelkiant papildomą `param` dimensiją.
+
+<table style="width:94%;">
+<thead>
+<tr class="header">
+<th>id</th>
+<th>d</th>
+<th>r</th>
+<th>b</th>
+<th>m</th>
+<th>property</th>
+<th>type</th>
+<th>ref</th>
+<th>source</th>
+<th>prepare</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><blockquote>
+<p>1</p>
+</blockquote></td>
+<td colspan="5">datasets/example/cities</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>2</p>
+</blockquote></td>
+<td></td>
+<td colspan="4">places</td>
+<td>csv</td>
+<td></td>
+<td>https://example.com/{}.csv</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>3</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td colspan="2">Country</td>
+<td></td>
+<td>id</td>
+<td>countries</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>4</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>code</td>
+<td>string</td>
+<td></td>
+<td>CODE</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>5</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>title</td>
+<td>string</td>
+<td></td>
+<td>TITLE</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>6</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td colspan="2">City</td>
+<td></td>
+<td>country,   title</td>
+<td>cities/{country.code}</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>7</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>param</td>
+<td>country</td>
+<td>Country</td>
+<td>select(code)</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>8</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>country</td>
+<td>ref</td>
+<td>Country</td>
+<td></td>
+<td>param("country").code</td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>9</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>title</td>
+<td>string</td>
+<td></td>
+<td>TITLE</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<div class="data">
+
+param
+
+<div class="data">
+
+param.ref
+
+Parametro `kodinis pavadinimas`.
+
+</div>
+
+<div class="data">
+
+param.prepare
+
+Formulė, kuri grąžina sąrašą reikšmių aprašomam parametrui.
+
+</div>
+
+<div class="data">
+
+param.source
+
+Jei reikšmė pateikta, tada ši reikšmė perduodama formulei kaip `self`.
+Pavyzdžiui, jei `param.prepare` pateikta formulė `select(code)`, o
+`param.source` nurodyta `Country`, tai formulė bus iškviesta taip
+`select("Country", code)`.
+
+</div>
+
+</div>
+
+Jei parametro reikšmė yra `iteratorius`, tada `dimensija`, kurios
+kontekste yra aprašytas `parametras <param>` yra kartojama tiek kartų,
+kiek reikšmių grąžina `iteratorius`.
+
+Jei yra keli `param` grąžinantys `iteratorius`, tada iš visų
+`iteratorių <iteratorius>` sudaroma [Dekarto
+sandauga](https://lt.wikipedia.org/wiki/Dekarto_sandauga) ir `resource`
+dimensija vykdoma su kiekviena sandaugos rezultato reikšme.
+
+Jei sekančioje `DSA` eilutėje, einančioje po eilutės, kurioje aprašytas
+`param`, nenurodytas `type` ir neužpildytas joks kitas
+`dimensijos <dimensija>` stulpelis, tada parametras tampa
+`iteratoriumi <iteratorius>`, kurio reikšmių sąrašą sudaro sekančiose
+eilutėse patektos `source` ir `prepare` reikšmės. Pavyzdžiui anksčiau
+pateiktą pavyzdį galima būtų perdaryti taip:
+
+<table style="width:94%;">
+<thead>
+<tr class="header">
+<th>id</th>
+<th>d</th>
+<th>r</th>
+<th>b</th>
+<th>m</th>
+<th>property</th>
+<th>type</th>
+<th>ref</th>
+<th>source</th>
+<th>prepare</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><blockquote>
+<p>1</p>
+</blockquote></td>
+<td colspan="5">datasets/example/cities</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>2</p>
+</blockquote></td>
+<td></td>
+<td colspan="4">places</td>
+<td>csv</td>
+<td></td>
+<td>https://example.com/{}.csv</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>3</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td colspan="2">Country</td>
+<td></td>
+<td>id</td>
+<td>countries</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>4</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>code</td>
+<td>string</td>
+<td></td>
+<td>CODE</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>5</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>title</td>
+<td>string</td>
+<td></td>
+<td>TITLE</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>6</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td colspan="2">City</td>
+<td></td>
+<td>country,   title</td>
+<td>cities/{country}</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>7</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>param</td>
+<td>country</td>
+<td></td>
+<td>"lt"</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>7</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>"lv"</td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>7</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>"ee"</td>
+</tr>
+<tr class="even">
+<td><blockquote>
+<p>8</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>country</td>
+<td>ref</td>
+<td>Country</td>
+<td></td>
+<td>param("country")</td>
+</tr>
+<tr class="odd">
+<td><blockquote>
+<p>9</p>
+</blockquote></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>title</td>
+<td>string</td>
+<td></td>
+<td>TITLE</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+Šiame pavyzdyje, parametras `country` grąžins tris šalies kodus: lt, lv
+ir ee, kurie bus panaudojami `cities/{country}` pavadinime, pakeičiant
+`{country}` dalį.
+
+`param` reikšmės pasiekiamos naudojanti pavadinimą įrašytą `param.ref`
+stulpelyje. Pavyzdžiui, jei `param.ref` stulpelyje įrašyta `x`, tada `x`
+parametro reikšmę galima gauti taip:
+
+<div class="describe">
+
+source
+
+`{x}`.
+
+</div>
+
+<div class="describe">
+
+prepare
+
+`x` arba `param(x)`.
+
+</div>
+
+Parametrų generavimui galima naudoti tokias formules:
+
+<div class="describe">
+
+param.prepare
+
+<div class="function">
+
+range(stop)
+
+Sveikų skaičių generavimas nuo 0 iki `stop`, `stop` neįeina.
+
+</div>
+
+<div class="function" noindex="">
+
+range(start, stop)
+
+Sveikų skaičių generavimas nuo `start` iki `stop`, `stop` neįeina.
+
+</div>
+
+<div class="function">
+
+scalar(name)
+
+Jei nurodytas `param.source`, tada imama tik `name` lauko reikšmė, o ne
+visi modelio laukai.
+
+</div>
+
+</div>
+
+Jei užpildytas `param.source` stulpelis, tada `param.prepare` stulpelyje
+galima naudoti filtrą nurodyto `param.source` modelio duomenims
+filtruoti, o naudojant parametrus galima nurodyti ir modelio laukų
+pavadinimus, pavyzdžiui:
+
+<div class="describe">
+
+source
+
+`{x.field}`.
+
+</div>
+
+<div class="describe">
+
+prepare
+
+`x.field` arba `param(x).field`.
+
+</div>
+
+## Reikšmių sukeitimas
+
+Tam tikrais atvejais duomenis tenka normalizuoti parenkant tam tikrą
+reikšmę jei tenkinama nurodyta sąlyga. Tokias situacijas galima aprašyti
+pasitelkiant `switch` dimensiją.
+
+<div class="data">
+
+switch
+
+<div class="data">
+
+switch.source
+
+Reikšmė, kuri bus atveriama.
+
+</div>
+
+<div class="data">
+
+switch.prepare
+
+Sąlyga, naudojant einamojo modelio laukus. Jei sąlyga tenkinama, tada
+laukui priskiriama `switch.source` reikšmė. Jei sąlyga netenkinama, tada
+bandoma tikrinti sekančią sąlygą. Parenkama ta reikšmė, kurios pirmoji
+sąlyga tenkinama.
+
+Jei `switch.prepare` yra tuščias, tada sąlyga visada teigiama ir visada
+grąžinama `switch.source` reikšmė.
+
+</div>
+
+</div>
+
+## Komentavimas
+
+Dirbant su `DSA` yra galimybė komentuoti eilutes, naudojant papildomą
+`comment` dimensiją, kurią galima naudoti bet kurios kitos dimensijos
+kontekste.
+
+<div class="data">
+
+comment
+
+<div class="data">
+
+comment.id
+
+Komentaro numeris.
+
+</div>
+
+<div class="data">
+
+comment.ref
+
+Komentuojamo vieno ar kelių kableliu atskirtų `property` pavadinimai.
+Galima nurodyti ne tik stulpelio pavadinimą, bet ir dimensiją.
+
+</div>
+
+<div class="data">
+
+comment.source
+
+Komentaro autorius.
+
+</div>
+
+<div class="data">
+
+comment.prepare
+
+Keitimo pasiūlymas, naudojant `create()`, `update` ir `delete()`
+funkcijas. Pavyzdžiui:
+
+    update(property: "pavadinimas@lt", type: "text")
+
+Šiuo atveju nurodoma, kad siūloma keisti `property` pavadnimą į
+`pavadinimas@lt`, o `type` į `text`.
+
+</div>
+
+<div class="data">
+
+comment.level
+
+Nurodoma, kad patenkinus keitimo sliūlymą, kuris nurodytas
+`comment.prepare` stulplyje, komentuojamai eilutei gali būti suteiktas
+nurodytas brandos lygis.
+
+</div>
+
+<div class="data">
+
+comment.access
+
+Nurodoma, ar komentaras gali būti publikuojamas viešai.
+
+private  
+Komentaras negali būti publikuojamas viešai. Šis prieigos lygis
+naudojamas pagal nutylėjimą.
+
+open  
+Komentaras gali būti publikuojamas viešai.
+
+</div>
+
+<div class="data">
+
+comment.uri
+
+Viena ar kelios kableliu atskirtos šaltinio nuorodos, kuri pateikta
+daugiau informacijos apie tai, kas komentuojama. Taip pat gali būti
+nurodytas kito komentaro `comment.id`, nurodant, kad tai yra atsakymas į
+ankstesnį komentarą.
+
+URI pateikiami sutrumpinta forma, naudojant prefikstus. Žiūrėti skrių
+`vocab`.
+
+</div>
+
+<div class="data">
+
+comment.title
+
+Komentaro data, [ISO 8601]() formatu.
+
+</div>
+
+<div class="data">
+
+comment.description
+
+Komentaro tekstas.
+
+</div>
+
+</div>
+
+**Pavyzdys**
+
+<table>
+<thead>
+<tr class="header">
+<th>d</th>
+<th>r</th>
+<th>b</th>
+<th>m</th>
+<th>property</th>
+<th>type</th>
+<th>ref</th>
+<th>prepare</th>
+<th>level</th>
+<th>access</th>
+<th>uri</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>exa</td>
+<td>mpl</td>
+<td>e</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td>---</td>
+<td><p>---</p></td>
+<td><p>---</p></td>
+<td><p>---</p>
+<p>Imo</p></td>
+<td><hr>
+<p>ne</p></td>
+<td><p>--------prefix</p></td>
+<td><p>---------spinta manifest vadovas</p></td>
+<td><hr></td>
+<td><hr>
+<p>2</p></td>
+<td><hr></td>
+<td><p>----------------------------------------------------https://github.com/atviriduomenys/manifest/issues/
+https://github.com/atviriduomenys/spinta/issues/
+https://atviriduomenys.readthedocs.io/</p></td>
+</tr>
+<tr class="odd">
+<td>--</td>
+<td><p>--</p></td>
+<td><p>--</p></td>
+<td><p>---</p></td>
+<td><hr>
+<p>id pavadinimas</p></td>
+<td><p>--------comment comment integer string comment</p></td>
+<td><p>---------base ref</p>
+<p>ref</p></td>
+<td><p>--------------------------------------------------update(base:
+"/jar/JuridinisAsmuo", ref: "id") update(ref: "id")</p>
+<p>update(property: "pavadinimas@lt", type: "text")</p></td>
+<td><p>------4 4 4 2 4</p></td>
+<td><p>-------open open open open open</p></td>
+<td><p>----------------------------------------------------spinta:205,
+manifest:1290 vadovas:dsa/dimensijos.html#model.ref</p>
+<p>spinta:204</p></td>
+</tr>
+</tbody>
+</table>
+
+## Daugiakalbiškumas
+
+`title` ir `description` stulpeliuose tekstas rašomas lietuvių kalba,
+tačiau galima pateikti tekstą ir kita kalba, panaudojus papildomą `lang`
+dimensiją, kurią reikia naudoti prieš eilutę, kuriai pateikiamas tekstas
+kita kalba.
+
+<div class="data">
+
+lang
+
+<div class="data">
+
+lang.ref
+
+[ISO 639-1]() dviejų simbolių kalbos kodas.
+
+</div>
+
+<div class="data">
+
+lang.title
+
+Pavadinimas `lang.ref` stulpelyje nurodyta kalba.
+
+</div>
+
+<div class="data">
+
+lang.description
+
+Aprašymas `lang.ref` stulpelyje nurodyta kalba.
+
+</div>
+
+</div>
+
+## Struktūros keitimas
+
+Laikui einant, pirminių duomenų šaltinių arba jau atvertų duomenų
+struktūra keičiasi, papildoma naujais `modeliais <modelis>` ar
+`savybėmis
+<savybė>`, keliant duomenų brandos lygį seni duomenys keičiami naujais,
+aukštesnio brandos lygio duomenimis.
+
+Visi šie struktūros ar pačių duomenų pasikeitimai fiksuojami papildomos
+`migrate` dimensijos pagalba, kuri gali būti naudojama, bet kurios kitos
+dimensijos kontekste.
+
+<div class="note">
+
+<div class="title">
+
+Note
+
+</div>
+
+Migracijos naudojamos tik tuo atveju, kai keičiasi duomenų struktūra
+arba patys duomenys. Jei keičiasi tik metaduomenys, tai migracijų sąraše
+neatsispindi.
+
+</div>
+
+<table>
+<thead>
+<tr class="header">
+<th>id</th>
+<th>d</th>
+<th>r</th>
+<th>b</th>
+<th>m</th>
+<th>property</th>
+<th>type</th>
+<th>ref</th>
+<th>prepare</th>
+<th>level</th>
+<th>title</th>
+<th>description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>1 2 3</td>
+<td><p>dat</p></td>
+<td><p>ase</p></td>
+<td><p>ts/</p></td>
+<td><p>exa</p></td>
+<td><p>mple/migrate</p></td>
+<td><p>migrate migrate migrate</p></td>
+<td><p>1 2</p></td>
+<td></td>
+<td></td>
+<td><p>2021-12-21 16:29 2021-12-21 16:33 2022-06-21 16:41</p></td>
+<td><p>Pirmoji migracija. Antroji migracija. Trečioji
+migracija.</p></td>
+</tr>
+<tr class="even">
+<td>--</td>
+<td><p>---</p></td>
+<td><p>---</p></td>
+<td><p>---</p></td>
+<td><p>---Cou</p></td>
+<td><p>---------------ntry</p></td>
+<td><hr></td>
+<td><p>---id</p></td>
+<td><hr></td>
+<td><hr></td>
+<td><hr></td>
+<td><hr></td>
+</tr>
+<tr class="odd">
+<td>--</td>
+<td><p>--</p></td>
+<td><p>--</p></td>
+<td><p>--</p></td>
+<td><p>---</p></td>
+<td><p>---------------id</p></td>
+<td><p>--------integer</p></td>
+<td><p>---</p></td>
+<td><hr></td>
+<td><p>-----4</p></td>
+<td><hr></td>
+<td><hr></td>
+</tr>
+<tr class="even">
+<td>--</td>
+<td><p>--</p></td>
+<td><p>--</p></td>
+<td><p>--</p></td>
+<td><p>--</p></td>
+<td><p>---------------code</p>
+<p>name</p></td>
+<td><p>--------string migrate migrate string migrate</p></td>
+<td><p>---</p>
+<p>1 3</p>
+<p>2</p></td>
+<td><hr>
+<p>create(level: 2) update(level: 3)</p>
+<p>create()</p></td>
+<td><p>-----3</p></td>
+<td><hr></td>
+<td><hr></td>
+</tr>
+</tbody>
+</table>
+
+Pavyzdyje aukščiau matome, kad šis duomenų struktūros aprašas turi tris
+migracijas:
+
+1.  Pirmosios migracijos metu sukuriamas pradinis duomenų struktūros
+    variantas. Pirmoji migracija nežymima prie modelių ir duomenų laukų,
+    nebent daromas keitimas, tuomet įtraukiam ir pirmoji migracija, kad
+    būtų matoma, kas keitėsi. Būtent toks atvejis parodytas prie
+    `Country.code` lauko, kuri trečiojo migracijoje keičiamas brandos
+    lygis.
+
+2.  Antrosios migracijos metu buvo įtrauktas naujas duomenų laukas
+    `Country.name`.
+
+3.  Trečiosios migracijos metu, buvo keičiami `Country.code` lauko
+    duomenys, pakeitimo metu brandos lygis buvo pakeltas iki trečio.
+    Atkreipkite dėmesį, kad metaduomenų pasikeitimas, kaip šiuo atveju,
+    žymimas migracijose tik tuo atveju, jei tai yra susiję su pačių
+    duomenų pasikeitimu.
+
+    Jei brandos lygis būtų pakeistas, nekeičiant pačių duomenų, tuomet
+    tokio pakeitimo nereikėtų įtraukti į migracijų sąrašą.
+
+    Kadangi trečiojoje migracijoje buvo atliktas su ankstesne versija
+    nesuderinamas pakeitimas, tai šios migracijos data yra 6 mėnesiai
+    ateityje, kadangi nesuderinamos migracijos pirmiausia paskelbiamos,
+    o įgyvendinamos tik praėjus 6 mėnesiams nuo paskelbimo.
+
+<div class="data">
+
+migrate
+
+<div class="data">
+
+migrate.id
+
+Migracijos numeris (UUID). Kiekvienos migracijos metu gali būti
+atliekama eilė operacijų, visos operacijos fiksuojamos naudojant
+migracijos numerį.
+
+Visų migracijų sąrašas pateikiamas, kai `migrate` nepriklauso jokiam
+dimensijos kontekstui.
+
+</div>
+
+<div class="data">
+
+migrate.ref
+
+Ankstesnės migracijos numeris, pateiktas `migrate.id` stulpelyje, arba
+tuščia, jei prieš tai jokių kitų migracijų nebuvo.
+
+Naudojamas jei `migrate` nepatenka į jokios dimensijos kontekstą.
+
+Jei `migrate` aprašomas dimensijos kontekste, tada šis stulpelis
+nenaudojamas.
+
+</div>
+
+<div class="data">
+
+migrate.prepare
+
+Migracijos operacija. Galimos tokios operacijos:
+
+<div class="function">
+
+create()
+
+Priklausomai nuo dimensijos konteksto, prideda naują modelį, arba
+savybę.
+
+Funkcijai galima perduoti `ref` ir kitus vardinius argumentus, kurie
+atitinka `DSA` lentelės metaduomenų stulpelių pavadinimus.
+
+</div>
+
+<div class="function">
+
+update()
+
+Taikomas tik duomenų laukams ir nurodo, kad buvo pakeistos esamų duomenų
+reikšmės, keičiant reikšmių dimensiją, matavimo vienetus, formatą ir
+kita.
+
+Funkcijai galima perduoti `ref` ir kitus vardinius argumentus, kurie
+atitinka `DSA` lentelės metaduomenų stulpelių pavadinimus.
+
+Perduodami tik tie vardiniai argumentai, kuriuos atitinkantys
+metaduomenys keičiasi.
+
+</div>
+
+<div class="function">
+
+delete()
+
+Priklausomai nuo dimensijos konteksto, šalina modelį ar savybę.
+
+Pašalinto modelio ar savybės `type` keičiamas į `absent` reikšmę.
+
+</div>
+
+<div class="function">
+
+filter(where)
+
+Naudojamas `property` kontekste, kai vykdoma duomenų migracija. Nurodo,
+kad migracija taikoma tik `where` sąlygą tenkinantiems duomenims.
+
+</div>
+
+Be šių pagrindinių migracijos operacijų, galima naudoti kitas duomenų
+transformavimo operacijas, kurios vykdomos su kiekviena duomenų eilute
+ir atlikus pateiktas transformacijos funkcijas, pakeista reikšmė
+išsaugoma.
+
+</div>
+
+<div class="data">
+
+migrate.title
+
+Migracijos įvykdymo data ir laikas. Migracijos laikas ir data gali būti
+ir ateityje, tuo atveju, jei daromas nesuderinamas keitimas.
+
+Naudojamas tik tada, kai `migrate` nepatenka į jokios dimensijos
+kontekstą.
+
+</div>
+
+<div class="data">
+
+migrate.description
+
+Migracijos atliekamo pakeitimo trumpas aprašymas.
+
+</div>
+
+</div>

@@ -10,4 +10,5 @@
 /tags
 /var/
 /.vs/
-docs/_build/
+/docs/_build/
+/node_modules/
