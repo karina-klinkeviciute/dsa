@@ -1,60 +1,161 @@
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="lt" data-content_root="./">
-<head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sąvokos &mdash; Duomenų struktūros aprašas  documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=a5c4661c" />
-      <link rel="stylesheet" type="text/css" href="_static/style.css" />
+
+<html lang="lt" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Sąvokos &#8212; DSA</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=a5c4661c" />
+    <link rel="stylesheet" type="text/css" href="_static/style.css" />
   
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=7be03173"></script>
-        <script src="_static/doctools.js?v=9a2dae69"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="_static/translations.js?v=3b848cde"></script>
-    <script src="_static/js/theme.js"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="_static/documentation_options.js?v=4ee96f2e"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script src="_static/translations.js?v=3b848cde"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'savokos';</script>
     <link rel="index" title="Indeksas" href="genindex.html" />
     <link rel="search" title="Paieška" href="search.html" />
     <link rel="next" title="Keitimų istorija" href="keitimai.html" />
-    <link rel="prev" title="Formulės" href="formules.html" /> 
-</head>
+    <link rel="prev" title="Formulės" href="formules.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="lt"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-<body class="wy-body-for-nav"> 
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
-          
-          
-          <a href="index.html" class="icon icon-home">
-            Duomenų struktūros aprašas
-          </a>
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Ieškoti dokumentuose" aria-label="Ieškoti dokumentuose" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigacijos meniu">
-              <ul class="current">
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">DSA</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Paieška" aria-label="Paieška" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Paieška</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="modelis.html">Duomenų modeliavimas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="formatas.html">Lentelės formatas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="formatas.html#lenteles-struktura">Lentelės struktūra</a></li>
-<li class="toctree-l1"><a class="reference internal" href="formatas.html#vardu-erdves">Vardų erdvės</a></li>
-<li class="toctree-l1"><a class="reference internal" href="formatas.html#reliatyvus-pavadinimai">Reliatyvūs pavadinimai</a></li>
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="dimensijos.html">Dimensijos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dimensijos.html#papildomos-dimensijos">Papildomos dimensijos</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="tipai.html">Duomenų tipai</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pavadinimai.html">Kodiniai pavadinimai</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vienetai.html">Matavimo vienetai</a></li>
@@ -64,38 +165,161 @@
 <li class="toctree-l1"><a class="reference internal" href="saltiniai.html">Duomenų šaltiniai</a></li>
 <li class="toctree-l1"><a class="reference internal" href="zodynai.html">Išoriniai žodynai</a></li>
 <li class="toctree-l1"><a class="reference internal" href="formules.html">Formulės</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Sąvokos</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Sąvokos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="keitimai.html">Keitimų istorija</a></li>
 </ul>
 
-        </div>
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
       </div>
-    </nav>
+      
+      <main id="main-content" class="bd-main">
+        
+        
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobilios navigacijos meniu" >
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">Duomenų struktūros aprašas</a>
-      </nav>
+<div class="sbt-scroll-pixel-helper"></div>
 
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="Puslapių navigacija">
-  <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Sąvokos</li>
-      <li class="wy-breadcrumbs-aside">
-            <a href="_sources/savokos.rst.txt" rel="nofollow"> Žiūrėti puslapio šaltinį</a>
-      </li>
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ivpk/dsa" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Šaltinio saugykla"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ivpk/dsa/issues/new?title=Issue%20on%20page%20%2Fsavokos.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Atidarykite problemą"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
   </ul>
-  <hr/>
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-             
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Pilno ekrano režimas"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Paieška" aria-label="Paieška" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Sąvokos</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <section id="savokos">
-<h1>Sąvokos<a class="headerlink" href="#savokos" title="Link to this heading"></a></h1>
+<h1>Sąvokos<a class="headerlink" href="#savokos" title="Link to this heading">#</a></h1>
 <dl class="glossary">
-<dt id="term-TGII">TGIĮ<a class="headerlink" href="#term-TGII" title="Link to this term"></a></dt><dd><p><a class="reference external" href="https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/TAIS.94745/asr">Teisės gauti informaciją ir duomenų pakartotinio naudojimo
+<dt id="term-TGII">TGIĮ<a class="headerlink" href="#term-TGII" title="Link to this term">#</a></dt><dd><p><a class="reference external" href="https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/TAIS.94745/asr">Teisės gauti informaciją ir duomenų pakartotinio naudojimo
 įstatymas</a>.</p>
 <p>Šis įstatymas įpareigoja valstybės ir savivaldybių institucijas ir
 joms pavaldžius subjektus atverti duomenis.</p>
@@ -144,7 +368,7 @@ pačiam valstybės valdomam subjektui arba bendrosios kompetencijos
 teismui.</p>
 </div></blockquote>
 </dd>
-<dt id="term-Europos-sveikumo-karkasas">Europos sveikumo karkasas<a class="headerlink" href="#term-Europos-sveikumo-karkasas" title="Link to this term"></a></dt><dd><p><a class="reference external" href="https://eur-lex.europa.eu/resource.html?uri=cellar:2c2f2554-0faf-11e7-8a35-01aa75ed71a1.0017.02/DOC_3&amp;format=PDF">Rekomendacijų rinkinys</a> apie tai, kaip užtikrinti didesnį skaitmeninį
+<dt id="term-Europos-sveikumo-karkasas">Europos sveikumo karkasas<a class="headerlink" href="#term-Europos-sveikumo-karkasas" title="Link to this term">#</a></dt><dd><p><a class="reference external" href="https://eur-lex.europa.eu/resource.html?uri=cellar:2c2f2554-0faf-11e7-8a35-01aa75ed71a1.0017.02/DOC_3&amp;format=PDF">Rekomendacijų rinkinys</a> apie tai, kaip užtikrinti didesnį skaitmeninį
 sveikumą tarp Europos šalių.</p>
 <p>Rekomendacijų sąrašas:</p>
 <blockquote>
@@ -174,38 +398,38 @@ them.</p>
 sources and services while developing European public services.</p>
 </div></blockquote>
 </dd>
-<dt id="term-atviru-duomenu-direktyva">atvirų duomenų direktyva<a class="headerlink" href="#term-atviru-duomenu-direktyva" title="Link to this term"></a></dt><dd><p>2019 m. birželio 20 d. Europos Parlamento ir Tarybos direktyva (ES)
+<dt id="term-atviru-duomenu-direktyva">atvirų duomenų direktyva<a class="headerlink" href="#term-atviru-duomenu-direktyva" title="Link to this term">#</a></dt><dd><p>2019 m. birželio 20 d. Europos Parlamento ir Tarybos direktyva (ES)
 <a class="reference external" href="https://eur-lex.europa.eu/legal-content/LT/TXT/?uri=CELEX:32019L1024">2019/1024</a> dėl atvirųjų duomenų ir viešojo sektoriaus informacijos
 pakartotinio naudojimo.</p>
 </dd>
-<dt id="term-duomenu-valdymo-aktas">duomenų valdymo aktas<a class="headerlink" href="#term-duomenu-valdymo-aktas" title="Link to this term"></a></dt><dd><p>2020 m. lapkričio 25 d. Europos Parlamento ir Tarybos reglamento (ES)
+<dt id="term-duomenu-valdymo-aktas">duomenų valdymo aktas<a class="headerlink" href="#term-duomenu-valdymo-aktas" title="Link to this term">#</a></dt><dd><p>2020 m. lapkričio 25 d. Europos Parlamento ir Tarybos reglamento (ES)
 pasiūlymas <a class="reference external" href="https://eur-lex.europa.eu/legal-content/LT/TXT/?uri=CELEX:52020PC0767">2020/0340</a> dėl Europos duomenų valdymo (Duomenų valdymo
 aktas).</p>
 </dd>
-<dt id="term-aplinkos-kintamasis">aplinkos kintamasis<a class="headerlink" href="#term-aplinkos-kintamasis" title="Link to this term"></a></dt><dd><p>Angliškai tai vadinama <em>environment variables</em>, tai yra operacinės
+<dt id="term-aplinkos-kintamasis">aplinkos kintamasis<a class="headerlink" href="#term-aplinkos-kintamasis" title="Link to this term">#</a></dt><dd><p>Angliškai tai vadinama <em>environment variables</em>, tai yra operacinės
 sistemos aplinkos kintamieji.</p>
 <p>Plačiau apie tai skaitykite <a class="reference external" href="https://en.wikipedia.org/wiki/Environment_variable">Vikipedijoje</a>.</p>
 </dd>
-<dt id="term-ADP">ADP<a class="headerlink" href="#term-ADP" title="Link to this term"></a></dt><dd><p>Atvirų duomenų portalas, sudarytas iš <a class="reference internal" href="#term-ADK"><span class="xref std std-term">atvirų duomenų katalogo</span></a> ir <a class="reference internal" href="#term-ADS"><span class="xref std std-term">duomenų saugyklos</span></a>.</p>
+<dt id="term-ADP">ADP<a class="headerlink" href="#term-ADP" title="Link to this term">#</a></dt><dd><p>Atvirų duomenų portalas, sudarytas iš <a class="reference internal" href="#term-ADK"><span class="xref std std-term">atvirų duomenų katalogo</span></a> ir <a class="reference internal" href="#term-ADS"><span class="xref std std-term">duomenų saugyklos</span></a>.</p>
 </dd>
-<dt id="term-ADK">ADK<a class="headerlink" href="#term-ADK" title="Link to this term"></a></dt><dd><p>Lietuvos atvirų duomenų katalogas, prieinamas adresu <a class="reference external" href="https://data.gov.lt/">data.gov.lt</a>.</p>
+<dt id="term-ADK">ADK<a class="headerlink" href="#term-ADK" title="Link to this term">#</a></dt><dd><p>Lietuvos atvirų duomenų katalogas, prieinamas adresu <a class="reference external" href="https://data.gov.lt/">data.gov.lt</a>.</p>
 </dd>
-<dt id="term-ADS">ADS<a class="headerlink" href="#term-ADS" title="Link to this term"></a></dt><dd><p><span class="xref std std-ref">Atvirų duomenų saugykla</span>, skirta pakartotinio
+<dt id="term-ADS">ADS<a class="headerlink" href="#term-ADS" title="Link to this term">#</a></dt><dd><p><span class="xref std std-ref">Atvirų duomenų saugykla</span>, skirta pakartotinio
 panaudojimo duomenų publikavimui, valstybinė atvirų duomenų saugykla
 pasiekiama <a class="reference external" href="https://get.data.gov.lt/">get.data.gov.lt</a> adresu.</p>
 </dd>
-<dt id="term-DSA">DSA<a class="headerlink" href="#term-DSA" title="Link to this term"></a></dt><dd><p><span class="xref std std-ref">Duomenų struktūros aprašas</span> yra
+<dt id="term-DSA">DSA<a class="headerlink" href="#term-DSA" title="Link to this term">#</a></dt><dd><p><span class="xref std std-ref">Duomenų struktūros aprašas</span> yra
 lentelė, kurioje išsamiai aprašyta tam tikro duomenų šaltinio duomenų
 struktūra. DSA lentelę sudaro penkios dimensijos (duomenų rinkinys,
 resursas, bazė, modelis, savybė) ir dešimt metaduomenų stulpelių.</p>
 </dd>
-<dt id="term-ADSA">ADSA<a class="headerlink" href="#term-ADSA" title="Link to this term"></a></dt><dd><p><a class="reference internal" href="#term-DSA"><span class="xref std std-term">DSA</span></a> lentelė, kurioje aprašomi jau atverti ir viešai prieinami
+<dt id="term-ADSA">ADSA<a class="headerlink" href="#term-ADSA" title="Link to this term">#</a></dt><dd><p><a class="reference internal" href="#term-DSA"><span class="xref std std-term">DSA</span></a> lentelė, kurioje aprašomi jau atverti ir viešai prieinami
 duomenys.</p>
 </dd>
-<dt id="term-SDSA">ŠDSA<a class="headerlink" href="#term-SDSA" title="Link to this term"></a></dt><dd><p><a class="reference internal" href="#term-DSA"><span class="xref std std-term">DSA</span></a> lentelė, kurioje aprašoma neatvertų, <a class="reference internal" href="#term-pirminis-duomenu-saltinis"><span class="xref std std-term">pirminio
+<dt id="term-SDSA">ŠDSA<a class="headerlink" href="#term-SDSA" title="Link to this term">#</a></dt><dd><p><a class="reference internal" href="#term-DSA"><span class="xref std std-term">DSA</span></a> lentelė, kurioje aprašoma neatvertų, <a class="reference internal" href="#term-pirminis-duomenu-saltinis"><span class="xref std std-term">pirminio
 duomenų šaltinio</span></a> duomenų struktūra.</p>
 </dd>
-<dt id="term-dideles-vertes-duomenys">didelės vertės duomenys<a class="headerlink" href="#term-dideles-vertes-duomenys" title="Link to this term"></a></dt><dt id="term-aukstos-vertes-duomenys">aukštos vertės duomenys<a class="headerlink" href="#term-aukstos-vertes-duomenys" title="Link to this term"></a></dt><dd><p>Duomenys apibrėžti <a class="reference internal" href="#term-atviru-duomenu-direktyva"><span class="xref std std-term">atvirų duomenų direktyvos</span></a> 5 skyriuje.</p>
+<dt id="term-dideles-vertes-duomenys">didelės vertės duomenys<a class="headerlink" href="#term-dideles-vertes-duomenys" title="Link to this term">#</a></dt><dt id="term-aukstos-vertes-duomenys">aukštos vertės duomenys<a class="headerlink" href="#term-aukstos-vertes-duomenys" title="Link to this term">#</a></dt><dd><p>Duomenys apibrėžti <a class="reference internal" href="#term-atviru-duomenu-direktyva"><span class="xref std std-term">atvirų duomenų direktyvos</span></a> 5 skyriuje.</p>
 <p><a class="reference external" href="https://eur-lex.europa.eu/legal-content/LT/TXT/?qid=1561563110433&amp;uri=CELEX:32019L1024#d1e32-79-1">Aukštos vertės duomenų sritys</a> yra šios:</p>
 <ul class="simple">
 <li><p>Geoerdviniai duomenys</p></li>
@@ -216,12 +440,12 @@ duomenų šaltinio</span></a> duomenų struktūra.</p>
 <li><p>Judumas</p></li>
 </ul>
 </dd>
-<dt id="term-BDAR">BDAR<a class="headerlink" href="#term-BDAR" title="Link to this term"></a></dt><dd><p>2016 m. balandžio 27 d. Europos Parlamento ir Tarybos reglamentas (ES)
+<dt id="term-BDAR">BDAR<a class="headerlink" href="#term-BDAR" title="Link to this term">#</a></dt><dd><p>2016 m. balandžio 27 d. Europos Parlamento ir Tarybos reglamentas (ES)
 <a class="reference external" href="https://eur-lex.europa.eu/legal-content/LT/TXT/?uri=CELEX:32016R0679">2016/679</a> dėl fizinių asmenų apsaugos tvarkant asmens duomenis ir dėl
 laisvo tokių duomenų judėjimo ir kuriuo panaikinama Direktyva
 <a class="reference external" href="https://eur-lex.europa.eu/legal-content/LT/TXT/?uri=CELEX:31995L0046">95/46/EB</a> (Bendrasis duomenų apsaugos reglamentas).</p>
 </dd>
-<dt id="term-duomenu-serializavimo-formatas">duomenų serializavimo formatas<a class="headerlink" href="#term-duomenu-serializavimo-formatas" title="Link to this term"></a></dt><dd><p>Duomenys gali būti serializuojami įvairiais formatais, pavyzdžiui YAML
+<dt id="term-duomenu-serializavimo-formatas">duomenų serializavimo formatas<a class="headerlink" href="#term-duomenu-serializavimo-formatas" title="Link to this term">#</a></dt><dd><p>Duomenys gali būti serializuojami įvairiais formatais, pavyzdžiui YAML
 formatu:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">project</span>
 <span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Manifestas</span>
@@ -247,7 +471,7 @@ koduotę:</p>
 naudojami skirtingi duomenų serializavimo formatai, koduotės ir skirtingi
 žodynai.</p>
 </dd>
-<dt id="term-brandos-lygis">brandos lygis<a class="headerlink" href="#term-brandos-lygis" title="Link to this term"></a></dt><dd><p>Duomenų brandos lygiai yra apibrėžti <a class="reference external" href="https://5stardata.info/">5 ★ Open Data</a> svetainėje.
+<dt id="term-brandos-lygis">brandos lygis<a class="headerlink" href="#term-brandos-lygis" title="Link to this term">#</a></dt><dd><p>Duomenų brandos lygiai yra apibrėžti <a class="reference external" href="https://5stardata.info/">5 ★ Open Data</a> svetainėje.
 Viso yra penki brandos lygiai, tačiau papildomai verta įtraukti ir
 nulinį brandos lygį, kai duomenų poreikis yra, tačiau duomenys
 nekaupiami arba negali būti publikuojami dėl teisinių ar kitų
@@ -316,10 +540,10 @@ nepriklausomai nuo duomenų šaltinio ar duomenų kilmės.</p>
 </dd>
 </dl>
 </dd>
-<dt id="term-kanoniniai-duomenys">kanoniniai duomenys<a class="headerlink" href="#term-kanoniniai-duomenys" title="Link to this term"></a></dt><dd><p>Kanoniniai duomenys yra tarsi duomenų etalonas, kuris nusako kokios
+<dt id="term-kanoniniai-duomenys">kanoniniai duomenys<a class="headerlink" href="#term-kanoniniai-duomenys" title="Link to this term">#</a></dt><dd><p>Kanoniniai duomenys yra tarsi duomenų etalonas, kuris nusako kokios
 duomenų reikšmės yra teisingos. Pavyzdžiui įmonės pavadinimas gali būti
 užrašomas įvairiausiomis formomis, pavyzdžiui:</p>
-<table class="docutils align-default">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Įmonės kodas</p></th>
 <th class="head"><p>Įmonės pavadinimas</p></th>
@@ -352,7 +576,7 @@ užrašomas įvairiausiomis formomis, pavyzdžiui:</p>
 <p>Jei duomenų rinkinyje nėra pateiktas įmonės registracijos kodas, tada
 unikaliai identifikuoti įmonę yra gan sudėtinga.</p>
 <p>Tačiau turint autoritetingus kanoninius duomenis:</p>
-<table class="docutils align-default">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Įmonės kodas</p></th>
 <th class="head"><p>Įmones pavadinimas</p></th>
@@ -367,9 +591,9 @@ unikaliai identifikuoti įmonę yra gan sudėtinga.</p>
 <p>Užduotis unikaliai identifikuoti įmonę pasidaro paprastesnė. Todėl
 kanoniniai duomenys yra labai svarbūs.</p>
 </dd>
-<dt id="term-kodinis-pavadinimas">kodinis pavadinimas<a class="headerlink" href="#term-kodinis-pavadinimas" title="Link to this term"></a></dt><dd><p>Pavadinimas, kuriam keliami tam tikri apribojimai.</p>
+<dt id="term-kodinis-pavadinimas">kodinis pavadinimas<a class="headerlink" href="#term-kodinis-pavadinimas" title="Link to this term">#</a></dt><dd><p>Pavadinimas, kuriam keliami tam tikri apribojimai.</p>
 </dd>
-<dt id="term-manifestas">manifestas<a class="headerlink" href="#term-manifestas" title="Link to this term"></a></dt><dd><p>Atvirų duomenų manifestas yra <a class="reference internal" href="#term-DSA"><span class="xref std std-term">DSA</span></a> lentelių rinkinys, kuriuose
+<dt id="term-manifestas">manifestas<a class="headerlink" href="#term-manifestas" title="Link to this term">#</a></dt><dd><p>Atvirų duomenų manifestas yra <a class="reference internal" href="#term-DSA"><span class="xref std std-term">DSA</span></a> lentelių rinkinys, kuriuose
 aprašyti duomenų šaltiniai ir juose esančių duomenų struktūra.</p>
 <p>Žodis manifestas yra kilęs iš programavimo srityje naudojamo termino
 <a class="reference external" href="https://en.wikipedia.org/wiki/Manifest_file">Manifesto failas</a>, kuriame pateikiami metaduomenys apie programinio
@@ -378,29 +602,29 @@ paketo sandarą.</p>
 metaduomenų lentelė apie įvairiuose duomenų šaltiniuose publikuojamus
 duomenis.</p>
 </dd>
-<dt id="term-metaduomenys">metaduomenys<a class="headerlink" href="#term-metaduomenys" title="Link to this term"></a></dt><dd><p>Duomenys apie duomenis yra vadinami metaduomenimis. Pavyzdžiui duomenų
+<dt id="term-metaduomenys">metaduomenys<a class="headerlink" href="#term-metaduomenys" title="Link to this term">#</a></dt><dd><p>Duomenys apie duomenis yra vadinami metaduomenimis. Pavyzdžiui duomenų
 struktūros aprašas konkrečiam CSV duomenų failui gali būti vadinamas CSV
 failo metaduomenimis.</p>
 </dd>
-<dt id="term-normalizavimas">normalizavimas<a class="headerlink" href="#term-normalizavimas" title="Link to this term"></a></dt><dd><p>Duomenų normalizavimas yra duomenų struktūros transformavimo procesas
+<dt id="term-normalizavimas">normalizavimas<a class="headerlink" href="#term-normalizavimas" title="Link to this term">#</a></dt><dd><p>Duomenų normalizavimas yra duomenų struktūros transformavimo procesas
 taikant taip vadinamas normalines formas, tam kad sumažinti duomenų
 pasikartojimą.</p>
 <p>Plačiau apie tai skaitykite <a class="reference external" href="https://en.wikipedia.org/wiki/Database_normalization">Vikipedijoje</a>.</p>
 </dd>
-<dt id="term-prieigos-taskas">prieigos taškas<a class="headerlink" href="#term-prieigos-taskas" title="Link to this term"></a></dt><dd><p>Prieigos taškas yra <a class="reference internal" href="#term-REST-API"><span class="xref std std-term">REST API</span></a> terminas, nurodantis URL kelio dalį iki tam
+<dt id="term-prieigos-taskas">prieigos taškas<a class="headerlink" href="#term-prieigos-taskas" title="Link to this term">#</a></dt><dd><p>Prieigos taškas yra <a class="reference internal" href="#term-REST-API"><span class="xref std std-term">REST API</span></a> terminas, nurodantis URL kelio dalį iki tam
 tikro resurso.</p>
 <p>Plačiau skaitykite <a class="reference external" href="https://en.wikipedia.org/wiki/Web_API#Endpoints">Vikipedijoje</a>.</p>
 </dd>
-<dt id="term-REST-API">REST API<a class="headerlink" href="#term-REST-API" title="Link to this term"></a></dt><dd><p>Representational State Transfer (REST) yra taisyklių ir rekomendacijų
+<dt id="term-REST-API">REST API<a class="headerlink" href="#term-REST-API" title="Link to this term">#</a></dt><dd><p>Representational State Transfer (REST) yra taisyklių ir rekomendacijų
 rinkinys sirtas <a class="reference internal" href="#term-web-servisas"><span class="xref std std-term">web servisams</span></a> kurti.</p>
 <p>Plačiau skaitykite <a class="reference external" href="https://en.wikipedia.org/wiki/Representational_state_transfer">Vikipedijoje</a>.</p>
 </dd>
-<dt id="term-web-servisas">web servisas<a class="headerlink" href="#term-web-servisas" title="Link to this term"></a></dt><dd><p>Web servisas yra interneto paslauga skirta automatizuotiems robotams.
+<dt id="term-web-servisas">web servisas<a class="headerlink" href="#term-web-servisas" title="Link to this term">#</a></dt><dd><p>Web servisas yra interneto paslauga skirta automatizuotiems robotams.
 Interneto svetainės dažniausiai yra skirtos žmonėms, tačiau web servisai
 yra skirti mašioms, kurios gali komunikuoti viena su kita.</p>
 <p>Plačiau skaitykite <a class="reference external" href="https://en.wikipedia.org/wiki/Web_service">Vikipedijoje</a>.</p>
 </dd>
-<dt id="term-YAML">YAML<a class="headerlink" href="#term-YAML" title="Link to this term"></a></dt><dd><p>YAML yra <a class="reference internal" href="#term-duomenu-serializavimo-formatas"><span class="xref std std-term">duomenų serializavimo formatas</span></a>, kuris skirtas ne tik
+<dt id="term-YAML">YAML<a class="headerlink" href="#term-YAML" title="Link to this term">#</a></dt><dd><p>YAML yra <a class="reference internal" href="#term-duomenu-serializavimo-formatas"><span class="xref std std-term">duomenų serializavimo formatas</span></a>, kuris skirtas ne tik
 mašininiam skaitymui, bet su šio formato turiniu tiesiogiai gali dirbti
 ir žmogus. YAML formato pavyzdys:</p>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">container</span><span class="p">:</span>
@@ -414,27 +638,27 @@ atrodo taip:</p>
 </pre></div>
 </div>
 </dd>
-<dt id="term-viesasis-zodynas">viešasis žodynas<a class="headerlink" href="#term-viesasis-zodynas" title="Link to this term"></a></dt><dd><p>Viešieji žodynai, dar vadinami ontologijomis, šie žodynai dažnai yra
+<dt id="term-viesasis-zodynas">viešasis žodynas<a class="headerlink" href="#term-viesasis-zodynas" title="Link to this term">#</a></dt><dd><p>Viešieji žodynai, dar vadinami ontologijomis, šie žodynai dažnai yra
 gerai dokumentuoti ir skelbiami viešai, jie yra skirti globaliam
 susietųjų duomenų tinkui kurti (angl. <em>linked data</em>).</p>
 </dd>
-<dt id="term-sisteminis-pavadinimas">sisteminis pavadinimas<a class="headerlink" href="#term-sisteminis-pavadinimas" title="Link to this term"></a></dt><dd><p>Sisteminis pavadinimas yra naudojamas objektų identifikavimui ir yra
+<dt id="term-sisteminis-pavadinimas">sisteminis pavadinimas<a class="headerlink" href="#term-sisteminis-pavadinimas" title="Link to this term">#</a></dt><dd><p>Sisteminis pavadinimas yra naudojamas objektų identifikavimui ir yra
 naudojamas URL nuorodose ir visur kitur, kure reikia nurodyti ryšį su
 objektų, naudojamas to objekto sisteminis pavadinimas.</p>
 <p>Sisteminis pavadinimas sudaromas tik iš lotyniškų raidžių ir <cite>-_/</cite>
 simbolių.</p>
 </dd>
-<dt id="term-pirminis-duomenu-saltinis">pirminis duomenų šaltinis<a class="headerlink" href="#term-pirminis-duomenu-saltinis" title="Link to this term"></a></dt><dd><p>Įstaigos ar kitos organizacijos pagrindinis duomenų šaltinis.</p>
+<dt id="term-pirminis-duomenu-saltinis">pirminis duomenų šaltinis<a class="headerlink" href="#term-pirminis-duomenu-saltinis" title="Link to this term">#</a></dt><dd><p>Įstaigos ar kitos organizacijos pagrindinis duomenų šaltinis.</p>
 </dd>
-<dt id="term-DCAT">DCAT<a class="headerlink" href="#term-DCAT" title="Link to this term"></a></dt><dd><p>Duomenų katalogo žodynas (angl. <a class="reference external" href="https://www.w3.org/TR/vocab-dcat-2/">Data Catalog Vocabulary</a>)  yra
+<dt id="term-DCAT">DCAT<a class="headerlink" href="#term-DCAT" title="Link to this term">#</a></dt><dd><p>Duomenų katalogo žodynas (angl. <a class="reference external" href="https://www.w3.org/TR/vocab-dcat-2/">Data Catalog Vocabulary</a>)  yra
 standartas skirtas duomenų rinkiniams aprašyti. Aprašant duomenis DCAT
 standartu reikėŧų vadovautis <a class="reference internal" href="#term-DCAT-AP"><span class="xref std std-term">DCAT-AP</span></a> specifikacijomis.</p>
 </dd>
-<dt id="term-DCAT-AP">DCAT-AP<a class="headerlink" href="#term-DCAT-AP" title="Link to this term"></a></dt><dd><p><a class="reference external" href="https://joinup.ec.europa.eu/collection/semantic-interoperability-community-semic/solution/dcat-application-profile-data-portals-europe">DCAT-AP</a> (DCAT Application Profile) yra <a class="reference external" href="https://github.com/SEMICeu/DCAT-AP">specifikacija</a>, detalizuojanti
+<dt id="term-DCAT-AP">DCAT-AP<a class="headerlink" href="#term-DCAT-AP" title="Link to this term">#</a></dt><dd><p><a class="reference external" href="https://joinup.ec.europa.eu/collection/semantic-interoperability-community-semic/solution/dcat-application-profile-data-portals-europe">DCAT-AP</a> (DCAT Application Profile) yra <a class="reference external" href="https://github.com/SEMICeu/DCAT-AP">specifikacija</a>, detalizuojanti
 DCAT naudojima, nurodant kurios DCAT klasės ir savybės yra privalomos,
 kurios rekomenduojamos ir kaip jas naudoti.</p>
 </dd>
-<dt id="term-dimensija">dimensija<a class="headerlink" href="#term-dimensija" title="Link to this term"></a></dt><dd><p>Dimensija yra metaduomenų, aprašomų DSA lentelėje, grupė. DSA lentelėje
+<dt id="term-dimensija">dimensija<a class="headerlink" href="#term-dimensija" title="Link to this term">#</a></dt><dd><p>Dimensija yra metaduomenų, aprašomų DSA lentelėje, grupė. DSA lentelėje
 metaduomenys skirstomi į tokias dimensijas:</p>
 <ul class="simple">
 <li><p>duomenų rinkinys</p></li>
@@ -446,7 +670,7 @@ metaduomenys skirstomi į tokias dimensijas:</p>
 <p>Kiekviena dimensija turi skirtingą metaduomenų detalumo lygį.</p>
 <p>Plačiau apie dimensijas: <a class="reference internal" href="dimensijos.html#dimensijos"><span class="std std-ref">Dimensijos</span></a>.</p>
 </dd>
-<dt id="term-duomenu-rinkinys">duomenų rinkinys<a class="headerlink" href="#term-duomenu-rinkinys" title="Link to this term"></a></dt><dd><p>Duomenų rinkinys apibrėžia turimus arba pageidaujamus duomenis,
+<dt id="term-duomenu-rinkinys">duomenų rinkinys<a class="headerlink" href="#term-duomenu-rinkinys" title="Link to this term">#</a></dt><dd><p>Duomenų rinkinys apibrėžia turimus arba pageidaujamus duomenis,
 reikalingus konkrečios organizacijos, konkrečiai veiklai vykdyti.</p>
 <p>Duomenų rinkinys gali būti registras, informacinės sistemos duomenų
 bazė, interneto svetainės duomenų bazė, skaičiuoklės lentelė, dokumentų
@@ -467,7 +691,7 @@ ar kitus kriterijus.</p>
 apraše skaitykite skyriuje <a class="reference internal" href="dimensijos.html#dataset"><span class="std std-ref">Duomenų rinkinys</span></a>.</p>
 <p>Duomenų rinkinys atitinka <a class="reference external" href="https://www.w3.org/TR/vocab-dcat-2/#Class:Dataset">dcat:Dataset</a> apibrėžimą.</p>
 </dd>
-<dt id="term-distribucija">distribucija<a class="headerlink" href="#term-distribucija" title="Link to this term"></a></dt><dd><p>Distribucija yra duomenų rinkinio fizinė reprezentacija. Vienas duomenų
+<dt id="term-distribucija">distribucija<a class="headerlink" href="#term-distribucija" title="Link to this term">#</a></dt><dd><p>Distribucija yra duomenų rinkinio fizinė reprezentacija. Vienas duomenų
 rinkinys gali būti sudarytas iš kelių distribucijų, tuos pačius duomenis
 pateikiant skirtingais formatais, suskaidant duomenis pagal laiko,
 vietos ar kitus kriterijus, tuos pačius duomenis pateikiant skirtingu
@@ -476,7 +700,7 @@ detalumu arba pateikiant agreguotus duomenis įvairiais pjūviais.</p>
 <a class="reference internal" href="dimensijos.html#duomenu-saltinis"><span class="std std-ref">resource</span></a>.</p>
 <p>Distribucija atitinka <a class="reference external" href="https://www.w3.org/TR/vocab-dcat-2/#Class:Distribution">dcat:Distribution</a> apibrėžimą:</p>
 </dd>
-<dt id="term-baze">bazė<a class="headerlink" href="#term-baze" title="Link to this term"></a></dt><dd><p>Bazė arba loginė klasė yra modelių grupė turinčių bendras savybes ir
+<dt id="term-baze">bazė<a class="headerlink" href="#term-baze" title="Link to this term">#</a></dt><dd><p>Bazė arba loginė klasė yra modelių grupė turinčių bendras savybes ir
 vienodą semantinę prasmę.</p>
 <p>Dažnai skirtingų organizacijų veikloje naudojami duomenų rinkiniai turi
 vienodą semantinę prasmę. Pavyzdžiui, daugelis organizacijų turi
@@ -489,7 +713,7 @@ analogiškų rinkinių struktūra.</p>
 <p>Duomenų struktūros aprašo kontekste api bazę plačiau skaitykite
 skyriuje <a class="reference internal" href="dimensijos.html#base"><span class="std std-ref">Modelio bazė</span></a>.</p>
 </dd>
-<dt id="term-modelis">modelis<a class="headerlink" href="#term-modelis" title="Link to this term"></a></dt><dd><p>Modelis yra gan plati sąvoka turinti daug prasmių, priklausomai nuo
+<dt id="term-modelis">modelis<a class="headerlink" href="#term-modelis" title="Link to this term">#</a></dt><dd><p>Modelis yra gan plati sąvoka turinti daug prasmių, priklausomai nuo
 konteksto. Šioje dokumentacijoje, modelis yra duomenų struktūros
 aprašo dalis leidžianti aprašyti duomenis pateiktus įvairiais
 formatais.</p>
@@ -517,21 +741,21 @@ duomenų šaltinio tipo. Sąsaja su išoriniais žodynais pateikiama
 <a class="reference internal" href="tipai.html#uri" title="uri"><code class="xref py py-data docutils literal notranslate"><span class="pre">uri</span></code></a> stulpelyje. Siejant su išoriniais žodynais, pateikiama
 nuoroda į <a class="reference external" href="https://www.w3.org/TR/rdf-schema/#ch_class">rdfs:Class</a>.</p>
 </dd>
-<dt id="term-savybe">savybė<a class="headerlink" href="#term-savybe" title="Link to this term"></a></dt><dd><p><a class="reference internal" href="#term-modelis"><span class="xref std std-term">Duomenų modeliui</span></a> priklausančių informacinių
+<dt id="term-savybe">savybė<a class="headerlink" href="#term-savybe" title="Link to this term">#</a></dt><dd><p><a class="reference internal" href="#term-modelis"><span class="xref std std-term">Duomenų modeliui</span></a> priklausančių informacinių
 <a class="reference internal" href="#term-objektas"><span class="xref std std-term">objektų</span></a> savybė, pavyzdžiui miesto pavadinimas, šalis
 kuriai priklauso miestas. <a class="reference internal" href="#term-DSA"><span class="xref std std-term">DSA</span></a> lentelėje atitinka
 <a class="reference internal" href="formatas.html#property" title="property"><code class="xref py py-data docutils literal notranslate"><span class="pre">property</span></code></a>. Atitinka <a class="reference external" href="https://www.w3.org/TR/rdf-schema/#ch_property">rdfs:Property</a> arba lentelės stulpelį.</p>
 </dd>
-<dt id="term-subjektas">subjektas<a class="headerlink" href="#term-subjektas" title="Link to this term"></a></dt><dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Semantic_triple#Subject,_predicate_and_object">Subjektas</a> lietuvių kalboje vadinamas veiksniu, duomenų kontekste
+<dt id="term-subjektas">subjektas<a class="headerlink" href="#term-subjektas" title="Link to this term">#</a></dt><dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/Semantic_triple#Subject,_predicate_and_object">Subjektas</a> lietuvių kalboje vadinamas veiksniu, duomenų kontekste
 įvardija objektą apie kurį eina kalba.</p>
 <p>Tarkime saknyje „Namas turi stogą“ subjektas yra Namas, todėl, kad
 kalba eina apie namą.</p>
 </dd>
-<dt id="term-objektas">objektas<a class="headerlink" href="#term-objektas" title="Link to this term"></a></dt><dd><p>Vienas duomenų įrašas sudarytas iš savybių ir savybėms priskirtų
+<dt id="term-objektas">objektas<a class="headerlink" href="#term-objektas" title="Link to this term">#</a></dt><dd><p>Vienas duomenų įrašas sudarytas iš savybių ir savybėms priskirtų
 reikšmių. Informacinis objektas turi turėti unikalų identifikatorių.
 Atitinka <a class="reference external" href="https://www.w3.org/TR/rdf-schema/#ch_resource">rdfs:Resource</a> arba lentelės vieną eilutę.</p>
 </dd>
-<dt id="term-zodynas">žodynas<a class="headerlink" href="#term-zodynas" title="Link to this term"></a></dt><dd><p>Duomenų kontekste, žodynas yra susitarimas, kokiais pavadinimais
+<dt id="term-zodynas">žodynas<a class="headerlink" href="#term-zodynas" title="Link to this term">#</a></dt><dd><p>Duomenų kontekste, žodynas yra susitarimas, kokiais pavadinimais
 vadinami objektai ir jų savybės. Dažniausiai kiekvienas duomenų rinkinys
 turi savo vidinį naudojamą žodyną, visas Lietuvos atvirų duomenų modelis
 turi savo vidinį žodyną, kuris suvienodina skirtingus duomenų rinkinių
@@ -556,71 +780,127 @@ leidžia prie vieningo žodyno pereiti palaipsniui:</p>
 </ul>
 <p>Žodynai sudaromi pasitelkiant <a class="reference internal" href="formatas.html#vardu-erdves"><span class="std std-ref">vardų erdves</span></a>.</p>
 </dd>
-<dt id="term-API">API<a class="headerlink" href="#term-API" title="Link to this term"></a></dt><dd><p>Programavimo sąsaja (<em>angl. Application Programming Interface</em>).</p>
+<dt id="term-API">API<a class="headerlink" href="#term-API" title="Link to this term">#</a></dt><dd><p>Programavimo sąsaja (<em>angl. Application Programming Interface</em>).</p>
 </dd>
-<dt id="term-duomenu-saltinis">duomenų šaltinis<a class="headerlink" href="#term-duomenu-saltinis" title="Link to this term"></a></dt><dd><p>Resursas, kuriame saugomi duomenys. Toks resursas tampa duomenų
+<dt id="term-duomenu-saltinis">duomenų šaltinis<a class="headerlink" href="#term-duomenu-saltinis" title="Link to this term">#</a></dt><dd><p>Resursas, kuriame saugomi duomenys. Toks resursas tampa duomenų
 šaltiniu, kai tokius duomenis norima pakartotinai panaudoti, tokiu
 atveju, iš pakartotinio panaudojimo perspektyvos toks resursas tampa
 duomenų šaltiniu.</p>
 </dd>
-<dt id="term-ETL">ETL<a class="headerlink" href="#term-ETL" title="Link to this term"></a></dt><dd><p>Duomenų ištraukimas, transformavimas ir užkrovimas (<em>angl. Extract
+<dt id="term-ETL">ETL<a class="headerlink" href="#term-ETL" title="Link to this term">#</a></dt><dd><p>Duomenų ištraukimas, transformavimas ir užkrovimas (<em>angl. Extract
 Transform Load</em>).</p>
 </dd>
-<dt id="term-iteratorius">iteratorius<a class="headerlink" href="#term-iteratorius" title="Link to this term"></a></dt><dd><p>Tam tikra funkcija, kuri grąžina keletą lementų, tačiau ne visus iš
+<dt id="term-iteratorius">iteratorius<a class="headerlink" href="#term-iteratorius" title="Link to this term">#</a></dt><dd><p>Tam tikra funkcija, kuri grąžina keletą lementų, tačiau ne visus iš
 karto, o po vieną.</p>
 </dd>
-<dt id="term-URI">URI<a class="headerlink" href="#term-URI" title="Link to this term"></a></dt><dd><p>Vieningas resurso identifikatorius (<em>angl. Uniform Resource
+<dt id="term-URI">URI<a class="headerlink" href="#term-URI" title="Link to this term">#</a></dt><dd><p>Vieningas resurso identifikatorius (<em>angl. Uniform Resource
 Identifier</em>).</p>
 </dd>
-<dt id="term-POSIX">POSIX<a class="headerlink" href="#term-POSIX" title="Link to this term"></a></dt><dd><p>Universali operacinių sistemų sąsaja (<em>angl. Portable Operating System
+<dt id="term-POSIX">POSIX<a class="headerlink" href="#term-POSIX" title="Link to this term">#</a></dt><dd><p>Universali operacinių sistemų sąsaja (<em>angl. Portable Operating System
 Interface</em>) - standartas apibrėžiantis operacinių sistemų sąsają, kad
 skirtingos operacinės sistemos būtų suderinamos tarpusavyje.</p>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/POSIX">https://en.wikipedia.org/wiki/POSIX</a></p>
 </dd>
-<dt id="term-DOS">DOS<a class="headerlink" href="#term-DOS" title="Link to this term"></a></dt><dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/MS-DOS">MS-DOS</a>.</p>
+<dt id="term-DOS">DOS<a class="headerlink" href="#term-DOS" title="Link to this term">#</a></dt><dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/MS-DOS">MS-DOS</a>.</p>
 </dd>
-<dt id="term-reguliarioji-israiska">reguliarioji išraiška<a class="headerlink" href="#term-reguliarioji-israiska" title="Link to this term"></a></dt><dd><p>Simbolių seka apibrėžianti tam tikrą šabloną tekste (angl.
+<dt id="term-reguliarioji-israiska">reguliarioji išraiška<a class="headerlink" href="#term-reguliarioji-israiska" title="Link to this term">#</a></dt><dd><p>Simbolių seka apibrėžianti tam tikrą šabloną tekste (angl.
 <a class="reference external" href="https://en.wikipedia.org/wiki/Regular_expression">Regular Expression</a>).</p>
 </dd>
-<dt id="term-JSON">JSON<a class="headerlink" href="#term-JSON" title="Link to this term"></a></dt><dd><p>Atviras duomenų formatas (angl. <a class="reference external" href="https://en.wikipedia.org/wiki/JSON">JavaScript Object Notation</a>).</p>
+<dt id="term-JSON">JSON<a class="headerlink" href="#term-JSON" title="Link to this term">#</a></dt><dd><p>Atviras duomenų formatas (angl. <a class="reference external" href="https://en.wikipedia.org/wiki/JSON">JavaScript Object Notation</a>).</p>
 </dd>
-<dt id="term-RDF">RDF<a class="headerlink" href="#term-RDF" title="Link to this term"></a></dt><dd><p>Duomenų modelis sudarytas iš subjekto, predikato ir objekto tripletų
+<dt id="term-RDF">RDF<a class="headerlink" href="#term-RDF" title="Link to this term">#</a></dt><dd><p>Duomenų modelis sudarytas iš subjekto, predikato ir objekto tripletų
 (angl. <a class="reference external" href="https://en.wikipedia.org/wiki/Resource_Description_Framework">Resource Description Framework</a>).</p>
 </dd>
-<dt id="term-IVPK">IVPK<a class="headerlink" href="#term-IVPK" title="Link to this term"></a></dt><dd><p><a class="reference external" href="https://ivpk.lrv.lt/lt/atviri-duomenys-1">Informacinės visuomenės plėtros komitetas</a>.</p>
+<dt id="term-IVPK">IVPK<a class="headerlink" href="#term-IVPK" title="Link to this term">#</a></dt><dd><p><a class="reference external" href="https://ivpk.lrv.lt/lt/atviri-duomenys-1">Informacinės visuomenės plėtros komitetas</a>.</p>
 </dd>
 </dl>
 </section>
 
 
-           </div>
-          </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Poraštė">
-        <a href="formules.html" class="btn btn-neutral float-left" title="Formulės" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Ankstesnis</a>
-        <a href="keitimai.html" class="btn btn-neutral float-right" title="Keitimų istorija" accesskey="n" rel="next">Kitas <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
+                </article>
+              
 
-  <hr/>
-
-  <div role="contentinfo">
-    <p>&#169; Copyright 2019-2024, IVPK.</p>
-  </div>
-
-  Surinkta su <a href="https://www.sphinx-doc.org/">Sphinx</a> naudojant
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">temą</a>
-    pateiktą <a href="https://readthedocs.org">Read the Docs</a>.
-   
-
-</footer>
-        </div>
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="formules.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">praeitas</p>
+        <p class="prev-next-title">Formulės</p>
       </div>
-    </section>
-  </div>
-  <script>
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script> 
+    </a>
+    <a class="right-next"
+       href="keitimai.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">kitas</p>
+        <p class="prev-next-title">Keitimų istorija</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Iki Informacinės visuomenės plėtros komitetas
+</p>
 
-</body>
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2019-2024, IVPK.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
 </html>

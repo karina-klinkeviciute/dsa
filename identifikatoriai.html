@@ -1,79 +1,165 @@
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="lt" data-content_root="./">
-<head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ryšiai tarp modelių &mdash; Duomenų struktūros aprašas  documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=a5c4661c" />
-      <link rel="stylesheet" type="text/css" href="_static/style.css" />
+
+<html lang="lt" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Ryšiai tarp modelių &#8212; DSA</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=a5c4661c" />
+    <link rel="stylesheet" type="text/css" href="_static/style.css" />
   
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=7be03173"></script>
-        <script src="_static/doctools.js?v=9a2dae69"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="_static/translations.js?v=3b848cde"></script>
-    <script src="_static/js/theme.js"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="_static/documentation_options.js?v=4ee96f2e"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script src="_static/translations.js?v=3b848cde"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'identifikatoriai';</script>
     <link rel="index" title="Indeksas" href="genindex.html" />
     <link rel="search" title="Paieška" href="search.html" />
     <link rel="next" title="Brandos lygiai" href="branda.html" />
-    <link rel="prev" title="Matavimo vienetai" href="vienetai.html" /> 
-</head>
+    <link rel="prev" title="Matavimo vienetai" href="vienetai.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="lt"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-<body class="wy-body-for-nav"> 
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
-          
-          
-          <a href="index.html" class="icon icon-home">
-            Duomenų struktūros aprašas
-          </a>
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Ieškoti dokumentuose" aria-label="Ieškoti dokumentuose" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigacijos meniu">
-              <ul class="current">
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">DSA</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Paieška" aria-label="Paieška" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Paieška</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="modelis.html">Duomenų modeliavimas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="formatas.html">Lentelės formatas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="formatas.html#lenteles-struktura">Lentelės struktūra</a></li>
-<li class="toctree-l1"><a class="reference internal" href="formatas.html#vardu-erdves">Vardų erdvės</a></li>
-<li class="toctree-l1"><a class="reference internal" href="formatas.html#reliatyvus-pavadinimai">Reliatyvūs pavadinimai</a></li>
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="dimensijos.html">Dimensijos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dimensijos.html#papildomos-dimensijos">Papildomos dimensijos</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="tipai.html">Duomenų tipai</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pavadinimai.html">Kodiniai pavadinimai</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vienetai.html">Matavimo vienetai</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Ryšiai tarp modelių</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#jungimas-per-pirmini-rakta">Jungimas per pirminį raktą</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#jungimas-per-nepirmini-rakta">Jungimas per nepirminį raktą</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#jungimas-per-kompozicini-rakta">Jungimas per kompozicinį raktą</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#jungimas-atgaliniu-rysiu">Jungimas atgaliniu ryšiu</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#polimorfinis-jungimas">Polimorfinis jungimas</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#denormalizuoti-duomenys">Denormalizuoti duomenys</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#brandos-lygis">Brandos lygis</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#susiejimas-neimanomas">Susiejimas neįmanomas</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#susiejimas-nepatikimas">Susiejimas nepatikimas</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#susiejimas-ne-per-pirmini-rakta">Susiejimas ne per pirminį raktą</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#susiejimas-per-pirmini-rakta">Susiejimas per pirminį raktą</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Ryšiai tarp modelių</a></li>
 <li class="toctree-l1"><a class="reference internal" href="branda.html">Brandos lygiai</a></li>
 <li class="toctree-l1"><a class="reference internal" href="prieiga.html">Prieigos lygiai</a></li>
 <li class="toctree-l1"><a class="reference internal" href="saltiniai.html">Duomenų šaltiniai</a></li>
@@ -83,39 +169,184 @@
 <li class="toctree-l1"><a class="reference internal" href="keitimai.html">Keitimų istorija</a></li>
 </ul>
 
-        </div>
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
       </div>
-    </nav>
+      
+      <main id="main-content" class="bd-main">
+        
+        
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobilios navigacijos meniu" >
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">Duomenų struktūros aprašas</a>
-      </nav>
+<div class="sbt-scroll-pixel-helper"></div>
 
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="Puslapių navigacija">
-  <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Ryšiai tarp modelių</li>
-      <li class="wy-breadcrumbs-aside">
-            <a href="_sources/identifikatoriai.rst.txt" rel="nofollow"> Žiūrėti puslapio šaltinį</a>
-      </li>
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ivpk/dsa" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Šaltinio saugykla"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ivpk/dsa/issues/new?title=Issue%20on%20page%20%2Fidentifikatoriai.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Atidarykite problemą"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
   </ul>
-  <hr/>
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-             
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Pilno ekrano režimas"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Paieška" aria-label="Paieška" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Ryšiai tarp modelių</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Turinys </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jungimas-per-pirmini-rakta">Jungimas per pirminį raktą</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jungimas-per-nepirmini-rakta">Jungimas per nepirminį raktą</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jungimas-per-kompozicini-rakta">Jungimas per kompozicinį raktą</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jungimas-atgaliniu-rysiu">Jungimas atgaliniu ryšiu</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polimorfinis-jungimas">Polimorfinis jungimas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#denormalizuoti-duomenys">Denormalizuoti duomenys</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#brandos-lygis">Brandos lygis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#susiejimas-neimanomas">Susiejimas neįmanomas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#susiejimas-nepatikimas">Susiejimas nepatikimas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#susiejimas-ne-per-pirmini-rakta">Susiejimas ne per pirminį raktą</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#susiejimas-per-pirmini-rakta">Susiejimas per pirminį raktą</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <section id="rysiai-tarp-modeliu">
-<span id="rysiai"></span><h1>Ryšiai tarp modelių<a class="headerlink" href="#rysiai-tarp-modeliu" title="Link to this heading"></a></h1>
+<span id="rysiai"></span><h1>Ryšiai tarp modelių<a class="headerlink" href="#rysiai-tarp-modeliu" title="Link to this heading">#</a></h1>
 <p>Pateikiant metaduomenis apie ryšius tarp modelių, duomenų <a class="reference internal" href="branda.html#level"><span class="std std-ref">brandos lygis</span></a> pakeliamas iki ketvirto lygio.</p>
 <p>Ryšiai tarp modelių aprašomi tais atvejais, kai vienoje duomenų lentelėje
 naudojami identifikatoriai iš kitos lentelės.</p>
 <section id="jungimas-per-pirmini-rakta">
-<h2>Jungimas per pirminį raktą<a class="headerlink" href="#jungimas-per-pirmini-rakta" title="Link to this heading"></a></h2>
+<h2>Jungimas per pirminį raktą<a class="headerlink" href="#jungimas-per-pirmini-rakta" title="Link to this heading">#</a></h2>
 <p>Pavyzdžiui, jei turime tokias dvi duomenų lenteles:</p>
-<table class="docutils align-default">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head" colspan="3"><p>Country</p></th>
 </tr>
@@ -135,7 +366,7 @@ naudojami identifikatoriai iš kitos lentelės.</p>
 </tr>
 </tbody>
 </table>
-<table class="docutils align-default">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head" colspan="3"><p>City</p></th>
 </tr>
@@ -161,7 +392,7 @@ naudojami identifikatoriai iš kitos lentelės.</p>
 </table>
 <p>Šiuo atveju, jei norime parengti aukščiau pateiktų duomenų struktūros aprašą,
 jis atrodytų taip:</p>
-<table class="docutils align-default">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>id</p></th>
 <th class="head"><p>d</p></th>
@@ -309,11 +540,11 @@ formuojamas sudėtinis raktas.</p>
 
 </section>
 <section id="jungimas-per-nepirmini-rakta">
-<span id="ref-fkey"></span><h2>Jungimas per nepirminį raktą<a class="headerlink" href="#jungimas-per-nepirmini-rakta" title="Link to this heading"></a></h2>
+<span id="ref-fkey"></span><h2>Jungimas per nepirminį raktą<a class="headerlink" href="#jungimas-per-nepirmini-rakta" title="Link to this heading">#</a></h2>
 <p>Jei modelius reikia jungti ne per pirminį raktą, o per kitus laukus, tada
 naudojama <code class="docutils literal notranslate"><span class="pre">model[property]</span></code> forma.</p>
 <p>Pavyzdžiui, jei turime tokius duomenis:</p>
-<table class="docutils align-default">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head" colspan="3"><p>Country</p></th>
 </tr>
@@ -333,7 +564,7 @@ naudojama <code class="docutils literal notranslate"><span class="pre">model[pro
 </tr>
 </tbody>
 </table>
-<table class="docutils align-default">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head" colspan="3"><p>City</p></th>
 </tr>
@@ -359,7 +590,7 @@ naudojama <code class="docutils literal notranslate"><span class="pre">model[pro
 </table>
 <p>Kur <code class="docutils literal notranslate"><span class="pre">Country</span></code> pirminis raktas yra <code class="docutils literal notranslate"><span class="pre">id</span></code> ir norime jungti <code class="docutils literal notranslate"><span class="pre">City.country</span></code> per
 <code class="docutils literal notranslate"><span class="pre">Country.code</span></code>, tuomet duomenų struktūros aprašas atrodys taip:</p>
-<table class="docutils align-default">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>d</p></th>
 <th class="head"><p>d</p></th>
@@ -466,12 +697,12 @@ pirminį raktą, jei pateiktas stulpelis laužtiniuose skliausteliuose, tada
 jungiama per nurodytą stulpelį.</p>
 </section>
 <section id="jungimas-per-kompozicini-rakta">
-<h2>Jungimas per kompozicinį raktą<a class="headerlink" href="#jungimas-per-kompozicini-rakta" title="Link to this heading"></a></h2>
+<h2>Jungimas per kompozicinį raktą<a class="headerlink" href="#jungimas-per-kompozicini-rakta" title="Link to this heading">#</a></h2>
 <p>Jei modelius reikia jungti per kelis laukus, tada naudojama
 <code class="docutils literal notranslate"><span class="pre">model[*property]</span></code> forma, kur laužtiniuose skliaustuose pateikiami keli
 stulpeliai atskirti kableliais.</p>
 <p>Pavyzdžiui, jei turime tokius duomenis:</p>
-<table class="docutils align-default">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head" colspan="3"><p>Country</p></th>
 </tr>
@@ -491,7 +722,7 @@ stulpeliai atskirti kableliais.</p>
 </tr>
 </tbody>
 </table>
-<table class="docutils align-default">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head" colspan="4"><p>City</p></th>
 </tr>
@@ -523,7 +754,7 @@ stulpeliai atskirti kableliais.</p>
 stulpelius, tuomet reikia įtraukti išvestinį duomenų lauką, kuriame formulės
 įrašomos į <a class="reference internal" href="dimensijos.html#property.prepare" title="property.prepare"><code class="xref py py-data docutils literal notranslate"><span class="pre">property.prepare</span></code></a> pagalba apjungiami keli laukai į vieną
 kompozicinį raktą. Šiuo atveju duomenų struktūros aprašas atrodys taip:</p>
-<table class="docutils align-default">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>d</p></th>
 <th class="head"><p>d</p></th>
@@ -664,12 +895,12 @@ vienodo eiliškumo, o jungiami laukai turi turėti vienodus tipus.</p>
 tuomet, 11-oje eilutėje <code class="docutils literal notranslate"><span class="pre">property.ref</span></code> užtektu nurodyti tik <code class="docutils literal notranslate"><span class="pre">Country</span></code>.</p>
 </section>
 <section id="jungimas-atgaliniu-rysiu">
-<span id="atgalinis-rysys"></span><h2>Jungimas atgaliniu ryšiu<a class="headerlink" href="#jungimas-atgaliniu-rysiu" title="Link to this heading"></a></h2>
+<span id="atgalinis-rysys"></span><h2>Jungimas atgaliniu ryšiu<a class="headerlink" href="#jungimas-atgaliniu-rysiu" title="Link to this heading">#</a></h2>
 <p>Jungiant modelius atgaliniu ryšiu kuriamas išvestinis arba virtualus laukas,
 kuriame analogiškai kaip ir paprasto ryšio atveju, apjungiami du modeliai,
 tik šiuo atveju kuriamas daug su vienas tipo ryšys.</p>
 <p>Pavyzdžiui, jei turime tokius duomenis:</p>
-<table class="docutils align-default">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head" colspan="2"><p>Country</p></th>
 </tr>
@@ -686,7 +917,7 @@ tik šiuo atveju kuriamas daug su vienas tipo ryšys.</p>
 </tr>
 </tbody>
 </table>
-<table class="docutils align-default">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head" colspan="3"><p>City</p></th>
 </tr>
@@ -712,7 +943,7 @@ tik šiuo atveju kuriamas daug su vienas tipo ryšys.</p>
 </table>
 <p>Tai norint sukurti atgalinį ryšį iš <code class="docutils literal notranslate"><span class="pre">City</span></code> modelio į <code class="docutils literal notranslate"><span class="pre">Country</span></code> modelį, duomenų
 struktūros aprašas atrodys taip:</p>
-<table class="docutils align-default">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>d</p></th>
 <th class="head"><p>d</p></th>
@@ -820,7 +1051,7 @@ struktūros aprašas atrodys taip:</p>
 kurį jungiama, pavyzdžiui <code class="docutils literal notranslate"><span class="pre">City[country]</span></code>.</p>
 </section>
 <section id="polimorfinis-jungimas">
-<span id="polimorfinis-rysys"></span><h2>Polimorfinis jungimas<a class="headerlink" href="#polimorfinis-jungimas" title="Link to this heading"></a></h2>
+<span id="polimorfinis-rysys"></span><h2>Polimorfinis jungimas<a class="headerlink" href="#polimorfinis-jungimas" title="Link to this heading">#</a></h2>
 <div class="admonition note">
 <p class="admonition-title">Pastaba</p>
 <p>Tokio tipo jungimas kol kas dar nėra įgyvendintas.</p>
@@ -829,7 +1060,7 @@ kurį jungiama, pavyzdžiui <code class="docutils literal notranslate"><span cla
 yra siejamas su daugiau nei vienu kitu modeliu. Tokiam ryšiui nurodyti
 polimorfinis laukas turi dvi reikšmes, išorinio modelio pavadinimą ir to
 modelio stulpelio per kurį jungiama reikšmę.</p>
-<table class="docutils align-default">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head" colspan="2"><p>Country</p></th>
 </tr>
@@ -846,7 +1077,7 @@ modelio stulpelio per kurį jungiama reikšmę.</p>
 </tr>
 </tbody>
 </table>
-<table class="docutils align-default">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head" colspan="3"><p>City</p></th>
 </tr>
@@ -866,7 +1097,7 @@ modelio stulpelio per kurį jungiama reikšmę.</p>
 </tr>
 </tbody>
 </table>
-<table class="docutils align-default">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head" colspan="4"><p>Event</p></th>
 </tr>
@@ -903,7 +1134,7 @@ modelio stulpelio per kurį jungiama reikšmę.</p>
 jungia <code class="docutils literal notranslate"><span class="pre">Event</span></code> modelis per <code class="docutils literal notranslate"><span class="pre">object_id</span></code> ir <code class="docutils literal notranslate"><span class="pre">object_model</span></code> laukus. Pavyzdžiui
 <code class="docutils literal notranslate"><span class="pre">Event</span></code> kurio <code class="docutils literal notranslate"><span class="pre">id</span></code> yra 1, siejamas su <code class="docutils literal notranslate"><span class="pre">Country</span></code> modeliu, kurio <code class="docutils literal notranslate"><span class="pre">id</span></code> yra 1.</p>
 <p>Tokių duomenų struktūros aprašas atrodys taip:</p>
-<table class="docutils align-default">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>d</p></th>
 <th class="head"><p>d</p></th>
@@ -1097,7 +1328,7 @@ jungia <code class="docutils literal notranslate"><span class="pre">Event</span>
 ateina iš išorinio šaltinio. Jie duomenys rašomi tiesiogiai į <span class="xref std std-ref">Saugyklą</span>, tada atskirai <code class="docutils literal notranslate"><span class="pre">generic</span></code> laukų apsirašyti nereikia.</p>
 </section>
 <section id="denormalizuoti-duomenys">
-<span id="ref-denorm"></span><h2>Denormalizuoti duomenys<a class="headerlink" href="#denormalizuoti-duomenys" title="Link to this heading"></a></h2>
+<span id="ref-denorm"></span><h2>Denormalizuoti duomenys<a class="headerlink" href="#denormalizuoti-duomenys" title="Link to this heading">#</a></h2>
 <p>Denormalizuoti duomenų laukai yra tokie laukai, kurie pateikti viename
 modelyje, tačiau pagal semantinę prasmę priklauso skirtingiems modeliams.</p>
 <p>Dažniausiai duomenų normalizavimas atveriant duomenis yra nepageidaujamas ir
@@ -1108,7 +1339,7 @@ semantinę prasmę. Plačiau apie duomenų normalizavimą galite skaityti skyriu
 formoje, duomenų struktūros apraše galima nurodyti, kurie duomenų laukai yra
 denormalizuoti.</p>
 <p>Pavyzdys, kaip atrodo denormalizuotų duomenų laukų žymėjimas:</p>
-<table class="docutils align-default">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>d</p></th>
 <th class="head"><p>r</p></th>
@@ -1233,7 +1464,7 @@ tačiau tokiu atveju, būtina nurodyti <code class="docutils literal notranslate
 </dl>
 </section>
 <section id="brandos-lygis">
-<span id="ref-level"></span><h2>Brandos lygis<a class="headerlink" href="#brandos-lygis" title="Link to this heading"></a></h2>
+<span id="ref-level"></span><h2>Brandos lygis<a class="headerlink" href="#brandos-lygis" title="Link to this heading">#</a></h2>
 <p>Apibrėžiant ryšius tarp modelių, brandos lygis įrašomas <a class="reference internal" href="formatas.html#level" title="level"><code class="xref py py-data docutils literal notranslate"><span class="pre">level</span></code></a>
 stulpelyje atlieka svarbų vaidmenį. Nuo brandos lygio, priklauso, kaip turi būti
 interpretuojamas išorinis raktas, siejamas su kitu modeliu.</p>
@@ -1259,12 +1490,12 @@ kitas identifikatorius.</p>
 </dd>
 </dl>
 <section id="susiejimas-neimanomas">
-<h3>Susiejimas neįmanomas<a class="headerlink" href="#susiejimas-neimanomas" title="Link to this heading"></a></h3>
+<h3>Susiejimas neįmanomas<a class="headerlink" href="#susiejimas-neimanomas" title="Link to this heading">#</a></h3>
 <p>Jei <code class="docutils literal notranslate"><span class="pre">ref</span></code> tipui nurodytas 1 arba žemesnis brandos lygis, tai reiškia, duomenų
 jungimas nėra įmanomas. Tokiu atveju, atveriant duomenis, <code class="docutils literal notranslate"><span class="pre">property</span></code> įgaus tokį
 tipą, koks yra lauko su kuriuo siejamas ryšys tipas.</p>
 <p>Pavyzdžiui:</p>
-<table class="docutils align-default">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>d</p></th>
 <th class="head"><p>r</p></th>
@@ -1338,7 +1569,7 @@ susijusios, tačiau dėl prasto duomenų brandos lygios, realus susiejimas nėra
 <p>Jei modeliai yra susiję, tačiau, tokio duomenų lauko, per kurį galima būtų
 atlikti susiejimą iš vis nėra, tuomet, tokį lauką galima sukurti, nurodant
 brandos lygį 0. Pavyzdžiui:</p>
-<table class="docutils align-default">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>d</p></th>
 <th class="head"><p>r</p></th>
@@ -1416,7 +1647,7 @@ susiejimas, t.y. per kurį galėtu būti atliktas susiejimas, jei toks laukas
 egzistuotų ne tik <code class="docutils literal notranslate"><span class="pre">City.country</span></code>, bet ir <code class="docutils literal notranslate"><span class="pre">Country.name&#64;en</span></code>.</p>
 </section>
 <section id="susiejimas-nepatikimas">
-<h3>Susiejimas nepatikimas<a class="headerlink" href="#susiejimas-nepatikimas" title="Link to this heading"></a></h3>
+<h3>Susiejimas nepatikimas<a class="headerlink" href="#susiejimas-nepatikimas" title="Link to this heading">#</a></h3>
 <p>Jei <code class="docutils literal notranslate"><span class="pre">ref</span></code> tipui suteiktas 2 brandos lygis, tai reiškia, kad susiejimas yra
 įmanomas, tačiau nėra garantijos, kad jis veiks visais atvejais.</p>
 <p>Susiejimas laikomas nepatikimu, tada, kai siejimas atliekamas ne patikimo
@@ -1425,7 +1656,7 @@ unikalaus identifikatoriaus pagalba, o per pavadinimą ar panašiais būdais.</p
 toks jungimas laikomas nepatikimu.</p>
 <p>Toks jungimas ir 2 brandos lygio žymėjimas taikomas tik tais atvejais, kai
 jungimas daromas, per jungiamo modelio atributą. Pavyzdžiui:</p>
-<table class="docutils align-default">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>d</p></th>
 <th class="head"><p>r</p></th>
@@ -1496,14 +1727,14 @@ jungimas daromas, per jungiamo modelio atributą. Pavyzdžiui:</p>
 raktas yra paimtas iš siejamo modelio atributo.</p>
 </section>
 <section id="susiejimas-ne-per-pirmini-rakta">
-<h3>Susiejimas ne per pirminį raktą<a class="headerlink" href="#susiejimas-ne-per-pirmini-rakta" title="Link to this heading"></a></h3>
+<h3>Susiejimas ne per pirminį raktą<a class="headerlink" href="#susiejimas-ne-per-pirmini-rakta" title="Link to this heading">#</a></h3>
 <p>Jei <code class="docutils literal notranslate"><span class="pre">ref</span></code> tipui suteiktas 3 ar didesnis brandos lygis, vadinasi susiejimas yra
 patikimas. Duomenys siejami naudojant patikimus unikalius identifikatorius,
 kurie nesidubliuoja, nesikeičia ir užrašomi visada vienodai.</p>
 <p>Dažniausiai patikimais identifikatoriais laikomi sveiki skaičiai, tam tikri
 sutartiniai kodai ir kiti specializuoti identifikatoriai, tokie kaip UUID.</p>
 <p>Tačiau, naudojamas ne pirminis raktas, o kitas duomenų laukas. Pavyzdžiui:</p>
-<table class="docutils align-default">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>d</p></th>
 <th class="head"><p>r</p></th>
@@ -1594,7 +1825,7 @@ būti konvertuojami į išorinį pirminį raktą, tačiau tais atvejais, jei dė
 tikrų priežasčių tas nėra daroma, tuomet žymimas 3 brandos lygis ir
 publikuojami ne išoriniai pirminiai raktai, o šaltinio vidiniai.</p>
 <p>Pavyzdžiui, jei turime tokius duomenis:</p>
-<table class="docutils align-default">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head" colspan="4"><p>example/Country</p></th>
 </tr>
@@ -1613,7 +1844,7 @@ publikuojami ne išoriniai pirminiai raktai, o šaltinio vidiniai.</p>
 </tbody>
 </table>
 <p>Ir jei <code class="docutils literal notranslate"><span class="pre">City.country</span></code> turi brandos lygį <code class="docutils literal notranslate"><span class="pre">3</span></code>, tada <code class="docutils literal notranslate"><span class="pre">City</span></code> duomenys atrodys taip:</p>
-<table class="docutils align-default">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head" colspan="3"><p>example/City</p></th>
 </tr>
@@ -1631,10 +1862,10 @@ publikuojami ne išoriniai pirminiai raktai, o šaltinio vidiniai.</p>
 </table>
 </section>
 <section id="susiejimas-per-pirmini-rakta">
-<h3>Susiejimas per pirminį raktą<a class="headerlink" href="#susiejimas-per-pirmini-rakta" title="Link to this heading"></a></h3>
+<h3>Susiejimas per pirminį raktą<a class="headerlink" href="#susiejimas-per-pirmini-rakta" title="Link to this heading">#</a></h3>
 <p>Šiuo atveju, brandos lygis žymimas <code class="docutils literal notranslate"><span class="pre">4</span></code> ir skirtumas nuo <code class="docutils literal notranslate"><span class="pre">3</span></code> brandos lygio yra
 toks, kad duomenyse naudojamas išorinis pirminis raktas. Pavyzdžiui:</p>
-<table class="docutils align-default">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>d</p></th>
 <th class="head"><p>r</p></th>
@@ -1717,7 +1948,7 @@ toks, kad duomenyse naudojamas išorinis pirminis raktas. Pavyzdžiui:</p>
 </table>
 <p>Turint tokį struktūros aprašą, kur <code class="docutils literal notranslate"><span class="pre">City.country</span></code> brandos lygis yra <code class="docutils literal notranslate"><span class="pre">4</span></code>,
 duomenys atrodys taip:</p>
-<table class="docutils align-default">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head" colspan="4"><p>example/Country</p></th>
 </tr>
@@ -1735,7 +1966,7 @@ duomenys atrodys taip:</p>
 </tr>
 </tbody>
 </table>
-<table class="docutils align-default">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head" colspan="3"><p>example/City</p></th>
 </tr>
@@ -1758,34 +1989,115 @@ vidiniai duomenų rinkinio raktai konvertuojami į išorinius.</p>
 </section>
 
 
-           </div>
-          </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Poraštė">
-        <a href="vienetai.html" class="btn btn-neutral float-left" title="Matavimo vienetai" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Ankstesnis</a>
-        <a href="branda.html" class="btn btn-neutral float-right" title="Brandos lygiai" accesskey="n" rel="next">Kitas <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
+                </article>
+              
 
-  <hr/>
-
-  <div role="contentinfo">
-    <p>&#169; Copyright 2019-2024, IVPK.</p>
-  </div>
-
-  Surinkta su <a href="https://www.sphinx-doc.org/">Sphinx</a> naudojant
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">temą</a>
-    pateiktą <a href="https://readthedocs.org">Read the Docs</a>.
-   
-
-</footer>
-        </div>
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="vienetai.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">praeitas</p>
+        <p class="prev-next-title">Matavimo vienetai</p>
       </div>
-    </section>
-  </div>
-  <script>
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script> 
+    </a>
+    <a class="right-next"
+       href="branda.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">kitas</p>
+        <p class="prev-next-title">Brandos lygiai</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
-</body>
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Turinys
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jungimas-per-pirmini-rakta">Jungimas per pirminį raktą</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jungimas-per-nepirmini-rakta">Jungimas per nepirminį raktą</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jungimas-per-kompozicini-rakta">Jungimas per kompozicinį raktą</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#jungimas-atgaliniu-rysiu">Jungimas atgaliniu ryšiu</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#polimorfinis-jungimas">Polimorfinis jungimas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#denormalizuoti-duomenys">Denormalizuoti duomenys</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#brandos-lygis">Brandos lygis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#susiejimas-neimanomas">Susiejimas neįmanomas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#susiejimas-nepatikimas">Susiejimas nepatikimas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#susiejimas-ne-per-pirmini-rakta">Susiejimas ne per pirminį raktą</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#susiejimas-per-pirmini-rakta">Susiejimas per pirminį raktą</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Iki Informacinės visuomenės plėtros komitetas
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2019-2024, IVPK.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
 </html>

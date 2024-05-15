@@ -1,80 +1,164 @@
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="lt" data-content_root="./">
-<head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Matavimo vienetai &mdash; Duomenų struktūros aprašas  documentation</title>
-      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=80d5e7a1" />
-      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=19f00094" />
-      <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=a5c4661c" />
-      <link rel="stylesheet" type="text/css" href="_static/style.css" />
+
+<html lang="lt" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Matavimo vienetai &#8212; DSA</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
 
   
-  <!--[if lt IE 9]>
-    <script src="_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=a5c4661c" />
+    <link rel="stylesheet" type="text/css" href="_static/style.css" />
   
-        <script src="_static/jquery.js?v=5d32c60e"></script>
-        <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-        <script src="_static/documentation_options.js?v=7be03173"></script>
-        <script src="_static/doctools.js?v=9a2dae69"></script>
-        <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
-        <script src="_static/translations.js?v=3b848cde"></script>
-    <script src="_static/js/theme.js"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="_static/documentation_options.js?v=4ee96f2e"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script src="_static/translations.js?v=3b848cde"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'vienetai';</script>
     <link rel="index" title="Indeksas" href="genindex.html" />
     <link rel="search" title="Paieška" href="search.html" />
     <link rel="next" title="Ryšiai tarp modelių" href="identifikatoriai.html" />
-    <link rel="prev" title="Kodiniai pavadinimai" href="pavadinimai.html" /> 
-</head>
+    <link rel="prev" title="Kodiniai pavadinimai" href="pavadinimai.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="lt"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-<body class="wy-body-for-nav"> 
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
 
-          
-          
-          <a href="index.html" class="icon icon-home">
-            Duomenų struktūros aprašas
-          </a>
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
-    <input type="text" name="q" placeholder="Ieškoti dokumentuose" aria-label="Ieškoti dokumentuose" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
-</div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigacijos meniu">
-              <ul class="current">
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">DSA</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Paieška" aria-label="Paieška" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Paieška</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="modelis.html">Duomenų modeliavimas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="formatas.html">Lentelės formatas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="formatas.html#lenteles-struktura">Lentelės struktūra</a></li>
-<li class="toctree-l1"><a class="reference internal" href="formatas.html#vardu-erdves">Vardų erdvės</a></li>
-<li class="toctree-l1"><a class="reference internal" href="formatas.html#reliatyvus-pavadinimai">Reliatyvūs pavadinimai</a></li>
+
+
+
 <li class="toctree-l1"><a class="reference internal" href="dimensijos.html">Dimensijos</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dimensijos.html#papildomos-dimensijos">Papildomos dimensijos</a></li>
+
 <li class="toctree-l1"><a class="reference internal" href="tipai.html">Duomenų tipai</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pavadinimai.html">Kodiniai pavadinimai</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Matavimo vienetai</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#apibreztis-laike">Apibrėžtis laike</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#apibreztis-erdveje">Apibrėžtis erdvėje</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#kokybiniai-duomenys">Kokybiniai duomenys</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#kiekybiniai-duomenys">Kiekybiniai duomenys</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#prefiksai">Prefiksai</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#vienetai">Vienetai</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#specialiejie-vienetai">Specialiejie vienetai</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#laiko-vienetai">Laiko vienetai</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#si-baziniai-vienetai">SI Baziniai vienetai</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#si-isvestiniai-vienetai">SI Išvestiniai vienetai</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#kiti-vienetai">Kiti vienetai</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Matavimo vienetai</a></li>
 <li class="toctree-l1"><a class="reference internal" href="identifikatoriai.html">Ryšiai tarp modelių</a></li>
 <li class="toctree-l1"><a class="reference internal" href="branda.html">Brandos lygiai</a></li>
 <li class="toctree-l1"><a class="reference internal" href="prieiga.html">Prieigos lygiai</a></li>
@@ -85,36 +169,183 @@
 <li class="toctree-l1"><a class="reference internal" href="keitimai.html">Keitimų istorija</a></li>
 </ul>
 
-        </div>
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
       </div>
-    </nav>
+      
+      <main id="main-content" class="bd-main">
+        
+        
 
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobilios navigacijos meniu" >
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="index.html">Duomenų struktūros aprašas</a>
-      </nav>
+<div class="sbt-scroll-pixel-helper"></div>
 
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="Puslapių navigacija">
-  <ul class="wy-breadcrumbs">
-      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
-      <li class="breadcrumb-item active">Matavimo vienetai</li>
-      <li class="wy-breadcrumbs-aside">
-            <a href="_sources/vienetai.rst.txt" rel="nofollow"> Žiūrėti puslapio šaltinį</a>
-      </li>
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ivpk/dsa" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Šaltinio saugykla"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ivpk/dsa/issues/new?title=Issue%20on%20page%20%2Fvienetai.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Atidarykite problemą"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
   </ul>
-  <hr/>
 </div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-             
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Pilno ekrano režimas"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Paieška" aria-label="Paieška" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Matavimo vienetai</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Turinys </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apibreztis-laike">Apibrėžtis laike</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apibreztis-erdveje">Apibrėžtis erdvėje</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kokybiniai-duomenys">Kokybiniai duomenys</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kiekybiniai-duomenys">Kiekybiniai duomenys</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prefiksai">Prefiksai</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vienetai">Vienetai</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#specialiejie-vienetai">Specialiejie vienetai</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#laiko-vienetai">Laiko vienetai</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#si-baziniai-vienetai">SI Baziniai vienetai</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#si-isvestiniai-vienetai">SI Išvestiniai vienetai</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kiti-vienetai">Kiti vienetai</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
   <section id="matavimo-vienetai">
-<span id="id1"></span><h1>Matavimo vienetai<a class="headerlink" href="#matavimo-vienetai" title="Link to this heading"></a></h1>
+<span id="id1"></span><h1>Matavimo vienetai<a class="headerlink" href="#matavimo-vienetai" title="Link to this heading">#</a></h1>
 <section id="apibreztis-laike">
-<h2>Apibrėžtis laike<a class="headerlink" href="#apibreztis-laike" title="Link to this heading"></a></h2>
+<h2>Apibrėžtis laike<a class="headerlink" href="#apibreztis-laike" title="Link to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">date</span></code> ir <code class="docutils literal notranslate"><span class="pre">datetime</span></code> tipo duomenų laukams gali būti žymimas ir <a class="reference internal" href="tipai.html#temporal-types"><span class="std std-ref">laiko</span></a> duomenų tikslumas, pavyzdžiui:</p>
-<table class="docutils align-default">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>d</p></th>
 <th class="head"><p>r</p></th>
@@ -173,7 +404,7 @@
 metro tikslumu.</p>
 <p>Žymint laiko tikslumą, galite naudoti tokius sutartinius simbolius (atkreipkite
 dėmesį, kad šie vienetai veikia tik su <code class="docutils literal notranslate"><span class="pre">date</span></code> ir <code class="docutils literal notranslate"><span class="pre">datetime</span></code> tipais):</p>
-<table class="docutils align-default">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Simbolis</p></th>
 <th class="head"><p>Prasmė</p></th>
@@ -217,9 +448,9 @@ dėmesį, kad šie vienetai veikia tik su <code class="docutils literal notransl
 </table>
 </section>
 <section id="apibreztis-erdveje">
-<h2>Apibrėžtis erdvėje<a class="headerlink" href="#apibreztis-erdveje" title="Link to this heading"></a></h2>
+<h2>Apibrėžtis erdvėje<a class="headerlink" href="#apibreztis-erdveje" title="Link to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">geometry</span></code> tipo duomenų laukams galibūti žymimas <a class="reference internal" href="tipai.html#spatial-types"><span class="std std-ref">erdvinių</span></a> duomenų tikslumas, pavyzdžiui:</p>
-<table class="docutils align-default">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Simbolis</p></th>
 <th class="head"><p>Prasmė</p></th>
@@ -245,7 +476,7 @@ dėmesį, kad šie vienetai veikia tik su <code class="docutils literal notransl
 </table>
 </section>
 <section id="kokybiniai-duomenys">
-<h2>Kokybiniai duomenys<a class="headerlink" href="#kokybiniai-duomenys" title="Link to this heading"></a></h2>
+<h2>Kokybiniai duomenys<a class="headerlink" href="#kokybiniai-duomenys" title="Link to this heading">#</a></h2>
 <p>Kokybiniai duomenys skirstomi į dvi kategorijas:</p>
 <ul class="simple">
 <li><p>pavadinimai ir identifikatoriai</p></li>
@@ -274,13 +505,13 @@ prarastos palyginamosios savybės.</p>
 <p>tada nebūtina naudoti <code class="docutils literal notranslate"><span class="pre">integer</span></code> tipą.</p>
 </section>
 <section id="kiekybiniai-duomenys">
-<h2>Kiekybiniai duomenys<a class="headerlink" href="#kiekybiniai-duomenys" title="Link to this heading"></a></h2>
+<h2>Kiekybiniai duomenys<a class="headerlink" href="#kiekybiniai-duomenys" title="Link to this heading">#</a></h2>
 <p>Matavimo vienetai naudojant <a class="reference external" href="https://en.wikipedia.org/wiki/International_System_of_Units">SI simbolius</a>, <a class="reference external" href="https://en.wikipedia.org/wiki/SI_derived_unit">išvestinius SI simbolius</a> ir
 <a class="reference external" href="https://en.wikipedia.org/wiki/Non-SI_units_mentioned_in_the_SI">simbolius patvirtintus naudojimui su SI</a>,  pateikiami <a class="reference internal" href="dimensijos.html#property.ref" title="property.ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">property.ref</span></code></a>
 stulpelyje.</p>
 <p>Pateikus vienetus, laukui gali būti suteikiamas 4-as brandos lygis.</p>
 <p>Pavyzdys:</p>
-<table class="docutils align-default">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>d</p></th>
 <th class="head"><p>r</p></th>
@@ -365,7 +596,7 @@ stulpelyje.</p>
 <p>Vienetai užrašomi naudojant matematinę notaciją, kurioje galima naudoti
 skaičius, daugybos ir dalybos simbolius, kėlimą laipsniu ir atskirų vienetų
 sudėtį:</p>
-<table class="docutils align-default">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Žymėjimas</p></th>
 <th class="head"><p>Reikšmė</p></th>
@@ -421,9 +652,9 @@ sudėtį:</p>
 </div>
 </div></blockquote>
 <section id="prefiksai">
-<h3>Prefiksai<a class="headerlink" href="#prefiksai" title="Link to this heading"></a></h3>
+<h3>Prefiksai<a class="headerlink" href="#prefiksai" title="Link to this heading">#</a></h3>
 <p>Kiekybiniai matavimo vienetai gali turėti tokius prefiksus:</p>
-<table class="docutils align-default">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Žymėjimas</p></th>
 <th class="head"><p>10<sup>n</sup></p></th>
@@ -515,10 +746,10 @@ sudėtį:</p>
 </table>
 </section>
 <section id="vienetai">
-<h3>Vienetai<a class="headerlink" href="#vienetai" title="Link to this heading"></a></h3>
+<h3>Vienetai<a class="headerlink" href="#vienetai" title="Link to this heading">#</a></h3>
 <section id="specialiejie-vienetai">
-<h4>Specialiejie vienetai<a class="headerlink" href="#specialiejie-vienetai" title="Link to this heading"></a></h4>
-<table class="docutils align-default">
+<h4>Specialiejie vienetai<a class="headerlink" href="#specialiejie-vienetai" title="Link to this heading">#</a></h4>
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Žymėjimas</p></th>
 <th class="head"><p>Pavadinimas</p></th>
@@ -535,11 +766,11 @@ sudėtį:</p>
 </table>
 </section>
 <section id="laiko-vienetai">
-<h4>Laiko vienetai<a class="headerlink" href="#laiko-vienetai" title="Link to this heading"></a></h4>
+<h4>Laiko vienetai<a class="headerlink" href="#laiko-vienetai" title="Link to this heading">#</a></h4>
 <p>Naudojami tik tais atvejais, kai matuojamas laiko kiekis, o ne data ir laikas.
 Datos ir laiko (<code class="docutils literal notranslate"><span class="pre">date</span></code> ir <code class="docutils literal notranslate"><span class="pre">datetime</span></code> tipai) tikslumui žymėti, naudojamos kitos
 žymės.</p>
-<table class="docutils align-default">
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Žymėjimas</p></th>
 <th class="head"><p>Pavadinimas</p></th>
@@ -571,8 +802,8 @@ Datos ir laiko (<code class="docutils literal notranslate"><span class="pre">dat
 </table>
 </section>
 <section id="si-baziniai-vienetai">
-<h4>SI Baziniai vienetai<a class="headerlink" href="#si-baziniai-vienetai" title="Link to this heading"></a></h4>
-<table class="docutils align-default">
+<h4>SI Baziniai vienetai<a class="headerlink" href="#si-baziniai-vienetai" title="Link to this heading">#</a></h4>
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Žymėjimas</p></th>
 <th class="head"><p>Pavadinimas</p></th>
@@ -604,8 +835,8 @@ Datos ir laiko (<code class="docutils literal notranslate"><span class="pre">dat
 </table>
 </section>
 <section id="si-isvestiniai-vienetai">
-<h4>SI Išvestiniai vienetai<a class="headerlink" href="#si-isvestiniai-vienetai" title="Link to this heading"></a></h4>
-<table class="docutils align-default">
+<h4>SI Išvestiniai vienetai<a class="headerlink" href="#si-isvestiniai-vienetai" title="Link to this heading">#</a></h4>
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Žymėjimas</p></th>
 <th class="head"><p>Pavadinimas</p></th>
@@ -682,8 +913,8 @@ Datos ir laiko (<code class="docutils literal notranslate"><span class="pre">dat
 </table>
 </section>
 <section id="kiti-vienetai">
-<h4>Kiti vienetai<a class="headerlink" href="#kiti-vienetai" title="Link to this heading"></a></h4>
-<table class="docutils align-default">
+<h4>Kiti vienetai<a class="headerlink" href="#kiti-vienetai" title="Link to this heading">#</a></h4>
+<table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Žymėjimas</p></th>
 <th class="head"><p>Pavadinimas</p></th>
@@ -851,34 +1082,117 @@ Datos ir laiko (<code class="docutils literal notranslate"><span class="pre">dat
 </section>
 
 
-           </div>
-          </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Poraštė">
-        <a href="pavadinimai.html" class="btn btn-neutral float-left" title="Kodiniai pavadinimai" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Ankstesnis</a>
-        <a href="identifikatoriai.html" class="btn btn-neutral float-right" title="Ryšiai tarp modelių" accesskey="n" rel="next">Kitas <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-    </div>
+                </article>
+              
 
-  <hr/>
-
-  <div role="contentinfo">
-    <p>&#169; Copyright 2019-2024, IVPK.</p>
-  </div>
-
-  Surinkta su <a href="https://www.sphinx-doc.org/">Sphinx</a> naudojant
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">temą</a>
-    pateiktą <a href="https://readthedocs.org">Read the Docs</a>.
-   
-
-</footer>
-        </div>
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="pavadinimai.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">praeitas</p>
+        <p class="prev-next-title">Kodiniai pavadinimai</p>
       </div>
-    </section>
-  </div>
-  <script>
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script> 
+    </a>
+    <a class="right-next"
+       href="identifikatoriai.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">kitas</p>
+        <p class="prev-next-title">Ryšiai tarp modelių</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
-</body>
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Turinys
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apibreztis-laike">Apibrėžtis laike</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#apibreztis-erdveje">Apibrėžtis erdvėje</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kokybiniai-duomenys">Kokybiniai duomenys</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kiekybiniai-duomenys">Kiekybiniai duomenys</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prefiksai">Prefiksai</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vienetai">Vienetai</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#specialiejie-vienetai">Specialiejie vienetai</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#laiko-vienetai">Laiko vienetai</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#si-baziniai-vienetai">SI Baziniai vienetai</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#si-isvestiniai-vienetai">SI Išvestiniai vienetai</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#kiti-vienetai">Kiti vienetai</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Iki Informacinės visuomenės plėtros komitetas
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2019-2024, IVPK.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
 </html>
