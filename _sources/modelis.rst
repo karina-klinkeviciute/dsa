@@ -1,15 +1,152 @@
 .. default-role:: literal
 
-Duomenų modeliavimas
-####################
+Koncepcinis modelis
+###################
+
+Prieš pradedant darbą su strūktūros aprašais, būtina pasirengti koncepcinio
+modelio UML diagramą, vadovaujantis `Conceptual model conventions (UML)`_
+reikalavimais.
+
+Koncepcinis modelis turi būti naudojamas, kaip vienintelis tiesos šaltinis,
+kadangi vizualinę duomenų modelio reprezentaciją nesunkiai gali suprasti
+skirtingose srityse dirbandys žmonės ir pasitivrtinti duomenų modelį, kuris
+vėliau bus taikomas rengiant duomenų struktūros aprašus.
+
+Reikia atkreipti dėmesį, kad koncepcinis modelis yra vienas, o jį atitinkančių
+duomenų šaltinių gali būti daug.
+
+Kaip pavyzdį, naudosime žemiau pateiktą koncepcinį duomenų modelį:
+
+.. mermaid::
+
+   classDiagram
+
+     class AdministracijosTipas {
+       <<enumeration>> 
+       APSKRITIS
+       SAVIVALDYBE
+     }
+
+     class Administracija {
+       + kodas: integer [1..1]
+       + pavadinimas: text [1..1]
+     }
+
+     class Savivaldybe
+     class Apskritis
+     class Gyvenviete {
+       + id: integer [1..1]
+       + pavadinimas: text [1..1]
+     }
+   
+     Savivaldybe --> "[1..1]" Apskritis : apskritis
+     Gyvenviete --> "[1..1]" Savivaldybe : savivaldybe
+     Savivaldybe --|> Administracija
+     Apskritis --|> Administracija
+     Administracija ..> "[1..1]" AdministracijosTipas : tipas
+
+
+Pagal šį koncepcinį modelį, DSA lentelė atrodytu taip:
+
+
+== == == == ================== ========= =============== =============
+d  r  b  m  property           type      ref             prepare      
+== == == == ================== ========= =============== =============
+datasets/gov/example                                                  
+------------------------------ --------- --------------- -------------
+\        **Administracija**              kodas                        
+-- -- -- --------------------- --------- --------------- -------------
+\           kodas              string                                 
+\           pavadinimas        string                                 
+\           tipas              string                                 
+\                              enum                      "APSKRITIS"
+\                                                        "SAVIVALDYBE"
+\        **Apskritis**                   kodas          
+-- -- -- --------------------- --------- --------------- -------------
+\           kodas              string                                 
+\           pavadinimas        string                                 
+\           tipas              string                    "APSKRITIS"
+\        **Savivaldybe**                 kodas          
+-- -- -- --------------------- --------- --------------- -------------
+\           kodas              string                                 
+\           pavadinimas        string                                 
+\           tipas              string                    "SAVIVALDYBE"
+\           apskritis          ref       **Apskritis**
+\        **Gyvenviete**                  id             
+-- -- -- --------------------- --------- --------------- -------------
+\           id                 integer                                
+\           pavadinimas        string                                 
+\           savivaldybe        ref       **Savivaldybe**  
+== == == == ================== ========= =============== =============
+
+
+Pavadinimai nurodyti koncepciniame modelyje, turi identiškai sutapti su
+pavadinimai nurodytais DSA lentelės loginio modelio `model`, `property`,
+`type`, `ref` ir `prepare` stulpeluose.
+
+DSA lentelėje fizinio modelio, `source` stulpelyje nurodyti pavadinimai
+skirtinguose šaltiniuose gali skirtis, tačiau loginio modelio pavadinimai turi
+išlikti tokie patys.
+
+
+Objektas
+********
+
+Objektas yra viena duomenų eilutė, arba vienas duomenų įrašas ar atvejis.
+
+Pavyzdžiui aukščiau pateikto duomenų modelio klasės Gyvenvietė gali būti:
+
+- Vilnius
+- Kaunas
+- Klaipėda
+
+Sąvoka „objektas“ kalba apie konkretų individualų atvejį ar pavyzdį.
+
+Imant duomenų lentelę iš `Gyvenviete` modelio, gausime tokius duomenis.
+
+== =========== ===========
+id pavadinimas savivaldybe
+== =========== ===========
+1  Vilnius     10
+2  Kaunas      11
+3  Klaipeda    12
+== =========== ===========
+
+Šioje lentelėje yra trys objektai.
+
+Skirtingi objektai gali būti klasifikuojami į klases arba esybes.
+
+
+Klasė
+*****
+
+Klasė arba Esybė yra vienodas savybes ir vienodą apibrėžimą turinčių objektų
+aibė, kuriems suteikiamas tam tikras pavadinimas.
+
+Tarkime Vilniaus, Kauno ir Klaipėdos objektus galime priskirti vienai klasei ir
+suteikti tai klasei pavadinimą `Gyvenviete`.
+
+
+Modelis
+*******
+
+Klasė gali neturėti nei vienos savybės, gali turėti tik apibrėžimą, kuris
+apibūdina kurie objektai priklauso klasei.
+
+Modelis, schema arba profilis yra klasė ir konkretus savybių ir savybių tipų
+rinkinys, nurodant kurios savybės yra privalomos, kurios gali turėti daugiau
+nei vieną reikšmę ir kitas detales.
+
+Objektai priklausantis vienai klasei, gali būti išreikšti keliais skirtingais
+duomenų modeliais.
+
+
+
 
 Rengiant struktūros aprašus svarbu suprasti, kas yra duomenų modelis ir kokie
 yra duomenų modelio variantai ir bendrai kokie yra duomenų modeliavimo
 principai.
 
-
-Koncepcinis modelis
-*******************
 
 Koncepcinis duomenų modelis apibūdina realaus ar menamo pasaulio sąvokas ir
 ryšius tarp jų. Koncepciniame modelyje nedetalizuojamos techninės detalės,
@@ -150,3 +287,4 @@ saugojimo logiką.
 .. _foaf:member: http://xmlns.com/foaf/spec/#term_member
 .. _foaf:Group: http://xmlns.com/foaf/spec/#term_Group
 .. _foaf:Agent: http://xmlns.com/foaf/spec/#term_Agent
+.. _Conceptual model conventions (UML): https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html

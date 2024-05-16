@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Duomenų modeliavimas &#8212; DSA</title>
+    <title>Koncepcinis modelis &#8212; DSA</title>
   
   
   
@@ -43,6 +43,13 @@
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
     <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script src="_static/translations.js?v=3b848cde"></script>
+    <script src="https://unpkg.com/mermaid@10.2.0/dist/mermaid.min.js"></script>
+    <script>
+mermaid.initialize({
+    startOnLoad:true,
+    theme: 'neutral'
+});
+</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'modelis';</script>
     <link rel="index" title="Indeksas" href="genindex.html" />
     <link rel="search" title="Paieška" href="search.html" />
@@ -149,7 +156,7 @@
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Duomenų modeliavimas</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Koncepcinis modelis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="formatas.html">Lentelės formatas</a></li>
 
 
@@ -304,7 +311,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Duomenų modeliavimas</h1>
+    <h1>Koncepcinis modelis</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -314,7 +321,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#koncepcinis-modelis">Koncepcinis modelis</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objektas">Objektas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#klase">Klasė</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelis">Modelis</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generalizacija-ir-specializacija">Generalizacija ir specializacija</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pakartotinis-naudojimas">Pakartotinis naudojimas</a></li>
 </ul>
@@ -332,13 +341,293 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="duomenu-modeliavimas">
-<h1>Duomenų modeliavimas<a class="headerlink" href="#duomenu-modeliavimas" title="Link to this heading">#</a></h1>
+  <section id="koncepcinis-modelis">
+<h1>Koncepcinis modelis<a class="headerlink" href="#koncepcinis-modelis" title="Link to this heading">#</a></h1>
+<p>Prieš pradedant darbą su strūktūros aprašais, būtina pasirengti koncepcinio
+modelio UML diagramą, vadovaujantis <a class="reference external" href="https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html">Conceptual model conventions (UML)</a>
+reikalavimais.</p>
+<p>Koncepcinis modelis turi būti naudojamas, kaip vienintelis tiesos šaltinis,
+kadangi vizualinę duomenų modelio reprezentaciją nesunkiai gali suprasti
+skirtingose srityse dirbandys žmonės ir pasitivrtinti duomenų modelį, kuris
+vėliau bus taikomas rengiant duomenų struktūros aprašus.</p>
+<p>Reikia atkreipti dėmesį, kad koncepcinis modelis yra vienas, o jį atitinkančių
+duomenų šaltinių gali būti daug.</p>
+<p>Kaip pavyzdį, naudosime žemiau pateiktą koncepcinį duomenų modelį:</p>
+<div class="mermaid">
+            classDiagram
+
+  class AdministracijosTipas {
+    &lt;&lt;enumeration&gt;&gt;
+    APSKRITIS
+    SAVIVALDYBE
+  }
+
+  class Administracija {
+    + kodas: integer [1..1]
+    + pavadinimas: text [1..1]
+  }
+
+  class Savivaldybe
+  class Apskritis
+  class Gyvenviete {
+    + id: integer [1..1]
+    + pavadinimas: text [1..1]
+  }
+
+  Savivaldybe --&gt; &quot;[1..1]&quot; Apskritis : apskritis
+  Gyvenviete --&gt; &quot;[1..1]&quot; Savivaldybe : savivaldybe
+  Savivaldybe --|&gt; Administracija
+  Apskritis --|&gt; Administracija
+  Administracija ..&gt; &quot;[1..1]&quot; AdministracijosTipas : tipas
+        </div><p>Pagal šį koncepcinį modelį, DSA lentelė atrodytu taip:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>d</p></th>
+<th class="head"><p>r</p></th>
+<th class="head"><p>b</p></th>
+<th class="head"><p>m</p></th>
+<th class="head"><p>property</p></th>
+<th class="head"><p>type</p></th>
+<th class="head"><p>ref</p></th>
+<th class="head"><p>prepare</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td colspan="5"><p>datasets/gov/example</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td></td>
+<td colspan="2"><p><strong>Administracija</strong></p></td>
+<td></td>
+<td><p>kodas</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>kodas</p></td>
+<td><p>string</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>pavadinimas</p></td>
+<td><p>string</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>tipas</p></td>
+<td><p>string</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>enum</p></td>
+<td></td>
+<td><p>&quot;APSKRITIS&quot;</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>&quot;SAVIVALDYBE&quot;</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td></td>
+<td colspan="2"><p><strong>Apskritis</strong></p></td>
+<td></td>
+<td><p>kodas</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>kodas</p></td>
+<td><p>string</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>pavadinimas</p></td>
+<td><p>string</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>tipas</p></td>
+<td><p>string</p></td>
+<td></td>
+<td><p>&quot;APSKRITIS&quot;</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td></td>
+<td colspan="2"><p><strong>Savivaldybe</strong></p></td>
+<td></td>
+<td><p>kodas</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>kodas</p></td>
+<td><p>string</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>pavadinimas</p></td>
+<td><p>string</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>tipas</p></td>
+<td><p>string</p></td>
+<td></td>
+<td><p>&quot;SAVIVALDYBE&quot;</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>apskritis</p></td>
+<td><p>ref</p></td>
+<td><p><strong>Apskritis</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td></td>
+<td colspan="2"><p><strong>Gyvenviete</strong></p></td>
+<td></td>
+<td><p>id</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>id</p></td>
+<td><p>integer</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>pavadinimas</p></td>
+<td><p>string</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>savivaldybe</p></td>
+<td><p>ref</p></td>
+<td><p><strong>Savivaldybe</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Pavadinimai nurodyti koncepciniame modelyje, turi identiškai sutapti su
+pavadinimai nurodytais DSA lentelės loginio modelio <code class="docutils literal notranslate"><span class="pre">model</span></code>, <code class="docutils literal notranslate"><span class="pre">property</span></code>,
+<code class="docutils literal notranslate"><span class="pre">type</span></code>, <code class="docutils literal notranslate"><span class="pre">ref</span></code> ir <code class="docutils literal notranslate"><span class="pre">prepare</span></code> stulpeluose.</p>
+<p>DSA lentelėje fizinio modelio, <code class="docutils literal notranslate"><span class="pre">source</span></code> stulpelyje nurodyti pavadinimai
+skirtinguose šaltiniuose gali skirtis, tačiau loginio modelio pavadinimai turi
+išlikti tokie patys.</p>
+<section id="objektas">
+<h2>Objektas<a class="headerlink" href="#objektas" title="Link to this heading">#</a></h2>
+<p>Objektas yra viena duomenų eilutė, arba vienas duomenų įrašas ar atvejis.</p>
+<p>Pavyzdžiui aukščiau pateikto duomenų modelio klasės Gyvenvietė gali būti:</p>
+<ul class="simple">
+<li><p>Vilnius</p></li>
+<li><p>Kaunas</p></li>
+<li><p>Klaipėda</p></li>
+</ul>
+<p>Sąvoka „objektas“ kalba apie konkretų individualų atvejį ar pavyzdį.</p>
+<p>Imant duomenų lentelę iš <code class="docutils literal notranslate"><span class="pre">Gyvenviete</span></code> modelio, gausime tokius duomenis.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>id</p></th>
+<th class="head"><p>pavadinimas</p></th>
+<th class="head"><p>savivaldybe</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Vilnius</p></td>
+<td><p>10</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>Kaunas</p></td>
+<td><p>11</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>Klaipeda</p></td>
+<td><p>12</p></td>
+</tr>
+</tbody>
+</table>
+<p>Šioje lentelėje yra trys objektai.</p>
+<p>Skirtingi objektai gali būti klasifikuojami į klases arba esybes.</p>
+</section>
+<section id="klase">
+<h2>Klasė<a class="headerlink" href="#klase" title="Link to this heading">#</a></h2>
+<p>Klasė arba Esybė yra vienodas savybes ir vienodą apibrėžimą turinčių objektų
+aibė, kuriems suteikiamas tam tikras pavadinimas.</p>
+<p>Tarkime Vilniaus, Kauno ir Klaipėdos objektus galime priskirti vienai klasei ir
+suteikti tai klasei pavadinimą <code class="docutils literal notranslate"><span class="pre">Gyvenviete</span></code>.</p>
+</section>
+<section id="modelis">
+<h2>Modelis<a class="headerlink" href="#modelis" title="Link to this heading">#</a></h2>
+<p>Klasė gali neturėti nei vienos savybės, gali turėti tik apibrėžimą, kuris
+apibūdina kurie objektai priklauso klasei.</p>
+<p>Modelis, schema arba profilis yra klasė ir konkretus savybių ir savybių tipų
+rinkinys, nurodant kurios savybės yra privalomos, kurios gali turėti daugiau
+nei vieną reikšmę ir kitas detales.</p>
+<p>Objektai priklausantis vienai klasei, gali būti išreikšti keliais skirtingais
+duomenų modeliais.</p>
 <p>Rengiant struktūros aprašus svarbu suprasti, kas yra duomenų modelis ir kokie
 yra duomenų modelio variantai ir bendrai kokie yra duomenų modeliavimo
 principai.</p>
-<section id="koncepcinis-modelis">
-<h2>Koncepcinis modelis<a class="headerlink" href="#koncepcinis-modelis" title="Link to this heading">#</a></h2>
 <p>Koncepcinis duomenų modelis apibūdina realaus ar menamo pasaulio sąvokas ir
 ryšius tarp jų. Koncepciniame modelyje nedetalizuojamos techninės detalės,
 apibrėžiamos tik pačios sąvokos ir jų semantinė prasmė.</p>
@@ -481,7 +770,9 @@ saugojimo logiką.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#koncepcinis-modelis">Koncepcinis modelis</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objektas">Objektas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#klase">Klasė</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelis">Modelis</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generalizacija-ir-specializacija">Generalizacija ir specializacija</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pakartotinis-naudojimas">Pakartotinis naudojimas</a></li>
 </ul>
