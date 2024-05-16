@@ -570,6 +570,8 @@ Sąvokos
         reikšmių. Informacinis objektas turi turėti unikalų identifikatorių.
         Atitinka `rdfs:Resource`_ arba lentelės vieną eilutę.
 
+        Plačiau apie objektą: :ref:`objektas`.
+
         .. _rdfs:Resource: https://www.w3.org/TR/rdf-schema/#ch_resource
 
     žodynas

@@ -31,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
     <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=a5c4661c" />
-    <link rel="stylesheet" type="text/css" href="_static/style.css" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=ced4a280" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
@@ -574,15 +574,17 @@ pavadinimai nurodytais DSA lentelės loginio modelio <code class="docutils liter
 skirtinguose šaltiniuose gali skirtis, tačiau loginio modelio pavadinimai turi
 išlikti tokie patys.</p>
 <section id="objektas">
-<h2>Objektas<a class="headerlink" href="#objektas" title="Link to this heading">#</a></h2>
-<p>Objektas yra viena duomenų eilutė, arba vienas duomenų įrašas ar atvejis.</p>
-<p>Pavyzdžiui aukščiau pateikto duomenų modelio klasės Gyvenvietė gali būti:</p>
+<span id="id1"></span><h2>Objektas<a class="headerlink" href="#objektas" title="Link to this heading">#</a></h2>
+<p><em class="dfn">Objektas</em> yra viena duomenų eilutė, arba vienas duomenų įrašas ar
+atvejis. Kalbant apie objektus, naudojamas <span class="underline">pavyzdys</span> žymėjimas.</p>
+<p>Pavyzdžiui iš aukščiau pateikto duomenų modelio, klasės <code class="docutils literal notranslate"><span class="pre">Gyvenviete</span></code> objektai
+gali būti:</p>
 <ul class="simple">
-<li><p>Vilnius</p></li>
-<li><p>Kaunas</p></li>
-<li><p>Klaipėda</p></li>
+<li><p><span class="underline">Vilnius</span></p></li>
+<li><p><span class="underline">Kaunas</span></p></li>
+<li><p><span class="underline">Klaipėda</span></p></li>
 </ul>
-<p>Sąvoka „objektas“ kalba apie konkretų individualų atvejį ar pavyzdį.</p>
+<p>Sąvoka <a class="reference internal" href="savokos.html#term-objektas"><span class="xref std std-term">objektas</span></a> kalba apie konkretų individualų atvejį ar pavyzdį.</p>
 <p>Imant duomenų lentelę iš <code class="docutils literal notranslate"><span class="pre">Gyvenviete</span></code> modelio, gausime tokius duomenis.</p>
 <table class="table">
 <thead>
@@ -613,18 +615,53 @@ išlikti tokie patys.</p>
 <h2>Klasė<a class="headerlink" href="#klase" title="Link to this heading">#</a></h2>
 <p>Klasė arba Esybė yra vienodas savybes ir vienodą apibrėžimą turinčių objektų
 aibė, kuriems suteikiamas tam tikras pavadinimas.</p>
-<p>Tarkime Vilniaus, Kauno ir Klaipėdos objektus galime priskirti vienai klasei ir
-suteikti tai klasei pavadinimą <code class="docutils literal notranslate"><span class="pre">Gyvenviete</span></code>.</p>
+<p>Tarkime <span class="underline">Vilniaus</span>, <span class="underline">Kauno</span> ir <span class="underline">Klaipėdos</span>
+objektus galime priskirti vienai klasei ir suteikti tai klasei pavadinimą
+<code class="docutils literal notranslate"><span class="pre">Gyvenviete</span></code>.</p>
+<p>Klasės pavyzdys UML diagramoje:</p>
+<div class="mermaid">
+            classDiagram
+
+  class Gyvenviete
+        </div><p>Klasė gali neturėti jokių savybių, arba gali turėti savybes, kurios apibūdina
+pačią klasę.</p>
+<p>Tarkime modelis <code class="docutils literal notranslate"><span class="pre">Gyvenvietė</span></code> turi savybę <code class="docutils literal notranslate"><span class="pre">pavadinimas</span></code>, tačiau tai nėra klasės
+savybė, todėl, kad <code class="docutils literal notranslate"><span class="pre">pavadinimas</span></code> yra duomenų atributas, kuris nėra klasę
+apibūdinanti savybė.</p>
+<p>Nurodžius savybes prie klasės, iškeliamas griežtas reikalavimas, visiems
+modeliams ir subklasėms, atitikti visas klasės savybes.</p>
+<p>Tuo tarpu duomenų modelis, gali atitikti tam tikrą klasę, bet gali būti
+pateikiamas su skirtingomis savybėmis.</p>
+<p>Sudarant ontologijas, pateikiami klasių apibrėžimai, dažniausiai be savybių,
+kad neriboti klasės taikymo. Tačiau tam tikrais atvejais, ontologijoje klasės
+pateikiamos ir su keliomis savybėmis, kurios apibrėžia pačią klasę.</p>
 </section>
 <section id="modelis">
 <h2>Modelis<a class="headerlink" href="#modelis" title="Link to this heading">#</a></h2>
-<p>Klasė gali neturėti nei vienos savybės, gali turėti tik apibrėžimą, kuris
-apibūdina kurie objektai priklauso klasei.</p>
-<p>Modelis, schema arba profilis yra klasė ir konkretus savybių ir savybių tipų
-rinkinys, nurodant kurios savybės yra privalomos, kurios gali turėti daugiau
-nei vieną reikšmę ir kitas detales.</p>
-<p>Objektai priklausantis vienai klasei, gali būti išreikšti keliais skirtingais
-duomenų modeliais.</p>
+<p>Klasės savybės apibrežia pačią klasę ir tampa klasės dalimi, tačiau modelio
+savybės neturi įtakos klasės semantiniam apibrėžimui, tai yra tiesiog duomenų
+laukų sąrašas pateikiams su klase.</p>
+<p>Viena klasė gali turėti daug skirtingų modelių, su skirtingomis savybėmis arba
+su skirtingais duomenų laukais.</p>
+<p>Modelis, schema arba profilis yra konkretus savybių, duomenų tipų rinkinys,
+nurodant kurios savybės yra privalomos, kurios gali turėti daugiau nei vieną
+reikšmę ir kitas detales.</p>
+<p>Sudarant taikymo profilius (angl. <em>Application profile</em>) UML klasių diagramoje
+pateikiami konkretūs duomenų modeliai, su konkrečiomis savybėmis ir jų tipais.</p>
+<p>Modelio pavyzdys UML diagramoje:</p>
+<div class="mermaid">
+            classDiagram
+
+  class Gyvenviete {
+    + id: integer [1..1]
+    + pavadinimas: text [1..1]
+  }
+        </div><p>Modelis atvaizduojas lygiai taip pat, kaip ir klasės. Ar tai yra klasės ar
+modelis galima atskirti tik pagal diagramos pavadinimą, jei diagrama vaizduoja
+ontologiją, tada joje yra klasės, jei taikymo profilį, tada diagramoje yra
+modeliai.</p>
+<p>Jei UML diagramose prie klasių yra pateikti pilni sąrašai savybių su tipais,
+tada tai greičiausiai yra taikymo profilis.</p>
 <p>Rengiant struktūros aprašus svarbu suprasti, kas yra duomenų modelis ir kokie
 yra duomenų modelio variantai ir bendrai kokie yra duomenų modeliavimo
 principai.</p>

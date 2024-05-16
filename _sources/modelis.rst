@@ -1,5 +1,10 @@
 .. default-role:: literal
 
+.. Object instance.
+.. role:: instance
+   :class: underline
+
+
 Koncepcinis modelis
 ###################
 
@@ -89,18 +94,22 @@ skirtinguose šaltiniuose gali skirtis, tačiau loginio modelio pavadinimai turi
 išlikti tokie patys.
 
 
+.. _objektas:
+
 Objektas
 ********
 
-Objektas yra viena duomenų eilutė, arba vienas duomenų įrašas ar atvejis.
+:dfn:`Objektas` yra viena duomenų eilutė, arba vienas duomenų įrašas ar
+atvejis. Kalbant apie objektus, naudojamas :instance:`pavyzdys` žymėjimas.
 
-Pavyzdžiui aukščiau pateikto duomenų modelio klasės Gyvenvietė gali būti:
+Pavyzdžiui iš aukščiau pateikto duomenų modelio, klasės `Gyvenviete` objektai
+gali būti:
 
-- Vilnius
-- Kaunas
-- Klaipėda
+- :instance:`Vilnius`
+- :instance:`Kaunas`
+- :instance:`Klaipėda`
 
-Sąvoka „objektas“ kalba apie konkretų individualų atvejį ar pavyzdį.
+Sąvoka :term:`objektas` kalba apie konkretų individualų atvejį ar pavyzdį.
 
 Imant duomenų lentelę iš `Gyvenviete` modelio, gausime tokius duomenis.
 
@@ -123,22 +132,75 @@ Klasė
 Klasė arba Esybė yra vienodas savybes ir vienodą apibrėžimą turinčių objektų
 aibė, kuriems suteikiamas tam tikras pavadinimas.
 
-Tarkime Vilniaus, Kauno ir Klaipėdos objektus galime priskirti vienai klasei ir
-suteikti tai klasei pavadinimą `Gyvenviete`.
+Tarkime :instance:`Vilniaus`, :instance:`Kauno` ir :instance:`Klaipėdos`
+objektus galime priskirti vienai klasei ir suteikti tai klasei pavadinimą
+`Gyvenviete`.
+
+Klasės pavyzdys UML diagramoje:
+
+.. mermaid::
+
+   classDiagram
+
+     class Gyvenviete
+
+
+Klasė gali neturėti jokių savybių, arba gali turėti savybes, kurios apibūdina
+pačią klasę.
+
+Tarkime modelis `Gyvenvietė` turi savybę `pavadinimas`, tačiau tai nėra klasės
+savybė, todėl, kad `pavadinimas` yra duomenų atributas, kuris nėra klasę
+apibūdinanti savybė.
+
+Nurodžius savybes prie klasės, iškeliamas griežtas reikalavimas, visiems
+modeliams ir subklasėms, atitikti visas klasės savybes.
+
+Tuo tarpu duomenų modelis, gali atitikti tam tikrą klasę, bet gali būti
+pateikiamas su skirtingomis savybėmis.
+
+Sudarant ontologijas, pateikiami klasių apibrėžimai, dažniausiai be savybių,
+kad neriboti klasės taikymo. Tačiau tam tikrais atvejais, ontologijoje klasės
+pateikiamos ir su keliomis savybėmis, kurios apibrėžia pačią klasę.
 
 
 Modelis
 *******
 
-Klasė gali neturėti nei vienos savybės, gali turėti tik apibrėžimą, kuris
-apibūdina kurie objektai priklauso klasei.
+Klasės savybės apibrežia pačią klasę ir tampa klasės dalimi, tačiau modelio
+savybės neturi įtakos klasės semantiniam apibrėžimui, tai yra tiesiog duomenų
+laukų sąrašas pateikiams su klase.
 
-Modelis, schema arba profilis yra klasė ir konkretus savybių ir savybių tipų
-rinkinys, nurodant kurios savybės yra privalomos, kurios gali turėti daugiau
-nei vieną reikšmę ir kitas detales.
+Viena klasė gali turėti daug skirtingų modelių, su skirtingomis savybėmis arba
+su skirtingais duomenų laukais.
 
-Objektai priklausantis vienai klasei, gali būti išreikšti keliais skirtingais
-duomenų modeliais.
+Modelis, schema arba profilis yra konkretus savybių, duomenų tipų rinkinys,
+nurodant kurios savybės yra privalomos, kurios gali turėti daugiau nei vieną
+reikšmę ir kitas detales.
+
+Sudarant taikymo profilius (angl. *Application profile*) UML klasių diagramoje
+pateikiami konkretūs duomenų modeliai, su konkrečiomis savybėmis ir jų tipais.
+
+
+Modelio pavyzdys UML diagramoje:
+
+.. mermaid::
+
+   classDiagram
+
+     class Gyvenviete {
+       + id: integer [1..1]
+       + pavadinimas: text [1..1]
+     }
+
+Modelis atvaizduojas lygiai taip pat, kaip ir klasės. Ar tai yra klasės ar
+modelis galima atskirti tik pagal diagramos pavadinimą, jei diagrama vaizduoja
+ontologiją, tada joje yra klasės, jei taikymo profilį, tada diagramoje yra
+modeliai.
+
+Jei UML diagramose prie klasių yra pateikti pilni sąrašai savybių su tipais,
+tada tai greičiausiai yra taikymo profilis.
+
+
 
 
 
