@@ -323,7 +323,8 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objektas">Objektas</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#klase">Klasė</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelis">Modelis</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelis">Modelis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identifikatorius">Identifikatorius</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generalizacija-ir-specializacija">Generalizacija ir specializacija</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pakartotinis-naudojimas">Pakartotinis naudojimas</a></li>
 </ul>
@@ -609,6 +610,36 @@ gali būti:</p>
 </tbody>
 </table>
 <p>Šioje lentelėje yra trys objektai.</p>
+<p>Objekto pavyzdys UML diagramoje:</p>
+<div class="mermaid">
+            classDiagram
+  class Gyvenviete {
+    + id: integer [1..1]
+    + pavadinimas: text [1..1]
+    + savivaldybe: integer [1..1]
+  }
+
+  class Vilnius[&quot;&lt;u&gt;Vilnius: Gyvenviete&lt;/u&gt;&quot;] {
+    id = 1
+    pavadinimas = &quot;Vilnius&quot;
+    savivaldybe = 10
+  }
+  class Kaunas[&quot;&lt;u&gt;Kaunas: Gyvenviete&lt;/u&gt;&quot;] {
+    id = 2
+    pavadinimas = &quot;Kaunas&quot;
+    savivaldybe = 11
+  }
+  class Klaipeda[&quot;&lt;u&gt;Klaipeda: Gyvenviete&lt;/u&gt;&quot;] {
+    id = 3
+    pavadinimas = &quot;Klaipėda&quot;
+    savivaldybe = 12
+  }
+
+  Vilnius --|&gt; Gyvenviete
+  Kaunas --|&gt; Gyvenviete
+  Klaipeda --|&gt; Gyvenviete
+        </div><p>UML diagramoje turime tris objetus <span class="underline">Vilnius</span>, <span class="underline">Kaunas</span> ir
+<span class="underline">Klaipeda</span>, priskirti klasei <code class="docutils literal notranslate"><span class="pre">Gyvenviete</span></code>.</p>
 <p>Skirtingi objektai gali būti klasifikuojami į klases arba esybes.</p>
 </section>
 <section id="klase">
@@ -638,14 +669,15 @@ pateikiamos ir su keliomis savybėmis, kurios apibrėžia pačią klasę.</p>
 </section>
 <section id="modelis">
 <h2>Modelis<a class="headerlink" href="#modelis" title="Link to this heading">#</a></h2>
+<img alt="_static/modelis.png" src="_static/modelis.png" />
 <p>Klasės savybės apibrežia pačią klasę ir tampa klasės dalimi, tačiau modelio
 savybės neturi įtakos klasės semantiniam apibrėžimui, tai yra tiesiog duomenų
 laukų sąrašas pateikiams su klase.</p>
 <p>Viena klasė gali turėti daug skirtingų modelių, su skirtingomis savybėmis arba
 su skirtingais duomenų laukais.</p>
-<p>Modelis, schema arba profilis yra konkretus savybių, duomenų tipų rinkinys,
-nurodant kurios savybės yra privalomos, kurios gali turėti daugiau nei vieną
-reikšmę ir kitas detales.</p>
+<p>Modelis, schema arba profilis yra konkretus savybių, duomenų tipų sąrašas,
+kuriame nurodoma kurios savybės yra privalomos, kurios gali turėti daugiau nei
+vieną reikšmę ir kitas detales.</p>
 <p>Sudarant taikymo profilius (angl. <em>Application profile</em>) UML klasių diagramoje
 pateikiami konkretūs duomenų modeliai, su konkrečiomis savybėmis ir jų tipais.</p>
 <p>Modelio pavyzdys UML diagramoje:</p>
@@ -662,6 +694,51 @@ ontologiją, tada joje yra klasės, jei taikymo profilį, tada diagramoje yra
 modeliai.</p>
 <p>Jei UML diagramose prie klasių yra pateikti pilni sąrašai savybių su tipais,
 tada tai greičiausiai yra taikymo profilis.</p>
+</section>
+<section id="identifikatorius">
+<h2>Identifikatorius<a class="headerlink" href="#identifikatorius" title="Link to this heading">#</a></h2>
+<p>Kad galėtume vienareikšmiškai įvartinti ar nurodyti tam tikrą objektą, visi
+objektai privalo turėti unikalius identifikatorius.</p>
+<p>Kiekvienam objektui priskiriamas vienas globalus identifikatorius UUID formatu,
+tačiau objektas gali turėti vieną ar daugiau lokalius identifikatorius.</p>
+<p>Globalūs identifikatoriai priskiriami esybei ir atspindi vieną realaus pasaulio
+objektą, lokalus identifikatorius yra siejams su konkrečiu duomenų modeliu ar
+duomenų šaltiniu ir skirtinguose modeliuose gali būti naudojami keli skirtingi
+lokalūs identifikatoriai rodantys į vieną realaus pasaulio objektą.</p>
+<div class="mermaid">
+            classDiagram
+
+  class Gyvenviete
+
+  class City {
+    + id: integer [1..1]
+    + name: text [1..1]
+  }
+
+  class Miestas {
+    + kodas: integer [1..1]
+    + pavadinimas: text [1..1]
+  }
+
+  class VilniusCity[&quot;&lt;u&gt;dd79d2a6-d3d6-4fc2-83bb-da9dd15b2a89: City&lt;/u&gt;&quot;] {
+    id = 7
+    name = &quot;Vilnius&quot;
+  }
+  class VilniusMiestas[&quot;&lt;u&gt;dd79d2a6-d3d6-4fc2-83bb-da9dd15b2a89: Miestas&lt;/u&gt;&quot;] {
+    kodas = 23
+    pavadinimas = &quot;Vilnius&quot;
+  }
+
+  VilniusCity --|&gt; City
+  VilniusMiestas --|&gt; Miestas
+  City --|&gt; Gyvenviete
+  Miestas --|&gt; Gyvenviete
+        </div><p>UML diagramoje aukščiau turime du skirtingus duomenų objektus, kurie turi
+vienodą globalų identifikatorių <code class="docutils literal notranslate"><span class="pre">dd79d2a6-d3d6-4fc2-83bb-da9dd15b2a89</span></code>, tačiau
+skirtingus lokalius <code class="docutils literal notranslate"><span class="pre">id</span> <span class="pre">=</span> <span class="pre">7</span></code> ir <code class="docutils literal notranslate"><span class="pre">kodas</span> <span class="pre">=</span> <span class="pre">23</span></code>.</p>
+<p>Globalus identifikatorius suteikiamas esybei <code class="docutils literal notranslate"><span class="pre">Gyvenviete</span></code>, lokalūs
+identifikatoriai suteikiami konkrečiam duomenų modeliui ir konkrečiam duomenų
+šaltiniui.</p>
 <p>Rengiant struktūros aprašus svarbu suprasti, kas yra duomenų modelis ir kokie
 yra duomenų modelio variantai ir bendrai kokie yra duomenų modeliavimo
 principai.</p>
@@ -809,7 +886,8 @@ saugojimo logiką.</p>
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objektas">Objektas</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#klase">Klasė</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelis">Modelis</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modelis">Modelis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identifikatorius">Identifikatorius</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generalizacija-ir-specializacija">Generalizacija ir specializacija</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pakartotinis-naudojimas">Pakartotinis naudojimas</a></li>
 </ul>

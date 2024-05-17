@@ -123,6 +123,42 @@ id pavadinimas savivaldybe
 
 Šioje lentelėje yra trys objektai.
 
+Objekto pavyzdys UML diagramoje:
+
+.. mermaid::
+
+   classDiagram
+     class Gyvenviete {
+       + id: integer [1..1]
+       + pavadinimas: text [1..1]
+       + savivaldybe: integer [1..1]
+     }
+
+     class Vilnius["<u>Vilnius: Gyvenviete</u>"] {
+       id = 1
+       pavadinimas = "Vilnius"
+       savivaldybe = 10
+     }
+     class Kaunas["<u>Kaunas: Gyvenviete</u>"] {
+       id = 2
+       pavadinimas = "Kaunas"
+       savivaldybe = 11
+     }
+     class Klaipeda["<u>Klaipeda: Gyvenviete</u>"] {
+       id = 3
+       pavadinimas = "Klaipėda"
+       savivaldybe = 12
+     }
+
+     Vilnius --|> Gyvenviete
+     Kaunas --|> Gyvenviete
+     Klaipeda --|> Gyvenviete
+
+
+UML diagramoje turime tris objetus :instance:`Vilnius`, :instance:`Kaunas` ir
+:instance:`Klaipeda`, priskirti klasei `Gyvenviete`.
+
+
 Skirtingi objektai gali būti klasifikuojami į klases arba esybes.
 
 
@@ -166,6 +202,8 @@ pateikiamos ir su keliomis savybėmis, kurios apibrėžia pačią klasę.
 Modelis
 *******
 
+.. image:: _static/modelis.png
+
 Klasės savybės apibrežia pačią klasę ir tampa klasės dalimi, tačiau modelio
 savybės neturi įtakos klasės semantiniam apibrėžimui, tai yra tiesiog duomenų
 laukų sąrašas pateikiams su klase.
@@ -173,9 +211,9 @@ laukų sąrašas pateikiams su klase.
 Viena klasė gali turėti daug skirtingų modelių, su skirtingomis savybėmis arba
 su skirtingais duomenų laukais.
 
-Modelis, schema arba profilis yra konkretus savybių, duomenų tipų rinkinys,
-nurodant kurios savybės yra privalomos, kurios gali turėti daugiau nei vieną
-reikšmę ir kitas detales.
+Modelis, schema arba profilis yra konkretus savybių, duomenų tipų sąrašas,
+kuriame nurodoma kurios savybės yra privalomos, kurios gali turėti daugiau nei
+vieną reikšmę ir kitas detales.
 
 Sudarant taikymo profilius (angl. *Application profile*) UML klasių diagramoje
 pateikiami konkretūs duomenų modeliai, su konkrečiomis savybėmis ir jų tipais.
@@ -200,6 +238,59 @@ modeliai.
 Jei UML diagramose prie klasių yra pateikti pilni sąrašai savybių su tipais,
 tada tai greičiausiai yra taikymo profilis.
 
+
+Identifikatorius
+****************
+
+Kad galėtume vienareikšmiškai įvartinti ar nurodyti tam tikrą objektą, visi
+objektai privalo turėti unikalius identifikatorius.
+
+Kiekvienam objektui priskiriamas vienas globalus identifikatorius UUID formatu,
+tačiau objektas gali turėti vieną ar daugiau lokalius identifikatorius.
+
+Globalūs identifikatoriai priskiriami esybei ir atspindi vieną realaus pasaulio
+objektą, lokalus identifikatorius yra siejams su konkrečiu duomenų modeliu ar
+duomenų šaltiniu ir skirtinguose modeliuose gali būti naudojami keli skirtingi
+lokalūs identifikatoriai rodantys į vieną realaus pasaulio objektą.
+
+
+.. mermaid::
+
+   classDiagram
+
+     class Gyvenviete
+
+     class City {
+       + id: integer [1..1]
+       + name: text [1..1]
+     }
+
+     class Miestas {
+       + kodas: integer [1..1]
+       + pavadinimas: text [1..1]
+     }
+
+     class VilniusCity["<u>dd79d2a6-d3d6-4fc2-83bb-da9dd15b2a89: City</u>"] {
+       id = 7
+       name = "Vilnius"
+     }
+     class VilniusMiestas["<u>dd79d2a6-d3d6-4fc2-83bb-da9dd15b2a89: Miestas</u>"] {
+       kodas = 23
+       pavadinimas = "Vilnius"
+     }
+
+     VilniusCity --|> City
+     VilniusMiestas --|> Miestas
+     City --|> Gyvenviete
+     Miestas --|> Gyvenviete
+
+UML diagramoje aukščiau turime du skirtingus duomenų objektus, kurie turi
+vienodą globalų identifikatorių `dd79d2a6-d3d6-4fc2-83bb-da9dd15b2a89`, tačiau
+skirtingus lokalius `id = 7` ir `kodas = 23`.
+
+Globalus identifikatorius suteikiamas esybei `Gyvenviete`, lokalūs
+identifikatoriai suteikiami konkrečiam duomenų modeliui ir konkrečiam duomenų
+šaltiniui.
 
 
 
