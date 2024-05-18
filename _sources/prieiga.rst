@@ -6,32 +6,35 @@ Prieigos lygiai
 
 Duomenų prieigos lygis nurodomas :data:`access` stulpelyje.
 
-.. describe:: access
+.. data:: access
 
-    .. describe:: private
+    .. data:: open
 
-        **Vidiniam naudojimui**
+        **Atviri duomenys**
 
-        Duomenys skirti tik vidiniam konkrečios sistemos naudojimui.
+        Duomenys skirti viešam naudojimui, neribojant panaudojimo tikslo, pagal
+        vieną iš atvirų duomenų licenciją.
 
-    .. describe:: protected
+    .. data:: public
 
-        **Pakartotiniam naudojimui**
+        **Ribotos prieigos duomenys**
 
-        Duomenys gali būti naudojami integracijai su išorinėmis sistemomis.
+        Duomenys skirti viešam naudojimui, tiek privačiame tiek viešąjame
+        sektoriuje, pagal duomenų teikimo sutartį.
 
-    .. describe:: public
+    .. data:: protected
 
-        **Viešam naudojimui**
+        **Valstybinio sektoriaus duomenys**
 
-        Duomenys skirti viešam naudojimui, tačiau duomenų panaudojimo tikslai
-        ribojami.
+        Duomenys skirtin naudoti tik tarp valstybinio sektoriaus institucijų,
+        neteikiami privačiam sektoriui.
 
-    .. describe:: open
+    .. data:: private
 
-        **Atviram naudojimui**
+        **Vidiniai duomenys**
 
-        Duomenys skirti viešam naudojimui, neribojant panaudojimo tikslo.
+        Duomenys skirti tik vidiniam konkrečios sistemos naudojimui, neteikiami
+        už vienos sistemos ribų.
 
 
 Viešam pakartotiniam naudojimui gali būti teikiami tik `public` ir `open`

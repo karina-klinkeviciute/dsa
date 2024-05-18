@@ -1,26 +1,35 @@
 .. default-role:: literal
 
+
 .. _duomenų-tipai:
 
 Duomenų tipai
 #############
 
-.. data:: absent
-   :canonical: types.absent
+.. module:: type
 
-    Žymi :term:`savybę <savybė>`, kuri buvo ištrinta ir nebenaudojama. Žiūrėti
-    :ref:`struktūros-keitimas`.
+.. data:: absent
+
+    .. deprecated:: 0.2
+
+        Šis tipas buvo naudojamas migracijoms ir versijavimui, tačiau nuo 0.2
+        versijos, versijavimo struktūros aprašuose atsisakyta.
+
+    Žymi :ref:`savybę <property>`, kuri buvo ištrinta ir nebenaudojama.
+
+    .. seealso::
+
+        :ref:`migrate`
 
 .. data:: boolean
-   :canonical: types.boolean
 
     Loginė reikšmė.
 
     **Brandos lygis**
 
-    :1:
-        - Duomenyse nėra vientisumo, kartais `true` pateikta kaip `1`, kartais
-          akip `taip`, arba `yes`.
+    :ref:`L102`
+        Duomenyse nėra vientisumo, kartais `true` pateikta kaip `1`, kartais
+        akip `taip`, arba `yes`.
 
     :2:
         - Visi duomenys pateikti vienoda, tačiau nestandartine forma.
@@ -31,19 +40,12 @@ Duomenų tipai
           `boolean` tipas išreiškiamas kaip `true` ir `false`.
 
 .. data:: integer
-   :canonical: types.integer
 
     Sveikas skaičius.
 
-    Mažiausia galima reikšmė: `-2147483648`.
-
-    Didžiausia galima reikšmė: `2147483647`.
-
     :data:`property.ref` stulpelyje, nurodomi :ref:`matavimo-vienetai`.
 
-    **Brandos lygis**
-
-    :1:
+    1
         - Duomenys pateikti skirtingais vienetais, pavyzdžui dalis duomenų
           pateikti metrais, dalis kilometrais ir dalis milimetrais.
 
@@ -53,7 +55,7 @@ Duomenų tipai
           skirtingą dienų skaičių. Tokiais atvejais duomenis reikia pateikti
           dienomis.
 
-    :2:
+    2
         - Duomenys pateikti išskaidant vieną reikšmę į kelias reikšmes,
           skirtingais vienetais. Duomenys turėtu būti pateikti mažiausiu
           deltaumu, viename duomenų lauke. Pavyzdžiui atstumas pateiktas
@@ -61,7 +63,7 @@ Duomenų tipai
           kilometrais, kitame metrais, trečiame milimetrais. Šiuo atveju,
           duomenys turėtu būti pateikiami milimetrais.
 
-    :3:
+    3
         - Duomenys yra kiekybiniai, tačiau :data:`ref` stulpelyje nenurodyti
           vienetai.
 

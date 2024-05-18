@@ -291,7 +291,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -307,6 +309,28 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Turinys </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#l000-duomenu-nera">L000: Duomenų nėra</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#l001-duomenys-nepublikuojami">L001: Duomenys nepublikuojami</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#l002-ribojamas-duomenu-naudojimas">L002: Ribojamas duomenų naudojimas</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#l100-nenuskaitoma-masininiu-budu">L100: Nenuskaitoma mašininiu būdu</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#l101-neaiski-struktura">L101: Neaiški struktūra</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#l102-nera-vientisumo">L102: Nėra vientisumo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#l103-neimanomas-jungimas">L103: Neįmanomas jungimas</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#l200-nestandartinis-pateikimas">L200: Nestandartinis pateikimas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#l300-nera-identifikatoriaus">L300: Nėra identifikatoriaus</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#l400-nesusieata-su-zodynais">L400: Nesusieata su žodynais</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#l500-trukumu-nera">L500: Trūkumų nėra</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -339,13 +363,9 @@ duomenų.</p>
 <p>Rengiant duomenų struktūros aprašą, reikėtų nurodyti ne šaltinio duomenų
 brandos lygį, o galutinį brandos lygį, kuris yra gaunamas atlikus visas
 duomenų struktūros apraše nurodytas transformacijas.</p>
-<dl class="describe">
-<dt class="sig sig-object">
-<span class="sig-name descname"><span class="pre">level</span></span></dt>
-<dd><dl class="describe">
-<dt class="sig sig-object">
-<span class="sig-name descname"><span class="pre">0</span></span></dt>
-<dd><p><strong>Nekaupiama</strong></p>
+<section id="l000-duomenu-nera">
+<span id="l000"></span><h2>L000: Duomenų nėra<a class="headerlink" href="#l000-duomenu-nera" title="Link to this heading">#</a></h2>
+<p><strong>Nekaupiama</strong></p>
 <p>Duomenys nekaupiami. Duomenų rinkinys užregistruotas atvirų duomenų
 portale. Užpildyta <a class="reference internal" href="formatas.html#dataset" title="dataset"><code class="xref py py-data docutils literal notranslate"><span class="pre">dataset</span></code></a> eilutė.</p>
 <p>Plačiau apie brandos lygio kėlimą skaitykite skyriuje <span class="xref std std-ref">to-level-0</span>.</p>
@@ -487,21 +507,19 @@ portale. Užpildyta <a class="reference internal" href="formatas.html#dataset" t
 </tr>
 </tbody>
 </table>
-<ul class="simple">
-<li><p><strong>Duomenų nėra</strong> - nuliniu brandos lygiu žymimi duomenys, kurių nėra,
-pavyzdžiui jei įmonės filialų duomenų niekas nefiksuoja.</p></li>
-<li><p><strong>Duomenys nepublikuojami</strong> - nuliniu brandos lygiu žymimi duomenys,
-kurie fiziškai egzistuoja, tačiau nėra publikuojami jokia forma.</p></li>
-<li><p><strong>Ribojamas duomenų naudojimas</strong> - nuliniu brandos lygiu žymimi
-duomenys, kuri yra prieinami, tačiau pagal tokias naudojimo sąlygas,
-kurios nėra suderinamos su atvirų duomenų licencijomis.</p></li>
-</ul>
-</dd></dl>
-
-<dl class="describe">
-<dt class="sig sig-object">
-<span class="sig-name descname"><span class="pre">1</span></span></dt>
-<dd><p><strong>Publikuojama</strong></p>
+<section id="l001-duomenys-nepublikuojami">
+<span id="l001"></span><h3>L001: Duomenys nepublikuojami<a class="headerlink" href="#l001-duomenys-nepublikuojami" title="Link to this heading">#</a></h3>
+<p>Nuliniu brandos lygiu žymimi duomenys, kurie fiziškai egzistuoja, tačiau nėra
+publikuojami jokia forma.</p>
+</section>
+<section id="l002-ribojamas-duomenu-naudojimas">
+<span id="l002"></span><h3>L002: Ribojamas duomenų naudojimas<a class="headerlink" href="#l002-ribojamas-duomenu-naudojimas" title="Link to this heading">#</a></h3>
+<p>Nuliniu brandos lygiu žymimi duomenys, kuri yra prieinami, tačiau pagal tokias
+naudojimo sąlygas, kurios nėra suderinamos su atvirų duomenų licencijomis.</p>
+</section>
+</section>
+<section id="l100-nenuskaitoma-masininiu-budu">
+<span id="l100"></span><h2>L100: Nenuskaitoma mašininiu būdu<a class="headerlink" href="#l100-nenuskaitoma-masininiu-budu" title="Link to this heading">#</a></h2>
 <p>Duomenys publikuojami bet kokia forma. Užpildyta <a class="reference internal" href="formatas.html#resource" title="resource"><code class="xref py py-data docutils literal notranslate"><span class="pre">resource</span></code></a>
 eilutė.</p>
 <p>Plačiau apie brandos lygio kėlimą skaitykite skyriuje <span class="xref std std-ref">to-level-1</span>.</p>
@@ -676,34 +694,36 @@ skirtingais variantais.</p>
 </tr>
 </tbody>
 </table>
-<ul class="simple">
-<li><p><strong>Neaiški struktūra</strong> - pirmu brandos lygiu žymimi duomenys, kuriuose
-nėra aiškios struktūros, pavyzdžiui <code class="docutils literal notranslate"><span class="pre">ikurta</span></code> datos formatas nėra
-vienodas, kiekviena data užrašyta vis kitokiu formatu.</p></li>
-<li><p><strong>Nėra vientisumo</strong> - pirmu brandos lygiu žymimi duomenuys, kuruose
-nėra vientisumo, pavyzdžiui <code class="docutils literal notranslate"><span class="pre">atstumas</span></code> užrašytas laikantis tam tikros
-struktūros, tačiau skirtingais vienetais.</p></li>
-<li><p><strong>Neįmanomas jungimas</strong> - pirmu brandos lygiu žymimi
-duomenys, kurių neįmanoma arba sudėtinga sujungti. Pavyzdžiui
-<code class="docutils literal notranslate"><span class="pre">Filialas</span></code> duomnų laukas <code class="docutils literal notranslate"><span class="pre">imone</span></code> naudoja tam tikrą identifikatorių,
-kuris nesutampa nei su vienu iš <code class="docutils literal notranslate"><span class="pre">Imone</span></code> atributų, pagal kuriuose būtų
-galima identifikuoti filialo įmonę.</p></li>
-</ul>
-</dd></dl>
-
-<dl class="describe">
-<dt class="sig sig-object">
-<span class="sig-name descname"><span class="pre">2</span></span></dt>
-<dd><p><strong>Struktūruota</strong></p>
-<p>Duomenys kaupiami struktūruota, mašininiu būdu nuskaitoma forma, bet
-kokiu formatu. Užpildytas <a class="reference internal" href="dimensijos.html#property.source" title="property.source"><code class="xref py py-data docutils literal notranslate"><span class="pre">property.source</span></code></a> stulpelis.</p>
+<section id="l101-neaiski-struktura">
+<span id="l101"></span><h3>L101: Neaiški struktūra<a class="headerlink" href="#l101-neaiski-struktura" title="Link to this heading">#</a></h3>
+<p>Pirmu brandos lygiu žymimi duomenys, kuriuose nėra aiškios struktūros,
+pavyzdžiui <code class="docutils literal notranslate"><span class="pre">ikurta</span></code> datos formatas nėra vienodas, kiekviena data užrašyta vis
+kitokiu formatu.</p>
+</section>
+<section id="l102-nera-vientisumo">
+<span id="l102"></span><h3>L102: Nėra vientisumo<a class="headerlink" href="#l102-nera-vientisumo" title="Link to this heading">#</a></h3>
+<p>Pirmu brandos lygiu žymimi duomenuys, kuruose nėra vientisumo, pavyzdžiui
+<code class="docutils literal notranslate"><span class="pre">atstumas</span></code> užrašytas laikantis tam tikros struktūros, tačiau skirtingais
+vienetais.</p>
+</section>
+<section id="l103-neimanomas-jungimas">
+<span id="l103"></span><h3>L103: Neįmanomas jungimas<a class="headerlink" href="#l103-neimanomas-jungimas" title="Link to this heading">#</a></h3>
+<p>Pirmu brandos lygiu žymimi duomenys, kurių neįmanoma arba sudėtinga sujungti.
+Pavyzdžiui <code class="docutils literal notranslate"><span class="pre">Filialas</span></code> duomnų laukas <code class="docutils literal notranslate"><span class="pre">imone</span></code> naudoja tam tikrą identifikatorių,
+kuris nesutampa nei su vienu iš <code class="docutils literal notranslate"><span class="pre">Imone</span></code> atributų, pagal kuriuose būtų galima
+identifikuoti filialo įmonę.</p>
+</section>
+</section>
+<section id="l200-nestandartinis-pateikimas">
+<span id="id1"></span><h2>L200: Nestandartinis pateikimas<a class="headerlink" href="#l200-nestandartinis-pateikimas" title="Link to this heading">#</a></h2>
+<p>Duomenys kaupiami struktūruota, mašininiu būdu nuskaitoma forma, bet kokiu
+formatu. Užpildytas <a class="reference internal" href="dimensijos.html#property.source" title="property.source"><code class="xref py py-data docutils literal notranslate"><span class="pre">property.source</span></code></a> stulpelis.</p>
 <p>Plačiau apie brandos lygio kėlimą skaitykite skyriuje <span class="xref std std-ref">to-level-2</span>.</p>
-<p>Antru brandos lygiu žymimi duomenų laukai, kurie pateikti vieninga
-forma arba pagal aiškų ir vienodą šabloną. Tačiau pateikimo būdas nėra
-standartinis. Nestandartinis duomenų formatas yra toks, kuris neturi
-viešai skelbiamos ir atviros formato specifikacijos arba kuris nėra
-priimtas kaip standartas, kurį prižiūri tam tikra standartizacijos
-organizacija.</p>
+<p>Antru brandos lygiu žymimi duomenų laukai, kurie pateikti vieninga forma arba
+pagal aiškų ir vienodą šabloną. Tačiau pateikimo būdas nėra standartinis.
+Nestandartinis duomenų formatas yra toks, kuris neturi viešai skelbiamos ir
+atviros formato specifikacijos arba kuris nėra priimtas kaip standartas, kurį
+prižiūri tam tikra standartizacijos organizacija.</p>
 <p><strong>Pavyzdžiai</strong></p>
 <table class="table">
 <thead>
@@ -976,16 +996,13 @@ kodinais, kurių prasmė nėra aiški. Pavyzdžiui:</p>
 <li><p><code class="docutils literal notranslate"><span class="pre">Imone.rusis</span></code> - įmonės rūšis žymima skaičiais, tačiau nėra aišku,
 kokks skaičius, ką rei6kia, todėl reikia pateitki <code class="docutils literal notranslate"><span class="pre">enum</span></code> sąrašą,
 kuriame būtų nurodyta, ką koks skaičius reiškia. Plačiau skaityti
-<a class="reference internal" href="dimensijos.html#enum"><span class="std std-ref">Klasifikatoriai</span></a>.</p></li>
+<a class="reference internal" href="dimensijos.html#enum"><span class="std std-ref">enum</span></a>.</p></li>
 </ul>
 </li>
 </ul>
-</dd></dl>
-
-<dl class="describe">
-<dt class="sig sig-object">
-<span class="sig-name descname"><span class="pre">3</span></span></dt>
-<dd><p><strong>Standartizuota</strong></p>
+</section>
+<section id="l300-nera-identifikatoriaus">
+<span id="l300"></span><h2>L300: Nėra identifikatoriaus<a class="headerlink" href="#l300-nera-identifikatoriaus" title="Link to this heading">#</a></h2>
 <p>Duomenys saugomi atviru, standartiniu formatu. Užpildytas
 <a class="reference internal" href="dimensijos.html#property.type" title="property.type"><code class="xref py py-data docutils literal notranslate"><span class="pre">property.type</span></code></a> stulpelis ir duomenys atitinka nurodytą tipą.</p>
 <p>Plačiau apie brandos lygio kėlimą skaitykite skyriuje <span class="xref std std-ref">to-level-3</span>.</p>
@@ -1287,12 +1304,9 @@ kategorinis.</p></li>
 </ul>
 </li>
 </ul>
-</dd></dl>
-
-<dl class="describe">
-<dt class="sig sig-object">
-<span class="sig-name descname"><span class="pre">4</span></span></dt>
-<dd><p><strong>Identifikuojama</strong></p>
+</section>
+<section id="l400-nesusieata-su-zodynais">
+<span id="l400"></span><h2>L400: Nesusieata su žodynais<a class="headerlink" href="#l400-nesusieata-su-zodynais" title="Link to this heading">#</a></h2>
 <p>Duomenų objektai turi aiškius, unikalius identifikatorius. Užpildyti
 <a class="reference internal" href="dimensijos.html#model.ref" title="model.ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">model.ref</span></code></a> ir <a class="reference internal" href="dimensijos.html#property.ref" title="property.ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">property.ref</span></code></a> stulpeliai.</p>
 <div class="admonition note">
@@ -1621,16 +1635,13 @@ duomenys, kurie nėra susieti su standartiniais žodynais ar
 ontologijomis. Siejimas su žodynais atliekamas <code class="docutils literal notranslate"><span class="pre">model.uri</span></code> ir
 <code class="docutils literal notranslate"><span class="pre">property.uri</span></code> stulpeluose.</p></li>
 </ul>
-</dd></dl>
-
-<dl class="describe">
-<dt class="sig sig-object">
-<span class="sig-name descname"><span class="pre">5</span></span></dt>
-<dd><p><strong>Susieta su išoriniu žodynu</strong></p>
+</section>
+<section id="l500-trukumu-nera">
+<span id="l500"></span><h2>L500: Trūkumų nėra<a class="headerlink" href="#l500-trukumu-nera" title="Link to this heading">#</a></h2>
 <p>Modeliai iš įstaigų duomenų rinkinių vardų erdvės susieti su modeliais
 iš standartų vardų erdvės, užpildytas <a class="reference internal" href="formatas.html#base" title="base"><code class="xref py py-data docutils literal notranslate"><span class="pre">base</span></code></a> eilutė. Standartų
 vardų erdvėje esantiems <a class="reference internal" href="savokos.html#term-modelis"><span class="xref std std-term">modeliams</span></a> ir jų
-<a class="reference internal" href="savokos.html#term-savybe"><span class="xref std std-term">savybėms</span></a> užpildytas <a class="reference internal" href="tipai.html#uri" title="uri"><code class="xref py py-data docutils literal notranslate"><span class="pre">uri</span></code></a> stulpelis.</p>
+<a class="reference internal" href="savokos.html#term-savybe"><span class="xref std std-term">savybėms</span></a> užpildytas <a class="reference internal" href="formatas.html#uri" title="uri"><code class="xref py py-data docutils literal notranslate"><span class="pre">uri</span></code></a> stulpelis.</p>
 <p>Daugiau apie vardų erdves skaitykite skyrelyje: <a class="reference internal" href="formatas.html#vardu-erdves"><span class="std std-ref">Vardų erdvės</span></a>.</p>
 <p>Plačiau apie brandos lygio kėlimą skaitykite skyriuje <span class="xref std std-ref">to-level-5</span>.</p>
 <p>Penkto brandos lygio duomenys yra lygiai tokie patys, kaip ir ketvirto
@@ -1998,10 +2009,7 @@ duomenų prasmę.</p>
 </tr>
 </tbody>
 </table>
-</dd></dl>
-
-</dd></dl>
-
+</section>
 </section>
 
 
@@ -2040,7 +2048,34 @@ duomenų prasmę.</p>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"></div>
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Turinys
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#l000-duomenu-nera">L000: Duomenų nėra</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#l001-duomenys-nepublikuojami">L001: Duomenys nepublikuojami</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#l002-ribojamas-duomenu-naudojimas">L002: Ribojamas duomenų naudojimas</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#l100-nenuskaitoma-masininiu-budu">L100: Nenuskaitoma mašininiu būdu</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#l101-neaiski-struktura">L101: Neaiški struktūra</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#l102-nera-vientisumo">L102: Nėra vientisumo</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#l103-neimanomas-jungimas">L103: Neįmanomas jungimas</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#l200-nestandartinis-pateikimas">L200: Nestandartinis pateikimas</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#l300-nera-identifikatoriaus">L300: Nėra identifikatoriaus</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#l400-nesusieata-su-zodynais">L400: Nesusieata su žodynais</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#l500-trukumu-nera">L500: Trūkumų nėra</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

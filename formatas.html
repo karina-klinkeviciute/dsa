@@ -377,7 +377,7 @@ apie duomenis.</p>
 turėti skirtingą prasmę, priklausomai nuo dimensijos. Todėl toliau
 dokumentacijoje konkrečios dimensijos stulpelis yra žymimas nurodant tiek
 dimensijos, tiek metaduomenis pavadinimus, pavyzdžiui <a class="reference internal" href="dimensijos.html#model.ref" title="model.ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">model.ref</span></code></a>,
-kuris nurodo <a class="reference internal" href="tipai.html#ref" title="ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">ref</span></code></a> stulpelį, esantį <a class="reference internal" href="#model" title="model"><code class="xref py py-data docutils literal notranslate"><span class="pre">model</span></code></a> dimensijoje.</p>
+kuris nurodo <a class="reference internal" href="#ref" title="ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">ref</span></code></a> stulpelį, esantį <a class="reference internal" href="#model" title="model"><code class="xref py py-data docutils literal notranslate"><span class="pre">model</span></code></a> dimensijoje.</p>
 <p>Ką reiškia kiekvienas stulpelis paaiškinta žemiau.</p>
 <dl class="py data">
 <dt class="sig sig-object py" id="id">
@@ -396,14 +396,14 @@ kurie jau buvo pateikti ir po to atnaujinti.</p>
 <p>Duomenų struktūros aprašo lentelė sudaryta hierarchiniu principu. Kiekvienos
 lentelės eilutės prasmę apibrėžia viena iš penkių <a class="reference internal" href="dimensijos.html#dimensijos"><span class="std std-ref">dimensijų</span></a>.
 Kiekvienoje eilutėje gali būti užpildytas tik vienas dimensijos stulpelis.</p>
-<p>Be šių penkių dimensijų, yra kelios <a class="reference internal" href="dimensijos.html#papildomos-dimensijos"><span class="std std-ref">papildomos dimensijos</span></a>, jos nurodomos <a class="reference internal" href="#type" title="type"><code class="xref py py-data docutils literal notranslate"><span class="pre">type</span></code></a> stulpelyje, neužpildžius
+<p>Be šių penkių dimensijų, yra kelios <a class="reference internal" href="dimensijos.html#papildomos-dimensijos"><span class="std std-ref">papildomos dimensijos</span></a>, jos nurodomos <a class="reference internal" href="tipai.html#module-type" title="type"><code class="xref py py-data docutils literal notranslate"><span class="pre">type</span></code></a> stulpelyje, neužpildžius
 nei vieno dimensijos stulpelio.</p>
 <dl class="py data">
 <dt class="sig sig-object py" id="dataset">
 <span class="sig-name descname"><span class="pre">dataset</span></span><a class="headerlink" href="#dataset" title="Link to this definition">#</a></dt>
 <dd><p><strong>Duomenų rinkinys</strong></p>
 <p>Kodinis duomenų rinkinio pavadinimas. Atitinka <a class="reference external" href="https://www.w3.org/TR/vocab-dcat-2/#Class:Resource">dcat:Resource</a> prasmę.
-Žiūrėti <a class="reference internal" href="dimensijos.html#dataset"><span class="std std-ref">Duomenų rinkinys</span></a>.</p>
+Žiūrėti <a class="reference internal" href="dimensijos.html#dataset"><span class="std std-ref">dataset</span></a>.</p>
 </dd></dl>
 
 <dl class="py data">
@@ -412,7 +412,7 @@ nei vieno dimensijos stulpelio.</p>
 <dd><p><strong>Duomenų šaltinis</strong></p>
 <p>Kodinis duomenų šaltinio pavadinimas. Atitinka <a class="reference external" href="https://rml.io/specs/rml/#logical-source">rml:logicalSource</a>, kuris
 gali sutapti su <a class="reference external" href="https://www.w3.org/TR/vocab-dcat-2/#Class:Distribution">dcat:Distribution</a> arba <a class="reference external" href="https://www.w3.org/TR/vocab-dcat-2/#Class:DataService">dcat:DataService</a>. Žiūrėti
-<a class="reference internal" href="dimensijos.html#duomenu-saltinis"><span class="std std-ref">Duomenų šaltinis</span></a>.</p>
+<span class="xref std std-ref">duomenų-šaltinis</span>.</p>
 </dd></dl>
 
 <dl class="py data">
@@ -420,7 +420,7 @@ gali sutapti su <a class="reference external" href="https://www.w3.org/TR/vocab-
 <span class="sig-name descname"><span class="pre">base</span></span><a class="headerlink" href="#base" title="Link to this definition">#</a></dt>
 <dd><p><strong>Modelio bazė</strong></p>
 <p>Kodinis bazinio modelio pavadinimas. Atitinka <a class="reference external" href="https://www.w3.org/TR/rdf-schema/#ch_subclassof">rdfs:subClassOf</a> prasmę
-(<a class="reference internal" href="#model" title="model"><code class="xref py py-data docutils literal notranslate"><span class="pre">model</span></code></a> <code class="docutils literal notranslate"><span class="pre">rdfs:subClassOf</span></code> <a class="reference internal" href="#base" title="base"><code class="xref py py-data docutils literal notranslate"><span class="pre">base</span></code></a>). Žiūrėti <a class="reference internal" href="dimensijos.html#base"><span class="std std-ref">Modelio bazė</span></a>.</p>
+(<a class="reference internal" href="#model" title="model"><code class="xref py py-data docutils literal notranslate"><span class="pre">model</span></code></a> <code class="docutils literal notranslate"><span class="pre">rdfs:subClassOf</span></code> <a class="reference internal" href="#base" title="base"><code class="xref py py-data docutils literal notranslate"><span class="pre">base</span></code></a>). Žiūrėti <a class="reference internal" href="dimensijos.html#base"><span class="std std-ref">base</span></a>.</p>
 </dd></dl>
 
 <dl class="py data">
@@ -428,7 +428,7 @@ gali sutapti su <a class="reference external" href="https://www.w3.org/TR/vocab-
 <span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#model" title="Link to this definition">#</a></dt>
 <dd><p><strong>Modelis (lentelė)</strong></p>
 <p>Kodinis modelio pavadinimas. Atitinka <a class="reference external" href="https://www.w3.org/TR/r2rml/#subject-map">r2rml:SubjectMap</a> ir yra siejamas
-su <a class="reference external" href="https://www.w3.org/TR/rdf-schema/#ch_class">rdfs:Class</a>. Žiūrėti <a class="reference internal" href="dimensijos.html#duomenu-modelis"><span class="std std-ref">Duomenų modelis</span></a>.</p>
+su <a class="reference external" href="https://www.w3.org/TR/rdf-schema/#ch_class">rdfs:Class</a>. Žiūrėti <span class="xref std std-ref">duomenų-modelis</span>.</p>
 </dd></dl>
 
 <dl class="py data">
@@ -436,7 +436,7 @@ su <a class="reference external" href="https://www.w3.org/TR/rdf-schema/#ch_clas
 <span class="sig-name descname"><span class="pre">property</span></span><a class="headerlink" href="#property" title="Link to this definition">#</a></dt>
 <dd><p><strong>Savybė (stulpelis)</strong></p>
 <p>Kodinis savybės pavadinimas. Atitinka <a class="reference external" href="https://www.w3.org/TR/r2rml/#predicate-object-map">r2rml:PredicateObjectMap</a> ir yra
-siejamas su <a class="reference external" href="https://www.w3.org/TR/rdf-schema/#ch_property">rdfs:Property</a>. Žiūrėti <a class="reference internal" href="dimensijos.html#savybe"><span class="std std-ref">Savybė</span></a>.</p>
+siejamas su <a class="reference external" href="https://www.w3.org/TR/rdf-schema/#ch_property">rdfs:Property</a>. Žiūrėti <span class="xref std std-ref">savybė</span>.</p>
 </dd></dl>
 
 </section>
@@ -446,7 +446,7 @@ siejamas su <a class="reference external" href="https://www.w3.org/TR/rdf-schema
 <a class="reference internal" href="dimensijos.html#dimensijos"><span class="std std-ref">Dimensijos</span></a>. Todėl, toliau dokumentacijoje, kalbant apie tam tikros
 dimensijos stulpelį, stulpelis bus įvardinamas pridedant dimensijos
 pavadinimą, pavyzdžiui <a class="reference internal" href="dimensijos.html#model.ref" title="model.ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">model.ref</span></code></a>, kas reikštų, kad kalbama apie
-<a class="reference internal" href="tipai.html#ref" title="ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">ref</span></code></a> stulpelį, <a class="reference internal" href="#model" title="model"><code class="xref py py-data docutils literal notranslate"><span class="pre">model</span></code></a> dimensijoje.</p>
+<a class="reference internal" href="#ref" title="ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">ref</span></code></a> stulpelį, <a class="reference internal" href="#model" title="model"><code class="xref py py-data docutils literal notranslate"><span class="pre">model</span></code></a> dimensijoje.</p>
 <dl class="py data">
 <dt class="sig sig-object py" id="type">
 <span class="sig-name descname"><span class="pre">type</span></span><a class="headerlink" href="#type" title="Link to this definition">#</a></dt>
@@ -461,7 +461,7 @@ dimensija</span></a>.</p>
 <span class="sig-name descname"><span class="pre">ref</span></span><a class="headerlink" href="#ref" title="Link to this definition">#</a></dt>
 <dd><p><strong>Ryšys</strong></p>
 <p>Prasmė priklauso nuo dimensijos. Žiūrėti <a class="reference internal" href="identifikatoriai.html#rysiai"><span class="std std-ref">Ryšiai tarp modelių</span></a>,
-<a class="reference internal" href="vienetai.html#matavimo-vienetai"><span class="std std-ref">Matavimo vienetai</span></a> ir <a class="reference internal" href="dimensijos.html#enum"><span class="std std-ref">Klasifikatoriai</span></a>.</p>
+<a class="reference internal" href="vienetai.html#matavimo-vienetai"><span class="std std-ref">Matavimo vienetai</span></a> ir <a class="reference internal" href="dimensijos.html#enum"><span class="std std-ref">enum</span></a>.</p>
 </dd></dl>
 
 <dl class="py data">
@@ -518,7 +518,7 @@ ir pan. Žiūrėti <a class="reference internal" href="formules.html#formules"><
 <p>Visi stulpeliai lentelėje yra neprivalomi. Stulpelių tvarka taip pat nėra
 svarbi. Pavyzdžiui jei reikia apsirašyti tik globalių modelių struktūrą,
 nebūtina įtraukti <a class="reference internal" href="#dataset" title="dataset"><code class="xref py py-data docutils literal notranslate"><span class="pre">dataset</span></code></a>, <a class="reference internal" href="#resource" title="resource"><code class="xref py py-data docutils literal notranslate"><span class="pre">resource</span></code></a> ir <a class="reference internal" href="#base" title="base"><code class="xref py py-data docutils literal notranslate"><span class="pre">base</span></code></a> stulpelių.
-Jei norima apsirašyti tik prefiksus naudojamus <a class="reference internal" href="tipai.html#uri" title="uri"><code class="xref py py-data docutils literal notranslate"><span class="pre">uri</span></code></a> lauke, užtenka
+Jei norima apsirašyti tik prefiksus naudojamus <a class="reference internal" href="#uri" title="uri"><code class="xref py py-data docutils literal notranslate"><span class="pre">uri</span></code></a> lauke, užtenka
 turėti tik prefiksų aprašymui reikalingus stulpelius.</p>
 <p>Įrankiai skaitantys <a class="reference internal" href="savokos.html#term-DSA"><span class="xref std std-term">DSA</span></a>, stulpelius, kurių nėra lentelėje turi
 interpretuoti kaip tuščius. Taip pat įrankiai neturėtų tikėtis, kad stulpeliai

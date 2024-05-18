@@ -330,7 +330,7 @@ document.write(`
 <span id="vocab"></span><h1>Išoriniai žodynai<a class="headerlink" href="#isoriniai-zodynai" title="Link to this heading">#</a></h1>
 <p>Išorinių žodynų pagalba, galima susieti aprašomus duomenis su išoriniais
 žodynais. Susiejimas atliekamas <a class="reference internal" href="dimensijos.html#model.uri" title="model.uri"><code class="xref py py-data docutils literal notranslate"><span class="pre">model.uri</span></code></a> ir <a class="reference internal" href="dimensijos.html#property.uri" title="property.uri"><code class="xref py py-data docutils literal notranslate"><span class="pre">property.uri</span></code></a>,
-naudojant <a class="reference internal" href="dimensijos.html#isoriniu-zodynu-prefiksai"><span class="std std-ref">išorinių žodynų URI prefiksus</span></a>.</p>
+naudojant <span class="xref std std-ref">išorinių žodynų URI prefiksus</span>.</p>
 <p>Pavyzdžiui turint tokį duomenų šaltinį:</p>
 <table class="table">
 <thead>
@@ -539,7 +539,7 @@ reikšmės pridedama atitinkama kalbos žymė.</p>
 </pre></div>
 </div>
 <p>Išoriniai žodynai suteikia galimybę eksportuoti duomenis <a class="reference internal" href="savokos.html#term-RDF"><span class="xref std std-term">RDF</span></a> formatu.</p>
-<p>Jei struktūros apraše nėra užpildytas <a class="reference internal" href="tipai.html#uri" title="uri"><code class="xref py py-data docutils literal notranslate"><span class="pre">uri</span></code></a> stulpelis, data, turėtu būti
+<p>Jei struktūros apraše nėra užpildytas <a class="reference internal" href="formatas.html#uri" title="uri"><code class="xref py py-data docutils literal notranslate"><span class="pre">uri</span></code></a> stulpelis, data, turėtu būti
 generuojamas tokie RDF duomenys:</p>
 <div class="highlight-ttl notranslate"><div class="highlight"><pre><span></span>@<span class="nv">base</span><span class="w"> </span><span class="o">&lt;</span><span class="nv">https</span>:<span class="o">//</span><span class="nv">get</span>.<span class="nv">data</span>.<span class="nv">gov</span>.<span class="nv">lt</span><span class="o">/&gt;</span><span class="w"> </span>.
 @<span class="nv">prefix</span><span class="w"> </span><span class="nv">dct</span>:<span class="w"> </span><span class="o">&lt;</span><span class="nv">http</span>:<span class="o">//</span><span class="nv">purl</span>.<span class="nv">org</span><span class="o">/</span><span class="nv">dc</span><span class="o">/</span><span class="nv">terms</span><span class="o">/&gt;</span><span class="w"> </span>.
@@ -604,12 +604,12 @@ tokiu būdu:</p>
 </tbody>
 </table>
 <p>Jei <a class="reference internal" href="dimensijos.html#property.uri" title="property.uri"><code class="xref py py-data docutils literal notranslate"><span class="pre">property.uri</span></code></a> sutampa su <a class="reference internal" href="dimensijos.html#model.uri" title="model.uri"><code class="xref py py-data docutils literal notranslate"><span class="pre">model.uri</span></code></a> ir <a class="reference internal" href="dimensijos.html#property.type" title="property.type"><code class="xref py py-data docutils literal notranslate"><span class="pre">property.type</span></code></a>
-yra <a class="reference internal" href="tipai.html#uri" title="uri"><code class="xref py py-data docutils literal notranslate"><span class="pre">uri</span></code></a>, tada formuojant duomenis RDF formatu naudojame ne generuotą
+yra <a class="reference internal" href="formatas.html#uri" title="uri"><code class="xref py py-data docutils literal notranslate"><span class="pre">uri</span></code></a>, tada formuojant duomenis RDF formatu naudojame ne generuotą
 subjekto URI, o naudojame lauko reikšmę, kurio <a class="reference internal" href="dimensijos.html#property.uri" title="property.uri"><code class="xref py py-data docutils literal notranslate"><span class="pre">property.uri</span></code></a> sutampa su
 <a class="reference internal" href="dimensijos.html#model.uri" title="model.uri"><code class="xref py py-data docutils literal notranslate"><span class="pre">model.uri</span></code></a>.</p>
 <p>Gali būti ne daugiau kaip vienas <a class="reference internal" href="dimensijos.html#property.uri" title="property.uri"><code class="xref py py-data docutils literal notranslate"><span class="pre">property.uri</span></code></a> su <a class="reference internal" href="dimensijos.html#property.type" title="property.type"><code class="xref py py-data docutils literal notranslate"><span class="pre">property.type</span></code></a>
-<a class="reference internal" href="tipai.html#uri" title="uri"><code class="xref py py-data docutils literal notranslate"><span class="pre">uri</span></code></a>, kuris sutampa su <a class="reference internal" href="dimensijos.html#model.uri" title="model.uri"><code class="xref py py-data docutils literal notranslate"><span class="pre">model.uri</span></code></a>.</p>
-<p>Jei yra keli <a class="reference internal" href="tipai.html#uri" title="uri"><code class="xref py py-data docutils literal notranslate"><span class="pre">uri</span></code></a> tipo laukai, kurie identifikuoja tą patį subjektą,
+<a class="reference internal" href="formatas.html#uri" title="uri"><code class="xref py py-data docutils literal notranslate"><span class="pre">uri</span></code></a>, kuris sutampa su <a class="reference internal" href="dimensijos.html#model.uri" title="model.uri"><code class="xref py py-data docutils literal notranslate"><span class="pre">model.uri</span></code></a>.</p>
+<p>Jei yra keli <a class="reference internal" href="formatas.html#uri" title="uri"><code class="xref py py-data docutils literal notranslate"><span class="pre">uri</span></code></a> tipo laukai, kurie identifikuoja tą patį subjektą,
 tada kitiems atvejams reikia naudoti ne <a class="reference internal" href="dimensijos.html#model.uri" title="model.uri"><code class="xref py py-data docutils literal notranslate"><span class="pre">model.uri</span></code></a>, o <a class="reference external" href="https://www.w3.org/TR/owl-ref/#sameAs-def">owl:sameAs</a>.</p>
 <p>Jei <code class="docutils literal notranslate"><span class="pre">uri</span></code> reikšmė bus <code class="docutils literal notranslate"><span class="pre">https://sws.geonames.org/597427/</span></code>, tada gautume tokius
 RDF duomenis:</p>
@@ -623,8 +623,8 @@ RDF duomenis:</p>
 </pre></div>
 </div>
 <p>Atkreipkite dėmesį, kad pats <code class="docutils literal notranslate"><span class="pre">uri</span></code> laukas nėra įtrautkas į RDF duomenis.</p>
-<p>Analogiškai, jei <a class="reference internal" href="tipai.html#ref" title="ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">ref</span></code></a> tipo laukas rodo į modelį, kurio <a class="reference internal" href="dimensijos.html#model.uri" title="model.uri"><code class="xref py py-data docutils literal notranslate"><span class="pre">model.uri</span></code></a>
-sutampa su <a class="reference internal" href="dimensijos.html#property.uri" title="property.uri"><code class="xref py py-data docutils literal notranslate"><span class="pre">property.uri</span></code></a> kuris yra <a class="reference internal" href="tipai.html#ref" title="ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">ref</span></code></a> tipo, tada <a class="reference internal" href="tipai.html#ref" title="ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">ref</span></code></a>
+<p>Analogiškai, jei <a class="reference internal" href="formatas.html#ref" title="ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">ref</span></code></a> tipo laukas rodo į modelį, kurio <a class="reference internal" href="dimensijos.html#model.uri" title="model.uri"><code class="xref py py-data docutils literal notranslate"><span class="pre">model.uri</span></code></a>
+sutampa su <a class="reference internal" href="dimensijos.html#property.uri" title="property.uri"><code class="xref py py-data docutils literal notranslate"><span class="pre">property.uri</span></code></a> kuris yra <a class="reference internal" href="formatas.html#ref" title="ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">ref</span></code></a> tipo, tada <a class="reference internal" href="formatas.html#ref" title="ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">ref</span></code></a>
 lauko reikšmė taip pat įgyja ne gnenruotą URI, o URI iš duomenų.</p>
 <p>Pratęsiant tą patį pavyzdį:</p>
 <table class="table">

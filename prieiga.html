@@ -291,7 +291,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -307,6 +309,18 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Turinys </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id0"><code class="docutils literal notranslate"><span class="pre">access</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open"><code class="docutils literal notranslate"><span class="pre">open</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#public"><code class="docutils literal notranslate"><span class="pre">public</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#protected"><code class="docutils literal notranslate"><span class="pre">protected</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#private"><code class="docutils literal notranslate"><span class="pre">private</span></code></a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -318,37 +332,40 @@ document.write(`
                   
   <section id="prieigos-lygiai">
 <span id="access"></span><h1>Prieigos lygiai<a class="headerlink" href="#prieigos-lygiai" title="Link to this heading">#</a></h1>
-<p>Duomenų prieigos lygis nurodomas <a class="reference internal" href="formatas.html#access" title="access"><code class="xref py py-data docutils literal notranslate"><span class="pre">access</span></code></a> stulpelyje.</p>
-<dl class="describe">
-<dt class="sig sig-object">
-<span class="sig-name descname"><span class="pre">access</span></span></dt>
-<dd><dl class="describe">
-<dt class="sig sig-object">
-<span class="sig-name descname"><span class="pre">private</span></span></dt>
-<dd><p><strong>Vidiniam naudojimui</strong></p>
-<p>Duomenys skirti tik vidiniam konkrečios sistemos naudojimui.</p>
+<p>Duomenų prieigos lygis nurodomas <a class="reference internal" href="#id0" title="access"><code class="xref py py-data docutils literal notranslate"><span class="pre">access</span></code></a> stulpelyje.</p>
+<dl class="py data">
+<dt class="sig sig-object py" id="id0">
+<span class="sig-name descname"><span class="pre">access</span></span><a class="headerlink" href="#id0" title="Link to this definition">#</a></dt>
+<dd><dl class="py data">
+<dt class="sig sig-object py" id="open">
+<span class="sig-name descname"><span class="pre">open</span></span><a class="headerlink" href="#open" title="Link to this definition">#</a></dt>
+<dd><p><strong>Atviri duomenys</strong></p>
+<p>Duomenys skirti viešam naudojimui, neribojant panaudojimo tikslo, pagal
+vieną iš atvirų duomenų licenciją.</p>
 </dd></dl>
 
-<dl class="describe">
-<dt class="sig sig-object">
-<span class="sig-name descname"><span class="pre">protected</span></span></dt>
-<dd><p><strong>Pakartotiniam naudojimui</strong></p>
-<p>Duomenys gali būti naudojami integracijai su išorinėmis sistemomis.</p>
+<dl class="py data">
+<dt class="sig sig-object py" id="public">
+<span class="sig-name descname"><span class="pre">public</span></span><a class="headerlink" href="#public" title="Link to this definition">#</a></dt>
+<dd><p><strong>Ribotos prieigos duomenys</strong></p>
+<p>Duomenys skirti viešam naudojimui, tiek privačiame tiek viešąjame
+sektoriuje, pagal duomenų teikimo sutartį.</p>
 </dd></dl>
 
-<dl class="describe">
-<dt class="sig sig-object">
-<span class="sig-name descname"><span class="pre">public</span></span></dt>
-<dd><p><strong>Viešam naudojimui</strong></p>
-<p>Duomenys skirti viešam naudojimui, tačiau duomenų panaudojimo tikslai
-ribojami.</p>
+<dl class="py data">
+<dt class="sig sig-object py" id="protected">
+<span class="sig-name descname"><span class="pre">protected</span></span><a class="headerlink" href="#protected" title="Link to this definition">#</a></dt>
+<dd><p><strong>Valstybinio sektoriaus duomenys</strong></p>
+<p>Duomenys skirtin naudoti tik tarp valstybinio sektoriaus institucijų,
+neteikiami privačiam sektoriui.</p>
 </dd></dl>
 
-<dl class="describe">
-<dt class="sig sig-object">
-<span class="sig-name descname"><span class="pre">open</span></span></dt>
-<dd><p><strong>Atviram naudojimui</strong></p>
-<p>Duomenys skirti viešam naudojimui, neribojant panaudojimo tikslo.</p>
+<dl class="py data">
+<dt class="sig sig-object py" id="private">
+<span class="sig-name descname"><span class="pre">private</span></span><a class="headerlink" href="#private" title="Link to this definition">#</a></dt>
+<dd><p><strong>Vidiniai duomenys</strong></p>
+<p>Duomenys skirti tik vidiniam konkrečios sistemos naudojimui, neteikiami
+už vienos sistemos ribų.</p>
 </dd></dl>
 
 </dd></dl>
@@ -407,7 +424,24 @@ yra <code class="docutils literal notranslate"><span class="pre">private</span><
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"></div>
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Turinys
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id0"><code class="docutils literal notranslate"><span class="pre">access</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open"><code class="docutils literal notranslate"><span class="pre">open</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#public"><code class="docutils literal notranslate"><span class="pre">public</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#protected"><code class="docutils literal notranslate"><span class="pre">protected</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#private"><code class="docutils literal notranslate"><span class="pre">private</span></code></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

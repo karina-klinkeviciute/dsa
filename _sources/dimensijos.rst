@@ -70,8 +70,10 @@ visą duomenų šaltinio struktūrą.
 
 .. _dataset:
 
-Duomenų rinkinys
-----------------
+dataset
+-------
+
+.. module:: dataset
 
 :term:`DSA` lentelėje :term:`duomenų rinkinys` nurodomas tam, kad būtų
 išlaikomas ryšys tarp :term:`DSA` ir :term:`ADK`. Atliekant duomenų
@@ -89,7 +91,7 @@ rinkinys>` įrašai.
 Į :term:`ADK` turi būti publikuojami tik tie duomenų rinkiniai iš DSA, kurių
 :data:`dataset.access` reikšmė yra `public` arba `open`.
 
-.. data:: dataset.source
+.. data:: source
 
     Jei nenurodyta, naudoti \https://data.gov.lt/ adresą.
 
@@ -99,7 +101,7 @@ rinkinys>` įrašai.
 
     Nenaudojama.
 
-.. data:: dataset.type
+.. data:: type
 
     Jei nenurodyta, naudoti `ivpk` reikšmę. type nurodo :term:`API`
     formatą, kuriuo automatiškai pildomi duomenų rinkinių metaduomenys atvirų
@@ -124,26 +126,26 @@ rinkinys>` įrašai.
 .. _CKAN: https://ckan.org/
 .. _data.gov.lt: https://data.gov.lt/
 
-.. data:: dataset.ref
+.. data:: ref
 
     :term:`Duomenų rinkinio <duomenų rinkinys>` duomenų kataloge
     identifikatorius.
 
     Nenaudojamas jei :data:`dataset.type` yra `ns`.
 
-.. data:: dataset.level
+.. data:: level
 
     Nenaudojamas.
 
-.. data:: dataset.access
+.. data:: access
 
     Viso duomenų rinkinio ar vardų erdvės :ref:`access`. Paveldimas.
 
-.. data:: dataset.title
+.. data:: title
 
     Duomenų rinkinio ar vardų erdvės pavadinimas.
 
-.. data:: dataset.description
+.. data:: description
 
     Duomenų rinkinio ar vardų erdvės aprašymas.
 
@@ -182,10 +184,14 @@ Globalios vardų erdvės, tokios kaip `datasets` ir `datasets/gov` yra
 administruojamos vyriausiojo duomenų atvėrimo koordinatoriaus.
 
 
-.. _duomenų-šaltinis:
+.. .. _duomenų-šaltinis:
+.. _resource:
 
-Duomenų šaltinis
-----------------
+resource
+--------
+
+.. module:: resource
+
 
 :term:`ŠDSA` atveju :term:`duomenų šaltinis` bus vidinis duomenų bazių serveris,
 kažkoks vidinis katalogas kuriame yra lentelių failai ar koks nors vidinis API.
@@ -201,7 +207,7 @@ rinkinys>`, patelkiant konkrečias nuorodas į konkrečius duomenų failus.
 Analogiškai kaip ir :ref:`dataset` atveju, :data:`resource.ref` stulpelyje
 nurodomas duomenų šaltinio identifikatorius iš :term:`ADK`.
 
-.. data:: resource.type
+.. data:: type
 
     Duomenų šaltinio tipas. Galimos reikšmės:
 
@@ -259,11 +265,11 @@ nurodomas duomenų šaltinio identifikatorius iš :term:`ADK`.
 
         .. _ZIP: https://en.wikipedia.org/wiki/ZIP_(file_format)
 
-.. data:: resource.source
+.. data:: source
 
     Priklauso nuo :data:`resource.source`. Žiūrėti :ref:`resource`.
 
-.. data:: resource.ref
+.. data:: ref
 
     Resurso kodinis pavadinimas, kuris yra apibrėžtas atskirai duomenų
     struktūros apraše, ar konfigūracijos failuose.
@@ -282,20 +288,20 @@ nurodomas duomenų šaltinio identifikatorius iš :term:`ADK`.
     konkretų duomenų failo resursą, pateikti nuorodą, kuriame kitame resurse
     aprašomas failas yra.
 
-.. data:: resource.level
+.. data:: level
 
     Duomenų šaltinio brandos lygis, vertinant tik pagal formatą, nežiūrint į
     šaltinyje esančių duomenų turinį.
 
-.. data:: resource.access
+.. data:: access
 
     Viso duomenų šaltinio prieigos lygis. Paveldimas.
 
-.. data:: resource.title
+.. data:: title
 
     Duomenų šaltinio pavadinimas.
 
-.. data:: resource.description
+.. data:: description
 
     Duomenų šaltinio aprašymas.
 
@@ -309,10 +315,15 @@ Esant poreikiui gali būti įgyvendintas palaikymas naujiems duomenų šaltiniam
 
 .. _base:
 
-Modelio bazė
-------------
+base
+----
 
-.. note:: Kol kas modelių apjungimas naudojant vieną bazę nėra įgyvendintas.
+.. module:: base
+
+.. deprecated:: 0.2
+
+   Atskira modelio bazė naikinama. Nuo 0.2 versijos, modelio bazė nurodoma
+   :data:`model.type` stulpelyje.
 
 Modelio bazė naudojama kelių modelių (lentelių) susiejimui arba apjungimui.
 Kadangi įvairiuose duomenų šaltiniuose dažnai pasitaiko duomenų, kuriuose
@@ -386,21 +397,21 @@ bazės lauką, galima naudoti `_base.prop` išraišką, kuri nurodo, kad norima
 pasiekti bazėje esančius duomenis, laukui tuo pačiu pavadinimu.
 
 
-.. data:: base.source
+.. data:: source
 
     Nenaudojamas.
 
-.. data:: base.prepare
+.. data:: prepare
 
     Išimtiniais atvejais, kai nėra galimybės lentelių susieti ar apjungti
     įprastiniais metodais, galima pasitelkti formules, kurių pagalba galima
     įgyvendinti nestandartinius lentelių apjungimo atvejus.
 
-.. data:: base.type
+.. data:: type
 
     Nenaudojamas.
 
-.. data:: base.ref
+.. data:: ref
 
     :data:`model.property` reikšmė, kurios pagalba :data:`model` objektai
     siejami su :data:`base` objektais. Jei susiejimas pagal vieną model property
@@ -416,7 +427,7 @@ pasiekti bazėje esančius duomenis, laukui tuo pačiu pavadinimu.
     laukas turi tipą, tai reiškia, kad jo duomenys nesutampa su bazės
     duomenimis ir todėl jungimas negali būti daromas.
 
-.. data:: base.level
+.. data:: level
 
     :ref:`Brandos lygis <level>`, nurodantis modelio susiejamumą su nurodytu
     baziniu modeliu. Plačiau žiūrėti :ref:`Ryšiai tarp modelių | Brandos lygis
@@ -426,7 +437,7 @@ pasiekti bazėje esančius duomenis, laukui tuo pačiu pavadinimu.
     atliekamas, tokiu būdu tiesiog nurodomas semantinis susiejimas metaduomenų,
     o ne duomenų lygmenyje.
 
-.. data:: base.access
+.. data:: access
 
     Nenaudojamas.
 
@@ -510,10 +521,13 @@ example
 `City` ir `Village` su `Location` jungiame per `name\@lt` lauką.
 
 
-.. _duomenų-modelis:
+.. .. _duomenų-modelis:
+.. _model:
 
-Duomenų modelis
----------------
+model
+-----
+
+.. module:: model
 
 Duomenų modelis apibrėžia duomenų grupę turinčią tas pačias savybes.
 Skirtinguose duomenų šaltiniuose ir formatuose, duomenų modelis gali būti
@@ -532,75 +546,84 @@ generavimą, įeinančių duomenų tikrinimą ir visos kitos su modeliu susijusi
 dalys gali būti pritaikytos konkretaus modelio atvejui. Tačiau, jei reikia
 keisti tik duomenų pateikimą, užtenka naudoti :data:`model.prepare` formules.
 
-.. data:: model.source
+.. data:: source
 
     Modelio pavadinimas šaltinyje. Prasmė priklauso nuo :data:`resource.type`.
 
-.. data:: model.prepare
+.. data:: prepare
 
     Formulė skirta duomenų filtravimui ir paruošimui, iš dalies priklauso nuo
     :data:`resource.type`.
 
     Taip pat skaitykite: :ref:`duomenų-atranka`.
 
-.. data:: model.type
+.. data:: type
 
-    Jei nurodytą, naudoti išplėstą modelio variantą, jei nenurodyta palikti
-    tuščią. Jei tuščia, naudoti standartinį modelio variantą.
+    .. versionchanged:: 0.2
 
-    Gali būti įrašoma reikšmė `absent`, kuri nurodo, kad modelis buvo ištrintas.
+        Nuo 0.2 versijos nurodo modelio bazę.
 
-.. data:: model.ref
+    Nurodo modelio bazę, tai reiškia, kad tiek šis modelis, tiek bazinis
+    modelis turi vienodus identifikatorius.
+
+    Jei nurodyta modelio bazė, :data:`model.ref` nurodytas pirminis raktas turi
+    sutaptu su bazinio modelio pirminiu raktu.
+
+.. data:: ref
 
     Kableliu atskirtas sąrašas :data:`model.property` reikšmių, kurios kartu
     unikaliai identifikuoja vieną duomenų eilutę (pirminis lentelės raktas).
 
-.. data:: model.level
+.. data:: level
 
     Modelio :ref:`brandos lygis <level>`, nusakantis pačio modelio brandos
     lygį, pavyzdžiui ar nurodytas pirminis raktas, ar modelio pavadinimas
     atitinka kodiniams pavadinimams kelimus reikalavimus.
 
-.. data:: model.access
+.. data:: access
 
     Modeliui priklausančių laukų :ref:`prieigos lygis <access>`. Paveldimas.
 
-.. data:: model.uri
+.. data:: uri
 
     Sąsaja su :ref:`išoriniu žodynu <vocab>`.
 
-.. data:: model.title
+.. data:: title
 
     Modelio pavadinimas.
 
-.. data:: model.description
+.. data:: description
 
     Modelio aprašymas.
 
-.. data:: model.property
+.. data:: property
 
     Modeliui priklausantis duomenų laukas.
 
 
-.. _savybė:
+.. .. _savybė:
+.. _property:
 
-Savybė
-------
+property
+--------
+
+.. module:: property
+
 
 Duomenų laukas atspindi tam tikrą modelio savybę arba tai gali būti lentelės
 stulpelis, jei duomenų šaltinis yra lentelė.
 
-.. data:: property.source
+.. data:: source
 
     Duomenų lauko pavadinimas šaltinyje. Prasmė priklauso nuo
     :data:`resource.type`.
 
-.. data:: property.prepare
+.. data:: prepare
 
     Formulė skirta duomenų tikrinimui ir transformavimui arba statinės reikšmės
     pateikimui.
 
-.. data:: property.type
+.. data:: type
 
     Nurodomas loginis duomenų tipas. Dėl galimų tipų sąrašo žiūrėti
     :ref:`duomenų-tipai`.
@@ -627,36 +650,36 @@ stulpelis, jei duomenų šaltinis yra lentelė.
 
     - `geometry(linestringm, 3345) required`
 
-.. data:: property.ref
+.. data:: ref
 
     Priklauso nuo `property.type`, nurodo matavimo vienetus, laiko ar vietos
     tikslumą, :ref:`klasifikatorių <enum>` arba :ref:`ryšį su kitais modeliais
     <ryšiai>`. Ką tiksliai reiškia šis laukas, patikslinta skyrelyje
     :ref:`duomenų-tipai`.
 
-.. data:: property.level
+.. data:: level
 
     Nurodo duomenų lauko brandos lygį. Žiūrėti :ref:`level`.
 
-.. data:: property.access
+.. data:: access
 
     Nurodo prieigos prie duomenų lygį. Žiūrėti skyrių :ref:`access`.
 
-.. data:: property.uri
+.. data:: uri
 
     Sąsaja su išoriniu žodynu. Žiūrėti :ref:`vocab`.
 
-.. data:: property.title
+.. data:: title
 
     Duomenų lauko pavadinimas. Šis pavadinimas yra skirtas skaityti žmonėms
     ir bus rodomas duomenų laukų sąrašuose ir antraštėse. Jei nenurodyta, bus
     naudojamas :data:`property` kodinis pavadinimas.
 
-.. data:: property.description
+.. data:: description
 
     Duomenų lauko aprašymas.
 
-.. data:: property.enum
+.. data:: enum
 
     Žiūrėti :ref:`enum`.
 
@@ -666,32 +689,34 @@ stulpelis, jei duomenų šaltinis yra lentelė.
 Papildomos dimensijos
 =====================
 
-.. _išorinių-žodynų-prefiksai:
+.. .. _išorinių-žodynų-prefiksai:
+.. _prefix:
 
-Išorinių žodynų prefiksai
--------------------------
+prefix
+------
+
+.. module:: prefix
 
 Sąsają su išoriniais žodynais galima pateikti :data:`model.uri` ir
 :data:`property.uri` stulpeliuose. Tačiau prieš naudojant žodynus, pirmiausia
 reikia apsirašyti žodynų prefiksus. Žodynų prefiksai aprašomi taip:
 
-.. data:: prefix
 
-    .. data:: prefix.ref
+.. data:: ref
 
-        Prefikso pavadinimas.
+    Prefikso pavadinimas.
 
-    .. data:: prefix.uri
+.. data:: uri
 
-        Išorinio žodyno URI.
+    Išorinio žodyno URI.
 
-    .. data:: prefix.title
+.. data:: title
 
-        Prefikso antraštė.
+    Prefikso antraštė.
 
-    .. data:: prefix.description
+.. data:: description
 
-        Prefikso aprašymas.
+    Prefikso aprašymas.
 
 Rekomenduojama naudoti LOV_ prefiksus.
 
@@ -735,8 +760,10 @@ patį URI.
 
 .. _enum:
 
-Klasifikatoriai
----------------
+enum
+----
+
+.. module:: enum
 
 .. _Categorical data: https://pandas.pydata.org/pandas-docs/stable/user_guide/categorical.html
 
@@ -802,48 +829,46 @@ tada galima iškelti klasifikatorių ir suteikti jam pavadinimą, pavyzdžiui:
 stulpelyje nurodyta, kad šis laukas naudoja vardinį `place` klasifikatorių.
 
 
-.. data:: enum
+.. data:: ref
 
-    .. data:: enum.ref
+    Pasirinkimų sąrašo pavadinimas.
 
-        Pasirinkimų sąrašo pavadinimas.
+.. data:: source
 
-    .. data:: enum.source
+    Pateikiama originali reikšmė, taip kaip ji saugoma duomenų šaltinyje.
+    Pateiktos reikšmės turi būti unikalios ir negali kartotis.
 
-        Pateikiama originali reikšmė, taip kaip ji saugoma duomenų šaltinyje.
-        Pateiktos reikšmės turi būti unikalios ir negali kartotis.
+    Jei pageidaujama aprašyti tuščią šaltinio reikšmę, tada
+    :data:`property.prepare` celėje reikia nurodyti formulę, kuri tuščią
+    reikšmę pakeičia, į kokią nors kitą. Formulės pavyzdys:
 
-        Jei pageidaujama aprašyti tuščią šaltinio reikšmę, tada
-        :data:`property.prepare` celėje reikia nurodyti formulę, kuri tuščią
-        reikšmę pakeičia, į kokią nors kitą. Formulės pavyzdys:
+    .. code-block:: python
 
-        .. code-block:: python
+        swap('', '-')
 
-            swap('', '-')
+.. data:: prepare
 
-    .. data:: enum.prepare
+    Pateikiama reikšmė, tokia kuri bus naudojama atveriant duomenis.
+    :data:`model.prepare` filtruose taip pat bus naudojama būtent ši
+    reikšmė.
 
-        Pateikiama reikšmė, tokia kuri bus naudojama atveriant duomenis.
-        :data:`model.prepare` filtruose taip pat bus naudojama būtent ši
-        reikšmė.
+    `enum.prepare` reikšmės gali kartotis, tokiu būdu, kelios skirtingos
+    `enum.source` reikšmės bus susietos su viena `enum.prepare` reikšme.
 
-        `enum.prepare` reikšmės gali kartotis, tokiu būdu, kelios skirtingos
-        `enum.source` reikšmės bus susietos su viena `enum.prepare` reikšme.
+.. data:: access
 
-    .. data:: enum.access
+    Klasifikatoriams galima nurodyti skirtingas prieigos teises, tokiu
+    atveju, naudotojas turintis `open` prieigą matys tik tuos duomenis,
+    kurių klasifikatorių reikšmės turi `open` prieigos teises, visi kiti bus
+    išfiltruoti.
 
-        Klasifikatoriams galima nurodyti skirtingas prieigos teises, tokiu
-        atveju, naudotojas turintis `open` prieigą matys tik tuos duomenis,
-        kurių klasifikatorių reikšmės turi `open` prieigos teises, visi kiti bus
-        išfiltruoti.
+.. data:: title
 
-    .. data:: enum.title
+    Fiksuotos reikšmės pavadinimas.
 
-        Fiksuotos reikšmės pavadinimas.
+.. data:: description
 
-    .. data:: enum.description
-
-        Fiksuotos reikšmės aprašymas.
+    Fiksuotos reikšmės aprašymas.
 
 Pagal nutylėjimą, jei :data:`property.prepare` yra tuščias ir :data:`property`
 turi :ref:`enum` sąrašą, tada jei šaltinis turi neaprašytą reikšmę, turėtų
@@ -856,8 +881,16 @@ kokios yra šaltinyje, tada :data:`property.prepare` stulpelyje reikia įrašyti
 
 .. _param:
 
-Parametrai
-----------
+param
+-----
+
+.. module:: param
+
+.. deprecated:: 0.2
+
+    Nuo 0.2 versijos parametrų dimensija perkeliama prie :ref:`property` ir
+    tampa duomenų tipo parametras.
+
 
 Parametrai leidžia iškelti tam tikras duomenų paruošimo operacijas į parametrus
 kurie gali būti naudojami :ref:`dimensijos`, kurioje apibrėžtas parametras
@@ -893,22 +926,20 @@ Parametrai aprašomi pasitelkiant papildomą :ref:`param` dimensiją.
 |  9 |   |   |   |   | title      | string  |                       | TITLE                       |                       |
 +----+---+---+---+---+------------+---------+-----------------------+-----------------------------+-----------------------+
 
-.. data:: param
+.. data:: ref
 
-    .. data:: param.ref
+    Parametro :term:`kodinis pavadinimas`.
 
-        Parametro :term:`kodinis pavadinimas`.
+.. data:: prepare
 
-    .. data:: param.prepare
+    Formulė, kuri grąžina sąrašą reikšmių aprašomam parametrui.
 
-        Formulė, kuri grąžina sąrašą reikšmių aprašomam parametrui.
+.. data:: source
 
-    .. data:: param.source
-
-        Jei reikšmė pateikta, tada ši reikšmė perduodama formulei kaip `self`.
-        Pavyzdžiui, jei :data:`param.prepare` pateikta formulė `select(code)`, o
-        :data:`param.source` nurodyta `Country`, tai formulė bus iškviesta taip
-        `select("Country", code)`.
+    Jei reikšmė pateikta, tada ši reikšmė perduodama formulei kaip `self`.
+    Pavyzdžiui, jei :data:`param.prepare` pateikta formulė `select(code)`, o
+    :data:`param.source` nurodyta `Country`, tai formulė bus iškviesta taip
+    `select("Country", code)`.
 
 Jei parametro reikšmė yra :term:`iteratorius`, tada :term:`dimensija`, kurios
 kontekste yra aprašytas :ref:`parametras <param>` yra kartojama tiek kartų,
@@ -1001,100 +1032,103 @@ pavyzdžiui:
     `x.field` arba `param(x).field`.
 
 
+.. _switch:
 
+switch
+------
 
-Reikšmių sukeitimas
--------------------
+.. module:: switch
 
 Tam tikrais atvejais duomenis tenka normalizuoti parenkant tam tikrą reikšmę jei
 tenkinama nurodyta sąlyga. Tokias situacijas galima aprašyti pasitelkiant
 :data:`switch` dimensiją.
 
-.. data:: switch
+.. data:: switch.source
 
-    .. data:: switch.source
+    Reikšmė, kuri bus atveriama.
 
-        Reikšmė, kuri bus atveriama.
+.. data:: switch.prepare
 
-    .. data:: switch.prepare
+    Sąlyga, naudojant einamojo modelio laukus. Jei sąlyga tenkinama, tada
+    laukui priskiriama :data:`switch.source` reikšmė. Jei sąlyga
+    netenkinama, tada bandoma tikrinti sekančią sąlygą. Parenkama ta
+    reikšmė, kurios pirmoji sąlyga tenkinama.
 
-        Sąlyga, naudojant einamojo modelio laukus. Jei sąlyga tenkinama, tada
-        laukui priskiriama :data:`switch.source` reikšmė. Jei sąlyga
-        netenkinama, tada bandoma tikrinti sekančią sąlygą. Parenkama ta
-        reikšmė, kurios pirmoji sąlyga tenkinama.
-
-        Jei :data:`switch.prepare` yra tuščias, tada sąlyga visada teigiama ir
-        visada grąžinama :data:`switch.source` reikšmė.
+    Jei :data:`switch.prepare` yra tuščias, tada sąlyga visada teigiama ir
+    visada grąžinama :data:`switch.source` reikšmė.
 
 
-Komentavimas
-------------
+.. _comment:
+
+comment
+-------
+
+..module:: comment
 
 Dirbant su :term:`DSA` yra galimybė komentuoti eilutes, naudojant papildomą
 :data:`comment` dimensiją, kurią galima naudoti bet kurios kitos dimensijos
 kontekste.
 
-.. data:: comment
 
-    .. data:: comment.id
+.. data:: id
 
-        Komentaro numeris.
+    Komentaro numeris.
 
-    .. data:: comment.ref
+.. data:: ref
 
-        Komentuojamo vieno ar kelių kableliu atskirtų :data:`property`
-        pavadinimai. Galima nurodyti ne tik stulpelio pavadinimą, bet ir
-        dimensiją.
+    Komentuojamo vieno ar kelių kableliu atskirtų :data:`property`
+    pavadinimai. Galima nurodyti ne tik stulpelio pavadinimą, bet ir
+    dimensiją.
 
-    .. data:: comment.source
+.. data:: source
 
-        Komentaro autorius.
+    Komentaro autorius.
 
-    .. data:: comment.prepare
+.. data:: prepare
 
-        Keitimo pasiūlymas, naudojant `create()`, `update` ir `delete()` funkcijas. Pavyzdžiui::
+    Keitimo pasiūlymas, naudojant `create()`, `update` ir `delete()` funkcijas. Pavyzdžiui::
 
-            update(property: "pavadinimas@lt", type: "text")
+        update(property: "pavadinimas@lt", type: "text")
 
-        Šiuo atveju nurodoma, kad siūloma keisti `property` pavadnimą į
-        `pavadinimas@lt`, o `type` į `text`.
+    Šiuo atveju nurodoma, kad siūloma keisti `property` pavadnimą į
+    `pavadinimas@lt`, o `type` į `text`.
 
-    .. data:: comment.level
+.. data:: level
 
-        Nurodoma, kad patenkinus keitimo sliūlymą, kuris nurodytas
-        :data:`comment.prepare` stulplyje, komentuojamai eilutei gali būti
-        suteiktas nurodytas brandos lygis.
+    Nurodoma, kad patenkinus keitimo sliūlymą, kuris nurodytas
+    :data:`comment.prepare` stulplyje, komentuojamai eilutei gali būti
+    suteiktas nurodytas brandos lygis.
 
-    .. data:: comment.access
+.. data:: access
 
-        Nurodoma, ar komentaras gali būti publikuojamas viešai.
+    Nurodoma, ar komentaras gali būti publikuojamas viešai.
 
-        private
-            Komentaras negali būti publikuojamas viešai. Šis prieigos lygis
-            naudojamas pagal nutylėjimą.
+    private
+        Komentaras negali būti publikuojamas viešai. Šis prieigos lygis
+        naudojamas pagal nutylėjimą.
 
-        open
-            Komentaras gali būti publikuojamas viešai.
+    open
+        Komentaras gali būti publikuojamas viešai.
 
-    .. data:: comment.uri
+.. data:: uri
 
-        Viena ar kelios kableliu atskirtos šaltinio nuorodos, kuri pateikta
-        daugiau informacijos apie tai, kas komentuojama. Taip pat gali būti
-        nurodytas kito komentaro :data:`comment.id`, nurodant, kad tai yra
-        atsakymas į ankstesnį komentarą.
+    Viena ar kelios kableliu atskirtos šaltinio nuorodos, kuri pateikta
+    daugiau informacijos apie tai, kas komentuojama. Taip pat gali būti
+    nurodytas kito komentaro :data:`comment.id`, nurodant, kad tai yra
+    atsakymas į ankstesnį komentarą.
 
-        URI pateikiami sutrumpinta forma, naudojant prefikstus. Žiūrėti skrių
-        :ref:`vocab`.
+    URI pateikiami sutrumpinta forma, naudojant prefikstus. Žiūrėti skrių
+    :ref:`vocab`.
 
-    .. data:: comment.title
+.. data:: title
 
-        Komentaro data, `ISO 8601`_ formatu.
+    Komentaro data, `ISO 8601`_ formatu.
 
-        .. _ISO 8601: https://en.wikipedia.org/wiki/ISO_8601
+    .. _ISO 8601: https://en.wikipedia.org/wiki/ISO_8601
 
-    .. data:: comment.description
+.. data:: description
 
-        Komentaro tekstas.
+    Komentaro tekstas.
 
 
 **Pavyzdys**
@@ -1118,35 +1152,45 @@ example
 == == == == ============ ======== ========= ================================================== ====== ======= ====================================================
 
 
-Daugiakalbiškumas
------------------
+.. _lang:
+
+lang
+----
+
+.. module:: lang
+
+.. deprecated:: 0.2
+
 
 :data:`title` ir :data:`description` stulpeliuose tekstas rašomas lietuvių
 kalba, tačiau galima pateikti tekstą ir kita kalba, panaudojus papildomą
 :data:`lang` dimensiją, kurią reikia naudoti prieš eilutę, kuriai pateikiamas
 tekstas kita kalba.
 
-.. data:: lang
+.. data:: ref
 
-    .. data:: lang.ref
+    `ISO 639-1`_ dviejų simbolių kalbos kodas.
 
-        `ISO 639-1`_ dviejų simbolių kalbos kodas.
+    .. _ISO 639-1: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
 
-        .. _ISO 639-1: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+.. data:: title
 
-    .. data:: lang.title
+    Pavadinimas :data:`lang.ref` stulpelyje nurodyta kalba.
 
-        Pavadinimas :data:`lang.ref` stulpelyje nurodyta kalba.
+.. data:: description
 
-    .. data:: lang.description
-
-        Aprašymas :data:`lang.ref` stulpelyje nurodyta kalba.
+    Aprašymas :data:`lang.ref` stulpelyje nurodyta kalba.
 
 
-.. _struktūros-keitimas:
+.. .. _struktūros-keitimas:
+.. _migrate:
 
-Struktūros keitimas
--------------------
+migrate
+-------
+
+.. module:: migrate
+
+.. deprecated:: 0.2
 
 Laikui einant, pirminių duomenų šaltinių arba jau atvertų duomenų struktūra
 keičiasi, papildoma naujais :term:`modeliais <modelis>` ar :term:`savybėmis
@@ -1206,82 +1250,80 @@ migracijas:
    ateityje, kadangi nesuderinamos migracijos pirmiausia paskelbiamos, o
    įgyvendinamos tik praėjus 6 mėnesiams nuo paskelbimo.
 
-.. data:: migrate
+.. data:: id
 
-    .. data:: migrate.id
+    Migracijos numeris (UUID). Kiekvienos migracijos metu gali būti
+    atliekama eilė operacijų, visos operacijos fiksuojamos naudojant
+    migracijos numerį.
 
-        Migracijos numeris (UUID). Kiekvienos migracijos metu gali būti
-        atliekama eilė operacijų, visos operacijos fiksuojamos naudojant
-        migracijos numerį.
+    Visų migracijų sąrašas pateikiamas, kai :data:`migrate` nepriklauso
+    jokiam dimensijos kontekstui.
 
-        Visų migracijų sąrašas pateikiamas, kai :data:`migrate` nepriklauso
-        jokiam dimensijos kontekstui.
+.. data:: ref
 
-    .. data:: migrate.ref
+    Ankstesnės migracijos numeris, pateiktas :data:`migrate.id` stulpelyje,
+    arba tuščia, jei prieš tai jokių kitų migracijų nebuvo.
 
-        Ankstesnės migracijos numeris, pateiktas :data:`migrate.id` stulpelyje,
-        arba tuščia, jei prieš tai jokių kitų migracijų nebuvo.
+    Naudojamas jei :data:`migrate` nepatenka į jokios dimensijos kontekstą.
 
-        Naudojamas jei :data:`migrate` nepatenka į jokios dimensijos kontekstą.
+    Jei :data:`migrate` aprašomas dimensijos kontekste, tada šis stulpelis
+    nenaudojamas.
 
-        Jei :data:`migrate` aprašomas dimensijos kontekste, tada šis stulpelis
-        nenaudojamas.
+.. data:: prepare
 
-    .. data:: migrate.prepare
+    Migracijos operacija. Galimos tokios operacijos:
 
-        Migracijos operacija. Galimos tokios operacijos:
+    .. function:: create()
 
-        .. function:: create()
+        Priklausomai nuo dimensijos konteksto, prideda naują modelį, arba
+        savybę.
 
-            Priklausomai nuo dimensijos konteksto, prideda naują modelį, arba
-            savybę.
+        Funkcijai galima perduoti `ref` ir kitus vardinius argumentus,
+        kurie atitinka :term:`DSA` lentelės metaduomenų stulpelių
+        pavadinimus.
 
-            Funkcijai galima perduoti `ref` ir kitus vardinius argumentus,
-            kurie atitinka :term:`DSA` lentelės metaduomenų stulpelių
-            pavadinimus.
+    .. function:: update()
 
-        .. function:: update()
+        Taikomas tik duomenų laukams ir nurodo, kad buvo pakeistos esamų
+        duomenų reikšmės, keičiant reikšmių dimensiją, matavimo vienetus,
+        formatą ir kita.
 
-            Taikomas tik duomenų laukams ir nurodo, kad buvo pakeistos esamų
-            duomenų reikšmės, keičiant reikšmių dimensiją, matavimo vienetus,
-            formatą ir kita.
+        Funkcijai galima perduoti `ref` ir kitus vardinius argumentus,
+        kurie atitinka :term:`DSA` lentelės metaduomenų stulpelių
+        pavadinimus.
 
-            Funkcijai galima perduoti `ref` ir kitus vardinius argumentus,
-            kurie atitinka :term:`DSA` lentelės metaduomenų stulpelių
-            pavadinimus.
+        Perduodami tik tie vardiniai argumentai, kuriuos atitinkantys
+        metaduomenys keičiasi.
 
-            Perduodami tik tie vardiniai argumentai, kuriuos atitinkantys
-            metaduomenys keičiasi.
+    .. function:: delete()
 
-        .. function:: delete()
+        Priklausomai nuo dimensijos konteksto, šalina modelį ar savybę.
 
-            Priklausomai nuo dimensijos konteksto, šalina modelį ar savybę.
+        Pašalinto modelio ar savybės :data:`type` keičiamas į `absent`
+        reikšmę.
 
-            Pašalinto modelio ar savybės :data:`type` keičiamas į `absent`
-            reikšmę.
+    .. function:: filter(where)
 
-        .. function:: filter(where)
+        Naudojamas :data:`property` kontekste, kai vykdoma duomenų
+        migracija. Nurodo, kad migracija taikoma tik `where` sąlygą
+        tenkinantiems duomenims.
 
-            Naudojamas :data:`property` kontekste, kai vykdoma duomenų
-            migracija. Nurodo, kad migracija taikoma tik `where` sąlygą
-            tenkinantiems duomenims.
+    Be šių pagrindinių migracijos operacijų, galima naudoti kitas duomenų
+    transformavimo operacijas, kurios vykdomos su kiekviena duomenų eilute
+    ir atlikus pateiktas transformacijos funkcijas, pakeista reikšmė
+    išsaugoma.
 
-        Be šių pagrindinių migracijos operacijų, galima naudoti kitas duomenų
-        transformavimo operacijas, kurios vykdomos su kiekviena duomenų eilute
-        ir atlikus pateiktas transformacijos funkcijas, pakeista reikšmė
-        išsaugoma.
+.. data:: title
 
-    .. data:: migrate.title
+    Migracijos įvykdymo data ir laikas. Migracijos laikas ir data gali
+    būti ir ateityje, tuo atveju, jei daromas nesuderinamas keitimas.
 
-        Migracijos įvykdymo data ir laikas. Migracijos laikas ir data gali
-        būti ir ateityje, tuo atveju, jei daromas nesuderinamas keitimas.
+    Naudojamas tik tada, kai :data:`migrate` nepatenka į jokios dimensijos
+    kontekstą.
 
-        Naudojamas tik tada, kai :data:`migrate` nepatenka į jokios dimensijos
-        kontekstą.
+.. data:: description
 
-    .. data:: migrate.description
-
-        Migracijos atliekamo pakeitimo trumpas aprašymas.
+    Migracijos atliekamo pakeitimo trumpas aprašymas.
 
 
 .. |nbsp| unicode:: 0xA0

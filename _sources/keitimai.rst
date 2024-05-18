@@ -5,8 +5,17 @@
 Keitimų istorija
 ################
 
-
-1.0.0 (2024-04-19)
+0.2.0 (neišleista)
 ******************
 
-Pirmoji :term:`DSA` versija.
+- Panaikinta :ref:`base` dimensija, baziniai modeliai perkeliami į
+  :data:`model.type`.
+
+- Panaikinta :ref:`param` dimensija, parametrizavimas perkeltas prie
+  :ref:`property`, :data:`property.type` stulpelyje nurodant `param`.
+
+
+0.1.0 (2022-03-03)
+******************
+
+Pirmoji duomenų struktūros aprašo versija.

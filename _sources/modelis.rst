@@ -12,10 +12,11 @@ Prieš pradedant darbą su strūktūros aprašais, būtina pasirengti koncepcini
 modelio UML diagramą, vadovaujantis `Conceptual model conventions (UML)`_
 reikalavimais.
 
-Koncepcinis modelis turi būti naudojamas, kaip vienintelis tiesos šaltinis,
-kadangi vizualinę duomenų modelio reprezentaciją nesunkiai gali suprasti
-skirtingose srityse dirbandys žmonės ir pasitivrtinti duomenų modelį, kuris
-vėliau bus taikomas rengiant duomenų struktūros aprašus.
+Koncepcinis modelis vienareikšmiškai apibrėžia duomenų modelį grafine forma ir
+naudojamas, kaip vienintelis tiesos šaltinis, kadangi vizualinę duomenų modelio
+reprezentaciją nesunkiai gali suprasti skirtingose srityse dirbandys žmonės ir
+pasitivrtinti duomenų modelį, kuris vėliau bus taikomas rengiant duomenų
+struktūros aprašus.
 
 Reikia atkreipti dėmesį, kad koncepcinis modelis yra vienas, o jį atitinkančių
 duomenų šaltinių gali būti daug.
@@ -43,6 +44,7 @@ Kaip pavyzdį, naudosime žemiau pateiktą koncepcinį duomenų modelį:
        + id: integer [1..1]
        + pavadinimas: text [1..1]
      }
+
    
      Savivaldybe --> "[1..1]" Apskritis : apskritis
      Gyvenviete --> "[1..1]" Savivaldybe : savivaldybe
@@ -54,35 +56,35 @@ Kaip pavyzdį, naudosime žemiau pateiktą koncepcinį duomenų modelį:
 Pagal šį koncepcinį modelį, DSA lentelė atrodytu taip:
 
 
-== == == == ================== ========= =============== =============
-d  r  b  m  property           type      ref             prepare      
-== == == == ================== ========= =============== =============
-datasets/gov/example                                                  
------------------------------- --------- --------------- -------------
-\        **Administracija**              kodas                        
--- -- -- --------------------- --------- --------------- -------------
-\           kodas              string                                 
-\           pavadinimas        string                                 
-\           tipas              string                                 
-\                              enum                      "APSKRITIS"
-\                                                        "SAVIVALDYBE"
-\        **Apskritis**                   kodas          
--- -- -- --------------------- --------- --------------- -------------
-\           kodas              string                                 
-\           pavadinimas        string                                 
-\           tipas              string                    "APSKRITIS"
-\        **Savivaldybe**                 kodas          
--- -- -- --------------------- --------- --------------- -------------
-\           kodas              string                                 
-\           pavadinimas        string                                 
-\           tipas              string                    "SAVIVALDYBE"
-\           apskritis          ref       **Apskritis**
-\        **Gyvenviete**                  id             
--- -- -- --------------------- --------- --------------- -------------
-\           id                 integer                                
-\           pavadinimas        string                                 
-\           savivaldybe        ref       **Savivaldybe**  
-== == == == ================== ========= =============== =============
+== == == ================== ================== =============== =============
+d  r  m  property           type               ref             prepare      
+== == == ================== ================== =============== =============
+datasets/gov/example                                                           
+--------------------------- ------------------ --------------- -------------
+\     **Administracija**                       kodas                        
+-- -- --------------------- ------------------ --------------- -------------
+\        kodas              string                                          
+\        pavadinimas        string                                          
+\        tipas              string                                          
+\                           enum                               "APSKRITIS"
+\                                                              "SAVIVALDYBE"
+\     **Gyvenviete**                           id             
+-- -- --------------------- ------------------ --------------- -------------
+\        id                 integer                                         
+\        pavadinimas        string                                          
+\        savivaldybe        ref                **Savivaldybe**  
+\     **Apskritis**         **Administracija** kodas, tipas   
+-- -- --------------------- ------------------ --------------- -------------
+\        kodas              string                                          
+\        pavadinimas        string                                          
+\        tipas              string                             "APSKRITIS"
+\     **Savivaldybe**       **Administracija** kodas, tipas   
+-- -- --------------------- ------------------ --------------- -------------
+\        kodas              string                                          
+\        pavadinimas        string                                          
+\        tipas              string                             "SAVIVALDYBE"
+\        apskritis          ref                **Apskritis**
+== == == ================== ================== =============== =============
 
 
 Pavadinimai nurodyti koncepciniame modelyje, turi identiškai sutapti su
@@ -239,10 +241,36 @@ Jei UML diagramose prie klasių yra pateikti pilni sąrašai savybių su tipais,
 tada tai greičiausiai yra taikymo profilis.
 
 
+Generalizacija
+**************
+
+Objektai gali būti skirstomi į klases, tačiau pačios klasės gali būti
+skirstomos į bendresnes klases, toks apibendrinimo procesas vadinamas
+generalizacija.
+
+UML diagramose gneralizacija žymima užpildyta rodykle, kurios krypts iš labiau
+specializuotos siauresnę prasmę turinčios klasės, į labiau apibendriną,
+platesnę prasmę turinčią klasę, pavyzdžiui:
+
+.. mermaid::
+
+   classDiagram
+     direction LR
+
+     class Savivaldybe
+     class Administracija
+
+     Savivaldybe --|> Administracija
+
+Šiame pavyzdyje nurodome, kad `Savivaldybe` yra `Administracija` poaibis. Arba
+`Administracija` yra platesnė klasę, o `Savivaldybę` yra siauresnė, labiau
+specifinę prasmę nurodanti klasė.
+
+
 Identifikatorius
 ****************
 
-Kad galėtume vienareikšmiškai įvartinti ar nurodyti tam tikrą objektą, visi
+Kad galėtume vienareikšmiškai įvardinti ar nurodyti tam tikrą objektą, visi
 objektai privalo turėti unikalius identifikatorius.
 
 Kiekvienam objektui priskiriamas vienas globalus identifikatorius UUID formatu,
@@ -292,140 +320,321 @@ Globalus identifikatorius suteikiamas esybei `Gyvenviete`, lokalūs
 identifikatoriai suteikiami konkrečiam duomenų modeliui ir konkrečiam duomenų
 šaltiniui.
 
+Rengiant :term:`DSA` lentelę globalūs identifikatoriai žymimi :data:`model.ref`
+stulpelyje arba rezervuotu savybės pavadinimu `_id` ir yra privalomas.
 
 
+Savybė
+******
+
+UML diagramos savybės žymimos sutartine forma:
+
+.. admonition:: Sintaksė
+
+   **access** **property** `:` **type** `[` **cardinality** `..` **multiplicity** `]`
+
+access
+    Prieigos lygis. Gali būti naudojami tokie žymėjimai:
+
+    - `+` - atviri duomenys, žiūrėti :data:`open`.
+    - `#` - vieši duomenys, žiūrįti :data:`public`.
+    - `~` - duomenys teikiami pagal sutartį, žiūrėti :data:`protected`.
+    - `-` - nepublikuojami duomenys, žiūrėti :data:`private`.
+
+property
+    Savybė, žiūrėti :data:`property`. Nurodoma savybės URI forma.
+
+type
+    Duomenų tipas, žiūrėti :ref:`duomenų-tipai`. UML diagramose, jei duomenų
+    tipas yra :data:`ref` arba :data:`backref`, tada nurodomas modelio
+    pavadinimas, URI forma, su kuriuo daroma asociacija.
+
+cardinality
+    Nurodo ar laukasyra privalomas:
+
+    - `0` - laukas yra neprivalomas.
+    - `1` - laukas yra privalomas.
+
+multiplicity
+    Nurodo kiek kartų gali būti pateikta lauko reikšmė.
+
+    - `1` - lauko reikšmė gali būti pateikta tik vieną kartą.
+    - `*` - laukė reikšmė gali būti pateikta daugiau nei veiną kartą.
+
+Pavyzdys:
+
+.. mermaid::
+
+   classDiagram
+
+     class Gyvenviete {
+       + id: integer [1..1]
+       + pavadinimas: text [1..1]
+     }
+
+UML diagramoje matoke `Gyvenviete` duomenų modelį, kuri turi dvi savybes::
+
+    + id: integer [1..1]
+    + pavadinimas: text [1..1]
+
+Api savybės turi atvirą prieigos lygmenį, `id` ir `pavadinimas` kodinius
+savybės pavadinimus, `integer` ir `text` duomenų tipus ir abi savybės yra
+privalomos ir gali turėti tik vieną reikšmę.
 
 
-Rengiant struktūros aprašus svarbu suprasti, kas yra duomenų modelis ir kokie
-yra duomenų modelio variantai ir bendrai kokie yra duomenų modeliavimo
-principai.
+Asociacija
+**********
+
+Per duomenų tipą
+===========================
+
+UML diagramose nurodant ryšį su kitomis esybėmis, galima naudoti įprastą
+savybių žymėjimo formą `+ savivaldybe: Savivaldybe [1..1]`, kur po `:`
+dvitaškio nurodomas kitas modelis, su kuriuo daroma asociacija.
+
+.. mermaid::
+
+   classDiagram
+
+     class Gyvenviete {
+       + id: integer [1..1]
+       + pavadinimas: text [1..1]
+       + savivaldybe: Savivaldybe [1..1]
+     }
+
+     class Savivaldybe {
+       + kodas: integer [1..1]
+       + pavadinimas: text [1..1]
+     }
+   
+Tokia asociacija daroma, kai siejame su išoriniais modeliais, arba kai turime
+per daug asociacijų ir norime UML diagramoje sumažinti rodyklių skaičių.
 
 
-Koncepcinis duomenų modelis apibūdina realaus ar menamo pasaulio sąvokas ir
-ryšius tarp jų. Koncepciniame modelyje nedetalizuojamos techninės detalės,
-apibrėžiamos tik pačios sąvokos ir jų semantinė prasmė.
+Tiesioginė
+==========
 
-Skirtinguose kontekstuose koncepcinis modelis gali būti suprantamas skirtingai,
-šiame dokumente koncepcinis modelis apibrėžiamas taip, kaip jis yra naudojamas
-struktūros apraše.
+Tiesioginė asociacija nurodoma rodyklės pagalba, jei yra pateikta rodyklą, tada
+savybą sąraše, savybės, kuri yra pateikta prie rodyklės neberodome.
 
-Duomenų struktūros aprašo specifikacijos kontekste, koncepcinis modelis turi
-būti parengtas naudojant OWL_, RDFS_ arba SKOS_ žodynus, pagal RDF_ duomenų
-modelį. Tai reiškia, kad kiekvienai savokai suteikiamas unikalus
-identifikatorius, IRI_ formatu.
+.. mermaid::
 
-Tarkime FOAF_ žodyne yra apibrėžtos tokios sąvokos:
+   classDiagram
+     direction LR
 
-- `foaf:Person <http://xmlns.com/foaf/spec/#term_Person>`_ - žmogus.
-- `foaf:member <http://xmlns.com/foaf/spec/#term_member>`_ - narys.
-- `foaf:Group <http://xmlns.com/foaf/spec/#term_Group>`_ - grupė.
+     class Savivaldybe {
+       + kodas: integer [1..1]
+       + pavadinimas: text [1..1]
+     }
 
-Šioms sąvokoms yra priskirtas unikalus identifikatorius, tačiau nurodoma
-sutrumpina forma, naudojant prefiksą `foaf:`. Prefiksas `foaf:` yra
-sutrumpintas IRI_ vardų erdvės pavadinimas rodantis į
-`http://xmlns.com/foaf/0.1/`.
-
-Pilnas aukščiau nurodytų sąvokų IRI būtų toks:
-
-- `foaf:Person` -> `http://xmlns.com/foaf/0.1/Person`
-- `foaf:member` -> `http://xmlns.com/foaf/0.1/member`
-- `foaf:Group` -> `http://xmlns.com/foaf/0.1/Group`
-
-Svarbu suprasti, kad koncepcinis modelis yra tiesiog sąrašas sąvokų, kurioms
-suteiktas identifikatorius ir nurodoma sąvokos semantinė prasmė.
-
-Koncepcinis modelis yra skirtas plačiam taikymui, todėl sąvokų naudojimas nėra
-griežtai apribotas.
-
-Rengiant struktūros aprašus, sąsaja su koncepciniame modelyje apibrėžtomis
-sąvokomis nurodoma `uri` stulpelyje.
-
-Taip pat žiūrėkite:
-
-- `What is a conceptual model <https://semiceu.github.io/style-guide/1.0.0/terminological-clarifications.html#sec:what-is-a-conceptual-model>`_, SEMIC Style guide.
+     class Gyvenviete {
+       + id: integer [1..1]
+       + pavadinimas: text [1..1]
+     }
+   
+     Gyvenviete --> "[1..1]" Savivaldybe : savivaldybe
 
 
+Rodyklės kryptis visada rodo iš modelio, prie kurio savybė yra apibrėžta, į
+kitą modelį, su kuriuo savybė yra siejama.
 
-Generalizacija ir specializacija
-================================
-
-Kalbant apie koncepcinius modelius, svarbu suprasti kas yra generalizacija ir
-specializacija.
-
-Koncepciniame modelyje pateikiame klases, savybes naudojant RDFS_ arba OWL_
-žodynus ir kategorijas naudojant SKOS_ žodyną.
-
-Generalizacija yra objektų klasifikavimo principas, kuris nurodo bendresnę
-klasę ar kategoriją, kuriai priklauso objektas.
-
-Tarkime imant tą patį FOAF_ žodyną, ir atliekame konkretaus žmogaus vardu
-Vardenis Pavardenis generalizaciją:
-
-- Vardenį Pavardenį galime priskirti bendrai klasei `foaf:Person`_.
-
-- `foaf:Person`_ klasę, galima priskirti bendresnei klasei `foaf:Agent`_.
-
-- `foaf:Agent`_ klasę, galima priskirti dar bendresnei klasei `owl:Thing`_.
-
-Specializacija yra atvirkštinis procesas, kai vietoje bendresnės klasės,
-parenkame labiau specializuotą.
+Tiesioginė asociacija :term:`DSA` yra nurodoma :data:`type.ref` pagalba.
 
 
-Pakartotinis naudojimas
-=======================
+Atvirkštinė
+===========
 
-Yra labai daug žodynų, kurie apibrėžia įvairias savokas, pavyzdžiui `FOAF`_,
-`OWL`_, `RDFS`_, `SKOS`_ ir pan. Svarbu, kad jei sąvoka jau yra apibrėžta
-viename iš žodynų, būtina naudoti tokią sąvoką, kuri jau yra apibrėžta ir
-deklaruoti naujas sąvokas tik tuo atveju, jei tokia sąvoka dar nėra apibrėžta
-jokiame kitame žodyne.
+Asociacijai gali būti naudojami ir atvirkštiniai ryšiai, pavyzdžiui:
 
-Taip pat žiūrėkite:
+.. mermaid::
 
-- `Clarification on "reuse" <https://semiceu.github.io/style-guide/1.0.0/clarification-on-reuse.html>`_, SEMIC Style guide.
+   classDiagram
+     direction LR
+
+     class Savivaldybe {
+       + kodas: integer [1..1]
+       + pavadinimas: text [1..1]
+     }
+
+     class Gyvenviete {
+       + id: integer [1..1]
+       + pavadinimas: text [1..1]
+     }
+   
+     Gyvenviete "[0..*]" <-- Savivaldybe : gyvenvietes
+
+Šiuo atveju nurodome :data:`type.backref` tipo atvirkštinę asociaciją, rodyklės
+kryptis ir daugiareikšmiškumas keičiasi, turime vieną savyvaldybę, kuri gali
+turėti daug gyvenviečių.
 
 
-
-Loginis modelis
+Klasifikatorius
 ***************
 
-Loginio modelio sąvoka gali būti interpretuojama skirtingai, skirtinguose
-kontekstuose, čia pateikiama interpretacija, kuri yra naudojama rengiant
-struktūros aprašus.
+Klasifikatoriai arba kontroliuojami žodynai, yra galimų reikšmių sąrašas
+naudojamas tam tikrai savybei.
 
-Loginis modelis naudoja koncepciniame modelyje apibrėžtas sąvokas, pagal jų
-semantinę prasmę ir sudaro duomenų schemą, konkrečiam taikymo atvejui.
+UML diagramoje klasifikatoriai pateikiami naudojant `<<enumeration>>`
+stereotipą ir punktyrinę priklausomybės rodykle:
 
-Koncepciniame modelyje nustatoma kiekvienos sąvokos semantinė prasmė ir
-suteikiamas kiekvienai sąvokai identifikatorius, o loginiame modelyje nurodomos
-tikslios kiekvienos sąvokos naudojimo taisyklės, konkreti duomenų modelio forma,
-duomenų tikrinimo taisyklės.
+.. mermaid::
 
-Dažnai loginiame modelyje apjungiamos savokos iš kelių žodynų.
+   classDiagram
+   
+     class AdministracijosTipas {
+       <<enumeration>> 
+       APSKRITIS
+       SAVIVALDYBĖ
+     }
+   
+     class Administracija {
+       + kodas: integer [1..1]
+       + pavadinimas: text [1..1]
+     }
+   
+     Administracija ..> "[1..1]" AdministracijosTipas : tipas
 
-Loginis modelis nėra siejamas su konkrečiais duomenų serializavimo formatais ir
-duomenys atitinkantys loginį modelį gali būti išreikšti įvairiais formatais.
+`AdministracijosTipas` yra klasifikatorius, turintis kontroliuojamą žodyną,
+kuriame apibrėžtos dvi galimos reikšmės `APSKRITIS` ir `SAVIVALDYBE`.
 
-Struktūros aprašuose loginis modelis nurodomas `model`, `property`, `type` ir
-`ref` stulpeliuose.
-
-
-Taip pat žiūrėkite:
-
-- `What is an Application Profile (AP) specification? <https://semiceu.github.io/style-guide/1.0.0/terminological-clarifications.html#sec:what-is-an-ap-specification>`_, SEMIC Style guide.
-
-
-Fizinis modelis
-***************
-
-Fizinis modelis siejamas su konkrečia loginio modelio schema, nurodant duomenų
-vietą pagal konkretaus formato, kuriuo teikiami duomenys logiką.
-
-Fizinis modelis yra pats žemiausias lygmuo, kalbantis apie fizinę duomenų
-saugojimo logiką.
+Struktūros apraše klasifikatoriai aprašomi naudojant :data:`enum` dimensiją.
 
 
+Žodynas
+*******
 
+Visos klasės ir savybės (:dfn:`sąvokos`) yra skirstomos į žodynus. Dažnai
+viename duomenų modelyje yra naudojamos :term:`sąvokos <sąvoka>` iš skirtingų
+žodynų.
+
+Kad atskirti kuri sąvoka yra iš kokio žodyno, naudojamo žodyno prefiksai.
+
+
+.. mermaid::
+
+   classDiagram
+     direction LR
+
+     class Location["locn:Location"] {
+       + dct:identifier: integer [1..1]
+       + rdfs:label: text [1..1]
+     }
+
+     class Gyvenviete {
+       + id: integer [1..1]
+       + pavadinimas: text [1..1]
+     }
+   
+     Gyvenviete --|> Location
+
+Žodyno prefiksai gali būti naudojami tiek klasės pavadinime, tie savybių ir
+tipų pavadinimuose.
+
+Jei žodyno prefiksas nėra nurodytas, tai reiškia, kad naudojamas esamas
+žodynas, kuris yra apibrėžtas duomenų modelyje.
+
+Žodynai taip pat gali būti nurodomi naudojant UML paketus arba vardų erdves:
+
+.. mermaid::
+
+   classDiagram
+     direction LR
+
+     class Gyvenviete {
+       + id: integer [1..1]
+       + pavadinimas: text [1..1]
+     }
+
+     Gyvenviete --|> Location
+
+     namespace locn {
+         class Location {
+           + dct:identifier: integer [1..1]
+           + rdfs:label: text [1..1]
+         }
+     }
+   
+Sąvokoms, kurios yra vardų erdvės rėmuose, žodyno prefiksai nenurodomi. Žodyno
+prefiksai nurodomi tik tuo atveju, jei sąvoka yra iš kito žodyno.
+
+
+IRI
+***
+
+Visos sąvokos, tokios kaip klasės, savybės, duomenų tipai, taip pat yra
+objektai, turintys savo identifikatorius.
+
+UML diagramose nurodomi būtent sąvokų identifikatoriai sutrumpinta IRI forma.
+
+IRI yra identifikatorius schema sudaryta iš sekančių komponentų:
+
+**scheme** `://` **host** `/` **path** `?` **query** `#` **fragment**
+
+
+Lietuvos viešąjame sektoriuje naudojama sekanti URI schema:
+
+
+`https://data.gov.lt/id/` **vocab** `/` **term** [ `/` **id** ]
+
+vocab
+    Žodyno kodinis pavadinimas.
+
+term
+    Sąvokos kodinis pavadinimas.
+
+id
+    Objekto identifikatorius.
+
+
+Jei mūsų kuriama žodynui būtų suteiktas kodinis pavadinimas `adresai`, tada
+mūsų sąvokoms būtų suteikti tokie IRI identifikatoriai::
+
+    https://data.gov.lt/id/adresai/Gyvenviete
+    https://data.gov.lt/id/adresai/id
+    https://data.gov.lt/id/adresai/pavadinimas
+
+Kadangi pilnas IRI yra gan ilgas, UML diagramose naudojame sutrumpintą IRI
+formą su prefiksu. Šiuo atveju, galime deklaruoti, kad `ar` prefiksas atitinka
+`https://data.gov.lt/id/adresai/` URI, todėl sutrumpinta forma atrodys taip:
+
+.. code-block:: turtle
+
+    @prefix ar: <https://data.gov.lt/id/adresai/>
+
+    ar:Gyvenviete
+    ar:id
+    ar:pavadinimas
+
+
+UML diagramoje naudojame sutrumpintus URI pavadinimus, tačiau kartu su diagrama
+būtina pateikti ir prefiksų sąrašą, kad būtų ašku, ką reiškia kiekvienas
+prefikas:
+
+=========  =================================
+Prefiksas  Vardų erdvės IRI
+=========  =================================
+ar         \https://data.gov.lt/id/adresai/
+locn       \http://www.w3.org/ns/locn#
+dct        \http://purl.org/dc/terms/
+rdfs       \http://www.w3.org/2000/01/rdf-schema#
+=========  =================================
+
+.. mermaid::
+
+   classDiagram
+     direction LR
+
+     class Location["locn:Location"] {
+       + dct:identifier: integer [1..1]
+       + rdfs:label: text [1..1]
+     }
+
+     class Gyvenviete["ar:Gyvenviete"] {
+       + ar:id: integer [1..1]
+       + ar:pavadinimas: text [1..1]
+     }
+   
+     Gyvenviete --|> Location
 
 
 
