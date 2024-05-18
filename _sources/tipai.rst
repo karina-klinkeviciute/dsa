@@ -25,11 +25,11 @@ Duomenų tipai
 
     Loginė reikšmė.
 
-    **Brandos lygis**
+    .. topic:: Brandos lygis
 
-    :ref:`L102`
-        Duomenyse nėra vientisumo, kartais `true` pateikta kaip `1`, kartais
-        akip `taip`, arba `yes`.
+        :ref:`L102`
+            Duomenyse nėra vientisumo, kartais `true` pateikta kaip `1`, kartais
+            akip `taip`, arba `yes`.
 
     :2:
         - Visi duomenys pateikti vienoda, tačiau nestandartine forma.
