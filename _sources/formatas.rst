@@ -1,7 +1,7 @@
 .. default-role:: literal
 
 Lentelės formatas
-=================
+#################
 
 :term:`DSA` yra sudarytas taip, kad būtų patogu dirbti tiek žmonėms, tiek
 programoms. Žmonės su :term:`DSA` lentele gali dirbti naudojantis, bet kuria
@@ -15,52 +15,29 @@ saugoma įstaigos pasirinktos skaičiuoklės programos ar kitų priemonių forma
 Automatizuotoms priemonėms :term:`DSA` turi būti teikiamas CSV formatu laikantis
 :rfc:`4180` taisyklių, failo koduotė turi būti UTF-8.
 
+DSA lentelė gali būti importuojama į `Duomenų katalogą`_, kuriame DSA lentelės
+turinys gali būti tvarkomas naudojantis grafine naudotojo sąsaja.
 
-.. _dsa-lentelės-struktūra:
+Rengiant duomenų struktūros aprašus darbas vyksta su viena lentele. Lentelės
+stuleliai sudaryti iš dimensijų ir metaduomenų.
 
-Lentelės struktūra
-==================
-
-Rengiant duomenų struktūros aprašus darbas vyksta su viena lentele. Lentelė
-sudaryta iš 15 stulpelių. Iš 15 stulpelių, pirmasis stulpelis :data:`id` yra
-eilutės identifikatorius, kuris pildomas automatiškai, toliau seka 5
-:ref:`dimensijų <dimensijos>` stulpeliai ir likę 9 stulpeliai yra metaduomenys
-apie duomenis.
-
-.. image:: /_static/dsa.png
-   :align: center
+.. image:: /_static/struktura.png
 
 Lentelė sudaryta hierarchiniu principu. Kiekvienas metaduomenų stulpelis gali
 turėti skirtingą prasmę, priklausomai nuo dimensijos. Todėl toliau
 dokumentacijoje konkrečios dimensijos stulpelis yra žymimas nurodant tiek
-dimensijos, tiek metaduomenis pavadinimus, pavyzdžiui :data:`model.ref`,
-kuris nurodo :data:`ref` stulpelį, esantį :data:`model` dimensijoje.
-
-
-Ką reiškia kiekvienas stulpelis paaiškinta žemiau.
-
-
-.. data:: id
-
-    **Eilutės identifikatorius**
-
-    Unikalus elemento numeris, gali būti sveikas, monotoniškai didėjantis
-    skaičius arba UUID. Svarbu užtikrinti, kad visi elementai turėtu unikalų id.
-
-    Šis stulpelis pildomas automatinėmis priemonėmis, siekiant identifikuoti
-    konkrečias metaduomenų eilutes, kad būtų galima atpažinti metaduomenis,
-    kurie jau buvo pateikti ir po to atnaujinti.
-
-    Šio stulpelio pildyti nereikia.
-
+dimensijos, tiek metaduomenų pavadinimus, pavyzdžiui :data:`property.type`,
+kuris nurodo :data:`type` metaduomenų stulpelį, esantį :data:`property`
+dimensijoje.
 
 .. _dimensijos-stulpeliai:
 
 Dimensijos
-----------
+**********
 
 Duomenų struktūros aprašo lentelė sudaryta hierarchiniu principu. Kiekvienos
-lentelės eilutės prasmę apibrėžia viena iš penkių :ref:`dimensijų <dimensijos>`.
+lentelės eilutės prasmę apibrėžia :ref:`dimensijos` stulpelis.
+
 Kiekvienoje eilutėje gali būti užpildytas tik vienas dimensijos stulpelis.
 
 Be šių penkių dimensijų, yra kelios :ref:`papildomos dimensijos
@@ -71,8 +48,38 @@ nei vieno dimensijos stulpelio.
 
     **Duomenų rinkinys**
 
-    Kodinis duomenų rinkinio pavadinimas. Atitinka `dcat:Resource`_ prasmę.
-    Žiūrėti :ref:`dataset`.
+    Kodinis duomenų rinkinio pavadinimas. Naudojant duomenų rinkinio kodinį
+    pavadinimą formuojamas API.
+
+    Duomenų rinkinio kodinis pavadinimas užrašomas pagal tokį šabloną:
+
+    `datasets/` **forma** `/` **organizacija** `/` **katalogas** `/` **rinkinys**
+
+    Visi duomenų rinkinio pavadinimo komponenta užrašomi mažosiomis raidėmis,
+    jei reikia žodžiai atskiriami `_` simbolio pagalba.
+
+    forma
+        Nurodo organizacijos teisinę formą, galimi variantai:
+        
+        | **gov** - Viešasis sektorius.
+        | **com** - Privatusis sektorius.
+
+    organizacija
+        Organizacijos pavadinimo trumpinys. Viena organizacija gali turėti
+        vieną trumpinį, kuris yra registruojamas :term:`tuomenų kataloge
+        <duomenų katalogas>`.
+
+    katalogas
+        Organizacijos informacinė sistemos trumpinys.
+
+    rinkinys
+        Informacinės sistemos teikiamas duomenų rinkinys.
+
+    **Pavyzdys**::
+
+        datasets/gov/rc/jar/ws
+
+    Atitinka `dcat:Resource`_ prasmę. Žiūrėti :ref:`dataset`.
 
     .. _dcat:Resource: https://www.w3.org/TR/vocab-dcat-2/#Class:Resource
 
@@ -91,6 +98,11 @@ nei vieno dimensijos stulpelio.
 .. data:: base
 
     **Modelio bazė**
+
+    .. deprecated:: 0.2
+
+       Atskira modelio bazė naikinama. Nuo 0.2 versijos, modelio bazė nurodoma
+       :data:`model.type` stulpelyje.
 
     Kodinis bazinio modelio pavadinimas. Atitinka `rdfs:subClassOf`_ prasmę
     (:data:`model` `rdfs:subClassOf` :data:`base`). Žiūrėti :ref:`base`.
@@ -121,13 +133,26 @@ nei vieno dimensijos stulpelio.
 .. _metaduomenų-stulpeliai:
 
 Metaduomenys
-------------
+************
 
 Kaip ir minėta aukščiau, kiekvienos metaduomenų eilutės prasmė priklauso nuo
 :ref:`dimensijos`. Todėl, toliau dokumentacijoje, kalbant apie tam tikros
 dimensijos stulpelį, stulpelis bus įvardinamas pridedant dimensijos
 pavadinimą, pavyzdžiui :data:`model.ref`, kas reikštų, kad kalbama apie
 :data:`ref` stulpelį, :data:`model` dimensijoje.
+
+.. data:: id
+
+    **Eilutės identifikatorius**
+
+    Unikalus elemento numeris, gali būti sveikas, monotoniškai didėjantis
+    skaičius arba UUID. Svarbu užtikrinti, kad visi elementai turėtu unikalų id.
+
+    Šis stulpelis pildomas automatinėmis priemonėmis, siekiant identifikuoti
+    konkrečias metaduomenų eilutes, kad būtų galima atpažinti metaduomenis,
+    kurie jau buvo pateikti ir po to atnaujinti.
+
+    Šio stulpelio pildyti nereikia.
 
 .. data:: type
 
@@ -210,7 +235,7 @@ lenteles būtų lengviau skaityti.
 .. _vardų-erdvės:
 
 Vardų erdvės
-============
+************
 
 :data:`dataset` ir :data:`model` esantys pavadinimai turi būti globaliai
 (Lietuvos mastu) unikalūs. Kad užtikrinti pavadinimų unikalumą :data:`dataset`
@@ -340,3 +365,6 @@ Visais atvejais, kai modelio pavadinimas naudojamas nenurodant jokio vardų
 erdvės konteksto, `/` simbolio pavadinimo pradžioje naudoti nereikia.
 Pavyzdžiui šiame tekste įvardinti `dcat/dataset` ir
 `datasets/gov/ivpk/adk/dataset` modelių pavadinimai neprasideda `/` simboliu.
+
+
+.. _Duomenų katalogą: https://data.gov.lt/

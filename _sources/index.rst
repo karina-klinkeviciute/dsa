@@ -4,23 +4,54 @@ Duomenų struktūros aprašas
 ##########################
 
 Čia rasite pilna duomenų struktūros aprašo (:term:`DSA`) lentelės specifikaciją.
-..
-:term:`Duomenų struktūros aprašas <DSA>` yra lentelė, kurią galima redaguoti
-skaičiuoklės pagalba. Lentelėje pateikiama informacija apie vieno ar kelių
-duomenų šaltinių struktūrą.
 
-:term:`Duomenų struktūros aprašas <DSA>` skirtas tam, kad būtų galima
-automatizuoti duomenų atvėrimo veiklas. Įstaigoms, atveriančioms duomenis,
-daugeliu atveju turėtu užtekti paruošti tik :term:`DSA` lentelę. Turint parengtą
-:term:`DSA` lentelę, visos kitos veiklos yra pilnai automatizuojamos.
+:dfn:`Duomenų struktūros aprašas` yra lentelė skirta fizinio, loginio ir
+semantinio duomenų modelių susiejimui, prieigos lygio nustatymui ir duomenų
+brandos lygio vertinimui.
 
-Vieninga aprašų struktūros parengimo metodika sudaro galimybę automatizuoti
-duomenų atvėrimo ir publikavimo procesus bei užtikrinti atveriamų duomenų
-kokybę, vientisumą ir viso proceso stebėseną.
+.. image:: _static/dsa_overview.png
 
-:term:`Duomenų struktūros aprašas <DSA>` gali būti rengiamas jau atvertiems
-duomenims (:term:`ADSA`) ir dar neatvertiems duomenims (:term:`ŠDSA`).
+:dfn:`Koncepcinis modelis` yra UML klasių diagrama, sudaryta laikantis
+`Conceptual model conventions (UML)`_ reikalavimų. Koncepcinis modelis laikomas
+kaip vienintelis tiesios šaltinis ir yra sudaromas remiantis teisės aktais,
+informacinės sistemos nuostatais, semantiniais žodinais ir duomenų modeliu iš
+duomenų šaltinio.
 
+:dfn:`Fizinis modelis` šio dokumento kontekste yra duomenų schema apibūdinanti
+kur ir kaip duomenys yra saugomi ir kaip juos pasiekti. Schema apibrėžiantį
+duomenų modelį priklauso nuo duomenų saugojimo formato. Jei duomenys saugomi
+SQL duomenų bazėse, tada DSA lentelėje nurodomi lentelių ir stulpelių
+pavadinimai, XML atveju nurodomos XPath išraiško, JSON atveju nurodomos
+JSONPath išraiškos. DSA lentelėje fizinis modelis nurodomas :ref:`source`
+stulpelyje.
+
+:dfn:`Loginis modelis` yra duomenų schema, kuri naudojama duomenų apsikeitimui
+UDTS_ protokolu, loginis modelis rengiamas pagal koncepcinį modelį ir yra
+artimas semantiniam modeliui, tačiau skirtas duomenų publikavimui per API.
+Loginis modelis siejamas su fiziniu ir semantiniu modeliais.
+
+:dfn:`Semantinis modelis` yra nepriklausomas nuo to, kaip duomenys saugomi ar
+perduodami fiziškai, siejamas su tarptautiniais standartais ir plačiai
+naudojamais sąvokų žodynais.
+
+
+
+Specifikacijos
+**************
+
+- `Universali duomenų teikimo sąsaja`_ (UDTS)
+- `Duomenų katalogo Lietuvos taikymo profilis`_ (DCAT-AP-LT)
+
+
+
+.. _UDTS: https://ivpk.github.io/uapi
+.. _Universali duomenų teikimo sąsaja: https://ivpk.github.io/uapi
+.. _Duomenų katalogo Lietuvos taikymo profilis: https://ivpk.github.io/DCAT-AP-LT
+.. _Conceptual model conventions (UML): https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html
+
+
+Turinys
+*******
 
 .. toctree::
     :maxdepth: 2

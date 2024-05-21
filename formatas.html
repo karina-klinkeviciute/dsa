@@ -151,9 +151,6 @@
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="modelis.html">Koncepcinis modelis</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Lentelės formatas</a></li>
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="dimensijos.html">Dimensijos</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="tipai.html">Duomenų tipai</a></li>
@@ -314,9 +311,6 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lentelės formatas</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lenteles-struktura">Lentelės struktūra</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id"><code class="docutils literal notranslate"><span class="pre">id</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dimensijos">Dimensijos</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset"><code class="docutils literal notranslate"><span class="pre">dataset</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resource"><code class="docutils literal notranslate"><span class="pre">resource</span></code></a></li>
@@ -326,6 +320,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metaduomenys">Metaduomenys</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id"><code class="docutils literal notranslate"><span class="pre">id</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#type"><code class="docutils literal notranslate"><span class="pre">type</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ref"><code class="docutils literal notranslate"><span class="pre">ref</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#source"><code class="docutils literal notranslate"><span class="pre">source</span></code></a></li>
@@ -337,12 +332,11 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#description"><code class="docutils literal notranslate"><span class="pre">description</span></code></a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vardu-erdves">Vardų erdvės</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reliatyvus-pavadinimai">Reliatyvūs pavadinimai</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#vardu-erdves">Vardų erdvės</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reliatyvus-pavadinimai">Reliatyvūs pavadinimai</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -364,46 +358,54 @@ nuskaityti ir interpretuoti kompiuterinės programos.</p>
 saugoma įstaigos pasirinktos skaičiuoklės programos ar kitų priemonių formatu.</p>
 <p>Automatizuotoms priemonėms <a class="reference internal" href="savokos.html#term-DSA"><span class="xref std std-term">DSA</span></a> turi būti teikiamas CSV formatu laikantis
 <span class="target" id="index-0"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc4180.html"><strong>RFC 4180</strong></a> taisyklių, failo koduotė turi būti UTF-8.</p>
-</section>
-<section id="lenteles-struktura">
-<span id="dsa-lenteles-struktura"></span><h1>Lentelės struktūra<a class="headerlink" href="#lenteles-struktura" title="Link to this heading">#</a></h1>
-<p>Rengiant duomenų struktūros aprašus darbas vyksta su viena lentele. Lentelė
-sudaryta iš 15 stulpelių. Iš 15 stulpelių, pirmasis stulpelis <a class="reference internal" href="#id" title="id"><code class="xref py py-data docutils literal notranslate"><span class="pre">id</span></code></a> yra
-eilutės identifikatorius, kuris pildomas automatiškai, toliau seka 5
-<a class="reference internal" href="dimensijos.html#dimensijos"><span class="std std-ref">dimensijų</span></a> stulpeliai ir likę 9 stulpeliai yra metaduomenys
-apie duomenis.</p>
-<img alt="_static/dsa.png" class="align-center" src="_static/dsa.png" />
+<p>DSA lentelė gali būti importuojama į <a class="reference external" href="https://data.gov.lt/">Duomenų katalogą</a>, kuriame DSA lentelės
+turinys gali būti tvarkomas naudojantis grafine naudotojo sąsaja.</p>
+<p>Rengiant duomenų struktūros aprašus darbas vyksta su viena lentele. Lentelės
+stuleliai sudaryti iš dimensijų ir metaduomenų.</p>
+<img alt="_static/struktura.png" src="_static/struktura.png" />
 <p>Lentelė sudaryta hierarchiniu principu. Kiekvienas metaduomenų stulpelis gali
 turėti skirtingą prasmę, priklausomai nuo dimensijos. Todėl toliau
 dokumentacijoje konkrečios dimensijos stulpelis yra žymimas nurodant tiek
-dimensijos, tiek metaduomenis pavadinimus, pavyzdžiui <a class="reference internal" href="dimensijos.html#model.ref" title="model.ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">model.ref</span></code></a>,
-kuris nurodo <a class="reference internal" href="#ref" title="ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">ref</span></code></a> stulpelį, esantį <a class="reference internal" href="#model" title="model"><code class="xref py py-data docutils literal notranslate"><span class="pre">model</span></code></a> dimensijoje.</p>
-<p>Ką reiškia kiekvienas stulpelis paaiškinta žemiau.</p>
-<dl class="py data">
-<dt class="sig sig-object py" id="id">
-<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#id" title="Link to this definition">#</a></dt>
-<dd><p><strong>Eilutės identifikatorius</strong></p>
-<p>Unikalus elemento numeris, gali būti sveikas, monotoniškai didėjantis
-skaičius arba UUID. Svarbu užtikrinti, kad visi elementai turėtu unikalų id.</p>
-<p>Šis stulpelis pildomas automatinėmis priemonėmis, siekiant identifikuoti
-konkrečias metaduomenų eilutes, kad būtų galima atpažinti metaduomenis,
-kurie jau buvo pateikti ir po to atnaujinti.</p>
-<p>Šio stulpelio pildyti nereikia.</p>
-</dd></dl>
-
+dimensijos, tiek metaduomenų pavadinimus, pavyzdžiui <a class="reference internal" href="dimensijos.html#property.type" title="property.type"><code class="xref py py-data docutils literal notranslate"><span class="pre">property.type</span></code></a>,
+kuris nurodo <a class="reference internal" href="tipai.html#module-type" title="type"><code class="xref py py-data docutils literal notranslate"><span class="pre">type</span></code></a> metaduomenų stulpelį, esantį <a class="reference internal" href="#property" title="property"><code class="xref py py-data docutils literal notranslate"><span class="pre">property</span></code></a>
+dimensijoje.</p>
 <section id="dimensijos">
 <span id="dimensijos-stulpeliai"></span><h2>Dimensijos<a class="headerlink" href="#dimensijos" title="Link to this heading">#</a></h2>
 <p>Duomenų struktūros aprašo lentelė sudaryta hierarchiniu principu. Kiekvienos
-lentelės eilutės prasmę apibrėžia viena iš penkių <a class="reference internal" href="dimensijos.html#dimensijos"><span class="std std-ref">dimensijų</span></a>.
-Kiekvienoje eilutėje gali būti užpildytas tik vienas dimensijos stulpelis.</p>
+lentelės eilutės prasmę apibrėžia <a class="reference internal" href="dimensijos.html#dimensijos"><span class="std std-ref">Dimensijos</span></a> stulpelis.</p>
+<p>Kiekvienoje eilutėje gali būti užpildytas tik vienas dimensijos stulpelis.</p>
 <p>Be šių penkių dimensijų, yra kelios <a class="reference internal" href="dimensijos.html#papildomos-dimensijos"><span class="std std-ref">papildomos dimensijos</span></a>, jos nurodomos <a class="reference internal" href="tipai.html#module-type" title="type"><code class="xref py py-data docutils literal notranslate"><span class="pre">type</span></code></a> stulpelyje, neužpildžius
 nei vieno dimensijos stulpelio.</p>
 <dl class="py data">
 <dt class="sig sig-object py" id="dataset">
 <span class="sig-name descname"><span class="pre">dataset</span></span><a class="headerlink" href="#dataset" title="Link to this definition">#</a></dt>
 <dd><p><strong>Duomenų rinkinys</strong></p>
-<p>Kodinis duomenų rinkinio pavadinimas. Atitinka <a class="reference external" href="https://www.w3.org/TR/vocab-dcat-2/#Class:Resource">dcat:Resource</a> prasmę.
-Žiūrėti <a class="reference internal" href="dimensijos.html#dataset"><span class="std std-ref">dataset</span></a>.</p>
+<p>Kodinis duomenų rinkinio pavadinimas. Naudojant duomenų rinkinio kodinį
+pavadinimą formuojamas API.</p>
+<p>Duomenų rinkinio kodinis pavadinimas užrašomas pagal tokį šabloną:</p>
+<p><code class="docutils literal notranslate"><span class="pre">datasets/</span></code> <strong>forma</strong> <code class="docutils literal notranslate"><span class="pre">/</span></code> <strong>organizacija</strong> <code class="docutils literal notranslate"><span class="pre">/</span></code> <strong>katalogas</strong> <code class="docutils literal notranslate"><span class="pre">/</span></code> <strong>rinkinys</strong></p>
+<p>Visi duomenų rinkinio pavadinimo komponenta užrašomi mažosiomis raidėmis,
+jei reikia žodžiai atskiriami <code class="docutils literal notranslate"><span class="pre">_</span></code> simbolio pagalba.</p>
+<dl>
+<dt>forma</dt><dd><p>Nurodo organizacijos teisinę formą, galimi variantai:</p>
+<div class="line-block">
+<div class="line"><strong>gov</strong> - Viešasis sektorius.</div>
+<div class="line"><strong>com</strong> - Privatusis sektorius.</div>
+</div>
+</dd>
+<dt>organizacija</dt><dd><p>Organizacijos pavadinimo trumpinys. Viena organizacija gali turėti
+vieną trumpinį, kuris yra registruojamas <a class="reference internal" href="savokos.html#term-duomenu-katalogas"><span class="xref std std-term">tuomenų kataloge</span></a>.</p>
+</dd>
+<dt>katalogas</dt><dd><p>Organizacijos informacinė sistemos trumpinys.</p>
+</dd>
+<dt>rinkinys</dt><dd><p>Informacinės sistemos teikiamas duomenų rinkinys.</p>
+</dd>
+</dl>
+<p><strong>Pavyzdys</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">datasets</span><span class="o">/</span><span class="n">gov</span><span class="o">/</span><span class="n">rc</span><span class="o">/</span><span class="n">jar</span><span class="o">/</span><span class="n">ws</span>
+</pre></div>
+</div>
+<p>Atitinka <a class="reference external" href="https://www.w3.org/TR/vocab-dcat-2/#Class:Resource">dcat:Resource</a> prasmę. Žiūrėti <a class="reference internal" href="dimensijos.html#dataset"><span class="std std-ref">dataset</span></a>.</p>
 </dd></dl>
 
 <dl class="py data">
@@ -419,6 +421,10 @@ gali sutapti su <a class="reference external" href="https://www.w3.org/TR/vocab-
 <dt class="sig sig-object py" id="base">
 <span class="sig-name descname"><span class="pre">base</span></span><a class="headerlink" href="#base" title="Link to this definition">#</a></dt>
 <dd><p><strong>Modelio bazė</strong></p>
+<div class="deprecated">
+<p><span class="versionmodified deprecated">Nebepalaikoma nuo 0.2 versijos: </span>Atskira modelio bazė naikinama. Nuo 0.2 versijos, modelio bazė nurodoma
+<a class="reference internal" href="dimensijos.html#model.type" title="model.type"><code class="xref py py-data docutils literal notranslate"><span class="pre">model.type</span></code></a> stulpelyje.</p>
+</div>
 <p>Kodinis bazinio modelio pavadinimas. Atitinka <a class="reference external" href="https://www.w3.org/TR/rdf-schema/#ch_subclassof">rdfs:subClassOf</a> prasmę
 (<a class="reference internal" href="#model" title="model"><code class="xref py py-data docutils literal notranslate"><span class="pre">model</span></code></a> <code class="docutils literal notranslate"><span class="pre">rdfs:subClassOf</span></code> <a class="reference internal" href="#base" title="base"><code class="xref py py-data docutils literal notranslate"><span class="pre">base</span></code></a>). Žiūrėti <a class="reference internal" href="dimensijos.html#base"><span class="std std-ref">base</span></a>.</p>
 </dd></dl>
@@ -447,6 +453,18 @@ siejamas su <a class="reference external" href="https://www.w3.org/TR/rdf-schema
 dimensijos stulpelį, stulpelis bus įvardinamas pridedant dimensijos
 pavadinimą, pavyzdžiui <a class="reference internal" href="dimensijos.html#model.ref" title="model.ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">model.ref</span></code></a>, kas reikštų, kad kalbama apie
 <a class="reference internal" href="#ref" title="ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">ref</span></code></a> stulpelį, <a class="reference internal" href="#model" title="model"><code class="xref py py-data docutils literal notranslate"><span class="pre">model</span></code></a> dimensijoje.</p>
+<dl class="py data">
+<dt class="sig sig-object py" id="id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#id" title="Link to this definition">#</a></dt>
+<dd><p><strong>Eilutės identifikatorius</strong></p>
+<p>Unikalus elemento numeris, gali būti sveikas, monotoniškai didėjantis
+skaičius arba UUID. Svarbu užtikrinti, kad visi elementai turėtu unikalų id.</p>
+<p>Šis stulpelis pildomas automatinėmis priemonėmis, siekiant identifikuoti
+konkrečias metaduomenų eilutes, kad būtų galima atpažinti metaduomenis,
+kurie jau buvo pateikti ir po to atnaujinti.</p>
+<p>Šio stulpelio pildyti nereikia.</p>
+</dd></dl>
+
 <dl class="py data">
 <dt class="sig sig-object py" id="type">
 <span class="sig-name descname"><span class="pre">type</span></span><a class="headerlink" href="#type" title="Link to this definition">#</a></dt>
@@ -526,9 +544,8 @@ bus išdėstyti būtent tokia tvarka. Nors įrankių atžvilgiu stulpelių tvark
 svarbi, tačiau rekomenduotina išlaikyti vienodą stulpelių tvarką, tam kad
 lenteles būtų lengviau skaityti.</p>
 </section>
-</section>
 <section id="vardu-erdves">
-<span id="id1"></span><h1>Vardų erdvės<a class="headerlink" href="#vardu-erdves" title="Link to this heading">#</a></h1>
+<span id="id1"></span><h2>Vardų erdvės<a class="headerlink" href="#vardu-erdves" title="Link to this heading">#</a></h2>
 <p><a class="reference internal" href="#dataset" title="dataset"><code class="xref py py-data docutils literal notranslate"><span class="pre">dataset</span></code></a> ir <a class="reference internal" href="#model" title="model"><code class="xref py py-data docutils literal notranslate"><span class="pre">model</span></code></a> esantys pavadinimai turi būti globaliai
 (Lietuvos mastu) unikalūs. Kad užtikrinti pavadinimų unikalumą <a class="reference internal" href="#dataset" title="dataset"><code class="xref py py-data docutils literal notranslate"><span class="pre">dataset</span></code></a>
 ir <a class="reference internal" href="#model" title="model"><code class="xref py py-data docutils literal notranslate"><span class="pre">model</span></code></a> pavadinimai formuojami pasitelkiant vardų erdves.</p>
@@ -600,9 +617,8 @@ turėtų būti perkeliami tie duomenys, kurie yra plačiai naudojami. Perkėlima
 globalią duomenų erdvę nepanaikina duomenų rinkinio iš ankstesnės vardų erdvės,
 tiesiog duomenų rinkinio duomenų pagrindu kuriama kopija į globalią duomenų
 erdvę.</p>
-</section>
 <section id="reliatyvus-pavadinimai">
-<span id="relative-model-names"></span><h1>Reliatyvūs pavadinimai<a class="headerlink" href="#reliatyvus-pavadinimai" title="Link to this heading">#</a></h1>
+<span id="relative-model-names"></span><h3>Reliatyvūs pavadinimai<a class="headerlink" href="#reliatyvus-pavadinimai" title="Link to this heading">#</a></h3>
 <p>Modelio pavadinimas gali būti absoliutus arba reliatyvus. Absoliutūs
 pavadinimai prasideda <code class="docutils literal notranslate"><span class="pre">/</span></code> simboliu, reliatyvus pavadinimai prasideda be <code class="docutils literal notranslate"><span class="pre">/</span></code>
 simbolio ir yra jungiami su vardų erdvės pavadinimu, kurios kontekste yra
@@ -692,6 +708,8 @@ erdvės konteksto, <code class="docutils literal notranslate"><span class="pre">
 Pavyzdžiui šiame tekste įvardinti <code class="docutils literal notranslate"><span class="pre">dcat/dataset</span></code> ir
 <code class="docutils literal notranslate"><span class="pre">datasets/gov/ivpk/adk/dataset</span></code> modelių pavadinimai neprasideda <code class="docutils literal notranslate"><span class="pre">/</span></code> simboliu.</p>
 </section>
+</section>
+</section>
 
 
                 </article>
@@ -738,9 +756,6 @@ Pavyzdžiui šiame tekste įvardinti <code class="docutils literal notranslate">
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Lentelės formatas</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#lenteles-struktura">Lentelės struktūra</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id"><code class="docutils literal notranslate"><span class="pre">id</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dimensijos">Dimensijos</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset"><code class="docutils literal notranslate"><span class="pre">dataset</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resource"><code class="docutils literal notranslate"><span class="pre">resource</span></code></a></li>
@@ -750,6 +765,7 @@ Pavyzdžiui šiame tekste įvardinti <code class="docutils literal notranslate">
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#metaduomenys">Metaduomenys</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id"><code class="docutils literal notranslate"><span class="pre">id</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#type"><code class="docutils literal notranslate"><span class="pre">type</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#ref"><code class="docutils literal notranslate"><span class="pre">ref</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#source"><code class="docutils literal notranslate"><span class="pre">source</span></code></a></li>
@@ -761,12 +777,11 @@ Pavyzdžiui šiame tekste įvardinti <code class="docutils literal notranslate">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#description"><code class="docutils literal notranslate"><span class="pre">description</span></code></a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vardu-erdves">Vardų erdvės</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reliatyvus-pavadinimai">Reliatyvūs pavadinimai</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#vardu-erdves">Vardų erdvės</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#reliatyvus-pavadinimai">Reliatyvūs pavadinimai</a></li>
 </ul>
-
   </nav></div>
 
 </div></div>

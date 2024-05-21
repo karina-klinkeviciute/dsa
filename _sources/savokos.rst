@@ -136,6 +136,13 @@ Sąvokos
 
         .. _data.gov.lt: https://data.gov.lt/
 
+    duomenų katalogas
+        Lietuvos duomenų portalo sudedamoji dalis, skirta metaduomenims apie
+        duomenų šaltinius registruoti.
+
+        Duomenų patalogas prieinamas adresu `data.gov.lt`_.
+
+
     ADS
         :ref:`Atvirų duomenų saugykla <saugykla>`, skirta pakartotinio
         panaudojimo duomenų publikavimui, valstybinė atvirų duomenų saugykla

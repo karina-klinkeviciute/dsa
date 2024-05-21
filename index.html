@@ -152,9 +152,6 @@
         <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="modelis.html">Koncepcinis modelis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="formatas.html">Lentelės formatas</a></li>
-
-
-
 <li class="toctree-l1"><a class="reference internal" href="dimensijos.html">Dimensijos</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="tipai.html">Duomenų tipai</a></li>
@@ -292,7 +289,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -308,6 +307,15 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Turinys </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specifikacijos">Specifikacijos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turinys">Turinys</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -319,20 +327,39 @@ document.write(`
                   
   <section id="duomenu-strukturos-aprasas">
 <h1>Duomenų struktūros aprašas<a class="headerlink" href="#duomenu-strukturos-aprasas" title="Link to this heading">#</a></h1>
-<p>Čia rasite pilna duomenų struktūros aprašo (<a class="reference internal" href="savokos.html#term-DSA"><span class="xref std std-term">DSA</span></a>) lentelės specifikaciją.
-..
-<a class="reference internal" href="savokos.html#term-DSA"><span class="xref std std-term">Duomenų struktūros aprašas</span></a> yra lentelė, kurią galima redaguoti
-skaičiuoklės pagalba. Lentelėje pateikiama informacija apie vieno ar kelių
-duomenų šaltinių struktūrą.</p>
-<p><a class="reference internal" href="savokos.html#term-DSA"><span class="xref std std-term">Duomenų struktūros aprašas</span></a> skirtas tam, kad būtų galima
-automatizuoti duomenų atvėrimo veiklas. Įstaigoms, atveriančioms duomenis,
-daugeliu atveju turėtu užtekti paruošti tik <a class="reference internal" href="savokos.html#term-DSA"><span class="xref std std-term">DSA</span></a> lentelę. Turint parengtą
-<a class="reference internal" href="savokos.html#term-DSA"><span class="xref std std-term">DSA</span></a> lentelę, visos kitos veiklos yra pilnai automatizuojamos.</p>
-<p>Vieninga aprašų struktūros parengimo metodika sudaro galimybę automatizuoti
-duomenų atvėrimo ir publikavimo procesus bei užtikrinti atveriamų duomenų
-kokybę, vientisumą ir viso proceso stebėseną.</p>
-<p><a class="reference internal" href="savokos.html#term-DSA"><span class="xref std std-term">Duomenų struktūros aprašas</span></a> gali būti rengiamas jau atvertiems
-duomenims (<a class="reference internal" href="savokos.html#term-ADSA"><span class="xref std std-term">ADSA</span></a>) ir dar neatvertiems duomenims (<a class="reference internal" href="savokos.html#term-SDSA"><span class="xref std std-term">ŠDSA</span></a>).</p>
+<p>Čia rasite pilna duomenų struktūros aprašo (<a class="reference internal" href="savokos.html#term-DSA"><span class="xref std std-term">DSA</span></a>) lentelės specifikaciją.</p>
+<p><em class="dfn">Duomenų struktūros aprašas</em> yra lentelė skirta fizinio, loginio ir
+semantinio duomenų modelių susiejimui, prieigos lygio nustatymui ir duomenų
+brandos lygio vertinimui.</p>
+<img alt="_static/dsa_overview.png" src="_static/dsa_overview.png" />
+<p><em class="dfn">Koncepcinis modelis</em> yra UML klasių diagrama, sudaryta laikantis
+<a class="reference external" href="https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html">Conceptual model conventions (UML)</a> reikalavimų. Koncepcinis modelis laikomas
+kaip vienintelis tiesios šaltinis ir yra sudaromas remiantis teisės aktais,
+informacinės sistemos nuostatais, semantiniais žodinais ir duomenų modeliu iš
+duomenų šaltinio.</p>
+<p><em class="dfn">Fizinis modelis</em> šio dokumento kontekste yra duomenų schema apibūdinanti
+kur ir kaip duomenys yra saugomi ir kaip juos pasiekti. Schema apibrėžiantį
+duomenų modelį priklauso nuo duomenų saugojimo formato. Jei duomenys saugomi
+SQL duomenų bazėse, tada DSA lentelėje nurodomi lentelių ir stulpelių
+pavadinimai, XML atveju nurodomos XPath išraiško, JSON atveju nurodomos
+JSONPath išraiškos. DSA lentelėje fizinis modelis nurodomas <span class="xref std std-ref">source</span>
+stulpelyje.</p>
+<p><em class="dfn">Loginis modelis</em> yra duomenų schema, kuri naudojama duomenų apsikeitimui
+<a class="reference external" href="https://ivpk.github.io/uapi">UDTS</a> protokolu, loginis modelis rengiamas pagal koncepcinį modelį ir yra
+artimas semantiniam modeliui, tačiau skirtas duomenų publikavimui per API.
+Loginis modelis siejamas su fiziniu ir semantiniu modeliais.</p>
+<p><em class="dfn">Semantinis modelis</em> yra nepriklausomas nuo to, kaip duomenys saugomi ar
+perduodami fiziškai, siejamas su tarptautiniais standartais ir plačiai
+naudojamais sąvokų žodynais.</p>
+<section id="specifikacijos">
+<h2>Specifikacijos<a class="headerlink" href="#specifikacijos" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://ivpk.github.io/uapi">Universali duomenų teikimo sąsaja</a> (UDTS)</p></li>
+<li><p><a class="reference external" href="https://ivpk.github.io/DCAT-AP-LT">Duomenų katalogo Lietuvos taikymo profilis</a> (DCAT-AP-LT)</p></li>
+</ul>
+</section>
+<section id="turinys">
+<h2>Turinys<a class="headerlink" href="#turinys" title="Link to this heading">#</a></h2>
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="modelis.html">Koncepcinis modelis</a><ul>
@@ -348,15 +375,12 @@ duomenims (<a class="reference internal" href="savokos.html#term-ADSA"><span cla
 <li class="toctree-l2"><a class="reference internal" href="modelis.html#iri">IRI</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="formatas.html">Lentelės formatas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="formatas.html#lenteles-struktura">Lentelės struktūra</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="formatas.html#id"><code class="docutils literal notranslate"><span class="pre">id</span></code></a></li>
+<li class="toctree-l1"><a class="reference internal" href="formatas.html">Lentelės formatas</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="formatas.html#dimensijos">Dimensijos</a></li>
 <li class="toctree-l2"><a class="reference internal" href="formatas.html#metaduomenys">Metaduomenys</a></li>
+<li class="toctree-l2"><a class="reference internal" href="formatas.html#vardu-erdves">Vardų erdvės</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="formatas.html#vardu-erdves">Vardų erdvės</a></li>
-<li class="toctree-l1"><a class="reference internal" href="formatas.html#reliatyvus-pavadinimai">Reliatyvūs pavadinimai</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dimensijos.html">Dimensijos</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="dimensijos.html#dataset">dataset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="dimensijos.html#resource">resource</a></li>
@@ -468,6 +492,7 @@ duomenims (<a class="reference internal" href="savokos.html#term-ADSA"><span cla
 </ul>
 </div>
 </section>
+</section>
 
 
                 </article>
@@ -496,7 +521,21 @@ duomenims (<a class="reference internal" href="savokos.html#term-ADSA"><span cla
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"></div>
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Turinys
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specifikacijos">Specifikacijos</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#turinys">Turinys</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
