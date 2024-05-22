@@ -4,68 +4,46 @@
 Dimensijos
 ==========
 
-:term:`Dimensijos <dimensija>` apibrėžia duomenų metaduomenų detalumo lygį.
-Stulpeliai :data:`dataset`, :data:`resource`, :data:`base`, :data:`model` ir
-:data:`property` yra naudojami kaip :term:`DSA` dimensijos. :data:`dataset` yra
-aukščiausia dimensija, :data:`property` žemiausia. :data:`dataset` ir
-:data:`resource` dimensijos atitinka DCAT_ žodyną ir užtikrina trečia duomenų
-brandos lygį, o žemiau esantys :data:`base`, :data:`model` ir :data:`property`
-atitinka RDFS_ žodyną ir užtikrina penktą duomenų brandos lygį. Vienoje lentelės
-eilutėje gali būti užpildytas ne daugiau kaip vienas dimensijos stulpelis.
-Užpildytasis dimensijos stulpelis nustato visų kitų stulpelių prasmę.
+Demensijos leidžia vienoje lentelėje sutalpinti kelias skirtingas lenteles
+turinčias bendrų savybių.
 
-.. _DCAT: https://www.w3.org/TR/vocab-dcat-2/
-.. _RDFS: https://www.w3.org/TR/rdf-schema/
+DSA lentelėje turime tokius dimensijų stulpelius:
 
-+----+-----+-----+-----+-----+----------+------------------------------+
-| id | d   | r   | b   | m   | property | title                        |
-+====+=====+=====+=====+=====+==========+==============================+
-|  1 | datasets/gov/ivpk/adk            | Atvirų duomenų katalogas     |
-+----+-----+-----+-----+-----+----------+------------------------------+
-|  2 |     | adk                        | Atvirų duomenų katalogo      |
-|    |     |                            | duomenų bazė                 |
-+----+-----+-----+-----+-----+----------+------------------------------+
-|  3 |     |     | /dcat/dataset        | Duomenų rinkinys             |
-+----+-----+-----+-----+-----+----------+------------------------------+
-|  4 |     |     |     | dataset        | Duomenų rinkinys             |
-+----+-----+-----+-----+-----+----------+------------------------------+
-|  5 |     |     |     |     | title    | Duomenų rinkinio pavadinimas |
-+----+-----+-----+-----+-----+----------+------------------------------+
+- :ref:`dataset`
+- :ref:`resource`
+- :ref:`model`
+- :ref:`property`
 
-Pavyzdyje aukščiau, taupant vietą, dalies dimensijų pavadinimai sutrumpinti iki
-vienos raidės ir įtraukti ne visi stulpeliai, o tik :data:`id` ir :data:`title`
-metaduomenų stulpeliai. Pavyzdyje matome, kad vienoje eilutėje užpildytas tik
-vienas dimensijos stulpelis, o :data:`title` stulpelio prasmė keičiasi
-priklausomai nuo dimensijos reikšmės. Toliau specifikacijoje konkrečios
-dimensijos stulpeliai įvardijami pateikiant tiek dimensijos, tiek metaduomens
-stulpelio pavadinimus, kad būtų aiškiau apie kurios dimensijos metaduomenį
-kalbama, pavyzdžiui :data:`model.title` leidžia suprasti kad kalbama apie
-„Duomenų rinkinys“ reikšmę 4-oje eilutėje.
+======= ======== ===== ============= ============================== 
+dataset resource model property      title                         
+======= ======== ===== ============= ============================== 
+datasets/gov/rc/ar/ws                Duomenų rinkinys
+------------------------------------ ------------------------------ 
+\       db                           Duomenų teikimo paslauga
+------- ---------------------------- ------------------------------ 
+\                **Gyvenviete**      Esybė
+------- -------- ------------------- ------------------------------ 
+\                      pavadinimas   Savybė
+======= ======== ===== ============= ============================== 
 
-Be minėtų dimensijų stulpelių :term:`DSA` lentelėje gali būti naudojami
-papildomos metaduomenų dimensijos, kai nurodoma :data:`type` reikšmė ir
-nepateikiama nei viena dimensijos stulpelio reikšmė. Pavyzdžiui:
+Pavyzdyje aukščiau turime tris lenteles, turinčias vieną bendrą stulpelį
+`title`.
 
-+----+---+---+---+---+----------+--------+------+-----------------------------+
-| id | d | r | b | m | property | type   | ref  | uri                         |
-+====+===+===+===+===+==========+========+======+=============================+
-|  1 |   |   |   |   |          | prefix | dcat | \http://www.w3.org/ns/dcat# |
-+----+---+---+---+---+----------+--------+------+-----------------------------+
+Daugiamatė lentelė pateikta viršuje, aitiktu toką vienamtę lentelę:
 
-Šiuo atveju :data:`prefix` tampa dar viena dimensija, leidžianti pateikti
-metaduomenis apie naudojamų URI prefiksus. Analogiškai, kaip ir su kitomis
-dimensijomis, dimensijos ir metaduomens pavadinimus galima apjungti, pavyzdžiui
-:data:`prefix.ref` apibūdina tik :data:`prefix` dimensijai priklausančius
-:data:`ref` stulpelius.
+========== ===================== ============================== 
+type       name                  title  
+========== ===================== ============================== 
+dataset    datasets/gov/rc/ar/ws Duomenų rinkinys
+resource   db                    Duomenų teikimo paslauga
+model      **Gyvenviete**        Esybė
+property   pavadinimas           Savybė
+========== ===================== ============================== 
 
-Dimensijos leidžia suskirstyti metaduomenis į hierarchinę struktūrą. Todėl
-:term:`DSA` lentelės eilučių eiliškumas yra svarbus, kadangi žemiau esančios
-eilutės priklauso aukščiau esančiai dimensijai. Tas pats galioja ir pagalbinėms
-:term:`dimensijoms <dimensija>`.
+Kadangi DSA lentelė yra daugiamatę, nurodant stuleplį, jei kalbama apie
+konkrečios dimensijos stulpelį, reikia nurodyti ir dimensiją, pavyzdžiui
+`dataset.title` nurodo būtent apie `dataset` diemensijos `title` stulpelį.
 
-Nors lentelėje sudaro tik 15 stulpelių, tačiau pasitelkiant 5 pagrindinius
-dimensijas ir keletą papildomų dimensijų, atsiranda galimybė išsamiai aprašyti
-visą duomenų šaltinio struktūrą.
 
 
 .. _dataset:
@@ -75,71 +53,79 @@ dataset
 
 .. module:: dataset
 
-:term:`DSA` lentelėje :term:`duomenų rinkinys` nurodomas tam, kad būtų
-išlaikomas ryšys tarp :term:`DSA` ir :term:`ADK`. Atliekant duomenų
-inventorizaciją, automatiškai generuota :term:`DSA` lentelė turi būti
-suskirstoma į :term:`duomenų rinkinius <duomenų rinkinys>`. Tada priemonių
-pagalba automatiškai sukuriami pirminiai :term:`ADK` metaduomenys apie
-:term:`duomenų rinkinius <duomenų rinkinys>`, kuriuos vėliau reikia papildyti
-rankiniu būdu prisijungus prie ADK. Automatizuota priemonė sukūrus duomenų
-rinkinių įrašus :term:`ADK`, papildys :term:`DSA` lentelę, į :data:`dataset.ref`
-įrašant :term:`ADK` sukurto duomenų rinkinio identifikatorių. Tokiu būdu,
-sekantį kartą vykdant sinchronizaciją, jei :data:`dataset.ref` yra užpildytas,
-bus atnaujinami jau sukurti :term:`ADK` :term:`duomenų rinkinių <duomenų
-rinkinys>` įrašai.
+Duomenų rinkinys struktūros apraše nurodomas tam, kad būtų galimybė susieti
+duomenų struktūros elementus su duomenų rinkiniais registruotais duomenų
+kataloge. Toks susiejimas atliekamas naudojant duomenų rinkinio kodinį
+pavadinimą.
 
-Į :term:`ADK` turi būti publikuojami tik tie duomenų rinkiniai iš DSA, kurių
-:data:`dataset.access` reikšmė yra `public` arba `open`.
+.. note::
 
-.. data:: source
+    Nurodytas duomenų rinkinio ar vardų erdvės kodinis pavadinimas turi būti
+    unikalus tarp visų duomenų struktūros aprašų.
 
-    Jei nenurodyta, naudoti \https://data.gov.lt/ adresą.
+.. seealso::
 
-    Nenaudojama, jei `dataset.type` yra `ns`.
+    | :ref:`ns`
+    | :ref:`kodiniai-pavadinimai`
 
-.. data:: dataset.prepare
+.. data:: id
 
-    Nenaudojama.
+    Duomenų rinkinio arba duomenų erdvės identifikatorius.
 
 .. data:: type
 
-    Jei nenurodyta, naudoti `ivpk` reikšmę. type nurodo :term:`API`
-    formatą, kuriuo automatiškai pildomi duomenų rinkinių metaduomenys atvirų
-    duomenų portale.
+    Jei nenurodyta, pagal nutylėjimą naudojama `dataset` reikšmė, kuri nurodo
+    duomenų rinkinio kodinį pavadinimą nurodyta :term:`duomenų kataloge
+    <duomenų katalogas>`.
 
     Galimos reikšmės:
 
-    .. describe:: ns
+    ns
+        Vardų erdvė.
 
-        Atitinka vardų erdvę, kurioje pateikiami duomenų rinkiniai. Naudojamas
-        tais atvejais, kai norima pateiki papildomus metaduomenis vardų erdvei,
-        pavydžui pavadinimą ar parašymą.
+    dataset
+        Duomenų rinkinys.
 
-    .. describe:: ckan
+    .. admonition:: Pavyzdys
 
-        Atitinka duomenų rinkinį iš CKAN_ duomenų katalogo.
-
-    .. describe:: ivpk
-
-        Atitinka duomenų rinkinį iš `data.gov.lt`_ duomenų katalogo.
-
-.. _CKAN: https://ckan.org/
-.. _data.gov.lt: https://data.gov.lt/
+        ======= ======== ===== ============= ==== ================ 
+        dataset resource model property      type title           
+        ======= ======== ===== ============= ==== ================ 
+        datasets/gov/rc                      ns   Registrų centras
+        ------------------------------------ ---- ---------------- 
+        datasets/gov/rc/ar                   ns   Adresų registras
+        ------------------------------------ ---- ---------------- 
+        datasets/gov/rc/ar/ws                     Duomenų teikimo paslauga
+        ==================================== ==== ================ 
 
 .. data:: ref
 
-    :term:`Duomenų rinkinio <duomenų rinkinys>` duomenų kataloge
-    identifikatorius.
+    Duomenų rinkinio identifikatorius duomenų kataloge. Alternatyviai, galima
+    naudoti :data:`dataset.source`.
 
     Nenaudojamas jei :data:`dataset.type` yra `ns`.
+
+.. data:: source
+
+    Nuoroda į duomenų rinkinio puslaptį duomenų kataloge.
+
+    Nenaudojama, jei `dataset.type` yra `ns`.
+
+.. data:: prepare
+
+    Nenaudojama.
 
 .. data:: level
 
     Nenaudojamas.
 
+    Duomenų rinkinio brandos lygis yra išskaičiuojamas iš :data:`model.level`
+    ir :data:`property.level`.
+
 .. data:: access
 
-    Viso duomenų rinkinio ar vardų erdvės :ref:`access`. Paveldimas.
+    Prieigos lygis, naudojamas pagal nutylėjimą viesiems šios vardų erdvės
+    elementams.
 
 .. data:: title
 
@@ -149,41 +135,6 @@ rinkinys>` įrašai.
 
     Duomenų rinkinio ar vardų erdvės aprašymas.
 
-Skaidymas į :term:`duomenų rinkinius <duomenų rinkinys>` turi būti atliekamas
-tokiu principu, kad visi tarpusavyje susiję :term:`modeliai <modelis>` patektų į
-vieną :term:`duomenų rinkinį <duomenų rinkinys>`. Teoriškai, absoliučiai visi
-:term:`modeliai <modelis>` gali būti susiję tarpusavyje, skaidymą reikėtų daryti
-pagal tematinį :term:`modelių <modelis>` tarpusavio ryšį, o ne pagal reliacinius
-ryšius.
-
-Jei duomenys yra išskaidyti pagal laiką, vietove ar kitus kriterijus į
-skirtingus duomenų šaltinius, tokie duomenys turėtų būti apjungti į vieną modelį
-:ref:`base` pagalba ir turėtų priklausyti vienam :term:`duomenų rinkiniui
-<duomenų rinkinys>`. Tą pačią semantinę prasmę turintys duomenys neturėtų būti
-išskaidyti keliuose :term:`duomenų rinkiniuose <duomenų rinkinys>`.
-
-Pavyzdys:
-
-
-+-----+-----+-----+-----+----------+-------+-------------------------------------------+
-| d   | r   | b   | m   | property | type  |                                           |
-+=====+=====+=====+=====+==========+=======+===========================================+
-| datasets/gov/ivpk                | ns    | Informacinės visuomenės plėtros komitetas |
-+-----+-----+-----+-----+----------+-------+-------------------------------------------+
-| datasets/gov/ivpk/adp            | ns    | Lietuvos atvirų duomenų portalas          |
-+-----+-----+-----+-----+----------+-------+-------------------------------------------+
-| datasets/gov/ivpk/adp/catalog    |       | Lietuvos atvirų duomenų katalogas         |
-+-----+-----+-----+-----+----------+-------+-------------------------------------------+
-| datasets/gov/ivpk/adp/store      |       | Lietuvos atvirų duomenų saugykla          |
-+-----+-----+-----+-----+----------+-------+-------------------------------------------+
-
-Šiame pavyzdyje apibrėžtos dvi vardų erdvės ir du rinkiniai.
-
-Kiekviena organizacija turėtu deklaruoti tik savo vardų erdvės metaduomenis.
-Globalios vardų erdvės, tokios kaip `datasets` ir `datasets/gov` yra
-administruojamos vyriausiojo duomenų atvėrimo koordinatoriaus.
-
-
 .. .. _duomenų-šaltinis:
 .. _resource:
 
@@ -192,101 +143,93 @@ resource
 
 .. module:: resource
 
+Fizinis duomenų šaltinis, kuriame saugomi duomenys.
 
-:term:`ŠDSA` atveju :term:`duomenų šaltinis` bus vidinis duomenų bazių serveris,
-kažkoks vidinis katalogas kuriame yra lentelių failai ar koks nors vidinis API.
+Kiekvienam duomenų šaltiniui suteikiamas :ref:`kodinis pavadinimas <kodiniai
+pavadinimai>`, kuris nėra naudojamas formuojant API URI, tačiau naudojamas
+identifikuojant patį duomenų šaltinį.
 
-:term:`ADSA` atveju, :term:`duomenų šaltinis` gali būti nenurodytas, tai
-reiškia, kad duomenų rinkinio duomenys dar nėra publikuoti. Jei duomenys jau yra
-publikuoti, tada :term:`ADSA` :term:`duomenų šaltinis` turi rodyti į publikuotus
-atvertus duomenis, tai gali būti nuorodos į CSV failus, į viešą JSON API ir pan.
+Nurodytas duomenų šaltinio kodinis pavadinimas turi būti unikalus duomenų
+rinkinio kontekste.
 
-:term:`Duomenų šaltinio <duomenų šaltinis>` įrašas taip pat naudojamas tam, kad
-automatiškai atnaujinti :term:`ADK` esančius :term:`duomenų rinkinius <duomenų
-rinkinys>`, patelkiant konkrečias nuorodas į konkrečius duomenų failus.
-Analogiškai kaip ir :ref:`dataset` atveju, :data:`resource.ref` stulpelyje
-nurodomas duomenų šaltinio identifikatorius iš :term:`ADK`.
+.. seealso::
+
+    :ref:`resource`
+
+.. data:: id
+
+    Duomenų šaltinio unikalus identifikatorius UUID formatu.
 
 .. data:: type
 
     Duomenų šaltinio tipas. Galimos reikšmės:
 
-    .. describe:: sql
-
-        Reliacinės duomenų bazės
-
-    .. describe:: csv
-
-        CSV lentelės
-
-    .. describe:: tsv
-
-        TSV lentelės
-
-    .. describe:: json
-
-        JSON resursai
-
-    .. describe:: jsonl
-
-        JSON lines resursai
-
-    .. describe:: geojson
-
-        GeoJSON failai
-
-    .. describe:: xml
-
-        XML resursai
-
-    .. describe:: html
-
-        HTML puslapiai
-
-    .. describe:: xlsx
-
-        Excel lentelės (naujasis OOXML_ formatas)
-
-        .. _OOXML: https://en.wikipedia.org/wiki/Office_Open_XML
-
-    .. describe:: xls
-
-        Excel lentelės (senasis formatas)
-
-    .. describe:: ods
-
-        ODT_ skaičiuoklės formatas
-
-        .. _ODT: https://en.wikipedia.org/wiki/OpenDocument
-
-    .. describe:: zip
-
-        ZIP_ failų archyvas.
-
-        .. _ZIP: https://en.wikipedia.org/wiki/ZIP_(file_format)
-
-.. data:: source
-
-    Priklauso nuo :data:`resource.source`. Žiūrėti :ref:`resource`.
+    ========= ============================
+    `sql`     Reliacinės duomenų bazės
+    `csv`     CSV lentelės
+    `json`    JSON resursai
+    `xml`     XML resursai
+    ========= ============================
 
 .. data:: ref
 
-    Resurso kodinis pavadinimas, kuris yra apibrėžtas atskirai duomenų
-    struktūros apraše, ar konfigūracijos failuose.
+    Identifikatorius, naudojamas konfiguracijoje, kurioje pateikiama pilnas
+    resurso adresas ir kiti parametrai, tokie kaip slaptažodžiai ar
+    prisijungimo vardai.
 
-    Kai vienas resursas nurodo kitą, tuomet aprašomas resursas išplečia kitą
-    resursą į kurį rodo arba naudoja kitą resursą, kaip konteinerį, kuriame
-    saugomi duomenys.
+    Alternatyviai resurso pilną adresą galima nurodyti :data:`resource.source`
+    stulpelyje.
 
-    Išplėtimo atveju, galima pateikti tam tikro resurso konfidencialius
-    duomenis, tokius, kaip slaptažodis, atskirai nuo duomenų struktūros aprašo,
-    konfigūracijos failuose, o duomenų struktūros apraše išplėsti resursą,
-    pateikiant ne konfidencialius duomenis.
+.. data:: source
 
-    Tokiais atvejais, kaip duomenų failai saugomi ZIP archyvuose arba FTP
-    serveryje, galima atskirai aprašyti ZIP ar FTP resursą, o po to, aprašant
-    konkretų duomenų failo resursą, pateikti nuorodą, kuriame kitame resurse
-    aprašomas failas yra.
+    Pilnas resurso adresas URI formatu.
+
+    .. warning::
+
+        Jei duomenų šaltinis reikalauja naudotojo vardo ir slaptažodžio,
+        rekomenduojama nerodyti URI struktūros apraše, vietoj to prisijungimo
+        duomenis prie šaltinio pateikti atskirame konfigūraciniame faile,
+        naudojant :data:`resource.ref` stulpelį.
+
+    **dialect** [ `+` **driver** ] `://` [ **user** `:` **password** `@` ]
+    **host** [ `:` **port** ] `/` **path** [ `?` **params** ]
+
+    dialect
+        Duomenų šaltinio dialektas arba protokolas, kuriuo teikiami duomenys,
+        galimi variantai:
+
+        ================ ===========================
+        `postgresql`     PostgreSQL duomenų bazė.
+        `mysql`          MySQL duomenų bazė.
+        `mariadb`        MariaDB duomenų bazė.
+        `sqlite`         SQLite duomenų bazė.
+        `oracle`         Oracle duomenų bazė.
+        `mssql`          Microsoft SQL Server duomenų bazė.
+        `http`, `https`  Duomenų failas publikuojamas HTTP protokolu.
+        ================ ===========================
+
+    driver
+        Priklauso nuo **dialect** ir nuo naudojamo duomenų agento.
+
+    user
+        Duomenų šaltinio naudotojo vardas, jei duomenų šaltinis to reikalauja.
+
+    password
+        Duomenų šaltinio slaptažodis, jei duomenų šaltinis to reikalauja.
+
+    host
+        Duomenų šaltinio serverio adresas, jei duomenų šaltinis yra
+        nuotoliniame serveryje.
+
+    port
+        Nuotolinio serverio prievado numeris.
+
+    path
+        Duomenų bazės pavadinimas arba kelias iki duomenų failo.
+
+    params
+        Papildomi parametrai, priklauso nuo naudojamo **driver**.
+
 
 .. data:: level
 

@@ -30,7 +30,10 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-examples.css?v=e236af4b" />
     <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=a5c4661c" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=f0eb6ae9" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -41,8 +44,11 @@
     <script src="_static/documentation_options.js?v=4ee96f2e"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script src="_static/translations.js?v=3b848cde"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'dimensijos';</script>
     <link rel="index" title="Indeksas" href="genindex.html" />
     <link rel="search" title="Paieška" href="search.html" />
@@ -313,10 +319,11 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Dimensijos</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset">dataset</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset.source"><code class="docutils literal notranslate"><span class="pre">source</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset.dataset.prepare"><code class="docutils literal notranslate"><span class="pre">dataset.prepare</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset.id"><code class="docutils literal notranslate"><span class="pre">id</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset.type"><code class="docutils literal notranslate"><span class="pre">type</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset.ref"><code class="docutils literal notranslate"><span class="pre">ref</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset.source"><code class="docutils literal notranslate"><span class="pre">source</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset.prepare"><code class="docutils literal notranslate"><span class="pre">prepare</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset.level"><code class="docutils literal notranslate"><span class="pre">level</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset.access"><code class="docutils literal notranslate"><span class="pre">access</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset.title"><code class="docutils literal notranslate"><span class="pre">title</span></code></a></li>
@@ -324,9 +331,10 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resource">resource</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resource.id"><code class="docutils literal notranslate"><span class="pre">id</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resource.type"><code class="docutils literal notranslate"><span class="pre">type</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resource.source"><code class="docutils literal notranslate"><span class="pre">source</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resource.ref"><code class="docutils literal notranslate"><span class="pre">ref</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resource.source"><code class="docutils literal notranslate"><span class="pre">source</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resource.level"><code class="docutils literal notranslate"><span class="pre">level</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resource.access"><code class="docutils literal notranslate"><span class="pre">access</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resource.title"><code class="docutils literal notranslate"><span class="pre">title</span></code></a></li>
@@ -446,185 +454,177 @@ document.write(`
                   
   <section id="dimensijos">
 <span id="id1"></span><h1>Dimensijos<a class="headerlink" href="#dimensijos" title="Link to this heading">#</a></h1>
-<p><a class="reference internal" href="savokos.html#term-dimensija"><span class="xref std std-term">Dimensijos</span></a> apibrėžia duomenų metaduomenų detalumo lygį.
-Stulpeliai <a class="reference internal" href="formatas.html#dataset" title="dataset"><code class="xref py py-data docutils literal notranslate"><span class="pre">dataset</span></code></a>, <a class="reference internal" href="formatas.html#resource" title="resource"><code class="xref py py-data docutils literal notranslate"><span class="pre">resource</span></code></a>, <a class="reference internal" href="formatas.html#base" title="base"><code class="xref py py-data docutils literal notranslate"><span class="pre">base</span></code></a>, <a class="reference internal" href="formatas.html#model" title="model"><code class="xref py py-data docutils literal notranslate"><span class="pre">model</span></code></a> ir
-<a class="reference internal" href="formatas.html#property" title="property"><code class="xref py py-data docutils literal notranslate"><span class="pre">property</span></code></a> yra naudojami kaip <a class="reference internal" href="savokos.html#term-DSA"><span class="xref std std-term">DSA</span></a> dimensijos. <a class="reference internal" href="formatas.html#dataset" title="dataset"><code class="xref py py-data docutils literal notranslate"><span class="pre">dataset</span></code></a> yra
-aukščiausia dimensija, <a class="reference internal" href="formatas.html#property" title="property"><code class="xref py py-data docutils literal notranslate"><span class="pre">property</span></code></a> žemiausia. <a class="reference internal" href="formatas.html#dataset" title="dataset"><code class="xref py py-data docutils literal notranslate"><span class="pre">dataset</span></code></a> ir
-<a class="reference internal" href="formatas.html#resource" title="resource"><code class="xref py py-data docutils literal notranslate"><span class="pre">resource</span></code></a> dimensijos atitinka <a class="reference external" href="https://www.w3.org/TR/vocab-dcat-2/">DCAT</a> žodyną ir užtikrina trečia duomenų
-brandos lygį, o žemiau esantys <a class="reference internal" href="formatas.html#base" title="base"><code class="xref py py-data docutils literal notranslate"><span class="pre">base</span></code></a>, <a class="reference internal" href="formatas.html#model" title="model"><code class="xref py py-data docutils literal notranslate"><span class="pre">model</span></code></a> ir <a class="reference internal" href="formatas.html#property" title="property"><code class="xref py py-data docutils literal notranslate"><span class="pre">property</span></code></a>
-atitinka <a class="reference external" href="https://www.w3.org/TR/rdf-schema/">RDFS</a> žodyną ir užtikrina penktą duomenų brandos lygį. Vienoje lentelės
-eilutėje gali būti užpildytas ne daugiau kaip vienas dimensijos stulpelis.
-Užpildytasis dimensijos stulpelis nustato visų kitų stulpelių prasmę.</p>
+<p>Demensijos leidžia vienoje lentelėje sutalpinti kelias skirtingas lenteles
+turinčias bendrų savybių.</p>
+<p>DSA lentelėje turime tokius dimensijų stulpelius:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="#dataset"><span class="std std-ref">dataset</span></a></p></li>
+<li><p><a class="reference internal" href="saltiniai.html#resource"><span class="std std-ref">Duomenų šaltiniai</span></a></p></li>
+<li><p><a class="reference internal" href="#model"><span class="std std-ref">model</span></a></p></li>
+<li><p><a class="reference internal" href="#property"><span class="std std-ref">property</span></a></p></li>
+</ul>
 <table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p>id</p></th>
-<th class="head"><p>d</p></th>
-<th class="head"><p>r</p></th>
-<th class="head"><p>b</p></th>
-<th class="head"><p>m</p></th>
+<tr class="row-odd"><th class="head"><p>dataset</p></th>
+<th class="head"><p>resource</p></th>
+<th class="head"><p>model</p></th>
 <th class="head"><p>property</p></th>
 <th class="head"><p>title</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>1</p></td>
-<td colspan="5"><p>datasets/gov/ivpk/adk</p></td>
-<td><p>Atvirų duomenų katalogas</p></td>
-</tr>
-<tr class="row-odd"><td><p>2</p></td>
-<td></td>
-<td colspan="4"><p>adk</p></td>
-<td><p>Atvirų duomenų katalogo
-duomenų bazė</p></td>
-</tr>
-<tr class="row-even"><td><p>3</p></td>
-<td></td>
-<td></td>
-<td colspan="3"><p>/dcat/dataset</p></td>
+<tr class="row-even"><td colspan="4"><p>datasets/gov/rc/ar/ws</p></td>
 <td><p>Duomenų rinkinys</p></td>
 </tr>
-<tr class="row-odd"><td><p>4</p></td>
-<td></td>
-<td></td>
-<td></td>
-<td colspan="2"><p>dataset</p></td>
-<td><p>Duomenų rinkinys</p></td>
+<tr class="row-odd"><td><p></p></td>
+<td colspan="3"><p>db</p></td>
+<td><p>Duomenų teikimo paslauga</p></td>
 </tr>
-<tr class="row-even"><td><p>5</p></td>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td colspan="2"><p><strong>Gyvenviete</strong></p></td>
+<td><p>Esybė</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
 <td></td>
 <td></td>
-<td></td>
-<td></td>
-<td><p>title</p></td>
-<td><p>Duomenų rinkinio pavadinimas</p></td>
+<td><p>pavadinimas</p></td>
+<td><p>Savybė</p></td>
 </tr>
 </tbody>
 </table>
-<p>Pavyzdyje aukščiau, taupant vietą, dalies dimensijų pavadinimai sutrumpinti iki
-vienos raidės ir įtraukti ne visi stulpeliai, o tik <a class="reference internal" href="formatas.html#id" title="id"><code class="xref py py-data docutils literal notranslate"><span class="pre">id</span></code></a> ir <a class="reference internal" href="formatas.html#title" title="title"><code class="xref py py-data docutils literal notranslate"><span class="pre">title</span></code></a>
-metaduomenų stulpeliai. Pavyzdyje matome, kad vienoje eilutėje užpildytas tik
-vienas dimensijos stulpelis, o <a class="reference internal" href="formatas.html#title" title="title"><code class="xref py py-data docutils literal notranslate"><span class="pre">title</span></code></a> stulpelio prasmė keičiasi
-priklausomai nuo dimensijos reikšmės. Toliau specifikacijoje konkrečios
-dimensijos stulpeliai įvardijami pateikiant tiek dimensijos, tiek metaduomens
-stulpelio pavadinimus, kad būtų aiškiau apie kurios dimensijos metaduomenį
-kalbama, pavyzdžiui <a class="reference internal" href="#model.title" title="model.title"><code class="xref py py-data docutils literal notranslate"><span class="pre">model.title</span></code></a> leidžia suprasti kad kalbama apie
-„Duomenų rinkinys“ reikšmę 4-oje eilutėje.</p>
-<p>Be minėtų dimensijų stulpelių <a class="reference internal" href="savokos.html#term-DSA"><span class="xref std std-term">DSA</span></a> lentelėje gali būti naudojami
-papildomos metaduomenų dimensijos, kai nurodoma <a class="reference internal" href="tipai.html#module-type" title="type"><code class="xref py py-data docutils literal notranslate"><span class="pre">type</span></code></a> reikšmė ir
-nepateikiama nei viena dimensijos stulpelio reikšmė. Pavyzdžiui:</p>
+<p>Pavyzdyje aukščiau turime tris lenteles, turinčias vieną bendrą stulpelį
+<code class="docutils literal notranslate"><span class="pre">title</span></code>.</p>
+<p>Daugiamatė lentelė pateikta viršuje, aitiktu toką vienamtę lentelę:</p>
 <table class="table">
 <thead>
-<tr class="row-odd"><th class="head"><p>id</p></th>
-<th class="head"><p>d</p></th>
-<th class="head"><p>r</p></th>
-<th class="head"><p>b</p></th>
-<th class="head"><p>m</p></th>
-<th class="head"><p>property</p></th>
-<th class="head"><p>type</p></th>
-<th class="head"><p>ref</p></th>
-<th class="head"><p>uri</p></th>
+<tr class="row-odd"><th class="head"><p>type</p></th>
+<th class="head"><p>name</p></th>
+<th class="head"><p>title</p></th>
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>1</p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>prefix</p></td>
-<td><p>dcat</p></td>
-<td><p>http://www.w3.org/ns/dcat#</p></td>
+<tr class="row-even"><td><p>dataset</p></td>
+<td><p>datasets/gov/rc/ar/ws</p></td>
+<td><p>Duomenų rinkinys</p></td>
+</tr>
+<tr class="row-odd"><td><p>resource</p></td>
+<td><p>db</p></td>
+<td><p>Duomenų teikimo paslauga</p></td>
+</tr>
+<tr class="row-even"><td><p>model</p></td>
+<td><p><strong>Gyvenviete</strong></p></td>
+<td><p>Esybė</p></td>
+</tr>
+<tr class="row-odd"><td><p>property</p></td>
+<td><p>pavadinimas</p></td>
+<td><p>Savybė</p></td>
 </tr>
 </tbody>
 </table>
-<p>Šiuo atveju <a class="reference internal" href="#module-prefix" title="prefix"><code class="xref py py-data docutils literal notranslate"><span class="pre">prefix</span></code></a> tampa dar viena dimensija, leidžianti pateikti
-metaduomenis apie naudojamų URI prefiksus. Analogiškai, kaip ir su kitomis
-dimensijomis, dimensijos ir metaduomens pavadinimus galima apjungti, pavyzdžiui
-<a class="reference internal" href="#prefix.ref" title="prefix.ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">prefix.ref</span></code></a> apibūdina tik <a class="reference internal" href="#module-prefix" title="prefix"><code class="xref py py-data docutils literal notranslate"><span class="pre">prefix</span></code></a> dimensijai priklausančius
-<a class="reference internal" href="formatas.html#ref" title="ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">ref</span></code></a> stulpelius.</p>
-<p>Dimensijos leidžia suskirstyti metaduomenis į hierarchinę struktūrą. Todėl
-<a class="reference internal" href="savokos.html#term-DSA"><span class="xref std std-term">DSA</span></a> lentelės eilučių eiliškumas yra svarbus, kadangi žemiau esančios
-eilutės priklauso aukščiau esančiai dimensijai. Tas pats galioja ir pagalbinėms
-<a class="reference internal" href="savokos.html#term-dimensija"><span class="xref std std-term">dimensijoms</span></a>.</p>
-<p>Nors lentelėje sudaro tik 15 stulpelių, tačiau pasitelkiant 5 pagrindinius
-dimensijas ir keletą papildomų dimensijų, atsiranda galimybė išsamiai aprašyti
-visą duomenų šaltinio struktūrą.</p>
+<p>Kadangi DSA lentelė yra daugiamatę, nurodant stuleplį, jei kalbama apie
+konkrečios dimensijos stulpelį, reikia nurodyti ir dimensiją, pavyzdžiui
+<code class="docutils literal notranslate"><span class="pre">dataset.title</span></code> nurodo būtent apie <code class="docutils literal notranslate"><span class="pre">dataset</span></code> diemensijos <code class="docutils literal notranslate"><span class="pre">title</span></code> stulpelį.</p>
 <section id="dataset">
 <span id="id2"></span><h2>dataset<a class="headerlink" href="#dataset" title="Link to this heading">#</a></h2>
-<p id="module-dataset"><a class="reference internal" href="savokos.html#term-DSA"><span class="xref std std-term">DSA</span></a> lentelėje <a class="reference internal" href="savokos.html#term-duomenu-rinkinys"><span class="xref std std-term">duomenų rinkinys</span></a> nurodomas tam, kad būtų
-išlaikomas ryšys tarp <a class="reference internal" href="savokos.html#term-DSA"><span class="xref std std-term">DSA</span></a> ir <a class="reference internal" href="savokos.html#term-ADK"><span class="xref std std-term">ADK</span></a>. Atliekant duomenų
-inventorizaciją, automatiškai generuota <a class="reference internal" href="savokos.html#term-DSA"><span class="xref std std-term">DSA</span></a> lentelė turi būti
-suskirstoma į <a class="reference internal" href="savokos.html#term-duomenu-rinkinys"><span class="xref std std-term">duomenų rinkinius</span></a>. Tada priemonių
-pagalba automatiškai sukuriami pirminiai <a class="reference internal" href="savokos.html#term-ADK"><span class="xref std std-term">ADK</span></a> metaduomenys apie
-<a class="reference internal" href="savokos.html#term-duomenu-rinkinys"><span class="xref std std-term">duomenų rinkinius</span></a>, kuriuos vėliau reikia papildyti
-rankiniu būdu prisijungus prie ADK. Automatizuota priemonė sukūrus duomenų
-rinkinių įrašus <a class="reference internal" href="savokos.html#term-ADK"><span class="xref std std-term">ADK</span></a>, papildys <a class="reference internal" href="savokos.html#term-DSA"><span class="xref std std-term">DSA</span></a> lentelę, į <a class="reference internal" href="#dataset.ref" title="dataset.ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">dataset.ref</span></code></a>
-įrašant <a class="reference internal" href="savokos.html#term-ADK"><span class="xref std std-term">ADK</span></a> sukurto duomenų rinkinio identifikatorių. Tokiu būdu,
-sekantį kartą vykdant sinchronizaciją, jei <a class="reference internal" href="#dataset.ref" title="dataset.ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">dataset.ref</span></code></a> yra užpildytas,
-bus atnaujinami jau sukurti <a class="reference internal" href="savokos.html#term-ADK"><span class="xref std std-term">ADK</span></a> <a class="reference internal" href="savokos.html#term-duomenu-rinkinys"><span class="xref std std-term">duomenų rinkinių</span></a> įrašai.</p>
-<p>Į <a class="reference internal" href="savokos.html#term-ADK"><span class="xref std std-term">ADK</span></a> turi būti publikuojami tik tie duomenų rinkiniai iš DSA, kurių
-<a class="reference internal" href="#dataset.access" title="dataset.access"><code class="xref py py-data docutils literal notranslate"><span class="pre">dataset.access</span></code></a> reikšmė yra <code class="docutils literal notranslate"><span class="pre">public</span></code> arba <code class="docutils literal notranslate"><span class="pre">open</span></code>.</p>
+<p id="module-dataset">Duomenų rinkinys struktūros apraše nurodomas tam, kad būtų galimybė susieti
+duomenų struktūros elementus su duomenų rinkiniais registruotais duomenų
+kataloge. Toks susiejimas atliekamas naudojant duomenų rinkinio kodinį
+pavadinimą.</p>
+<div class="admonition note">
+<p class="admonition-title">Pastaba</p>
+<p>Nurodytas duomenų rinkinio ar vardų erdvės kodinis pavadinimas turi būti
+unikalus tarp visų duomenų struktūros aprašų.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">Taip pat žiūrėkite</p>
+<div class="line-block">
+<div class="line"><a class="reference internal" href="vardu-erdves.html#ns"><span class="std std-ref">Vardų erdvės</span></a></div>
+<div class="line"><a class="reference internal" href="pavadinimai.html#kodiniai-pavadinimai"><span class="std std-ref">Kodiniai pavadinimai</span></a></div>
+</div>
+</div>
 <dl class="py data">
-<dt class="sig sig-object py" id="dataset.source">
-<span class="sig-prename descclassname"><span class="pre">dataset.</span></span><span class="sig-name descname"><span class="pre">source</span></span><a class="headerlink" href="#dataset.source" title="Link to this definition">#</a></dt>
-<dd><p>Jei nenurodyta, naudoti https://data.gov.lt/ adresą.</p>
-<p>Nenaudojama, jei <code class="docutils literal notranslate"><span class="pre">dataset.type</span></code> yra <code class="docutils literal notranslate"><span class="pre">ns</span></code>.</p>
-</dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="dataset.dataset.prepare">
-<span class="sig-prename descclassname"><span class="pre">dataset.</span></span><span class="sig-name descname"><span class="pre">prepare</span></span><a class="headerlink" href="#dataset.dataset.prepare" title="Link to this definition">#</a></dt>
-<dd><p>Nenaudojama.</p>
+<dt class="sig sig-object py" id="dataset.id">
+<span class="sig-prename descclassname"><span class="pre">dataset.</span></span><span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#dataset.id" title="Link to this definition">#</a></dt>
+<dd><p>Duomenų rinkinio arba duomenų erdvės identifikatorius.</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="dataset.type">
 <span class="sig-prename descclassname"><span class="pre">dataset.</span></span><span class="sig-name descname"><span class="pre">type</span></span><a class="headerlink" href="#dataset.type" title="Link to this definition">#</a></dt>
-<dd><p>Jei nenurodyta, naudoti <code class="docutils literal notranslate"><span class="pre">ivpk</span></code> reikšmę. type nurodo <a class="reference internal" href="savokos.html#term-API"><span class="xref std std-term">API</span></a>
-formatą, kuriuo automatiškai pildomi duomenų rinkinių metaduomenys atvirų
-duomenų portale.</p>
+<dd><p>Jei nenurodyta, pagal nutylėjimą naudojama <code class="docutils literal notranslate"><span class="pre">dataset</span></code> reikšmė, kuri nurodo
+duomenų rinkinio kodinį pavadinimą nurodyta <a class="reference internal" href="savokos.html#term-duomenu-katalogas"><span class="xref std std-term">duomenų kataloge</span></a>.</p>
 <p>Galimos reikšmės:</p>
-<dl class="describe">
-<dt class="sig sig-object">
-<span class="sig-name descname"><span class="pre">ns</span></span></dt>
-<dd><p>Atitinka vardų erdvę, kurioje pateikiami duomenų rinkiniai. Naudojamas
-tais atvejais, kai norima pateiki papildomus metaduomenis vardų erdvei,
-pavydžui pavadinimą ar parašymą.</p>
-</dd></dl>
-
-<dl class="describe">
-<dt class="sig sig-object">
-<span class="sig-name descname"><span class="pre">ckan</span></span></dt>
-<dd><p>Atitinka duomenų rinkinį iš <a class="reference external" href="https://ckan.org/">CKAN</a> duomenų katalogo.</p>
-</dd></dl>
-
-<dl class="describe">
-<dt class="sig sig-object">
-<span class="sig-name descname"><span class="pre">ivpk</span></span></dt>
-<dd><p>Atitinka duomenų rinkinį iš <a class="reference external" href="https://data.gov.lt/">data.gov.lt</a> duomenų katalogo.</p>
-</dd></dl>
-
+<dl class="simple">
+<dt>ns</dt><dd><p>Vardų erdvė.</p>
+</dd>
+<dt>dataset</dt><dd><p>Duomenų rinkinys.</p>
+</dd>
+</dl>
+<div class="admonition-pavyzdys admonition">
+<p class="admonition-title">Pavyzdys</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>dataset</p></th>
+<th class="head"><p>resource</p></th>
+<th class="head"><p>model</p></th>
+<th class="head"><p>property</p></th>
+<th class="head"><p>type</p></th>
+<th class="head"><p>title</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td colspan="4"><p>datasets/gov/rc</p></td>
+<td><p>ns</p></td>
+<td><p>Registrų centras</p></td>
+</tr>
+<tr class="row-odd"><td colspan="4"><p>datasets/gov/rc/ar</p></td>
+<td><p>ns</p></td>
+<td><p>Adresų registras</p></td>
+</tr>
+<tr class="row-even"><td colspan="4"><p>datasets/gov/rc/ar/ws</p></td>
+<td></td>
+<td><p>Duomenų teikimo paslauga</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="dataset.ref">
 <span class="sig-prename descclassname"><span class="pre">dataset.</span></span><span class="sig-name descname"><span class="pre">ref</span></span><a class="headerlink" href="#dataset.ref" title="Link to this definition">#</a></dt>
-<dd><p><a class="reference internal" href="savokos.html#term-duomenu-rinkinys"><span class="xref std std-term">Duomenų rinkinio</span></a> duomenų kataloge
-identifikatorius.</p>
+<dd><p>Duomenų rinkinio identifikatorius duomenų kataloge. Alternatyviai, galima
+naudoti <a class="reference internal" href="#dataset.source" title="dataset.source"><code class="xref py py-data docutils literal notranslate"><span class="pre">dataset.source</span></code></a>.</p>
 <p>Nenaudojamas jei <a class="reference internal" href="#dataset.type" title="dataset.type"><code class="xref py py-data docutils literal notranslate"><span class="pre">dataset.type</span></code></a> yra <code class="docutils literal notranslate"><span class="pre">ns</span></code>.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="dataset.source">
+<span class="sig-prename descclassname"><span class="pre">dataset.</span></span><span class="sig-name descname"><span class="pre">source</span></span><a class="headerlink" href="#dataset.source" title="Link to this definition">#</a></dt>
+<dd><p>Nuoroda į duomenų rinkinio puslaptį duomenų kataloge.</p>
+<p>Nenaudojama, jei <code class="docutils literal notranslate"><span class="pre">dataset.type</span></code> yra <code class="docutils literal notranslate"><span class="pre">ns</span></code>.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="dataset.prepare">
+<span class="sig-prename descclassname"><span class="pre">dataset.</span></span><span class="sig-name descname"><span class="pre">prepare</span></span><a class="headerlink" href="#dataset.prepare" title="Link to this definition">#</a></dt>
+<dd><p>Nenaudojama.</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="dataset.level">
 <span class="sig-prename descclassname"><span class="pre">dataset.</span></span><span class="sig-name descname"><span class="pre">level</span></span><a class="headerlink" href="#dataset.level" title="Link to this definition">#</a></dt>
 <dd><p>Nenaudojamas.</p>
+<p>Duomenų rinkinio brandos lygis yra išskaičiuojamas iš <a class="reference internal" href="#model.level" title="model.level"><code class="xref py py-data docutils literal notranslate"><span class="pre">model.level</span></code></a>
+ir <a class="reference internal" href="#property.level" title="property.level"><code class="xref py py-data docutils literal notranslate"><span class="pre">property.level</span></code></a>.</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="dataset.access">
 <span class="sig-prename descclassname"><span class="pre">dataset.</span></span><span class="sig-name descname"><span class="pre">access</span></span><a class="headerlink" href="#dataset.access" title="Link to this definition">#</a></dt>
-<dd><p>Viso duomenų rinkinio ar vardų erdvės <a class="reference internal" href="prieiga.html#access"><span class="std std-ref">Prieigos lygiai</span></a>. Paveldimas.</p>
+<dd><p>Prieigos lygis, naudojamas pagal nutylėjimą viesiems šios vardų erdvės
+elementams.</p>
 </dd></dl>
 
 <dl class="py data">
@@ -639,164 +639,114 @@ identifikatorius.</p>
 <dd><p>Duomenų rinkinio ar vardų erdvės aprašymas.</p>
 </dd></dl>
 
-<p>Skaidymas į <a class="reference internal" href="savokos.html#term-duomenu-rinkinys"><span class="xref std std-term">duomenų rinkinius</span></a> turi būti atliekamas
-tokiu principu, kad visi tarpusavyje susiję <a class="reference internal" href="savokos.html#term-modelis"><span class="xref std std-term">modeliai</span></a> patektų į
-vieną <a class="reference internal" href="savokos.html#term-duomenu-rinkinys"><span class="xref std std-term">duomenų rinkinį</span></a>. Teoriškai, absoliučiai visi
-<a class="reference internal" href="savokos.html#term-modelis"><span class="xref std std-term">modeliai</span></a> gali būti susiję tarpusavyje, skaidymą reikėtų daryti
-pagal tematinį <a class="reference internal" href="savokos.html#term-modelis"><span class="xref std std-term">modelių</span></a> tarpusavio ryšį, o ne pagal reliacinius
-ryšius.</p>
-<p>Jei duomenys yra išskaidyti pagal laiką, vietove ar kitus kriterijus į
-skirtingus duomenų šaltinius, tokie duomenys turėtų būti apjungti į vieną modelį
-<a class="reference internal" href="#base"><span class="std std-ref">base</span></a> pagalba ir turėtų priklausyti vienam <a class="reference internal" href="savokos.html#term-duomenu-rinkinys"><span class="xref std std-term">duomenų rinkiniui</span></a>. Tą pačią semantinę prasmę turintys duomenys neturėtų būti
-išskaidyti keliuose <a class="reference internal" href="savokos.html#term-duomenu-rinkinys"><span class="xref std std-term">duomenų rinkiniuose</span></a>.</p>
-<p>Pavyzdys:</p>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>d</p></th>
-<th class="head"><p>r</p></th>
-<th class="head"><p>b</p></th>
-<th class="head"><p>m</p></th>
-<th class="head"><p>property</p></th>
-<th class="head"><p>type</p></th>
-<th class="head"></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td colspan="5"><p>datasets/gov/ivpk</p></td>
-<td><p>ns</p></td>
-<td><p>Informacinės visuomenės plėtros komitetas</p></td>
-</tr>
-<tr class="row-odd"><td colspan="5"><p>datasets/gov/ivpk/adp</p></td>
-<td><p>ns</p></td>
-<td><p>Lietuvos atvirų duomenų portalas</p></td>
-</tr>
-<tr class="row-even"><td colspan="5"><p>datasets/gov/ivpk/adp/catalog</p></td>
-<td></td>
-<td><p>Lietuvos atvirų duomenų katalogas</p></td>
-</tr>
-<tr class="row-odd"><td colspan="5"><p>datasets/gov/ivpk/adp/store</p></td>
-<td></td>
-<td><p>Lietuvos atvirų duomenų saugykla</p></td>
-</tr>
-</tbody>
-</table>
-<p>Šiame pavyzdyje apibrėžtos dvi vardų erdvės ir du rinkiniai.</p>
-<p>Kiekviena organizacija turėtu deklaruoti tik savo vardų erdvės metaduomenis.
-Globalios vardų erdvės, tokios kaip <code class="docutils literal notranslate"><span class="pre">datasets</span></code> ir <code class="docutils literal notranslate"><span class="pre">datasets/gov</span></code> yra
-administruojamos vyriausiojo duomenų atvėrimo koordinatoriaus.</p>
 </section>
 <section id="resource">
 <span id="id3"></span><h2>resource<a class="headerlink" href="#resource" title="Link to this heading">#</a></h2>
-<p id="module-resource"><a class="reference internal" href="savokos.html#term-SDSA"><span class="xref std std-term">ŠDSA</span></a> atveju <a class="reference internal" href="savokos.html#term-duomenu-saltinis"><span class="xref std std-term">duomenų šaltinis</span></a> bus vidinis duomenų bazių serveris,
-kažkoks vidinis katalogas kuriame yra lentelių failai ar koks nors vidinis API.</p>
-<p><a class="reference internal" href="savokos.html#term-ADSA"><span class="xref std std-term">ADSA</span></a> atveju, <a class="reference internal" href="savokos.html#term-duomenu-saltinis"><span class="xref std std-term">duomenų šaltinis</span></a> gali būti nenurodytas, tai
-reiškia, kad duomenų rinkinio duomenys dar nėra publikuoti. Jei duomenys jau yra
-publikuoti, tada <a class="reference internal" href="savokos.html#term-ADSA"><span class="xref std std-term">ADSA</span></a> <a class="reference internal" href="savokos.html#term-duomenu-saltinis"><span class="xref std std-term">duomenų šaltinis</span></a> turi rodyti į publikuotus
-atvertus duomenis, tai gali būti nuorodos į CSV failus, į viešą JSON API ir pan.</p>
-<p><a class="reference internal" href="savokos.html#term-duomenu-saltinis"><span class="xref std std-term">Duomenų šaltinio</span></a> įrašas taip pat naudojamas tam, kad
-automatiškai atnaujinti <a class="reference internal" href="savokos.html#term-ADK"><span class="xref std std-term">ADK</span></a> esančius <a class="reference internal" href="savokos.html#term-duomenu-rinkinys"><span class="xref std std-term">duomenų rinkinius</span></a>, patelkiant konkrečias nuorodas į konkrečius duomenų failus.
-Analogiškai kaip ir <a class="reference internal" href="#dataset"><span class="std std-ref">dataset</span></a> atveju, <a class="reference internal" href="#resource.ref" title="resource.ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">resource.ref</span></code></a> stulpelyje
-nurodomas duomenų šaltinio identifikatorius iš <a class="reference internal" href="savokos.html#term-ADK"><span class="xref std std-term">ADK</span></a>.</p>
+<p id="module-resource">Fizinis duomenų šaltinis, kuriame saugomi duomenys.</p>
+<p>Kiekvienam duomenų šaltiniui suteikiamas <span class="xref std std-ref">kodinis pavadinimas</span>, kuris nėra naudojamas formuojant API URI, tačiau naudojamas
+identifikuojant patį duomenų šaltinį.</p>
+<p>Nurodytas duomenų šaltinio kodinis pavadinimas turi būti unikalus duomenų
+rinkinio kontekste.</p>
+<div class="admonition seealso">
+<p class="admonition-title">Taip pat žiūrėkite</p>
+<p><a class="reference internal" href="saltiniai.html#resource"><span class="std std-ref">Duomenų šaltiniai</span></a></p>
+</div>
+<dl class="py data">
+<dt class="sig sig-object py" id="resource.id">
+<span class="sig-prename descclassname"><span class="pre">resource.</span></span><span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#resource.id" title="Link to this definition">#</a></dt>
+<dd><p>Duomenų šaltinio unikalus identifikatorius UUID formatu.</p>
+</dd></dl>
+
 <dl class="py data">
 <dt class="sig sig-object py" id="resource.type">
 <span class="sig-prename descclassname"><span class="pre">resource.</span></span><span class="sig-name descname"><span class="pre">type</span></span><a class="headerlink" href="#resource.type" title="Link to this definition">#</a></dt>
 <dd><p>Duomenų šaltinio tipas. Galimos reikšmės:</p>
-<dl class="describe">
-<dt class="sig sig-object">
-<span class="sig-name descname"><span class="pre">sql</span></span></dt>
-<dd><p>Reliacinės duomenų bazės</p>
-</dd></dl>
-
-<dl class="describe">
-<dt class="sig sig-object">
-<span class="sig-name descname"><span class="pre">csv</span></span></dt>
-<dd><p>CSV lentelės</p>
-</dd></dl>
-
-<dl class="describe">
-<dt class="sig sig-object">
-<span class="sig-name descname"><span class="pre">tsv</span></span></dt>
-<dd><p>TSV lentelės</p>
-</dd></dl>
-
-<dl class="describe">
-<dt class="sig sig-object">
-<span class="sig-name descname"><span class="pre">json</span></span></dt>
-<dd><p>JSON resursai</p>
-</dd></dl>
-
-<dl class="describe">
-<dt class="sig sig-object">
-<span class="sig-name descname"><span class="pre">jsonl</span></span></dt>
-<dd><p>JSON lines resursai</p>
-</dd></dl>
-
-<dl class="describe">
-<dt class="sig sig-object">
-<span class="sig-name descname"><span class="pre">geojson</span></span></dt>
-<dd><p>GeoJSON failai</p>
-</dd></dl>
-
-<dl class="describe">
-<dt class="sig sig-object">
-<span class="sig-name descname"><span class="pre">xml</span></span></dt>
-<dd><p>XML resursai</p>
-</dd></dl>
-
-<dl class="describe">
-<dt class="sig sig-object">
-<span class="sig-name descname"><span class="pre">html</span></span></dt>
-<dd><p>HTML puslapiai</p>
-</dd></dl>
-
-<dl class="describe">
-<dt class="sig sig-object">
-<span class="sig-name descname"><span class="pre">xlsx</span></span></dt>
-<dd><p>Excel lentelės (naujasis <a class="reference external" href="https://en.wikipedia.org/wiki/Office_Open_XML">OOXML</a> formatas)</p>
-</dd></dl>
-
-<dl class="describe">
-<dt class="sig sig-object">
-<span class="sig-name descname"><span class="pre">xls</span></span></dt>
-<dd><p>Excel lentelės (senasis formatas)</p>
-</dd></dl>
-
-<dl class="describe">
-<dt class="sig sig-object">
-<span class="sig-name descname"><span class="pre">ods</span></span></dt>
-<dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/OpenDocument">ODT</a> skaičiuoklės formatas</p>
-</dd></dl>
-
-<dl class="describe">
-<dt class="sig sig-object">
-<span class="sig-name descname"><span class="pre">zip</span></span></dt>
-<dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/ZIP_(file_format)">ZIP</a> failų archyvas.</p>
-</dd></dl>
-
-</dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="resource.source">
-<span class="sig-prename descclassname"><span class="pre">resource.</span></span><span class="sig-name descname"><span class="pre">source</span></span><a class="headerlink" href="#resource.source" title="Link to this definition">#</a></dt>
-<dd><p>Priklauso nuo <a class="reference internal" href="#resource.source" title="resource.source"><code class="xref py py-data docutils literal notranslate"><span class="pre">resource.source</span></code></a>. Žiūrėti <a class="reference internal" href="saltiniai.html#resource"><span class="std std-ref">Duomenų šaltiniai</span></a>.</p>
+<table class="table">
+<tbody>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">sql</span></code></p></td>
+<td><p>Reliacinės duomenų bazės</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">csv</span></code></p></td>
+<td><p>CSV lentelės</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">json</span></code></p></td>
+<td><p>JSON resursai</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">xml</span></code></p></td>
+<td><p>XML resursai</p></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="resource.ref">
 <span class="sig-prename descclassname"><span class="pre">resource.</span></span><span class="sig-name descname"><span class="pre">ref</span></span><a class="headerlink" href="#resource.ref" title="Link to this definition">#</a></dt>
-<dd><p>Resurso kodinis pavadinimas, kuris yra apibrėžtas atskirai duomenų
-struktūros apraše, ar konfigūracijos failuose.</p>
-<p>Kai vienas resursas nurodo kitą, tuomet aprašomas resursas išplečia kitą
-resursą į kurį rodo arba naudoja kitą resursą, kaip konteinerį, kuriame
-saugomi duomenys.</p>
-<p>Išplėtimo atveju, galima pateikti tam tikro resurso konfidencialius
-duomenis, tokius, kaip slaptažodis, atskirai nuo duomenų struktūros aprašo,
-konfigūracijos failuose, o duomenų struktūros apraše išplėsti resursą,
-pateikiant ne konfidencialius duomenis.</p>
-<p>Tokiais atvejais, kaip duomenų failai saugomi ZIP archyvuose arba FTP
-serveryje, galima atskirai aprašyti ZIP ar FTP resursą, o po to, aprašant
-konkretų duomenų failo resursą, pateikti nuorodą, kuriame kitame resurse
-aprašomas failas yra.</p>
+<dd><p>Identifikatorius, naudojamas konfiguracijoje, kurioje pateikiama pilnas
+resurso adresas ir kiti parametrai, tokie kaip slaptažodžiai ar
+prisijungimo vardai.</p>
+<p>Alternatyviai resurso pilną adresą galima nurodyti <a class="reference internal" href="#resource.source" title="resource.source"><code class="xref py py-data docutils literal notranslate"><span class="pre">resource.source</span></code></a>
+stulpelyje.</p>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="resource.source">
+<span class="sig-prename descclassname"><span class="pre">resource.</span></span><span class="sig-name descname"><span class="pre">source</span></span><a class="headerlink" href="#resource.source" title="Link to this definition">#</a></dt>
+<dd><p>Pilnas resurso adresas URI formatu.</p>
+<div class="admonition warning">
+<p class="admonition-title">Įspėjimas</p>
+<p>Jei duomenų šaltinis reikalauja naudotojo vardo ir slaptažodžio,
+rekomenduojama nerodyti URI struktūros apraše, vietoj to prisijungimo
+duomenis prie šaltinio pateikti atskirame konfigūraciniame faile,
+naudojant <a class="reference internal" href="#resource.ref" title="resource.ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">resource.ref</span></code></a> stulpelį.</p>
+</div>
+<p><strong>dialect</strong> [ <code class="docutils literal notranslate"><span class="pre">+</span></code> <strong>driver</strong> ] <code class="docutils literal notranslate"><span class="pre">://</span></code> [ <strong>user</strong> <code class="docutils literal notranslate"><span class="pre">:</span></code> <strong>password</strong> <code class="docutils literal notranslate"><span class="pre">&#64;</span></code> ]
+<strong>host</strong> [ <code class="docutils literal notranslate"><span class="pre">:</span></code> <strong>port</strong> ] <code class="docutils literal notranslate"><span class="pre">/</span></code> <strong>path</strong> [ <code class="docutils literal notranslate"><span class="pre">?</span></code> <strong>params</strong> ]</p>
+<dl>
+<dt>dialect</dt><dd><p>Duomenų šaltinio dialektas arba protokolas, kuriuo teikiami duomenys,
+galimi variantai:</p>
+<table class="table">
+<tbody>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">postgresql</span></code></p></td>
+<td><p>PostgreSQL duomenų bazė.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">mysql</span></code></p></td>
+<td><p>MySQL duomenų bazė.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">mariadb</span></code></p></td>
+<td><p>MariaDB duomenų bazė.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sqlite</span></code></p></td>
+<td><p>SQLite duomenų bazė.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">oracle</span></code></p></td>
+<td><p>Oracle duomenų bazė.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">mssql</span></code></p></td>
+<td><p>Microsoft SQL Server duomenų bazė.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">http</span></code>, <code class="docutils literal notranslate"><span class="pre">https</span></code></p></td>
+<td><p>Duomenų failas publikuojamas HTTP protokolu.</p></td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt>driver</dt><dd><p>Priklauso nuo <strong>dialect</strong> ir nuo naudojamo duomenų agento.</p>
+</dd>
+<dt>user</dt><dd><p>Duomenų šaltinio naudotojo vardas, jei duomenų šaltinis to reikalauja.</p>
+</dd>
+<dt>password</dt><dd><p>Duomenų šaltinio slaptažodis, jei duomenų šaltinis to reikalauja.</p>
+</dd>
+<dt>host</dt><dd><p>Duomenų šaltinio serverio adresas, jei duomenų šaltinis yra
+nuotoliniame serveryje.</p>
+</dd>
+<dt>port</dt><dd><p>Nuotolinio serverio prievado numeris.</p>
+</dd>
+<dt>path</dt><dd><p>Duomenų bazės pavadinimas arba kelias iki duomenų failo.</p>
+</dd>
+<dt>params</dt><dd><p>Papildomi parametrai, priklauso nuo naudojamo <strong>driver</strong>.</p>
+</dd>
+</dl>
 </dd></dl>
 
 <dl class="py data">
@@ -2934,10 +2884,11 @@ kontekstą.</p>
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Dimensijos</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset">dataset</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset.source"><code class="docutils literal notranslate"><span class="pre">source</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset.dataset.prepare"><code class="docutils literal notranslate"><span class="pre">dataset.prepare</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset.id"><code class="docutils literal notranslate"><span class="pre">id</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset.type"><code class="docutils literal notranslate"><span class="pre">type</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset.ref"><code class="docutils literal notranslate"><span class="pre">ref</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset.source"><code class="docutils literal notranslate"><span class="pre">source</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset.prepare"><code class="docutils literal notranslate"><span class="pre">prepare</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset.level"><code class="docutils literal notranslate"><span class="pre">level</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset.access"><code class="docutils literal notranslate"><span class="pre">access</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset.title"><code class="docutils literal notranslate"><span class="pre">title</span></code></a></li>
@@ -2945,9 +2896,10 @@ kontekstą.</p>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#resource">resource</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resource.id"><code class="docutils literal notranslate"><span class="pre">id</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resource.type"><code class="docutils literal notranslate"><span class="pre">type</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resource.source"><code class="docutils literal notranslate"><span class="pre">source</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resource.ref"><code class="docutils literal notranslate"><span class="pre">ref</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resource.source"><code class="docutils literal notranslate"><span class="pre">source</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resource.level"><code class="docutils literal notranslate"><span class="pre">level</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resource.access"><code class="docutils literal notranslate"><span class="pre">access</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#resource.title"><code class="docutils literal notranslate"><span class="pre">title</span></code></a></li>

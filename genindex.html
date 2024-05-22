@@ -29,7 +29,10 @@
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-examples.css?v=e236af4b" />
     <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=a5c4661c" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
     <link rel="stylesheet" type="text/css" href="_static/custom.css?v=f0eb6ae9" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
@@ -40,9 +43,12 @@
     <script src="_static/documentation_options.js?v=4ee96f2e"></script>
     <script src="_static/doctools.js?v=9a2dae69"></script>
     <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
     <script src="_static/tabs.js?v=3030b3cb"></script>
     <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script src="_static/translations.js?v=3b848cde"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
     <script src="https://unpkg.com/mermaid@10.2.0/dist/mermaid.min.js"></script>
     <script>
 mermaid.initialize({
@@ -483,8 +489,6 @@ document.write(`
       </ul></li>
       <li><a href="formatas.html#dataset">dataset (įtaisytasis kintamasis)</a>
 </li>
-      <li><a href="dimensijos.html#dataset.dataset.prepare">dataset.prepare (modulje dataset)</a>
-</li>
       <li><a href="tipai.html#type.date">date (modulje type)</a>
 </li>
       <li><a href="formules.html#func.date">date() (modulyje func)</a>, <a href="formules.html#id0">[1]</a>
@@ -638,15 +642,19 @@ document.write(`
       <li><a href="formatas.html#id">id (įtaisytasis kintamasis)</a>
 
       <ul>
+        <li><a href="dimensijos.html#dataset.id">(modulje dataset)</a>
+</li>
         <li><a href="dimensijos.html#migrate.id">(modulje migrate)</a>
+</li>
+        <li><a href="dimensijos.html#resource.id">(modulje resource)</a>
 </li>
         <li><a href="dimensijos.html#switch.id">(modulje switch)</a>
 </li>
       </ul></li>
-      <li><a href="tipai.html#type.image">image (modulje type)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tipai.html#type.image">image (modulje type)</a>
+</li>
       <li><a href="tipai.html#type.integer">integer (modulje type)</a>
 </li>
       <li><a href="formules.html#func.item">item() (modulyje func)</a>
@@ -857,6 +865,8 @@ document.write(`
 
       <ul>
         <li><a href="dimensijos.html#base.prepare">(modulje base)</a>
+</li>
+        <li><a href="dimensijos.html#dataset.prepare">(modulje dataset)</a>
 </li>
         <li><a href="dimensijos.html#enum.prepare">(modulje enum)</a>
 </li>
