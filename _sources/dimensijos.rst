@@ -670,21 +670,24 @@ vienos esybės modeliai turi turėti vienodos identifikatorius.
         ======= ===== ================ ================== ==== ============ 
         dataset model property         type               ref  uri        
         ======= ===== ================ ================== ==== ============
-        datasets/gov/rc/ar/ws                                              
+        adresai                                                            
         ------------------------------ ------------------ ---- ------------
+        \                              prefix             ar   \https://data.gov.lt/id/adresai/
         \       **Location**                              code             
         ------- ---------------------- ------------------ ---- ------------
-        \             code             integer                             
-        \             name\@en         string                              
+        \             code             integer                 ar:code     
+        \             name\@en         string                  ar:name     
         datasets/gov/ivpk/dp/api                                           
         ------------------------------ ------------------ ---- ------------
-        \                              prefix             ar   \https://data.gov.lt/id/datasets/gov/rc/ar/ws/
-        ------- ----- ---------------- ------------------ ---- ------------
+        \                              prefix             ar   \https://data.gov.lt/id/adresai/
         \       **Gyvenviete**                            code ar:Location 
         ------- ---------------------- ------------------ ---- ------------
-        \             code             integer                 ar:Location/code     
-        \             name\@lt         string                  ar:Location/name
+        \             code             integer                 ar:code     
+        \             name\@lt         string                  ar:name
         ======= ===== ================ ================== ==== ============
+
+        Šiame pavyzdyje `ar:Location` yra URI, kuris yra automatiškai
+        generuojamas `adresai` duomenų rinkinyje.
 
     .. seealso::
 
