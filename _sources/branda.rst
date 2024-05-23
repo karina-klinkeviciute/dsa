@@ -101,6 +101,21 @@ Nuliniu brandos lygiu žymimi duomenys, kuri yra prieinami, tačiau pagal tokias
 naudojimo sąlygas, kurios nėra suderinamos su atvirų duomenų licencijomis.
 
 
+.. _L003:
+
+L003: Nėra identifikatoriaus
+============================
+
+Duomenų šaltinis neturi jokio unikalaus objekto identifikatoriaus.
+
+.. _L004:
+
+L004: Duomenų nėra
+==================
+
+Apibrėžtas duomenų modelis, tačiau pačių duomenų kol kas nėra.
+
+
 .. _L100:
 
 L100: Nenuskaitoma mašininiu būdu
@@ -188,8 +203,15 @@ Pavyzdžiui `Filialas` duomnų laukas `imone` naudoja tam tikrą identifikatori�
 kuris nesutampa nei su vienu iš `Imone` atributų, pagal kuriuose būtų galima
 identifikuoti filialo įmonę.
 
+.. _L104:
 
-.. _L103:
+L104: Identifikatorius nėra unikalus
+====================================
+
+Objekto identifikatorius nėra unikalus, turi pasikartojančių reikšmių.
+
+
+.. _L200:
 
 L200: Nestandartinis pateikimas
 *******************************
@@ -251,81 +273,125 @@ example
 \           tel_nr                string               2
 == == == == ===================== ========= ========== =====
 
-- **Nestandartiniai duomenų tipai** - antru brandos lygiu žymimi duomenys,
-  kurių nurodytas tipas neatitinka realaus duomenų tipo. Pavyzdžiui:
 
-  - `ikurimo_data` - nurodytas `string`, turėtu būti `date`.
-  - `imones_pavadinimas` - nurodytas `string`, turėtu būti `text`.
-  - `atstumas` - nurodytas `string`, turėtu būti `integer`.
+.. _L201:
 
-- **Nestandartinis formatas** - antru brandos lygiu žymimi duomenys,
-  kurie pateikti nestandartiniu formatu. Standartinis duomenų
-  pateikimas nurodytas prie kiekvieno duomenų tipo skyriuje
-  :ref:`duomenų-tipai`. Payvzdžiui:
+L201: Nestandartiniai duomenų tipai
+===================================
 
-  - `ikurimo_data` - nurodytas `DD/MM/YY`, turėtu būti `YYYY-MM-DD`.
-  - `atstumas` - nurodyta `X m.`, turėtu būti `X`.
-  - `tel_nr` - nurodytas `(XX) XXX XXXXX`, turėtu būti
-    `+XXX-XXX-XXXXX`.
+Antru brandos lygiu žymimi duomenys, kurių nurodytas tipas neatitinka realaus
+duomenų tipo. Pavyzdžiui:
 
-- **Nestandartiniai kodiniai pavadinimai** - antru brandos lygiu žymimi
-  duomenys, kurių kodiniai pavadinimai, neatitinka :ref:`standartinių
-  reikalavimų keliamų kodiniams pavadinimams <kodiniai-pavadinimai>`.
-  Pavyzdžiui:
+- `ikurimo_data` - nurodytas `string`, turėtu būti `date`.
+- `imones_pavadinimas` - nurodytas `string`, turėtu būti `text`.
+- `atstumas` - nurodytas `string`, turėtu būti `integer`.
 
-  - `imones_id` - dubliuojamas modelio pavadinimas, turėtu būti `id`.
-  - `imones_pavadinimas` - dubliuojamas modelio pavadinimas, turėtu
-    būti `pavadinimas`.
-  - `ikurimo_data` - dubliuojamas tipo pavadinimas, turėtu būti
-    `ikurta`.
+.. _L202:
 
-- **Nepatikimi identifikatoriai** - antru brandos lygiu žymimi
-  duomenys, kurių `ref` tipui naudojami nepatikimi identifikatoriai,
-  pavyzdžiui tokie, kaip pavadinimai, kurie gali keistis arba kartotis.
-  Pavyzdžiui:
+L202: Nestandartinis formatas
+=============================
 
-  - `imones_pavadinimas` - jungimas daromas per įmonės pavadinimą,
-    tačiau šiuo atveju kito varianto nėra, nes `Filialas.imones_id`
-    nesutampa su `Imone.imones_id`.
+Antru brandos lygiu žymimi duomenys, kurie pateikti nestandartiniu formatu.
+Standartinis duomenų pateikimas nurodytas prie kiekvieno duomenų tipo skyriuje
+:ref:`duomenų-tipai`. Payvzdžiui:
 
-- **Denormalizuoti duomenys** - antru brandos lygiu žymimi duomenys,
-  kurie dubliuoja kito modelio duomenis ir yra užrašyti nenurodant, kad
-  tai yra duomenys dubliuojantys kito modelio duomenis. Pavyzdžiui:
+- `ikurimo_data` - nurodytas `DD/MM/YY`, turėtu būti `YYYY-MM-DD`.
+- `atstumas` - nurodyta `X m.`, turėtu būti `X`.
+- `tel_nr` - nurodytas `(XX) XXX XXXXX`, turėtu būti `+XXX-XXX-XXXXX`.
 
-  - `Filialas.imones_id` turėtu būti `Filialas.imone.imones_id`.
-  - `Filialas.imones_pavadinimas` turėtu būti
-    `Filialas.imone.imones_pavadinimas`.
 
-  Plačiau apie denormalizuotus duomenis skaitykite skyriuje
-  :ref:`ref-denorm`.
+.. _L203:
 
-- **Nenurodytas susiejimas** - antru brandos lygiu žymimi duomenys,
-  kurie siejasi su kitu modeliu, tačiau tokia informacija nėra pateikta
-  metaduomenyse. Pavyzdžiui:
+L203: Nestandartiniai kodiniai pavadinimai
+==========================================
 
-  - `Filialas.imone` - `Filialas` siejasi su `Imone`, per
-    `Filialas.imones_pavadiniams`, todėl turėtu būti nurodytas `imone
-    ref Imone` ryšys su `Imone`.
+Antru brandos lygiu žymimi duomenys, kurių kodiniai pavadinimai, neatitinka
+:ref:`standartinių reikalavimų keliamų kodiniams pavadinimams
+<kodiniai-pavadinimai>`. Pavyzdžiui:
 
-- **Neatitinka modelio bazės** - antru brandos lygiu žymimi duomenys,
-  kurie priklauso vienai semantinei klasei, tačiau duomenų schema
-  nesutampa su bazinio modelio schema. Pavyzdžiui:
+- `imones_id` - dubliuojamas modelio pavadinimas, turėtu būti `id`.
+- `imones_pavadinimas` - dubliuojamas modelio pavadinimas, turėtu būti
+  `pavadinimas`.
+- `ikurimo_data` - dubliuojamas tipo pavadinimas, turėtu būti `ikurta`.
 
-  - `Imone` - priklauso semantinei klasei `JuridinisAsmuo`, tačiau tai
-    nėra pažymėta metaduomenyse.
-  - `Imone.imones_id` turėtu būti `Imone.kodas`, kad sutaptu su baze
-    (`JuridinisAsmuo.kodas`).
-  - `Imone.imones_pavadinimas` turėtu būti `Imone.pavadinimas@lt`, kad
-    sutaptu su baze (`JuridinisAsmuo.pavadinimas@lt`).
+.. seealso::
 
-- **Nenurodytas enum kodinėms reikšmėms** - antru brandos lygiu žymimi
-  kategoriniai duomenys, kurių reikšmės pateiktos sutartiniais
-  kodinais, kurių prasmė nėra aiški. Pavyzdžiui:
+    | :ref:`kodiniai-pavadinimai`
 
-  - `Imone.rusis` - įmonės rūšis žymima skaičiais, tačiau nėra aišku,
-    kokks skaičius, ką rei6kia, todėl reikia pateitki `enum` sąrašą,
-    kuriame būtų nurodyta, ką koks skaičius reiškia. Plačiau skaityti
-    :ref:`enum`.
+.. _L204:
+
+L204: Nepatikimi identifikatoriai
+=================================
+
+Antru brandos lygiu žymimi duomenys, kurių `ref` tipui naudojami nepatikimi
+identifikatoriai, pavyzdžiui tokie, kaip pavadinimai, kurie gali keistis arba
+kartotis. Pavyzdžiui:
+
+- `imones_pavadinimas` - jungimas daromas per įmonės pavadinimą,
+  tačiau šiuo atveju kito varianto nėra, nes `Filialas.imones_id`
+  nesutampa su `Imone.imones_id`.
+
+.. _L205:
+
+L205: Denormalizuoti duomenys
+=============================
+
+Antru brandos lygiu žymimi duomenys, kurie dubliuoja kito modelio duomenis ir
+yra užrašyti nenurodant, kad tai yra duomenys dubliuojantys kito modelio
+duomenis. Pavyzdžiui:
+
+- `Filialas.imones_id` turėtu būti `Filialas.imone.imones_id`.
+- `Filialas.imones_pavadinimas` turėtu būti
+  `Filialas.imone.imones_pavadinimas`.
+
+Plačiau apie denormalizuotus duomenis skaitykite skyriuje :ref:`ref-denorm`.
+
+.. _L206:
+
+L206: Nenurodytas susiejimas
+============================
+
+Antru brandos lygiu žymimi duomenys, kurie siejasi su kitu modeliu, tačiau
+tokia informacija nėra pateikta metaduomenyse. Pavyzdžiui:
+
+- `Filialas.imone` - `Filialas` siejasi su `Imone`, per
+  `Filialas.imones_pavadiniams`, todėl turėtu būti nurodytas `imone ref Imone`
+  ryšys su `Imone`.
+
+.. _L207:
+
+L207: Neatitinka modelio bazės
+==============================
+
+Antru brandos lygiu žymimi duomenys, kurie priklauso vienai semantinei klasei,
+tačiau duomenų schema nesutampa su bazinio modelio schema. Pavyzdžiui:
+
+- `Imone` - priklauso semantinei klasei `JuridinisAsmuo`, tačiau tai nėra
+  pažymėta metaduomenyse.
+- `Imone.imones_id` turėtu būti `Imone.kodas`, kad sutaptu su baze
+  (`JuridinisAsmuo.kodas`).
+- `Imone.imones_pavadinimas` turėtu būti `Imone.pavadinimas@lt`, kad sutaptu su
+  baze (`JuridinisAsmuo.pavadinimas@lt`).
+
+.. _L208:
+
+L208: Nenurodytas enum kodinėms reikšmėms
+=========================================
+
+Antru brandos lygiu žymimi kategoriniai duomenys, kurių reikšmės pateiktos
+sutartiniais kodais, kurių prasmė nėra aiški. Pavyzdžiui:
+
+- `Imone.rusis` - įmonės rūšis žymima skaičiais, tačiau nėra aišku,
+  kokks skaičius, ką rei6kia, todėl reikia pateitki `enum` sąrašą,
+  kuriame būtų nurodyta, ką koks skaičius reiškia. Plačiau skaityti
+  :ref:`enum`.
+
+.. _L209:
+
+L209: Nenurodyta modelio bazė
+=============================
+
+Modelis atitinka registre apibrėžtą esybę, tačiau nėra su ja susietas.
 
 
 .. _L300:
@@ -395,41 +461,53 @@ example
 \           tel_nr                string                4                        
 == == == == ===================== ========= =========== ===== ======== ==========
 
-- **Nenurodytas pirminis raktas** - trečiu brandos lygiu žymimi
-  duomenys, kurie neturi nurodyto pirminio rakto :data:`model.ref`
-  stulpelyje. Pavyzdžiui:
+.. _L301:
 
-  - `Filialas` - nenurodytas pirminis raktas :data:`model.ref`
-    stulpelyje.
+L301: Nėra globalaus objekto identifikatoriaus
+==============================================
 
-- **Nenurodyt vienetai** - trečiu brandos lygiu žymimi kiekybiniai
-  duomenys, kuriems nėra nurodyti matavimo vienetai
-  :data:`property.ref` stulpelyje. Pavyzdžiui:
+Nėra naudojamas globalus objekto identifikatorius, objektas identifikuojamas
+naudojant tik lokalų identifikatorių. Tokiu atveju, objektas negali būti
+nuskaitomas tiesiogiai, gali būti vykdoma tik atranka, nurodant filtrą, pagal
+lokalų identifikatorių.
 
-  - `atstumas` - nenurodyta, kokiais vienetais matuojamas atstumas.
+- `Filialas.imone` - siejimas atliekamas per `Imone.kodas`, o ne per
+  `Imone._id`.
 
-- **Nenurodyti tikslumas** - trečiu brandos lygiu žymimi laiko ir
-  erdviniai duomenys, kuriems nėra nurodytas matavimo tikslumas.
-  Matavimo tikslumas nurodomas `property.ref` stulpelyje. Pavyzdžiui:
+.. _L302:
 
-  - `ikurta` - nenurodytas datos tikslumas, turėtu būti `D` - vienos
-    dienos tiksumas.
+L302: Nenurodyti matavimo vienetai
+==================================
 
-- **Siejimas ne per priminį raktą** - trečiu brandos lygiu žymimi `ref`
-  tipo duomenų laukai, kurie siejami ne per perminį raktą `_id`, o per
-  kitą identifikatorių. Pavyzdžiui:
+Trečiu brandos lygiu žymimi kiekybiniai duomenys, kuriems nėra nurodyti
+matavimo vienetai :data:`property.ref` stulpelyje. Pavyzdžiui:
 
-  - `Filialas.imone` - siejimas atliekamas per `Imone.kodas`, o ne per
-    `Imone._id`.
+- `atstumas` - nenurodyta, kokiais vienetais matuojamas atstumas.
 
-- **Neaprašyti kategoriniai duomenys** - trečiu brandos lygiu žymimi
-  kategoriniai duomenys, kurių reikšmės pačios savaime yra aiškios,
-  tačiau neišvardintos struktūros apraše. Pavyzdžiui:
+.. _L303:
 
-  - `Imone.rusis` - įmonės rūšies kategorijos duomenys yra pateikta
-    tekstine forma, tačiau, struktūros apraše nėra išvardintos visos
-    galimos kategorijos ir pats duomenų laukas nėra pažymėtas, kaip
-    kategorinis.
+L303: Nenurodytas duomenų tikslumas
+===================================
+
+Trečiu brandos lygiu žymimi laiko ir erdviniai duomenys, kuriems nėra nurodytas
+matavimo tikslumas. Matavimo tikslumas nurodomas `property.ref` stulpelyje.
+Pavyzdžiui:
+
+- `ikurta` - nenurodytas datos tikslumas, turėtu būti `D` - vienos dienos
+  tiksumas.
+
+.. _L304:
+
+L304: Neaprašyti kategoriniai duomenys
+======================================
+
+Trečiu brandos lygiu žymimi kategoriniai duomenys, kurių reikšmės pačios
+savaime yra aiškios, tačiau neišvardintos struktūros apraše. Pavyzdžiui:
+
+- `Imone.rusis` - įmonės rūšies kategorijos duomenys yra pateikta
+  tekstine forma, tačiau, struktūros apraše nėra išvardintos visos
+  galimos kategorijos ir pats duomenų laukas nėra pažymėtas, kaip
+  kategorinis.
 
 
 .. _L400:
@@ -516,10 +594,14 @@ example
 \           tel_nr                string           4
 == == == == ===================== ========= ====== ===== ======== ==========
 
-- **Nesusieta su standartiniu žodynu** - ketvirtu brandos lygiu žimimi
-  duomenys, kurie nėra susieti su standartiniais žodynais ar
-  ontologijomis. Siejimas su žodynais atliekamas `model.uri` ir
-  `property.uri` stulpeluose.
+.. _L401:
+
+L401: Nesusieta su standartiniu žodynu
+======================================
+
+Ketvirtu brandos lygiu žimimi duomenys, kurie nėra susieti su standartiniais
+žodynais ar ontologijomis. Siejimas su žodynais atliekamas `model.uri` ir
+`property.uri` stulpeluose.
 
 
 .. _L500:

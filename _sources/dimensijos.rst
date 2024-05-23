@@ -58,6 +58,12 @@ duomenų struktūros elementus su duomenų rinkiniais registruotais duomenų
 kataloge. Toks susiejimas atliekamas naudojant duomenų rinkinio kodinį
 pavadinimą.
 
+.. topic:: Brandos lygis
+
+    :ref:`L203`
+        Duomenų rinkinio ar duomenų erdvės kodinis pavadinimas neatitinka
+        reikalavimų keliamų kodiniams pavadinimams.
+
 .. note::
 
     Nurodytas duomenų rinkinio ar vardų erdvės kodinis pavadinimas turi būti
@@ -233,12 +239,15 @@ rinkinio kontekste.
 
 .. data:: level
 
-    Duomenų šaltinio brandos lygis, vertinant tik pagal formatą, nežiūrint į
-    šaltinyje esančių duomenų turinį.
+    Duomenų šaltinio :ref:`brandos lygis <level>`, vertinant tik pagal formatą,
+    nežiūrint į šaltinyje esančių duomenų turinį.
 
 .. data:: access
 
-    Viso duomenų šaltinio prieigos lygis. Paveldimas.
+    Duomenų šaltinio :ref:`prieigos lygis <access>`.
+
+    Pildyti neprivaloma, jei nurodytas, tada visoms žemesnio lygio dimensijoms,
+    pagal nutylėjimą taikomas nurodytas šaltinio prieigos lygis.
 
 .. data:: title
 
@@ -247,13 +256,6 @@ rinkinio kontekste.
 .. data:: description
 
     Duomenų šaltinio aprašymas.
-
-Duomenų šaltinio :data:`resource.type` reikšmė apibrėžia kokią :term:`ETL`
-priemonę naudoti skaitant duomenis iš duomenų šaltinio. Automatizuota duomenų
-priemonė skirta įstaigos duomenų atvėrimui turėtų palaikyti tik tokius duomenų
-šaltinius, kurie naudojami įstaigos vidinėje infrastruktūroje.
-
-Esant poreikiui gali būti įgyvendintas palaikymas naujiems duomenų šaltiniams.
 
 
 .. _base:
@@ -472,26 +474,151 @@ model
 
 .. module:: model
 
-Duomenų modelis apibrėžia duomenų grupę turinčią tas pačias savybes.
-Skirtinguose duomenų šaltiniuose ir formatuose, duomenų modelis gali būti
-išreikštas skirtingomis formomis, pavyzdžiui `sql` duomenų šaltinio atveju,
-modelis aprašo vieną duomenų bazės lentelę.
+Duomenų modelio :ref:`kodinis pavadinimas <kodiniai-pavadinimai>`. Užrašomas
+vienaskaitos forma iš didžiosios raidės, jei pavadinimas iš kelių žodžių,
+žodžiai atskiriami didžiąja raide.
 
-Kiekvienas modelis turi turėti pirminį raktą, unikalų modelio duomenų
-identifikatorių. Pirminis raktas aprašomas pateikiant vieną ar kelias
-:data:`model.property` reikšmes :data:`model.ref` stulpelyje, kurios kartu
-unikaliai identifikuoja kiekvieną duomenų eilutę.
+.. admonition:: Pavyzdžiai
 
-Išimtiniais atvejais, kai modelio duomenų laukų reikšmės turi būti generuojamos
-dinamiškai ar kitais nestandartiniais atvejais yra galimybė nurodyti model.type
-reikšmę. Jei :data:`model.type` yra pateiktas, tada už modelio duomenų
-generavimą, įeinančių duomenų tikrinimą ir visos kitos su modeliu susijusios
-dalys gali būti pritaikytos konkretaus modelio atvejui. Tačiau, jei reikia
-keisti tik duomenų pateikimą, užtenka naudoti :data:`model.prepare` formules.
+    | `Gyvenviete`
+    | `AdministracinisTipas`
+
+Modelis yra siejamas su realaus pasaulio esybėmis. Viena esybė gali turėti
+kelis skirtingus duomenų modelius, su skirtingomis savybėmis, tačiau skirtingi
+vienos esybės modeliai turi turėti vienodos identifikatorius.
+
+.. topic:: Brandos lygis
+
+    :ref:`L203`
+        Modelio kodinis pavadinimas neatitinka reikalavimų keliamų kodiniams
+        pavadinimams.
+
+.. data:: type
+
+    .. versionchanged:: 0.2
+
+        Nuo 0.2 versijos nurodo modelio bazę.
+
+    Nurodo modelio bazę arba esybę, kurios pagalba skirtingiems modeliams
+    suteikiami vienodi identifikatoriai.
+
+    Jei nurodyta modelio bazė, :data:`model.ref` nurodytas pirminis raktas turi
+    sutapti su bazinio modelio pirminiu raktu.
+
+    Taip pat turi sutapti ir modelio savybės su baziniu modeliu. Tačiau modelis
+    gali turėti ir papildomų savybių, kurių nėra baziniame modelyje.
+    Vienintelis privalomas reikalavimas yra pirminio rakto susiejimas, kad
+    modelis ir bazinis modelis turėtu vienodus identifikatorius.
+
+    .. topic:: Brandos lygis
+
+        :ref:`L103`
+            Modelis yra susietas su bazinio registro esybe metaduomenų
+            lygmeniu, tačiau nėra tokio identifikatoriaus kuris leistu susieti
+            ir pačius duomenis.
+
+        :ref:`L209`
+            Modelis nėra susietas su baziniame registre apibrėžta esybe.
+
+    .. admonition:: Pavyzdys
+
+        **Duomenų modelis**
+
+        .. mermaid::
+        
+           classDiagram
+        
+             class ns1Gyvenviete["ns1:Gyvenviete"]
+             class ns2Gyvenviete["ns2:Gyvenviete"]
+             class Location["locn:Location"] {
+               + code: integer [1..1]
+               + name: text [1..1]
+             }
+             ns1Gyvenviete --|> Location
+             ns2Gyvenviete --|> Location
+
+        |
+
+        **Struktūros aprašas**
+
+        ======= ===== ======== ================== ====
+        dataset model property type               ref
+        ======= ===== ======== ================== ====
+        locn                                     
+        ---------------------- ------------------ ----
+        \       **Location**                      code
+        ------- -------------- ------------------ ----
+        \             code     integer           
+        \             name\@en string            
+        ns1                                      
+        ---------------------- ------------------ ----
+        \       **Gyvenviete** **/locn/Location** code
+        ------- -------------- ------------------ ----
+        \             code     integer           
+        \             name\@lt string            
+        ns2                                      
+        ---------------------- ------------------ ----
+        \       **Gyvenviete** **/locn/Location** code
+        ------- -------------- ------------------ ----
+        \             code     integer           
+        \             name\@lt string            
+        ======= ===== ======== ================== ====
+
+        Pavyzdyje turime tris modelius iš skirtingų duomenų rinkinių,
+        `ns1:Gyvenviete` ir `ns2:Gyvenviete` nurodo `locn:Location` kaip šių
+        modelių bazę, tai reiškia, kad visi trys modeliai realiame pasaulyje
+        yra viena esybė, turinti vienodus identifikatorius skirtinguose
+        modeliuose.
+
+.. data:: ref
+
+    Kableliu atskirtas sąrašas :data:`model.property` duomenų laukų pavadinimų,
+    kurie kartu unikaliai identifikuoja vieną duomenų eilutę (pirminis lentelės
+    raktas arba identifikatorius).
+
+    Jei nurodytas :data:`model.type`, pirminis raktas būtinai turi sutapti su
+    :data:`model.type` pirminiu raktu.
+
+    Jei modelio objektą unikaliai identifikuoja keli duomenų laukai,
+    :data:`model.ref` stulpelyje galima nurodyti kelis duomenų laukus atskirtus
+    kableliu.
+
+    .. topic:: Brandos lygis
+
+        :ref:`L003`
+            Nenurodytas objekto identifikatorius.
+
+        :ref:`L104`
+            Nurodytas objekto identifikatorius nėra unikalus, turi
+            pasikartojančių reikšmių.
+
+        :ref:`L204`
+            Nurodytas objekto identifikatorius yra unikalus, tačiau
+            nepatikimas, kadangi nurodytas duomenų laukas, kuris gali keistis,
+            tarkime pavadinimas.
+
+        :ref:`L301`
+            Nurodytas objekto identifikatorius yra patikimas, tačiau nėra
+            siejamas su globaliu objekto identifikatoriumi.
 
 .. data:: source
 
-    Modelio pavadinimas šaltinyje. Prasmė priklauso nuo :data:`resource.type`.
+    Modelio pavadinimas šaltinyje.
+
+    Kas įrašoma į šį stulpelį priklauso nuo duomenų šaltinio :data:`resource.type`.
+
+    SQL atveju, tai bus lentelės pavadinimas, XML atveju - XPath išraiška, JSON
+    atveju - JSONPath išraiška.
+
+    Jei duomenys publikuojami :ref:`vidinėje saugykloje <internal-backend>`,
+    :data:`model.source` pildyti nereikia, kadangi vidinės saugyklos fizinio ir
+    loginio modelio pavadinimai yra tokie patys.
+
+    .. topic:: Brandos lygis
+
+        :ref:`L004`
+            Nenurodytas modelio pavadinimas šaltinyje ir duomenys nėra
+            publikuojami :ref:`vidinėje saugykloje <internal-backend>`.
 
 .. data:: prepare
 
@@ -500,28 +627,15 @@ keisti tik duomenų pateikimą, užtenka naudoti :data:`model.prepare` formules.
 
     Taip pat skaitykite: :ref:`duomenų-atranka`.
 
-.. data:: type
-
-    .. versionchanged:: 0.2
-
-        Nuo 0.2 versijos nurodo modelio bazę.
-
-    Nurodo modelio bazę, tai reiškia, kad tiek šis modelis, tiek bazinis
-    modelis turi vienodus identifikatorius.
-
-    Jei nurodyta modelio bazė, :data:`model.ref` nurodytas pirminis raktas turi
-    sutaptu su bazinio modelio pirminiu raktu.
-
-.. data:: ref
-
-    Kableliu atskirtas sąrašas :data:`model.property` reikšmių, kurios kartu
-    unikaliai identifikuoja vieną duomenų eilutę (pirminis lentelės raktas).
-
 .. data:: level
 
     Modelio :ref:`brandos lygis <level>`, nusakantis pačio modelio brandos
     lygį, pavyzdžiui ar nurodytas pirminis raktas, ar modelio pavadinimas
-    atitinka kodiniams pavadinimams kelimus reikalavimus.
+    atitinka kodiniams pavadinimams keliamus reikalavimus.
+
+    .. seealso::
+
+        :ref:`ref-level`
 
 .. data:: access
 

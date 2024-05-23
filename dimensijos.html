@@ -49,6 +49,13 @@
     <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script src="_static/translations.js?v=3b848cde"></script>
     <script src="_static/design-tabs.js?v=36754332"></script>
+    <script src="https://unpkg.com/mermaid@10.2.0/dist/mermaid.min.js"></script>
+    <script>
+mermaid.initialize({
+    startOnLoad:true,
+    theme: 'neutral'
+});
+</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'dimensijos';</script>
     <link rel="index" title="Indeksas" href="genindex.html" />
     <link rel="search" title="Paieška" href="search.html" />
@@ -351,10 +358,10 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model">model</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model.source"><code class="docutils literal notranslate"><span class="pre">source</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model.prepare"><code class="docutils literal notranslate"><span class="pre">prepare</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model.type"><code class="docutils literal notranslate"><span class="pre">type</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model.ref"><code class="docutils literal notranslate"><span class="pre">ref</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model.source"><code class="docutils literal notranslate"><span class="pre">source</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model.prepare"><code class="docutils literal notranslate"><span class="pre">prepare</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model.level"><code class="docutils literal notranslate"><span class="pre">level</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model.access"><code class="docutils literal notranslate"><span class="pre">access</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model.uri"><code class="docutils literal notranslate"><span class="pre">uri</span></code></a></li>
@@ -531,6 +538,14 @@ konkrečios dimensijos stulpelį, reikia nurodyti ir dimensiją, pavyzdžiui
 duomenų struktūros elementus su duomenų rinkiniais registruotais duomenų
 kataloge. Toks susiejimas atliekamas naudojant duomenų rinkinio kodinį
 pavadinimą.</p>
+<aside class="topic">
+<p class="topic-title">Brandos lygis</p>
+<dl class="simple">
+<dt><a class="reference internal" href="branda.html#l203"><span class="std std-ref">L203: Nestandartiniai kodiniai pavadinimai</span></a></dt><dd><p>Duomenų rinkinio ar duomenų erdvės kodinis pavadinimas neatitinka
+reikalavimų keliamų kodiniams pavadinimams.</p>
+</dd>
+</dl>
+</aside>
 <div class="admonition note">
 <p class="admonition-title">Pastaba</p>
 <p>Nurodytas duomenų rinkinio ar vardų erdvės kodinis pavadinimas turi būti
@@ -752,14 +767,16 @@ nuotoliniame serveryje.</p>
 <dl class="py data">
 <dt class="sig sig-object py" id="resource.level">
 <span class="sig-prename descclassname"><span class="pre">resource.</span></span><span class="sig-name descname"><span class="pre">level</span></span><a class="headerlink" href="#resource.level" title="Link to this definition">#</a></dt>
-<dd><p>Duomenų šaltinio brandos lygis, vertinant tik pagal formatą, nežiūrint į
-šaltinyje esančių duomenų turinį.</p>
+<dd><p>Duomenų šaltinio <a class="reference internal" href="branda.html#level"><span class="std std-ref">brandos lygis</span></a>, vertinant tik pagal formatą,
+nežiūrint į šaltinyje esančių duomenų turinį.</p>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="resource.access">
 <span class="sig-prename descclassname"><span class="pre">resource.</span></span><span class="sig-name descname"><span class="pre">access</span></span><a class="headerlink" href="#resource.access" title="Link to this definition">#</a></dt>
-<dd><p>Viso duomenų šaltinio prieigos lygis. Paveldimas.</p>
+<dd><p>Duomenų šaltinio <a class="reference internal" href="prieiga.html#access"><span class="std std-ref">prieigos lygis</span></a>.</p>
+<p>Pildyti neprivaloma, jei nurodytas, tada visoms žemesnio lygio dimensijoms,
+pagal nutylėjimą taikomas nurodytas šaltinio prieigos lygis.</p>
 </dd></dl>
 
 <dl class="py data">
@@ -774,11 +791,6 @@ nuotoliniame serveryje.</p>
 <dd><p>Duomenų šaltinio aprašymas.</p>
 </dd></dl>
 
-<p>Duomenų šaltinio <a class="reference internal" href="#resource.type" title="resource.type"><code class="xref py py-data docutils literal notranslate"><span class="pre">resource.type</span></code></a> reikšmė apibrėžia kokią <a class="reference internal" href="savokos.html#term-ETL"><span class="xref std std-term">ETL</span></a>
-priemonę naudoti skaitant duomenis iš duomenų šaltinio. Automatizuota duomenų
-priemonė skirta įstaigos duomenų atvėrimui turėtų palaikyti tik tokius duomenų
-šaltinius, kurie naudojami įstaigos vidinėje infrastruktūroje.</p>
-<p>Esant poreikiui gali būti įgyvendintas palaikymas naujiems duomenų šaltiniams.</p>
 </section>
 <section id="base">
 <span id="id4"></span><h2>base<a class="headerlink" href="#base" title="Link to this heading">#</a></h2>
@@ -1168,24 +1180,201 @@ bazei, kas reiškia, kas bazės nėra.</p></li>
 </section>
 <section id="model">
 <span id="id5"></span><h2>model<a class="headerlink" href="#model" title="Link to this heading">#</a></h2>
-<p id="module-model">Duomenų modelis apibrėžia duomenų grupę turinčią tas pačias savybes.
-Skirtinguose duomenų šaltiniuose ir formatuose, duomenų modelis gali būti
-išreikštas skirtingomis formomis, pavyzdžiui <code class="docutils literal notranslate"><span class="pre">sql</span></code> duomenų šaltinio atveju,
-modelis aprašo vieną duomenų bazės lentelę.</p>
-<p>Kiekvienas modelis turi turėti pirminį raktą, unikalų modelio duomenų
-identifikatorių. Pirminis raktas aprašomas pateikiant vieną ar kelias
-<a class="reference internal" href="#model.property" title="model.property"><code class="xref py py-data docutils literal notranslate"><span class="pre">model.property</span></code></a> reikšmes <a class="reference internal" href="#model.ref" title="model.ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">model.ref</span></code></a> stulpelyje, kurios kartu
-unikaliai identifikuoja kiekvieną duomenų eilutę.</p>
-<p>Išimtiniais atvejais, kai modelio duomenų laukų reikšmės turi būti generuojamos
-dinamiškai ar kitais nestandartiniais atvejais yra galimybė nurodyti model.type
-reikšmę. Jei <a class="reference internal" href="#model.type" title="model.type"><code class="xref py py-data docutils literal notranslate"><span class="pre">model.type</span></code></a> yra pateiktas, tada už modelio duomenų
-generavimą, įeinančių duomenų tikrinimą ir visos kitos su modeliu susijusios
-dalys gali būti pritaikytos konkretaus modelio atvejui. Tačiau, jei reikia
-keisti tik duomenų pateikimą, užtenka naudoti <a class="reference internal" href="#model.prepare" title="model.prepare"><code class="xref py py-data docutils literal notranslate"><span class="pre">model.prepare</span></code></a> formules.</p>
+<p id="module-model">Duomenų modelio <a class="reference internal" href="pavadinimai.html#kodiniai-pavadinimai"><span class="std std-ref">kodinis pavadinimas</span></a>. Užrašomas
+vienaskaitos forma iš didžiosios raidės, jei pavadinimas iš kelių žodžių,
+žodžiai atskiriami didžiąja raide.</p>
+<div class="admonition-pavyzdziai admonition">
+<p class="admonition-title">Pavyzdžiai</p>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">Gyvenviete</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">AdministracinisTipas</span></code></div>
+</div>
+</div>
+<p>Modelis yra siejamas su realaus pasaulio esybėmis. Viena esybė gali turėti
+kelis skirtingus duomenų modelius, su skirtingomis savybėmis, tačiau skirtingi
+vienos esybės modeliai turi turėti vienodos identifikatorius.</p>
+<aside class="topic">
+<p class="topic-title">Brandos lygis</p>
+<dl class="simple">
+<dt><a class="reference internal" href="branda.html#l203"><span class="std std-ref">L203: Nestandartiniai kodiniai pavadinimai</span></a></dt><dd><p>Modelio kodinis pavadinimas neatitinka reikalavimų keliamų kodiniams
+pavadinimams.</p>
+</dd>
+</dl>
+</aside>
+<dl class="py data">
+<dt class="sig sig-object py" id="model.type">
+<span class="sig-prename descclassname"><span class="pre">model.</span></span><span class="sig-name descname"><span class="pre">type</span></span><a class="headerlink" href="#model.type" title="Link to this definition">#</a></dt>
+<dd><div class="versionchanged">
+<p><span class="versionmodified changed">Pakeista 0.2 versijoje: </span>Nuo 0.2 versijos nurodo modelio bazę.</p>
+</div>
+<p>Nurodo modelio bazę arba esybę, kurios pagalba skirtingiems modeliams
+suteikiami vienodi identifikatoriai.</p>
+<p>Jei nurodyta modelio bazė, <a class="reference internal" href="#model.ref" title="model.ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">model.ref</span></code></a> nurodytas pirminis raktas turi
+sutapti su bazinio modelio pirminiu raktu.</p>
+<p>Taip pat turi sutapti ir modelio savybės su baziniu modeliu. Tačiau modelis
+gali turėti ir papildomų savybių, kurių nėra baziniame modelyje.
+Vienintelis privalomas reikalavimas yra pirminio rakto susiejimas, kad
+modelis ir bazinis modelis turėtu vienodus identifikatorius.</p>
+<aside class="topic">
+<p class="topic-title">Brandos lygis</p>
+<dl class="simple">
+<dt><a class="reference internal" href="branda.html#l103"><span class="std std-ref">L103: Neįmanomas jungimas</span></a></dt><dd><p>Modelis yra susietas su bazinio registro esybe metaduomenų
+lygmeniu, tačiau nėra tokio identifikatoriaus kuris leistu susieti
+ir pačius duomenis.</p>
+</dd>
+<dt><a class="reference internal" href="branda.html#l209"><span class="std std-ref">L209: Nenurodyta modelio bazė</span></a></dt><dd><p>Modelis nėra susietas su baziniame registre apibrėžta esybe.</p>
+</dd>
+</dl>
+</aside>
+<div class="admonition-pavyzdys admonition">
+<p class="admonition-title">Pavyzdys</p>
+<p><strong>Duomenų modelis</strong></p>
+<div class="mermaid">
+            classDiagram
+
+  class ns1Gyvenviete[&quot;ns1:Gyvenviete&quot;]
+  class ns2Gyvenviete[&quot;ns2:Gyvenviete&quot;]
+  class Location[&quot;locn:Location&quot;] {
+    + code: integer [1..1]
+    + name: text [1..1]
+  }
+  ns1Gyvenviete --|&gt; Location
+  ns2Gyvenviete --|&gt; Location
+        </div><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Struktūros aprašas</strong></p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>dataset</p></th>
+<th class="head"><p>model</p></th>
+<th class="head"><p>property</p></th>
+<th class="head"><p>type</p></th>
+<th class="head"><p>ref</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td colspan="3"><p>locn</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td colspan="2"><p><strong>Location</strong></p></td>
+<td></td>
+<td><p>code</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td><p>code</p></td>
+<td><p>integer</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td><p>name&#64;en</p></td>
+<td><p>string</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td colspan="3"><p>ns1</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td colspan="2"><p><strong>Gyvenviete</strong></p></td>
+<td><p><strong>/locn/Location</strong></p></td>
+<td><p>code</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td><p>code</p></td>
+<td><p>integer</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td><p>name&#64;lt</p></td>
+<td><p>string</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td colspan="3"><p>ns2</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td colspan="2"><p><strong>Gyvenviete</strong></p></td>
+<td><p><strong>/locn/Location</strong></p></td>
+<td><p>code</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td><p>code</p></td>
+<td><p>integer</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td><p>name&#64;lt</p></td>
+<td><p>string</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Pavyzdyje turime tris modelius iš skirtingų duomenų rinkinių,
+<code class="docutils literal notranslate"><span class="pre">ns1:Gyvenviete</span></code> ir <code class="docutils literal notranslate"><span class="pre">ns2:Gyvenviete</span></code> nurodo <code class="docutils literal notranslate"><span class="pre">locn:Location</span></code> kaip šių
+modelių bazę, tai reiškia, kad visi trys modeliai realiame pasaulyje
+yra viena esybė, turinti vienodus identifikatorius skirtinguose
+modeliuose.</p>
+</div>
+</dd></dl>
+
+<dl class="py data">
+<dt class="sig sig-object py" id="model.ref">
+<span class="sig-prename descclassname"><span class="pre">model.</span></span><span class="sig-name descname"><span class="pre">ref</span></span><a class="headerlink" href="#model.ref" title="Link to this definition">#</a></dt>
+<dd><p>Kableliu atskirtas sąrašas <a class="reference internal" href="#model.property" title="model.property"><code class="xref py py-data docutils literal notranslate"><span class="pre">model.property</span></code></a> duomenų laukų pavadinimų,
+kurie kartu unikaliai identifikuoja vieną duomenų eilutę (pirminis lentelės
+raktas arba identifikatorius).</p>
+<p>Jei nurodytas <a class="reference internal" href="#model.type" title="model.type"><code class="xref py py-data docutils literal notranslate"><span class="pre">model.type</span></code></a>, pirminis raktas būtinai turi sutapti su
+<a class="reference internal" href="#model.type" title="model.type"><code class="xref py py-data docutils literal notranslate"><span class="pre">model.type</span></code></a> pirminiu raktu.</p>
+<p>Jei modelio objektą unikaliai identifikuoja keli duomenų laukai,
+<a class="reference internal" href="#model.ref" title="model.ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">model.ref</span></code></a> stulpelyje galima nurodyti kelis duomenų laukus atskirtus
+kableliu.</p>
+<aside class="topic">
+<p class="topic-title">Brandos lygis</p>
+<dl class="simple">
+<dt><a class="reference internal" href="branda.html#l003"><span class="std std-ref">L003: Nėra identifikatoriaus</span></a></dt><dd><p>Nenurodytas objekto identifikatorius.</p>
+</dd>
+<dt><a class="reference internal" href="branda.html#l104"><span class="std std-ref">L104: Identifikatorius nėra unikalus</span></a></dt><dd><p>Nurodytas objekto identifikatorius nėra unikalus, turi
+pasikartojančių reikšmių.</p>
+</dd>
+<dt><a class="reference internal" href="branda.html#l204"><span class="std std-ref">L204: Nepatikimi identifikatoriai</span></a></dt><dd><p>Nurodytas objekto identifikatorius yra unikalus, tačiau
+nepatikimas, kadangi nurodytas duomenų laukas, kuris gali keistis,
+tarkime pavadinimas.</p>
+</dd>
+<dt><a class="reference internal" href="branda.html#l301"><span class="std std-ref">L301: Nėra globalaus objekto identifikatoriaus</span></a></dt><dd><p>Nurodytas objekto identifikatorius yra patikimas, tačiau nėra
+siejamas su globaliu objekto identifikatoriumi.</p>
+</dd>
+</dl>
+</aside>
+</dd></dl>
+
 <dl class="py data">
 <dt class="sig sig-object py" id="model.source">
 <span class="sig-prename descclassname"><span class="pre">model.</span></span><span class="sig-name descname"><span class="pre">source</span></span><a class="headerlink" href="#model.source" title="Link to this definition">#</a></dt>
-<dd><p>Modelio pavadinimas šaltinyje. Prasmė priklauso nuo <a class="reference internal" href="#resource.type" title="resource.type"><code class="xref py py-data docutils literal notranslate"><span class="pre">resource.type</span></code></a>.</p>
+<dd><p>Modelio pavadinimas šaltinyje.</p>
+<p>Kas įrašoma į šį stulpelį priklauso nuo duomenų šaltinio <a class="reference internal" href="#resource.type" title="resource.type"><code class="xref py py-data docutils literal notranslate"><span class="pre">resource.type</span></code></a>.</p>
+<p>SQL atveju, tai bus lentelės pavadinimas, XML atveju - XPath išraiška, JSON
+atveju - JSONPath išraiška.</p>
+<p>Jei duomenys publikuojami <span class="xref std std-ref">vidinėje saugykloje</span>,
+<a class="reference internal" href="#model.source" title="model.source"><code class="xref py py-data docutils literal notranslate"><span class="pre">model.source</span></code></a> pildyti nereikia, kadangi vidinės saugyklos fizinio ir
+loginio modelio pavadinimai yra tokie patys.</p>
+<aside class="topic">
+<p class="topic-title">Brandos lygis</p>
+<dl class="simple">
+<dt><a class="reference internal" href="branda.html#l004"><span class="std std-ref">L004: Duomenų nėra</span></a></dt><dd><p>Nenurodytas modelio pavadinimas šaltinyje ir duomenys nėra
+publikuojami <span class="xref std std-ref">vidinėje saugykloje</span>.</p>
+</dd>
+</dl>
+</aside>
 </dd></dl>
 
 <dl class="py data">
@@ -1197,30 +1386,15 @@ keisti tik duomenų pateikimą, užtenka naudoti <a class="reference internal" h
 </dd></dl>
 
 <dl class="py data">
-<dt class="sig sig-object py" id="model.type">
-<span class="sig-prename descclassname"><span class="pre">model.</span></span><span class="sig-name descname"><span class="pre">type</span></span><a class="headerlink" href="#model.type" title="Link to this definition">#</a></dt>
-<dd><div class="versionchanged">
-<p><span class="versionmodified changed">Pakeista 0.2 versijoje: </span>Nuo 0.2 versijos nurodo modelio bazę.</p>
-</div>
-<p>Nurodo modelio bazę, tai reiškia, kad tiek šis modelis, tiek bazinis
-modelis turi vienodus identifikatorius.</p>
-<p>Jei nurodyta modelio bazė, <a class="reference internal" href="#model.ref" title="model.ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">model.ref</span></code></a> nurodytas pirminis raktas turi
-sutaptu su bazinio modelio pirminiu raktu.</p>
-</dd></dl>
-
-<dl class="py data">
-<dt class="sig sig-object py" id="model.ref">
-<span class="sig-prename descclassname"><span class="pre">model.</span></span><span class="sig-name descname"><span class="pre">ref</span></span><a class="headerlink" href="#model.ref" title="Link to this definition">#</a></dt>
-<dd><p>Kableliu atskirtas sąrašas <a class="reference internal" href="#model.property" title="model.property"><code class="xref py py-data docutils literal notranslate"><span class="pre">model.property</span></code></a> reikšmių, kurios kartu
-unikaliai identifikuoja vieną duomenų eilutę (pirminis lentelės raktas).</p>
-</dd></dl>
-
-<dl class="py data">
 <dt class="sig sig-object py" id="model.level">
 <span class="sig-prename descclassname"><span class="pre">model.</span></span><span class="sig-name descname"><span class="pre">level</span></span><a class="headerlink" href="#model.level" title="Link to this definition">#</a></dt>
 <dd><p>Modelio <a class="reference internal" href="branda.html#level"><span class="std std-ref">brandos lygis</span></a>, nusakantis pačio modelio brandos
 lygį, pavyzdžiui ar nurodytas pirminis raktas, ar modelio pavadinimas
-atitinka kodiniams pavadinimams kelimus reikalavimus.</p>
+atitinka kodiniams pavadinimams keliamus reikalavimus.</p>
+<div class="admonition seealso">
+<p class="admonition-title">Taip pat žiūrėkite</p>
+<p><a class="reference internal" href="identifikatoriai.html#ref-level"><span class="std std-ref">Brandos lygis</span></a></p>
+</div>
 </dd></dl>
 
 <dl class="py data">
@@ -2916,10 +3090,10 @@ kontekstą.</p>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model">model</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model.source"><code class="docutils literal notranslate"><span class="pre">source</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model.prepare"><code class="docutils literal notranslate"><span class="pre">prepare</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model.type"><code class="docutils literal notranslate"><span class="pre">type</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model.ref"><code class="docutils literal notranslate"><span class="pre">ref</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model.source"><code class="docutils literal notranslate"><span class="pre">source</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model.prepare"><code class="docutils literal notranslate"><span class="pre">prepare</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model.level"><code class="docutils literal notranslate"><span class="pre">level</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model.access"><code class="docutils literal notranslate"><span class="pre">access</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model.uri"><code class="docutils literal notranslate"><span class="pre">uri</span></code></a></li>
