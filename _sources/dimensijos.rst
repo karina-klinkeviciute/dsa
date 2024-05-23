@@ -603,12 +603,13 @@ vienos esybės modeliai turi turėti vienodos identifikatorius.
 
 .. data:: source
 
-    Modelio pavadinimas šaltinyje.
+    Modelio duomenų šaltinis, vieta ar pavadinimas fiziniame duomenų modelyje.
 
     Kas įrašoma į šį stulpelį priklauso nuo duomenų šaltinio :data:`resource.type`.
 
     SQL atveju, tai bus lentelės pavadinimas, XML atveju - XPath išraiška, JSON
-    atveju - JSONPath išraiška.
+    atveju - JSONPath išraiška, skirtingai duomenų šaltiniai gali naudoti
+    skirtingą sintaksę vietai (kur fiziškai saugomi duomenys) apibūdinti.
 
     Jei duomenys publikuojami :ref:`vidinėje saugykloje <internal-backend>`,
     :data:`model.source` pildyti nereikia, kadangi vidinės saugyklos fizinio ir
@@ -617,7 +618,7 @@ vienos esybės modeliai turi turėti vienodos identifikatorius.
     .. topic:: Brandos lygis
 
         :ref:`L004`
-            Nenurodytas modelio pavadinimas šaltinyje ir duomenys nėra
+            Nenurodytas modelio duomenų šaltinis :data:`model.source` ir duomenys nėra
             publikuojami :ref:`vidinėje saugykloje <internal-backend>`.
 
 .. data:: prepare
@@ -625,7 +626,10 @@ vienos esybės modeliai turi turėti vienodos identifikatorius.
     Formulė skirta duomenų filtravimui ir paruošimui, iš dalies priklauso nuo
     :data:`resource.type`.
 
-    Taip pat skaitykite: :ref:`duomenų-atranka`.
+    .. seealso::
+
+        | :ref:`formulės`
+        | :ref:`duomenų-atranka`
 
 .. data:: level
 
@@ -641,13 +645,58 @@ vienos esybės modeliai turi turėti vienodos identifikatorius.
 
     Modeliui priklausančių laukų :ref:`prieigos lygis <access>`. Paveldimas.
 
+    .. seealso::
+
+        :ref:`access`
+
 .. data:: uri
 
-    Sąsaja su :ref:`išoriniu žodynu <vocab>`.
+    Sąsaja su OWL_, RDFS_ ontologijomis ar SKOS_ kontroliuojamais žodynais.
+
+    Jei nenurodyta, generuojamas pavadinimas pagal tokį šabloną:
+
+    `https://data.gov.lt/id/` **dataset** `/` **model**
+
+    .. admonition:: Pavyzdys
+
+        ::
+
+            https://data.gov.lt/id/datasets/gov/rc/ar/ws/Location
+
+    Struktūros apraše galima nurodyti automatiškai neneruojamus URI.
+
+    .. admonition:: Pavyzdys
+
+        ======= ===== ================ ================== ==== ============ 
+        dataset model property         type               ref  uri        
+        ======= ===== ================ ================== ==== ============
+        datasets/gov/rc/ar/ws                                              
+        ------------------------------ ------------------ ---- ------------
+        \       **Location**                              code             
+        ------- ---------------------- ------------------ ---- ------------
+        \             code             integer                             
+        \             name\@en         string                              
+        datasets/gov/ivpk/dp/api                                           
+        ------------------------------ ------------------ ---- ------------
+        \                              prefix             ar   \https://data.gov.lt/id/datasets/gov/rc/ar/ws/
+        ------- ----- ---------------- ------------------ ---- ------------
+        \       **Gyvenviete**                            code ar:Location 
+        ------- ---------------------- ------------------ ---- ------------
+        \             code             integer                 ar:Location/code     
+        \             name\@lt         string                  ar:Location/name
+        ======= ===== ================ ================== ==== ============
+
+    .. seealso::
+
+        :ref:`vocab`
 
 .. data:: title
 
-    Modelio pavadinimas.
+    Trumpas modelio pavadinimas pirmas žodis iš didžiosios raidės, pavadinimo
+    gale taško nereikia.
+
+    Pavadinime nereikia kartoti duomenų rinkinio pavadinimo. Modelio
+    pavadinimas rašomas duomenų rinkinio kontekste.
 
 .. data:: description
 
@@ -666,9 +715,7 @@ property
 
 .. module:: property
 
-
-Duomenų laukas atspindi tam tikrą modelio savybę arba tai gali būti lentelės
-stulpelis, jei duomenų šaltinis yra lentelė.
+Savybė yra duomenų laukas, modelio atributas.
 
 .. data:: source
 
@@ -1385,3 +1432,8 @@ migracijas:
 
 .. |nbsp| unicode:: 0xA0
    :trim:
+
+
+.. _OWL: https://www.w3.org/TR/owl2-overview/
+.. _RDFS: https://www.w3.org/TR/rdf-schema/
+.. _SKOS: https://www.w3.org/TR/skos-primer/

@@ -1360,17 +1360,18 @@ siejamas su globaliu objekto identifikatoriumi.</p>
 <dl class="py data">
 <dt class="sig sig-object py" id="model.source">
 <span class="sig-prename descclassname"><span class="pre">model.</span></span><span class="sig-name descname"><span class="pre">source</span></span><a class="headerlink" href="#model.source" title="Link to this definition">#</a></dt>
-<dd><p>Modelio pavadinimas šaltinyje.</p>
+<dd><p>Modelio duomenų šaltinis, vieta ar pavadinimas fiziniame duomenų modelyje.</p>
 <p>Kas įrašoma į šį stulpelį priklauso nuo duomenų šaltinio <a class="reference internal" href="#resource.type" title="resource.type"><code class="xref py py-data docutils literal notranslate"><span class="pre">resource.type</span></code></a>.</p>
 <p>SQL atveju, tai bus lentelės pavadinimas, XML atveju - XPath išraiška, JSON
-atveju - JSONPath išraiška.</p>
+atveju - JSONPath išraiška, skirtingai duomenų šaltiniai gali naudoti
+skirtingą sintaksę vietai (kur fiziškai saugomi duomenys) apibūdinti.</p>
 <p>Jei duomenys publikuojami <span class="xref std std-ref">vidinėje saugykloje</span>,
 <a class="reference internal" href="#model.source" title="model.source"><code class="xref py py-data docutils literal notranslate"><span class="pre">model.source</span></code></a> pildyti nereikia, kadangi vidinės saugyklos fizinio ir
 loginio modelio pavadinimai yra tokie patys.</p>
 <aside class="topic">
 <p class="topic-title">Brandos lygis</p>
 <dl class="simple">
-<dt><a class="reference internal" href="branda.html#l004"><span class="std std-ref">L004: Duomenų nėra</span></a></dt><dd><p>Nenurodytas modelio pavadinimas šaltinyje ir duomenys nėra
+<dt><a class="reference internal" href="branda.html#l004"><span class="std std-ref">L004: Duomenų nėra</span></a></dt><dd><p>Nenurodytas modelio duomenų šaltinis <a class="reference internal" href="#model.source" title="model.source"><code class="xref py py-data docutils literal notranslate"><span class="pre">model.source</span></code></a> ir duomenys nėra
 publikuojami <span class="xref std std-ref">vidinėje saugykloje</span>.</p>
 </dd>
 </dl>
@@ -1382,7 +1383,13 @@ publikuojami <span class="xref std std-ref">vidinėje saugykloje</span>.</p>
 <span class="sig-prename descclassname"><span class="pre">model.</span></span><span class="sig-name descname"><span class="pre">prepare</span></span><a class="headerlink" href="#model.prepare" title="Link to this definition">#</a></dt>
 <dd><p>Formulė skirta duomenų filtravimui ir paruošimui, iš dalies priklauso nuo
 <a class="reference internal" href="#resource.type" title="resource.type"><code class="xref py py-data docutils literal notranslate"><span class="pre">resource.type</span></code></a>.</p>
-<p>Taip pat skaitykite: <a class="reference internal" href="formules.html#duomenu-atranka"><span class="std std-ref">Duomenų atranka</span></a>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">Taip pat žiūrėkite</p>
+<div class="line-block">
+<div class="line"><a class="reference internal" href="formules.html#formules"><span class="std std-ref">Formulės</span></a></div>
+<div class="line"><a class="reference internal" href="formules.html#duomenu-atranka"><span class="std std-ref">Duomenų atranka</span></a></div>
+</div>
+</div>
 </dd></dl>
 
 <dl class="py data">
@@ -1401,18 +1408,111 @@ atitinka kodiniams pavadinimams keliamus reikalavimus.</p>
 <dt class="sig sig-object py" id="model.access">
 <span class="sig-prename descclassname"><span class="pre">model.</span></span><span class="sig-name descname"><span class="pre">access</span></span><a class="headerlink" href="#model.access" title="Link to this definition">#</a></dt>
 <dd><p>Modeliui priklausančių laukų <a class="reference internal" href="prieiga.html#access"><span class="std std-ref">prieigos lygis</span></a>. Paveldimas.</p>
+<div class="admonition seealso">
+<p class="admonition-title">Taip pat žiūrėkite</p>
+<p><a class="reference internal" href="prieiga.html#access"><span class="std std-ref">Prieigos lygiai</span></a></p>
+</div>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="model.uri">
 <span class="sig-prename descclassname"><span class="pre">model.</span></span><span class="sig-name descname"><span class="pre">uri</span></span><a class="headerlink" href="#model.uri" title="Link to this definition">#</a></dt>
-<dd><p>Sąsaja su <a class="reference internal" href="zodynai.html#vocab"><span class="std std-ref">išoriniu žodynu</span></a>.</p>
+<dd><p>Sąsaja su <a class="reference external" href="https://www.w3.org/TR/owl2-overview/">OWL</a>, <a class="reference external" href="https://www.w3.org/TR/rdf-schema/">RDFS</a> ontologijomis ar <a class="reference external" href="https://www.w3.org/TR/skos-primer/">SKOS</a> kontroliuojamais žodynais.</p>
+<p>Jei nenurodyta, generuojamas pavadinimas pagal tokį šabloną:</p>
+<p><code class="docutils literal notranslate"><span class="pre">https://data.gov.lt/id/</span></code> <strong>dataset</strong> <code class="docutils literal notranslate"><span class="pre">/</span></code> <strong>model</strong></p>
+<div class="admonition-pavyzdys admonition">
+<p class="admonition-title">Pavyzdys</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">data</span><span class="o">.</span><span class="n">gov</span><span class="o">.</span><span class="n">lt</span><span class="o">/</span><span class="nb">id</span><span class="o">/</span><span class="n">datasets</span><span class="o">/</span><span class="n">gov</span><span class="o">/</span><span class="n">rc</span><span class="o">/</span><span class="n">ar</span><span class="o">/</span><span class="n">ws</span><span class="o">/</span><span class="n">Location</span>
+</pre></div>
+</div>
+</div>
+<p>Struktūros apraše galima nurodyti automatiškai neneruojamus URI.</p>
+<div class="admonition-pavyzdys admonition">
+<p class="admonition-title">Pavyzdys</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>dataset</p></th>
+<th class="head"><p>model</p></th>
+<th class="head"><p>property</p></th>
+<th class="head"><p>type</p></th>
+<th class="head"><p>ref</p></th>
+<th class="head"><p>uri</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td colspan="3"><p>datasets/gov/rc/ar/ws</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td colspan="2"><p><strong>Location</strong></p></td>
+<td></td>
+<td><p>code</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td><p>code</p></td>
+<td><p>integer</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td><p>name&#64;en</p></td>
+<td><p>string</p></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-even"><td colspan="3"><p>datasets/gov/ivpk/dp/api</p></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td></td>
+<td><p>prefix</p></td>
+<td><p>ar</p></td>
+<td><p>https://data.gov.lt/id/datasets/gov/rc/ar/ws/</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td colspan="2"><p><strong>Gyvenviete</strong></p></td>
+<td></td>
+<td><p>code</p></td>
+<td><p>ar:Location</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td></td>
+<td><p>code</p></td>
+<td><p>integer</p></td>
+<td></td>
+<td><p>ar:Location/code</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td></td>
+<td><p>name&#64;lt</p></td>
+<td><p>string</p></td>
+<td></td>
+<td><p>ar:Location/name</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">Taip pat žiūrėkite</p>
+<p><a class="reference internal" href="zodynai.html#vocab"><span class="std std-ref">Išoriniai žodynai</span></a></p>
+</div>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="model.title">
 <span class="sig-prename descclassname"><span class="pre">model.</span></span><span class="sig-name descname"><span class="pre">title</span></span><a class="headerlink" href="#model.title" title="Link to this definition">#</a></dt>
-<dd><p>Modelio pavadinimas.</p>
+<dd><p>Trumpas modelio pavadinimas pirmas žodis iš didžiosios raidės, pavadinimo
+gale taško nereikia.</p>
+<p>Pavadinime nereikia kartoti duomenų rinkinio pavadinimo. Modelio
+pavadinimas rašomas duomenų rinkinio kontekste.</p>
 </dd></dl>
 
 <dl class="py data">
@@ -1430,8 +1530,7 @@ atitinka kodiniams pavadinimams keliamus reikalavimus.</p>
 </section>
 <section id="property">
 <span id="id6"></span><h2>property<a class="headerlink" href="#property" title="Link to this heading">#</a></h2>
-<p id="module-property">Duomenų laukas atspindi tam tikrą modelio savybę arba tai gali būti lentelės
-stulpelis, jei duomenų šaltinis yra lentelė.</p>
+<p id="module-property">Savybė yra duomenų laukas, modelio atributas.</p>
 <dl class="py data">
 <dt class="sig sig-object py" id="property.source">
 <span class="sig-prename descclassname"><span class="pre">property.</span></span><span class="sig-name descname"><span class="pre">source</span></span><a class="headerlink" href="#property.source" title="Link to this definition">#</a></dt>
