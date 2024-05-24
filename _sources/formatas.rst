@@ -75,25 +75,43 @@ nei vieno dimensijos stulpelio.
     rinkinys
         Informacinės sistemos teikiamas duomenų rinkinys.
 
-    **Pavyzdys**::
+    Visi pavadinimai užrašomi mažosiomis lotyniškomis raidėmis, žodžiams
+    atskirti gali būti naudojamas `_` simbolis.
 
-        datasets/gov/rc/jar/ws
+    Pagal semantinę prasmę atitinka `dcat:Resource`_.
 
-    Atitinka `dcat:Resource`_ prasmę. Žiūrėti :ref:`dataset`.
+    .. admonition:: Pavyzdys
 
-    .. _dcat:Resource: https://www.w3.org/TR/vocab-dcat-2/#Class:Resource
+        | `datasets/gov/rc/jar/ws`
+        | `datasets/gov/ivkp/adp/adk`
+
+    .. seealso::
+
+        | :ref:`dataset`
+        | :ref:`kodiniai-pavadinimai`
 
 .. data:: resource
 
     **Duomenų šaltinis**
 
-    Kodinis duomenų šaltinio pavadinimas. Atitinka `rml:logicalSource`_, kuris
-    gali sutapti su `dcat:Distribution`_ arba `dcat:DataService`_. Žiūrėti
-    :ref:`duomenų-šaltinis`.
+    Kodinis duomenų šaltinio pavadinimas, užrašomas mažosiomi slotyniškomis
+    raidėmis, žodžiai skiriami `_` simboliu.
 
-    .. _rml:logicalSource: https://rml.io/specs/rml/#logical-source
-    .. _dcat:Distribution: https://www.w3.org/TR/vocab-dcat-2/#Class:Distribution
-    .. _dcat:DataService: https://www.w3.org/TR/vocab-dcat-2/#Class:DataService
+    Duomenų šaltinis yra duomenų failas, duomenų bazė ar API, per kurį teikiami
+    duomenys.
+
+    Patal semantinę prasmę atitinka `dcat:Distribution`_ arba `rml:logicalSource`_.
+
+    .. admonition:: Pavyzdys
+
+        | `resource1`
+        | `db1`
+
+    .. seealso::
+
+        | :ref:`resource`
+        | :ref:`duomenu-saltiniai`
+
 
 .. data:: base
 
@@ -107,27 +125,70 @@ nei vieno dimensijos stulpelio.
     Kodinis bazinio modelio pavadinimas. Atitinka `rdfs:subClassOf`_ prasmę
     (:data:`model` `rdfs:subClassOf` :data:`base`). Žiūrėti :ref:`base`.
 
-    .. _rdfs:subClassOf: https://www.w3.org/TR/rdf-schema/#ch_subclassof
 
 .. data:: model
 
     **Modelis (lentelė)**
 
-    Kodinis modelio pavadinimas. Atitinka `r2rml:SubjectMap`_ ir yra siejamas
-    su `rdfs:Class`_. Žiūrėti :ref:`duomenų-modelis`.
+    Kodinis modelio pavadinimas, užrašomas lotyniškomis raidėmis, kiekvieno
+    žodžio pirma raidė didžioji, kitos mažosios, žodžiai atskiriami didžiąja
+    raide.
 
-    .. _r2rml:SubjectMap: https://www.w3.org/TR/r2rml/#subject-map
-    .. _rdfs:Class: https://www.w3.org/TR/rdf-schema/#ch_class
+    Pagal semantinę prasmę atitinka `rdfs:Class`_ arba `r2rml:SubjectMap`_.
+
+    .. admonition:: Pavyzdys
+
+        | `Gyvenviete`
+        | `AdministracijosTipas`
+
+    .. seealso::
+
+        | :ref:`model`
+        | :ref:`modelis`
+
 
 .. data:: property
 
     **Savybė (stulpelis)**
 
-    Kodinis savybės pavadinimas. Atitinka `r2rml:PredicateObjectMap`_ ir yra
-    siejamas su `rdfs:Property`_. Žiūrėti :ref:`savybė`.
+    Kodinis savybės pavadinimas, užrašomas mažosiomis lotyniškomis raidėmis,
+    žodžiai atskiriami `_` simoboliu.
 
-    .. _r2rml:PredicateObjectMap: https://www.w3.org/TR/r2rml/#predicate-object-map
-    .. _rdfs:Property: https://www.w3.org/TR/rdf-schema/#ch_property
+    Savybių pavadinimai prasidedantys `_` simboliu yra rezervuoti ir turi
+    apibrėžtą prasmę.
+
+    Savybės pavadinime gali būti naudojami tokie specialūs simboliai:
+
+    .
+        (taško simbolis) nurodo objektų kompoziciją. Naudojamas su
+        :data:`ref <type.ref>` ir :data:`object <type.object>` duomenų tipais.
+
+        .. admonition:: Pavyzdys
+
+            | `adresas.gatve`
+
+    []
+        Duomenų masyvas arba sąrašas, gali būti naudojamas su visais tipais.
+
+        .. admonition:: Pavyzdys
+
+            | `miestai[]`
+
+    @
+        Kalbos žymė, naudojama su :data:`text <type.text>` tipu.
+
+        .. admonition:: Pavyzdys
+
+            | `pavadinimas@lt`
+            | `pavadinimas@en`
+
+    Pagal semantinę prasmę atitinka `rdfs:Property`_,
+    `r2rml:PredicateObjectMap`_.
+
+    .. seealso::
+
+        | :ref:`property`
+
 
 
 .. _metaduomenų-stulpeliai:
@@ -234,3 +295,12 @@ lenteles būtų lengviau skaityti.
 
 
 .. _Duomenų katalogą: https://data.gov.lt/
+.. _dcat:Resource: https://www.w3.org/TR/vocab-dcat-2/#Class:Resource
+.. _rml:logicalSource: https://rml.io/specs/rml/#logical-source
+.. _dcat:Distribution: https://www.w3.org/TR/vocab-dcat-2/#Class:Distribution
+.. _dcat:DataService: https://www.w3.org/TR/vocab-dcat-2/#Class:DataService
+.. _r2rml:SubjectMap: https://www.w3.org/TR/r2rml/#subject-map
+.. _rdfs:Class: https://www.w3.org/TR/rdf-schema/#ch_class
+.. _rdfs:subClassOf: https://www.w3.org/TR/rdf-schema/#ch_subclassof
+.. _r2rml:PredicateObjectMap: https://www.w3.org/TR/r2rml/#predicate-object-map
+.. _rdfs:Property: https://www.w3.org/TR/rdf-schema/#ch_property

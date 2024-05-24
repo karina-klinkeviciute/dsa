@@ -3,7 +3,7 @@
 Duomenų struktūros aprašas
 ##########################
 
-Čia rasite pilna duomenų struktūros aprašo (:term:`DSA`) lentelės specifikaciją.
+Čia rasite *Duomenų struktūros aprašo* (:term:`DSA`) lentelės specifikaciją.
 
 :dfn:`Duomenų struktūros aprašas` yra lentelė skirta fizinio, loginio ir
 semantinio duomenų modelių susiejimui, prieigos lygio nustatymui ir duomenų
@@ -18,11 +18,11 @@ informacinės sistemos nuostatais, semantiniais žodinais ir duomenų modeliu i�
 duomenų šaltinio.
 
 :dfn:`Fizinis modelis` šio dokumento kontekste yra duomenų schema apibūdinanti
-kur ir kaip duomenys yra saugomi ir kaip juos pasiekti. Schema apibrėžiantį
+kur ir kaip duomenys yra saugomi ir kaip juos pasiekti. Schema apibrėžianti
 duomenų modelį priklauso nuo duomenų saugojimo formato. Jei duomenys saugomi
 SQL duomenų bazėse, tada DSA lentelėje nurodomi lentelių ir stulpelių
-pavadinimai, XML atveju nurodomos XPath išraiško, JSON atveju nurodomos
-JSONPath išraiškos. DSA lentelėje fizinis modelis nurodomas :ref:`source`
+pavadinimai, XML atveju nurodomos XPath_ išraiško, JSON atveju nurodomos
+JSONPath_ išraiškos. DSA lentelėje fizinis modelis nurodomas :ref:`source`
 stulpelyje.
 
 :dfn:`Loginis modelis` yra duomenų schema, kuri naudojama duomenų apsikeitimui
@@ -70,3 +70,6 @@ Turinys
     formules
     savokos
     keitimai
+
+.. _XPath: https://www.w3.org/TR/2010/REC-xpath20-20101214/
+.. _JSONPath: https://www.ietf.org/archive/id/draft-goessner-dispatch-jsonpath-00.html

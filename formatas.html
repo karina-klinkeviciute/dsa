@@ -403,20 +403,48 @@ vieną trumpinį, kuris yra registruojamas <a class="reference internal" href="s
 <dt>rinkinys</dt><dd><p>Informacinės sistemos teikiamas duomenų rinkinys.</p>
 </dd>
 </dl>
-<p><strong>Pavyzdys</strong>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">datasets</span><span class="o">/</span><span class="n">gov</span><span class="o">/</span><span class="n">rc</span><span class="o">/</span><span class="n">jar</span><span class="o">/</span><span class="n">ws</span>
-</pre></div>
+<p>Visi pavadinimai užrašomi mažosiomis lotyniškomis raidėmis, žodžiams
+atskirti gali būti naudojamas <code class="docutils literal notranslate"><span class="pre">_</span></code> simbolis.</p>
+<p>Pagal semantinę prasmę atitinka <a class="reference external" href="https://www.w3.org/TR/vocab-dcat-2/#Class:Resource">dcat:Resource</a>.</p>
+<div class="admonition-pavyzdys admonition">
+<p class="admonition-title">Pavyzdys</p>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">datasets/gov/rc/jar/ws</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">datasets/gov/ivkp/adp/adk</span></code></div>
 </div>
-<p>Atitinka <a class="reference external" href="https://www.w3.org/TR/vocab-dcat-2/#Class:Resource">dcat:Resource</a> prasmę. Žiūrėti <a class="reference internal" href="dimensijos.html#dataset"><span class="std std-ref">dataset</span></a>.</p>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">Taip pat žiūrėkite</p>
+<div class="line-block">
+<div class="line"><a class="reference internal" href="dimensijos.html#dataset"><span class="std std-ref">dataset</span></a></div>
+<div class="line"><a class="reference internal" href="pavadinimai.html#kodiniai-pavadinimai"><span class="std std-ref">Kodiniai pavadinimai</span></a></div>
+</div>
+</div>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="resource">
 <span class="sig-name descname"><span class="pre">resource</span></span><a class="headerlink" href="#resource" title="Link to this definition">#</a></dt>
 <dd><p><strong>Duomenų šaltinis</strong></p>
-<p>Kodinis duomenų šaltinio pavadinimas. Atitinka <a class="reference external" href="https://rml.io/specs/rml/#logical-source">rml:logicalSource</a>, kuris
-gali sutapti su <a class="reference external" href="https://www.w3.org/TR/vocab-dcat-2/#Class:Distribution">dcat:Distribution</a> arba <a class="reference external" href="https://www.w3.org/TR/vocab-dcat-2/#Class:DataService">dcat:DataService</a>. Žiūrėti
-<span class="xref std std-ref">duomenų-šaltinis</span>.</p>
+<p>Kodinis duomenų šaltinio pavadinimas, užrašomas mažosiomi slotyniškomis
+raidėmis, žodžiai skiriami <code class="docutils literal notranslate"><span class="pre">_</span></code> simboliu.</p>
+<p>Duomenų šaltinis yra duomenų failas, duomenų bazė ar API, per kurį teikiami
+duomenys.</p>
+<p>Patal semantinę prasmę atitinka <a class="reference external" href="https://www.w3.org/TR/vocab-dcat-2/#Class:Distribution">dcat:Distribution</a> arba <a class="reference external" href="https://rml.io/specs/rml/#logical-source">rml:logicalSource</a>.</p>
+<div class="admonition-pavyzdys admonition">
+<p class="admonition-title">Pavyzdys</p>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">resource1</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">db1</span></code></div>
+</div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">Taip pat žiūrėkite</p>
+<div class="line-block">
+<div class="line"><a class="reference internal" href="dimensijos.html#resource"><span class="std std-ref">resource</span></a></div>
+<div class="line"><a class="reference internal" href="saltiniai.html#duomenu-saltiniai"><span class="std std-ref">Duomenų šaltiniai</span></a></div>
+</div>
+</div>
 </dd></dl>
 
 <dl class="py data">
@@ -435,16 +463,73 @@ gali sutapti su <a class="reference external" href="https://www.w3.org/TR/vocab-
 <dt class="sig sig-object py" id="model">
 <span class="sig-name descname"><span class="pre">model</span></span><a class="headerlink" href="#model" title="Link to this definition">#</a></dt>
 <dd><p><strong>Modelis (lentelė)</strong></p>
-<p>Kodinis modelio pavadinimas. Atitinka <a class="reference external" href="https://www.w3.org/TR/r2rml/#subject-map">r2rml:SubjectMap</a> ir yra siejamas
-su <a class="reference external" href="https://www.w3.org/TR/rdf-schema/#ch_class">rdfs:Class</a>. Žiūrėti <span class="xref std std-ref">duomenų-modelis</span>.</p>
+<p>Kodinis modelio pavadinimas, užrašomas lotyniškomis raidėmis, kiekvieno
+žodžio pirma raidė didžioji, kitos mažosios, žodžiai atskiriami didžiąja
+raide.</p>
+<p>Pagal semantinę prasmę atitinka <a class="reference external" href="https://www.w3.org/TR/rdf-schema/#ch_class">rdfs:Class</a> arba <a class="reference external" href="https://www.w3.org/TR/r2rml/#subject-map">r2rml:SubjectMap</a>.</p>
+<div class="admonition-pavyzdys admonition">
+<p class="admonition-title">Pavyzdys</p>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">Gyvenviete</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">AdministracijosTipas</span></code></div>
+</div>
+</div>
+<div class="admonition seealso">
+<p class="admonition-title">Taip pat žiūrėkite</p>
+<div class="line-block">
+<div class="line"><a class="reference internal" href="dimensijos.html#model"><span class="std std-ref">model</span></a></div>
+<div class="line"><a class="reference internal" href="modelis.html#modelis"><span class="std std-ref">Modelis</span></a></div>
+</div>
+</div>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="property">
 <span class="sig-name descname"><span class="pre">property</span></span><a class="headerlink" href="#property" title="Link to this definition">#</a></dt>
 <dd><p><strong>Savybė (stulpelis)</strong></p>
-<p>Kodinis savybės pavadinimas. Atitinka <a class="reference external" href="https://www.w3.org/TR/r2rml/#predicate-object-map">r2rml:PredicateObjectMap</a> ir yra
-siejamas su <a class="reference external" href="https://www.w3.org/TR/rdf-schema/#ch_property">rdfs:Property</a>. Žiūrėti <span class="xref std std-ref">savybė</span>.</p>
+<p>Kodinis savybės pavadinimas, užrašomas mažosiomis lotyniškomis raidėmis,
+žodžiai atskiriami <code class="docutils literal notranslate"><span class="pre">_</span></code> simoboliu.</p>
+<p>Savybių pavadinimai prasidedantys <code class="docutils literal notranslate"><span class="pre">_</span></code> simboliu yra rezervuoti ir turi
+apibrėžtą prasmę.</p>
+<p>Savybės pavadinime gali būti naudojami tokie specialūs simboliai:</p>
+<dl>
+<dt>.</dt><dd><p>(taško simbolis) nurodo objektų kompoziciją. Naudojamas su
+<a class="reference internal" href="tipai.html#type.ref" title="type.ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">ref</span></code></a> ir <a class="reference internal" href="tipai.html#type.object" title="type.object"><code class="xref py py-data docutils literal notranslate"><span class="pre">object</span></code></a> duomenų tipais.</p>
+<div class="admonition-pavyzdys admonition">
+<p class="admonition-title">Pavyzdys</p>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">adresas.gatve</span></code></div>
+</div>
+</div>
+</dd>
+<dt>[]</dt><dd><p>Duomenų masyvas arba sąrašas, gali būti naudojamas su visais tipais.</p>
+<div class="admonition-pavyzdys admonition">
+<p class="admonition-title">Pavyzdys</p>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">miestai[]</span></code></div>
+</div>
+</div>
+</dd>
+</dl>
+<dl>
+<dt>&#64;</dt><dd><p>Kalbos žymė, naudojama su <a class="reference internal" href="tipai.html#type.text" title="type.text"><code class="xref py py-data docutils literal notranslate"><span class="pre">text</span></code></a> tipu.</p>
+<div class="admonition-pavyzdys admonition">
+<p class="admonition-title">Pavyzdys</p>
+<div class="line-block">
+<div class="line"><code class="docutils literal notranslate"><span class="pre">pavadinimas&#64;lt</span></code></div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">pavadinimas&#64;en</span></code></div>
+</div>
+</div>
+</dd>
+</dl>
+<p>Pagal semantinę prasmę atitinka <a class="reference external" href="https://www.w3.org/TR/rdf-schema/#ch_property">rdfs:Property</a>,
+<a class="reference external" href="https://www.w3.org/TR/r2rml/#predicate-object-map">r2rml:PredicateObjectMap</a>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">Taip pat žiūrėkite</p>
+<div class="line-block">
+<div class="line"><a class="reference internal" href="dimensijos.html#property"><span class="std std-ref">property</span></a></div>
+</div>
+</div>
 </dd></dl>
 
 </section>

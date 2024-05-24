@@ -26,6 +26,7 @@ Kaip pavyzdį, naudosime žemiau pateiktą koncepcinį duomenų modelį:
 .. mermaid::
 
    classDiagram
+     direction LR
 
      class AdministracijosTipas {
        <<enumeration>> 
@@ -200,6 +201,8 @@ Sudarant ontologijas, pateikiami klasių apibrėžimai, dažniausiai be savybių
 kad neriboti klasės taikymo. Tačiau tam tikrais atvejais, ontologijoje klasės
 pateikiamos ir su keliomis savybėmis, kurios apibrėžia pačią klasę.
 
+
+.. _modelis:
 
 Modelis
 *******

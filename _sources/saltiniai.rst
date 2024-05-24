@@ -1,4 +1,5 @@
-.. _resource:
+.. .. _resource:
+.. _duomenu-saltiniai:
 
 Duomenų šaltiniai
 =================
