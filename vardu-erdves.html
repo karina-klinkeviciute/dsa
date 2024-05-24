@@ -52,6 +52,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'vardu-erdves';</script>
     <link rel="index" title="Indeksas" href="genindex.html" />
     <link rel="search" title="Paieška" href="search.html" />
+    <link rel="next" title="Išoriniai žodynai" href="zodynai.html" />
+    <link rel="prev" title="Duomenų šaltiniai" href="saltiniai.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="lt"/>
   </head>
@@ -113,8 +115,6 @@
       
       
       
-        
-      
       <div class="bd-sidebar-primary bd-sidebar">
         
 
@@ -154,7 +154,7 @@
  </script></div>
         <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
-        <ul class="nav bd-sidenav">
+        <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="modelis.html">Koncepcinis modelis</a></li>
 <li class="toctree-l1"><a class="reference internal" href="formatas.html">Lentelės formatas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="dimensijos.html">Dimensijos</a></li>
@@ -166,6 +166,7 @@
 <li class="toctree-l1"><a class="reference internal" href="branda.html">Brandos lygiai</a></li>
 <li class="toctree-l1"><a class="reference internal" href="prieiga.html">Prieigos lygiai</a></li>
 <li class="toctree-l1"><a class="reference internal" href="saltiniai.html">Duomenų šaltiniai</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Vardų erdvės</a></li>
 <li class="toctree-l1"><a class="reference internal" href="zodynai.html">Išoriniai žodynai</a></li>
 <li class="toctree-l1"><a class="reference internal" href="formules.html">Formulės</a></li>
 <li class="toctree-l1"><a class="reference internal" href="savokos.html">Sąvokos</a></li>
@@ -336,66 +337,56 @@ document.write(`
 ir <a class="reference internal" href="formatas.html#model" title="model"><code class="xref py py-data docutils literal notranslate"><span class="pre">model</span></code></a> pavadinimai formuojami pasitelkiant vardų erdves.</p>
 <dl class="describe">
 <dt class="sig sig-object">
-<span class="sig-name descname"><span class="pre">/&lt;standard&gt;/</span></span></dt>
-<dd><p><strong>Standartų vardų erdvė</strong></p>
-<p>Standartų vardų erdvė formuojama egzistuojančių standartų ir išorinių žodynų
-pagrindu suteikiant vardų erdvei <code class="docutils literal notranslate"><span class="pre">&lt;standard&gt;</span></code> standarto sutrumpintą
-pavadinimą. Pavyzdžiui atvirų duomenų katalogo metaduomenys turėtų keliauti
-į <code class="docutils literal notranslate"><span class="pre">/dcat/</span></code> vardų erdvę. Standartų sutrumpintus pavadinimus rekomenduojame
-imti iš <a class="reference external" href="https://lov.linkeddata.es/dataset/lov/">Linked Open Vocabularies</a> katalogo.</p>
+<span class="sig-name descname"><span class="pre">/{vocabulary}/</span></span></dt>
+<dd><p><strong>Standartinių žodynų vardų erdvė</strong></p>
+<p>Standartinių žodynų vardų erdvė formuojama egzistuojančių standartų ir
+išorinių žodynų pagrindu suteikiant vardų erdvei <code class="docutils literal notranslate"><span class="pre">{vocabulary}</span></code> žodyno
+sutrumpintą pavadinimą. Pavyzdžiui duomenų katalogo metaduomenų žodynas
+DCAT turėtų keliauti į <code class="docutils literal notranslate"><span class="pre">/dcat/</span></code> vardų erdvę. Standartų sutrumpintus
+pavadinimus rekomenduojame imti iš <a class="reference external" href="https://lov.linkeddata.es/dataset/lov/">Linked Open Vocabularies</a> katalogo.</p>
 </dd></dl>
 
 <dl class="describe">
 <dt class="sig sig-object">
-<span class="sig-name descname"><span class="pre">/datasets/&lt;type&gt;/&lt;org&gt;/</span></span></dt>
+<span class="sig-name descname"><span class="pre">/datasets/{form}/{org}/</span></span></dt>
 <dd><p><strong>Įstaigų vardų erdvė</strong></p>
 <p>Konkrečios organizacijos vietinė rinkinio vardų erdvė. Rekomenduojama
-<code class="docutils literal notranslate"><span class="pre">&lt;org&gt;</span></code> reikšmei naudoti organizacijos trumpinį, kad bendras modelio
+<code class="docutils literal notranslate"><span class="pre">{org}</span></code> reikšmei naudoti organizacijos trumpinį, kad bendras modelio
 pavadinimas nebūtų per daug ilgas.</p>
-<p>Galimos <code class="docutils literal notranslate"><span class="pre">&lt;type&gt;</span></code> reikšmės:</p>
-<dl class="describe">
-<dt class="sig sig-object">
-<span class="sig-name descname"><span class="pre">gov</span></span></dt>
-<dd><p>Valstybinės įstaigos.</p>
+<p>Galimos <code class="docutils literal notranslate"><span class="pre">{form}</span></code> reikšmės:</p>
+<table class="table">
+<tbody>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">gov</span></code></p></td>
+<td><p>Valstybinės įstaigos.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">com</span></code></p></td>
+<td><p>Verslo įmonės.</p></td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="describe">
 <dt class="sig sig-object">
-<span class="sig-name descname"><span class="pre">com</span></span></dt>
-<dd><p>Verslo įmonės.</p>
-</dd></dl>
-
+<span class="sig-name descname"><span class="pre">/datasets/{form}/{org}/{catalog}/</span></span></dt>
+<dd><p><strong>Informacinių sistemų vardų erdvė</strong></p>
+<p>Informacinės sistemos vardų erdvė, kuri teikia duomenų rinkinius.</p>
 </dd></dl>
 
 <dl class="describe">
 <dt class="sig sig-object">
-<span class="sig-name descname"><span class="pre">/datasets/&lt;type&gt;/&lt;org&gt;/&lt;dataset&gt;/</span></span></dt>
+<span class="sig-name descname"><span class="pre">/datasets/{form}/{org}/{catalog}/{dataset}/</span></span></dt>
 <dd><p><strong>Įstaigų duomenų rinkinių vardų erdvė</strong></p>
 <p>Įstaigos duomenų rinkinio vardų erdvė į kurią patenka visi įstaigos duomenų
 modeliai.</p>
-<p>Viskas, kas eina po <code class="docutils literal notranslate"><span class="pre">/datasets/&lt;type&gt;/&lt;org&gt;/</span></code> yra įstaigos vardu erdvė,
-kurioje įstaiga, gali įsitraukti papildomas vardų erdves, pavyzdžiui
-<code class="docutils literal notranslate"><span class="pre">/datasets/&lt;type&gt;/&lt;org&gt;/&lt;isr&gt;/&lt;dataset&gt;</span></code>, kuri <code class="docutils literal notranslate"><span class="pre">&lt;isr&gt;</span></code> yra Informacinės
-sistemos ar Registro trumpinys.</p>
-</dd></dl>
-
-<dl class="describe">
-<dt class="sig sig-object">
-<span class="sig-name descname"><span class="pre">/provisional/</span></span></dt>
-<dd><p><strong>Duomenų rinkiniai turintys negalutinę struktūrą</strong></p>
-<p>Šioje vardų erdvėje talpinamos visos kitos vardų erdvės, kurių duomenų
-struktūra nėra galutinė ir gali keistis, be atskiro įspėjimo.</p>
-<p>Visos duomenų rinkinius rekomenduojame pirmiausiai kelti į šią duomenų erdvė
-ir įsitikimus, kad duomenų struktūra yra stabili, perkelti į kitą atitinkamą
-vardų erdvė.</p>
 </dd></dl>
 
 <p>Naujai atveriami <a class="reference internal" href="savokos.html#term-DSA"><span class="xref std std-term">duomenų struktūros aprašai</span></a> sudaromi <a class="reference internal" href="savokos.html#term-SDSA"><span class="xref std std-term">ŠDSA</span></a>
 pagrindu. Įprastai duomenų bazių struktūra nėra kuriama vadovaujantis
 standartais. Vidinės struktūros dažniausiai kuriamos vadovaujantis sistemai
 keliamais reikalavimais. Todėl naujai atveriamų duomenų rinkiniai turi keliauti
-į duomenų rinkinio vardų erdvę <code class="docutils literal notranslate"><span class="pre">/datasets/&lt;type&gt;/&lt;org&gt;/&lt;dataset&gt;/</span></code>, išlaikant
-pirminę duomenų struktūrą ir neprarandant duomenų.</p>
+į duomenų rinkinio vardų erdvę <code class="docutils literal notranslate"><span class="pre">/datasets/{form}/{org}/{catalog}/{dataset}/</span></code>,
+išlaikant pirminę duomenų struktūrą ir neprarandant duomenų.</p>
 <p>Tačiau su laiku, dalis įstaigos duomenų iš duomenų rinkinio vardų erdvės turėtu
 būti perkeliami į globalią duomenų erdvę. Į globalią duomenų erdvę pirmiausiai
 turėtų būti perkeliami tie duomenys, kurie yra plačiai naudojami. Perkėlimas į
@@ -506,6 +497,24 @@ Pavyzdžiui šiame tekste įvardinti <code class="docutils literal notranslate">
                 <footer class="prev-next-footer">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="saltiniai.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">praeitas</p>
+        <p class="prev-next-title">Duomenų šaltiniai</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="zodynai.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">kitas</p>
+        <p class="prev-next-title">Išoriniai žodynai</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               

@@ -839,9 +839,8 @@ d  r  b  m  property     type     ref       uri
 == == == == ============ ======== ========= ====================================================
 dataset1                                                                                        
 ------------------------ -------- --------- ----------------------------------------------------
-\                        prefix   spinta    \https://github.com/atviriduomenys/manifest/issues/
-\                                 manifest  \https://github.com/atviriduomenys/spinta/issues/
-\                                 vadovas   \https://atviriduomenys.readthedocs.io/
+\                        prefix   spinta    \https://github.com/atviriduomenys/spinta/issues/
+\                                 dsa       \https://ivpk.github.io/dsa/
 \                                 dct       \http://purl.org/dc/dcmitype/
 dataset2                                                                                        
 ------------------------ -------- --------- ----------------------------------------------------
@@ -1246,9 +1245,8 @@ d  r  b  m  property     type     ref       prepare                             
 == == == == ============ ======== ========= ================================================== ====== ======= ====================================================
 example                                                                                                                                                           
 ------------------------ -------- --------- -------------------------------------------------- ------ ------- ----------------------------------------------------
-\                        prefix   spinta                                                                      \https://github.com/atviriduomenys/manifest/issues/
-\                                 manifest                                                                    \https://github.com/atviriduomenys/spinta/issues/
-\                                 vadovas                                                                     \https://atviriduomenys.readthedocs.io/
+\                        prefix   spinta                                                                      \https://github.com/atviriduomenys/spinta/issues/
+\                                 dsa                                                                         \https://ivpk.github.io/dsa/
 \        Imone                                                                                 2                           
 -- -- -- --------------- -------- --------- -------------------------------------------------- ------ ------- ----------------------------------------------------
 \                        comment  base      update(base: "/jar/JuridinisAsmuo", ref: "id")     4      open    spinta:205, manifest:1290                                                    

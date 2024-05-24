@@ -166,6 +166,7 @@
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Brandos lygiai</a></li>
 <li class="toctree-l1"><a class="reference internal" href="prieiga.html">Prieigos lygiai</a></li>
 <li class="toctree-l1"><a class="reference internal" href="saltiniai.html">Duomenų šaltiniai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vardu-erdves.html">Vardų erdvės</a></li>
 <li class="toctree-l1"><a class="reference internal" href="zodynai.html">Išoriniai žodynai</a></li>
 <li class="toctree-l1"><a class="reference internal" href="formules.html">Formulės</a></li>
 <li class="toctree-l1"><a class="reference internal" href="savokos.html">Sąvokos</a></li>
@@ -370,9 +371,16 @@ document.write(`
 <span id="level"></span><h1>Brandos lygiai<a class="headerlink" href="#brandos-lygiai" title="Link to this heading">#</a></h1>
 <p>Duomenų brandos lygis nurodomas <a class="reference internal" href="formatas.html#level" title="level"><code class="xref py py-data docutils literal notranslate"><span class="pre">level</span></code></a> stulpelyje.</p>
 <p>Duomenų brandos lygis atitinka <a class="reference external" href="https://5stardata.info/">5 ★ Open Data</a> skalę, tačiau adaptuota duomenų
-struktūros aprašo kontekstui. Papildomai įtrauktas nulinis lygis, kai duomenys
-nekaupiami, tačiau yra reikalingi ir yra parengtas jų <a class="reference internal" href="savokos.html#term-DSA"><span class="xref std std-term">duomenų struktūros
-aprašas</span></a>.</p>
+struktūros aprašo kontekstui, brandos lygius pritaikant ir uždariems duomenims.</p>
+<p>Pirmasis brandos lygis, kuris nurodo, kad duomenys turi būti blikuojami pagal
+atvirą licenciją, DSA kontekste, šis reikalavimas išplėstas ir apima ne tik
+atviras licencijas, bet bet kokias duomenų teikimo sąlygas.</p>
+<p>Todėl reikia atkreipti dėmesį, kad duomenų brandos lygis ar formatas nėra
+susijęs su duomenų atvirumu. Duomenys gali būti pateikti aukščiausiu 5 brandos
+lygiu, tačiau pats duomenų prieinamumas gali būti visiškai uždaras, siauram
+naudotojų ratui, kurie turi ribotą ir saugų prieigos kanalą prie duomenų.</p>
+<p>Papildomai įtrauktas nulinis lygis, kai duomenys nekaupiami, tačiau yra
+reikalingi ir yra parengtas jų <a class="reference internal" href="savokos.html#term-DSA"><span class="xref std std-term">duomenų struktūros aprašas</span></a>.</p>
 <p>Tim Berners Lee brandos lygius aprašo, kaip pavyzdį pasitelkiant duomenų
 distribucijų formatus. Tačiau duomenų distribucijų formatai yra labai
 netikslus pavyzdys. Rengiant duomenų struktūros aprašą, brandos lygis
@@ -381,19 +389,14 @@ būti didesnio arba mažesnio nei trečias brandos lygis, priklausomai nuo CSV
 faile esančių duomenų turinio. Tačiau grubiai vertinant, vidutiniškai CSV
 failai turi daugiau ar mažiau 3 brandos lygį, koks ir yra nurodytas Tim
 Berners Lee pavyzdžiuose.</p>
-<p>Taip pat reikėtų atkreipti dėmesį, kad duomenų brandos lygis ar formatas nėra
-susijęs su duomenų atvirumu. Duomenys gali būti pateikti aukščiausiu 5
-brandos lygiu, tačiau pats duomenų prieinamumas gali būti visiškai uždaras,
-siauram naudotojų ratui, kurie turi ribotą ir saugų prieigos kanalą prie
-duomenų.</p>
 <p>Rengiant duomenų struktūros aprašą, reikėtų nurodyti ne šaltinio duomenų
 brandos lygį, o galutinį brandos lygį, kuris yra gaunamas atlikus visas
 duomenų struktūros apraše nurodytas transformacijas.</p>
 <section id="l000-duomenu-nera">
 <span id="l000"></span><h2>L000: Duomenų nėra<a class="headerlink" href="#l000-duomenu-nera" title="Link to this heading">#</a></h2>
 <p><strong>Nekaupiama</strong></p>
-<p>Duomenys nekaupiami. Duomenų rinkinys užregistruotas atvirų duomenų
-portale. Užpildyta <a class="reference internal" href="formatas.html#dataset" title="dataset"><code class="xref py py-data docutils literal notranslate"><span class="pre">dataset</span></code></a> eilutė.</p>
+<p>Duomenys nekaupiami. Duomenų rinkinys užregistruotas duomenų portale. Užpildyta
+<a class="reference internal" href="formatas.html#dataset" title="dataset"><code class="xref py py-data docutils literal notranslate"><span class="pre">dataset</span></code></a> eilutė.</p>
 <p>Plačiau apie brandos lygio kėlimą skaitykite skyriuje <span class="xref std std-ref">to-level-0</span>.</p>
 <p><strong>Pavyzdžiai</strong></p>
 <table class="table">
@@ -540,8 +543,9 @@ publikuojami jokia forma.</p>
 </section>
 <section id="l002-ribojamas-duomenu-naudojimas">
 <span id="l002"></span><h3>L002: Ribojamas duomenų naudojimas<a class="headerlink" href="#l002-ribojamas-duomenu-naudojimas" title="Link to this heading">#</a></h3>
-<p>Nuliniu brandos lygiu žymimi duomenys, kuri yra prieinami, tačiau pagal tokias
-naudojimo sąlygas, kurios nėra suderinamos su atvirų duomenų licencijomis.</p>
+<p>Nuliniu brandos lygiu yra žymimi duomenys, kurie yra saugomi duomenų bazėse, ir
+yra poreikis juos naudoti, tačiau duomenys nėra teikiami už informacinės
+sistemos ribų.</p>
 </section>
 <section id="l003-nera-identifikatoriaus">
 <span id="l003"></span><h3>L003: Nėra identifikatoriaus<a class="headerlink" href="#l003-nera-identifikatoriaus" title="Link to this heading">#</a></h3>

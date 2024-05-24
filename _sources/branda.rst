@@ -7,11 +7,19 @@ Brandos lygiai
 Duomenų brandos lygis nurodomas :data:`level` stulpelyje.
 
 Duomenų brandos lygis atitinka `5 ★ Open Data`_ skalę, tačiau adaptuota duomenų
-struktūros aprašo kontekstui. Papildomai įtrauktas nulinis lygis, kai duomenys
-nekaupiami, tačiau yra reikalingi ir yra parengtas jų :term:`duomenų struktūros
-aprašas <DSA>`.
+struktūros aprašo kontekstui, brandos lygius pritaikant ir uždariems duomenims.
 
-.. _5 ★ Open Data: https://5stardata.info/
+Pirmasis brandos lygis, kuris nurodo, kad duomenys turi būti blikuojami pagal
+atvirą licenciją, DSA kontekste, šis reikalavimas išplėstas ir apima ne tik
+atviras licencijas, bet bet kokias duomenų teikimo sąlygas.
+
+Todėl reikia atkreipti dėmesį, kad duomenų brandos lygis ar formatas nėra
+susijęs su duomenų atvirumu. Duomenys gali būti pateikti aukščiausiu 5 brandos
+lygiu, tačiau pats duomenų prieinamumas gali būti visiškai uždaras, siauram
+naudotojų ratui, kurie turi ribotą ir saugų prieigos kanalą prie duomenų.
+
+Papildomai įtrauktas nulinis lygis, kai duomenys nekaupiami, tačiau yra
+reikalingi ir yra parengtas jų :term:`duomenų struktūros aprašas <DSA>`.
 
 Tim Berners Lee brandos lygius aprašo, kaip pavyzdį pasitelkiant duomenų
 distribucijų formatus. Tačiau duomenų distribucijų formatai yra labai
@@ -21,12 +29,6 @@ būti didesnio arba mažesnio nei trečias brandos lygis, priklausomai nuo CSV
 faile esančių duomenų turinio. Tačiau grubiai vertinant, vidutiniškai CSV
 failai turi daugiau ar mažiau 3 brandos lygį, koks ir yra nurodytas Tim
 Berners Lee pavyzdžiuose.
-
-Taip pat reikėtų atkreipti dėmesį, kad duomenų brandos lygis ar formatas nėra
-susijęs su duomenų atvirumu. Duomenys gali būti pateikti aukščiausiu 5
-brandos lygiu, tačiau pats duomenų prieinamumas gali būti visiškai uždaras,
-siauram naudotojų ratui, kurie turi ribotą ir saugų prieigos kanalą prie
-duomenų.
 
 Rengiant duomenų struktūros aprašą, reikėtų nurodyti ne šaltinio duomenų
 brandos lygį, o galutinį brandos lygį, kuris yra gaunamas atlikus visas
@@ -40,8 +42,8 @@ L000: Duomenų nėra
 
 **Nekaupiama**
 
-Duomenys nekaupiami. Duomenų rinkinys užregistruotas atvirų duomenų
-portale. Užpildyta :data:`dataset` eilutė.
+Duomenys nekaupiami. Duomenų rinkinys užregistruotas duomenų portale. Užpildyta
+:data:`dataset` eilutė.
 
 Plačiau apie brandos lygio kėlimą skaitykite skyriuje :ref:`to-level-0`.
 
@@ -97,8 +99,9 @@ publikuojami jokia forma.
 L002: Ribojamas duomenų naudojimas
 ==================================
 
-Nuliniu brandos lygiu žymimi duomenys, kuri yra prieinami, tačiau pagal tokias
-naudojimo sąlygas, kurios nėra suderinamos su atvirų duomenų licencijomis.
+Nuliniu brandos lygiu yra žymimi duomenys, kurie yra saugomi duomenų bazėse, ir
+yra poreikis juos naudoti, tačiau duomenys nėra teikiami už informacinės
+sistemos ribų.
 
 
 .. _L003:
@@ -683,3 +686,5 @@ example
 \           imone.pavadinimas\@lt  text              5     dct:title                            
 \           tel_nr                 string            5     foaf:phone
 == == == == ====================== ========= ======= ===== ============================ ======== ==========
+
+.. _5 ★ Open Data: https://5stardata.info/

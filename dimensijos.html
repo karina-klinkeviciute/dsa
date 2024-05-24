@@ -173,6 +173,7 @@ mermaid.initialize({
 <li class="toctree-l1"><a class="reference internal" href="branda.html">Brandos lygiai</a></li>
 <li class="toctree-l1"><a class="reference internal" href="prieiga.html">Prieigos lygiai</a></li>
 <li class="toctree-l1"><a class="reference internal" href="saltiniai.html">Duomenų šaltiniai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vardu-erdves.html">Vardų erdvės</a></li>
 <li class="toctree-l1"><a class="reference internal" href="zodynai.html">Išoriniai žodynai</a></li>
 <li class="toctree-l1"><a class="reference internal" href="formules.html">Formulės</a></li>
 <li class="toctree-l1"><a class="reference internal" href="savokos.html">Sąvokos</a></li>
@@ -1686,27 +1687,18 @@ stulpeliuose tokiu būdu: <code class="docutils literal notranslate"><span class
 <td></td>
 <td><p>prefix</p></td>
 <td><p>spinta</p></td>
-<td><p>https://github.com/atviriduomenys/manifest/issues/</p></td>
-</tr>
-<tr class="row-even"><td><p></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>manifest</p></td>
 <td><p>https://github.com/atviriduomenys/spinta/issues/</p></td>
 </tr>
-<tr class="row-odd"><td><p></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>vadovas</p></td>
-<td><p>https://atviriduomenys.readthedocs.io/</p></td>
-</tr>
 <tr class="row-even"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>dsa</p></td>
+<td><p>https://ivpk.github.io/dsa/</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
 <td></td>
 <td></td>
 <td></td>
@@ -1715,12 +1707,12 @@ stulpeliuose tokiu būdu: <code class="docutils literal notranslate"><span class
 <td><p>dct</p></td>
 <td><p>http://purl.org/dc/dcmitype/</p></td>
 </tr>
-<tr class="row-odd"><td colspan="5"><p>dataset2</p></td>
+<tr class="row-even"><td colspan="5"><p>dataset2</p></td>
 <td></td>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p></p></td>
+<tr class="row-odd"><td><p></p></td>
 <td></td>
 <td></td>
 <td></td>
@@ -1729,7 +1721,7 @@ stulpeliuose tokiu būdu: <code class="docutils literal notranslate"><span class
 <td><p>dcat</p></td>
 <td><p>http://www.w3.org/ns/dcat#</p></td>
 </tr>
-<tr class="row-odd"><td><p></p></td>
+<tr class="row-even"><td><p></p></td>
 <td></td>
 <td></td>
 <td></td>
@@ -1738,7 +1730,7 @@ stulpeliuose tokiu būdu: <code class="docutils literal notranslate"><span class
 <td><p>dct</p></td>
 <td><p>http://purl.org/dc/terms/</p></td>
 </tr>
-<tr class="row-even"><td><p></p></td>
+<tr class="row-odd"><td><p></p></td>
 <td></td>
 <td></td>
 <td></td>
@@ -1747,7 +1739,7 @@ stulpeliuose tokiu būdu: <code class="docutils literal notranslate"><span class
 <td><p>dctype</p></td>
 <td><p>http://purl.org/dc/dcmitype/</p></td>
 </tr>
-<tr class="row-odd"><td><p></p></td>
+<tr class="row-even"><td><p></p></td>
 <td></td>
 <td></td>
 <td></td>
@@ -1756,7 +1748,7 @@ stulpeliuose tokiu būdu: <code class="docutils literal notranslate"><span class
 <td><p>foaf</p></td>
 <td><p>http://xmlns.com/foaf/0.1/</p></td>
 </tr>
-<tr class="row-even"><td><p></p></td>
+<tr class="row-odd"><td><p></p></td>
 <td></td>
 <td></td>
 <td></td>
@@ -1765,7 +1757,7 @@ stulpeliuose tokiu būdu: <code class="docutils literal notranslate"><span class
 <td><p>owl</p></td>
 <td><p>http://www.w3.org/2002/07/owl#</p></td>
 </tr>
-<tr class="row-odd"><td><p></p></td>
+<tr class="row-even"><td><p></p></td>
 <td></td>
 <td></td>
 <td></td>
@@ -1774,7 +1766,7 @@ stulpeliuose tokiu būdu: <code class="docutils literal notranslate"><span class
 <td><p>prov</p></td>
 <td><p>http://www.w3.org/ns/prov#</p></td>
 </tr>
-<tr class="row-even"><td><p></p></td>
+<tr class="row-odd"><td><p></p></td>
 <td></td>
 <td></td>
 <td></td>
@@ -1783,7 +1775,7 @@ stulpeliuose tokiu būdu: <code class="docutils literal notranslate"><span class
 <td><p>rdf</p></td>
 <td><p>http://www.w3.org/1999/02/22-rdf-syntax-ns#</p></td>
 </tr>
-<tr class="row-odd"><td><p></p></td>
+<tr class="row-even"><td><p></p></td>
 <td></td>
 <td></td>
 <td></td>
@@ -1792,7 +1784,7 @@ stulpeliuose tokiu būdu: <code class="docutils literal notranslate"><span class
 <td><p>rdfs</p></td>
 <td><p>http://www.w3.org/2000/01/rdf-schema#</p></td>
 </tr>
-<tr class="row-even"><td><p></p></td>
+<tr class="row-odd"><td><p></p></td>
 <td></td>
 <td></td>
 <td></td>
@@ -1801,7 +1793,7 @@ stulpeliuose tokiu būdu: <code class="docutils literal notranslate"><span class
 <td><p>sdo</p></td>
 <td><p>http://schema.org/</p></td>
 </tr>
-<tr class="row-odd"><td><p></p></td>
+<tr class="row-even"><td><p></p></td>
 <td></td>
 <td></td>
 <td></td>
@@ -1810,7 +1802,7 @@ stulpeliuose tokiu būdu: <code class="docutils literal notranslate"><span class
 <td><p>skos</p></td>
 <td><p>http://www.w3.org/2004/02/skos/core#</p></td>
 </tr>
-<tr class="row-even"><td><p></p></td>
+<tr class="row-odd"><td><p></p></td>
 <td></td>
 <td></td>
 <td></td>
@@ -1819,7 +1811,7 @@ stulpeliuose tokiu būdu: <code class="docutils literal notranslate"><span class
 <td><p>vcard</p></td>
 <td><p>http://www.w3.org/2006/vcard/ns#</p></td>
 </tr>
-<tr class="row-odd"><td><p></p></td>
+<tr class="row-even"><td><p></p></td>
 <td></td>
 <td></td>
 <td></td>
@@ -2708,33 +2700,21 @@ atsakymas į ankstesnį komentarą.</p>
 <td></td>
 <td></td>
 <td></td>
-<td><p>https://github.com/atviriduomenys/manifest/issues/</p></td>
-</tr>
-<tr class="row-even"><td><p></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>manifest</p></td>
-<td></td>
-<td></td>
-<td></td>
 <td><p>https://github.com/atviriduomenys/spinta/issues/</p></td>
 </tr>
-<tr class="row-odd"><td><p></p></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>vadovas</p></td>
-<td></td>
-<td></td>
-<td></td>
-<td><p>https://atviriduomenys.readthedocs.io/</p></td>
-</tr>
 <tr class="row-even"><td><p></p></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>dsa</p></td>
+<td></td>
+<td></td>
+<td></td>
+<td><p>https://ivpk.github.io/dsa/</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
 <td></td>
 <td></td>
 <td colspan="2"><p>Imone</p></td>
@@ -2745,7 +2725,7 @@ atsakymas į ankstesnį komentarą.</p>
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p></p></td>
+<tr class="row-even"><td><p></p></td>
 <td></td>
 <td></td>
 <td></td>
@@ -2757,7 +2737,7 @@ atsakymas į ankstesnį komentarą.</p>
 <td><p>open</p></td>
 <td><p>spinta:205, manifest:1290</p></td>
 </tr>
-<tr class="row-even"><td><p></p></td>
+<tr class="row-odd"><td><p></p></td>
 <td></td>
 <td></td>
 <td></td>
@@ -2769,7 +2749,7 @@ atsakymas į ankstesnį komentarą.</p>
 <td><p>open</p></td>
 <td><p>vadovas:dsa/dimensijos.html#model.ref</p></td>
 </tr>
-<tr class="row-odd"><td><p></p></td>
+<tr class="row-even"><td><p></p></td>
 <td></td>
 <td></td>
 <td></td>
@@ -2781,7 +2761,7 @@ atsakymas į ankstesnį komentarą.</p>
 <td><p>open</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p></p></td>
+<tr class="row-odd"><td><p></p></td>
 <td></td>
 <td></td>
 <td></td>
@@ -2793,7 +2773,7 @@ atsakymas į ankstesnį komentarą.</p>
 <td><p>open</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p></p></td>
+<tr class="row-even"><td><p></p></td>
 <td></td>
 <td></td>
 <td></td>

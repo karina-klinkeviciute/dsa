@@ -9,66 +9,53 @@ Vardų erdvės
 (Lietuvos mastu) unikalūs. Kad užtikrinti pavadinimų unikalumą :data:`dataset`
 ir :data:`model` pavadinimai formuojami pasitelkiant vardų erdves.
 
-.. describe:: /<standard>/
+.. describe:: /{vocabulary}/
 
-    **Standartų vardų erdvė**
+    **Standartinių žodynų vardų erdvė**
 
-    Standartų vardų erdvė formuojama egzistuojančių standartų ir išorinių žodynų
-    pagrindu suteikiant vardų erdvei `<standard>` standarto sutrumpintą
-    pavadinimą. Pavyzdžiui atvirų duomenų katalogo metaduomenys turėtų keliauti
-    į `/dcat/` vardų erdvę. Standartų sutrumpintus pavadinimus rekomenduojame
-    imti iš `Linked Open Vocabularies`_ katalogo.
+    Standartinių žodynų vardų erdvė formuojama egzistuojančių standartų ir
+    išorinių žodynų pagrindu suteikiant vardų erdvei `{vocabulary}` žodyno
+    sutrumpintą pavadinimą. Pavyzdžiui duomenų katalogo metaduomenų žodynas
+    DCAT turėtų keliauti į `/dcat/` vardų erdvę. Standartų sutrumpintus
+    pavadinimus rekomenduojame imti iš `Linked Open Vocabularies`_ katalogo.
 
     .. _Linked Open Vocabularies: https://lov.linkeddata.es/dataset/lov/
 
-.. describe:: /datasets/<type>/<org>/
+.. describe:: /datasets/{form}/{org}/
 
     **Įstaigų vardų erdvė**
 
     Konkrečios organizacijos vietinė rinkinio vardų erdvė. Rekomenduojama
-    `<org>` reikšmei naudoti organizacijos trumpinį, kad bendras modelio
+    `{org}` reikšmei naudoti organizacijos trumpinį, kad bendras modelio
     pavadinimas nebūtų per daug ilgas.
 
-    Galimos `<type>` reikšmės:
+    Galimos `{form}` reikšmės:
 
-    .. describe:: gov
+    ===== =====================
+    `gov` Valstybinės įstaigos.
+    `com` Verslo įmonės.
+    ===== =====================
 
-        Valstybinės įstaigos.
+.. describe:: /datasets/{form}/{org}/{catalog}/
 
-    .. describe:: com
+    **Informacinių sistemų vardų erdvė**
 
-        Verslo įmonės.
+    Informacinės sistemos vardų erdvė, kuri teikia duomenų rinkinius.
 
-.. describe:: /datasets/<type>/<org>/<dataset>/
+
+.. describe:: /datasets/{form}/{org}/{catalog}/{dataset}/
 
     **Įstaigų duomenų rinkinių vardų erdvė**
 
     Įstaigos duomenų rinkinio vardų erdvė į kurią patenka visi įstaigos duomenų
     modeliai.
 
-    Viskas, kas eina po `/datasets/<type>/<org>/` yra įstaigos vardu erdvė,
-    kurioje įstaiga, gali įsitraukti papildomas vardų erdves, pavyzdžiui
-    `/datasets/<type>/<org>/<isr>/<dataset>`, kuri `<isr>` yra Informacinės
-    sistemos ar Registro trumpinys.
-
-.. describe:: /provisional/
-
-    **Duomenų rinkiniai turintys negalutinę struktūrą**
-
-    Šioje vardų erdvėje talpinamos visos kitos vardų erdvės, kurių duomenų
-    struktūra nėra galutinė ir gali keistis, be atskiro įspėjimo.
-
-    Visos duomenų rinkinius rekomenduojame pirmiausiai kelti į šią duomenų erdvė
-    ir įsitikimus, kad duomenų struktūra yra stabili, perkelti į kitą atitinkamą
-    vardų erdvė.
-
-
 Naujai atveriami :term:`duomenų struktūros aprašai <DSA>` sudaromi :term:`ŠDSA`
 pagrindu. Įprastai duomenų bazių struktūra nėra kuriama vadovaujantis
 standartais. Vidinės struktūros dažniausiai kuriamos vadovaujantis sistemai
 keliamais reikalavimais. Todėl naujai atveriamų duomenų rinkiniai turi keliauti
-į duomenų rinkinio vardų erdvę `/datasets/<type>/<org>/<dataset>/`, išlaikant
-pirminę duomenų struktūrą ir neprarandant duomenų.
+į duomenų rinkinio vardų erdvę `/datasets/{form}/{org}/{catalog}/{dataset}/`,
+išlaikant pirminę duomenų struktūrą ir neprarandant duomenų.
 
 Tačiau su laiku, dalis įstaigos duomenų iš duomenų rinkinio vardų erdvės turėtu
 būti perkeliami į globalią duomenų erdvę. Į globalią duomenų erdvę pirmiausiai
