@@ -575,7 +575,7 @@ gali būti:</p>
 <ul class="simple">
 <li><p><span class="underline">Vilnius</span></p></li>
 <li><p><span class="underline">Kaunas</span></p></li>
-<li><p><span class="underline">Klaipėda</span></p></li>
+<li><p><span class="underline">Klaipeda</span></p></li>
 </ul>
 <p>Sąvoka <a class="reference internal" href="savokos.html#term-objektas"><span class="xref std std-term">objektas</span></a> kalba apie konkretų individualų atvejį ar pavyzdį.</p>
 <p>Imant duomenų lentelę iš <code class="docutils literal notranslate"><span class="pre">Gyvenviete</span></code> modelio, gausime tokius duomenis.</p>
@@ -623,7 +623,7 @@ gali būti:</p>
   }
   class Klaipeda[&quot;&lt;u&gt;Klaipeda: Gyvenviete&lt;/u&gt;&quot;] {
     id = 3
-    pavadinimas = &quot;Klaipėda&quot;
+    pavadinimas = &quot;Klaipeda&quot;
     savivaldybe = 12
   }
 
@@ -693,7 +693,7 @@ tada tai greičiausiai yra taikymo profilis.</p>
 skirstomos į bendresnes klases, toks apibendrinimo procesas vadinamas
 generalizacija.</p>
 <p>UML diagramose gneralizacija žymima užpildyta rodykle, kurios krypts iš labiau
-specializuotos siauresnę prasmę turinčios klasės, į labiau apibendriną,
+specializuotos siauresnę prasmę turinčios klasės, į labiau apibendrintą,
 platesnę prasmę turinčią klasę, pavyzdžiui:</p>
 <div class="mermaid">
             classDiagram
@@ -704,7 +704,7 @@ platesnę prasmę turinčią klasę, pavyzdžiui:</p>
 
   Savivaldybe --|&gt; Administracija
         </div><p>Šiame pavyzdyje nurodome, kad <code class="docutils literal notranslate"><span class="pre">Savivaldybe</span></code> yra <code class="docutils literal notranslate"><span class="pre">Administracija</span></code> poaibis. Arba
-<code class="docutils literal notranslate"><span class="pre">Administracija</span></code> yra platesnė klasę, o <code class="docutils literal notranslate"><span class="pre">Savivaldybę</span></code> yra siauresnė, labiau
+<code class="docutils literal notranslate"><span class="pre">Administracija</span></code> yra platesnė klasė, o <code class="docutils literal notranslate"><span class="pre">Savivaldybę</span></code> yra siauresnė, labiau
 specifinę prasmę nurodanti klasė.</p>
 </section>
 <section id="identifikatorius">
@@ -776,7 +776,7 @@ stulpelyje arba rezervuotu savybės pavadinimu <code class="docutils literal not
 tipas yra <a class="reference internal" href="formatas.html#ref" title="ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">ref</span></code></a> arba <code class="xref py py-data docutils literal notranslate"><span class="pre">backref</span></code>, tada nurodomas modelio
 pavadinimas, URI forma, su kuriuo daroma asociacija.</p>
 </dd>
-<dt>cardinality</dt><dd><p>Nurodo ar laukasyra privalomas:</p>
+<dt>cardinality</dt><dd><p>Nurodo ar laukas yra privalomas:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> - laukas yra neprivalomas.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">1</span></code> - laukas yra privalomas.</p></li>
@@ -797,12 +797,12 @@ pavadinimas, URI forma, su kuriuo daroma asociacija.</p>
     + id: integer [1..1]
     + pavadinimas: text [1..1]
   }
-        </div><p>UML diagramoje matoke <code class="docutils literal notranslate"><span class="pre">Gyvenviete</span></code> duomenų modelį, kuri turi dvi savybes:</p>
+        </div><p>UML diagramoje matote <code class="docutils literal notranslate"><span class="pre">Gyvenviete</span></code> duomenų modelį, kuris turi dvi savybes:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">+</span> <span class="nb">id</span><span class="p">:</span> <span class="n">integer</span> <span class="p">[</span><span class="mf">1..1</span><span class="p">]</span>
 <span class="o">+</span> <span class="n">pavadinimas</span><span class="p">:</span> <span class="n">text</span> <span class="p">[</span><span class="mf">1..1</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>Api savybės turi atvirą prieigos lygmenį, <code class="docutils literal notranslate"><span class="pre">id</span></code> ir <code class="docutils literal notranslate"><span class="pre">pavadinimas</span></code> kodinius
+<p>Abi savybės turi atvirą prieigos lygmenį, <code class="docutils literal notranslate"><span class="pre">id</span></code> ir <code class="docutils literal notranslate"><span class="pre">pavadinimas</span></code> kodinius
 savybės pavadinimus, <code class="docutils literal notranslate"><span class="pre">integer</span></code> ir <code class="docutils literal notranslate"><span class="pre">text</span></code> duomenų tipus ir abi savybės yra
 privalomos ir gali turėti tik vieną reikšmę.</p>
 </section>
@@ -831,8 +831,8 @@ per daug asociacijų ir norime UML diagramoje sumažinti rodyklių skaičių.</p
 </section>
 <section id="tiesiogine">
 <h3>Tiesioginė<a class="headerlink" href="#tiesiogine" title="Link to this heading">#</a></h3>
-<p>Tiesioginė asociacija nurodoma rodyklės pagalba, jei yra pateikta rodyklą, tada
-savybą sąraše, savybės, kuri yra pateikta prie rodyklės neberodome.</p>
+<p>Tiesioginė asociacija nurodoma rodyklės pagalba, jei yra pateikta rodyklė, tada
+savybių sąraše, savybės, kuri yra pateikta prie rodyklės neberodome.</p>
 <div class="mermaid">
             classDiagram
   direction LR
@@ -880,14 +880,14 @@ turėti daug gyvenviečių.</p>
 <p>Klasifikatoriai arba kontroliuojami žodynai, yra galimų reikšmių sąrašas
 naudojamas tam tikrai savybei.</p>
 <p>UML diagramoje klasifikatoriai pateikiami naudojant <code class="docutils literal notranslate"><span class="pre">&lt;&lt;enumeration&gt;&gt;</span></code>
-stereotipą ir punktyrinę priklausomybės rodykle:</p>
+stereotipą ir punktyrinę priklausomybės rodyklę:</p>
 <div class="mermaid">
             classDiagram
 
   class AdministracijosTipas {
     &lt;&lt;enumeration&gt;&gt;
     APSKRITIS
-    SAVIVALDYBĖ
+    SAVIVALDYBE
   }
 
   class Administracija {
@@ -905,7 +905,7 @@ kuriame apibrėžtos dvi galimos reikšmės <code class="docutils literal notran
 <p>Visos klasės ir savybės (<em class="dfn">sąvokos</em>) yra skirstomos į žodynus. Dažnai
 viename duomenų modelyje yra naudojamos <span class="xref std std-term">sąvokos</span> iš skirtingų
 žodynų.</p>
-<p>Kad atskirti kuri sąvoka yra iš kokio žodyno, naudojamo žodyno prefiksai.</p>
+<p>Kad atskirti, kuri sąvoka yra iš kokio žodyno, naudojami žodyno prefiksai.</p>
 <div class="mermaid">
             classDiagram
   direction LR
@@ -963,7 +963,7 @@ objektai, turintys savo identifikatorius.</p>
 <dt>id</dt><dd><p>Objekto identifikatorius.</p>
 </dd>
 </dl>
-<p>Jei mūsų kuriama žodynui būtų suteiktas kodinis pavadinimas <code class="docutils literal notranslate"><span class="pre">adresai</span></code>, tada
+<p>Jei mūsų kuriamam žodynui būtų suteiktas kodinis pavadinimas <code class="docutils literal notranslate"><span class="pre">adresai</span></code>, tada
 mūsų sąvokoms būtų suteikti tokie IRI identifikatoriai:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">data</span><span class="o">.</span><span class="n">gov</span><span class="o">.</span><span class="n">lt</span><span class="o">/</span><span class="nb">id</span><span class="o">/</span><span class="n">adresai</span><span class="o">/</span><span class="n">Gyvenviete</span>
 <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">data</span><span class="o">.</span><span class="n">gov</span><span class="o">.</span><span class="n">lt</span><span class="o">/</span><span class="nb">id</span><span class="o">/</span><span class="n">adresai</span><span class="o">/</span><span class="nb">id</span>

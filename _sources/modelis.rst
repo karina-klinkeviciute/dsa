@@ -110,7 +110,7 @@ gali būti:
 
 - :instance:`Vilnius`
 - :instance:`Kaunas`
-- :instance:`Klaipėda`
+- :instance:`Klaipeda`
 
 Sąvoka :term:`objektas` kalba apie konkretų individualų atvejį ar pavyzdį.
 
@@ -149,7 +149,7 @@ Objekto pavyzdys UML diagramoje:
      }
      class Klaipeda["<u>Klaipeda: Gyvenviete</u>"] {
        id = 3
-       pavadinimas = "Klaipėda"
+       pavadinimas = "Klaipeda"
        savivaldybe = 12
      }
 
@@ -252,7 +252,7 @@ skirstomos į bendresnes klases, toks apibendrinimo procesas vadinamas
 generalizacija.
 
 UML diagramose gneralizacija žymima užpildyta rodykle, kurios krypts iš labiau
-specializuotos siauresnę prasmę turinčios klasės, į labiau apibendriną,
+specializuotos siauresnę prasmę turinčios klasės, į labiau apibendrintą,
 platesnę prasmę turinčią klasę, pavyzdžiui:
 
 .. mermaid::
@@ -266,7 +266,7 @@ platesnę prasmę turinčią klasę, pavyzdžiui:
      Savivaldybe --|> Administracija
 
 Šiame pavyzdyje nurodome, kad `Savivaldybe` yra `Administracija` poaibis. Arba
-`Administracija` yra platesnė klasę, o `Savivaldybę` yra siauresnė, labiau
+`Administracija` yra platesnė klasė, o `Savivaldybę` yra siauresnė, labiau
 specifinę prasmę nurodanti klasė.
 
 
@@ -353,7 +353,7 @@ type
     pavadinimas, URI forma, su kuriuo daroma asociacija.
 
 cardinality
-    Nurodo ar laukasyra privalomas:
+    Nurodo ar laukas yra privalomas:
 
     - `0` - laukas yra neprivalomas.
     - `1` - laukas yra privalomas.
@@ -375,12 +375,12 @@ Pavyzdys:
        + pavadinimas: text [1..1]
      }
 
-UML diagramoje matoke `Gyvenviete` duomenų modelį, kuri turi dvi savybes::
+UML diagramoje matote `Gyvenviete` duomenų modelį, kuris turi dvi savybes::
 
     + id: integer [1..1]
     + pavadinimas: text [1..1]
 
-Api savybės turi atvirą prieigos lygmenį, `id` ir `pavadinimas` kodinius
+Abi savybės turi atvirą prieigos lygmenį, `id` ir `pavadinimas` kodinius
 savybės pavadinimus, `integer` ir `text` duomenų tipus ir abi savybės yra
 privalomos ir gali turėti tik vieną reikšmę.
 
@@ -417,8 +417,8 @@ per daug asociacijų ir norime UML diagramoje sumažinti rodyklių skaičių.
 Tiesioginė
 ==========
 
-Tiesioginė asociacija nurodoma rodyklės pagalba, jei yra pateikta rodyklą, tada
-savybą sąraše, savybės, kuri yra pateikta prie rodyklės neberodome.
+Tiesioginė asociacija nurodoma rodyklės pagalba, jei yra pateikta rodyklė, tada
+savybių sąraše, savybės, kuri yra pateikta prie rodyklės neberodome.
 
 .. mermaid::
 
@@ -478,7 +478,7 @@ Klasifikatoriai arba kontroliuojami žodynai, yra galimų reikšmių sąrašas
 naudojamas tam tikrai savybei.
 
 UML diagramoje klasifikatoriai pateikiami naudojant `<<enumeration>>`
-stereotipą ir punktyrinę priklausomybės rodykle:
+stereotipą ir punktyrinę priklausomybės rodyklę:
 
 .. mermaid::
 
@@ -487,7 +487,7 @@ stereotipą ir punktyrinę priklausomybės rodykle:
      class AdministracijosTipas {
        <<enumeration>> 
        APSKRITIS
-       SAVIVALDYBĖ
+       SAVIVALDYBE
      }
    
      class Administracija {
@@ -510,7 +510,7 @@ Visos klasės ir savybės (:dfn:`sąvokos`) yra skirstomos į žodynus. Dažnai
 viename duomenų modelyje yra naudojamos :term:`sąvokos <sąvoka>` iš skirtingų
 žodynų.
 
-Kad atskirti kuri sąvoka yra iš kokio žodyno, naudojamo žodyno prefiksai.
+Kad atskirti, kuri sąvoka yra iš kokio žodyno, naudojami žodyno prefiksai.
 
 
 .. mermaid::
@@ -589,7 +589,7 @@ id
     Objekto identifikatorius.
 
 
-Jei mūsų kuriama žodynui būtų suteiktas kodinis pavadinimas `adresai`, tada
+Jei mūsų kuriamam žodynui būtų suteiktas kodinis pavadinimas `adresai`, tada
 mūsų sąvokoms būtų suteikti tokie IRI identifikatoriai::
 
     https://data.gov.lt/id/adresai/Gyvenviete
