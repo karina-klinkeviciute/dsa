@@ -6,12 +6,12 @@ Brandos lygiai
 
 Duomenų brandos lygis nurodomas :data:`level` stulpelyje.
 
-Duomenų brandos lygis atitinka `5 ★ Open Data`_ skalę, tačiau adaptuota duomenų
+Duomenų brandos lygis atitinka `5 ★ Open Data`_ skalę, tačiau ji yra adaptuota duomenų
 struktūros aprašo kontekstui, brandos lygius pritaikant ir uždariems duomenims.
 
-Pirmasis brandos lygis, kuris nurodo, kad duomenys turi būti blikuojami pagal
+Pirmasis brandos lygis, kuris nurodo, kad duomenys turi būti publikuojami pagal
 atvirą licenciją, DSA kontekste, šis reikalavimas išplėstas ir apima ne tik
-atviras licencijas, bet bet kokias duomenų teikimo sąlygas.
+atviras licencijas, bet ir bet kokias duomenų teikimo sąlygas.
 
 Todėl reikia atkreipti dėmesį, kad duomenų brandos lygis ar formatas nėra
 susijęs su duomenų atvirumu. Duomenys gali būti pateikti aukščiausiu 5 brandos
@@ -25,7 +25,7 @@ Tim Berners Lee brandos lygius aprašo, kaip pavyzdį pasitelkiant duomenų
 distribucijų formatus. Tačiau duomenų distribucijų formatai yra labai
 netikslus pavyzdys. Rengiant duomenų struktūros aprašą, brandos lygis
 vertinamas kiekvienam duomenų laukui atskirai, todėl tarkime CSV failas, gali
-būti didesnio arba mažesnio nei trečias brandos lygis, priklausomai nuo CSV
+būti didesnio arba mažesnio nei trečias brandos lygio, priklausomai nuo CSV
 faile esančių duomenų turinio. Tačiau grubiai vertinant, vidutiniškai CSV
 failai turi daugiau ar mažiau 3 brandos lygį, koks ir yra nurodytas Tim
 Berners Lee pavyzdžiuose.
@@ -227,7 +227,7 @@ Plačiau apie brandos lygio kėlimą skaitykite skyriuje :ref:`to-level-2`.
 Antru brandos lygiu žymimi duomenų laukai, kurie pateikti vieninga forma arba
 pagal aiškų ir vienodą šabloną. Tačiau pateikimo būdas nėra standartinis.
 Nestandartinis duomenų formatas yra toks, kuris neturi viešai skelbiamos ir
-atviros formato specifikacijos arba kuris nėra priimtas kaip standartas, kurį
+atviros formato specifikacijos arba, kuris nėra priimtas kaip standartas, kurį
 prižiūri tam tikra standartizacijos organizacija.
 
 **Pavyzdžiai**
@@ -385,7 +385,7 @@ Antru brandos lygiu žymimi kategoriniai duomenys, kurių reikšmės pateiktos
 sutartiniais kodais, kurių prasmė nėra aiški. Pavyzdžiui:
 
 - `Imone.rusis` - įmonės rūšis žymima skaičiais, tačiau nėra aišku,
-  kokks skaičius, ką rei6kia, todėl reikia pateitki `enum` sąrašą,
+  koks skaičius, ką reiškia, todėl reikia pateikti `enum` sąrašą,
   kuriame būtų nurodyta, ką koks skaičius reiškia. Plačiau skaityti
   :ref:`enum`.
 
@@ -613,21 +613,21 @@ L500: Trūkumų nėra
 ******************
 
 Modeliai iš įstaigų duomenų rinkinių vardų erdvės susieti su modeliais
-iš standartų vardų erdvės, užpildytas :data:`base` eilutė. Standartų
+iš standartų vardų erdvės, užpildyta :data:`base` eilutė. Standartų
 vardų erdvėje esantiems :term:`modeliams <modelis>` ir jų
 :term:`savybėms <savybė>` užpildytas :data:`uri` stulpelis.
 
-Daugiau apie vardų erdves skaitykite skyrelyje: :ref:`vardų-erdvės`.
+Daugiau apie vardų erdves skaitykite skyrelyje: :ref:`vardu-erdves`.
 
 Plačiau apie brandos lygio kėlimą skaitykite skyriuje :ref:`to-level-5`.
 
 Penkto brandos lygio duomenys yra lygiai tokie patys, kaip ir ketvirto
 brandos lygio, tačiau penktame brandos lygyje, duomenys yra praturtinami
-metaduomenimis, pateikiant nuorodas į išorinius žodynus arba bend jau
+metaduomenimis, pateikiant nuorodas į išorinius žodynus arba bent jau
 pateikiant aiškius pavadinimus ir aprašymus, užpildant `title` ir
 `description` stulpelius.
 
-Penktame brandos lygyje visas dėmesys yra sutelkiamas yra semantinę
+Penktame brandos lygyje visas dėmesys yra sutelkiamas į semantinę
 duomenų prasmę.
 
 **Pavyzdžiai**
