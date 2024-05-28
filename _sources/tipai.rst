@@ -29,7 +29,7 @@ Duomenų tipai
 
         :ref:`L102`
             Duomenyse nėra vientisumo, kartais `true` pateikta kaip `1`, kartais
-            akip `taip`, arba `yes`.
+            kaip `taip`, arba `yes`.
 
     :2:
         - Visi duomenys pateikti vienoda, tačiau nestandartine forma.
@@ -58,7 +58,7 @@ Duomenų tipai
     2
         - Duomenys pateikti išskaidant vieną reikšmę į kelias reikšmes,
           skirtingais vienetais. Duomenys turėtu būti pateikti mažiausiu
-          deltaumu, viename duomenų lauke. Pavyzdžiui atstumas pateiktas
+          detalumu, viename duomenų lauke. Pavyzdžiui atstumas pateiktas
           atskirais duomenų laukais, kur viename nurodomas atstumas
           kilometrais, kitame metrais, trečiame milimetrais. Šiuo atveju,
           duomenys turėtu būti pateikiami milimetrais.
@@ -122,8 +122,8 @@ Tekstiniai duomenys skirstomi į du skirtingus tipus `string` ir `text`.
     .. _RDF Turtle: https://www.w3.org/TR/turtle/#turtle-literals
 
     Tekstas turėtu būti pateikta UTF-8 koduote. Jei šaltinyje tekstas nėra
-    UTF-8 koduotės, tuomet galima :data:`prepare` stulepyje įrašoų formulių
-    pagalba galima nurodyti transformavimo taisykles iš šatinio naudojamos į
+    UTF-8 koduotės, tuomet galima :data:`prepare` stulpelyje įrašų formulių
+    pagalba nurodyti transformavimo taisykles iš šatinio naudojamos į
     UTF-8 koduotę.
 
 
@@ -198,7 +198,7 @@ Data ir laikas
     S        Sekundės
     L        Milisekundės
     U        Mikrosekundės
-    N        Nanosekundžės
+    N        Nanosekundės
     =======  ================
 
     .. __: https://www.w3.org/TR/vocab-dcat-2/#Property:dataset_temporal_resolution
@@ -214,7 +214,7 @@ Data ir laikas
           pirmo mėnesio dieną`.
 
     :2:
-        - Duomenys pateikti nesatandartiniu formatu, tačiau visi duomenys
+        - Duomenys pateikti nestandartiniu formatu, tačiau visi duomenys
           pateikti vienodu formatu. Pavyzdžiui visi duomenys pateikti
           `01/31/2020` formatu.
 
@@ -256,7 +256,7 @@ Data ir laikas
    :canonical: types.time
 
     Dienos laikas, be konkrečios datos. Šio tipo reikšmės, kaip ir kiti
-    su laiku sisję tipai turi atitikti `ISO 8601`_::
+    su laiku susiję tipai turi atitikti `ISO 8601`_::
 
         HH[:MM[:SS[.fff[fff]]]][+HH:MM[:SS[.ffffff]]]
 
@@ -272,7 +272,7 @@ Data ir laikas
     S        Sekundės
     L        Milisekundės
     U        Mikrosekundės
-    N        Nanosekundžės
+    N        Nanosekundės
     =======  ================
 
 .. data:: temporal
