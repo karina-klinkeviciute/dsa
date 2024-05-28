@@ -29,7 +29,7 @@ datasets/gov/rc/ar/ws                Duomenų rinkinys
 Pavyzdyje aukščiau turime tris lenteles, turinčias vieną bendrą stulpelį
 `title`.
 
-Daugiamatė lentelė pateikta viršuje, aitiktu toką vienamtę lentelę:
+Daugiamatė lentelė pateikta viršuje, atitiktų tokią vienamatę lentelę:
 
 ========== ===================== ============================== 
 type       name                  title  
@@ -40,7 +40,7 @@ model      **Gyvenviete**        Esybė
 property   pavadinimas           Savybė
 ========== ===================== ============================== 
 
-Kadangi DSA lentelė yra daugiamatę, nurodant stuleplį, jei kalbama apie
+Kadangi DSA lentelė yra daugiamatė, nurodant stulpelį, jei kalbama apie
 konkrečios dimensijos stulpelį, reikia nurodyti ir dimensiją, pavyzdžiui
 `dataset.title` nurodo būtent apie `dataset` diemensijos `title` stulpelį.
 
@@ -113,7 +113,7 @@ pavadinimą.
 
 .. data:: source
 
-    Nuoroda į duomenų rinkinio puslaptį duomenų kataloge.
+    Nuoroda į duomenų rinkinio puslapį duomenų kataloge.
 
     Nenaudojama, jei `dataset.type` yra `ns`.
 
@@ -179,7 +179,7 @@ rinkinio kontekste.
 
 .. data:: ref
 
-    Identifikatorius, naudojamas konfiguracijoje, kurioje pateikiama pilnas
+    Identifikatorius, naudojamas konfiguracijoje, kurioje pateikiamas pilnas
     resurso adresas ir kiti parametrai, tokie kaip slaptažodžiai ar
     prisijungimo vardai.
 
@@ -287,7 +287,7 @@ unikaliai identifikuoti :data:`model` lentelėje esančią eilutę, kuri atitink
 vienodus identifikatorius.
 
 Siejant :data:`model` ir :data:`base` duomenis tarpusavyje, :data:`model`
-lentelė įgauna lygiai tokius pačius unikalius identifikatorius, kurie yra base
+lentelė įgauna lygiai tokius pačius unikalius identifikatorius, kurie yra :data:`base`
 lentelėje. Tai reiškia, kad :data:`model` lentelėje negali būti duomenų, kurių
 nėra :data:`base` lentelėje.
 
@@ -324,7 +324,7 @@ istorijoje išsaugoma informacija iš kokio modelio atėjo duomenys.
 :data:`model` paveldi visus laukus, įskaitant ir tuos, kurie nėra nurodyti prie
 :data:`model` laukų sąrašo. Tai reiškia, kad galima skaityti ir rašyti duomenis
 į :data:`base`, per :data:`model`. Jei skaitomas ar rašomas laukas, kurio nėra
-:data:`model` laukų sąraše, tada to lauko duomenys sakomi iš arba rašomi į
+:data:`model` laukų sąraše, tada to lauko duomenys skaitomi iš arba rašomi į
 :data:`base` modelį.
 
 Visi modelio laukai, kurie neturi tipo, fiziškai yra priskiriami :data:`base`
@@ -332,7 +332,7 @@ modeliui.
 
 **Dubliavimas**
 
-Laukai pavadinimai modelyje, kurie turi tą pačią semantinę prasmę, kaip ir
+Laukų pavadinimai modelyje, kurie turi tą pačią semantinę prasmę, kaip ir
 bazėje turi sutapti su pavadinimais nurodytais bazėje. Tačiau, jei yra
 nurodomas jų tipas, tada tie duomenys dubliuojami, laikant, kad duomenys
 skiriasi nuo bazės, nepaisant to, kad semantiškai jie yra vienodi.
@@ -359,7 +359,7 @@ pasiekti bazėje esančius duomenis, laukui tuo pačiu pavadinimu.
 .. data:: ref
 
     :data:`model.property` reikšmė, kurios pagalba :data:`model` objektai
-    siejami su :data:`base` objektais. Jei susiejimas pagal vieną model property
+    siejami su :data:`base` objektais. Jei susiejimas pagal vieną :data:`model.property`
     yra neįmanomas, galima nurodyti kelis :data:`model.property` pavadinimus
     atskirtus kableliu.
 
@@ -386,7 +386,7 @@ pasiekti bazėje esančius duomenis, laukui tuo pačiu pavadinimu.
 
     Nenaudojamas.
 
-Paaiškinimas, ką reiškia kiekviena savybė.
+**Paaiškinimas, ką reiškia kiekviena savybė.**
 
 Pavyzdys be išorinio duomenų šaltinio:
 
@@ -429,12 +429,12 @@ example
   bazinio modelio.
 
 - Kadangi `Village` turi papildomą :data:`property` su nurodytu
-  :data:`property.type`, tai reiškia, kad `name` ir population` priklauso
+  :data:`property.type`, tai reiškia, kad `name` ir `population` priklauso
   bazei, tačiau `region` priklauso `Village` modeliui ir jo nėra bazėje.
 
 - Kadangi `Country` semantiškai nėra tas pats, kas `Gyvenviete`, nors ir turi
   tokias pačias savybes, atskiriame ją nuo `Location` bazės, priskirdami `/`
-  bazei, kas reiškia, kas bazės nėra.
+  bazei, kas reiškia, kad bazės nėra.
 
 
 Pavyzdys su išoriniu duomenų šaltiniu:
@@ -485,7 +485,7 @@ vienaskaitos forma iš didžiosios raidės, jei pavadinimas iš kelių žodžių
 
 Modelis yra siejamas su realaus pasaulio esybėmis. Viena esybė gali turėti
 kelis skirtingus duomenų modelius, su skirtingomis savybėmis, tačiau skirtingi
-vienos esybės modeliai turi turėti vienodos identifikatorius.
+vienos esybės modeliai turi turėti vienodus identifikatorius.
 
 .. topic:: Brandos lygis
 
@@ -608,7 +608,7 @@ vienos esybės modeliai turi turėti vienodos identifikatorius.
     Kas įrašoma į šį stulpelį priklauso nuo duomenų šaltinio :data:`resource.type`.
 
     SQL atveju, tai bus lentelės pavadinimas, XML atveju - XPath išraiška, JSON
-    atveju - JSONPath išraiška, skirtingai duomenų šaltiniai gali naudoti
+    atveju - JSONPath išraiška, skirtingi duomenų šaltiniai gali naudoti
     skirtingą sintaksę vietai (kur fiziškai saugomi duomenys) apibūdinti.
 
     Jei duomenys publikuojami :ref:`vidinėje saugykloje <internal-backend>`,
@@ -663,7 +663,7 @@ vienos esybės modeliai turi turėti vienodos identifikatorius.
 
             https://data.gov.lt/id/datasets/gov/rc/ar/ws/Location
 
-    Struktūros apraše galima nurodyti automatiškai neneruojamus URI.
+    Struktūros apraše galima nurodyti automatiškai generuojamus URI.
 
     .. admonition:: Pavyzdys
 
@@ -859,8 +859,8 @@ dataset2
 == == == == ============ ======== ========= ====================================================
 
 Prefiksai turi būti apibrėžti duomenų rinkinio kontekste, kadangi skirtingi
-duomenų rinkiniai gali naudoti skirtingus prefiksus, tiems pateims URI.
-Pavyzdžiui abiejusoe rinkinyje pavyzdyje aukščiau, `dct` ir `dctype` rodo į tą
+duomenų rinkiniai gali naudoti skirtingus prefiksus, tiems patiems URI.
+Pavyzdžiui abiejuose rinkinių pavyzdžiuose aukščiau, `dct` ir `dctype` rodo į tą
 patį URI.
 
 
@@ -905,7 +905,7 @@ pateikti neužpildant hierarchinių stulpelių ir nurodant `type` reikšmę
 kodai 1, 2 ir 3, kurios duomenų struktūros apraše keičiamos į `city`, `town`
 ir `village`, papildomai `title` stulpelyje nurodant reikšmės pavadinimą.
 
-Jei tas pats klasifikatorius gali būti naudojamas kelios skirtingose vietos,
+Jei tas pats klasifikatorius gali būti naudojamas keliose skirtingose vietose,
 tada galima iškelti klasifikatorių ir suteikti jam pavadinimą, pavyzdžiui:
 
 +----+---+---+---+---+----------+---------+---------+-----------+---------------+-------+--------+-----+---------+-------------+
@@ -1094,7 +1094,7 @@ anksčiau pateiktą pavyzdį galima būtų perdaryti taip:
 ee, kurie bus panaudojami `cities/{country}` pavadinime, pakeičiant
 `{country}` dalį.
 
-:ref:`param` reikšmės pasiekiamos naudojanti pavadinimą įrašytą
+:ref:`param` reikšmės pasiekiamos naudojant pavadinimą įrašytą
 :data:`param.ref` stulpelyje. Pavyzdžiui, jei :data:`param.ref` stulpelyje
 įrašyta `x`, tada `x` parametro reikšmę galima gauti taip:
 
@@ -1169,7 +1169,7 @@ tenkinama nurodyta sąlyga. Tokias situacijas galima aprašyti pasitelkiant
 comment
 -------
 
-..module:: comment
+.. module:: comment
 
 Dirbant su :term:`DSA` yra galimybė komentuoti eilutes, naudojant papildomą
 :data:`comment` dimensiją, kurią galima naudoti bet kurios kitos dimensijos
@@ -1201,7 +1201,7 @@ kontekste.
 
 .. data:: level
 
-    Nurodoma, kad patenkinus keitimo sliūlymą, kuris nurodytas
+    Nurodoma, kad patenkinus keitimo siūlymą, kuris nurodytas
     :data:`comment.prepare` stulplyje, komentuojamai eilutei gali būti
     suteiktas nurodytas brandos lygis.
 
@@ -1218,7 +1218,7 @@ kontekste.
 
 .. data:: uri
 
-    Viena ar kelios kableliu atskirtos šaltinio nuorodos, kuri pateikta
+    Viena ar kelios kableliu atskirtos šaltinio nuorodos, kurios pateikia
     daugiau informacijos apie tai, kas komentuojama. Taip pat gali būti
     nurodytas kito komentaro :data:`comment.id`, nurodant, kad tai yra
     atsakymas į ankstesnį komentarą.
