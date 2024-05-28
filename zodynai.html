@@ -543,7 +543,7 @@ reikšmės pridedama atitinkama kalbos žymė.</p>
 </pre></div>
 </div>
 <p>Išoriniai žodynai suteikia galimybę eksportuoti duomenis <a class="reference internal" href="savokos.html#term-RDF"><span class="xref std std-term">RDF</span></a> formatu.</p>
-<p>Jei struktūros apraše nėra užpildytas <a class="reference internal" href="formatas.html#uri" title="uri"><code class="xref py py-data docutils literal notranslate"><span class="pre">uri</span></code></a> stulpelis, data, turėtu būti
+<p>Jei struktūros apraše nėra užpildytas <a class="reference internal" href="formatas.html#uri" title="uri"><code class="xref py py-data docutils literal notranslate"><span class="pre">uri</span></code></a> stulpelis, tada, turėtu būti
 generuojamas tokie RDF duomenys:</p>
 <div class="highlight-ttl notranslate"><div class="highlight"><pre><span></span>@<span class="nv">base</span><span class="w"> </span><span class="o">&lt;</span><span class="nv">https</span>:<span class="o">//</span><span class="nv">get</span>.<span class="nv">data</span>.<span class="nv">gov</span>.<span class="nv">lt</span><span class="o">/&gt;</span><span class="w"> </span>.
 @<span class="nv">prefix</span><span class="w"> </span><span class="nv">dct</span>:<span class="w"> </span><span class="o">&lt;</span><span class="nv">http</span>:<span class="o">//</span><span class="nv">purl</span>.<span class="nv">org</span><span class="o">/</span><span class="nv">dc</span><span class="o">/</span><span class="nv">terms</span><span class="o">/&gt;</span><span class="w"> </span>.
@@ -629,7 +629,7 @@ RDF duomenis:</p>
 <p>Atkreipkite dėmesį, kad pats <code class="docutils literal notranslate"><span class="pre">uri</span></code> laukas nėra įtrautkas į RDF duomenis.</p>
 <p>Analogiškai, jei <a class="reference internal" href="formatas.html#ref" title="ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">ref</span></code></a> tipo laukas rodo į modelį, kurio <a class="reference internal" href="dimensijos.html#model.uri" title="model.uri"><code class="xref py py-data docutils literal notranslate"><span class="pre">model.uri</span></code></a>
 sutampa su <a class="reference internal" href="dimensijos.html#property.uri" title="property.uri"><code class="xref py py-data docutils literal notranslate"><span class="pre">property.uri</span></code></a> kuris yra <a class="reference internal" href="formatas.html#ref" title="ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">ref</span></code></a> tipo, tada <a class="reference internal" href="formatas.html#ref" title="ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">ref</span></code></a>
-lauko reikšmė taip pat įgyja ne gnenruotą URI, o URI iš duomenų.</p>
+lauko reikšmė taip pat įgyja ne generuotą URI, o URI iš duomenų.</p>
 <p>Pratęsiant tą patį pavyzdį:</p>
 <table class="table">
 <thead>
@@ -689,7 +689,7 @@ lauko reikšmė taip pat įgyja ne gnenruotą URI, o URI iš duomenų.</p>
 </tr>
 </tbody>
 </table>
-<p>Gautumo tokius duomenis:</p>
+<p>Gautume tokius duomenis:</p>
 <div class="highlight-ttl notranslate"><div class="highlight"><pre><span></span>@<span class="nv">base</span><span class="w"> </span><span class="o">&lt;</span><span class="nv">https</span>:<span class="o">//</span><span class="nv">get</span>.<span class="nv">data</span>.<span class="nv">gov</span>.<span class="nv">lt</span><span class="o">/</span><span class="nv">example</span><span class="o">/&gt;</span><span class="w"> </span>.
 @<span class="nv">prefix</span><span class="w"> </span><span class="nv">locn</span>:<span class="w"> </span><span class="o">&lt;</span><span class="nv">http</span>:<span class="o">//</span><span class="nv">www</span>.<span class="nv">w3</span>.<span class="nv">org</span><span class="o">/</span><span class="nv">ns</span><span class="o">/</span><span class="nv">locn</span>#<span class="o">&gt;</span><span class="w"> </span>.
 

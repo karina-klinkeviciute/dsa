@@ -115,7 +115,7 @@ Analogiškai, tie patys duomenys gali būti eksportuojami `RDF/XML`_ formatu:
 
 Išoriniai žodynai suteikia galimybę eksportuoti duomenis :term:`RDF` formatu.
 
-Jei struktūros apraše nėra užpildytas :data:`uri` stulpelis, data, turėtu būti
+Jei struktūros apraše nėra užpildytas :data:`uri` stulpelis, tada, turėtu būti
 generuojamas tokie RDF duomenys:
 
 .. code-block:: ttl
@@ -189,7 +189,7 @@ Atkreipkite dėmesį, kad pats `uri` laukas nėra įtrautkas į RDF duomenis.
 
 Analogiškai, jei :data:`ref` tipo laukas rodo į modelį, kurio :data:`model.uri`
 sutampa su :data:`property.uri` kuris yra :data:`ref` tipo, tada :data:`ref`
-lauko reikšmė taip pat įgyja ne gnenruotą URI, o URI iš duomenų.
+lauko reikšmė taip pat įgyja ne generuotą URI, o URI iš duomenų.
 
 Pratęsiant tą patį pavyzdį:
 
@@ -208,7 +208,7 @@ City                     id         locn:Location
 \  country     ref       Country    locn:Location
 == =========== ========= ========== =============
 
-Gautumo tokius duomenis:
+Gautume tokius duomenis:
 
 .. code-block:: ttl
 
