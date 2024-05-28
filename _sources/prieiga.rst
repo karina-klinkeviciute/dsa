@@ -13,7 +13,7 @@ Duomenų prieigos lygis nurodomas :data:`access` stulpelyje.
         **Atviri duomenys**
 
         Duomenys skirti viešam naudojimui, neribojant panaudojimo tikslo, pagal
-        vieną iš atvirų duomenų licenciją.
+        vieną iš atvirų duomenų licencijų.
 
     .. data:: public
 
@@ -53,7 +53,7 @@ Asmens duomenys gali būti viešinami tik public ar žemesniu prieigos lygiu.
 neribojant duomenų naudojimo tikslo. Asmens duomenys negali būti teikiami `open`
 prieigos lygiu.
 
-Prieigos lygiai gali būti paveldimi iš aukštesneės dimensijos. Tačiau žemesnė
+Prieigos lygiai gali būti paveldimi iš aukštesnės dimensijos. Tačiau žemesnė
 dimensija apsprendžia realų prieigos lygį. Pavyzdžiui jei :data:`dataset.access`
 yra `private`, o toje :data:`dataset` dimensijoje esantis :data:`property` yra
 `open`, tada visos to :data:`property` aukštesnės dimensijos taip pat tampa
