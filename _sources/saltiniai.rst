@@ -68,12 +68,12 @@ SQL
 
     .. describe:: params
 
-        Papildomi parametrai Query string formatu.
+        Papildomi parametrai `Query string` formatu.
 
 .. describe:: resource.prepare
 
     Formulė skirta papildomiems veiksmams reikalingiems ryšiui su duomenų baze
-    užmezgimui ir duomenų bazės paruošimui, kad būtų galima skaityt duomenis.
+    užmegzti ir duomenų bazės paruošimui, kad būtų galima skaityt duomenis.
 
 .. describe:: resource.type
 
