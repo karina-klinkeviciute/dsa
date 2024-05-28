@@ -67,9 +67,9 @@ Sąvokos
             pačiam valstybės valdomam subjektui arba bendrosios kompetencijos
             teismui.
 
-    Europos sveikumo karkasas
+    Europos sąveikumo karkasas
         `Rekomendacijų rinkinys`__ apie tai, kaip užtikrinti didesnį skaitmeninį
-        sveikumą tarp Europos šalių.
+        sąveikumą tarp Europos šalių.
 
         __ https://eur-lex.europa.eu/resource.html?uri=cellar:2c2f2554-0faf-11e7-8a35-01aa75ed71a1.0017.02/DOC_3&format=PDF
 
@@ -140,7 +140,7 @@ Sąvokos
         Lietuvos duomenų portalo sudedamoji dalis, skirta metaduomenims apie
         duomenų šaltinius registruoti.
 
-        Duomenų patalogas prieinamas adresu `data.gov.lt`_.
+        Duomenų katalogas prieinamas adresu `data.gov.lt`_.
 
 
     ADS
@@ -257,7 +257,7 @@ Sąvokos
 
         2
             Publikuojami duomenys turi aiškią, mašininiu būdu nuskaitomą
-            struktūrą, tačiau pateikiami nestandartinių arba nuosavybiniu
+            struktūrą, tačiau pateikiami nestandartiniu arba nuosavybiniu
             formatu. Pavyzdžiui datos tipo lauko duomenys pateikiami
             nestandartiniu formatu, tačiau visos reikšmės pateiktos naudojant tą
             patį formatą, „5/10/21“, „6/10/21“ ir pan. Šiuo atveju, automatiškai
@@ -273,7 +273,7 @@ Sąvokos
             8601`_ formatu. Kadangi duomenys yra pateikti standartiniu formatu,
             pačio formato specifikacija yra atvira ir viešai publikuojama, o
             duomenų nuskaitymo priemonės tokį atvirą formatą palaiko, todėl
-            tokių duomenų nuskaitymui nereikia įdėjo jokio papildomo darbo.
+            tokių duomenų nuskaitymui nereikia įdėti jokio papildomo darbo.
 
         4
             Kiekvienas publikuojamų duomenų :term:`objektas` turi unikalų
@@ -388,7 +388,7 @@ Sąvokos
     web servisas
         Web servisas yra interneto paslauga skirta automatizuotiems robotams.
         Interneto svetainės dažniausiai yra skirtos žmonėms, tačiau web servisai
-        yra skirti mašioms, kurios gali komunikuoti viena su kita.
+        yra skirti mašinoms, kurios gali komunikuoti viena su kita.
 
         Plačiau skaitykite `Vikipedijoje
         <https://en.wikipedia.org/wiki/Web_service>`__.
@@ -403,7 +403,7 @@ Sąvokos
            container:
              name: value
 
-        YAML yra sukurtas JSON formatu pagrindu, siekant palengvinti darbą su
+        YAML yra sukurtas JSON formato pagrindu, siekant palengvinti darbą su
         JSON serializuotais duomenimis žmonėms. Analogiškas pavyzdys JSON formatu
         atrodo taip:
 
@@ -418,8 +418,8 @@ Sąvokos
 
     sisteminis pavadinimas
         Sisteminis pavadinimas yra naudojamas objektų identifikavimui ir yra
-        naudojamas URL nuorodose ir visur kitur, kure reikia nurodyti ryšį su
-        objektų, naudojamas to objekto sisteminis pavadinimas.
+        naudojamas URL nuorodose ir visur kitur, kur reikia nurodyti ryšį su
+        objektu, naudojamas to objekto sisteminis pavadinimas.
 
         Sisteminis pavadinimas sudaromas tik iš lotyniškų raidžių ir `-_/`
         simbolių.
@@ -430,7 +430,7 @@ Sąvokos
     DCAT
         Duomenų katalogo žodynas (angl. `Data Catalog Vocabulary`_)  yra
         standartas skirtas duomenų rinkiniams aprašyti. Aprašant duomenis DCAT
-        standartu reikėŧų vadovautis :term:`DCAT-AP` specifikacijomis.
+        standartu reikėtų vadovautis :term:`DCAT-AP` specifikacijomis.
 
         .. _Data Catalog Vocabulary: https://www.w3.org/TR/vocab-dcat-2/
 
@@ -497,7 +497,7 @@ Sąvokos
         Duomenų struktūros aprašo kontekste, distribucija yra tas pats, kas
         :ref:`resource <duomenų-šaltinis>`.
 
-        Distribucija atitinka `dcat:Distribution`_ apibrėžimą:
+        Distribucija atitinka `dcat:Distribution`_ apibrėžimą.
 
         .. _dcat:Distribution: https://www.w3.org/TR/vocab-dcat-2/#Class:Distribution
 
@@ -510,12 +510,12 @@ Sąvokos
         naujienų duomenis. Norint visų organizacijų naujienų duomenis
         aprašyti vieningai, galima pasitelkti vieną bazę, arba vieną duomenų
         rinkinį, kurio struktūrą naudoja visi kiti rinkiniai. Tai bazė būtent
-        ir būtų struktūros šablonas pagal kurį būtų sudaromos visi kitų
-        analogiškų rinkinių struktūra.
+        ir būtų struktūros šablonas pagal kurį būtų sudaromos visų kitų
+        analogiškų rinkinių struktūros.
 
         Bazė yra tas pats, kas :term:`modelis` arba tiksliau modelio šablonas.
 
-        Duomenų struktūros aprašo kontekste api bazę plačiau skaitykite
+        Duomenų struktūros aprašo kontekste apie bazę plačiau skaitykite
         skyriuje :ref:`base`.
 
     modelis
@@ -626,7 +626,7 @@ Sąvokos
         Transform Load*).
 
     iteratorius
-        Tam tikra funkcija, kuri grąžina keletą lementų, tačiau ne visus iš
+        Tam tikra funkcija, kuri grąžina keletą elementų, tačiau ne visus iš
         karto, o po vieną.
 
     URI
