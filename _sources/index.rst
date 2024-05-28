@@ -14,14 +14,14 @@ brandos lygio vertinimui.
 :dfn:`Koncepcinis modelis` yra UML klasių diagrama, sudaryta laikantis
 `Conceptual model conventions (UML)`_ reikalavimų. Koncepcinis modelis laikomas
 kaip vienintelis tiesios šaltinis ir yra sudaromas remiantis teisės aktais,
-informacinės sistemos nuostatais, semantiniais žodinais ir duomenų modeliu iš
+informacinės sistemos nuostatais, semantiniais žodynais ir duomenų modeliu iš
 duomenų šaltinio.
 
 :dfn:`Fizinis modelis` šio dokumento kontekste yra duomenų schema apibūdinanti
 kur ir kaip duomenys yra saugomi ir kaip juos pasiekti. Schema apibrėžianti
 duomenų modelį priklauso nuo duomenų saugojimo formato. Jei duomenys saugomi
 SQL duomenų bazėse, tada DSA lentelėje nurodomi lentelių ir stulpelių
-pavadinimai, XML atveju nurodomos XPath_ išraiško, JSON atveju nurodomos
+pavadinimai, XML atveju nurodomos XPath_ išraiškos, JSON atveju nurodomos
 JSONPath_ išraiškos. DSA lentelėje fizinis modelis nurodomas :ref:`source`
 stulpelyje.
 
