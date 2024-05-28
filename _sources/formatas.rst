@@ -66,11 +66,11 @@ nei vieno dimensijos stulpelio.
 
     organizacija
         Organizacijos pavadinimo trumpinys. Viena organizacija gali turėti
-        vieną trumpinį, kuris yra registruojamas :term:`tuomenų kataloge
+        vieną trumpinį, kuris yra registruojamas :term:`duomenų kataloge
         <duomenų katalogas>`.
 
     katalogas
-        Organizacijos informacinė sistemos trumpinys.
+        Organizacijos informacinės sistemos trumpinys.
 
     rinkinys
         Informacinės sistemos teikiamas duomenų rinkinys.
@@ -94,13 +94,13 @@ nei vieno dimensijos stulpelio.
 
     **Duomenų šaltinis**
 
-    Kodinis duomenų šaltinio pavadinimas, užrašomas mažosiomi slotyniškomis
+    Kodinis duomenų šaltinio pavadinimas, užrašomas mažosiomis lotyniškomis
     raidėmis, žodžiai skiriami `_` simboliu.
 
     Duomenų šaltinis yra duomenų failas, duomenų bazė ar API, per kurį teikiami
     duomenys.
 
-    Patal semantinę prasmę atitinka `dcat:Distribution`_ arba `rml:logicalSource`_.
+    Pagal semantinę prasmę atitinka `dcat:Distribution`_ arba `rml:logicalSource`_.
 
     .. admonition:: Pavyzdys
 
@@ -287,7 +287,7 @@ Jei norima apsirašyti tik prefiksus naudojamus :data:`uri` lauke, užtenka
 turėti tik prefiksų aprašymui reikalingus stulpelius.
 
 Įrankiai skaitantys :term:`DSA`, stulpelius, kurių nėra lentelėje turi
-interpretuoti kaip tuščius. Taip pat įrankiai neturėtų tikėtis, kad stulpeliai
+interpretuoti juos kaip tuščius. Taip pat įrankiai neturėtų tikėtis, kad stulpeliai
 bus išdėstyti būtent tokia tvarka. Nors įrankių atžvilgiu stulpelių tvarka nėra
 svarbi, tačiau rekomenduotina išlaikyti vienodą stulpelių tvarką, tam kad
 lenteles būtų lengviau skaityti.
