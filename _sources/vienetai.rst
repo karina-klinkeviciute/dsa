@@ -44,14 +44,14 @@ T         Minutės
 S         Sekundės
 L         Milisekundės
 U         Mikrosekundės
-N         Nanosekundžės
+N         Nanosekundės
 ========  ================
 
 
 Apibrėžtis erdvėje
 ******************
 
-`geometry` tipo duomenų laukams galibūti žymimas :ref:`erdvinių
+`geometry` tipo duomenų laukams gali būti žymimas :ref:`erdvinių
 <spatial-types>` duomenų tikslumas, pavyzdžiui:
 
 ========  ====================
@@ -76,10 +76,10 @@ Kokybiniai duomenys skirstomi į dvi kategorijas:
 Pavadinimai ir identifikatoriai :data:`property.ref` stulpelyje neturi jokio
 žymėjimo ir jiems suteikiamas `4` brandos lygis.
 
-Kategoriniai duomenys žymini naudojant papildomą `enum` dimensiję, kurioje
+Kategoriniai duomenys žymimi naudojant papildomą `enum` dimensiją, kurioje
 išvardinamos visos galimos kategorinių duomenų reikšmės.
 
-Jei kategoriniai duomenys yra paliginami, pavyzdžiui:
+Jei kategoriniai duomenys yra palyginami, pavyzdžiui:
 
 - puikiai
 - gerai
