@@ -349,11 +349,11 @@ d  d  r  b  m  property           type      ref     prepare                 leve
 
 15-oje eilutėje įtrauktas virtualus `Event.object` laukas, kuris 15-oje ir
 16-oje eilutėse, :data:`property.ref` stulpelyje išvardina du modelius
-`Country` ir City`, su kuriais jungiamas šis laukas, per `object_model` ir
+`Country` ir `City`, su kuriais jungiamas šis laukas, per `object_model` ir
 `object_id` laukus, kurie aprašyti atskirai.
 
 `object_id` ir `object_model` aprašomi atskirai tik todėl, kad duomenys
-ateina iš išorinio šaltinio. Jie duomenys rašomi tiesiogiai į :ref:`Saugyklą
+ateina iš išorinio šaltinio. Jei duomenys rašomi tiesiogiai į :ref:`Saugyklą
 <saugykla>`, tada atskirai `generic` laukų apsirašyti nereikia.
 
 
@@ -447,14 +447,14 @@ interpretuojamas išorinis raktas, siejamas su kitu modeliu.
 
 2 brandos lygis: Susiejimas nepatikimas
     Duomenys pateikiami tam tikra forma, kuri neužtikrina patikimo duomenų
-    susiejimo, tačiau siejimui atliekamas pagal siejamo modelio atributą, kuris
+    susiejimo, tačiau siejimas atliekamas pagal siejamo modelio atributą, kuris
     negarantuoja unikalaus objekto identifikavimo.
 
-    Pavyzdžiui siejimas daromas pagal pavadinimą, kuris gali keistis arba ne
+    Pavyzdžiui siejimas atliekamas pagal pavadinimą, kuris gali keistis arba ne
     visais atvejais sutampa.
 
 3 brandos lygis: Susiejimas ne per pirminį raktą
-    Duomenims susieti naudojamas patikimas identifikatorius, kuris yra surištas
+    Duomenims susieti naudojamas patikimas identifikatorius, kuris yra surištas su
     siejamo modelio pirminiu raktu, tačiau naudojamas ne pirminis raktas, o
     kitas identifikatorius.
 
@@ -494,7 +494,7 @@ atveju, `City.country` tipas bus ne `ref`, o toks pat, kaip `Country.name`,
 t.y. `text`.
 
 Tačiau, metaduomenyse išliks informacija, apie tai, kad šios lentelės yra
-susijusios, tačiau dėl prasto duomenų brandos lygios, realus susiejimas nėra
+susijusios. Dėl prasto duomenų brandos lygios, realus susiejimas nėra
 įmanomas.
 
 Jei modeliai yra susiję, tačiau, tokio duomenų lauko, per kurį galima būtų
@@ -518,7 +518,7 @@ example
 
 Šioje vietoje `City.country` tampa `country@en`, kurio tipas yra `text`. O į
 `Country` yra įtrauktas papildomas laukas `name@en`, per kurį ir atliekamas
-susiejimas, t.y. per kurį galėtu būti atliktas susiejimas, jei toks laukas
+susiejimas, t.y. per kurį galėtų būti atliktas susiejimas, jei toks laukas
 egzistuotų ne tik `City.country`, bet ir `Country.name@en`.
 
 
@@ -531,7 +531,7 @@ Jei `ref` tipui suteiktas 2 brandos lygis, tai reiškia, kad susiejimas yra
 Susiejimas laikomas nepatikimu, tada, kai siejimas atliekamas ne patikimo
 unikalaus identifikatoriaus pagalba, o per pavadinimą ar panašiais būdais.
 
-Pavadinimai gali keistis, gali dubliuotis, gal skirtis jų užrašymo forma, todėl
+Pavadinimai gali keistis, gali dubliuotis, gali skirtis jų užrašymo forma, todėl
 toks jungimas laikomas nepatikimu.
 
 Toks jungimas ir 2 brandos lygio žymėjimas taikomas tik tais atvejais, kai
@@ -594,8 +594,8 @@ negalima keisti. Jei naudojamas `3` brandos lygis, tuomet saugykloje saugomas,
 ne išorinis saugyklos identifikatorius UUID, o vidinis duomenų rinkinio
 identifikatorius.
 
-Publikuojant duomenis iš tam tikro šaltinio, išoriniai raktas visada turėtu
-būti konvertuojami į išorinį pirminį raktą, tačiau tais atvejais, jei dėl tam
+Publikuojant duomenis iš tam tikro šaltinio, išorinis raktas visada turėtu
+būti konvertuojamas į išorinį pirminį raktą, tačiau tais atvejais, jei dėl tam
 tikrų priežasčių tas nėra daroma, tuomet žymimas 3 brandos lygis ir
 publikuojami ne išoriniai pirminiai raktai, o šaltinio vidiniai.
 

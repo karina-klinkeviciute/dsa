@@ -1326,10 +1326,10 @@ jungia <code class="docutils literal notranslate"><span class="pre">Event</span>
 </table>
 <p>15-oje eilutėje įtrauktas virtualus <code class="docutils literal notranslate"><span class="pre">Event.object</span></code> laukas, kuris 15-oje ir
 16-oje eilutėse, <a class="reference internal" href="dimensijos.html#property.ref" title="property.ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">property.ref</span></code></a> stulpelyje išvardina du modelius
-<code class="docutils literal notranslate"><span class="pre">Country</span></code> ir City`, su kuriais jungiamas šis laukas, per <code class="docutils literal notranslate"><span class="pre">object_model</span></code> ir
+<code class="docutils literal notranslate"><span class="pre">Country</span></code> ir <code class="docutils literal notranslate"><span class="pre">City</span></code>, su kuriais jungiamas šis laukas, per <code class="docutils literal notranslate"><span class="pre">object_model</span></code> ir
 <code class="docutils literal notranslate"><span class="pre">object_id</span></code> laukus, kurie aprašyti atskirai.</p>
 <p><code class="docutils literal notranslate"><span class="pre">object_id</span></code> ir <code class="docutils literal notranslate"><span class="pre">object_model</span></code> aprašomi atskirai tik todėl, kad duomenys
-ateina iš išorinio šaltinio. Jie duomenys rašomi tiesiogiai į <span class="xref std std-ref">Saugyklą</span>, tada atskirai <code class="docutils literal notranslate"><span class="pre">generic</span></code> laukų apsirašyti nereikia.</p>
+ateina iš išorinio šaltinio. Jei duomenys rašomi tiesiogiai į <span class="xref std std-ref">Saugyklą</span>, tada atskirai <code class="docutils literal notranslate"><span class="pre">generic</span></code> laukų apsirašyti nereikia.</p>
 </section>
 <section id="denormalizuoti-duomenys">
 <span id="ref-denorm"></span><h2>Denormalizuoti duomenys<a class="headerlink" href="#denormalizuoti-duomenys" title="Link to this heading">#</a></h2>
@@ -1481,12 +1481,12 @@ tikras identifikatorius, kuris nėra surištas su siejamo modelio pirminiu
 raktu.</p>
 </dd>
 <dt>2 brandos lygis: Susiejimas nepatikimas</dt><dd><p>Duomenys pateikiami tam tikra forma, kuri neužtikrina patikimo duomenų
-susiejimo, tačiau siejimui atliekamas pagal siejamo modelio atributą, kuris
+susiejimo, tačiau siejimas atliekamas pagal siejamo modelio atributą, kuris
 negarantuoja unikalaus objekto identifikavimo.</p>
-<p>Pavyzdžiui siejimas daromas pagal pavadinimą, kuris gali keistis arba ne
+<p>Pavyzdžiui siejimas atliekamas pagal pavadinimą, kuris gali keistis arba ne
 visais atvejais sutampa.</p>
 </dd>
-<dt>3 brandos lygis: Susiejimas ne per pirminį raktą</dt><dd><p>Duomenims susieti naudojamas patikimas identifikatorius, kuris yra surištas
+<dt>3 brandos lygis: Susiejimas ne per pirminį raktą</dt><dd><p>Duomenims susieti naudojamas patikimas identifikatorius, kuris yra surištas su
 siejamo modelio pirminiu raktu, tačiau naudojamas ne pirminis raktas, o
 kitas identifikatorius.</p>
 </dd>
@@ -1568,7 +1568,7 @@ tipą, koks yra lauko su kuriuo siejamas ryšys tipas.</p>
 atveju, <code class="docutils literal notranslate"><span class="pre">City.country</span></code> tipas bus ne <code class="docutils literal notranslate"><span class="pre">ref</span></code>, o toks pat, kaip <code class="docutils literal notranslate"><span class="pre">Country.name</span></code>,
 t.y. <code class="docutils literal notranslate"><span class="pre">text</span></code>.</p>
 <p>Tačiau, metaduomenyse išliks informacija, apie tai, kad šios lentelės yra
-susijusios, tačiau dėl prasto duomenų brandos lygios, realus susiejimas nėra
+susijusios. Dėl prasto duomenų brandos lygios, realus susiejimas nėra
 įmanomas.</p>
 <p>Jei modeliai yra susiję, tačiau, tokio duomenų lauko, per kurį galima būtų
 atlikti susiejimą iš vis nėra, tuomet, tokį lauką galima sukurti, nurodant
@@ -1647,7 +1647,7 @@ brandos lygį 0. Pavyzdžiui:</p>
 </table>
 <p>Šioje vietoje <code class="docutils literal notranslate"><span class="pre">City.country</span></code> tampa <code class="docutils literal notranslate"><span class="pre">country&#64;en</span></code>, kurio tipas yra <code class="docutils literal notranslate"><span class="pre">text</span></code>. O į
 <code class="docutils literal notranslate"><span class="pre">Country</span></code> yra įtrauktas papildomas laukas <code class="docutils literal notranslate"><span class="pre">name&#64;en</span></code>, per kurį ir atliekamas
-susiejimas, t.y. per kurį galėtu būti atliktas susiejimas, jei toks laukas
+susiejimas, t.y. per kurį galėtų būti atliktas susiejimas, jei toks laukas
 egzistuotų ne tik <code class="docutils literal notranslate"><span class="pre">City.country</span></code>, bet ir <code class="docutils literal notranslate"><span class="pre">Country.name&#64;en</span></code>.</p>
 </section>
 <section id="susiejimas-nepatikimas">
@@ -1656,7 +1656,7 @@ egzistuotų ne tik <code class="docutils literal notranslate"><span class="pre">
 įmanomas, tačiau nėra garantijos, kad jis veiks visais atvejais.</p>
 <p>Susiejimas laikomas nepatikimu, tada, kai siejimas atliekamas ne patikimo
 unikalaus identifikatoriaus pagalba, o per pavadinimą ar panašiais būdais.</p>
-<p>Pavadinimai gali keistis, gali dubliuotis, gal skirtis jų užrašymo forma, todėl
+<p>Pavadinimai gali keistis, gali dubliuotis, gali skirtis jų užrašymo forma, todėl
 toks jungimas laikomas nepatikimu.</p>
 <p>Toks jungimas ir 2 brandos lygio žymėjimas taikomas tik tais atvejais, kai
 jungimas daromas, per jungiamo modelio atributą. Pavyzdžiui:</p>
@@ -1824,8 +1824,8 @@ Saugykloje ar kitoje vietoje, kur pirminiai raktai yra generuojami ir jų
 negalima keisti. Jei naudojamas <code class="docutils literal notranslate"><span class="pre">3</span></code> brandos lygis, tuomet saugykloje saugomas,
 ne išorinis saugyklos identifikatorius UUID, o vidinis duomenų rinkinio
 identifikatorius.</p>
-<p>Publikuojant duomenis iš tam tikro šaltinio, išoriniai raktas visada turėtu
-būti konvertuojami į išorinį pirminį raktą, tačiau tais atvejais, jei dėl tam
+<p>Publikuojant duomenis iš tam tikro šaltinio, išorinis raktas visada turėtu
+būti konvertuojamas į išorinį pirminį raktą, tačiau tais atvejais, jei dėl tam
 tikrų priežasčių tas nėra daroma, tuomet žymimas 3 brandos lygis ir
 publikuojami ne išoriniai pirminiai raktai, o šaltinio vidiniai.</p>
 <p>Pavyzdžiui, jei turime tokius duomenis:</p>
