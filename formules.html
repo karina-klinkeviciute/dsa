@@ -899,19 +899,19 @@ transformaciją, gausime tokį rezultatą:</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="func.datetime">
 <span class="sig-prename descclassname"><span class="pre">func.</span></span><span class="sig-name descname"><span class="pre">datetime</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#func.datetime" title="Link to this definition">#</a></dt>
-<dd><p>Parse datetime from str, using <a class="reference external" href="https://strftime.org/">strftime</a> format.</p>
+<dd><p>Išgaunama data ir laikas iš str, naudojant <a class="reference external" href="https://strftime.org/">strftime</a> formatą.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="func.date">
 <span class="sig-prename descclassname"><span class="pre">func.</span></span><span class="sig-name descname"><span class="pre">date</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">str</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">format</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#func.date" title="Link to this definition">#</a></dt>
-<dd><p>Parse date from str, using <a class="reference external" href="https://strftime.org/">strftime</a> format.</p>
+<dd><p>išgaunama data iš str, naudojant <a class="reference external" href="https://strftime.org/">strftime</a> formatą.</p>
 </dd></dl>
 
 <dl class="py function">
 <dt class="sig sig-object py" id="id0">
 <span class="sig-prename descclassname"><span class="pre">func.</span></span><span class="sig-name descname"><span class="pre">date</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">datetime</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id0" title="Link to this definition">#</a></dt>
-<dd><p>Return date from datetime.</p>
+<dd><p>Gražinama data iš datos ir laiko.</p>
 </dd></dl>
 
 </section>
@@ -1442,12 +1442,12 @@ formules žiūrėti <a class="reference internal" href="#formules"><span class="
 <section id="transformavimas">
 <h2>Transformavimas<a class="headerlink" href="#transformavimas" title="Link to this heading">#</a></h2>
 <p><a class="reference internal" href="dimensijos.html#property.prepare" title="property.prepare"><code class="xref py py-data docutils literal notranslate"><span class="pre">property.prepare</span></code></a> stulpelyje gauta šaltinio reikšmė gali būti pasiekiama
-per self kintamąjį.</p>
+per <code class="docutils literal notranslate"><span class="pre">self</span></code> kintamąjį.</p>
 <p><a class="reference internal" href="dimensijos.html#property.prepare" title="property.prepare"><code class="xref py py-data docutils literal notranslate"><span class="pre">property.prepare</span></code></a> formulėje gali būti aprašomos kelios reikšmės atskirtos
 kableliu, tai naudojama ryšio laukams, kai ryšiui aprašyti reikia daugiau nei
 vieno duomenų lauko.</p>
 <p>Formulėje galima naudoti kitus to pačio modelio property pavadinimus, kai
-aprašomo <a class="reference internal" href="formatas.html#property" title="property"><code class="xref py py-data docutils literal notranslate"><span class="pre">property</span></code></a> reikšmės formuojamos dinamiškai naudojant viena ar
+aprašomo <a class="reference internal" href="formatas.html#property" title="property"><code class="xref py py-data docutils literal notranslate"><span class="pre">property</span></code></a> reikšmės formuojamos dinamiškai naudojant vieną ar
 kelis jau aprašytus laukus.</p>
 <p><a class="reference internal" href="dimensijos.html#property.prepare" title="property.prepare"><code class="xref py py-data docutils literal notranslate"><span class="pre">property.prepare</span></code></a> stulpelyje galima naudoti tokias formules:</p>
 <dl class="describe">
@@ -1463,7 +1463,7 @@ kelis jau aprašytus laukus.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="func.replace">
 <span class="sig-prename descclassname"><span class="pre">func.</span></span><span class="sig-name descname"><span class="pre">replace</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">old</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#func.replace" title="Link to this definition">#</a></dt>
-<dd><p>Pakeičia visus <code class="docutils literal notranslate"><span class="pre">old</span></code> į <code class="docutils literal notranslate"><span class="pre">new</span></code> simbolių eilutėje.</p>
+<dd><p>Pakeičia visus <code class="docutils literal notranslate"><span class="pre">old</span></code> į <code class="docutils literal notranslate"><span class="pre">new</span></code> simbolius eilutėje.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -1544,7 +1544,7 @@ reikšmių, tenkinančių switch prepare sąlygą.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="func.swap">
 <span class="sig-prename descclassname"><span class="pre">func.</span></span><span class="sig-name descname"><span class="pre">swap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">old</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#func.swap" title="Link to this definition">#</a></dt>
-<dd><p>Swaps an <code class="docutils literal notranslate"><span class="pre">old</span></code> value with <code class="docutils literal notranslate"><span class="pre">new</span></code>, if <code class="docutils literal notranslate"><span class="pre">self</span></code> is equal to <code class="docutils literal notranslate"><span class="pre">old</span></code>.</p>
+<dd><p>Pakeičia <code class="docutils literal notranslate"><span class="pre">old</span></code> reikšmę <code class="docutils literal notranslate"><span class="pre">new</span></code>, jeigu <code class="docutils literal notranslate"><span class="pre">self</span></code> atitinka <code class="docutils literal notranslate"><span class="pre">old</span></code>.</p>
 </dd></dl>
 
 <dl class="py function">
@@ -1562,7 +1562,7 @@ reikšmių, tenkinančių switch prepare sąlygą.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="func.url">
 <span class="sig-prename descclassname"><span class="pre">func.</span></span><span class="sig-name descname"><span class="pre">url</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#func.url" title="Link to this definition">#</a></dt>
-<dd><p>Skaido URI į objektas turintį tokias savybes:</p>
+<dd><p>Skaido URI į objektą turintį tokias savybes:</p>
 <dl class="simple">
 <dt>scheme</dt><dd><p>URI schema.</p>
 </dd>
@@ -1609,12 +1609,12 @@ reikšmių, tenkinančių switch prepare sąlygą.</p>
 
 <section id="kompleksines-strukturos">
 <span id="id12"></span><h3>Kompleksinės struktūros<a class="headerlink" href="#kompleksines-strukturos" title="Link to this heading">#</a></h3>
-<p>Daugelis duomenų šaltiniu turi galimybę saugoti kompleksines struktūros. Jei
+<p>Daugelis duomenų šaltiniu turi galimybę saugoti kompleksines struktūras. Jei
 duomenys yra kompleksiniai, tada <a class="reference internal" href="dimensijos.html#property.source" title="property.source"><code class="xref py py-data docutils literal notranslate"><span class="pre">property.source</span></code></a> stulpelyje galima
 nurodyti tik duomens pavadinimą iš pirmojo lygmens, gilesniuose lygmenyse
 esančius duomenis galima aprašyti naudojant formules <a class="reference internal" href="dimensijos.html#property.prepare" title="property.prepare"><code class="xref py py-data docutils literal notranslate"><span class="pre">property.prepare</span></code></a>
 stulpelyje.</p>
-<p>Analogiškai duomenų atranką galima daryti ir model eilutėse, jei tai leidžia
+<p>Analogiškai duomenų atranką galima daryti ir <code class="docutils literal notranslate"><span class="pre">model</span></code> eilutėse, jei tai leidžia
 duomenų šaltinis.</p>
 <p>Kaip pavyzdį naudosime tokią <a class="reference internal" href="savokos.html#term-JSON"><span class="xref std std-term">JSON</span></a> duomenų struktūrą:</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
@@ -1636,7 +1636,7 @@ duomenų šaltinis.</p>
 <dd><dl class="py function">
 <dt class="sig sig-object py" id="id13">
 <span class="sig-prename descclassname"><span class="pre">func.</span></span><span class="sig-name descname"><span class="pre">getattr</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id13" title="Link to this definition">#</a></dt>
-<dd><p>Grąžina <code class="docutils literal notranslate"><span class="pre">object</span></code> savybe <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p>
+<dd><p>Grąžina <code class="docutils literal notranslate"><span class="pre">object</span></code> savybę <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">count</span>
 <span class="go">1</span>
 </pre></div>
@@ -1700,7 +1700,7 @@ nurodyti keliose eilutėse, pavyzdyje pateiktą struktūrą atitiktų tokia lent
 </tbody>
 </table>
 <p>Šioje lentelėje stulpelių pavadinimai pateikti trijose eilutėse, todėl
-model.prepare reikėtų naudoti <a class="reference internal" href="#func.header" title="func.header"><code class="xref py py-func docutils literal notranslate"><span class="pre">header(0,</span> <span class="pre">1,</span> <span class="pre">2)</span></code></a>.</p>
+<code class="docutils literal notranslate"><span class="pre">model.prepare</span></code> reikėtų naudoti <a class="reference internal" href="#func.header" title="func.header"><code class="xref py py-func docutils literal notranslate"><span class="pre">header(0,</span> <span class="pre">1,</span> <span class="pre">2)</span></code></a>.</p>
 </section>
 </section>
 </section>

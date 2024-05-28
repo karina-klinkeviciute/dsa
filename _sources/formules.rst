@@ -435,19 +435,19 @@ veiksmai, tačiau žemiau yra pateikti bendrosios paskirties veiksmai:
 
 .. function:: datetime(str, format)
 
-    Parse datetime from str, using strftime_ format.
+    Išgaunama data ir laikas iš str, naudojant strftime_ formatą.
 
     .. _strftime: https://strftime.org/
 
 .. function:: date(str, format)
 
-    Parse date from str, using strftime_ format.
+    išgaunama data iš str, naudojant strftime_ formatą.
 
     .. _strftime: https://strftime.org/
 
 .. function:: date(datetime)
 
-    Return date from datetime.
+    Gražinama data iš datos ir laiko.
 
 
 .. _failai:
@@ -787,14 +787,14 @@ Transformavimas
 ===============
 
 :data:`property.prepare` stulpelyje gauta šaltinio reikšmė gali būti pasiekiama
-per self kintamąjį.
+per `self` kintamąjį.
 
 :data:`property.prepare` formulėje gali būti aprašomos kelios reikšmės atskirtos
 kableliu, tai naudojama ryšio laukams, kai ryšiui aprašyti reikia daugiau nei
 vieno duomenų lauko.
 
 Formulėje galima naudoti kitus to pačio modelio property pavadinimus, kai
-aprašomo :data:`property` reikšmės formuojamos dinamiškai naudojant viena ar
+aprašomo :data:`property` reikšmės formuojamos dinamiškai naudojant vieną ar
 kelis jau aprašytus laukus.
 
 :data:`property.prepare` stulpelyje galima naudoti tokias formules:
@@ -808,7 +808,7 @@ kelis jau aprašytus laukus.
 
     .. function:: replace(old, new)
 
-        Pakeičia visus `old` į `new` simbolių eilutėje.
+        Pakeičia visus `old` į `new` simbolius eilutėje.
 
     .. function:: re(pattern)
 
@@ -864,7 +864,7 @@ kelis jau aprašytus laukus.
 
     .. function:: swap(old, new)
 
-        Swaps an `old` value with `new`, if `self` is equal to `old`.
+        Pakeičia `old` reikšmę `new`, jeigu `self` atitinka `old`.
 
     .. function:: return()
 
@@ -876,7 +876,7 @@ kelis jau aprašytus laukus.
 
     .. function:: url()
 
-        Skaido URI į objektas turintį tokias savybes:
+        Skaido URI į objektą turintį tokias savybes:
 
         scheme
             URI schema.
@@ -933,13 +933,13 @@ kelis jau aprašytus laukus.
 Kompleksinės struktūros
 -----------------------
 
-Daugelis duomenų šaltiniu turi galimybę saugoti kompleksines struktūros. Jei
+Daugelis duomenų šaltiniu turi galimybę saugoti kompleksines struktūras. Jei
 duomenys yra kompleksiniai, tada :data:`property.source` stulpelyje galima
 nurodyti tik duomens pavadinimą iš pirmojo lygmens, gilesniuose lygmenyse
 esančius duomenis galima aprašyti naudojant formules :data:`property.prepare`
 stulpelyje.
 
-Analogiškai duomenų atranką galima daryti ir model eilutėse, jei tai leidžia
+Analogiškai duomenų atranką galima daryti ir `model` eilutėse, jei tai leidžia
 duomenų šaltinis.
 
 Kaip pavyzdį naudosime tokią :term:`JSON` duomenų struktūrą:
@@ -962,7 +962,7 @@ Kaip pavyzdį naudosime tokią :term:`JSON` duomenų struktūrą:
 
     .. function:: getattr(object, name)
 
-        Grąžina `object` savybe `name`.
+        Grąžina `object` savybę `name`.
 
         .. code-block:: python
 
@@ -1017,4 +1017,4 @@ count   results
 
 
 Šioje lentelėje stulpelių pavadinimai pateikti trijose eilutėse, todėl
-model.prepare reikėtų naudoti :func:`header(0, 1, 2) <header>`.
+`model.prepare` reikėtų naudoti :func:`header(0, 1, 2) <header>`.
