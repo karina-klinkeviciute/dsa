@@ -71,7 +71,7 @@ Reliatyvūs pavadinimai
 **********************
 
 Modelio pavadinimas gali būti absoliutus arba reliatyvus. Absoliutūs
-pavadinimai prasideda `/` simboliu, reliatyvus pavadinimai prasideda be `/`
+pavadinimai prasideda `/` simboliu, reliatyvūs pavadinimai prasideda be `/`
 simbolio ir yra jungiami su vardų erdvės pavadinimu, kurios kontekste yra
 apibrėžtas modelis.
 
