@@ -53,7 +53,7 @@ tokio žodžio kaip `Pajama` nėra.
 Modelio pavadinimas turi prasidėti didžiąja raide.
 
 Modelio pavadinimas turi atspindėti `duomenų subjekto`__ tipą.
-Duomnų subjektas yra dalykas turintis pavadinimą ar unikalų identifikatorių.
+Duomenų subjektas yra dalykas turintis pavadinimą ar unikalų identifikatorių.
 Duomenų subjekto tipas yra subjektų grupė priklausančių tai pačiai kategorijai
 ar klasei__.
 
@@ -64,7 +64,7 @@ __ https://en.wikipedia.org/wiki/Class_(knowledge_representation)
 Nekartojame vardų erdvės
 ========================
 
-Modelio pavadinime nekartojamas vardų erdvės, kurioje yra modelis.
+Modelio pavadinime nekartojamos vardų erdvės, kurioje yra modelis.
 
 Pavyzdys, kaip nereikėtų daryti: `example/planets/EarthPlanet`. Šioje
 vietoje nereikia kartoti `Planet`, kadangi tai atsispindi vardų erdvės
