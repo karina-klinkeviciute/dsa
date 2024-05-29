@@ -160,7 +160,7 @@ rinkinio kontekste.
 
 .. seealso::
 
-    :ref:`resource`
+    :ref:`duomenu-saltiniai`
 
 .. data:: id
 
@@ -813,6 +813,8 @@ reikia apsirašyti žodynų prefiksus. Žodynų prefiksai aprašomi taip:
 
     Prefikso pavadinimas.
 
+    Rekomenduojama naudoti prefix.cc_ paslaugą URI prefiksų pavadinimams.
+
 .. data:: uri
 
     Išorinio žodyno URI.
@@ -860,8 +862,8 @@ dataset2
 
 Prefiksai turi būti apibrėžti duomenų rinkinio kontekste, kadangi skirtingi
 duomenų rinkiniai gali naudoti skirtingus prefiksus, tiems patiems URI.
-Pavyzdžiui abiejuose rinkinių pavyzdžiuose aukščiau, `dct` ir `dctype` rodo į tą
-patį URI.
+Pavyzdžiui abiejuose rinkinių pavyzdžiuose aukščiau, `dct` iš `dataset1` ir
+`dctype` iš `dataset2` rodo į tą patį URI.
 
 
 .. _enum:
@@ -913,25 +915,25 @@ tada galima iškelti klasifikatorių ir suteikti jam pavadinimą, pavyzdžiui:
 +====+===+===+===+===+==========+=========+=========+===========+===============+=======+========+=====+=========+=============+
 |  1 | datasets/example/places  |         |         |           |               |       |        |     |         |             |
 +----+---+---+---+---+----------+---------+---------+-----------+---------------+-------+--------+-----+---------+-------------+
-|  6 |   |   |   |   |          | enum    | place   | 1         | "city"        |       |        |     | City    |             |
+|  2 |   |   |   |   |          | enum    | place   | 1         | "city"        |       |        |     | City    |             |
 +----+---+---+---+---+----------+---------+---------+-----------+---------------+-------+--------+-----+---------+-------------+
-|  7 |   |   |   |   |          |         |         | 2         | "town"        |       |        |     | Town    |             |
+|  3 |   |   |   |   |          |         |         | 2         | "town"        |       |        |     | Town    |             |
 +----+---+---+---+---+----------+---------+---------+-----------+---------------+-------+--------+-----+---------+-------------+
-|  8 |   |   |   |   |          |         |         | 3         | "village"     |       |        |     | Village |             |
+|  4 |   |   |   |   |          |         |         | 3         | "village"     |       |        |     | Village |             |
 +----+---+---+---+---+----------+---------+---------+-----------+---------------+-------+--------+-----+---------+-------------+
-|  2 |   | places               | sql     |         | sqlite:// |               |       |        |     |         |             |
+|  5 |   | places               | sql     |         | sqlite:// |               |       |        |     |         |             |
 +----+---+---+---+---+----------+---------+---------+-----------+---------------+-------+--------+-----+---------+-------------+
-|  3 |   |   |   | Place        |         | id      | PLACES    |               |       |        |     |         |             |
+|  6 |   |   |   | Place        |         | id      | PLACES    |               |       |        |     |         |             |
 +----+---+---+---+---+----------+---------+---------+-----------+---------------+-------+--------+-----+---------+-------------+
-|  4 |   |   |   |   | id       | integer |         | ID        |               | 3     | open   |     |         |             |
+|  7 |   |   |   |   | id       | integer |         | ID        |               | 3     | open   |     |         |             |
 +----+---+---+---+---+----------+---------+---------+-----------+---------------+-------+--------+-----+---------+-------------+
-|  5 |   |   |   |   | type     | string  | place   | CODE      |               | 3     | open   |     |         |             |
+|  8 |   |   |   |   | type     | string  | place   | CODE      |               | 3     | open   |     |         |             |
 +----+---+---+---+---+----------+---------+---------+-----------+---------------+-------+--------+-----+---------+-------------+
 |  9 |   |   |   |   | name     | string  |         | NAME      |               | 3     | open   |     |         |             |
 +----+---+---+---+---+----------+---------+---------+-----------+---------------+-------+--------+-----+---------+-------------+
 
 Šiuo atveju, klasifikatoriui buvo suteiktas pavadinimas `place` įrašytas
-`enum.ref` stulpelyje, 6 eilutėje. O `Place.type` laukui, `prepare`
+`enum.ref` stulpelyje, 2-oje eilutėje. O `Place.type` laukui, `property.ref`
 stulpelyje nurodyta, kad šis laukas naudoja vardinį `place` klasifikatorių.
 
 
@@ -1438,3 +1440,4 @@ migracijas:
 .. _OWL: https://www.w3.org/TR/owl2-overview/
 .. _RDFS: https://www.w3.org/TR/rdf-schema/
 .. _SKOS: https://www.w3.org/TR/skos-primer/
+.. _prefix.cc: https://prefix.cc/

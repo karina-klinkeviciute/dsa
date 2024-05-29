@@ -5,9 +5,10 @@ Lentelės formatas
 
 :term:`DSA` yra sudarytas taip, kad būtų patogu dirbti tiek žmonėms, tiek
 programoms. Žmonės su :term:`DSA` lentele gali dirbti naudojantis, bet kuria
-skaičiuoklės programa ar kitas pasirinktas priemones. Kadangi :term:`DSA` turi
-aiškią ir griežtą struktūrą, lentelėje pateiktus duomenis taip pat gali lengvai
-nuskaityti ir interpretuoti kompiuterinės programos.
+skaičiuoklės programa (Excel, LibreOffice Calc) ar kitas pasirinktas priemones.
+Kadangi :term:`DSA` turi aiškią ir griežtą struktūrą, lentelėje pateiktus
+duomenis taip pat gali lengvai nuskaityti ir interpretuoti kompiuterinės
+programos.
 
 Tais atvejais, kai su :term:`DSA` lentele dirba žmonės, lentelė gali būti
 saugoma įstaigos pasirinktos skaičiuoklės programos ar kitų priemonių formatu.
@@ -207,7 +208,8 @@ pavadinimą, pavyzdžiui :data:`model.ref`, kas reikštų, kad kalbama apie
     **Eilutės identifikatorius**
 
     Unikalus elemento numeris, gali būti sveikas, monotoniškai didėjantis
-    skaičius arba UUID. Svarbu užtikrinti, kad visi elementai turėtu unikalų id.
+    skaičius arba :rfc:`UUID <9562>`. Svarbu užtikrinti, kad visi elementai
+    turėtu unikalų id.
 
     Šis stulpelis pildomas automatinėmis priemonėmis, siekiant identifikuoti
     konkrečias metaduomenų eilutes, kad būtų galima atpažinti metaduomenis,
@@ -219,52 +221,82 @@ pavadinimą, pavyzdžiui :data:`model.ref`, kas reikštų, kad kalbama apie
 
     **Tipas**
 
-    Prasmė priklauso nuo dimensijos. Žiūrėti :ref:`duomenų-tipai`.
+    Prasmė priklauso nuo dimensijos.
 
     Jei nenurodytas nei vienas :ref:`dimensijos stulpelis
     <dimensijos-stulpeliai>`, tuomet šiame stulpelyje nurodoma :ref:`papildoma
     dimensija <papildomos-dimensijos>`.
 
+    .. seealso::
+
+        :ref:`duomenų-tipai`
+
+
 .. data:: ref
 
     **Ryšys**
 
-    Prasmė priklauso nuo dimensijos. Žiūrėti :ref:`ryšiai`,
-    :ref:`matavimo-vienetai` ir :ref:`enum`.
+    Prasmė priklauso nuo dimensijos.
+
+    .. seealso::
+
+        | :ref:`ryšiai`
+        | :ref:`matavimo-vienetai`
+        | :ref:`enum`
+
 
 .. data:: source
 
     **Šaltinis**
 
-    Duomenų šaltinio struktūros elementai. Žiūrėti :ref:`duomenų-šaltiniai`.
+    Duomenų šaltinio struktūros elementai.
+
+    .. seealso::
+
+        | :ref:`duomenu-saltiniai`
 
 .. data:: prepare
 
     **Formulė**
 
     Formulė skirta duomenų atrankai, nuasmeninimui, transformavimui, tikrinimui
-    ir pan. Žiūrėti :ref:`formulės`.
+    ir pan.
+
+    .. seealso::
+
+        :ref:`formulės`
 
 .. data:: level
 
     **Brandos lygis**
 
-    Duomenų brandos lygis, atitinka `5 Star Data`_. Žiūrėti
-    :ref:`level`.
+    Duomenų brandos lygis, atitinka `5 Star Data`_.
 
     .. _5 Star Data: https://5stardata.info/en/
+
+    .. seealso::
+
+        :ref:`level`
 
 .. data:: access
 
     **Prieiga**
 
-    Duomenų prieigos lygis. Žiūrėti :ref:`access`.
+    Duomenų prieigos lygis.
+
+    .. seealso::
+
+        :ref:`access`
 
 .. data:: uri
 
     **Žodyno atitikmuo**
 
-    Sąsaja su išoriniu žodynu. Žiūrėti :ref:`vocab`.
+    Sąsaja su išoriniu žodynu.
+
+    .. seealso::
+
+        :ref:`vocab`
 
 .. data:: title
 

@@ -665,7 +665,7 @@ identifikuojant patį duomenų šaltinį.</p>
 rinkinio kontekste.</p>
 <div class="admonition seealso">
 <p class="admonition-title">Taip pat žiūrėkite</p>
-<p><a class="reference internal" href="#resource"><span class="std std-ref">resource</span></a></p>
+<p><a class="reference internal" href="saltiniai.html#duomenu-saltiniai"><span class="std std-ref">Duomenų šaltiniai</span></a></p>
 </div>
 <dl class="py data">
 <dt class="sig sig-object py" id="resource.id">
@@ -1638,6 +1638,7 @@ reikia apsirašyti žodynų prefiksus. Žodynų prefiksai aprašomi taip:</p>
 <dt class="sig sig-object py" id="prefix.ref">
 <span class="sig-prename descclassname"><span class="pre">prefix.</span></span><span class="sig-name descname"><span class="pre">ref</span></span><a class="headerlink" href="#prefix.ref" title="Link to this definition">#</a></dt>
 <dd><p>Prefikso pavadinimas.</p>
+<p>Rekomenduojama naudoti <a class="reference external" href="https://prefix.cc/">prefix.cc</a> paslaugą URI prefiksų pavadinimams.</p>
 </dd></dl>
 
 <dl class="py data">
@@ -1824,8 +1825,8 @@ stulpeliuose tokiu būdu: <code class="docutils literal notranslate"><span class
 </table>
 <p>Prefiksai turi būti apibrėžti duomenų rinkinio kontekste, kadangi skirtingi
 duomenų rinkiniai gali naudoti skirtingus prefiksus, tiems patiems URI.
-Pavyzdžiui abiejuose rinkinių pavyzdžiuose aukščiau, <code class="docutils literal notranslate"><span class="pre">dct</span></code> ir <code class="docutils literal notranslate"><span class="pre">dctype</span></code> rodo į tą
-patį URI.</p>
+Pavyzdžiui abiejuose rinkinių pavyzdžiuose aukščiau, <code class="docutils literal notranslate"><span class="pre">dct</span></code> iš <code class="docutils literal notranslate"><span class="pre">dataset1</span></code> ir
+<code class="docutils literal notranslate"><span class="pre">dctype</span></code> iš <code class="docutils literal notranslate"><span class="pre">dataset2</span></code> rodo į tą patį URI.</p>
 </section>
 <section id="enum">
 <span id="id9"></span><h2>enum<a class="headerlink" href="#enum" title="Link to this heading">#</a></h2>
@@ -2029,7 +2030,7 @@ tada galima iškelti klasifikatorių ir suteikti jam pavadinimą, pavyzdžiui:</
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p>6</p></td>
+<tr class="row-odd"><td><p>2</p></td>
 <td></td>
 <td></td>
 <td></td>
@@ -2045,7 +2046,7 @@ tada galima iškelti klasifikatorių ir suteikti jam pavadinimą, pavyzdžiui:</
 <td><p>City</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p>7</p></td>
+<tr class="row-even"><td><p>3</p></td>
 <td></td>
 <td></td>
 <td></td>
@@ -2061,7 +2062,7 @@ tada galima iškelti klasifikatorių ir suteikti jam pavadinimą, pavyzdžiui:</
 <td><p>Town</p></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p>8</p></td>
+<tr class="row-odd"><td><p>4</p></td>
 <td></td>
 <td></td>
 <td></td>
@@ -2077,7 +2078,7 @@ tada galima iškelti klasifikatorių ir suteikti jam pavadinimą, pavyzdžiui:</
 <td><p>Village</p></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p>2</p></td>
+<tr class="row-even"><td><p>5</p></td>
 <td></td>
 <td colspan="4"><p>places</p></td>
 <td><p>sql</p></td>
@@ -2090,7 +2091,7 @@ tada galima iškelti klasifikatorių ir suteikti jam pavadinimą, pavyzdžiui:</
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p>3</p></td>
+<tr class="row-odd"><td><p>6</p></td>
 <td></td>
 <td></td>
 <td></td>
@@ -2105,7 +2106,7 @@ tada galima iškelti klasifikatorių ir suteikti jam pavadinimą, pavyzdžiui:</
 <td></td>
 <td></td>
 </tr>
-<tr class="row-even"><td><p>4</p></td>
+<tr class="row-even"><td><p>7</p></td>
 <td></td>
 <td></td>
 <td></td>
@@ -2121,7 +2122,7 @@ tada galima iškelti klasifikatorių ir suteikti jam pavadinimą, pavyzdžiui:</
 <td></td>
 <td></td>
 </tr>
-<tr class="row-odd"><td><p>5</p></td>
+<tr class="row-odd"><td><p>8</p></td>
 <td></td>
 <td></td>
 <td></td>
@@ -2156,7 +2157,7 @@ tada galima iškelti klasifikatorių ir suteikti jam pavadinimą, pavyzdžiui:</
 </tbody>
 </table>
 <p>Šiuo atveju, klasifikatoriui buvo suteiktas pavadinimas <code class="docutils literal notranslate"><span class="pre">place</span></code> įrašytas
-<code class="docutils literal notranslate"><span class="pre">enum.ref</span></code> stulpelyje, 6 eilutėje. O <code class="docutils literal notranslate"><span class="pre">Place.type</span></code> laukui, <code class="docutils literal notranslate"><span class="pre">prepare</span></code>
+<code class="docutils literal notranslate"><span class="pre">enum.ref</span></code> stulpelyje, 2-oje eilutėje. O <code class="docutils literal notranslate"><span class="pre">Place.type</span></code> laukui, <code class="docutils literal notranslate"><span class="pre">property.ref</span></code>
 stulpelyje nurodyta, kad šis laukas naudoja vardinį <code class="docutils literal notranslate"><span class="pre">place</span></code> klasifikatorių.</p>
 <dl class="py data">
 <dt class="sig sig-object py" id="enum.ref">

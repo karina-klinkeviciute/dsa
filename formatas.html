@@ -354,9 +354,10 @@ document.write(`
 <h1>Lentelės formatas<a class="headerlink" href="#lenteles-formatas" title="Link to this heading">#</a></h1>
 <p><a class="reference internal" href="savokos.html#term-DSA"><span class="xref std std-term">DSA</span></a> yra sudarytas taip, kad būtų patogu dirbti tiek žmonėms, tiek
 programoms. Žmonės su <a class="reference internal" href="savokos.html#term-DSA"><span class="xref std std-term">DSA</span></a> lentele gali dirbti naudojantis, bet kuria
-skaičiuoklės programa ar kitas pasirinktas priemones. Kadangi <a class="reference internal" href="savokos.html#term-DSA"><span class="xref std std-term">DSA</span></a> turi
-aiškią ir griežtą struktūrą, lentelėje pateiktus duomenis taip pat gali lengvai
-nuskaityti ir interpretuoti kompiuterinės programos.</p>
+skaičiuoklės programa (Excel, LibreOffice Calc) ar kitas pasirinktas priemones.
+Kadangi <a class="reference internal" href="savokos.html#term-DSA"><span class="xref std std-term">DSA</span></a> turi aiškią ir griežtą struktūrą, lentelėje pateiktus
+duomenis taip pat gali lengvai nuskaityti ir interpretuoti kompiuterinės
+programos.</p>
 <p>Tais atvejais, kai su <a class="reference internal" href="savokos.html#term-DSA"><span class="xref std std-term">DSA</span></a> lentele dirba žmonės, lentelė gali būti
 saugoma įstaigos pasirinktos skaičiuoklės programos ar kitų priemonių formatu.</p>
 <p>Automatizuotoms priemonėms <a class="reference internal" href="savokos.html#term-DSA"><span class="xref std std-term">DSA</span></a> turi būti teikiamas CSV formatu laikantis
@@ -546,7 +547,8 @@ pavadinimą, pavyzdžiui <a class="reference internal" href="dimensijos.html#mod
 <span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#id" title="Link to this definition">#</a></dt>
 <dd><p><strong>Eilutės identifikatorius</strong></p>
 <p>Unikalus elemento numeris, gali būti sveikas, monotoniškai didėjantis
-skaičius arba UUID. Svarbu užtikrinti, kad visi elementai turėtu unikalų id.</p>
+skaičius arba <span class="target" id="index-1"></span><a class="rfc reference external" href="https://datatracker.ietf.org/doc/html/rfc9562.html"><strong>UUID</strong></a>. Svarbu užtikrinti, kad visi elementai
+turėtu unikalų id.</p>
 <p>Šis stulpelis pildomas automatinėmis priemonėmis, siekiant identifikuoti
 konkrečias metaduomenų eilutes, kad būtų galima atpažinti metaduomenis,
 kurie jau buvo pateikti ir po to atnaujinti.</p>
@@ -557,24 +559,41 @@ kurie jau buvo pateikti ir po to atnaujinti.</p>
 <dt class="sig sig-object py" id="type">
 <span class="sig-name descname"><span class="pre">type</span></span><a class="headerlink" href="#type" title="Link to this definition">#</a></dt>
 <dd><p><strong>Tipas</strong></p>
-<p>Prasmė priklauso nuo dimensijos. Žiūrėti <a class="reference internal" href="tipai.html#duomenu-tipai"><span class="std std-ref">Duomenų tipai</span></a>.</p>
+<p>Prasmė priklauso nuo dimensijos.</p>
 <p>Jei nenurodytas nei vienas <a class="reference internal" href="#dimensijos-stulpeliai"><span class="std std-ref">dimensijos stulpelis</span></a>, tuomet šiame stulpelyje nurodoma <a class="reference internal" href="dimensijos.html#papildomos-dimensijos"><span class="std std-ref">papildoma
 dimensija</span></a>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">Taip pat žiūrėkite</p>
+<p><a class="reference internal" href="tipai.html#duomenu-tipai"><span class="std std-ref">Duomenų tipai</span></a></p>
+</div>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="ref">
 <span class="sig-name descname"><span class="pre">ref</span></span><a class="headerlink" href="#ref" title="Link to this definition">#</a></dt>
 <dd><p><strong>Ryšys</strong></p>
-<p>Prasmė priklauso nuo dimensijos. Žiūrėti <a class="reference internal" href="identifikatoriai.html#rysiai"><span class="std std-ref">Ryšiai tarp modelių</span></a>,
-<a class="reference internal" href="vienetai.html#matavimo-vienetai"><span class="std std-ref">Matavimo vienetai</span></a> ir <a class="reference internal" href="dimensijos.html#enum"><span class="std std-ref">enum</span></a>.</p>
+<p>Prasmė priklauso nuo dimensijos.</p>
+<div class="admonition seealso">
+<p class="admonition-title">Taip pat žiūrėkite</p>
+<div class="line-block">
+<div class="line"><a class="reference internal" href="identifikatoriai.html#rysiai"><span class="std std-ref">Ryšiai tarp modelių</span></a></div>
+<div class="line"><a class="reference internal" href="vienetai.html#matavimo-vienetai"><span class="std std-ref">Matavimo vienetai</span></a></div>
+<div class="line"><a class="reference internal" href="dimensijos.html#enum"><span class="std std-ref">enum</span></a></div>
+</div>
+</div>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="source">
 <span class="sig-name descname"><span class="pre">source</span></span><a class="headerlink" href="#source" title="Link to this definition">#</a></dt>
 <dd><p><strong>Šaltinis</strong></p>
-<p>Duomenų šaltinio struktūros elementai. Žiūrėti <span class="xref std std-ref">duomenų-šaltiniai</span>.</p>
+<p>Duomenų šaltinio struktūros elementai.</p>
+<div class="admonition seealso">
+<p class="admonition-title">Taip pat žiūrėkite</p>
+<div class="line-block">
+<div class="line"><a class="reference internal" href="saltiniai.html#duomenu-saltiniai"><span class="std std-ref">Duomenų šaltiniai</span></a></div>
+</div>
+</div>
 </dd></dl>
 
 <dl class="py data">
@@ -582,29 +601,44 @@ dimensija</span></a>.</p>
 <span class="sig-name descname"><span class="pre">prepare</span></span><a class="headerlink" href="#prepare" title="Link to this definition">#</a></dt>
 <dd><p><strong>Formulė</strong></p>
 <p>Formulė skirta duomenų atrankai, nuasmeninimui, transformavimui, tikrinimui
-ir pan. Žiūrėti <a class="reference internal" href="formules.html#formules"><span class="std std-ref">Formulės</span></a>.</p>
+ir pan.</p>
+<div class="admonition seealso">
+<p class="admonition-title">Taip pat žiūrėkite</p>
+<p><a class="reference internal" href="formules.html#formules"><span class="std std-ref">Formulės</span></a></p>
+</div>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="level">
 <span class="sig-name descname"><span class="pre">level</span></span><a class="headerlink" href="#level" title="Link to this definition">#</a></dt>
 <dd><p><strong>Brandos lygis</strong></p>
-<p>Duomenų brandos lygis, atitinka <a class="reference external" href="https://5stardata.info/en/">5 Star Data</a>. Žiūrėti
-<a class="reference internal" href="branda.html#level"><span class="std std-ref">Brandos lygiai</span></a>.</p>
+<p>Duomenų brandos lygis, atitinka <a class="reference external" href="https://5stardata.info/en/">5 Star Data</a>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">Taip pat žiūrėkite</p>
+<p><a class="reference internal" href="branda.html#level"><span class="std std-ref">Brandos lygiai</span></a></p>
+</div>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="access">
 <span class="sig-name descname"><span class="pre">access</span></span><a class="headerlink" href="#access" title="Link to this definition">#</a></dt>
 <dd><p><strong>Prieiga</strong></p>
-<p>Duomenų prieigos lygis. Žiūrėti <a class="reference internal" href="prieiga.html#access"><span class="std std-ref">Prieigos lygiai</span></a>.</p>
+<p>Duomenų prieigos lygis.</p>
+<div class="admonition seealso">
+<p class="admonition-title">Taip pat žiūrėkite</p>
+<p><a class="reference internal" href="prieiga.html#access"><span class="std std-ref">Prieigos lygiai</span></a></p>
+</div>
 </dd></dl>
 
 <dl class="py data">
 <dt class="sig sig-object py" id="uri">
 <span class="sig-name descname"><span class="pre">uri</span></span><a class="headerlink" href="#uri" title="Link to this definition">#</a></dt>
 <dd><p><strong>Žodyno atitikmuo</strong></p>
-<p>Sąsaja su išoriniu žodynu. Žiūrėti <a class="reference internal" href="zodynai.html#vocab"><span class="std std-ref">Išoriniai žodynai</span></a>.</p>
+<p>Sąsaja su išoriniu žodynu.</p>
+<div class="admonition seealso">
+<p class="admonition-title">Taip pat žiūrėkite</p>
+<p><a class="reference internal" href="zodynai.html#vocab"><span class="std std-ref">Išoriniai žodynai</span></a></p>
+</div>
 </dd></dl>
 
 <dl class="py data">

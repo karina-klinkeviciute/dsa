@@ -49,6 +49,7 @@
     <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script src="_static/translations.js?v=3b848cde"></script>
     <script src="_static/design-tabs.js?v=36754332"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'branda';</script>
     <link rel="index" title="Indeksas" href="genindex.html" />
     <link rel="search" title="Paieška" href="search.html" />
@@ -330,6 +331,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#l102-nera-vientisumo">L102: Nėra vientisumo</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#l103-neimanomas-jungimas">L103: Neįmanomas jungimas</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#l104-identifikatorius-nera-unikalus">L104: Identifikatorius nėra unikalus</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#l105-vienetu-konvertavimo-paklaida">L105: Vienetų konvertavimo paklaida</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#l200-nestandartinis-pateikimas">L200: Nestandartinis pateikimas</a><ul class="nav section-nav flex-column">
@@ -342,6 +344,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#l207-neatitinka-modelio-bazes">L207: Neatitinka modelio bazės</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#l208-nenurodytas-enum-kodinems-reiksmems">L208: Nenurodytas enum kodinėms reikšmėms</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#l209-nenurodyta-modelio-baze">L209: Nenurodyta modelio bazė</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#l210-isskaidyta-atskirais-komponentais">L210: Išskaidyta atskirais komponentais</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#l300-nera-identifikatoriaus">L300: Nėra identifikatoriaus</a><ul class="nav section-nav flex-column">
@@ -740,7 +743,7 @@ kitokiu formatu.</p>
 </section>
 <section id="l102-nera-vientisumo">
 <span id="l102"></span><h3>L102: Nėra vientisumo<a class="headerlink" href="#l102-nera-vientisumo" title="Link to this heading">#</a></h3>
-<p>Pirmu brandos lygiu žymimi duomenuys, kuruose nėra vientisumo, pavyzdžiui
+<p>Pirmu brandos lygiu žymimi duomenys, kuruose nėra vientisumo, pavyzdžiui
 <code class="docutils literal notranslate"><span class="pre">atstumas</span></code> užrašytas laikantis tam tikros struktūros, tačiau skirtingais
 vienetais.</p>
 </section>
@@ -754,6 +757,63 @@ identifikuoti filialo įmonę.</p>
 <section id="l104-identifikatorius-nera-unikalus">
 <span id="l104"></span><h3>L104: Identifikatorius nėra unikalus<a class="headerlink" href="#l104-identifikatorius-nera-unikalus" title="Link to this heading">#</a></h3>
 <p>Objekto identifikatorius nėra unikalus, turi pasikartojančių reikšmių.</p>
+</section>
+<section id="l105-vienetu-konvertavimo-paklaida">
+<span id="l105"></span><h3>L105: Vienetų konvertavimo paklaida<a class="headerlink" href="#l105-vienetu-konvertavimo-paklaida" title="Link to this heading">#</a></h3>
+<p>Tam tikrais atvejais, kai kiekybiniai duomenys pateikiami išskaidant į atskirus
+duomenų laukus, gali būti prarandamas duomenų tikslumas.</p>
+<div class="admonition-pavyzdys admonition">
+<p class="admonition-title">Pavyzdys</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>model</p></th>
+<th class="head"><p>property</p></th>
+<th class="head"><p>type</p></th>
+<th class="head"><p>ref</p></th>
+<th class="head"><p>level</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td colspan="2"><p>Assmuo</p></td>
+<td></td>
+<td><p>id</p></td>
+<td><p>4</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>id</p></td>
+<td><p>integer</p></td>
+<td></td>
+<td><p>4</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>metai</p></td>
+<td><p>integer</p></td>
+<td><p>yr</p></td>
+<td><p>4</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>menesiai</p></td>
+<td><p>integer</p></td>
+<td><p>mo</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>dienos</p></td>
+<td><p>integer</p></td>
+<td><p>d</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+<p>Šiame pavyzdyje nurodytas asmens amžius pateikiant atskirai metus, mėnesius
+ir dienas, tarkim <em>25 metai, 5 mėnesiai, 29 dienos</em>.</p>
+<p>Jei norėtume gauti amžių dienomis, rezultatas <span class="math notranslate nohighlight">\(25*365 + 5*30 + 29 =
+9304\)</span> būtų netikslus, kadangi metai ir mėnesiai turi skirtingus dienų
+skaičius, todėl konvertuojant rezultatą į dienas, gausime netikslų
+rezultatą.</p>
+<p>Kadangi nustatyti nėra galimybės nustatyti galutinio tikslaus mėnesio ir
+dienų skaičiaus, nurodomas 1 brandos lygis.</p>
+</div>
 </section>
 </section>
 <section id="l200-nestandartinis-pateikimas">
@@ -1055,6 +1115,14 @@ kuriame būtų nurodyta, ką koks skaičius reiškia. Plačiau skaityti
 <section id="l209-nenurodyta-modelio-baze">
 <span id="l209"></span><h3>L209: Nenurodyta modelio bazė<a class="headerlink" href="#l209-nenurodyta-modelio-baze" title="Link to this heading">#</a></h3>
 <p>Modelis atitinka registre apibrėžtą esybę, tačiau nėra su ja susietas.</p>
+</section>
+<section id="l210-isskaidyta-atskirais-komponentais">
+<span id="l210"></span><h3>L210: Išskaidyta atskirais komponentais<a class="headerlink" href="#l210-isskaidyta-atskirais-komponentais" title="Link to this heading">#</a></h3>
+<p><a class="reference internal" href="savokos.html#term-DSA"><span class="xref std std-term">DSA</span></a> turi sudėtinius tipus, tokius kaip <code class="docutils literal notranslate"><span class="pre">date</span></code>, <code class="docutils literal notranslate"><span class="pre">datetime</span></code> ir
+<code class="docutils literal notranslate"><span class="pre">geometry</span></code>, kuri apima kelis atskirus duomenų komponentus, kurie pateikiami
+kaip viena reikšmė, nustatytu formatu.</p>
+<p>Jei komponentai yra išskaidyti į atskirus duomenų laukus, tuomet tai yra
+nestandartinis duomenų pateikimas žymimas 2 brandos lygiu.</p>
 </section>
 </section>
 <section id="l300-nera-identifikatoriaus">
@@ -1366,11 +1434,11 @@ kategorinis.</p></li>
 <p class="admonition-title">Pastaba</p>
 <p><a class="reference internal" href="dimensijos.html#property.ref" title="property.ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">property.ref</span></code></a> stulpelis pildomas šiais atvejais:</p>
 <ul class="simple">
-<li><p>Jei duomenų laukas yra išorinis raktas (žiūrėti <a class="reference internal" href="tipai.html#ref-types"><span class="std std-ref">Išoriniai raktai</span></a>).</p></li>
+<li><p>Jei duomenų laukas yra išorinis raktas (žiūrėti <span class="xref std std-ref">ref-types</span>).</p></li>
 <li><p>Jei duomenų laukas yra kiekybinis ir turi matavimo vienetus
 (žiūrėti <a class="reference internal" href="vienetai.html#matavimo-vienetai"><span class="std std-ref">Matavimo vienetai</span></a>).</p></li>
 <li><p>Jei duomenų laukas žymi laiką ar vietą (žiūrėti
-<a class="reference internal" href="tipai.html#temporal-types"><span class="std std-ref">Data ir laikas</span></a> ir <a class="reference internal" href="tipai.html#spatial-types"><span class="std std-ref">Erdviniai duomenys</span></a>).</p></li>
+<span class="xref std std-ref">temporal-types</span> ir <span class="xref std std-ref">spatial-types</span>).</p></li>
 </ul>
 </div>
 <p>Plačiau apie brandos lygio kėlimą skaitykite skyriuje <span class="xref std std-ref">to-level-4</span>.</p>
@@ -2122,6 +2190,7 @@ duomenų prasmę.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#l102-nera-vientisumo">L102: Nėra vientisumo</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#l103-neimanomas-jungimas">L103: Neįmanomas jungimas</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#l104-identifikatorius-nera-unikalus">L104: Identifikatorius nėra unikalus</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#l105-vienetu-konvertavimo-paklaida">L105: Vienetų konvertavimo paklaida</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#l200-nestandartinis-pateikimas">L200: Nestandartinis pateikimas</a><ul class="nav section-nav flex-column">
@@ -2134,6 +2203,7 @@ duomenų prasmę.</p>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#l207-neatitinka-modelio-bazes">L207: Neatitinka modelio bazės</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#l208-nenurodytas-enum-kodinems-reiksmems">L208: Nenurodytas enum kodinėms reikšmėms</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#l209-nenurodyta-modelio-baze">L209: Nenurodyta modelio bazė</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#l210-isskaidyta-atskirais-komponentais">L210: Išskaidyta atskirais komponentais</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#l300-nera-identifikatoriaus">L300: Nėra identifikatoriaus</a><ul class="nav section-nav flex-column">

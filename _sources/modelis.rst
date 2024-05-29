@@ -276,8 +276,9 @@ Identifikatorius
 Kad galėtume vienareikšmiškai įvardinti ar nurodyti tam tikrą objektą, visi
 objektai privalo turėti unikalius identifikatorius.
 
-Kiekvienam objektui priskiriamas vienas globalus identifikatorius UUID formatu,
-tačiau objektas gali turėti vieną ar daugiau lokalius identifikatorius.
+Kiekvienam objektui priskiriamas vienas globalus identifikatorius :rfc:`UUID
+<9562>` formatu, tačiau objektas gali turėti vieną ar daugiau lokalius
+identifikatorius.
 
 Globalūs identifikatoriai priskiriami esybei ir atspindi vieną realaus pasaulio
 objektą, lokalus identifikatorius yra siejams su konkrečiu duomenų modeliu ar

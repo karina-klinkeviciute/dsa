@@ -23,7 +23,12 @@ Duomenų tipai
 
 .. data:: boolean
 
-    Loginė reikšmė.
+    Loginė reikšmė, pateikiama skaitine forma:
+
+    ==== ======
+    `0`  Neigiama reikšmė (*false*).
+    `1`  Teigiama reikšmė (*true*).
+    ==== ======
 
     .. topic:: Brandos lygis
 
@@ -31,13 +36,10 @@ Duomenų tipai
             Duomenyse nėra vientisumo, kartais `true` pateikta kaip `1`, kartais
             kaip `taip`, arba `yes`.
 
-    :2:
-        - Visi duomenys pateikti vienoda, tačiau nestandartine forma.
-
-    :3:
-        - Duomenys pateikti standartine forma. Standartinė forma priklauso nuo
-          pasirinkto duomenų saugojimo formato. Pavyzdžiui JSON formatu
-          `boolean` tipas išreiškiamas kaip `true` ir `false`.
+        :ref:`L202`
+            Visi duomenys pateikti vienoda, tačiau nestandartine forma. Tarkime
+            duomenys pateikti `true`, `false` reikšmėmis, tačiau turėtu būti
+            `1`, `0`.
 
 .. data:: integer
 
@@ -45,56 +47,50 @@ Duomenų tipai
 
     :data:`property.ref` stulpelyje, nurodomi :ref:`matavimo-vienetai`.
 
-    1
-        - Duomenys pateikti skirtingais vienetais, pavyzdžui dalis duomenų
-          pateikti metrais, dalis kilometrais ir dalis milimetrais.
+    .. topic:: Brandos lygis
 
-        - Amžius pateiktas atskirai, nurodant metus, menesius ir dienas. Šiuo
-          atveju brandos lygis yra 1, kadangi neaišku, kiek yra dienų metuose
-          ir mėnesiuose, kadangi skirtingi metai ir skirtingi mėnesiai turi
-          skirtingą dienų skaičių. Tokiais atvejais duomenis reikia pateikti
-          dienomis.
+        :ref:`L102`
+            Duomenys pateikti skirtingais vienetais, pavyzdžui dalis duomenų
+            pateikti metrais, dalis kilometrais ir dalis milimetrais.
 
-    2
-        - Duomenys pateikti išskaidant vieną reikšmę į kelias reikšmes,
-          skirtingais vienetais. Duomenys turėtu būti pateikti mažiausiu
-          detalumu, viename duomenų lauke. Pavyzdžiui atstumas pateiktas
-          atskirais duomenų laukais, kur viename nurodomas atstumas
-          kilometrais, kitame metrais, trečiame milimetrais. Šiuo atveju,
-          duomenys turėtu būti pateikiami milimetrais.
+        :ref:`L105`
+            Amžius pateiktas atskirai, nurodant metus, menesius ir dienas. Šiuo
+            atveju brandos lygis yra 1, kadangi neaišku, kiek yra dienų metuose
+            ir mėnesiuose, kadangi skirtingi metai ir skirtingi mėnesiai turi
+            skirtingą dienų skaičių. Tokiais atvejais duomenis reikia pateikti
+            dienomis.
 
-    3
-        - Duomenys yra kiekybiniai, tačiau :data:`ref` stulpelyje nenurodyti
-          vienetai.
+        :ref:`L202`
+            Duomenys pateikti išskaidant vieną reikšmę į kelias reikšmes,
+            skirtingais vienetais. Duomenys turėtu būti pateikti mažiausiu
+            detalumu, viename duomenų lauke. Pavyzdžiui atstumas pateiktas
+            atskirais duomenų laukais, kur viename nurodomas atstumas
+            kilometrais, kitame metrais, trečiame milimetrais. Šiuo atveju,
+            duomenys turėtu būti pateikiami milimetrais.
+
+        :ref:`L302`
+            Duomenys yra kiekybiniai, tačiau :data:`property.ref` stulpelyje
+            nenurodyti vienetai.
 
 .. data:: number
-   :canonical: types.number
 
-    Realusis skaičius, apvalinamas naudojant `slankiojo kablelio aritmetiką`__,
-    kur sveikoji skaičiaus dalis gali būti šešių skaitmenų dydžio.
-
-    __ https://en.wikipedia.org/wiki/IEEE_754
+    Realusis skaičius, apvalinamas naudojant `slankiojo kablelio aritmetiką
+    <IEEE754_>`_.
 
     :data:`property.ref` stulpelyje, nurodomi :ref:`matavimo-vienetai`.
 
     Sveikoji dalis atskiriama `.` simbolių.
 
 .. data:: binary
-   :canonical: types.binary
 
     Dvejetainiai duomenys. Bendras baitų skaičius turi būti ne didesnis nei 1G.
 
+    Jei reikšmė yra didesnė nei 1G reikųtu naudoti :data:`type.file`.
 
-.. _text-types:
 
-Tekstiniai duomenys
-===================
-
-Tekstiniai duomenys skirstomi į du skirtingus tipus `string` ir `text`.
-
+.. .. _text-types:
 
 .. data:: string
-   :canonical: types.string
 
     Simbolių eilutė. Neriboto dydžio, tačiau fiziškai simbolių eilutė turėtu
     būti ne didesnė, nei 1G.
@@ -106,64 +102,91 @@ Tekstiniai duomenys skirstomi į du skirtingus tipus `string` ir `text`.
     kito pobūdžio simbolių eilutės, kurios nėra užrašytos natūraliąja žmonių
     kalba.
 
+    Jei :data:`property` pavadinimas turi kalbos žymę `@`, tada `string` tipas
+    tampa `text` tipo dalimi. Kablos kodas nurodomas naudojant `ISO 639-1`_
+    kodų sąrašą.
+
+    Jei tekstas turi kalbos žyme, :data:`property.ref` galima pateikti teksto
+    formatą, nadojant vieną iš šių formatų:
+
+    ======= =============
+    `html`  tekstas pateiktas HTML_ formatu.
+    `md`    tekstas pateiktas Markdown_ formatu.
+    `rst`   tekstas pateitkas reStructuredText_ formatu.
+    `tei`   tekstas pateiktas TEI_ formatu.
+    ======= =============
+
+    .. admonition:: Pavyzdys
+
+        ==  ==  ==  ==  ===============  =======  ====
+        d   r   b   m   property         type     ref 
+        ==  ==  ==  ==  ===============  =======  ====
+        example                                 
+        -------------------------------  -------  ----
+        \           Country                     
+        --  --  --  -------------------  -------  ----
+        \               name\@lt         string       
+        \               description\@lt  string   html
+        \               description\@en  string   html
+        ==  ==  ==  ==  ===============  =======  ====
+
+        Šiame pavyzdyje `@lt` nurodo, kad šalies pavadinimai ir aprašymai
+        pateikti Lietuvių kalba, tačiau laukas `description` papildomai turi
+        vertimą į anglų kalbą. Papildomai, šalies aprašymo teksto formatas yra
+        HTML_ tipo.
+
+    .. topic:: Brandos lygis
+
+        :ref:`L202`
+            Tekstas yra užrašytas natūralia žmonių kalba, tačiau neturi kalbos
+            žymės.
+
+        :ref:`L202`
+            Duomenys pateikti nestandartine koduote. Standartinė koduotė yra
+            UTF-8.
+
+        :ref:`L202`
+            Duomenys pateikti UTF-8 koduote, tačiau pats tekstas naudoja tam
+            tikrą formatavimo sintaksę, kuri nėra nurodyta :data:`property.ref`
+            stulpelyje.
 
 .. data:: text
-   :canonical: types.text
 
-    Natūraliaja žmonių kalba užrašytas tekstas.
+    Natūraliaja žmonių kalba užrašytas tekstas, susidedantis iš vieno ar kelių
+    `string` tipo duomenų laukų, pateikiant atskirą duomenų lauką, kiekvienai
+    kalbai.
 
-    Galima nurodyti kokia kalba užrašytas tekstas naudojant `ISO 639-1`_ kodus.
-    Kalbos kodas nurodomas :data:`property` stulpelyje, prie pavadinimo įrašant
-    `@<kodas>`, kur `<kodas>` yra pakeičiamas į dviejų raidžių kalbos kodą.
-    Pavyzdžiui `pavadinimas@lt`. Plačiau apie tai `RDF Turtle`_ specifikacijoje
-    iš kur ir buvo pasiskolintas toks kalbų žymėjimas.
+    Dažniausiai tiesiogiai `text` tipas nenaudojamas, kadangi jei `string`
+    tipas turi kalbos žymę, tai duomenų laukas yra interpretuojamas kaip `text`
+    tipo.
 
-    .. _ISO 639-1: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
-    .. _RDF Turtle: https://www.w3.org/TR/turtle/#turtle-literals
+    Pavyzdžiui jei :data:`property` pavadinimas yra `title@lt`, tada `title`
+    duomenų laukas yra `text` tipo.
 
-    Tekstas turėtu būti pateikta UTF-8 koduote. Jei šaltinyje tekstas nėra
-    UTF-8 koduotės, tuomet galima :data:`prepare` stulpelyje įrašų formulių
-    pagalba nurodyti transformavimo taisykles iš šatinio naudojamos į
-    UTF-8 koduotę.
+    Atskirai `text` tipo duomenų laukas gali būti nurodomas tais atvejais, kai
+    reikia pateikti aprašymą ir :term:`URI` pačiam `text` tipo laukui, o ne
+    vienam iš vertimų.
 
+    .. admonition:: Pavyzdys
 
-    :data:`property.ref` galima pateikti teksto formatą, nadojant vieną iš šių
-    formatų:
-
-    - `html` - tekstas pateiktas HTML_ formatu.
-    - `md` - tekstas pateiktas Markdown_ formatu.
-    - `rst` - tekstas pateitkas reStructuredText_ formatu.
-    - `tei` - tekstas pateiktas TEI_ formatu.
-
-    .. _HTML: https://en.wikipedia.org/wiki/HTML
-    .. _Markdown: https://spec.commonmark.org/
-    .. _reStructuredText: https://docutils.sourceforge.io/rst.html
-    .. _TEI: https://en.wikipedia.org/wiki/Text_Encoding_Initiative
-
-    Pavyzdys:
-
-    ==  ==  ==  ==  ===============  ====  ====
-    d   r   b   m   property         type  ref 
-    ==  ==  ==  ==  ===============  ====  ====
-    example                        
-    -------------------------------  ----  ----
-    \           Country            
-    --  --  --  -------------------  ----  ----
-    \               name\@lt         text      
-    \               description\@lt  text  html
-    ==  ==  ==  ==  ===============  ====  ====
-
-    Šiame pavyzdyje `@lt` nurodo, kad šalies pavadinimai ir aprašymai pateikti
-    Lietuvių kalba. Papildomai, šalies aprašymo teksto formatas yra HTML_ tipo.
+        ========  ======  =========  =======  ==========  ====================  ============
+        dataset   model   property   type     ref         uri                   title       
+        ========  ======  =========  =======  ==========  ====================  ============
+        example         
+        ---------------------------  -------  ----------  --------------------  ------------
+        \                            prefix   rdfs        \http://www.w3.org/
+                                                          2000/01/rdf-schema#
+        \         Country                     name\@lt                                  
+        --------  -----------------  -------  ----------  --------------------  ------------
+        \                 name       text                 rdfs:label            Pavadinimas 
+        \                 name\@lt   string                                                 
+        ========  ======  =========  =======  ==========  ====================  ============
 
 
-.. _temporal-types:
 
-Data ir laikas
-==============
+.. .. _temporal-types:
 
 .. data:: datetime
-   :canonical: types.datetime
 
     Data ir laikas atitinkantis `ISO 8601`_.
 
@@ -188,59 +211,57 @@ Data ir laikas
     =======  ================
     Reikšmė  Prasmė
     =======  ================
-    Y        Metai
-    M        Mėnesiai
-    Q        Metų ketvirčiai
-    W        Savaitės
-    D        Dienos
-    H        Valandos
-    T        Minutės
-    S        Sekundės
-    L        Milisekundės
-    U        Mikrosekundės
-    N        Nanosekundės
+    `Y`      Metai
+    `M`      Mėnesiai
+    `Q`      Metų ketvirčiai
+    `W`      Savaitės
+    `D`      Dienos
+    `H`      Valandos
+    `T`      Minutės
+    `S`      Sekundės
+    `L`      Milisekundės
+    `U`      Mikrosekundės
+    `N`      Nanosekundės
     =======  ================
 
     .. __: https://www.w3.org/TR/vocab-dcat-2/#Property:dataset_temporal_resolution
 
 
-    **Brandos lygis**
+    .. topic:: Brandos lygis
 
-    :1:
-        - Data ir laikas pateikti naudojant skirtingus formatus, pavyzdžiui
-          `2020-01-31`, `01/31/2020`, `31.1.20`.
+        :ref:`L101`
+            Data ir laikas pateikti laisvu tekstu, pavyzdžiui `2020 paskutinę
+            pirmo mėnesio dieną`.
 
-        - Data ir laikas pateikti laisvu tekstu, pavyzdžiui `2020 paskutinę
-          pirmo mėnesio dieną`.
+        :ref:`L102`
+            Data ir laikas pateikti naudojant skirtingus formatus, pavyzdžiui
+            `2020-01-31`, `01/31/2020`, `31.1.20`.
 
-    :2:
-        - Duomenys pateikti nestandartiniu formatu, tačiau visi duomenys
-          pateikti vienodu formatu. Pavyzdžiui visi duomenys pateikti
-          `01/31/2020` formatu.
+        :ref:`L202`
+            Duomenys pateikti nestandartiniu formatu, tačiau visi duomenys
+            pateikti vienodu formatu. Pavyzdžiui visi duomenys pateikti
+            `01/31/2020` formatu, tačiau datos turi būti pateiktos `ISO 8601`_
+            formatu.
 
-        - Duomenys pateikti atskiruose laukuose, pavyzdžiui metai pateikti
-          viename `integer` tipo lauke, o ketvirtis, kitame `integer` tipo
-          lauke. Norint didesnio brandos lygio, duomenys turi būti viename
-          `date` tipo lauke su `property.ref = Q`.
+        :ref:`L210`
+            Duomenys pateikti atskiruose laukuose, pavyzdžiui metai pateikti
+            viename `integer` tipo lauke, o ketvirtis, kitame `integer` tipo
+            lauke. Norint didesnio brandos lygio, duomenys turi būti viename
+            `date` tipo lauke su :data:`property.ref` = `Q`.
 
-    :3:
-        - Duomenys pateikti standartiniu `ISO 8601`_ formatu.
-
-        - Nenurodytas :data:`property.ref`, kuriame turėtu būti pateiktas
-          duomenų tikslumas.
+        :ref:`L303`
+            Nenurodytas :data:`property.ref`, kuriame turėtu būti pateiktas
+            duomenų tikslumas.
 
 
 .. data:: date
-   :canonical: types.date
 
     Tas pats kas `datetime` tik dienos tikslumu. Šio tipo reikšmės taip pat
     turi atitikti `ISO 8601`_::
 
         YYYY-MM-DD
 
-    Jei norima nurodyti datą žemesnio nei dienos tikslumo, tada vietoj mėnesio
-    ir dienos galima naudoti `01` ir :data:`property.ref` stulpelyje nurodyti
-    tikslumą:
+    :data:`property.ref` stulpeyje nurodomas datos tikslumas:
 
     =======  ================
     Reikšmė  Prasmė
@@ -252,8 +273,38 @@ Data ir laikas
     D        Dienos
     =======  ================
 
+    Jei duomenys pateikti žemesniu nei dienos tikslumu, tada datos rekšmės turi
+    būti nurodytos `YYYY-MM-DD` formatu, pakeičiant `MM` ir arba `DD~ į `01`.
+
+    .. admonition:: Pavyzdys
+
+        Turint tokį struktūros aprašą:
+
+        ======  =============  =======  ==========
+        model   property       type     ref       
+        ======  =============  =======  ==========
+        Country                         id        
+        ---------------------  -------  ----------
+        \       id             integer            
+        \       independence   date     Y         
+        ======  =============  =======  ==========
+
+        Nors `independence` duomenų lauko tiksluas yra metų, tačiau pateikiant
+        duomenis būtina nurodyti mėnesį ir dieną taip pat:
+
+        .. code-block:: json
+
+            {
+                "id": 1,
+                "independence": "1990-01-01",
+            }
+
+        Šiuo atveju, kadangi datos tiksluas yra metai, `-01-01` dalis datoje
+        neturi jokios reikšmės ir yra pateikiama tik tam, kad reikšmė atitiktu
+        `ISO 8601`_ reikalavimus.
+
+
 .. data:: time
-   :canonical: types.time
 
     Dienos laikas, be konkrečios datos. Šio tipo reikšmės, kaip ir kiti
     su laiku susiję tipai turi atitikti `ISO 8601`_::
@@ -267,16 +318,17 @@ Data ir laikas
     =======  ================
     Reikšmė  Prasmė
     =======  ================
-    H        Valandos
-    T        Minutės
-    S        Sekundės
-    L        Milisekundės
-    U        Mikrosekundės
-    N        Nanosekundės
+    `H`      Valandos
+    `T`      Minutės
+    `S`      Sekundės
+    `L`      Milisekundės
+    `U`      Mikrosekundės
+    `N`      Nanosekundės
     =======  ================
 
 .. data:: temporal
-   :canonical: types.temporal
+
+    .. deprecated:: 0.2
 
     Apibrėžtis laike.
 
@@ -288,13 +340,9 @@ Data ir laikas
     .. _dct:temporal: https://www.w3.org/TR/vocab-dcat-2/#Property:dataset_temporal
 
 
-.. _spatial-types:
-
-Erdviniai duomenys
-==================
+.. .. _spatial-types:
 
 .. data:: geometry
-   :canonical: types.geometry
 
     Erdviniai duomenys. Duomenys pateikiami WKT_ formatu, naudojant EPSG_
     duomenų bazės parametrus, skirtingoms projekcijoms išreikšti.
@@ -407,49 +455,66 @@ Erdviniai duomenys
     - `{ašis2}` - antrosios ašies reikšmė (kryptis priklauso nuo `{srid}`)
 
 
-    **Pavyzdžiai** (strukūros aprašas)
+    .. admonition:: Pavyzdžiai :data:`property.type`
 
-    - `geometry` - WGS84 projekcijos, bet kokio  tipo geometriniai objektai.
-    - `geometry(3346)` - LKS94 projekcijos, bet kokio tipo geometriniai
-      objektai.
-    - `geometry(point)` - GWS84 projekcijos, bet `point` tipo geometriniai
-      objektai.
-    - `geometry(linestringm, 3345)` - LKS94 projekcijos, `linestringm` tipo
-      geometriniai objektai su pasirinktu matmeniu, kaip trečia dimensija.
+        - `geometry` - WGS84 projekcijos, bet kokio  tipo geometriniai
+          objektai.
 
+        - `geometry(3346)` - LKS94 projekcijos, bet kokio tipo geometriniai
+          objektai.
 
-    **Pavyzdžiai** (duomenys)
+        - `geometry(point)` - GWS84 projekcijos, bet `point` tipo geometriniai
+          objektai.
 
-    Vilniaus Katedros varpinės bokšto taškas, LKS94 (EPSG:3346) koordinačių sistemoje::
-
-        POINT (6061789 582964)
+        - `geometry(linestringm, 3345)` - LKS94 projekcijos, `linestringm` tipo
+          geometriniai objektai su pasirinktu matmeniu, kaip trečia dimensija.
 
 
-    **Brandos lygis**
+    .. admonition:: Pavyzdžiai (duomenys)
 
-    :1:
-        - Nenurodytas koordinačių sistema ir duomenys pateikti skirtingomis
-          koordinatėmis.
+        Vilniaus Katedros varpinės bokšto taškas, LKS94 (EPSG:3346) koordinačių
+        sistemoje:
 
-        - Sumaišytos ašys, pavyzdžiui vieni duomenys pateikiami x, y, kiti y, x.
+        .. code-block:: json
 
-        - Sumaišyti vienetai, pavyzdžiui vieni duomenys pateikti metrais, kiti
-          laipsniais.
+            {
+                "koordinates": "POINT (6061789 582964)"
+            }
 
-        - Pateiktas adresas, nenurodant adreso koordinačių.
 
-    :2:
-        - Nenurodyta koordinačių sistema, tačiau visi duomenys pateikti
-          naudojant vienodą koordinačių sistemą.
+    .. topic:: Brandos lygis
 
-    :3:
-        - Nenurodytas :data:`property.ref`, kuriame turėtu būti pateiktas
-          duomenų tikslumas metrais.
+        :ref:`L101`
+            Pateiktas adresas, nenurodant adreso koordinačių.
+
+        :ref:`L102`
+            Nenurodytas koordinačių sistema ir duomenys pateikti skirtingomis
+            koordinatėmis.
+
+        :ref:`L102`
+            Sumaišytos ašys, pavyzdžiui vieni duomenys pateikiami x, y, kiti y,
+            x.
+
+        :ref:`L102`
+            Sumaišyti vienetai, pavyzdžiui vieni duomenys pateikti metrais,
+            kiti laipsniais.
+
+        :ref:`L201`
+            Nenurodyta koordinačių sistema, tačiau visi duomenys pateikti
+            naudojant vienodą koordinačių sistemą.
+
+        :ref:`L210`
+            Taško koordinatės pateiktos, kaip du atskiri duomenų laukai.
+
+        :ref:`L303`
+            Nenurodytas :data:`property.ref`, kuriame turėtu būti pateiktas
+            duomenų tikslumas metrais.
 
 
 
 .. data:: spatial
-   :canonical: types.spatial
+
+    .. deprecated:: 0.2
 
     Apibrėžtis erdvėje.
 
@@ -461,11 +526,7 @@ Erdviniai duomenys
     .. _dct:spatial: https://www.w3.org/TR/vocab-dcat-2/#Property:dataset_spatial
 
 
-Valiuta
-=======
-
 .. data:: money
-   :canonical: types.money
 
     Valiuta. Saugomas valiutos kiekis, nurodant tiek sumą, tiek valiutos
     kodą naudojant `ISO 4217`_ kodus.
@@ -509,11 +570,7 @@ Valiuta
         123.45 EUR
 
 
-Failai
-======
-
 .. data:: file
-   :canonical: types.file
 
     Šis duomenų tipas yra sudėtinis, susidedantis iš tokių duomenų:
 
@@ -536,66 +593,57 @@ Failai
     content
         Failo turinys.
 
-    Šiuos metaduomenis galima perduoti `file()` funkcijai, kai vardinius
-    argumentus. Pavyzdžiui:
+    Šiuos metaduomenis galima perduoti `file()` funkcijai, kaip vardinius
+    argumentus.
 
-    ==  ==  ==  ==  ==============  ======  ==============  =======  =======
-    d   r   b   m   property        type    source          prepare  access
-    ==  ==  ==  ==  ==============  ======  ==============  =======  =======
-    datasets/example
-    ------------------------------  ------  --------------  -------  -------
-    \           Country
-    --  --  --  ------------------  ------  --------------  -------  -------
-    \               name            string  NAME                     open
-    \               flag_file_name  string  FLAG_FILE_NAME           private
-    \               flag_file_data  binary  FLAG_FILE_DATA           private
-    \               flag            file                    |file|   open
-    ==  ==  ==  ==  ==============  ======  ==============  =======  =======
+    .. admonition:: Pavyzdys
 
-    .. |file| replace:: file(name: flag_file_name, content: flag_file_data)
+        ==  ==  ==  ==  ==============  ======  ==============  =======  =======
+        d   r   b   m   property        type    source          prepare  access
+        ==  ==  ==  ==  ==============  ======  ==============  =======  =======
+        datasets/example
+        ------------------------------  ------  --------------  -------  -------
+        \           Country
+        --  --  --  ------------------  ------  --------------  -------  -------
+        \               name            string  NAME                     open
+        \               flag_file_name  string  FLAG_FILE_NAME           private
+        \               flag_file_data  binary  FLAG_FILE_DATA           private
+        \               flag            file                    |file|   open
+        ==  ==  ==  ==  ==============  ======  ==============  =======  =======
 
-    Šiame pavyzdyje, iš `flag_file_name` ir `flag_file_data` laukų padaromas
-    vienas `flag` laukas, kuriame panaudojami duomenys iš dviejų laukų.
-    Šiuo atveju, `flag_file_name` ir `flag_file_data` laukai tampa
-    pertekliniais, todėl :data:`access` stulpelyje jie pažymėti `private`.
+        .. |file| replace:: file(name: flag_file_name, content: flag_file_data)
 
-    Analogiškai, tokius pačius duomenis galima aprašyti ir nenaudojant
-    formulių:
+        Šiame pavyzdyje, iš `flag_file_name` ir `flag_file_data` laukų
+        padaromas vienas `flag` laukas, kuriame panaudojami duomenys iš dviejų
+        laukų. Šiuo atveju, `flag_file_name` ir `flag_file_data` laukai tampa
+        pertekliniais, todėl :data:`access` stulpelyje jie pažymėti `private`.
 
-    ==  ==  ==  ==  ==============  ======  ==============  =======  =======
-    d   r   b   m   property        type    source          prepare  access
-    ==  ==  ==  ==  ==============  ======  ==============  =======  =======
-    datasets/example
-    ------------------------------  ------  --------------  -------  -------
-    \           Country
-    --  --  --  ------------------  ------  --------------  -------  -------
-    \               name            string  NAME                     open
-    \               flag            file                             open
-    \               flag._name              FLAG_FILE_NAME           open
-    \               flag._content           FLAG_FILE_DATA           open
-    ==  ==  ==  ==  ==============  ======  ==============  =======  =======
+        Analogiškai, tokius pačius duomenis galima aprašyti ir nenaudojant
+        formulių:
+
+        ==  ==  ==  ==  ==============  ======  ==============  =======  =======
+        d   r   b   m   property        type    source          prepare  access
+        ==  ==  ==  ==  ==============  ======  ==============  =======  =======
+        datasets/example
+        ------------------------------  ------  --------------  -------  -------
+        \           Country
+        --  --  --  ------------------  ------  --------------  -------  -------
+        \               name            string  NAME                     open
+        \               flag            file                             open
+        \               flag._name              FLAG_FILE_NAME           open
+        \               flag._content           FLAG_FILE_DATA           open
+        ==  ==  ==  ==  ==============  ======  ==============  =======  =======
 
 
 .. data:: image
-   :canonical: types.image
 
     Paveiksliukas. `image` tipas turi tokias pačias savybes kaip `file`
     tipas.
 
 
-.. _ref-types:
-
-Išoriniai raktai
-================
-
-Taip pat žiūrėkite: :ref:`ryšiai`.
-
-Išoriniai raktai iš dalies yra panašūs į sudėtinius tipus, kadangi laukas,
-kuris rodo į kitą objektą, yra traktuojamas, kaip kitas objektas.
-
+.. .. _ref-types:
 
 .. data:: ref
-   :canonical: types.ref
 
     Ryšys su modeliu. Šis tipas naudojamas norint pažymėti, kad lauko
     reikšmė yra :data:`property.ref` stulpelyje nurodyto modelio objektas.
@@ -641,8 +689,11 @@ kuris rodo į kitą objektą, yra traktuojamas, kaip kitas objektas.
     :ref:`kitas laukas <ref-fkey>`, tada jungimas daromas per `_id`, tačiau
     netikrinama ar toks `_id` egzistuoja jungiamame modelyje.
 
+    .. seealso::
+
+        :ref:`ryšiai`
+
 .. data:: backref
-   :canonical: types.backref
 
     Atgalinis ryšys su modeliu.
 
@@ -654,7 +705,6 @@ kuris rodo į kitą objektą, yra traktuojamas, kaip kitas objektas.
     Taip pat žiūrėkite :ref:`atgalinis-ryšys`.
 
 .. data:: generic
-   :canonical: types.generic
 
     Dinaminis ryšys su modeliu.
 
@@ -674,13 +724,9 @@ kuris rodo į kitą objektą, yra traktuojamas, kaip kitas objektas.
         `object_model` modelio objekto id.
 
 
-.. _sudėtiniai-tipai:
-
-Sudėtiniai tipai
-================
+.. .. _sudėtiniai-tipai:
 
 .. data:: object
-   :canonical: types.object
 
     Kompozicinis tipas.
 
@@ -692,7 +738,6 @@ Sudėtiniai tipai
     komponavimą įgyvendinti siejant modelius per `ref` ar `generic` tipus.
 
 .. data:: array
-   :canonical: types.array
 
     Masyvas.
 
@@ -705,13 +750,9 @@ Sudėtiniai tipai
     duomenų modelį. Vietoje `array` tipo rekomenduojama naudoti `backref`.
 
 
-.. _other-types:
-
-Kiti tipai
-==========
+.. .. _other-types:
 
 .. data:: url
-   :canonical: types.url
 
     Unikali resurso vieta (URL) (angl. *Uniform Resource
     Locator*).
@@ -722,7 +763,6 @@ Kiti tipai
 
 
 .. data:: uri
-   :canonical: types.uri
 
     Unikalus resurso identifikatorius (URI) (angl. *Uniform Resource
     Identifier*).
@@ -731,3 +771,12 @@ Kiti tipai
     identifikatorius, RDF duomenų modelyje tai yra subjeto identifikatorius.
 
     https://en.wikipedia.org/wiki/Uniform_Resource_Identifier
+
+
+.. _HTML: https://en.wikipedia.org/wiki/HTML
+.. _IEEE754: https://en.wikipedia.org/wiki/IEEE_754
+.. _Markdown: https://spec.commonmark.org/
+.. _TEI: https://en.wikipedia.org/wiki/Text_Encoding_Initiative
+.. _reStructuredText: https://docutils.sourceforge.io/rst.html
+.. _ISO 639-1: https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes
+.. _RDF Turtle: https://www.w3.org/TR/turtle/#turtle-literals

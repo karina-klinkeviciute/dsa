@@ -191,7 +191,7 @@ kitokiu formatu.
 L102: Nėra vientisumo
 =====================
 
-Pirmu brandos lygiu žymimi duomenuys, kuruose nėra vientisumo, pavyzdžiui
+Pirmu brandos lygiu žymimi duomenys, kuruose nėra vientisumo, pavyzdžiui
 `atstumas` užrašytas laikantis tam tikros struktūros, tačiau skirtingais
 vienetais.
 
@@ -213,6 +213,38 @@ L104: Identifikatorius nėra unikalus
 
 Objekto identifikatorius nėra unikalus, turi pasikartojančių reikšmių.
 
+
+.. _L105:
+
+L105: Vienetų konvertavimo paklaida
+===================================
+
+Tam tikrais atvejais, kai kiekybiniai duomenys pateikiami išskaidant į atskirus
+duomenų laukus, gali būti prarandamas duomenų tikslumas.
+
+.. admonition:: Pavyzdys
+
+    ===== ======== ======= ===== =====
+    model property type    ref   level
+    ===== ======== ======= ===== =====
+    Assmuo                 id    4
+    -------------- ------- ----- -----
+    \     id       integer       4
+    \     metai    integer yr    4
+    \     menesiai integer mo    1
+    \     dienos   integer d     1
+    ===== ======== ======= ===== =====
+
+    Šiame pavyzdyje nurodytas asmens amžius pateikiant atskirai metus, mėnesius
+    ir dienas, tarkim *25 metai, 5 mėnesiai, 29 dienos*.
+
+    Jei norėtume gauti amžių dienomis, rezultatas :math:`25*365 + 5*30 + 29 =
+    9304` būtų netikslus, kadangi metai ir mėnesiai turi skirtingus dienų
+    skaičius, todėl konvertuojant rezultatą į dienas, gausime netikslų
+    rezultatą.
+
+    Kadangi nustatyti nėra galimybės nustatyti galutinio tikslaus mėnesio ir
+    dienų skaičiaus, nurodomas 1 brandos lygis.
 
 .. _L200:
 
@@ -396,6 +428,17 @@ L209: Nenurodyta modelio bazė
 
 Modelis atitinka registre apibrėžtą esybę, tačiau nėra su ja susietas.
 
+.. _L210:
+
+L210: Išskaidyta atskirais komponentais
+=======================================
+
+:term:`DSA` turi sudėtinius tipus, tokius kaip `date`, `datetime` ir
+`geometry`, kuri apima kelis atskirus duomenų komponentus, kurie pateikiami
+kaip viena reikšmė, nustatytu formatu.
+
+Jei komponentai yra išskaidyti į atskirus duomenų laukus, tuomet tai yra
+nestandartinis duomenų pateikimas žymimas 2 brandos lygiu.
 
 .. _L300:
 
