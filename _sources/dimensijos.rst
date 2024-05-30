@@ -596,6 +596,7 @@ vienos esybės modeliai turi turėti vienodus identifikatorius.
         | :ref:`formulės`
         | :ref:`duomenų-atranka`
 
+
 .. data:: level
 
     Modelio :ref:`brandos lygis <level>`, nusakantis pačio modelio brandos
@@ -674,6 +675,46 @@ vienos esybės modeliai turi turėti vienodus identifikatorius.
 
     Modeliui priklausantis duomenų laukas.
 
+
+Funkcijos
+=========
+
+.. module:: model.prepare
+
+.. function:: distinct()
+
+    Jei :data:`model.ref` pirminis raktas nėra unikalus ir norma panaikinti
+    besidubliuojančias reikšmes, galima nurodyti `distinct()` funkciją, kuri
+    panaidins objktus su besidubliuojančiais pirminiais raktais.
+
+    .. admonition:: Pavyzdys
+
+        Turint tokius duomenis duomenų šaltinyje:
+
+        ========= ==========
+        CITY      COUNTRY
+        ========= ==========
+        Vilnius   Lithuania
+        Kaunas    Lithuania
+        ========= ==========
+
+        Ir struktūros aprašą, kuriame `COUNTY` aprašytas, kaip atskiras
+        modelis:
+
+        ====== =========  ======== ============= ======== ============= ======= ========
+        model  property   type     ref           source   prepare       level   access
+        ====== =========  ======== ============= ======== ============= ======= ========
+        **Country**                name\@en      CITIES   `distinct()`  4      
+        ----------------  -------- ------------- -------- ------------- ------- --------
+        \      name\@en   string                 COUNTRY                4       open
+        **City**                   name\@en      CITIES                 4      
+        ----------------  -------- ------------- -------- ------------- ------- --------
+        \      name\@en   string                 CITY                   4       open
+        \      country    ref      **Country**   COUNTRY                3       open
+        ====== =========  ======== ============= ======== ============= ======= ========
+
+        `distinct()` funkcija panaikina besidubliuojančius objektus ir grąžina
+        tik vieną šalį.
 
 .. .. _savybė:
 .. _property:
