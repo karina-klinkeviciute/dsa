@@ -433,6 +433,8 @@ document.write(`
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="formules.html#func.bind">bind() (modulyje func)</a>
 </li>
+      <li><a href="dimensijos.html#param.prepare.body">body() (modulyje param.prepare)</a>
+</li>
       <li><a href="tipai.html#type.boolean">boolean (modulje type)</a>
 </li>
       <li><a href="savokos.html#term-brandos-lygis"><strong>brandos lygis</strong></a>
@@ -635,11 +637,17 @@ document.write(`
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="formules.html#func.head">head() (modulyje func)</a>
 </li>
+      <li><a href="formules.html#func.header">header() (modulyje func)</a>
+
+      <ul>
+        <li><a href="dimensijos.html#param.prepare.header">(modulyje param.prepare)</a>
+</li>
+      </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="formules.html#func.header">header() (modulyje func)</a>
-</li>
       <li><a href="formules.html#func.hourly">hourly() (modulyje func)</a>
+</li>
+      <li><a href="dimensijos.html#resource.prepare.http">http() (modulyje resource.prepare)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -784,11 +792,15 @@ document.write(`
 </li>
         <li><a href="dimensijos.html#module-param">param</a>
 </li>
+        <li><a href="dimensijos.html#module-param.prepare">param.prepare</a>
+</li>
         <li><a href="dimensijos.html#module-prefix">prefix</a>
 </li>
         <li><a href="dimensijos.html#module-property">property</a>
 </li>
         <li><a href="dimensijos.html#module-resource">resource</a>
+</li>
+        <li><a href="dimensijos.html#module-resource.prepare">resource.prepare</a>
 </li>
         <li><a href="dimensijos.html#module-switch">switch</a>
 </li>
@@ -856,6 +868,13 @@ document.write(`
       </ul></li>
       <li><a href="formules.html#func.param">param() (modulyje func)</a>
 </li>
+      <li>
+    param.prepare
+
+      <ul>
+        <li><a href="dimensijos.html#module-param.prepare">module</a>
+</li>
+      </ul></li>
       <li><a href="formules.html#func.path">path() (modulyje func)</a>
 </li>
       <li><a href="savokos.html#term-pirminis-duomenu-saltinis"><strong>pirminis duomenų šaltinis</strong></a>
@@ -874,8 +893,6 @@ document.write(`
       <li><a href="formatas.html#prepare">prepare (įtaisytasis kintamasis)</a>
 
       <ul>
-        <li><a href="dimensijos.html#base.prepare">(modulje base)</a>
-</li>
         <li><a href="dimensijos.html#comment.prepare">(modulje comment)</a>
 </li>
         <li><a href="dimensijos.html#dataset.prepare">(modulje dataset)</a>
@@ -923,18 +940,24 @@ document.write(`
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="formules.html#func.query">query() (modulyje func)</a>
+
+      <ul>
+        <li><a href="dimensijos.html#param.prepare.query">(modulyje param.prepare)</a>
 </li>
+      </ul></li>
   </ul></td>
 </tr></table>
 
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="dimensijos.html#param.range">range() (modulyje param)</a>
+      <li><a href="dimensijos.html#param.prepare.range">range() (modulyje param.prepare)</a>
 </li>
       <li><a href="savokos.html#term-RDF"><strong>RDF</strong></a>
 </li>
       <li><a href="formules.html#func.re">re() (modulyje func)</a>
+</li>
+      <li><a href="dimensijos.html#param.prepare.read">read() (modulyje param.prepare)</a>
 </li>
       <li><a href="formatas.html#ref">ref (įtaisytasis kintamasis)</a>
 
@@ -979,6 +1002,13 @@ document.write(`
       </ul></li>
       <li><a href="formatas.html#resource">resource (įtaisytasis kintamasis)</a>
 </li>
+      <li>
+    resource.prepare
+
+      <ul>
+        <li><a href="dimensijos.html#module-resource.prepare">module</a>
+</li>
+      </ul></li>
       <li><a href="savokos.html#term-REST-API"><strong>REST API</strong></a>
 </li>
       <li><a href="formules.html#func.return">return() (modulyje func)</a>
@@ -1000,8 +1030,6 @@ document.write(`
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="savokos.html#term-savybe"><strong>savybė</strong></a>
 </li>
-      <li><a href="dimensijos.html#param.scalar">scalar() (modulyje param)</a>
-</li>
       <li><a href="formules.html#func.self">self() (modulyje func)</a>
 </li>
       <li><a href="formules.html#func.set">set() (modulyje func)</a>, <a href="formules.html#id8">[1]</a>
@@ -1011,8 +1039,6 @@ document.write(`
       <li><a href="formatas.html#source">source (įtaisytasis kintamasis)</a>
 
       <ul>
-        <li><a href="dimensijos.html#base.source">(modulje base)</a>
-</li>
         <li><a href="dimensijos.html#comment.source">(modulje comment)</a>
 </li>
         <li><a href="dimensijos.html#dataset.source">(modulje dataset)</a>
@@ -1030,8 +1056,6 @@ document.write(`
       </ul></li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="tipai.html#type.spatial">spatial (modulje type)</a>
-</li>
       <li><a href="formules.html#func.split">split() (modulyje func)</a>
 </li>
       <li><a href="formules.html#func.stack">stack() (modulyje func)</a>
@@ -1076,8 +1100,6 @@ document.write(`
       </ul></li>
       <li><a href="formules.html#func.tail">tail() (modulyje func)</a>
 </li>
-      <li><a href="tipai.html#type.temporal">temporal (modulje type)</a>
-</li>
       <li><a href="tipai.html#type.text">text (modulje type)</a>
 </li>
       <li><a href="savokos.html#term-TGII"><strong>TGIĮ</strong></a>
@@ -1120,8 +1142,6 @@ document.write(`
       <li><a href="formatas.html#type">type (įtaisytasis kintamasis)</a>
 
       <ul>
-        <li><a href="dimensijos.html#base.type">(modulje base)</a>
-</li>
         <li><a href="dimensijos.html#dataset.type">(modulje dataset)</a>
 </li>
         <li><a href="dimensijos.html#model.type">(modulje model)</a>

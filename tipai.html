@@ -328,9 +328,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#type.datetime"><code class="docutils literal notranslate"><span class="pre">datetime</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#type.date"><code class="docutils literal notranslate"><span class="pre">date</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#type.time"><code class="docutils literal notranslate"><span class="pre">time</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#type.temporal"><code class="docutils literal notranslate"><span class="pre">temporal</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#type.geometry"><code class="docutils literal notranslate"><span class="pre">geometry</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#type.spatial"><code class="docutils literal notranslate"><span class="pre">spatial</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#type.money"><code class="docutils literal notranslate"><span class="pre">money</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#type.file"><code class="docutils literal notranslate"><span class="pre">file</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#type.image"><code class="docutils literal notranslate"><span class="pre">image</span></code></a></li>
@@ -819,8 +817,8 @@ vietoj minučių ir/ar sekundžių galima naudoti <code class="docutils literal 
 </dd></dl>
 
 <dl class="py data">
-<dt class="sig sig-object py" id="type.temporal">
-<span class="sig-prename descclassname"><span class="pre">type.</span></span><span class="sig-name descname"><span class="pre">temporal</span></span><a class="headerlink" href="#type.temporal" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">type.</span></span><span class="sig-name descname"><span class="pre">temporal</span></span></dt>
 <dd><div class="deprecated">
 <p><span class="versionmodified deprecated">Nebepalaikoma nuo 0.2 versijos.</span></p>
 </div>
@@ -1010,8 +1008,8 @@ duomenų tikslumas metrais.</p>
 </dd></dl>
 
 <dl class="py data">
-<dt class="sig sig-object py" id="type.spatial">
-<span class="sig-prename descclassname"><span class="pre">type.</span></span><span class="sig-name descname"><span class="pre">spatial</span></span><a class="headerlink" href="#type.spatial" title="Link to this definition">#</a></dt>
+<dt class="sig sig-object py">
+<span class="sig-prename descclassname"><span class="pre">type.</span></span><span class="sig-name descname"><span class="pre">spatial</span></span></dt>
 <dd><div class="deprecated">
 <p><span class="versionmodified deprecated">Nebepalaikoma nuo 0.2 versijos.</span></p>
 </div>
@@ -1369,7 +1367,10 @@ netikrinama ar toks <code class="docutils literal notranslate"><span class="pre"
 <code class="docutils literal notranslate"><span class="pre">ref</span></code> tipo lauką, kuris rodo į šį modelį. Šis laukas pats duomenų
 neturi, tai tik papildomas metaduomuo, padedantis geriau suprasti ryšius
 tarp modelių.</p>
-<p>Taip pat žiūrėkite <a class="reference internal" href="identifikatoriai.html#atgalinis-rysys"><span class="std std-ref">Jungimas atgaliniu ryšiu</span></a>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">Taip pat žiūrėkite</p>
+<p><a class="reference internal" href="identifikatoriai.html#atgalinis-rysys"><span class="std std-ref">Jungimas atgaliniu ryšiu</span></a></p>
+</div>
 </dd></dl>
 
 <dl class="py data">
@@ -1380,7 +1381,10 @@ tarp modelių.</p>
 y. duomenys siejami ne tik pagal id, bet ir pagal modelio pavadinimą.
 Tokiu būdu, vieno modelio laukas gali būti siejamas su keliais
 modeliais.</p>
-<p>Taip pat žiūrėkite <a class="reference internal" href="identifikatoriai.html#polimorfinis-rysys"><span class="std std-ref">Polimorfinis jungimas</span></a>.</p>
+<div class="admonition seealso">
+<p class="admonition-title">Taip pat žiūrėkite</p>
+<p><a class="reference internal" href="identifikatoriai.html#polimorfinis-rysys"><span class="std std-ref">Polimorfinis jungimas</span></a></p>
+</div>
 <p>Šis duomenų tipas yra sudėtinis, susidedantis iš tokių duomenų:</p>
 <dl class="simple">
 <dt>object_model</dt><dd><p>Pilnas modelio pavadinimas, su kuriuo yra siejamas objektas.</p>
@@ -1393,7 +1397,7 @@ modeliais.</p>
 <dl class="py data">
 <dt class="sig sig-object py" id="type.object">
 <span class="sig-prename descclassname"><span class="pre">type.</span></span><span class="sig-name descname"><span class="pre">object</span></span><a class="headerlink" href="#type.object" title="Link to this definition">#</a></dt>
-<dd><p>Kompozicinis tipas.</p>
+<dd><p>Kompozicinis tipas, apjuniants kelias savybes į grupę, po vienu pavadinimu.</p>
 <p>Šis tipas naudojamas apibrėžti sudėtiniams duomenims, kurie aprašyti
 naudojant kelis skirtingus tipas. Kompozicinio tipo atveju property
 stulpelyje komponuojami pavadinimai atskiriami taško simboliu.</p>
@@ -1404,13 +1408,11 @@ komponavimą įgyvendinti siejant modelius per <code class="docutils literal not
 <dl class="py data">
 <dt class="sig sig-object py" id="type.array">
 <span class="sig-prename descclassname"><span class="pre">type.</span></span><span class="sig-name descname"><span class="pre">array</span></span><a class="headerlink" href="#type.array" title="Link to this definition">#</a></dt>
-<dd><p>Masyvas.</p>
+<dd><p>Kompozicinis duomenų tipas, nurodo reikšmių masyvą.</p>
 <p>Šis tipas naudojamas apibrėžti duomenų masyvams. Jei masyvo elementai
 turi vienodus tipus, tada elemento tipas pateikiamas property pavadinimo
 gale prirašant [] sufiksą, kuris nurodo, kad aprašomas ne pats masyvas,
 o masyvo elementas.</p>
-<p>Rekomenduojama vengti naudoti šį tipą, siekiant išlaikyti plokščią
-duomenų modelį. Vietoje <code class="docutils literal notranslate"><span class="pre">array</span></code> tipo rekomenduojama naudoti <code class="docutils literal notranslate"><span class="pre">backref</span></code>.</p>
 </dd></dl>
 
 <dl class="py data">
@@ -1425,7 +1427,7 @@ Locator</em>).</p>
 <dl class="py data">
 <dt class="sig sig-object py" id="type.uri">
 <span class="sig-prename descclassname"><span class="pre">type.</span></span><span class="sig-name descname"><span class="pre">uri</span></span><a class="headerlink" href="#type.uri" title="Link to this definition">#</a></dt>
-<dd><p>Unikalus resurso identifikatorius (URI) (angl. <em>Uniform Resource
+<dd><p>Universalus resurso identifikatorius (URI) (angl. <em>Universal Resource
 Identifier</em>).</p>
 <p>Šis tipas naudojamas tais atvejais, kai pateikiamas išorinio resurso
 identifikatorius, RDF duomenų modelyje tai yra subjeto identifikatorius.</p>
@@ -1489,9 +1491,7 @@ identifikatorius, RDF duomenų modelyje tai yra subjeto identifikatorius.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#type.datetime"><code class="docutils literal notranslate"><span class="pre">datetime</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#type.date"><code class="docutils literal notranslate"><span class="pre">date</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#type.time"><code class="docutils literal notranslate"><span class="pre">time</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#type.temporal"><code class="docutils literal notranslate"><span class="pre">temporal</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#type.geometry"><code class="docutils literal notranslate"><span class="pre">geometry</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#type.spatial"><code class="docutils literal notranslate"><span class="pre">spatial</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#type.money"><code class="docutils literal notranslate"><span class="pre">money</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#type.file"><code class="docutils literal notranslate"><span class="pre">file</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#type.image"><code class="docutils literal notranslate"><span class="pre">image</span></code></a></li>

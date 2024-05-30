@@ -630,7 +630,7 @@ Sąvokos
         karto, o po vieną.
 
     URI
-        Vieningas resurso identifikatorius (*angl. Uniform Resource
+        Universalus resurso identifikatorius (*angl. Universal Resource
         Identifier*).
 
     POSIX

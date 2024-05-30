@@ -2,7 +2,7 @@
 .. _dimensijos:
 
 Dimensijos
-==========
+##########
 
 Demensijos leidžia vienoje lentelėje sutalpinti kelias skirtingas lenteles
 turinčias bendrų savybių.
@@ -49,7 +49,7 @@ konkrečios dimensijos stulpelį, reikia nurodyti ir dimensiją, pavyzdžiui
 .. _dataset:
 
 dataset
--------
+*******
 
 .. module:: dataset
 
@@ -145,7 +145,7 @@ pavadinimą.
 .. _resource:
 
 resource
---------
+********
 
 .. module:: resource
 
@@ -258,103 +258,60 @@ rinkinio kontekste.
     Duomenų šaltinio aprašymas.
 
 
+Funkcijos
+=========
+
+.. module:: resource.prepare
+
+.. function:: http(method="GET", body=form)
+
+    Papildomi parametrai, reikaling konstruojant HTTP užklausas.
+
+    **Argumentai**
+
+    method (vardinis)
+        HTTP `methodas <mdn-http-methods_>`_.
+
+    body (vardinis)
+        HTTP užklausos perduodamų duomenų formatas.
+
+        Galimi variantai:
+
+        ======= =============
+        `json`  Duomenys perduodami JSON formatu.
+        `xml`   Duomenys perduodami XML formatu.
+        `from`  Duomenys perduodami `application/x-www-form-urlencoded` arba
+                `multipart/form-data` (jei formoje pateikiami failai) formatu.
+        ======= =============
+
+    .. admonition:: Pavyzdys
+
+        ========== ===== ====== ====================== ========
+        resource   type  ref    source                 prepare
+        ========== ===== ====== ====================== ========
+        resource1  json         \https://example.com/  
+        \          param name1  NAME1                  `query("value1")`
+        \                name2  NAME2                  `query("value2")`
+        ========== ===== ====== ====================== ========
+
+        Bus konstruojamas toks URI:
+
+        .. code-block:: uri
+
+            https://example.com/?NAME1=value1&NAME2=value2
+
+
+
+
 .. _base:
 
 base
-----
+****
 
 .. module:: base
 
-.. deprecated:: 0.2
-
-   Atskira modelio bazė naikinama. Nuo 0.2 versijos, modelio bazė nurodoma
-   :data:`model.type` stulpelyje.
-
-Modelio bazė naudojama kelių modelių (lentelių) susiejimui arba apjungimui.
-Kadangi įvairiuose duomenų šaltiniuose dažnai pasitaiko duomenų, kuriuose
-saugomos tą pačią semantinę prasmę turinčios lentelės, :data:`base` stulpelyje
-galima nurodyti kaip skirtingos lentelės siejasi tarpusavyje.
-
-:data:`base.type` stulpelyje nurodoma kokiu būdu lentelės yra susiję.
-:term:`ETL` priemonė vadovaujantis :data:`base` informacija duomenis
-automatiškai transformuoja ir sujungia kelias lenteles į vieną.
-
-Modeliai ne tik susiejami semantiškai tarpusavyje, bet taip pat suliejami ir
-dviejų modelių duomenys naudojant laukų sąrašą nurodytą :data:`base.ref`
-stulpelyje. :data:`base.ref` stulpelyje nurodyti laukai naudojami norint
-unikaliai identifikuoti :data:`model` lentelėje esančią eilutę, kuri atitinka
-:data:`base` lentelėje esančią eilutę. Tai reiškia, kad modelis ir jo bazė turi
-vienodus identifikatorius.
-
-Siejant :data:`model` ir :data:`base` duomenis tarpusavyje, :data:`model`
-lentelė įgauna lygiai tokius pačius unikalius identifikatorius, kurie yra :data:`base`
-lentelėje. Tai reiškia, kad :data:`model` lentelėje negali būti duomenų, kurių
-nėra :data:`base` lentelėje.
-
-:data:`model.property` laukams, kurie sutampa su :data:`base` modelio laukais,
-nenurodomas :data:`property.type`, tokiu būdu nurodoma, kad
-:data:`model.property` turi tą pačią semantinę prasmę, kaip ir :data:`base`,
-tačiau :data:`model` gali turėti ir papildomų laukų, kurių nėra :data:`base`
-modelyje, tokiu atveju :data:`property.type` turi būti nurodomas.
-
-Visi :data:`base.ref` laukai turi būti aprašyti tiek :data:`base`, tiek
-:data:`model` modeliuose, tai reiškia, kad :data:`base.ref` gali būti naudojami
-tik tiek laukai, kurie neturi tipo.
-
-Jei :data:`base` stulpelyje nurodoma `/` reikšmė, tai reiškia, kad
-:data:`model` neturi bazės, arba modelio bazė yra panaikinama. `/` naudojamas
-tais atvejais, kai norima vieną ar kelis modelius prijungti prie vienos bazės,
-tačiau sekantys modeliai nebeturi priklausyti jokiai bazei.
-
-**Sinonimai**
-
-Tais atvejais, kai visi :data:`model` laukai neturi :data:`property.type`, tada
-toks modelis laikomas :data:`base` sinonimu ir iš esmės saugomas tik
-identifikatorius.
-
-Tačiau, jei bent vienas :data:`property.type` yra nurodytas, tada modelis įgyja
-fizinę reprezentaciją ir turi vieną ar kelis savo laukus, kurių nėra
-:data:`base` modelyje.
-
-Kiekvieną kartą saugant duomenis per kitą modelį į bazę, bazės modelio
-istorijoje išsaugoma informacija iš kokio modelio atėjo duomenys.
-
-**Paveldimumas**
-
-:data:`model` paveldi visus laukus, įskaitant ir tuos, kurie nėra nurodyti prie
-:data:`model` laukų sąrašo. Tai reiškia, kad galima skaityti ir rašyti duomenis
-į :data:`base`, per :data:`model`. Jei skaitomas ar rašomas laukas, kurio nėra
-:data:`model` laukų sąraše, tada to lauko duomenys skaitomi iš arba rašomi į
-:data:`base` modelį.
-
-Visi modelio laukai, kurie neturi tipo, fiziškai yra priskiriami :data:`base`
-modeliui.
-
-**Dubliavimas**
-
-Laukų pavadinimai modelyje, kurie turi tą pačią semantinę prasmę, kaip ir
-bazėje turi sutapti su pavadinimais nurodytais bazėje. Tačiau, jei yra
-nurodomas jų tipas, tada tie duomenys dubliuojami, laikant, kad duomenys
-skiriasi nuo bazės, nepaisant to, kad semantiškai jie yra vienodi.
-
-Turint tokius dubliuojamus laukus su nurodytais tipais, jei norima pasiekti
-bazės lauką, galima naudoti `_base.prop` išraišką, kuri nurodo, kad norima
-pasiekti bazėje esančius duomenis, laukui tuo pačiu pavadinimu.
-
-
-.. data:: source
-
-    Nenaudojamas.
-
-.. data:: prepare
-
-    Išimtiniais atvejais, kai nėra galimybės lentelių susieti ar apjungti
-    įprastiniais metodais, galima pasitelkti formules, kurių pagalba galima
-    įgyvendinti nestandartinius lentelių apjungimo atvejus.
-
-.. data:: type
-
-    Nenaudojamas.
+Modelio bazė naudojama objekto identifikatoriams susieti, kai keli skirtingi
+duomenų modeliai aprašo tą pačią realaus pasaulio esybę.
 
 .. data:: ref
 
@@ -386,91 +343,99 @@ pasiekti bazėje esančius duomenis, laukui tuo pačiu pavadinimu.
 
     Nenaudojamas.
 
-**Paaiškinimas, ką reiškia kiekviena savybė.**
 
-Pavyzdys be išorinio duomenų šaltinio:
+Išoriniai identifikatoriai
+==========================
 
-== == == == =========== ========= ==========
-d  r  b  m  property    type      ref       
-== == == == =========== ========= ==========
-example                                     
------------------------ --------- ----------
-\        Location
--- -- -- -------------- --------- ----------
-\           name\@lt    text                
-\           population  integer             
-\      Location
--- -- ----------------- --------- ----------
-\        City
--- -- -- -------------- --------- ----------
-\           name\@lt                        
-\           population
-\        Village
--- -- -- -------------- --------- ----------
-\           name\@lt                        
-\           population
-\           region      ref       Location
-\     /                                     
--- -- ----------------- --------- ----------
-\        Country
--- -- -- -------------- --------- ----------
-\           name\@lt                        
-\           population
-== == == == =========== ========= ==========
+Modelis ir jo bazė turi vienodus išorinius identifikatorius, nors vidiniai
+šaltinio identifikatoriai gali skirtis.
 
-Šiame pavyzdyje:
+Siejant :data:`model` ir :data:`base` duomenis tarpusavyje, :data:`model`
+lentelė įgauna lygiai tokius pačius unikalius identifikatorius, kurie yra
+:data:`base` lentelėje. Tai reiškia, kad :data:`model` lentelėje negali būti
+duomenų, kurių nėra :data:`base` lentelėje.
 
-- `City` ir `Village` priklauso vienai bazei `Location`.
+Identifikatorių apjungimas atliekamas pagal :data:`model.ref` ir
+:data:`base.ref` pateiktus pirminius raktus, kurie turi sutapti.
 
-- Kadangi `Location` turi savybes `name@lt` ir `population`, tai `City` ir
-  `Village` modeliuose tą pačią semantinę prasmę turinčios savybės turi turėti
-  lygiai tokius pačius pavadinimus, o :data:`property.type` turi būti tuščias.
-  Kai :data:`property.type` yra tuščias, tai reiškia, kad savybė ateina iš
-  bazinio modelio.
-
-- Kadangi `Village` turi papildomą :data:`property` su nurodytu
-  :data:`property.type`, tai reiškia, kad `name` ir `population` priklauso
-  bazei, tačiau `region` priklauso `Village` modeliui ir jo nėra bazėje.
-
-- Kadangi `Country` semantiškai nėra tas pats, kas `Gyvenviete`, nors ir turi
-  tokias pačias savybes, atskiriame ją nuo `Location` bazės, priskirdami `/`
-  bazei, kas reiškia, kad bazės nėra.
+Visi :data:`base.ref` laukai turi būti aprašyti tiek :data:`base`, tiek
+:data:`model` modeliusoe.
 
 
-Pavyzdys su išoriniu duomenų šaltiniu:
+Paveldimumas
+============
 
-== == == == =========== ========= ========= ==================
-d  r  b  m  property    type      ref       source
-== == == == =========== ========= ========= ==================
-example                                                       
------------------------ --------- --------- ------------------
-\        Location                 id       
--- -- -- -------------- --------- --------- ------------------
-\           id          integer
-\           name\@lt    text
-\           population  integer
-\     Location                    name\@lt 
--- -- ----------------- --------- --------- ------------------
-\        City                     name\@lt  CITY
--- -- -- -------------- --------- --------- ------------------
-\           name\@lt                        NAME
-\           population                      POPULATION
-\        Village                  name\@lt  VILLAGE
--- -- -- -------------- --------- --------- ------------------
-\           name\@lt                        VILLAGE
-\           population                      POPULATION
-\           region      ref       Location  REGION
-== == == == =========== ========= ========= ==================
+:data:`model` paveldi visus laukus iš :data:`base`, įskaitant ir tuos, kurie
+nėra nurodyti prie :data:`model` laukų sąrašo. Tai reiškia, kad galima skaityti
+ir rašyti duomenis į :data:`base`, per :data:`model`. Jei skaitomas ar rašomas
+laukas, kurio nėra :data:`model` laukų sąraše, tada to lauko duomenys skaitomi
+iš arba rašomi į :data:`base` modelį.
 
-Šiame pavyzdyje esminis skirtumas yra tas, kad nurodyta kaip daromas jungimas.
-`City` ir `Village` su `Location` jungiame per `name\@lt` lauką.
+Skaitymas ir rašymas iš base įmanomas tik tuo atveju, jei tai palaiko duomenų
+šaltinis.
+
+
+Duomenų lokalumas
+=================
+
+Visi modelio laukai, kurie neturi :data:`property.type`, fiziškai saugomi
+:data:`base` modelio šaltinyje.
+
+Jei :data:`base` stulpelyje nurodoma `/` reikšmė, tai reiškia, kad
+:data:`model` neturi bazės, arba modelio bazė yra panaikinama. `/` naudojamas
+tais atvejais, kai norima vieną ar kelis modelius prijungti prie vienos bazės,
+tačiau sekantys modeliai nebeturi priklausyti jokiai bazei.
+
+Persidengimas
+=============
+
+Tais atvejais, kai :data:`property` yra saugomas tiek :data:`base`, tiek
+:data:`model` lentelėse, norint gauti persidengiančios savybės duomenis iš
+:data:`base`, reikia naudoti `_base.` prefiksą.
+
+`_base` rodo į bazinį modelė.
+
+
+Pavyzdžiai
+==========
+
+.. admonition:: Pavyzdys
+
+    ======== ===== ====== =========== ========= ========= ==================
+    dataset  base  model  property    type      ref       source
+    ======== ===== ====== =========== ========= ========= ==================
+    example                                                           
+    --------------------------------- --------- --------- ------------------
+    \              Location                     id       
+    -------- ----- ------------------ --------- --------- ------------------
+    \                     id          integer
+    \                     name\@lt    text
+    \                     population  integer
+    \        Loocation                          name\@lt 
+    -------- ------------------------ --------- --------- ------------------
+    \              City                         name\@lt  CITY
+    -------- ----- ------------------ --------- --------- ------------------
+    \                     name\@lt                        NAME
+    \                     population                      POPULATION
+    \        /
+    -------- ------------------------ --------- --------- ------------------
+    \              Village                      name\@lt  VILLAGE
+    -------- ----- ------------------ --------- --------- ------------------
+    \                     name\@lt                        VILLAGE
+    \                     population                      POPULATION
+    \                     region      ref       Location  REGION
+    \        /
+    ======== ======================== ========= ========= ==================
+
+    Šiame pavyzdyje esminis skirtumas yra tas, kad nurodyta kaip daromas jungimas.
+    `City` ir `Village` su `Location` jungiame per `name\@lt` lauką.
 
 
 .. .. _duomenų-modelis:
 .. _model:
 
 model
------
+*****
 
 .. module:: model
 
@@ -714,7 +679,7 @@ vienos esybės modeliai turi turėti vienodus identifikatorius.
 .. _property:
 
 property
---------
+********
 
 .. module:: property
 
@@ -794,13 +759,13 @@ Savybė yra duomenų laukas, modelio atributas.
 .. _papildomos-dimensijos:
 
 Papildomos dimensijos
-=====================
+#####################
 
 .. .. _išorinių-žodynų-prefiksai:
 .. _prefix:
 
 prefix
-------
+******
 
 .. module:: prefix
 
@@ -869,7 +834,7 @@ Pavyzdžiui abiejuose rinkinių pavyzdžiuose aukščiau, `dct` iš `dataset1` i
 .. _enum:
 
 enum
-----
+****
 
 .. module:: enum
 
@@ -990,15 +955,9 @@ kokios yra šaltinyje, tada :data:`property.prepare` stulpelyje reikia įrašyti
 .. _param:
 
 param
------
+*****
 
 .. module:: param
-
-.. deprecated:: 0.2
-
-    Nuo 0.2 versijos parametrų dimensija perkeliama prie :ref:`property` ir
-    tampa duomenų tipo parametras.
-
 
 Parametrai leidžia iškelti tam tikras duomenų paruošimo operacijas į parametrus
 kurie gali būti naudojami :ref:`dimensijos`, kurioje apibrėžtas parametras
@@ -1008,31 +967,27 @@ parametrus. Taip pat parametrų pagalba galima sudaryti reikšmių sąrašus, ku
 pagalba galima kartoti :data:`resource` su kiekviena reikšme.
 
 Parametrai dažniausiai naudojami žemesnio brandos lygio duomenų šaltiniams
-aprašyti, o taip pat API atvejais, kai duomenys atiduodame dinamiškai.
+aprašyti, o taip pat API atvejais, kai duomenys atiduodami dinamiškai.
 
 Parametrai aprašomi pasitelkiant papildomą :ref:`param` dimensiją.
 
-+----+---+---+---+---+------------+---------+-----------------------+-----------------------------+-----------------------+
-| id | d | r | b | m | property   | type    | ref                   | source                      | prepare               |
-+====+===+===+===+===+============+=========+=======================+=============================+=======================+
-|  1 | datasets/example/cities    |         |                       |                             |                       |
-+----+---+---+---+---+------------+---------+-----------------------+-----------------------------+-----------------------+
-|  2 |   | places                 | csv     |                       | \https://example.com/{}.csv |                       |
-+----+---+---+---+---+------------+---------+-----------------------+-----------------------------+-----------------------+
-|  3 |   |   |   | Country        |         | id                    | countries                   |                       |
-+----+---+---+---+---+------------+---------+-----------------------+-----------------------------+-----------------------+
-|  4 |   |   |   |   | code       | string  |                       | CODE                        |                       |
-+----+---+---+---+---+------------+---------+-----------------------+-----------------------------+-----------------------+
-|  5 |   |   |   |   | title      | string  |                       | TITLE                       |                       |
-+----+---+---+---+---+------------+---------+-----------------------+-----------------------------+-----------------------+
-|  6 |   |   |   | City           |         | country, |nbsp| title | cities/{country.code}       |                       |
-+----+---+---+---+---+------------+---------+-----------------------+-----------------------------+-----------------------+
-|  7 |   |   |   |   |            | param   | country               | Country                     | select(code)          |
-+----+---+---+---+---+------------+---------+-----------------------+-----------------------------+-----------------------+
-|  8 |   |   |   |   | country    | ref     | Country               |                             | param("country").code |
-+----+---+---+---+---+------------+---------+-----------------------+-----------------------------+-----------------------+
-|  9 |   |   |   |   | title      | string  |                       | TITLE                       |                       |
-+----+---+---+---+---+------------+---------+-----------------------+-----------------------------+-----------------------+
+=== === === ============ ========= ======================= ============================= ======================= 
+d   r   m   property     type      ref                     source                        prepare                
+=== === === ============ ========= ======================= ============================= ======================= 
+datasets/example/cities
+------------------------ --------- ----------------------- ----------------------------- ----------------------- 
+\   places               csv                               \https://example.com/{}.csv                          
+--- -------------------- --------- ----------------------- ----------------------------- ----------------------- 
+\       **Country**                id                      countries                                            
+--- --- ---------------- --------- ----------------------- ----------------------------- ----------------------- 
+\           code         string                            CODE                                                 
+\           title        string                            TITLE                                                
+\       **City**                   country, title          cities/{code}
+--- --- ---------------- --------- ----------------------- ----------------------------- ----------------------- 
+\                        param     code                    **Country**                   read().code           
+\           country      ref       **Country**             code                          param()
+\           title        string                            TITLE                                                
+=== === === ============ ========= ======================= ============================= ======================= 
 
 .. data:: ref
 
@@ -1044,10 +999,17 @@ Parametrai aprašomi pasitelkiant papildomą :ref:`param` dimensiją.
 
 .. data:: source
 
-    Jei reikšmė pateikta, tada ši reikšmė perduodama formulei kaip `self`.
-    Pavyzdžiui, jei :data:`param.prepare` pateikta formulė `select(code)`, o
-    :data:`param.source` nurodyta `Country`, tai formulė bus iškviesta taip
-    `select("Country", code)`.
+    Nurodoma parametro reikšmė šaltinyje, kuri yra pateikiama kaip pirmas
+    :data:`param.prepare` funkcijos argumentas.
+
+    Jei :data:`param.prepare` nenurodyta jokia formulė, tada bus naudojam
+    konstanta nurodyta :data:`param.source` stulpelyje.
+
+    .. admonition:: Pavyzdys
+
+        Jei :data:`param.prepare` pateikta formulė `read()`, o
+        :data:`param.source` nurodyta `Country`, tai formulė bus iškviesta kaip
+        `read("Country")`.
 
 Jei parametro reikšmė yra :term:`iteratorius`, tada :term:`dimensija`, kurios
 kontekste yra aprašytas :ref:`parametras <param>` yra kartojama tiek kartų,
@@ -1066,31 +1028,25 @@ Jei sekančioje :term:`DSA` eilutėje, einančioje po eilutės, kurioje aprašyt
 eilutėse patektos :data:`source` ir :data:`prepare` reikšmės. Pavyzdžiui
 anksčiau pateiktą pavyzdį galima būtų perdaryti taip:
 
-+----+---+---+---+---+------------+---------+-----------------------+-----------------------------+-----------------------+
-| id | d | r | b | m | property   | type    | ref                   | source                      | prepare               |
-+====+===+===+===+===+============+=========+=======================+=============================+=======================+
-|  1 | datasets/example/cities    |         |                       |                             |                       |
-+----+---+---+---+---+------------+---------+-----------------------+-----------------------------+-----------------------+
-|  2 |   | places                 | csv     |                       | \https://example.com/{}.csv |                       |
-+----+---+---+---+---+------------+---------+-----------------------+-----------------------------+-----------------------+
-|  3 |   |   |   | Country        |         | id                    | countries                   |                       |
-+----+---+---+---+---+------------+---------+-----------------------+-----------------------------+-----------------------+
-|  4 |   |   |   |   | code       | string  |                       | CODE                        |                       |
-+----+---+---+---+---+------------+---------+-----------------------+-----------------------------+-----------------------+
-|  5 |   |   |   |   | title      | string  |                       | TITLE                       |                       |
-+----+---+---+---+---+------------+---------+-----------------------+-----------------------------+-----------------------+
-|  6 |   |   |   | City           |         | country, |nbsp| title | cities/{country}            |                       |
-+----+---+---+---+---+------------+---------+-----------------------+-----------------------------+-----------------------+
-|  7 |   |   |   |   |            | param   | country               |                             | "lt"                  |
-+----+---+---+---+---+------------+---------+-----------------------+-----------------------------+-----------------------+
-|  7 |   |   |   |   |            |         |                       |                             | "lv"                  |
-+----+---+---+---+---+------------+---------+-----------------------+-----------------------------+-----------------------+
-|  7 |   |   |   |   |            |         |                       |                             | "ee"                  |
-+----+---+---+---+---+------------+---------+-----------------------+-----------------------------+-----------------------+
-|  8 |   |   |   |   | country    | ref     | Country               |                             | param("country")      |
-+----+---+---+---+---+------------+---------+-----------------------+-----------------------------+-----------------------+
-|  9 |   |   |   |   | title      | string  |                       | TITLE                       |                       |
-+----+---+---+---+---+------------+---------+-----------------------+-----------------------------+-----------------------+
+======== ========= ====== ========= ======= =============== ============================= ================= 
+dataset  resource  model  property  type    ref             source                        prepare          
+======== ========= ====== ========= ======= =============== ============================= ================= 
+datasets/example/cities                                                                            
+----------------------------------- ------- --------------- ----------------------------- ----------------- 
+\        places                     csv                     \https://example.com/{}.csv                    
+-------- -------------------------- ------- --------------- ----------------------------- ----------------- 
+\                  **Country**              id              countries                                      
+-------- --------- ---------------- ------- --------------- ----------------------------- ----------------- 
+\                         code      string                  CODE                                           
+\                         title     string                  TITLE                                          
+\                  **City**                 country, title  cities/{country}                               
+-------- --------- ---------------- ------- --------------- ----------------------------- ----------------- 
+\                                   param   country         lt
+\                                                           lv
+\                                                           ee
+\                         country   ref     **Country**                                   `param(country)`
+\                         title     string                  TITLE                                          
+======== ========= ====== ========= ======= =============== ============================= ================= 
 
 Šiame pavyzdyje, parametras `country` grąžins tris šalies kodus: lt, lv ir
 ee, kurie bus panaudojami `cities/{country}` pavadinime, pakeičiant
@@ -1100,50 +1056,223 @@ ee, kurie bus panaudojami `cities/{country}` pavadinime, pakeičiant
 :data:`param.ref` stulpelyje. Pavyzdžiui, jei :data:`param.ref` stulpelyje
 įrašyta `x`, tada `x` parametro reikšmę galima gauti taip:
 
-.. describe:: source
-
+source
     `{x}`.
 
-.. describe:: prepare
-
+prepare
     `x` arba `param(x)`.
+
+Funkcijos
+=========
 
 Parametrų generavimui galima naudoti tokias formules:
 
-.. describe:: param.prepare
+.. module:: param.prepare
 
-    .. function:: range(stop)
+.. function:: read(model)
 
-        Sveikų skaičių generavimas nuo 0 iki `stop`, `stop` neįeina.
+    Sukuriama priklausomybė nuo kito modelio, skaitomi duomenys iš kito modelio
+    ir su kiekvienu objektu, kreipiamasi į :data:`resource.source`, panaudojant
+    nuskaitytą objektą kaip parametrą formuojant šaltinio užklausą.
 
-    .. function:: range(start, stop)
-       :noindex:
+.. function:: range(stop)
 
-        Sveikų skaičių generavimas nuo `start` iki `stop`, `stop` neįeina.
+    Sveikų skaičių generavimas nuo 0 iki `stop`, `stop` neįeina.
 
-    .. function:: scalar(name)
+.. function:: range(start, stop)
+    :noindex:
 
-        Jei nurodytas :data:`param.source`, tada imama tik `name` lauko reikšmė,
-        o ne visi modelio laukai.
+    Sveikų skaičių generavimas nuo `start` iki `stop`, `stop` neįeina.
+
+.. function:: query(name, value)
+
+    Parametras pateikia URI query dalies parametrą.
+
+    Jei :data:`resource.source` jau turi query parametrus, jei bus papildyti.
+
+    **Argumentai**
+
+    name
+        Nurodo URI query parametro pavadinimą, nurodomas :data:`param.source`
+        stulpelyje.
+
+    value
+        URI query paramtro reikšmė.
+
+    .. admonition:: Pavyzdys
+
+        ========== ===== ====== ====================== ========
+        resource   type  ref    source                 prepare
+        ========== ===== ====== ====================== ========
+        resource1  json         \https://example.com/  
+        \          param name1  NAME1                  `query("value1")`
+        \                name2  NAME2                  `query("value2")`
+        ========== ===== ====== ====================== ========
+
+        Bus konstruojamas toks URI:
+
+        .. code-block:: uri
+
+            https://example.com/?NAME1=value1&NAME2=value2
+
+
+.. function:: header(name, value)
+
+    Parametras pateikiamas, kaip HTTP antraštė.
+
+    **Argumentai**
+
+    name
+        Nurodo HTTP antraštės pavadinimą, nurodomas :data:`param.source`
+        stulpelyje.
+
+    value
+        HTTP antraštės reikšmė.
+
+    .. admonition:: Pavyzdys
+
+        ========== ===== ====== ====================== ========
+        resource   type  ref    source                 prepare
+        ========== ===== ====== ====================== ========
+        resource1  json         \https://example.com/  
+        \          param name1  X-Name1                `header("value1")`
+        \                name2  X-Name2                `header("value2")`
+        ========== ===== ====== ====================== ========
+
+        Bus konstruojama tokia HTTP užklausa:
+
+        .. code-block:: http
+
+            GET / HTTP/1.1
+            X-Name1: value1
+            X-Name2: value2
+
+
+.. function:: body(name, value, parent, type)
+
+    Generuoja XML, JSON ar kito formato dokumentą, kuris pateikiamas HTTP
+    užklausos metu.
+
+    **Argumentai**
+
+    name
+        JSONPath_ arba XPath_ išraiška, priklauso nuoo :data:`resource.prapare`
+        nurodytos :func:`resource.prepare.http` `body` tipo.
+
+        Nurodoma :data:`param.source` stulpelyje.
+
+    value
+        Reikšmė suteikiama `name` elementui http užklausos struktūroje.
+
+    parent (neprivalomas)
+        Parametro pavadinimas, kurio pagrindu konstruojamas naujas dokumentas.
+
+    type (neprivalomas, vardinis)
+        Naudojamas konstruojant naują dokumentą, jei nurodytas, kiti argumentai
+        turi būti nepateikti.
+
+    .. admonition:: Pavyzdys (JSON)
+
+        ========== ===== ====== ====================== ========
+        resource   type  ref    source                 prepare
+        ========== ===== ====== ====================== ========
+        resource1  json         \https://example.com/  `http(body: json)`
+        \          param name1  NAME1                  `body("value1")`
+        \                name2  NAME2                  `body("value2")`
+        \                name3  NESTED.NAME3           `body("value3")`
+        \                name4  ARRAY[].NAME4          `body("value4")`
+        \                name5  MATRIX[]               `body()`
+        \                       MATRIX[][]             `body("value5")`
+        \                       MATRIX[]               `body()`
+        \                       MATRIX[][]             `body("value6")`
+        \                       MATRIX[][]             `body("value7")`
+        ========== ===== ====== ====================== ========
+
+        .. code-block:: json
+
+            {
+                "NAME1": "value1",
+                "NAME2": "value2",
+                "NESTED": {
+                    "NAME3": "value3",
+                },
+                "ARRAY": [
+                    {"NAME4": "value4"}
+                ],
+                "MATRIX": [
+                    ["value5"],
+                    ["value6", "value7"]
+                ]
+            }
+
+    .. admonition:: Pavyzdys (XML)
+
+        ========== ===== ====== ====================== ========
+        resource   type  ref    source                 prepare
+        ========== ===== ====== ====================== ========
+        resource1  json         \https://example.com/  `http(body: xml)`
+        \          param name1  DATA/\@NAME1           `body("value1")`
+        \                name2  DATA/NAME2             `body("value2")`
+        \                name3  DATA/NESTED/NAME3      `body("value3")`
+        \                name4  DATA/ARRAY/NAME4       `body("value4")`
+        \                name5  DATA/ARRAY/NAME4       `body("value5")`
+        ========== ===== ====== ====================== ========
+
+        .. code-block:: xml
+
+            <?xml version="1.0" encoding="utf-8"?>
+            <DATA NAME1="value1">
+                <NAME2>value2</NAME2>
+                <NESTED>
+                    <NAME3>value3</NAME3>
+                </NESTED>
+                <ARRAY>
+                    <NAME4>value4</NAME4>
+                    <NAME4>value5</NAME4>
+                </ARRAY>
+            </DATA>
+
+    .. admonition:: Pavyzdys (maišytas)
+
+        ========== ===== ====== ====================== ========
+        resource   type  ref    source                 prepare
+        ========== ===== ====== ====================== ========
+        resource1  json         \https://example.com/  `http(body: xml)`
+        \          param name1  DATA/\@NAME1           `body("value1")`
+        \                name2  DATA/NAME2             `body(name3)`
+        \                name3                         `body(type: json)`
+        \                name4  NAME4                  `body("value4", name3)`
+        \                name5  NAME5                  `body("value5", name3)`
+        ========== ===== ====== ====================== ========
+
+        .. code-block:: xml
+
+            <?xml version="1.0" encoding="utf-8"?>
+            <DATA NAME1="value1">
+                <NAME2><![CDATA[
+                    {
+                        "NAME4": "value4",
+                        "NAME5": "value5"
+                    }
+                ]]></NAME2>
+            </DATA>
 
 Jei užpildytas :data:`param.source` stulpelis, tada :data:`param.prepare`
 stulpelyje galima naudoti filtrą nurodyto :data:`param.source` modelio duomenims
 filtruoti, o naudojant parametrus galima nurodyti ir modelio laukų pavadinimus,
 pavyzdžiui:
 
-.. describe:: source
-
+source
     `{x.field}`.
 
-.. describe:: prepare
-
+prepare
     `x.field` arba `param(x).field`.
 
 
 .. _switch:
 
 switch
-------
+******
 
 .. module:: switch
 
@@ -1169,7 +1298,7 @@ tenkinama nurodyta sąlyga. Tokias situacijas galima aprašyti pasitelkiant
 .. _comment:
 
 comment
--------
+*******
 
 .. module:: comment
 
@@ -1262,7 +1391,7 @@ example
 .. _lang:
 
 lang
-----
+****
 
 .. module:: lang
 
@@ -1293,7 +1422,7 @@ tekstas kita kalba.
 .. _migrate:
 
 migrate
--------
+*******
 
 .. module:: migrate
 
@@ -1441,3 +1570,5 @@ migracijas:
 .. _RDFS: https://www.w3.org/TR/rdf-schema/
 .. _SKOS: https://www.w3.org/TR/skos-primer/
 .. _prefix.cc: https://prefix.cc/
+.. _JSONPath: https://www.ietf.org/archive/id/draft-goessner-dispatch-jsonpath-00.html
+.. _mdn-http-methods: https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods

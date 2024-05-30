@@ -327,6 +327,7 @@ Duomenų tipai
     =======  ================
 
 .. data:: temporal
+    :noindex:
 
     .. deprecated:: 0.2
 
@@ -513,6 +514,7 @@ Duomenų tipai
 
 
 .. data:: spatial
+    :noindex:
 
     .. deprecated:: 0.2
 
@@ -702,7 +704,9 @@ Duomenų tipai
     neturi, tai tik papildomas metaduomuo, padedantis geriau suprasti ryšius
     tarp modelių.
 
-    Taip pat žiūrėkite :ref:`atgalinis-ryšys`.
+    .. seealso::
+
+        :ref:`atgalinis-ryšys`
 
 .. data:: generic
 
@@ -713,7 +717,9 @@ Duomenų tipai
     Tokiu būdu, vieno modelio laukas gali būti siejamas su keliais
     modeliais.
 
-    Taip pat žiūrėkite :ref:`polimorfinis-ryšys`.
+    .. seealso::
+
+        :ref:`polimorfinis-ryšys`
 
     Šis duomenų tipas yra sudėtinis, susidedantis iš tokių duomenų:
 
@@ -728,7 +734,7 @@ Duomenų tipai
 
 .. data:: object
 
-    Kompozicinis tipas.
+    Kompozicinis tipas, apjuniants kelias savybes į grupę, po vienu pavadinimu.
 
     Šis tipas naudojamas apibrėžti sudėtiniams duomenims, kurie aprašyti
     naudojant kelis skirtingus tipas. Kompozicinio tipo atveju property
@@ -739,15 +745,12 @@ Duomenų tipai
 
 .. data:: array
 
-    Masyvas.
+    Kompozicinis duomenų tipas, nurodo reikšmių masyvą.
 
     Šis tipas naudojamas apibrėžti duomenų masyvams. Jei masyvo elementai
     turi vienodus tipus, tada elemento tipas pateikiamas property pavadinimo
     gale prirašant [] sufiksą, kuris nurodo, kad aprašomas ne pats masyvas,
     o masyvo elementas.
-
-    Rekomenduojama vengti naudoti šį tipą, siekiant išlaikyti plokščią
-    duomenų modelį. Vietoje `array` tipo rekomenduojama naudoti `backref`.
 
 
 .. .. _other-types:
@@ -764,7 +767,7 @@ Duomenų tipai
 
 .. data:: uri
 
-    Unikalus resurso identifikatorius (URI) (angl. *Uniform Resource
+    Universalus resurso identifikatorius (URI) (angl. *Universal Resource
     Identifier*).
 
     Šis tipas naudojamas tais atvejais, kai pateikiamas išorinio resurso
