@@ -699,10 +699,49 @@ Duomenų tipai
 
     Atgalinis ryšys su modeliu.
 
-    Šis tipas naudojamas norint pažymėti, kad tam tikras kitas modelis turi
-    `ref` tipo lauką, kuris rodo į šį modelį. Šis laukas pats duomenų
-    neturi, tai tik papildomas metaduomuo, padedantis geriau suprasti ryšius
-    tarp modelių.
+    Jei ryšys tarp dviejų modlių yra daug su vienu, tada `property` pavadinimas
+    nurodomas su `[]` simboliu.
+
+    .. admonition:: Pavyzdys
+
+        Koncepcinis modelis
+
+        .. mermaid::
+
+            classDiagram
+                direction LR
+
+                class Country {
+                  + id: integer [1..1]
+                  + name@lt: string [1..1]
+                }
+
+                class City {
+                  + id: integer [1..1]
+                  + name@lt: string [1..1]
+                }
+
+                City --> "[1..1]" Country : country
+                City "[1..*]" <-- Country : cities
+
+        |
+
+        Struktūros aprašas
+
+        ======  =========  ========  ============
+        model   property   type      ref         
+        ======  =========  ========  ============
+        **Country**                  id          
+        -----------------  --------  ------------
+        \       id         integer               
+        \       name\@lt   string                
+        \       cities[]   backref   **City**
+        **City**                     id          
+        -----------------  --------  ------------
+        \       id         integer               
+        \       name\@lt   string                
+        \       country    ref       **Country**
+        ======  =========  ========  ============
 
     .. seealso::
 

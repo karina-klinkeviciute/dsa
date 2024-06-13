@@ -97,6 +97,7 @@ duomenų tipas turi sutapti su `Country.code` duomenų tipu, kuris yra `string`.
         :data:`property` pavadinimai iš kurių duomenų reikšmių turi būti
         formuojamas sudėtinis raktas.
 
+.. **
 
 .. _ref-fkey:
 
@@ -246,25 +247,45 @@ id name    country
 3  Ryga    2
 == ======= =======
 
+Ir šiuos duomenis atitinkantį duomenų modelį:
+
+.. mermaid::
+
+    classDiagram
+        direction LR
+
+        class Country {
+          + id: integer [1..1]
+          + name@lt: string [1..1]
+        }
+
+        class City {
+          + id: integer [1..1]
+          + name@lt: string [1..1]
+        }
+
+        City --> "[1..1]" Country : country
+        City "[1..*]" <-- Country : cities
+
+|
+
 Tai norint sukurti atgalinį ryšį iš `City` modelio į `Country` modelį, duomenų
 struktūros aprašas atrodys taip:
 
-== == == == == ================== ========= ================ =====
-d  d  r  b  m  property           type      ref              level
-== == == == == ================== ========= ================ =====
-1  datasets/gov/example/countries
--- ------------------------------ --------- ---------------- -----
-2           Country                         id               4
--- -- -- -- --------------------- --------- ---------------- -----
-3              id                 integer                    4
-4              name               string                     4
-5              cities[]           backref   City             4
-6           City                            id               4
--- -- -- -- --------------------- --------- ---------------- -----
-7              id                 integer                    4
-8              name               string                     4
-9              country            ref       Country          4
-== == == == == ================== ========= ================ =====
+======  =========  ========  ============  ======
+model   property   type      ref           level
+======  =========  ========  ============  ======
+**Country**                  id            4
+-----------------  --------  ------------  ------
+\       id         integer                 4
+\       name\@lt   string                  4
+\       cities[]   backref   **City**      4
+**City**                     id            4
+-----------------  --------  ------------  ------
+\       id         integer                 4
+\       name\@lt   string                  4
+\       country    ref       **Country**   4
+======  =========  ========  ============  ======
 
 Čia atgalinis ryšys nurodytas 5-oje eilutėje, pateikiant virtualų
 `Country.cities` lauką, kuris jungiamas per `City.country` lauką, kadangi

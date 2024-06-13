@@ -49,6 +49,13 @@
     <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script src="_static/translations.js?v=3b848cde"></script>
     <script src="_static/design-tabs.js?v=36754332"></script>
+    <script src="https://unpkg.com/mermaid@10.2.0/dist/mermaid.min.js"></script>
+    <script>
+mermaid.initialize({
+    startOnLoad:true,
+    theme: 'neutral'
+});
+</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'tipai';</script>
     <link rel="index" title="Indeksas" href="genindex.html" />
     <link rel="search" title="Paieška" href="search.html" />
@@ -1363,10 +1370,81 @@ netikrinama ar toks <code class="docutils literal notranslate"><span class="pre"
 <dt class="sig sig-object py" id="type.backref">
 <span class="sig-prename descclassname"><span class="pre">type.</span></span><span class="sig-name descname"><span class="pre">backref</span></span><a class="headerlink" href="#type.backref" title="Link to this definition">#</a></dt>
 <dd><p>Atgalinis ryšys su modeliu.</p>
-<p>Šis tipas naudojamas norint pažymėti, kad tam tikras kitas modelis turi
-<code class="docutils literal notranslate"><span class="pre">ref</span></code> tipo lauką, kuris rodo į šį modelį. Šis laukas pats duomenų
-neturi, tai tik papildomas metaduomuo, padedantis geriau suprasti ryšius
-tarp modelių.</p>
+<p>Jei ryšys tarp dviejų modlių yra daug su vienu, tada <code class="docutils literal notranslate"><span class="pre">property</span></code> pavadinimas
+nurodomas su <code class="docutils literal notranslate"><span class="pre">[]</span></code> simboliu.</p>
+<div class="admonition-pavyzdys admonition">
+<p class="admonition-title">Pavyzdys</p>
+<p>Koncepcinis modelis</p>
+<div class="mermaid">
+            classDiagram
+    direction LR
+
+    class Country {
+      + id: integer [1..1]
+      + name&#64;lt: string [1..1]
+    }
+
+    class City {
+      + id: integer [1..1]
+      + name&#64;lt: string [1..1]
+    }
+
+    City --&gt; &quot;[1..1]&quot; Country : country
+    City &quot;[1..*]&quot; &lt;-- Country : cities
+        </div><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Struktūros aprašas</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>model</p></th>
+<th class="head"><p>property</p></th>
+<th class="head"><p>type</p></th>
+<th class="head"><p>ref</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td colspan="2"><p><strong>Country</strong></p></td>
+<td></td>
+<td><p>id</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>id</p></td>
+<td><p>integer</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>name&#64;lt</p></td>
+<td><p>string</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>cities[]</p></td>
+<td><p>backref</p></td>
+<td><p><strong>City</strong></p></td>
+</tr>
+<tr class="row-even"><td colspan="2"><p><strong>City</strong></p></td>
+<td></td>
+<td><p>id</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>id</p></td>
+<td><p>integer</p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>name&#64;lt</p></td>
+<td><p>string</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>country</p></td>
+<td><p>ref</p></td>
+<td><p><strong>Country</strong></p></td>
+</tr>
+</tbody>
+</table>
+</div>
 <div class="admonition seealso">
 <p class="admonition-title">Taip pat žiūrėkite</p>
 <p><a class="reference internal" href="identifikatoriai.html#atgalinis-rysys"><span class="std std-ref">Jungimas atgaliniu ryšiu</span></a></p>

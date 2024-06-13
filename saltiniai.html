@@ -49,6 +49,13 @@
     <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script src="_static/translations.js?v=3b848cde"></script>
     <script src="_static/design-tabs.js?v=36754332"></script>
+    <script src="https://unpkg.com/mermaid@10.2.0/dist/mermaid.min.js"></script>
+    <script>
+mermaid.initialize({
+    startOnLoad:true,
+    theme: 'neutral'
+});
+</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'saltiniai';</script>
     <link rel="index" title="Indeksas" href="genindex.html" />
     <link rel="search" title="Paieška" href="search.html" />
@@ -430,7 +437,7 @@ duomenų baze.</p>
 <dl class="describe">
 <dt class="sig sig-object">
 <span class="sig-name descname"><span class="pre">params</span></span></dt>
-<dd><p>Papildomi parametrai <cite>Query string</cite> formatu.</p>
+<dd><p>Papildomi parametrai <code class="docutils literal notranslate"><span class="pre">Query</span> <span class="pre">string</span></code> formatu.</p>
 </dd></dl>
 
 </dd></dl>
@@ -445,7 +452,7 @@ užmegzti ir duomenų bazės paruošimui, kad būtų galima skaityt duomenis.</p
 <dl class="describe">
 <dt class="sig sig-object">
 <span class="sig-name descname"><span class="pre">resource.type</span></span></dt>
-<dd><p>Galimos reikšmės: <cite>sql</cite>.</p>
+<dd><p>Galimos reikšmės: <code class="docutils literal notranslate"><span class="pre">sql</span></code>.</p>
 </dd></dl>
 
 <dl class="describe">
@@ -487,7 +494,7 @@ perduoti papildomus parametrus.</p>
 <dl class="describe">
 <dt class="sig sig-object">
 <span class="sig-name descname"><span class="pre">resource.type</span></span></dt>
-<dd><p>Galimos reikšmės: <cite>csv</cite>, <cite>tsv</cite>.</p>
+<dd><p>Galimos reikšmės: <code class="docutils literal notranslate"><span class="pre">csv</span></code>, <code class="docutils literal notranslate"><span class="pre">tsv</span></code>.</p>
 </dd></dl>
 
 <dl class="describe">
@@ -503,7 +510,7 @@ perduoti papildomus parametrus.</p>
 <dt class="sig sig-object py" id="tabular">
 <span class="sig-name descname"><span class="pre">tabular</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">sep</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="s"><span class="pre">','</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#tabular" title="Link to this definition">#</a></dt>
 <dd><p>Nurodoma kaip CSV faile atskirti stulpeliai. Pagal nutylėjimą
-<cite>separator</cite> reikšmė yra <cite>,</cite>.</p>
+<code class="docutils literal notranslate"><span class="pre">separator</span></code> reikšmė yra <code class="docutils literal notranslate"><span class="pre">,</span></code>.</p>
 </dd></dl>
 
 </dd></dl>
@@ -532,7 +539,7 @@ perduoti papildomus parametrus.</p>
 <dl class="describe">
 <dt class="sig sig-object">
 <span class="sig-name descname"><span class="pre">resource.type</span></span></dt>
-<dd><p>Galimos reikšmės: <cite>json</cite>, <cite>jsonl</cite>.</p>
+<dd><p>Galimos reikšmės: <code class="docutils literal notranslate"><span class="pre">json</span></code>, <code class="docutils literal notranslate"><span class="pre">jsonl</span></code>.</p>
 </dd></dl>
 
 <dl class="describe">
@@ -568,7 +575,7 @@ kompleksinis žiūrėti <a class="reference internal" href="formules.html#komple
 <dl class="describe">
 <dt class="sig sig-object">
 <span class="sig-name descname"><span class="pre">resource.type</span></span></dt>
-<dd><p>Galimos reikšmės: <cite>xml</cite>, <cite>html</cite>.</p>
+<dd><p>Galimos reikšmės: <code class="docutils literal notranslate"><span class="pre">xml</span></code>, <code class="docutils literal notranslate"><span class="pre">html</span></code>.</p>
 </dd></dl>
 
 <dl class="describe">
@@ -591,7 +598,7 @@ yra modelio duomenys.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="id0">
 <span class="sig-name descname"><span class="pre">xpath</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">expr</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#id0" title="Link to this definition">#</a></dt>
-<dd><p>Vykdo nurodyta <cite>expr</cite>, viso XML dokumento kontekste.</p>
+<dd><p>Vykdo nurodyta <code class="docutils literal notranslate"><span class="pre">expr</span></code>, viso XML dokumento kontekste.</p>
 </dd></dl>
 
 </dd></dl>
@@ -601,6 +608,9 @@ yra modelio duomenys.</p>
 <span class="sig-name descname"><span class="pre">property.source</span></span></dt>
 <dd><p><a class="reference external" href="https://en.wikipedia.org/wiki/XPath">XPath</a> iki elemento kuriame yra
 duomenys.</p>
+<p>XPath nurodomas reliatyvus modeliui, arba kitai daugiareikšmei savybei,
+kurios sudėtyje savybė yra. Daugiareikšmės savybės žymimos <code class="docutils literal notranslate"><span class="pre">[]</span></code> simboliais
+savybės kodiniame pavadinime, įprastai tai yra <code class="docutils literal notranslate"><span class="pre">array</span></code> tipo savybės.</p>
 </dd></dl>
 
 <dl class="describe">
@@ -610,13 +620,319 @@ duomenys.</p>
 <a class="reference internal" href="formatas.html#model" title="model"><code class="xref py py-data docutils literal notranslate"><span class="pre">model</span></code></a> gauto elemento kontekste.</p>
 </dd></dl>
 
+<div class="admonition-pavyzdys admonition">
+<p class="admonition-title">Pavyzdys</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;countries&gt;</span>
+<span class="w">    </span><span class="nt">&lt;country</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;1&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Lithuania&quot;</span><span class="nt">&gt;</span>
+<span class="w">        </span><span class="nt">&lt;cities&gt;</span>
+<span class="w">            </span><span class="nt">&lt;city</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;10&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Vilnius&quot;</span><span class="nt">&gt;</span>
+<span class="w">                </span><span class="nt">&lt;streets&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;street</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;100&quot;</span><span class="nt">&gt;</span>Gedimino<span class="w"> </span>st.<span class="nt">&lt;/street&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;street</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;101&quot;</span><span class="nt">&gt;</span>Konstitucijos<span class="w"> </span>st.<span class="nt">&lt;/street&gt;</span>
+<span class="w">                </span><span class="nt">&lt;/streets&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/city&gt;</span>
+<span class="w">            </span><span class="nt">&lt;city</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;11&quot;</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;Kaunas&quot;</span><span class="nt">&gt;</span>
+<span class="w">                </span><span class="nt">&lt;streets&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;street</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;102&quot;</span><span class="nt">&gt;</span>Laisves<span class="w"> </span>st.<span class="nt">&lt;/street&gt;</span>
+<span class="w">                    </span><span class="nt">&lt;street</span><span class="w"> </span><span class="na">id=</span><span class="s">&quot;103&quot;</span><span class="nt">&gt;</span>Daukanto<span class="w"> </span>st.<span class="nt">&lt;/street&gt;</span>
+<span class="w">                </span><span class="nt">&lt;/streets&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/city&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/cities&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/country&gt;</span>
+<span class="nt">&lt;/countries&gt;</span>
+</pre></div>
+</div>
+<div class="mermaid">
+            classDiagram
+    direction LR
+
+    class Country {
+      + id: integer [1..1]
+      + name&#64;en: string [1..1]
+    }
+
+    class City {
+      + id: integer [1..1]
+      + name&#64;en: string [1..1]
+    }
+
+    class Street {
+      + id: integer [1..1]
+      + name&#64;en: string [1..1]
+    }
+
+    City --&gt; &quot;[1..1]&quot; Country : country
+    City &quot;[1..*]&quot; &lt;-- Country : cities
+
+    Street --&gt; &quot;[1..1]&quot; City : city
+    Street &quot;[1..*]&quot; &lt;-- City : streets
+        </div><div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p>Pagal aukščiau duotus duomenis ir koncepcinį modelį, struktūros aprašas
+atrodys taip:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>model</p></th>
+<th class="head"><p>property</p></th>
+<th class="head"><p>type</p></th>
+<th class="head"><p>ref</p></th>
+<th class="head"><p>source</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td colspan="2"><p><strong>Country</strong></p></td>
+<td></td>
+<td><p>id</p></td>
+<td><p><strong>countries/country</strong></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>id</p></td>
+<td><p>integer</p></td>
+<td></td>
+<td><p>&#64;id</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>name&#64;en</p></td>
+<td><p>string</p></td>
+<td></td>
+<td><p>&#64;name</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>cities[]</p></td>
+<td><p>backref</p></td>
+<td><p><strong>City</strong></p></td>
+<td><p>cities/city</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>cities[].id</p></td>
+<td><p>integer</p></td>
+<td></td>
+<td><p>&#64;id</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>cities[].name&#64;en</p></td>
+<td><p>string</p></td>
+<td></td>
+<td><p>&#64;name</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>cities[].country</p></td>
+<td><p>ref</p></td>
+<td><p><strong>Country</strong></p></td>
+<td><p>../../&#64;id</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>cities[].streets[]</p></td>
+<td><p>backref</p></td>
+<td><p><strong>Street</strong></p></td>
+<td><p>streets/street</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>cities[].streets[].id</p></td>
+<td><p>integer</p></td>
+<td></td>
+<td><p>&#64;id</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>cities[].streets[].name&#64;en</p></td>
+<td><p>string</p></td>
+<td></td>
+<td><p>&#64;name</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>cities[].streets[].city</p></td>
+<td><p>ref</p></td>
+<td><p><strong>City</strong></p></td>
+<td><p>../../&#64;id</p></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><p><strong>City</strong></p></td>
+<td></td>
+<td><p>id</p></td>
+<td><p><strong>countries/country/cities/city</strong></p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>id</p></td>
+<td><p>integer</p></td>
+<td></td>
+<td><p>&#64;id</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>name&#64;en</p></td>
+<td><p>string</p></td>
+<td></td>
+<td><p>&#64;name</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>country</p></td>
+<td><p>ref</p></td>
+<td><p><strong>Country</strong></p></td>
+<td><p>../../&#64;id</p></td>
+</tr>
+<tr class="row-odd"><td colspan="2"><p><strong>Street</strong></p></td>
+<td></td>
+<td><p>id</p></td>
+<td><p><strong>countries/country/cities/city/streets/street</strong></p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>id</p></td>
+<td><p>integer</p></td>
+<td></td>
+<td><p>&#64;id</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>name&#64;en</p></td>
+<td><p>string</p></td>
+<td></td>
+<td><p>&#64;name</p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>country</p></td>
+<td><p>ref</p></td>
+<td><p><strong>City</strong></p></td>
+<td><p>../../&#64;id</p></td>
+</tr>
+</tbody>
+</table>
+<p>Struktūros apraše matome du variantus, kaip gali būti aprašomi duomenys.
+Pirmu atveju <code class="docutils literal notranslate"><span class="pre">Country</span></code> modelyje naudojama objektų kompozicija, kur vieno
+<code class="docutils literal notranslate"><span class="pre">Country</span></code> objekto apimtyje, pateikiami ir kiti objektai.</p>
+<p>Reikia atkreipti dėmesį, kad savybės esančios kitos daugiareikšmės savybės
+sudėtyje, <a class="reference internal" href="dimensijos.html#property.source" title="property.source"><code class="xref py py-data docutils literal notranslate"><span class="pre">property.source</span></code></a> stulpelyje nurodo XPath išraišką
+reliatyvią daugereikšmei savybei. Daugiareikšmės savybės žymymos <code class="docutils literal notranslate"><span class="pre">[]</span></code> žyme.</p>
+<p>Pavyzdyje <code class="docutils literal notranslate"><span class="pre">cities[].id</span></code> <a class="reference internal" href="dimensijos.html#property.source" title="property.source"><code class="xref py py-data docutils literal notranslate"><span class="pre">property.source</span></code></a> stulpelyje nurodo <code class="docutils literal notranslate"><span class="pre">&#64;id</span></code>,
+kuris yra reliatyvus <code class="docutils literal notranslate"><span class="pre">cities[]</span></code> savybės <code class="docutils literal notranslate"><span class="pre">streets/street</span></code> atžvilgiu.</p>
+<p>Pagal struktūros aprašą pateiktą aukščiau, kreipiantis į <code class="docutils literal notranslate"><span class="pre">/Country</span></code>,
+gausime tokius <a class="reference external" href="https://ivpk.github.io/uapi">UDTS</a> specifikaciją atitinkančius duomenis:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Country&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;29df0534-389d-4eac-a048-799ac64d5103&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;en&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Lithuana&quot;</span><span class="p">},</span>
+<span class="w">    </span><span class="nt">&quot;cities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;City&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;4a7a3214-e6c3-4a5b-99a8-04be88eac3d4&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;en&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Vilnius&quot;</span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;country&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Country&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;29df0534-389d-4eac-a048-799ac64d5103&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;streets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Street&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;c1380514-549f-4cdd-b258-6fecc3a5bbda&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;en&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Gedimino st.&quot;</span><span class="p">},</span>
+<span class="w">                    </span><span class="nt">&quot;city&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;City&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;4a7a3214-e6c3-4a5b-99a8-04be88eac3d4&quot;</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Street&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;5c02f700-6478-43a0-a147-959927cb3c1c&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">101</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;en&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Konstitucijos st.&quot;</span><span class="p">},</span>
+<span class="w">                    </span><span class="nt">&quot;city&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;City&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;4a7a3214-e6c3-4a5b-99a8-04be88eac3d4&quot;</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;City&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0fee7d9a-6827-4931-bbea-d44d197faef2&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">11</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;en&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Kaunas&quot;</span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;country&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Country&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;29df0534-389d-4eac-a048-799ac64d5103&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;streets&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Street&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;399a37d6-63a7-43a4-82de-d3d5c75f5d02&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">102</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;en&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Laisves st.&quot;</span><span class="p">},</span>
+<span class="w">                    </span><span class="nt">&quot;city&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;City&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0fee7d9a-6827-4931-bbea-d44d197faef2&quot;</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                </span><span class="p">},</span>
+<span class="w">                </span><span class="p">{</span>
+<span class="w">                    </span><span class="nt">&quot;_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Street&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;5b04fecd-5fff-48f6-8674-7cc6da840281&quot;</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">103</span><span class="p">,</span>
+<span class="w">                    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;en&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Daukanto st.&quot;</span><span class="p">},</span>
+<span class="w">                    </span><span class="nt">&quot;city&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;City&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0fee7d9a-6827-4931-bbea-d44d197faef2&quot;</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                </span><span class="p">}</span>
+<span class="w">            </span><span class="p">]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Analogiškai, jei kreiptumėmės į <code class="docutils literal notranslate"><span class="pre">/Street</span></code>, gautume visas gatves iš visų miestų:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;_data&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Street&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;c1380514-549f-4cdd-b258-6fecc3a5bbda&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;en&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Gedimino st.&quot;</span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;city&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;City&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;4a7a3214-e6c3-4a5b-99a8-04be88eac3d4&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Street&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;5c02f700-6478-43a0-a147-959927cb3c1c&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">101</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;en&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Konstitucijos st.&quot;</span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;city&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;City&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;4a7a3214-e6c3-4a5b-99a8-04be88eac3d4&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Street&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;399a37d6-63a7-43a4-82de-d3d5c75f5d02&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">102</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;en&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Laisves st.&quot;</span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;city&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;City&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0fee7d9a-6827-4931-bbea-d44d197faef2&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">        </span><span class="p">},</span>
+<span class="w">        </span><span class="p">{</span>
+<span class="w">            </span><span class="nt">&quot;_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Street&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;5b04fecd-5fff-48f6-8674-7cc6da840281&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">103</span><span class="p">,</span>
+<span class="w">            </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="nt">&quot;en&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Daukanto st.&quot;</span><span class="p">},</span>
+<span class="w">            </span><span class="nt">&quot;city&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;City&quot;</span><span class="p">,</span>
+<span class="w">                </span><span class="nt">&quot;_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;0fee7d9a-6827-4931-bbea-d44d197faef2&quot;</span>
+<span class="w">            </span><span class="p">},</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
 </section>
 <section id="xlsx">
 <h2>XLSX<a class="headerlink" href="#xlsx" title="Link to this heading">#</a></h2>
 <dl class="describe">
 <dt class="sig sig-object">
 <span class="sig-name descname"><span class="pre">resource.type</span></span></dt>
-<dd><p>Galimos reikšmės: <cite>xlsx</cite>, <cite>xls</cite> arba <cite>odt</cite>.</p>
+<dd><p>Galimos reikšmės: <code class="docutils literal notranslate"><span class="pre">xlsx</span></code>, <code class="docutils literal notranslate"><span class="pre">xls</span></code> arba <code class="docutils literal notranslate"><span class="pre">odt</span></code>.</p>
 </dd></dl>
 
 <dl class="describe">
