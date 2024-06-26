@@ -931,7 +931,7 @@ kelis jau aprašytus laukus.
 .. _kompleksinės-struktūros:
 
 Kompleksinės struktūros
------------------------
+=======================
 
 Daugelis duomenų šaltiniu turi galimybę saugoti kompleksines struktūras. Jei
 duomenys yra kompleksiniai, tada :data:`property.source` stulpelyje galima
@@ -1003,6 +1003,25 @@ Kaip pavyzdį naudosime tokią :term:`JSON` duomenų struktūrą:
 
             >>> self.result.results[].tags[]
             ["CSV"]
+
+    .. function:: first(object, default)
+
+        Grąžina pirmą `object` sąrašo reikšmę, jei sąrašas tuščias, tada
+        grąžina `default` reikšmę, jei `default` nenurodytas, tada nutraukia
+        vykdymą su klaidą.
+
+        .. code-block:: python
+
+            >>> self.result.results[].tags.first()
+            "CSV"
+            
+        Jei `self.result.results[].tags būtų tuščias, tada:
+
+        .. code-block:: python
+
+            >>> self.result.results[].tags.first(null)
+            null
+
 
 Analogiška struktūra gali būti gaunama ir lentelėse, kai stulpelių pavadinimai
 nurodyti keliose eilutėse, pavyzdyje pateiktą struktūrą atitiktų tokia lentelė:

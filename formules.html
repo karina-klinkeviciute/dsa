@@ -403,11 +403,12 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#func.url"><code class="docutils literal notranslate"><span class="pre">url()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#func.query"><code class="docutils literal notranslate"><span class="pre">query()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#func.path"><code class="docutils literal notranslate"><span class="pre">path()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kompleksines-strukturos">Kompleksinės struktūros</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id13"><code class="docutils literal notranslate"><span class="pre">getattr()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id14"><code class="docutils literal notranslate"><span class="pre">getitem()</span></code></a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kompleksines-strukturos">Kompleksinės struktūros</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13"><code class="docutils literal notranslate"><span class="pre">getattr()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14"><code class="docutils literal notranslate"><span class="pre">getitem()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#func.first"><code class="docutils literal notranslate"><span class="pre">first()</span></code></a></li>
 </ul>
 </li>
 </ul>
@@ -1607,8 +1608,9 @@ reikšmių, tenkinančių switch prepare sąlygą.</p>
 
 </dd></dl>
 
+</section>
 <section id="kompleksines-strukturos">
-<span id="id12"></span><h3>Kompleksinės struktūros<a class="headerlink" href="#kompleksines-strukturos" title="Link to this heading">#</a></h3>
+<span id="id12"></span><h2>Kompleksinės struktūros<a class="headerlink" href="#kompleksines-strukturos" title="Link to this heading">#</a></h2>
 <p>Daugelis duomenų šaltiniu turi galimybę saugoti kompleksines struktūras. Jei
 duomenys yra kompleksiniai, tada <a class="reference internal" href="dimensijos.html#property.source" title="property.source"><code class="xref py py-data docutils literal notranslate"><span class="pre">property.source</span></code></a> stulpelyje galima
 nurodyti tik duomens pavadinimą iš pirmojo lygmens, gilesniuose lygmenyse
@@ -1673,6 +1675,23 @@ pateikiant filtro sąlygą.</p>
 </div>
 </dd></dl>
 
+<dl class="py function">
+<dt class="sig sig-object py" id="func.first">
+<span class="sig-prename descclassname"><span class="pre">func.</span></span><span class="sig-name descname"><span class="pre">first</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">default</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#func.first" title="Link to this definition">#</a></dt>
+<dd><p>Grąžina pirmą <code class="docutils literal notranslate"><span class="pre">object</span></code> sąrašo reikšmę, jei sąrašas tuščias, tada
+grąžina <code class="docutils literal notranslate"><span class="pre">default</span></code> reikšmę, jei <code class="docutils literal notranslate"><span class="pre">default</span></code> nenurodytas, tada nutraukia
+vykdymą su klaidą.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">results</span><span class="p">[]</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">first</span><span class="p">()</span>
+<span class="go">&quot;CSV&quot;</span>
+</pre></div>
+</div>
+<p>Jei <a href="#id15"><span class="problematic" id="id16">`</span></a>self.result.results[].tags būtų tuščias, tada:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="bp">self</span><span class="o">.</span><span class="n">result</span><span class="o">.</span><span class="n">results</span><span class="p">[]</span><span class="o">.</span><span class="n">tags</span><span class="o">.</span><span class="n">first</span><span class="p">(</span><span class="n">null</span><span class="p">)</span>
+<span class="go">null</span>
+</pre></div>
+</div>
+</dd></dl>
+
 </dd></dl>
 
 <p>Analogiška struktūra gali būti gaunama ir lentelėse, kai stulpelių pavadinimai
@@ -1701,7 +1720,6 @@ nurodyti keliose eilutėse, pavyzdyje pateiktą struktūrą atitiktų tokia lent
 </table>
 <p>Šioje lentelėje stulpelių pavadinimai pateikti trijose eilutėse, todėl
 <code class="docutils literal notranslate"><span class="pre">model.prepare</span></code> reikėtų naudoti <a class="reference internal" href="#func.header" title="func.header"><code class="xref py py-func docutils literal notranslate"><span class="pre">header(0,</span> <span class="pre">1,</span> <span class="pre">2)</span></code></a>.</p>
-</section>
 </section>
 </section>
 
@@ -1835,11 +1853,12 @@ nurodyti keliose eilutėse, pavyzdyje pateiktą struktūrą atitiktų tokia lent
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#func.url"><code class="docutils literal notranslate"><span class="pre">url()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#func.query"><code class="docutils literal notranslate"><span class="pre">query()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#func.path"><code class="docutils literal notranslate"><span class="pre">path()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kompleksines-strukturos">Kompleksinės struktūros</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id13"><code class="docutils literal notranslate"><span class="pre">getattr()</span></code></a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id14"><code class="docutils literal notranslate"><span class="pre">getitem()</span></code></a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kompleksines-strukturos">Kompleksinės struktūros</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id13"><code class="docutils literal notranslate"><span class="pre">getattr()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id14"><code class="docutils literal notranslate"><span class="pre">getitem()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#func.first"><code class="docutils literal notranslate"><span class="pre">first()</span></code></a></li>
 </ul>
 </li>
 </ul>
