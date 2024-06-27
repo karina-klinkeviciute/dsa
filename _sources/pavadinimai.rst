@@ -46,11 +46,13 @@ Kiekvieno modelio pavadinimo pirma raidė didžioji, kitos mažosios.
 Pavadinimo žodžiai atskiriami juos užrašant iš didžiosios raidės. Tarp
 žodžių neturi būti nei tarpų, nei kitų skyrybos ženklų.
 
-Modelio pavadinimai užrašomi vienaskaita išskyrus atvejus, kai subjekto
-pavadinimas neturi vienaskaitos žodžio formos, pavyzdžiui rašom `Pajamos`, nes
-tokio žodžio kaip `Pajama` nėra.
+Modelio pavadinimas įprastai užrašomas veinaskaitos forma.
 
-Modelio pavadinimas turi prasidėti didžiąja raide.
+Modelio kodinius pavadinimus užrašome taip, kaip pavadintume vieną objektą,
+kuriam yra taikomas duomenų modelis. Tarkime jei aprašome pastatus, tai vienas
+pastatas būtų vadinamas vienaskaitos forma `Pastatas`. Tačiau, jei vienas
+objektas yra patatų grupė, kuriuos jungia bendra paskirtis, tada galima
+pavadinti `Pastatai` arba `PastatuKompleksas`.
 
 Modelio pavadinimas turi atspindėti `duomenų subjekto`__ tipą.
 Duomenų subjektas yra dalykas turintis pavadinimą ar unikalų identifikatorių.
