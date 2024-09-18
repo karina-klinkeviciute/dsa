@@ -403,36 +403,63 @@ Duomenų tipai
     eiliškumą, kuris nurodytas EPSG_ parametrų duomenų bazėje, konkrečiai
     koordinačių sistemai, kuria pateikiami duomenys.
 
+    Svarbu, kad pateikiant duomenis, koordinačių ašių eiliškumas atitiktų tokį
+    eiliškumą, kuris nurodytas EPSG_ parametrų duomenų bazėje, konkrečiai
+    koordinačių sistemai, kuria pateikiami duomenys.
+
+    .. admonition:: Pavyzdys
+
+        a) pateikiant duomenis  LKS 94 (SRID:3346) ir WGS84 (SRID:4326)
+           koordinačių sistemose į ADP Saugyklą turi būti laikomasi eiliškumo:
+           pirmiausia pateikiama X (į šiaurę/platumos/latitude), o po to Y (į
+           rytus/ilgumos/longitute) reikšmės;
+
+        b) tačiau pateikiant duomenis  WGS84/Pseudo-Merkator (SRID:3857)
+           koordinačių sistemoje jau atvirkščiai – pirmiausia pateikiama  rytų
+           ilgumos, o po to šiaurės platumos reikšmės.  
+
     Pilną SRID_ kodų sąrašą galite rasti `epsg.io`_ svetainėje. Keletas
     dažniau naudojamų SRID_ kodų:
 
     .. _epsg.io: https://epsg.io/
 
-    ======  ==========================  =======  ==================   =======  ==================  =========
-    \                                   ašis #1                       ašis #2
-    ------  --------------------------  ---------------------------   ---------------------------  ---------
-    SRID    CRS                         kryptis  žymėjimas            kryptis  žymėjimas           vienetai
-    ======  ==========================  =======  ==================   =======  ==================  =========
-    `4326`  `WGS84`_                    šiaurė   latitude (platuma)   rytai    longitude (ilguma)  laipsniai
-    `3346`  `LKS94`_                    šiaurė   x (abscisė)          rytai    y (ordinatė)        metrai
-    `3857`  `WGS84 / Pseudo-Mercator`_  rytai    x (abscisė)          šiaurė   y (ordinatė)        metrai
-    `4258`  `ETRS89`_                   šiaurė   latitude (platuma)   rytai    longitude (ilguma)  laipsniai
-    ======  ==========================  =======  ==================   =======  ==================  =========
+    ======  =======================  ===================================================================  ===================  ============
+    SRID    CRS                      Pavyzdys                                                             ašys                 orientacija 
+    ======  =======================  ===================================================================  ===================  ============
+    4326_   WGS84                    `POINT(54.6981 25.2738) <ex4326_>`_                                  lat, lon             north, east
+    3346_   LKS94                    `POINT(6063156 582111) <ex3346_>`_                                   north, east (x, y)   north, east
+    3857_   WGS84 / Pseudo-Merctor   `POINT(2813472 7303494) <ex3857_>`_                                  lon, lat             east, north
+    4258_   ETRS89                   `POINT(54.6981 25.2738) <ex4258_>`_                                  lat, lon             north, east
+    ======  =======================  ===================================================================  ===================  ============
 
-    .. _WGS84: https://epsg.io/4326
-    .. _LKS94: https://epsg.io/3346
-    .. _WGS84 / Pseudo-Mercator: https://epsg.io/3857
-    .. _ETRS89: https://epsg.io/4258
+    .. _4326: https://epsg.io/4326
+    .. _3346: https://epsg.io/3346
+    .. _3857: https://epsg.io/3857
+    .. _4258: https://epsg.io/4258
 
-    *Atkreipkite dėmesį, kad LKS94 koordinačių sistemoje geometrinės ašys
-    neatitinka matematinių ašių ir yra sukeistos vietomis. Įprastai šiaurė ir y
-    ašis yra viršuje, tačiau LKS94 atveju šiaurėje yra x ašis.*
+    .. _ex4326: https://get.data.gov.lt/_srid/4326/54.6981/25.2738
+    .. _ex3346: https://get.data.gov.lt/_srid/3346/6063156/582111
+    .. _ex3857: https://get.data.gov.lt/_srid/3857/2813472/7303494
+    .. _ex4258: https://get.data.gov.lt/_srid/4258/54.6981/25.2738
 
-        Ašinio meridiano projekcija yra abscisių (x) ašis. Šios ašies
-        teigiamoji kryptis nukreipta į šiaurę. Ordinačių (y) ašies teigiamoji
-        kryptis nukreipta į rytus.
+    .. note::
 
-        -- https://www.e-tar.lt/portal/lt/legalAct/TAR.6D575923F94A
+        Atkreipkite dėmesį, kad LKS94 koordinačių sistemoje geometrinės ašys
+        neatitinka įprastinio ašių eiliškumo naudojamo GIS sistemose. LKS94 pirmas
+        skaičius yra apytiksliai 6,000,000 metrų nuo pusiaujo į šiaurę, o antrasis
+        skaičius apytiksliai 500,000 metrų į rytus, skaičiuojant nuo 24º rytų
+        meridiano, atėmus 500km. Teikiant duomenis, taškai turėtu atrodyti taip:
+        `6000000 500000`, pirmas ilgesnis, antras trumpesnis.
+
+            Ašinio meridiano projekcija yra abscisių (x) ašis. Šios ašies
+            teigiamoji kryptis nukreipta į šiaurę. Ordinačių (y) ašies
+            teigiamoji kryptis nukreipta į rytus.
+
+            Išvyniojus cilindrą, gaunamos stačiakampės koordinatės su x
+            šiaurinės abscisės pradžia pusiaujuje ir y rytinės ordinatės
+            reikšme 24°C meridiane 500 000 metrų.
+
+            -- https://www.e-tar.lt/portal/lt/legalAct/TAR.6D575923F94A
 
     Prieš publikuojant duomenis, galite pasitikrinti, ar koordinačių ašys
     pateikiamos teisinga tvarka, naudotami taško atvaizdavimo įrankį.
@@ -456,7 +483,7 @@ Duomenų tipai
     - `{ašis2}` - antrosios ašies reikšmė (kryptis priklauso nuo `{srid}`)
 
 
-    .. admonition:: Pavyzdžiai :data:`property.type`
+    .. admonition:: Pavyzdinės :data:`property.type` reikšmės
 
         - `geometry` - WGS84 projekcijos, bet kokio  tipo geometriniai
           objektai.
@@ -471,7 +498,7 @@ Duomenų tipai
           geometriniai objektai su pasirinktu matmeniu, kaip trečia dimensija.
 
 
-    .. admonition:: Pavyzdžiai (duomenys)
+    .. admonition:: Pavyzdys (duomenys)
 
         Vilniaus Katedros varpinės bokšto taškas, LKS94 (EPSG:3346) koordinačių
         sistemoje:
