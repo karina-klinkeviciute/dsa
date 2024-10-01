@@ -609,7 +609,9 @@ vienos esybės modeliai turi turėti vienodus identifikatorius.
 
 .. data:: access
 
-    Modeliui priklausančių laukų :ref:`prieigos lygis <access>`. Paveldimas.
+    Modeliui priklausančių laukų :ref:`prieigos lygis <access>`.
+
+    Modelio prieigos lygis yra išskaičiuojamas iš modeliui priskirtų duomenų laukų, imant didžiausią prieigos lygmenį nurodytą prie duomenų lauko. Pavyzdžiui, jei bent vienas duomenų laukas turi aukščiausią `open` prieigos lygmenį, tada ir viso modelio prieigos lygis tampa `open`.
 
     .. seealso::
 
