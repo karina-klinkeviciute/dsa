@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Keitimų istorija &#8212; DSA</title>
+    <title>Apibendrinimas &#8212; DSA</title>
   
   
   
@@ -49,10 +49,11 @@
     <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script src="_static/translations.js?v=3b848cde"></script>
     <script src="_static/design-tabs.js?v=36754332"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'keitimai';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'apibendrinimas';</script>
     <link rel="index" title="Indeksas" href="genindex.html" />
     <link rel="search" title="Paieška" href="search.html" />
-    <link rel="prev" title="Sąvokos" href="savokos.html" />
+    <link rel="next" title="Asociacija" href="identifikatoriai.html" />
+    <link rel="prev" title="Matavimo vienetai" href="vienetai.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="lt"/>
   </head>
@@ -161,7 +162,7 @@
 <li class="toctree-l1"><a class="reference internal" href="tipai.html">Duomenų tipai</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pavadinimai.html">Kodiniai pavadinimai</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vienetai.html">Matavimo vienetai</a></li>
-<li class="toctree-l1"><a class="reference internal" href="apibendrinimas.html">Apibendrinimas</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Apibendrinimas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="identifikatoriai.html">Asociacija</a></li>
 <li class="toctree-l1"><a class="reference internal" href="branda.html">Brandos lygiai</a></li>
 <li class="toctree-l1"><a class="reference internal" href="prieiga.html">Prieigos lygiai</a></li>
@@ -170,7 +171,7 @@
 <li class="toctree-l1"><a class="reference internal" href="zodynai.html">Išoriniai žodynai</a></li>
 <li class="toctree-l1"><a class="reference internal" href="formules.html">Formulės</a></li>
 <li class="toctree-l1"><a class="reference internal" href="savokos.html">Sąvokos</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Keitimų istorija</a></li>
+<li class="toctree-l1"><a class="reference internal" href="keitimai.html">Keitimų istorija</a></li>
 </ul>
 
     </div>
@@ -242,7 +243,7 @@
       
       
       
-      <li><a href="https://github.com/ivpk/dsa/issues/new?title=Issue%20on%20page%20%2Fkeitimai.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/ivpk/dsa/issues/new?title=Issue%20on%20page%20%2Fapibendrinimas.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Atidarykite problemą"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -295,9 +296,7 @@ document.write(`
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -308,21 +307,11 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Keitimų istorija</h1>
+    <h1>Apibendrinimas</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Turinys </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neisleista">1.1.0 (neišleista)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.0.0 (neišleista)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">0.1.0 (2022-03-03)</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -332,27 +321,18 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section id="keitimu-istorija">
-<span id="keitimai"></span><h1>Keitimų istorija<a class="headerlink" href="#keitimu-istorija" title="Link to this heading">#</a></h1>
-<section id="neisleista">
-<h2>1.1.0 (neišleista)<a class="headerlink" href="#neisleista" title="Link to this heading">#</a></h2>
+  <section id="apibendrinimas">
+<span id="generalization"></span><h1>Apibendrinimas<a class="headerlink" href="#apibendrinimas" title="Link to this heading">#</a></h1>
+<p>Duomenų apibendrinimas, generalizavimas arba paveldimumas yra būdas nurodyti,
+kad keli skirtingi duomenų modeliai priklauso tai pačiai vienai koncepcinio
+modelio klasei.</p>
+<div class="admonition seealso">
+<p class="admonition-title">Taip pat žiūrėkite</p>
 <ul class="simple">
-<li><p>Pridėtos <code class="docutils literal notranslate"><span class="pre">select()</span></code>, <code class="docutils literal notranslate"><span class="pre">expand()</span></code>, <code class="docutils literal notranslate"><span class="pre">include()</span></code> ir <code class="docutils literal notranslate"><span class="pre">exclude()</span></code> funkcijos.</p></li>
+<li><p><a class="reference internal" href="modelis.html#uml-index"><span class="std std-ref">Koncepcinis modelis</span></a> / <a class="reference internal" href="modelis.html#uml-generalization"><span class="std std-ref">Apibendrinimas</span></a></p></li>
+<li><p><a class="reference internal" href="dimensijos.html#dimensijos"><span class="std std-ref">Dimensijos</span></a> / <a class="reference internal" href="dimensijos.html#base"><span class="std std-ref">base</span></a></p></li>
 </ul>
-</section>
-<section id="id1">
-<h2>1.0.0 (neišleista)<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>Panaikinta <a class="reference internal" href="dimensijos.html#base"><span class="std std-ref">base</span></a> dimensija, baziniai modeliai perkeliami į
-<a class="reference internal" href="dimensijos.html#model.type" title="model.type"><code class="xref py py-data docutils literal notranslate"><span class="pre">model.type</span></code></a>.</p></li>
-<li><p>Panaikinta <a class="reference internal" href="dimensijos.html#param"><span class="std std-ref">param</span></a> dimensija, parametrizavimas perkeltas prie
-<a class="reference internal" href="dimensijos.html#property"><span class="std std-ref">property</span></a>, <a class="reference internal" href="dimensijos.html#property.type" title="property.type"><code class="xref py py-data docutils literal notranslate"><span class="pre">property.type</span></code></a> stulpelyje nurodant <code class="docutils literal notranslate"><span class="pre">param</span></code>.</p></li>
-</ul>
-</section>
-<section id="id2">
-<h2>0.1.0 (2022-03-03)<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>Pirmoji duomenų struktūros aprašo versija.</p>
-</section>
+</div>
 </section>
 
 
@@ -367,13 +347,22 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="savokos.html"
+       href="vienetai.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">praeitas</p>
-        <p class="prev-next-title">Sąvokos</p>
+        <p class="prev-next-title">Matavimo vienetai</p>
       </div>
+    </a>
+    <a class="right-next"
+       href="identifikatoriai.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">kitas</p>
+        <p class="prev-next-title">Asociacija</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -382,22 +371,7 @@ document.write(`
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Turinys
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#neisleista">1.1.0 (neišleista)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1.0.0 (neišleista)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">0.1.0 (2022-03-03)</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
+                <div class="bd-sidebar-secondary bd-toc"></div>
               
             
           </div>

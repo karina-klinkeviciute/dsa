@@ -2,8 +2,8 @@
 
 .. _ryšiai:
 
-Ryšiai tarp modelių
-###################
+Asociacija
+##########
 
 Pateikiant metaduomenis apie ryšius tarp modelių, duomenų :ref:`brandos lygis
 <level>` pakeliamas iki ketvirto lygio.
@@ -11,8 +11,222 @@ Pateikiant metaduomenis apie ryšius tarp modelių, duomenų :ref:`brandos lygis
 Ryšiai tarp modelių aprašomi tais atvejais, kai vienoje duomenų lentelėje
 naudojami identifikatoriai iš kitos lentelės.
 
-Jungimas per pirminį raktą
-==========================
+.. _composition:
+
+Kompozicija
+===========
+
+Kompozicija arba duomenų normalizavimas yra duomenų modeliavimo principas, kai
+atskiros duomenų klasės yra pateikiamos kaip atskiri duomenų modeliai, kurie
+gali būti jungiami tarpusavyje, taikant įvairius :ref:`duomenų jungimo būdus
+<ref-types>`. 
+
+Pavyzdžiui turint tokią koncepcinio modelio klasių diagramą:
+
+.. mermaid::
+
+   classDiagram
+     direction LR
+
+     class Country {
+       + code: integer [1..1]
+       + name@en: string [1..1]
+     }
+
+     class City {
+       + name@en: string [1..1]
+     }
+
+     City  --> "[1..*]" Country : country
+
+Duomenų modelis, taikant kompoziciją atrodytų taip:
+
+.. _norm-dsa-example-1:
+.. table:: Kompozicijos pavyzdys
+
+    ======== ====== ================== ========= ======== ======
+    dataset  model  property           type      ref      level 
+    ======== ====== ================== ========= ======== ======
+    datasets/gov/rc/ar/ws                                       
+    ---------------------------------- --------- -------- ------
+    \        Country                             code     4     
+    -------- ------------------------- --------- -------- ------
+    \               code               string             4     
+    \               name\@en           string             4     
+    \        City                                         3     
+    -------- ------------------------- --------- -------- ------
+    \               name\@en           string             4     
+    \               country            ref       Country  4     
+    ======== ====== ================== ========= ======== ======
+
+Taikant kompozicijos principą, kiekvienai klasei kuriamas atskiras
+nepriklausomas duomenų modelis, o atskiri modeliai jungiami tarpusavyje
+ryšiais.
+
+
+.. _ref-denorm:
+
+Jungtinis modelis
+=================
+
+Jungtinis modelis yra toks duomenų modelis, kuriame apjungiamos savybės iš
+daugiau nei vienos koncepcinio modelio klasės. Jungtinis modelis yra priešingas
+dalykas :ref:`kompozicijai <composition>`, kur kompozicija išskaido klases į
+atskirus modelius, jungtinis modelis atvirkščiai apjungia klases į vieną
+modelį.
+
+Jungtinis modelis dar yra vadinamas agregatu arba denormalizuotu duomenų
+modeliu.
+
+Jungtinis modelis turi vieną šakninį modelį (angl. *aggregate root*), prie
+kurio prijungiami kiti modeliai naudojant vieną iš :ref:`duomenų jungimo būdų
+<ref-types>`.
+
+Žiamiau pateikiamas jungtinio modelio pavyzdys.
+
+.. _denorm-dsa-example-1:
+.. table:: Jungtinio modelio pavyzdys
+
+    ======== ====== ================== ========= ======= =====
+    dataset  model  property           type      ref     level
+    ======== ====== ================== ========= ======= =====
+    datasets/gov/rc/ar/ws    
+    ---------------------------------- --------- ------- -----
+    \        Country                             code    4
+    -------- ------------------------- --------- ------- -----
+    \               code               string            4
+    \               name\@en           string            4
+    \        City                                        3
+    -------- ------------------------- --------- ------- -----
+    \               name\@en           string            4
+    \               country            ref       Country 4
+    \               country.code                         4
+    \               country.name\@en                     4
+    \               country.name\@lt   string            4
+    ======== ====== ================== ========= ======= =====
+
+Pavyzdyje `City` yra jungtinis modelis, kadangi `City` išvardintos ne tik
+`City` klasei priklausančios savybės, tačiau įtraukiamos ir kitos klasės
+`Country` savybės.
+
+`City` šiame pavyzdyje yra šakninis modelis, o `Country` yra modelis,
+prijungtas per `City/country` savybę.
+
+
+.. _prop-expand:
+
+Savybių įtraukimas
+------------------
+
+Kad jungtiniame modelyje nereikėtu kartoti prijungiamo modelio savybių, galima
+pateikti `expand()` funkciją :data:`model.prepare` arba
+:data:`property.prepare` stulpeliuose.
+
+Perrašant :ref:`denorm-dsa-example-1` lentelę su `expand()`, gautume, tokią
+trumpesnę struktūros aprašo lentelę:
+
+.. table:: Jungtinio modelio pavyzdys su expand()
+
+    ======== ====== ================== ========= ======== =========== ======
+    dataset  model  property           type      ref      prepare     level 
+    ======== ====== ================== ========= ======== =========== ======
+    datasets/gov/rc/ar/ws                                                   
+    ---------------------------------- --------- -------- ----------- ------
+    \        Country                             code                 4     
+    -------- ------------------------- --------- -------- ----------- ------
+    \               code               string                         4     
+    \               name\@en           string                         4     
+    \        City                                                     3     
+    -------- ------------------------- --------- -------- ----------- ------
+    \               name\@en           string                         4     
+    \               country            ref       Country  expand()    4     
+    \               country.name\@lt   string                         4     
+    ======== ====== ================== ========= ======== =========== ======
+
+Ši lentelė yra lygiai tokia pati kaip ir :ref:`denorm-dsa-example-1`.
+
+Prie `City/country` nurodyta `expand()` funkcija į `City` modelį įtraukia
+visas `Country` savybes.
+
+Jei norima įtraukti ne visas `Country` savybes, reikia naudoti `include()`
+funkciją, pateikiant sąrašą savybių, kurias norima įtraukti, pavyzdžiui
+`include(code)` - bus įtraukta tik viena `Country/code` savybė. Kelias savybes
+galima išvardinti, atskiriant savybių pavadinimus kableliu.
+
+Prie `City` modelio yra įtraukta ir `City/country.name\@lt` savybė, kurios nėra
+`Country` modelyje.
+
+`expand()` įtraukia visas savybes, kurios išvardintos prie modelio, įskaitant
+ir jungtinio modelio savybes iš kitų klasių.
+
+
+Daugiareikšmiškumas
+===================
+
+
+Duomenų kilmė
+=============
+
+Įprastai duomenys yra registruojami vieną kartą pirminiame šaltinyje ir daug
+kartų pernaudojami išvestiniuose šaltiniuose. Informacija apie tai iš kokio
+pirminio šaldinio duomenys pateko į išvestinį šaltinį, vadinama duomenų kilme.
+
+Struktūros aprašuose, duomenų kilmė pažymima nepildant :data:`property.type`
+stulpleio. Jei :data:`property.type` yra neužpildytas, nurodoma, kad modelis
+kuriame pateikta savybė, nėra pirminis šios savybės šaltinis.
+
+Jei modelis yra kito jungtinio modelio dalis arba pirminio modelio dalis,
+:data:`property.type` stulpelis yra nepildomas, jei savybės modelyje yra
+pateikiamos tik skaitymui, be galimybės keisti savybių reikšmių.
+
+- jei :data:`property.type` užpildytas, tada nurodoma, kad ši savybė yra
+  :term:`pirminis duomenų šaltinis`, tos savybės duomenys gali būti keičiami
+  duomenų modelyje prie kurios savybė yra pateikta,
+- jei `type` nenurodytas, tada nurodoma, kad ši savybė nėra :term:`pirminis
+  duomenų šaltinis` ir gali būti naudojama tik skaitymui, be galimybės keisti
+  savybės reikšias per modelį, kuriame savybė pateikita.
+
+Pavyzdžiui turime jungtinį `City` modelį:
+
+======== ====== ================== ========= ======= =====
+dataset  model  property           type      ref     level
+======== ====== ================== ========= ======= =====
+datasets/gov/rc/ar/ws    
+---------------------------------- --------- ------- -----
+\        Country                             code    4
+-------- ------------------------- --------- ------- -----
+\               code               string            4
+\               name\@en           string            4
+\        City                                        3
+-------- ------------------------- --------- ------- -----
+\               name\@en           string            4
+\               country            ref       Country 4
+\               country.code                         4
+\               country.name\@en                     4
+\               country.name\@lt   string            4
+======== ====== ================== ========= ======= =====
+
+Kuriame prie `City` prijungiama `Country` klasė.`country.code` ir
+`country.name\@en` neturi :data:`property.type`, nurodant, kad `City` jungtinis
+modelis nėra šių savybių pirminis šaltinis ir šios savybės gali būti naudojamos
+tik skaitymo tikslais.
+
+Tačiau `City/country.name\@lt` turi :data:`property.type`, todėl `City`
+jungtinis modelis yra šios savybės pirminis šaltinis.
+
+Jei ta pati savybė turi daugiau nei vieną pirminį šaltinį, tada savybės, kuri
+nurodo :data:`property.type` ir yra pateikta prie išvestinio arba jungtinio
+modelio, brandos lygis yra `2`, kadangi negali būti du pirminiai duomenų
+šaltiniai viename objektui.
+
+
+.. _ref-types:
+
+Jungimo būdai
+=============
+
+Per pirminį raktą
+-----------------
 
 Pavyzdžiui, jei turime tokias dvi duomenų lenteles:
 
@@ -101,8 +315,8 @@ duomenų tipas turi sutapti su `Country.code` duomenų tipu, kuris yra `string`.
 
 .. _ref-fkey:
 
-Jungimas per nepirminį raktą
-============================
+Per nepirminį raktą
+-------------------
 
 Jei modelius reikia jungti ne per pirminį raktą, o per kitus laukus, tada
 naudojama `model[property]` forma.
@@ -155,8 +369,8 @@ pirminį raktą, jei pateiktas stulpelis laužtiniuose skliausteliuose, tada
 jungiama per nurodytą stulpelį.
 
 
-Jungimas per kompozicinį raktą
-==============================
+Per kompozicinį raktą
+---------------------
 
 Jei modelius reikia jungti per kelis laukus, tada naudojama
 `model[*property]` forma, kur laužtiniuose skliaustuose pateikiami keli
@@ -213,14 +427,15 @@ kuris išskaičiuojamas apjungiant `country_id` ir `country_code`. O ryšiui su
 `Country` modelio. Abiejų jungiamų pusių pateiktas laukų sąrašas turi būti
 vienodo eiliškumo, o jungiami laukai turi turėti vienodus tipus.
 
-Jei `Country` pirminis raktas būtų kompozicinis, pavyzdžiui `id, code`,
-tuomet, 11-oje eilutėje `property.ref` užtektu nurodyti tik `Country`.
+Jei `Country` pirminis raktas būtų :term:`kompozicinis <kompozicinis raktas>`,
+pavyzdžiui `id, code`, tuomet, 11-oje eilutėje `property.ref` užtektu nurodyti
+tik `Country`.
 
 
 .. _atgalinis-ryšys:
 
-Jungimas atgaliniu ryšiu
-========================
+Atgalinis ryšys
+---------------
 
 Jungiant modelius atgaliniu ryšiu kuriamas išvestinis arba virtualus laukas,
 kuriame analogiškai kaip ir paprasto ryšio atveju, apjungiami du modeliai,
@@ -299,7 +514,7 @@ kurį jungiama, pavyzdžiui `City[country]`.
 .. _polimorfinis-ryšys:
 
 Polimorfinis jungimas
-=====================
+---------------------
 
 .. note:: Tokio tipo jungimas kol kas dar nėra įgyvendintas.
 
@@ -378,75 +593,6 @@ ateina iš išorinio šaltinio. Jei duomenys rašomi tiesiogiai į :ref:`Saugykl
 <saugykla>`, tada atskirai `generic` laukų apsirašyti nereikia.
 
 
-.. _ref-denorm:
-
-Denormalizuoti duomenys
-=======================
-
-Denormalizuoti duomenų laukai yra tokie laukai, kurie pateikti viename
-modelyje, tačiau pagal semantinę prasmę priklauso skirtingiems modeliams.
-
-Dažniausiai duomenų normalizavimas atveriant duomenis yra nepageidaujamas ir
-duomenų struktūra turėtu būti transformuojama į skirtingus modelius, pagal
-semantinę prasmę. Plačiau apie duomenų normalizavimą galite skaityti skyriuje
-:ref:`norm`.
-
-Tačiau tais atvejais, kai vis dėlto norima pateikti duomenis denormalizuotoje
-formoje, duomenų struktūros apraše galima nurodyti, kurie duomenų laukai yra
-denormalizuoti.
-
-Pavyzdys, kaip atrodo denormalizuotų duomenų laukų žymėjimas:
-
-
-== == == == ================== ========= ======= =====
-d  r  b  m  property           type      ref     level
-== == == == ================== ========= ======= =====
-example                       
------------------------------- --------- ------- -----
-\        Country                         code    4
--- -- -- --------------------- --------- ------- -----
-\           code               string            4
-\           name\@en           text              4
-\        City                                    3
--- -- -- --------------------- --------- ------- -----
-\           name\@en           text              4
-\           country            ref       Country 4
-\           country.code                         2
-\           country.name\@en                     2
-\           country.name\@lt   text              2
-== == == == ================== ========= ======= =====
-
-Šiame pavyzdyje turime tokius laukus:
-
-`country`
-    Šis laukas yra `ref` tipo, tai reiškia, kad šiame lauke saugomas `Country`
-    modelio identifikatorius, kurio pagalba `City` galima susieti su `Country`.
-
-    `ref` tipo duomenys yra sudėtiniai, tai reiškia, kad per `ref` tipo lauką
-    galima pasiekti siejamo modelio laukus, nurodant kito modelio laukus po
-    taško.
-
-    Todėl pagal nutylėjimą `country ref Country` yra tas pats, kas `country._id
-    ref Country`, tik `._id` dalis nenurodoma.
-
-`country.code` ir `country.name@en`
-    Šie laukai yra denormalizuoti, tai reiškia, kad jie priklauso `Country`
-    modeliui, tačiau duomenys yra dubliuojami ir pateikiami dviejose vietose,
-    prie `Country` ir prie `City.country`.
-
-    Kadangi `City.country` yra `ref` tipo, tai po taško, galima nurodyti kitus
-    šiam siejamam modeliui priklausančius laukus iš kito modelio.
-
-    Atkreipkite dėmesį, kad denormalizuotiems laukams nepildomas `type`
-    stulpelis, kadangi šių laukų tipas turi sutapti su siejamo modelio laukų
-    tipais, taip pat turi sutapti ir laukų pavadinimai.
-
-`country.name@lt`
-    Tais atvejais, kai siejamame modelyje (šiuo atveju `Country` modelyje) nėra
-    tam tikrų laukų, tuomet galima juose pateikti ir prie `City.country`,
-    tačiau tokiu atveju, būtina nurodyti `type`.
-
-
 
 .. _ref-level:
 
@@ -501,10 +647,10 @@ example
 ------------------------------ --------- --------- -----
 \        Country                         name\@lt  4
 -- -- -- --------------------- --------- --------- -----
-\           name\@lt           text                4
+\           name\@lt           string              4
 \        City                            name      4
 -- -- -- --------------------- --------- --------- -----
-\           name\@lt           text                4
+\           name\@lt           string              4
 \           country            ref       Country   1
 == == == == ================== ========= ========= =====
 
@@ -512,7 +658,7 @@ example
 `City.country` brandos lygis yra 2, tai reiškia, kad `City.country` ir
 `Country.name` pavadinimai nesutampa ir jungimo atlikti neįmanoma. Tokiu
 atveju, `City.country` tipas bus ne `ref`, o toks pat, kaip `Country.name`,
-t.y. `text`.
+t.y. `string`.
 
 Tačiau, metaduomenyse išliks informacija, apie tai, kad šios lentelės yra
 susijusios. Dėl prasto duomenų brandos lygios, realus susiejimas nėra
@@ -529,15 +675,15 @@ example
 ------------------------------ --------- ----------------- -----
 \        Country                         name\@lt          4
 -- -- -- --------------------- --------- ----------------- -----
-\           name\@lt           text                        4
-\           name\@en           text                        0
+\           name\@lt           string                      4
+\           name\@en           string                      0
 \        City                            name              4
 -- -- -- --------------------- --------- ----------------- -----
-\           name\@en           text                        4
+\           name\@en           string                      4
 \           country            ref       Country[name\@en] 1
 == == == == ================== ========= ================= =====
 
-Šioje vietoje `City.country` tampa `country@en`, kurio tipas yra `text`. O į
+Šioje vietoje `City.country` tampa `country@en`, kurio tipas yra `string`. O į
 `Country` yra įtrauktas papildomas laukas `name@en`, per kurį ir atliekamas
 susiejimas, t.y. per kurį galėtų būti atliktas susiejimas, jei toks laukas
 egzistuotų ne tik `City.country`, bet ir `Country.name@en`.
@@ -565,10 +711,10 @@ example
 ------------------------------ --------- --------- -----
 \        Country                         name\@lt  4
 -- -- -- --------------------- --------- --------- -----
-\           name\@lt           text                4
+\           name\@lt           string              4
 \        City                            name      4
 -- -- -- --------------------- --------- --------- -----
-\           name\@lt           text                4
+\           name\@lt           string              4
 \           country            ref       Country   2
 == == == == ================== ========= ========= =====
 
@@ -602,10 +748,10 @@ example
 -- -- -- --------------------- --------- ------------- -----
 \           id                 integer                 4
 \           code               string                  4
-\           name\@lt           text                    4
+\           name\@lt           string                  4
 \        City                            name          4
 -- -- -- --------------------- --------- ------------- -----
-\           name\@lt           text                    4
+\           name\@lt           string                  4
 \           country            ref       Country[code] 3
 == == == == ================== ========= ============= =====
 
@@ -656,10 +802,10 @@ example
 -- -- -- --------------------- --------- -------- -----
 \           id                 integer            4
 \           code               string             4
-\           name\@lt           text               4
+\           name\@lt           string             4
 \        City                            name     4
 -- -- -- --------------------- --------- -------- -----
-\           name\@lt           text               4
+\           name\@lt           string             4
 \           country            ref       Country  4
 == == == == ================== ========= ======== =====
 

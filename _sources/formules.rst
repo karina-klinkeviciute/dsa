@@ -701,6 +701,33 @@ Pilnas galimų filtrų sąrašas:
 
         Rūšiuoti didėjimo tvarka  pagal `a` ir mažėjimo tvarka pagal `b`.
 
+    .. describe:: select(*props)
+
+        Pateikiant duomenis, grąžinamos tik nurodytos savybės.
+
+        Jei nenurodyta jokia savybė, įraukia visas, išskyrus daugiareikšmes savybes.
+
+    .. describe:: include(*props)
+
+        Prie grąžinamų savybių, papildomai įtraukiamos nurodytos savybės. Gali
+        būti naudojama kartu su `select()`, papildomai įtraukiant
+        daugiareikšmes ar sudėtinių tipų savybės.
+
+    .. describe:: exclude(*props)
+
+        Pašalina savybę iš `select()` ar `expand()` funkcijos pagalba atrinktų
+        savybių sąrašo.
+
+    .. describe:: expand(*props)
+
+        Veikia panašiai, kaip `include()`, tačiau įtraukia visas nurodyto sudėtinio tipo savybes.
+
+        Jei nenurodyta konkreti savybė, įtraukia visų sudėtinių tipų savybes.
+
+        .. seealso::
+        
+            - :ref:`prop-expand`
+
 
 Periodiškumas
 =============

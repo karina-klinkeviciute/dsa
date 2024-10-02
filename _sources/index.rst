@@ -62,6 +62,7 @@ Turinys
     tipai
     pavadinimai
     vienetai
+    apibendrinimas
     identifikatoriai
     branda
     prieiga

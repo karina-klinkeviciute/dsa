@@ -3,145 +3,14 @@ Sąvokos
 
 .. glossary::
 
-    TGIĮ
-        `Teisės gauti informaciją ir duomenų pakartotinio naudojimo
-        įstatymas`__.
-
-        __ https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/TAIS.94745/asr
-
-        Šis įstatymas įpareigoja valstybės ir savivaldybių institucijas ir
-        joms pavaldžius subjektus atverti duomenis.
-
-        Kelios citatos iš įstatymo:
-
-            **4 straipsnis**
-
-            1. Institucijos ir valstybės valdomi subjektai privalo teikti
-            pareiškėjams ar jų atstovams duomenis, įskaitant pakartotiniam
-            naudojimui skirtus duomenis, išskyrus šio įstatymo ir kitų įstatymų
-            nustatytus atvejus.
-
-            **15 straipsnis**
-
-            1. Visi institucijos ar valstybės valdomo subjekto duomenys turi
-            būti inventorizuoti laikantis principo, kad duomenys gali būti
-            skelbiami pakartotinai naudoti, jeigu tai neprieštarauja šiam ir
-            kitiems įstatymams. Inventorizuotų duomenų sąrašas turi būti
-            skelbiamas Lietuvos atvirų duomenų portale.
-
-            2. Institucijos ir valstybės valdomi subjektai turi sudaryti
-            duomenų, dėl kurių yra pateiktos užklausos Lietuvos atvirų duomenų
-            portale arba kurių pakartotinis naudojimas, institucijos ir
-            valstybės valdomo subjekto vertinimu, gali kurti pridėtinę vertę,
-            rinkinius ir juos skelbti šiame portale, jeigu tai neprieštarauja
-            šiam ir kitiems įstatymams.
-
-            **17 straipsnis**
-
-            1. Lietuvos atvirų duomenų portalas yra valstybės informacinė
-            sistema, skirta duomenų rinkiniams ir jų metaduomenims sisteminti ir
-            skelbti naudojant vienodą metaduomenų aprašymo formatą, taip pat
-            vieno langelio principu institucijų ir valstybės valdomų subjektų
-            sudarytiems duomenų rinkiniams ir jų metaduomenims ieškoti,
-            peržiūrėti, parsisiųsti, pareiškėjų užklausoms registruoti ir kitoms
-            paslaugoms, susijusioms su šios informacinės sistemos paskirtimi,
-            teikti.
-
-            5. Institucijos ir valstybės valdomi subjektai privalo užtikrinti,
-            kad inventorizuotų duomenų sąrašai ir sudaryti duomenų rinkiniai
-            Lietuvos atvirų duomenų portale bus surasti ir pasiekiami šio
-            portalo tvarkytojo nustatyta tvarka ir priemonėmis.
-
-            **18 straipsnis.**
-
-            Pareiškėjo teisės gali būti ginamos šiais būdais:
-
-            1) pareiškėjas turi teisę apskųsti institucijos veiksmus, neveikimą
-            ar administracinį sprendimą, taip pat institucijos vilkinimą atlikti
-            jos kompetencijai šiuo įstatymu priskirtus veiksmus Viešojo
-            administravimo įstatymo nustatyta tvarka;
-
-            2) pareiškėjas turi teisę apskųsti valstybės valdomo subjekto
-            veiksmus ar neveikimą, taip pat valstybės valdomo subjekto vilkinimą
-            atlikti jo kompetencijai šiuo įstatymu priskirtus veiksmus tam
-            pačiam valstybės valdomam subjektui arba bendrosios kompetencijos
-            teismui.
-
-    Europos sąveikumo karkasas
-        `Rekomendacijų rinkinys`__ apie tai, kaip užtikrinti didesnį skaitmeninį
-        sąveikumą tarp Europos šalių.
-
-        __ https://eur-lex.europa.eu/resource.html?uri=cellar:2c2f2554-0faf-11e7-8a35-01aa75ed71a1.0017.02/DOC_3&format=PDF
-
-        Rekomendacijų sąrašas:
-
-            2. Publish the data you own as open data unless certain restrictions
-            apply.
-
-            3. Ensure a level playing field for open source software and
-            demonstrate active and fair consideration of using open source
-            software, taking into account the total cost of ownership of the
-            solution.
-
-            41. Establish procedures and processes to integrate the opening of
-            data in your common business processes, working routines, and in the
-            development of new information systems.
-
-            42. Publish open data in machine-readable, non-proprietary formats.
-            Ensure that open data is accompanied by high quality,
-            machine-readable metadata in non-proprietary formats, including a
-            description of their content, the way data is collected and its
-            level of quality and the licence terms under which it is made
-            available. The use of common vocabularies for expressing metadata is
-            recommended.
-
-            43. Communicate clearly the right to access and reuse open data. The
-            legal regimes for facilitating access and reuse, such as licences,
-            should be standardised as much as possible.
-
-            44. Put in place catalogues of public services, public data, and
-            interoperability solutions and use common models for describing
-            them.
-
-            45. Where useful and feasible to do so, use external information
-            sources and services while developing European public services.
-
-    atvirų duomenų direktyva
-        2019 m. birželio 20 d. Europos Parlamento ir Tarybos direktyva (ES)
-        `2019/1024`_ dėl atvirųjų duomenų ir viešojo sektoriaus informacijos
-        pakartotinio naudojimo.
-
-        .. _2019/1024: https://eur-lex.europa.eu/legal-content/LT/TXT/?uri=CELEX:32019L1024
-
-    duomenų valdymo aktas
-        2020 m. lapkričio 25 d. Europos Parlamento ir Tarybos reglamento (ES)
-        pasiūlymas `2020/0340`_ dėl Europos duomenų valdymo (Duomenų valdymo
-        aktas).
-
-        .. _2020/0340: https://eur-lex.europa.eu/legal-content/LT/TXT/?uri=CELEX:52020PC0767
-
-    aplinkos kintamasis
-        Angliškai tai vadinama *environment variables*, tai yra operacinės
-        sistemos aplinkos kintamieji.
-
-        Plačiau apie tai skaitykite `Vikipedijoje
-        <https://en.wikipedia.org/wiki/Environment_variable>`__.
-
-    ADP
-        Atvirų duomenų portalas, sudarytas iš :term:`atvirų duomenų katalogo
-        <ADK>` ir :term:`duomenų saugyklos <ADS>`.
-
     ADK
         Lietuvos atvirų duomenų katalogas, prieinamas adresu `data.gov.lt`_.
 
         .. _data.gov.lt: https://data.gov.lt/
 
-    duomenų katalogas
-        Lietuvos duomenų portalo sudedamoji dalis, skirta metaduomenims apie
-        duomenų šaltinius registruoti.
-
-        Duomenų katalogas prieinamas adresu `data.gov.lt`_.
-
+    ADP
+        Atvirų duomenų portalas, sudarytas iš :term:`atvirų duomenų katalogo
+        <ADK>` ir :term:`duomenų saugyklos <ADS>`.
 
     ADS
         :ref:`Atvirų duomenų saugykla <saugykla>`, skirta pakartotinio
@@ -150,40 +19,23 @@ Sąvokos
 
         .. _get.data.gov.lt: https://get.data.gov.lt/
 
-    DSA
-        :ref:`Duomenų struktūros aprašas <dsa>` yra
-        lentelė, kurioje išsamiai aprašyta tam tikro duomenų šaltinio duomenų
-        struktūra. DSA lentelę sudaro penkios dimensijos (duomenų rinkinys,
-        resursas, bazė, modelis, savybė) ir dešimt metaduomenų stulpelių.
-
     ADSA
         :term:`DSA` lentelė, kurioje aprašomi jau atverti ir viešai prieinami
         duomenys.
 
-    ŠDSA
-        :term:`DSA` lentelė, kurioje aprašoma neatvertų, :term:`pirminio
-        duomenų šaltinio <pirminis duomenų šaltinis>` duomenų struktūra.
+    aplinkos kintamasis
+        Angliškai tai vadinama *environment variables*, tai yra operacinės
+        sistemos aplinkos kintamieji.
 
-    didelės vertės duomenys
-    aukštos vertės duomenys
-        Duomenys apibrėžti :term:`atvirų duomenų direktyvos <atvirų duomenų
-        direktyva>` 5 skyriuje.
+        Plačiau apie tai skaitykite `Vikipedijoje
+        <https://en.wikipedia.org/wiki/Environment_variable>`__.
 
-        `Aukštos vertės duomenų sritys`__ yra šios:
+    atvirų duomenų direktyva
+        2019 m. birželio 20 d. Europos Parlamento ir Tarybos direktyva (ES)
+        `2019/1024`_ dėl atvirųjų duomenų ir viešojo sektoriaus informacijos
+        pakartotinio naudojimo.
 
-        .. __: https://eur-lex.europa.eu/legal-content/LT/TXT/?qid=1561563110433&uri=CELEX:32019L1024#d1e32-79-1
-
-        - Geoerdviniai duomenys
-
-        - Aplinka ir žemės stebėjimai
-
-        - Meteorologiniai duomenys
-
-        - Statistika (demografiniai ir ekonominiai rodikliai)
-
-        - Įmonės ir įmonių savininkai
-
-        - Judumas
+        .. _2019/1024: https://eur-lex.europa.eu/legal-content/LT/TXT/?uri=CELEX:32019L1024
 
     BDAR
         2016 m. balandžio 27 d. Europos Parlamento ir Tarybos reglamentas (ES)
@@ -193,39 +45,6 @@ Sąvokos
 
         .. _2016/679: https://eur-lex.europa.eu/legal-content/LT/TXT/?uri=CELEX:32016R0679
         .. _95/46/EB: https://eur-lex.europa.eu/legal-content/LT/TXT/?uri=CELEX:31995L0046
-
-    duomenų serializavimo formatas
-        Duomenys gali būti serializuojami įvairiais formatais, pavyzdžiui YAML
-        formatu:
-
-        .. code-block:: yaml
-
-           type: project
-           title: Manifestas
-
-        JSON formatu:
-
-        .. code-block:: json
-
-           {"type": "project", "title": "Manifestas"}
-
-        Turtle formatu:
-
-        .. code-block:: ttl
-
-           @prefix foaf: <http://xmlns.com/foaf/0.1/> .
-           @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-           <http://atviriduomenys.lt> a foaf:Project;
-               rdfs:label "Manifestas" .
-
-        MessagePack dvejetainiu formatu, kurio turinys pateiktas naudojant BASE64
-        koduotę::
-
-           gqR0eXBlp3Byb2plY3SkbmFtZapNYW5pZmVzdGFz
-
-        Visuose šiuose pavyzdžiuose yra pateikti tie patys duomenys, tačiau
-        naudojami skirtingi duomenų serializavimo formatai, koduotės ir skirtingi
-        žodynai.
 
     brandos lygis
         Duomenų brandos lygiai yra apibrėžti `5 ★ Open Data`_ svetainėje.
@@ -310,6 +129,147 @@ Sąvokos
         .. _ISO 8601: https://en.wikipedia.org/wiki/ISO_8601
         .. _dcterms:created: http://purl.org/dc/terms/created
 
+    daugiareikšmis tipas
+        Duomenų tipas nurodantis, kad viena savybė gali turėti daugiau nei
+        vieną, to pačio tipo reikšmę.
+
+        Struktūros aprašuose daugiareimšmės savybės žymimos `[]` simboliais,
+        užrašomais savybės pavadinimo pabaigoje.
+
+        .. seealso::
+
+            - :data:`type.array`
+
+    duomenų valdymo aktas
+        2020 m. lapkričio 25 d. Europos Parlamento ir Tarybos reglamento (ES)
+        pasiūlymas `2020/0340`_ dėl Europos duomenų valdymo (Duomenų valdymo
+        aktas).
+
+        .. _2020/0340: https://eur-lex.europa.eu/legal-content/LT/TXT/?uri=CELEX:52020PC0767
+
+    duomenų katalogas
+        Lietuvos duomenų portalo sudedamoji dalis, skirta metaduomenims apie
+        duomenų šaltinius registruoti.
+
+        Duomenų katalogas prieinamas adresu `data.gov.lt`_.
+
+    didelės vertės duomenys
+    aukštos vertės duomenys
+        Duomenys apibrėžti :term:`atvirų duomenų direktyvos <atvirų duomenų
+        direktyva>` 5 skyriuje.
+
+        `Aukštos vertės duomenų sritys`__ yra šios:
+
+        .. __: https://eur-lex.europa.eu/legal-content/LT/TXT/?qid=1561563110433&uri=CELEX:32019L1024#d1e32-79-1
+
+        - Geoerdviniai duomenys
+
+        - Aplinka ir žemės stebėjimai
+
+        - Meteorologiniai duomenys
+
+        - Statistika (demografiniai ir ekonominiai rodikliai)
+
+        - Įmonės ir įmonių savininkai
+
+        - Judumas
+
+    duomenų serializavimo formatas
+        Duomenys gali būti serializuojami įvairiais formatais, pavyzdžiui YAML
+        formatu:
+
+        .. code-block:: yaml
+
+           type: project
+           title: Manifestas
+
+        JSON formatu:
+
+        .. code-block:: json
+
+           {"type": "project", "title": "Manifestas"}
+
+        Turtle formatu:
+
+        .. code-block:: ttl
+
+           @prefix foaf: <http://xmlns.com/foaf/0.1/> .
+           @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+           <http://atviriduomenys.lt> a foaf:Project;
+               rdfs:label "Manifestas" .
+
+        MessagePack dvejetainiu formatu, kurio turinys pateiktas naudojant BASE64
+        koduotę::
+
+           gqR0eXBlp3Byb2plY3SkbmFtZapNYW5pZmVzdGFz
+
+        Visuose šiuose pavyzdžiuose yra pateikti tie patys duomenys, tačiau
+        naudojami skirtingi duomenų serializavimo formatai, koduotės ir skirtingi
+        žodynai.
+
+    DSA
+        :ref:`Duomenų struktūros aprašas <dsa>` yra
+        lentelė, kurioje išsamiai aprašyta tam tikro duomenų šaltinio duomenų
+        struktūra. DSA lentelę sudaro penkios dimensijos (duomenų rinkinys,
+        resursas, bazė, modelis, savybė) ir dešimt metaduomenų stulpelių.
+
+    EIF
+    Europos sąveikumo karkasas
+        `Rekomendacijų rinkinys`__ apie tai, kaip užtikrinti didesnį skaitmeninį
+        sąveikumą tarp Europos šalių.
+
+        __ https://eur-lex.europa.eu/resource.html?uri=cellar:2c2f2554-0faf-11e7-8a35-01aa75ed71a1.0017.02/DOC_3&format=PDF
+
+        Rekomendacijų sąrašas:
+
+            2. Publish the data you own as open data unless certain restrictions
+            apply.
+
+            3. Ensure a level playing field for open source software and
+            demonstrate active and fair consideration of using open source
+            software, taking into account the total cost of ownership of the
+            solution.
+
+            41. Establish procedures and processes to integrate the opening of
+            data in your common business processes, working routines, and in the
+            development of new information systems.
+
+            42. Publish open data in machine-readable, non-proprietary formats.
+            Ensure that open data is accompanied by high quality,
+            machine-readable metadata in non-proprietary formats, including a
+            description of their content, the way data is collected and its
+            level of quality and the licence terms under which it is made
+            available. The use of common vocabularies for expressing metadata is
+            recommended.
+
+            43. Communicate clearly the right to access and reuse open data. The
+            legal regimes for facilitating access and reuse, such as licences,
+            should be standardised as much as possible.
+
+            44. Put in place catalogues of public services, public data, and
+            interoperability solutions and use common models for describing
+            them.
+
+            45. Where useful and feasible to do so, use external information
+            sources and services while developing European public services.
+
+    IVPK
+        Informacinės visuomenės plėtros komitetas.
+
+        .. note::
+
+            IVPK pavadininimas 2024 metais pakeistas į :term:`VSSA`.
+
+    jungtinis modelis
+        Jungtinis modelis yra duomenų modelis, kuriame yra apjungtos kelių
+        skirtingų klasių savybės į vieną duomenų modelį.
+
+        Toks apjungiams yra vadinamas duomenų denormalizavimu.
+
+        .. seealso::
+
+            - :ref:`ref-denorm`
+
     kanoniniai duomenys
         Kanoniniai duomenys yra tarsi duomenų etalonas, kuris nusako kokios
         duomenų reikšmės yra teisingos. Pavyzdžiui įmonės pavadinimas gali būti
@@ -343,6 +303,10 @@ Sąvokos
 
     kodinis pavadinimas
         Pavadinimas, kuriam keliami tam tikri apribojimai.
+
+    kompozicinis raktas
+        Lokalus objekto identifikatorius susidedantis iš daugiau nei vienos
+        reikšmės.
 
     manifestas
         Atvirų duomenų manifestas yra :term:`DSA` lentelių rinkinys, kuriuose
@@ -416,6 +380,16 @@ Sąvokos
         gerai dokumentuoti ir skelbiami viešai, jie yra skirti globaliam
         susietųjų duomenų tinkui kurti (angl. *linked data*).
 
+    sudėtinis tipas
+        Duomenų tipas apjungiantis kelias savybes į vieną grupę. Sudėtiniam
+        tipui priskirtos savybės gali būti pasiekiamos `.` (taško) pagalba.
+
+        .. seealso::
+
+            - :data:`type.ref`
+            - :data:`type.backref`
+            - :data:`type.object`
+
     sisteminis pavadinimas
         Sisteminis pavadinimas yra naudojamas objektų identifikavimui ir yra
         naudojamas URL nuorodose ir visur kitur, kur reikia nurodyti ryšį su
@@ -424,8 +398,14 @@ Sąvokos
         Sisteminis pavadinimas sudaromas tik iš lotyniškų raidžių ir `-_/`
         simbolių.
 
+    pirminis šaltinis
     pirminis duomenų šaltinis
-        Įstaigos ar kitos organizacijos pagrindinis duomenų šaltinis.
+        Duomenš šaltinis, kuriame duomenys pateikiami arba įrašomi pirmą kartą.
+
+        Įprastai, kas būtų užtikrinamas duomenų vientisumas, duomenų objektai
+        yra registruojami vienoje vietoje, tai yra numatyta ir :term:`VIIVĮ`
+        įstatyme, kuriame nurodyta, kad Informacinės sistemos objektai, gali
+        būti registruojami tik vienoje vietoje.
 
     DCAT
         Duomenų katalogo žodynas (angl. `Data Catalog Vocabulary`_)  yra
@@ -662,6 +642,79 @@ Sąvokos
 
         .. _Resource Description Framework: https://en.wikipedia.org/wiki/Resource_Description_Framework
 
-    IVPK
-        `Informacinės visuomenės plėtros komitetas
-        <https://ivpk.lrv.lt/lt/atviri-duomenys-1>`_.
+    TGIĮ
+        `Teisės gauti informaciją ir duomenų pakartotinio naudojimo
+        įstatymas`__.
+
+        __ https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/TAIS.94745/asr
+
+        Šis įstatymas įpareigoja valstybės ir savivaldybių institucijas ir
+        joms pavaldžius subjektus atverti duomenis.
+
+        Kelios citatos iš įstatymo:
+
+            **4 straipsnis**
+
+            1. Institucijos ir valstybės valdomi subjektai privalo teikti
+            pareiškėjams ar jų atstovams duomenis, įskaitant pakartotiniam
+            naudojimui skirtus duomenis, išskyrus šio įstatymo ir kitų įstatymų
+            nustatytus atvejus.
+
+            **15 straipsnis**
+
+            1. Visi institucijos ar valstybės valdomo subjekto duomenys turi
+            būti inventorizuoti laikantis principo, kad duomenys gali būti
+            skelbiami pakartotinai naudoti, jeigu tai neprieštarauja šiam ir
+            kitiems įstatymams. Inventorizuotų duomenų sąrašas turi būti
+            skelbiamas Lietuvos atvirų duomenų portale.
+
+            2. Institucijos ir valstybės valdomi subjektai turi sudaryti
+            duomenų, dėl kurių yra pateiktos užklausos Lietuvos atvirų duomenų
+            portale arba kurių pakartotinis naudojimas, institucijos ir
+            valstybės valdomo subjekto vertinimu, gali kurti pridėtinę vertę,
+            rinkinius ir juos skelbti šiame portale, jeigu tai neprieštarauja
+            šiam ir kitiems įstatymams.
+
+            **17 straipsnis**
+
+            1. Lietuvos atvirų duomenų portalas yra valstybės informacinė
+            sistema, skirta duomenų rinkiniams ir jų metaduomenims sisteminti ir
+            skelbti naudojant vienodą metaduomenų aprašymo formatą, taip pat
+            vieno langelio principu institucijų ir valstybės valdomų subjektų
+            sudarytiems duomenų rinkiniams ir jų metaduomenims ieškoti,
+            peržiūrėti, parsisiųsti, pareiškėjų užklausoms registruoti ir kitoms
+            paslaugoms, susijusioms su šios informacinės sistemos paskirtimi,
+            teikti.
+
+            5. Institucijos ir valstybės valdomi subjektai privalo užtikrinti,
+            kad inventorizuotų duomenų sąrašai ir sudaryti duomenų rinkiniai
+            Lietuvos atvirų duomenų portale bus surasti ir pasiekiami šio
+            portalo tvarkytojo nustatyta tvarka ir priemonėmis.
+
+            **18 straipsnis.**
+
+            Pareiškėjo teisės gali būti ginamos šiais būdais:
+
+            1) pareiškėjas turi teisę apskųsti institucijos veiksmus, neveikimą
+            ar administracinį sprendimą, taip pat institucijos vilkinimą atlikti
+            jos kompetencijai šiuo įstatymu priskirtus veiksmus Viešojo
+            administravimo įstatymo nustatyta tvarka;
+
+            2) pareiškėjas turi teisę apskųsti valstybės valdomo subjekto
+            veiksmus ar neveikimą, taip pat valstybės valdomo subjekto vilkinimą
+            atlikti jo kompetencijai šiuo įstatymu priskirtus veiksmus tam
+            pačiam valstybės valdomam subjektui arba bendrosios kompetencijos
+            teismui.
+
+    ŠDSA
+        :term:`DSA` lentelė, kurioje aprašoma neatvertų, :term:`pirminio
+        duomenų šaltinio <pirminis duomenų šaltinis>` duomenų struktūra.
+
+    VSSA
+        `Valstybės skaitmeninių sprendimų agentūra <https://ivpk.lrv.lt/>`_.
+
+    VIIVĮ
+        `Valstybės informacinių išteklių valdymo įstatymas <viivį_>`_.
+
+        .. _viivį: https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/TAIS.415499/asr
+

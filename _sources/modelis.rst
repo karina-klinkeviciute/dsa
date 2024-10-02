@@ -4,6 +4,7 @@
 .. role:: instance
    :class: underline
 
+.. _uml-index:
 
 Koncepcinis modelis
 ###################
@@ -244,7 +245,9 @@ Jei UML diagramose prie klasių yra pateikti pilni sąrašai savybių su tipais,
 tada tai greičiausiai yra taikymo profilis.
 
 
-Generalizacija
+.. _uml-generalization:
+
+Apibendrinimas
 **************
 
 Objektai gali būti skirstomi į klases, tačiau pačios klasės gali būti

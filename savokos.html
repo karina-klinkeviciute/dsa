@@ -162,7 +162,8 @@
 <li class="toctree-l1"><a class="reference internal" href="tipai.html">Duomenų tipai</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pavadinimai.html">Kodiniai pavadinimai</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vienetai.html">Matavimo vienetai</a></li>
-<li class="toctree-l1"><a class="reference internal" href="identifikatoriai.html">Ryšiai tarp modelių</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apibendrinimas.html">Apibendrinimas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="identifikatoriai.html">Asociacija</a></li>
 <li class="toctree-l1"><a class="reference internal" href="branda.html">Brandos lygiai</a></li>
 <li class="toctree-l1"><a class="reference internal" href="prieiga.html">Prieigos lygiai</a></li>
 <li class="toctree-l1"><a class="reference internal" href="saltiniai.html">Duomenų šaltiniai</a></li>
@@ -323,161 +324,29 @@ document.write(`
   <section id="savokos">
 <h1>Sąvokos<a class="headerlink" href="#savokos" title="Link to this heading">#</a></h1>
 <dl class="glossary">
-<dt id="term-TGII">TGIĮ<a class="headerlink" href="#term-TGII" title="Link to this term">#</a></dt><dd><p><a class="reference external" href="https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/TAIS.94745/asr">Teisės gauti informaciją ir duomenų pakartotinio naudojimo
-įstatymas</a>.</p>
-<p>Šis įstatymas įpareigoja valstybės ir savivaldybių institucijas ir
-joms pavaldžius subjektus atverti duomenis.</p>
-<p>Kelios citatos iš įstatymo:</p>
-<blockquote>
-<div><p><strong>4 straipsnis</strong></p>
-<p>1. Institucijos ir valstybės valdomi subjektai privalo teikti
-pareiškėjams ar jų atstovams duomenis, įskaitant pakartotiniam
-naudojimui skirtus duomenis, išskyrus šio įstatymo ir kitų įstatymų
-nustatytus atvejus.</p>
-<p><strong>15 straipsnis</strong></p>
-<p>1. Visi institucijos ar valstybės valdomo subjekto duomenys turi
-būti inventorizuoti laikantis principo, kad duomenys gali būti
-skelbiami pakartotinai naudoti, jeigu tai neprieštarauja šiam ir
-kitiems įstatymams. Inventorizuotų duomenų sąrašas turi būti
-skelbiamas Lietuvos atvirų duomenų portale.</p>
-<p>2. Institucijos ir valstybės valdomi subjektai turi sudaryti
-duomenų, dėl kurių yra pateiktos užklausos Lietuvos atvirų duomenų
-portale arba kurių pakartotinis naudojimas, institucijos ir
-valstybės valdomo subjekto vertinimu, gali kurti pridėtinę vertę,
-rinkinius ir juos skelbti šiame portale, jeigu tai neprieštarauja
-šiam ir kitiems įstatymams.</p>
-<p><strong>17 straipsnis</strong></p>
-<p>1. Lietuvos atvirų duomenų portalas yra valstybės informacinė
-sistema, skirta duomenų rinkiniams ir jų metaduomenims sisteminti ir
-skelbti naudojant vienodą metaduomenų aprašymo formatą, taip pat
-vieno langelio principu institucijų ir valstybės valdomų subjektų
-sudarytiems duomenų rinkiniams ir jų metaduomenims ieškoti,
-peržiūrėti, parsisiųsti, pareiškėjų užklausoms registruoti ir kitoms
-paslaugoms, susijusioms su šios informacinės sistemos paskirtimi,
-teikti.</p>
-<p>5. Institucijos ir valstybės valdomi subjektai privalo užtikrinti,
-kad inventorizuotų duomenų sąrašai ir sudaryti duomenų rinkiniai
-Lietuvos atvirų duomenų portale bus surasti ir pasiekiami šio
-portalo tvarkytojo nustatyta tvarka ir priemonėmis.</p>
-<p><strong>18 straipsnis.</strong></p>
-<p>Pareiškėjo teisės gali būti ginamos šiais būdais:</p>
-<p>1) pareiškėjas turi teisę apskųsti institucijos veiksmus, neveikimą
-ar administracinį sprendimą, taip pat institucijos vilkinimą atlikti
-jos kompetencijai šiuo įstatymu priskirtus veiksmus Viešojo
-administravimo įstatymo nustatyta tvarka;</p>
-<p>2) pareiškėjas turi teisę apskųsti valstybės valdomo subjekto
-veiksmus ar neveikimą, taip pat valstybės valdomo subjekto vilkinimą
-atlikti jo kompetencijai šiuo įstatymu priskirtus veiksmus tam
-pačiam valstybės valdomam subjektui arba bendrosios kompetencijos
-teismui.</p>
-</div></blockquote>
-</dd>
-<dt id="term-Europos-saveikumo-karkasas">Europos sąveikumo karkasas<a class="headerlink" href="#term-Europos-saveikumo-karkasas" title="Link to this term">#</a></dt><dd><p><a class="reference external" href="https://eur-lex.europa.eu/resource.html?uri=cellar:2c2f2554-0faf-11e7-8a35-01aa75ed71a1.0017.02/DOC_3&amp;format=PDF">Rekomendacijų rinkinys</a> apie tai, kaip užtikrinti didesnį skaitmeninį
-sąveikumą tarp Europos šalių.</p>
-<p>Rekomendacijų sąrašas:</p>
-<blockquote>
-<div><p>2. Publish the data you own as open data unless certain restrictions
-apply.</p>
-<p>3. Ensure a level playing field for open source software and
-demonstrate active and fair consideration of using open source
-software, taking into account the total cost of ownership of the
-solution.</p>
-<p>41. Establish procedures and processes to integrate the opening of
-data in your common business processes, working routines, and in the
-development of new information systems.</p>
-<p>42. Publish open data in machine-readable, non-proprietary formats.
-Ensure that open data is accompanied by high quality,
-machine-readable metadata in non-proprietary formats, including a
-description of their content, the way data is collected and its
-level of quality and the licence terms under which it is made
-available. The use of common vocabularies for expressing metadata is
-recommended.</p>
-<p>43. Communicate clearly the right to access and reuse open data. The
-legal regimes for facilitating access and reuse, such as licences,
-should be standardised as much as possible.</p>
-<p>44. Put in place catalogues of public services, public data, and
-interoperability solutions and use common models for describing
-them.</p>
-<p>45. Where useful and feasible to do so, use external information
-sources and services while developing European public services.</p>
-</div></blockquote>
-</dd>
-<dt id="term-atviru-duomenu-direktyva">atvirų duomenų direktyva<a class="headerlink" href="#term-atviru-duomenu-direktyva" title="Link to this term">#</a></dt><dd><p>2019 m. birželio 20 d. Europos Parlamento ir Tarybos direktyva (ES)
-<a class="reference external" href="https://eur-lex.europa.eu/legal-content/LT/TXT/?uri=CELEX:32019L1024">2019/1024</a> dėl atvirųjų duomenų ir viešojo sektoriaus informacijos
-pakartotinio naudojimo.</p>
-</dd>
-<dt id="term-duomenu-valdymo-aktas">duomenų valdymo aktas<a class="headerlink" href="#term-duomenu-valdymo-aktas" title="Link to this term">#</a></dt><dd><p>2020 m. lapkričio 25 d. Europos Parlamento ir Tarybos reglamento (ES)
-pasiūlymas <a class="reference external" href="https://eur-lex.europa.eu/legal-content/LT/TXT/?uri=CELEX:52020PC0767">2020/0340</a> dėl Europos duomenų valdymo (Duomenų valdymo
-aktas).</p>
-</dd>
-<dt id="term-aplinkos-kintamasis">aplinkos kintamasis<a class="headerlink" href="#term-aplinkos-kintamasis" title="Link to this term">#</a></dt><dd><p>Angliškai tai vadinama <em>environment variables</em>, tai yra operacinės
-sistemos aplinkos kintamieji.</p>
-<p>Plačiau apie tai skaitykite <a class="reference external" href="https://en.wikipedia.org/wiki/Environment_variable">Vikipedijoje</a>.</p>
-</dd>
-<dt id="term-ADP">ADP<a class="headerlink" href="#term-ADP" title="Link to this term">#</a></dt><dd><p>Atvirų duomenų portalas, sudarytas iš <a class="reference internal" href="#term-ADK"><span class="xref std std-term">atvirų duomenų katalogo</span></a> ir <a class="reference internal" href="#term-ADS"><span class="xref std std-term">duomenų saugyklos</span></a>.</p>
-</dd>
 <dt id="term-ADK">ADK<a class="headerlink" href="#term-ADK" title="Link to this term">#</a></dt><dd><p>Lietuvos atvirų duomenų katalogas, prieinamas adresu <a class="reference external" href="https://data.gov.lt/">data.gov.lt</a>.</p>
 </dd>
-<dt id="term-duomenu-katalogas">duomenų katalogas<a class="headerlink" href="#term-duomenu-katalogas" title="Link to this term">#</a></dt><dd><p>Lietuvos duomenų portalo sudedamoji dalis, skirta metaduomenims apie
-duomenų šaltinius registruoti.</p>
-<p>Duomenų katalogas prieinamas adresu <a class="reference external" href="https://data.gov.lt/">data.gov.lt</a>.</p>
+<dt id="term-ADP">ADP<a class="headerlink" href="#term-ADP" title="Link to this term">#</a></dt><dd><p>Atvirų duomenų portalas, sudarytas iš <a class="reference internal" href="#term-ADK"><span class="xref std std-term">atvirų duomenų katalogo</span></a> ir <a class="reference internal" href="#term-ADS"><span class="xref std std-term">duomenų saugyklos</span></a>.</p>
 </dd>
 <dt id="term-ADS">ADS<a class="headerlink" href="#term-ADS" title="Link to this term">#</a></dt><dd><p><span class="xref std std-ref">Atvirų duomenų saugykla</span>, skirta pakartotinio
 panaudojimo duomenų publikavimui, valstybinė atvirų duomenų saugykla
 pasiekiama <a class="reference external" href="https://get.data.gov.lt/">get.data.gov.lt</a> adresu.</p>
 </dd>
-<dt id="term-DSA">DSA<a class="headerlink" href="#term-DSA" title="Link to this term">#</a></dt><dd><p><span class="xref std std-ref">Duomenų struktūros aprašas</span> yra
-lentelė, kurioje išsamiai aprašyta tam tikro duomenų šaltinio duomenų
-struktūra. DSA lentelę sudaro penkios dimensijos (duomenų rinkinys,
-resursas, bazė, modelis, savybė) ir dešimt metaduomenų stulpelių.</p>
-</dd>
 <dt id="term-ADSA">ADSA<a class="headerlink" href="#term-ADSA" title="Link to this term">#</a></dt><dd><p><a class="reference internal" href="#term-DSA"><span class="xref std std-term">DSA</span></a> lentelė, kurioje aprašomi jau atverti ir viešai prieinami
 duomenys.</p>
 </dd>
-<dt id="term-SDSA">ŠDSA<a class="headerlink" href="#term-SDSA" title="Link to this term">#</a></dt><dd><p><a class="reference internal" href="#term-DSA"><span class="xref std std-term">DSA</span></a> lentelė, kurioje aprašoma neatvertų, <a class="reference internal" href="#term-pirminis-duomenu-saltinis"><span class="xref std std-term">pirminio
-duomenų šaltinio</span></a> duomenų struktūra.</p>
+<dt id="term-aplinkos-kintamasis">aplinkos kintamasis<a class="headerlink" href="#term-aplinkos-kintamasis" title="Link to this term">#</a></dt><dd><p>Angliškai tai vadinama <em>environment variables</em>, tai yra operacinės
+sistemos aplinkos kintamieji.</p>
+<p>Plačiau apie tai skaitykite <a class="reference external" href="https://en.wikipedia.org/wiki/Environment_variable">Vikipedijoje</a>.</p>
 </dd>
-<dt id="term-dideles-vertes-duomenys">didelės vertės duomenys<a class="headerlink" href="#term-dideles-vertes-duomenys" title="Link to this term">#</a></dt><dt id="term-aukstos-vertes-duomenys">aukštos vertės duomenys<a class="headerlink" href="#term-aukstos-vertes-duomenys" title="Link to this term">#</a></dt><dd><p>Duomenys apibrėžti <a class="reference internal" href="#term-atviru-duomenu-direktyva"><span class="xref std std-term">atvirų duomenų direktyvos</span></a> 5 skyriuje.</p>
-<p><a class="reference external" href="https://eur-lex.europa.eu/legal-content/LT/TXT/?qid=1561563110433&amp;uri=CELEX:32019L1024#d1e32-79-1">Aukštos vertės duomenų sritys</a> yra šios:</p>
-<ul class="simple">
-<li><p>Geoerdviniai duomenys</p></li>
-<li><p>Aplinka ir žemės stebėjimai</p></li>
-<li><p>Meteorologiniai duomenys</p></li>
-<li><p>Statistika (demografiniai ir ekonominiai rodikliai)</p></li>
-<li><p>Įmonės ir įmonių savininkai</p></li>
-<li><p>Judumas</p></li>
-</ul>
+<dt id="term-atviru-duomenu-direktyva">atvirų duomenų direktyva<a class="headerlink" href="#term-atviru-duomenu-direktyva" title="Link to this term">#</a></dt><dd><p>2019 m. birželio 20 d. Europos Parlamento ir Tarybos direktyva (ES)
+<a class="reference external" href="https://eur-lex.europa.eu/legal-content/LT/TXT/?uri=CELEX:32019L1024">2019/1024</a> dėl atvirųjų duomenų ir viešojo sektoriaus informacijos
+pakartotinio naudojimo.</p>
 </dd>
 <dt id="term-BDAR">BDAR<a class="headerlink" href="#term-BDAR" title="Link to this term">#</a></dt><dd><p>2016 m. balandžio 27 d. Europos Parlamento ir Tarybos reglamentas (ES)
 <a class="reference external" href="https://eur-lex.europa.eu/legal-content/LT/TXT/?uri=CELEX:32016R0679">2016/679</a> dėl fizinių asmenų apsaugos tvarkant asmens duomenis ir dėl
 laisvo tokių duomenų judėjimo ir kuriuo panaikinama Direktyva
 <a class="reference external" href="https://eur-lex.europa.eu/legal-content/LT/TXT/?uri=CELEX:31995L0046">95/46/EB</a> (Bendrasis duomenų apsaugos reglamentas).</p>
-</dd>
-<dt id="term-duomenu-serializavimo-formatas">duomenų serializavimo formatas<a class="headerlink" href="#term-duomenu-serializavimo-formatas" title="Link to this term">#</a></dt><dd><p>Duomenys gali būti serializuojami įvairiais formatais, pavyzdžiui YAML
-formatu:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">project</span>
-<span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Manifestas</span>
-</pre></div>
-</div>
-<p>JSON formatu:</p>
-<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;project&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Manifestas&quot;</span><span class="p">}</span>
-</pre></div>
-</div>
-<p>Turtle formatu:</p>
-<div class="highlight-ttl notranslate"><div class="highlight"><pre><span></span>@<span class="nv">prefix</span><span class="w"> </span><span class="nv">foaf</span>:<span class="w"> </span><span class="o">&lt;</span><span class="nv">http</span>:<span class="o">//</span><span class="nv">xmlns</span>.<span class="nv">com</span><span class="o">/</span><span class="nv">foaf</span><span class="o">/</span><span class="mi">0</span>.<span class="mi">1</span><span class="o">/&gt;</span><span class="w"> </span>.
-@<span class="nv">prefix</span><span class="w"> </span><span class="nv">rdfs</span>:<span class="w"> </span><span class="o">&lt;</span><span class="nv">http</span>:<span class="o">//</span><span class="nv">www</span>.<span class="nv">w3</span>.<span class="nv">org</span><span class="o">/</span><span class="mi">2000</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="nv">rdf</span><span class="o">-</span><span class="nv">schema</span>#<span class="o">&gt;</span><span class="w"> </span>.
-<span class="o">&lt;</span><span class="nv">http</span>:<span class="o">//</span><span class="nv">atviriduomenys</span>.<span class="nv">lt</span><span class="o">&gt;</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">foaf</span>:<span class="nv">Project</span><span class="c1">;</span>
-<span class="w">    </span><span class="nv">rdfs</span>:<span class="nv">label</span><span class="w"> </span><span class="s2">&quot;Manifestas&quot;</span><span class="w"> </span>.
-</pre></div>
-</div>
-<p>MessagePack dvejetainiu formatu, kurio turinys pateiktas naudojant BASE64
-koduotę:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gqR0eXBlp3Byb2plY3SkbmFtZapNYW5pZmVzdGFz</span>
-</pre></div>
-</div>
-<p>Visuose šiuose pavyzdžiuose yra pateikti tie patys duomenys, tačiau
-naudojami skirtingi duomenų serializavimo formatai, koduotės ir skirtingi
-žodynai.</p>
 </dd>
 <dt id="term-brandos-lygis">brandos lygis<a class="headerlink" href="#term-brandos-lygis" title="Link to this term">#</a></dt><dd><p>Duomenų brandos lygiai yra apibrėžti <a class="reference external" href="https://5stardata.info/">5 ★ Open Data</a> svetainėje.
 Viso yra penki brandos lygiai, tačiau papildomai verta įtraukti ir
@@ -548,6 +417,113 @@ nepriklausomai nuo duomenų šaltinio ar duomenų kilmės.</p>
 </dd>
 </dl>
 </dd>
+<dt id="term-daugiareiksmis-tipas">daugiareikšmis tipas<a class="headerlink" href="#term-daugiareiksmis-tipas" title="Link to this term">#</a></dt><dd><p>Duomenų tipas nurodantis, kad viena savybė gali turėti daugiau nei
+vieną, to pačio tipo reikšmę.</p>
+<p>Struktūros aprašuose daugiareimšmės savybės žymimos <cite>[]</cite> simboliais,
+užrašomais savybės pavadinimo pabaigoje.</p>
+<div class="admonition seealso">
+<p class="admonition-title">Taip pat žiūrėkite</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="tipai.html#type.array" title="type.array"><code class="xref py py-data docutils literal notranslate"><span class="pre">type.array</span></code></a></p></li>
+</ul>
+</div>
+</dd>
+<dt id="term-duomenu-valdymo-aktas">duomenų valdymo aktas<a class="headerlink" href="#term-duomenu-valdymo-aktas" title="Link to this term">#</a></dt><dd><p>2020 m. lapkričio 25 d. Europos Parlamento ir Tarybos reglamento (ES)
+pasiūlymas <a class="reference external" href="https://eur-lex.europa.eu/legal-content/LT/TXT/?uri=CELEX:52020PC0767">2020/0340</a> dėl Europos duomenų valdymo (Duomenų valdymo
+aktas).</p>
+</dd>
+<dt id="term-duomenu-katalogas">duomenų katalogas<a class="headerlink" href="#term-duomenu-katalogas" title="Link to this term">#</a></dt><dd><p>Lietuvos duomenų portalo sudedamoji dalis, skirta metaduomenims apie
+duomenų šaltinius registruoti.</p>
+<p>Duomenų katalogas prieinamas adresu <a class="reference external" href="https://data.gov.lt/">data.gov.lt</a>.</p>
+</dd>
+<dt id="term-dideles-vertes-duomenys">didelės vertės duomenys<a class="headerlink" href="#term-dideles-vertes-duomenys" title="Link to this term">#</a></dt><dt id="term-aukstos-vertes-duomenys">aukštos vertės duomenys<a class="headerlink" href="#term-aukstos-vertes-duomenys" title="Link to this term">#</a></dt><dd><p>Duomenys apibrėžti <a class="reference internal" href="#term-atviru-duomenu-direktyva"><span class="xref std std-term">atvirų duomenų direktyvos</span></a> 5 skyriuje.</p>
+<p><a class="reference external" href="https://eur-lex.europa.eu/legal-content/LT/TXT/?qid=1561563110433&amp;uri=CELEX:32019L1024#d1e32-79-1">Aukštos vertės duomenų sritys</a> yra šios:</p>
+<ul class="simple">
+<li><p>Geoerdviniai duomenys</p></li>
+<li><p>Aplinka ir žemės stebėjimai</p></li>
+<li><p>Meteorologiniai duomenys</p></li>
+<li><p>Statistika (demografiniai ir ekonominiai rodikliai)</p></li>
+<li><p>Įmonės ir įmonių savininkai</p></li>
+<li><p>Judumas</p></li>
+</ul>
+</dd>
+<dt id="term-duomenu-serializavimo-formatas">duomenų serializavimo formatas<a class="headerlink" href="#term-duomenu-serializavimo-formatas" title="Link to this term">#</a></dt><dd><p>Duomenys gali būti serializuojami įvairiais formatais, pavyzdžiui YAML
+formatu:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">project</span>
+<span class="nt">title</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Manifestas</span>
+</pre></div>
+</div>
+<p>JSON formatu:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;project&quot;</span><span class="p">,</span><span class="w"> </span><span class="nt">&quot;title&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Manifestas&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+<p>Turtle formatu:</p>
+<div class="highlight-ttl notranslate"><div class="highlight"><pre><span></span>@<span class="nv">prefix</span><span class="w"> </span><span class="nv">foaf</span>:<span class="w"> </span><span class="o">&lt;</span><span class="nv">http</span>:<span class="o">//</span><span class="nv">xmlns</span>.<span class="nv">com</span><span class="o">/</span><span class="nv">foaf</span><span class="o">/</span><span class="mi">0</span>.<span class="mi">1</span><span class="o">/&gt;</span><span class="w"> </span>.
+@<span class="nv">prefix</span><span class="w"> </span><span class="nv">rdfs</span>:<span class="w"> </span><span class="o">&lt;</span><span class="nv">http</span>:<span class="o">//</span><span class="nv">www</span>.<span class="nv">w3</span>.<span class="nv">org</span><span class="o">/</span><span class="mi">2000</span><span class="o">/</span><span class="mi">01</span><span class="o">/</span><span class="nv">rdf</span><span class="o">-</span><span class="nv">schema</span>#<span class="o">&gt;</span><span class="w"> </span>.
+<span class="o">&lt;</span><span class="nv">http</span>:<span class="o">//</span><span class="nv">atviriduomenys</span>.<span class="nv">lt</span><span class="o">&gt;</span><span class="w"> </span><span class="nv">a</span><span class="w"> </span><span class="nv">foaf</span>:<span class="nv">Project</span><span class="c1">;</span>
+<span class="w">    </span><span class="nv">rdfs</span>:<span class="nv">label</span><span class="w"> </span><span class="s2">&quot;Manifestas&quot;</span><span class="w"> </span>.
+</pre></div>
+</div>
+<p>MessagePack dvejetainiu formatu, kurio turinys pateiktas naudojant BASE64
+koduotę:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">gqR0eXBlp3Byb2plY3SkbmFtZapNYW5pZmVzdGFz</span>
+</pre></div>
+</div>
+<p>Visuose šiuose pavyzdžiuose yra pateikti tie patys duomenys, tačiau
+naudojami skirtingi duomenų serializavimo formatai, koduotės ir skirtingi
+žodynai.</p>
+</dd>
+<dt id="term-DSA">DSA<a class="headerlink" href="#term-DSA" title="Link to this term">#</a></dt><dd><p><span class="xref std std-ref">Duomenų struktūros aprašas</span> yra
+lentelė, kurioje išsamiai aprašyta tam tikro duomenų šaltinio duomenų
+struktūra. DSA lentelę sudaro penkios dimensijos (duomenų rinkinys,
+resursas, bazė, modelis, savybė) ir dešimt metaduomenų stulpelių.</p>
+</dd>
+<dt id="term-EIF">EIF<a class="headerlink" href="#term-EIF" title="Link to this term">#</a></dt><dt id="term-Europos-saveikumo-karkasas">Europos sąveikumo karkasas<a class="headerlink" href="#term-Europos-saveikumo-karkasas" title="Link to this term">#</a></dt><dd><p><a class="reference external" href="https://eur-lex.europa.eu/resource.html?uri=cellar:2c2f2554-0faf-11e7-8a35-01aa75ed71a1.0017.02/DOC_3&amp;format=PDF">Rekomendacijų rinkinys</a> apie tai, kaip užtikrinti didesnį skaitmeninį
+sąveikumą tarp Europos šalių.</p>
+<p>Rekomendacijų sąrašas:</p>
+<blockquote>
+<div><p>2. Publish the data you own as open data unless certain restrictions
+apply.</p>
+<p>3. Ensure a level playing field for open source software and
+demonstrate active and fair consideration of using open source
+software, taking into account the total cost of ownership of the
+solution.</p>
+<p>41. Establish procedures and processes to integrate the opening of
+data in your common business processes, working routines, and in the
+development of new information systems.</p>
+<p>42. Publish open data in machine-readable, non-proprietary formats.
+Ensure that open data is accompanied by high quality,
+machine-readable metadata in non-proprietary formats, including a
+description of their content, the way data is collected and its
+level of quality and the licence terms under which it is made
+available. The use of common vocabularies for expressing metadata is
+recommended.</p>
+<p>43. Communicate clearly the right to access and reuse open data. The
+legal regimes for facilitating access and reuse, such as licences,
+should be standardised as much as possible.</p>
+<p>44. Put in place catalogues of public services, public data, and
+interoperability solutions and use common models for describing
+them.</p>
+<p>45. Where useful and feasible to do so, use external information
+sources and services while developing European public services.</p>
+</div></blockquote>
+</dd>
+<dt id="term-IVPK">IVPK<a class="headerlink" href="#term-IVPK" title="Link to this term">#</a></dt><dd><p>Informacinės visuomenės plėtros komitetas.</p>
+<div class="admonition note">
+<p class="admonition-title">Pastaba</p>
+<p>IVPK pavadininimas 2024 metais pakeistas į <a class="reference internal" href="#term-VSSA"><span class="xref std std-term">VSSA</span></a>.</p>
+</div>
+</dd>
+<dt id="term-jungtinis-modelis">jungtinis modelis<a class="headerlink" href="#term-jungtinis-modelis" title="Link to this term">#</a></dt><dd><p>Jungtinis modelis yra duomenų modelis, kuriame yra apjungtos kelių
+skirtingų klasių savybės į vieną duomenų modelį.</p>
+<p>Toks apjungiams yra vadinamas duomenų denormalizavimu.</p>
+<div class="admonition seealso">
+<p class="admonition-title">Taip pat žiūrėkite</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="identifikatoriai.html#ref-denorm"><span class="std std-ref">Jungtinis modelis</span></a></p></li>
+</ul>
+</div>
+</dd>
 <dt id="term-kanoniniai-duomenys">kanoniniai duomenys<a class="headerlink" href="#term-kanoniniai-duomenys" title="Link to this term">#</a></dt><dd><p>Kanoniniai duomenys yra tarsi duomenų etalonas, kuris nusako kokios
 duomenų reikšmės yra teisingos. Pavyzdžiui įmonės pavadinimas gali būti
 užrašomas įvairiausiomis formomis, pavyzdžiui:</p>
@@ -601,6 +577,9 @@ kanoniniai duomenys yra labai svarbūs.</p>
 </dd>
 <dt id="term-kodinis-pavadinimas">kodinis pavadinimas<a class="headerlink" href="#term-kodinis-pavadinimas" title="Link to this term">#</a></dt><dd><p>Pavadinimas, kuriam keliami tam tikri apribojimai.</p>
 </dd>
+<dt id="term-kompozicinis-raktas">kompozicinis raktas<a class="headerlink" href="#term-kompozicinis-raktas" title="Link to this term">#</a></dt><dd><p>Lokalus objekto identifikatorius susidedantis iš daugiau nei vienos
+reikšmės.</p>
+</dd>
 <dt id="term-manifestas">manifestas<a class="headerlink" href="#term-manifestas" title="Link to this term">#</a></dt><dd><p>Atvirų duomenų manifestas yra <a class="reference internal" href="#term-DSA"><span class="xref std std-term">DSA</span></a> lentelių rinkinys, kuriuose
 aprašyti duomenų šaltiniai ir juose esančių duomenų struktūra.</p>
 <p>Žodis manifestas yra kilęs iš programavimo srityje naudojamo termino
@@ -650,13 +629,28 @@ atrodo taip:</p>
 gerai dokumentuoti ir skelbiami viešai, jie yra skirti globaliam
 susietųjų duomenų tinkui kurti (angl. <em>linked data</em>).</p>
 </dd>
+<dt id="term-sudetinis-tipas">sudėtinis tipas<a class="headerlink" href="#term-sudetinis-tipas" title="Link to this term">#</a></dt><dd><p>Duomenų tipas apjungiantis kelias savybes į vieną grupę. Sudėtiniam
+tipui priskirtos savybės gali būti pasiekiamos <cite>.</cite> (taško) pagalba.</p>
+<div class="admonition seealso">
+<p class="admonition-title">Taip pat žiūrėkite</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="tipai.html#type.ref" title="type.ref"><code class="xref py py-data docutils literal notranslate"><span class="pre">type.ref</span></code></a></p></li>
+<li><p><a class="reference internal" href="tipai.html#type.backref" title="type.backref"><code class="xref py py-data docutils literal notranslate"><span class="pre">type.backref</span></code></a></p></li>
+<li><p><a class="reference internal" href="tipai.html#type.object" title="type.object"><code class="xref py py-data docutils literal notranslate"><span class="pre">type.object</span></code></a></p></li>
+</ul>
+</div>
+</dd>
 <dt id="term-sisteminis-pavadinimas">sisteminis pavadinimas<a class="headerlink" href="#term-sisteminis-pavadinimas" title="Link to this term">#</a></dt><dd><p>Sisteminis pavadinimas yra naudojamas objektų identifikavimui ir yra
 naudojamas URL nuorodose ir visur kitur, kur reikia nurodyti ryšį su
 objektu, naudojamas to objekto sisteminis pavadinimas.</p>
 <p>Sisteminis pavadinimas sudaromas tik iš lotyniškų raidžių ir <cite>-_/</cite>
 simbolių.</p>
 </dd>
-<dt id="term-pirminis-duomenu-saltinis">pirminis duomenų šaltinis<a class="headerlink" href="#term-pirminis-duomenu-saltinis" title="Link to this term">#</a></dt><dd><p>Įstaigos ar kitos organizacijos pagrindinis duomenų šaltinis.</p>
+<dt id="term-pirminis-saltinis">pirminis šaltinis<a class="headerlink" href="#term-pirminis-saltinis" title="Link to this term">#</a></dt><dt id="term-pirminis-duomenu-saltinis">pirminis duomenų šaltinis<a class="headerlink" href="#term-pirminis-duomenu-saltinis" title="Link to this term">#</a></dt><dd><p>Duomenš šaltinis, kuriame duomenys pateikiami arba įrašomi pirmą kartą.</p>
+<p>Įprastai, kas būtų užtikrinamas duomenų vientisumas, duomenų objektai
+yra registruojami vienoje vietoje, tai yra numatyta ir <a class="reference internal" href="#term-VIIVI"><span class="xref std std-term">VIIVĮ</span></a>
+įstatyme, kuriame nurodyta, kad Informacinės sistemos objektai, gali
+būti registruojami tik vienoje vietoje.</p>
 </dd>
 <dt id="term-DCAT">DCAT<a class="headerlink" href="#term-DCAT" title="Link to this term">#</a></dt><dd><p>Duomenų katalogo žodynas (angl. <a class="reference external" href="https://www.w3.org/TR/vocab-dcat-2/">Data Catalog Vocabulary</a>)  yra
 standartas skirtas duomenų rinkiniams aprašyti. Aprašant duomenis DCAT
@@ -820,7 +814,61 @@ skirtingos operacinės sistemos būtų suderinamos tarpusavyje.</p>
 <dt id="term-RDF">RDF<a class="headerlink" href="#term-RDF" title="Link to this term">#</a></dt><dd><p>Duomenų modelis sudarytas iš subjekto, predikato ir objekto tripletų
 (angl. <a class="reference external" href="https://en.wikipedia.org/wiki/Resource_Description_Framework">Resource Description Framework</a>).</p>
 </dd>
-<dt id="term-IVPK">IVPK<a class="headerlink" href="#term-IVPK" title="Link to this term">#</a></dt><dd><p><a class="reference external" href="https://ivpk.lrv.lt/lt/atviri-duomenys-1">Informacinės visuomenės plėtros komitetas</a>.</p>
+<dt id="term-TGII">TGIĮ<a class="headerlink" href="#term-TGII" title="Link to this term">#</a></dt><dd><p><a class="reference external" href="https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/TAIS.94745/asr">Teisės gauti informaciją ir duomenų pakartotinio naudojimo
+įstatymas</a>.</p>
+<p>Šis įstatymas įpareigoja valstybės ir savivaldybių institucijas ir
+joms pavaldžius subjektus atverti duomenis.</p>
+<p>Kelios citatos iš įstatymo:</p>
+<blockquote>
+<div><p><strong>4 straipsnis</strong></p>
+<p>1. Institucijos ir valstybės valdomi subjektai privalo teikti
+pareiškėjams ar jų atstovams duomenis, įskaitant pakartotiniam
+naudojimui skirtus duomenis, išskyrus šio įstatymo ir kitų įstatymų
+nustatytus atvejus.</p>
+<p><strong>15 straipsnis</strong></p>
+<p>1. Visi institucijos ar valstybės valdomo subjekto duomenys turi
+būti inventorizuoti laikantis principo, kad duomenys gali būti
+skelbiami pakartotinai naudoti, jeigu tai neprieštarauja šiam ir
+kitiems įstatymams. Inventorizuotų duomenų sąrašas turi būti
+skelbiamas Lietuvos atvirų duomenų portale.</p>
+<p>2. Institucijos ir valstybės valdomi subjektai turi sudaryti
+duomenų, dėl kurių yra pateiktos užklausos Lietuvos atvirų duomenų
+portale arba kurių pakartotinis naudojimas, institucijos ir
+valstybės valdomo subjekto vertinimu, gali kurti pridėtinę vertę,
+rinkinius ir juos skelbti šiame portale, jeigu tai neprieštarauja
+šiam ir kitiems įstatymams.</p>
+<p><strong>17 straipsnis</strong></p>
+<p>1. Lietuvos atvirų duomenų portalas yra valstybės informacinė
+sistema, skirta duomenų rinkiniams ir jų metaduomenims sisteminti ir
+skelbti naudojant vienodą metaduomenų aprašymo formatą, taip pat
+vieno langelio principu institucijų ir valstybės valdomų subjektų
+sudarytiems duomenų rinkiniams ir jų metaduomenims ieškoti,
+peržiūrėti, parsisiųsti, pareiškėjų užklausoms registruoti ir kitoms
+paslaugoms, susijusioms su šios informacinės sistemos paskirtimi,
+teikti.</p>
+<p>5. Institucijos ir valstybės valdomi subjektai privalo užtikrinti,
+kad inventorizuotų duomenų sąrašai ir sudaryti duomenų rinkiniai
+Lietuvos atvirų duomenų portale bus surasti ir pasiekiami šio
+portalo tvarkytojo nustatyta tvarka ir priemonėmis.</p>
+<p><strong>18 straipsnis.</strong></p>
+<p>Pareiškėjo teisės gali būti ginamos šiais būdais:</p>
+<p>1) pareiškėjas turi teisę apskųsti institucijos veiksmus, neveikimą
+ar administracinį sprendimą, taip pat institucijos vilkinimą atlikti
+jos kompetencijai šiuo įstatymu priskirtus veiksmus Viešojo
+administravimo įstatymo nustatyta tvarka;</p>
+<p>2) pareiškėjas turi teisę apskųsti valstybės valdomo subjekto
+veiksmus ar neveikimą, taip pat valstybės valdomo subjekto vilkinimą
+atlikti jo kompetencijai šiuo įstatymu priskirtus veiksmus tam
+pačiam valstybės valdomam subjektui arba bendrosios kompetencijos
+teismui.</p>
+</div></blockquote>
+</dd>
+<dt id="term-SDSA">ŠDSA<a class="headerlink" href="#term-SDSA" title="Link to this term">#</a></dt><dd><p><a class="reference internal" href="#term-DSA"><span class="xref std std-term">DSA</span></a> lentelė, kurioje aprašoma neatvertų, <a class="reference internal" href="#term-pirminis-duomenu-saltinis"><span class="xref std std-term">pirminio
+duomenų šaltinio</span></a> duomenų struktūra.</p>
+</dd>
+<dt id="term-VSSA">VSSA<a class="headerlink" href="#term-VSSA" title="Link to this term">#</a></dt><dd><p><a class="reference external" href="https://ivpk.lrv.lt/">Valstybės skaitmeninių sprendimų agentūra</a>.</p>
+</dd>
+<dt id="term-VIIVI">VIIVĮ<a class="headerlink" href="#term-VIIVI" title="Link to this term">#</a></dt><dd><p><a class="reference external" href="https://e-seimas.lrs.lt/portal/legalAct/lt/TAD/TAIS.415499/asr">Valstybės informacinių išteklių valdymo įstatymas</a>.</p>
 </dd>
 </dl>
 </section>

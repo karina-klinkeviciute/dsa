@@ -162,7 +162,8 @@
 <li class="toctree-l1"><a class="reference internal" href="tipai.html">Duomenų tipai</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pavadinimai.html">Kodiniai pavadinimai</a></li>
 <li class="toctree-l1"><a class="reference internal" href="vienetai.html">Matavimo vienetai</a></li>
-<li class="toctree-l1"><a class="reference internal" href="identifikatoriai.html">Ryšiai tarp modelių</a></li>
+<li class="toctree-l1"><a class="reference internal" href="apibendrinimas.html">Apibendrinimas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="identifikatoriai.html">Asociacija</a></li>
 <li class="toctree-l1"><a class="reference internal" href="branda.html">Brandos lygiai</a></li>
 <li class="toctree-l1"><a class="reference internal" href="prieiga.html">Prieigos lygiai</a></li>
 <li class="toctree-l1"><a class="reference internal" href="saltiniai.html">Duomenų šaltiniai</a></li>
@@ -1350,6 +1351,41 @@ publikuoti Latvijos miestų, jei publikuojama tik Lietuvos šalis.</p>
 <dt class="sig sig-object">
 <span class="sig-name descname"><span class="pre">sort(+a,</span> <span class="pre">-b)</span></span></dt>
 <dd><p>Rūšiuoti didėjimo tvarka  pagal <code class="docutils literal notranslate"><span class="pre">a</span></code> ir mažėjimo tvarka pagal <code class="docutils literal notranslate"><span class="pre">b</span></code>.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt class="sig sig-object">
+<span class="sig-name descname"><span class="pre">select(*props)</span></span></dt>
+<dd><p>Pateikiant duomenis, grąžinamos tik nurodytos savybės.</p>
+<p>Jei nenurodyta jokia savybė, įraukia visas, išskyrus daugiareikšmes savybes.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt class="sig sig-object">
+<span class="sig-name descname"><span class="pre">include(*props)</span></span></dt>
+<dd><p>Prie grąžinamų savybių, papildomai įtraukiamos nurodytos savybės. Gali
+būti naudojama kartu su <code class="docutils literal notranslate"><span class="pre">select()</span></code>, papildomai įtraukiant
+daugiareikšmes ar sudėtinių tipų savybės.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt class="sig sig-object">
+<span class="sig-name descname"><span class="pre">exclude(*props)</span></span></dt>
+<dd><p>Pašalina savybę iš <code class="docutils literal notranslate"><span class="pre">select()</span></code> ar <code class="docutils literal notranslate"><span class="pre">expand()</span></code> funkcijos pagalba atrinktų
+savybių sąrašo.</p>
+</dd></dl>
+
+<dl class="describe">
+<dt class="sig sig-object">
+<span class="sig-name descname"><span class="pre">expand(*props)</span></span></dt>
+<dd><p>Veikia panašiai, kaip <code class="docutils literal notranslate"><span class="pre">include()</span></code>, tačiau įtraukia visas nurodyto sudėtinio tipo savybes.</p>
+<p>Jei nenurodyta konkreti savybė, įtraukia visų sudėtinių tipų savybes.</p>
+<div class="admonition seealso">
+<p class="admonition-title">Taip pat žiūrėkite</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="identifikatoriai.html#prop-expand"><span class="std std-ref">Savybių įtraukimas</span></a></p></li>
+</ul>
+</div>
 </dd></dl>
 
 </dd></dl>

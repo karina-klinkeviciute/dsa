@@ -800,7 +800,8 @@ Duomenų tipai
 
 .. data:: object
 
-    Kompozicinis tipas, apjuniants kelias savybes į grupę, po vienu pavadinimu.
+    :term:`Sudėtinis tipas <sudėtinis tipas>`, apjungiantis kelias savybes į
+    grupę, po vienu pavadinimu.
 
     Šis tipas naudojamas apibrėžti sudėtiniams duomenims, kurie aprašyti
     naudojant kelis skirtingus tipas. Kompozicinio tipo atveju property
@@ -811,7 +812,7 @@ Duomenų tipai
 
 .. data:: array
 
-    Kompozicinis duomenų tipas, nurodo reikšmių masyvą.
+    :term:`Sudėtinis tipas <sudėtinis tipas>`, nurodo reikšmių masyvą.
 
     Šis tipas naudojamas apibrėžti duomenų masyvams. Jei masyvo elementai
     turi vienodus tipus, tada elemento tipas pateikiamas property pavadinimo
