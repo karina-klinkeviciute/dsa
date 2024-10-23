@@ -261,7 +261,7 @@ rinkinio kontekste.
 Funkcijos
 =========
 
-.. module:: resource.prepare
+.. module:: resource
 
 .. function:: http(method="GET", body=form)
 
@@ -681,7 +681,7 @@ vienos esybės modeliai turi turėti vienodus identifikatorius.
 Funkcijos
 =========
 
-.. module:: model.prepare
+.. module:: model
 
 .. function:: distinct()
 
@@ -1050,7 +1050,7 @@ datasets/example/cities
 
     .. admonition:: Pavyzdys
 
-        Jei :data:`param.prepare` pateikta formulė `read()`, o
+        Jei :data:`param.prepare` pateikta formulė :func:`param.read`, o
         :data:`param.source` nurodyta `Country`, tai formulė bus iškviesta kaip
         `read("Country")`.
 
@@ -1110,7 +1110,7 @@ Funkcijos
 
 Parametrų generavimui galima naudoti tokias formules:
 
-.. module:: param.prepare
+.. module:: param
 
 .. function:: read(model)
 
@@ -1127,11 +1127,50 @@ Parametrų generavimui galima naudoti tokias formules:
 
     Sveikų skaičių generavimas nuo `start` iki `stop`, `stop` neįeina.
 
+.. function:: path(name, value)
+
+    Parametras pateikia URI path dalies parametrą.
+
+    :data:`resource.source` URI path parametrų vieta pateikiama `{}` skliaustų
+    viduje, pavyzdžiui `/cities/{id}` nurodytas parametras `id`.
+
+    Funkcija gali būti iškviestai tokiais būdais:
+
+    - `path(value)`
+    - `path(name, value)`
+
+    **Argumentai**
+
+    name
+        Parametro pavadinimas nurodytas `{}` riestinių skliaustelių viduje. Jei
+        nenurodyta, tada naudojamas :data:`param.source`, jei šis nenurodytas,
+        tada naudojamas :data:`param.ref` pavadinimas.
+
+    value
+        Parametro reikšmė, gali būti statinė arba dinaminė.
+
+    .. admonition:: Pavyzdys
+
+        ========== ===== ====== ================ ========
+        resource   type  ref    source           prepare
+        ========== ===== ====== ================ ========
+        resource1  json         \/cities/{id}/   
+        \          param id                      `path(42)`
+        ========== ===== ====== ================ ========
+
+        Bus konstruojamas toks URI:
+
+        .. code-block:: uri
+
+            /cities/42/
+
+
 .. function:: query(name, value)
 
     Parametras pateikia URI query dalies parametrą.
 
-    Jei :data:`resource.source` jau turi query parametrus, jei bus papildyti.
+    Jei :data:`resource.source` jau turi query parametrus, jei bus papildyti
+    arba perrašyti.
 
     **Argumentai**
 
@@ -1200,7 +1239,7 @@ Parametrų generavimui galima naudoti tokias formules:
 
     name
         JSONPath_ arba XPath_ išraiška, priklauso nuoo :data:`resource.prapare`
-        nurodytos :func:`resource.prepare.http` `body` tipo.
+        nurodytos :func:`resource.http` `body` tipo.
 
         Nurodoma :data:`param.source` stulpelyje.
 

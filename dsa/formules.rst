@@ -169,8 +169,6 @@ dažnai formulė yra lengviau skaitoma, naudojant funkcijų grandinę.
 Standartinės funkcijos
 ======================
 
-.. module:: func
-
 Priklausomai nuo duomenų šaltinio ar konteksto gali būti naudojami skirtingi
 veiksmai, tačiau žemiau yra pateikti bendrosios paskirties veiksmai:
 
@@ -645,89 +643,196 @@ Pilnas galimų filtrų sąrašas:
 
 .. describe:: model.prepare
 
-    .. describe:: a = b
+    .. function:: eq(a, b)
 
-        `a` ir `b` reikšmės yra lygios.
+        Sutrumpinta forma:
 
-    .. describe:: a != b
+        .. code-block:: python
 
-        `a` nelygu `b`.
+            a = b
 
-    .. describe:: a > b
+        Sąlyga tenkinama, jei `a` ir `b` reikšmės yra lygios.
 
-        `a` daugiau už `b`.
+    .. function:: ne(a, b)
 
-    .. describe:: a < b
+        Sutrumpinta forma:
 
-        `a` mažiau už `b`.
+        .. code-block:: python
 
-    .. describe:: a >= b
+            a != b
 
-        `a` daugiau arba lygu `b`.
+        Sąlyga tenkinama, jei `a` ir `b` reikšmės nėra lygios.
 
-    .. describe:: a <= b
+    .. function:: gt(a, b)
 
-        `a` mažiau arba lygu `b`.
+        Sutrumpinta forma:
 
-    .. describe:: a.in(b)
+        .. code-block:: python
 
-        `a` lygi bent vienai iš `b` sekos reikšmių.
+            a > b
 
-    .. describe:: a.notin(b)
+        Sąlyga tenkinama, jei `a` reikšmė yra didesnė už `b`.
 
-        `a` nelygi nei vienai iš `b` sekos reikšmių.
+        Ši funkcija veikia tik su kiekybiniais duomenimis, kuriuos galima palyginti.
 
-    .. describe:: a.contains(b)
+    .. function:: lt(a, b)
 
-        `a` seka savyje turi `b` seką.
+        Sutrumpinta forma:
 
-    .. describe:: a.startswith(b)
+        .. code-block:: python
 
-        `a` seka prasideda `b` seka.
+            a < b
 
-    .. describe:: a.endswith(b)
+        Sąlyga tenkinama, jei `a` reikšmė yra mažesnė už `b`.
 
-        `a` seka baigiasi `b` seka.
+        Ši funkcija veikia tik su kiekybiniais duomenimis, kuriuos galima palyginti.
 
-    .. describe:: a & b
+    .. function:: ge(a, b)
 
-        `a` ir `b`.
+        Sutrumpinta forma:
 
-    .. describe:: a | b
+        .. code-block:: python
 
-        `a` arba `b`.
+            a >= b
 
-    .. describe:: sort(+a, -b)
+        Sąlyga tenkinama, jei `a` reikšmė yra didesnė arba lygi `b` reikšmei.
+
+        Ši funkcija veikia tik su kiekybiniais duomenimis, kuriuos galima palyginti.
+
+    .. function:: le(a, b)
+
+        Sutrumpinta forma:
+
+        .. code-block:: python
+
+            a <= b
+
+        Sąlyga tenkinama, jei `a` reikšmė yra mažesnė arba lygi `b` reikšmei.
+
+        Ši funkcija veikia tik su kiekybiniais duomenimis, kuriuos galima palyginti.
+
+    .. function:: in(a, b)
+
+        Sutrumpinta forma:
+
+        .. code-block:: python
+
+            a.in(b)
+
+        Sąlyga tenkinama, jei `a` lygi bent vienai iš `b` sekos reikšmių.
+
+    .. function:: notin(a, b)
+
+        Sutrumpinta forma:
+
+        .. code-block:: python
+
+            a.notin(b)
+
+        Sąlyga tenkinama, jei `a` nelygi nei vienai iš `b` sekos reikšmių.
+
+    .. function:: contains(a, b)
+
+        Sutrumpinta forma:
+
+        .. code-block:: python
+
+            a.contains(b)
+
+        Sąlyga tenkinama, jei bent viena `a` sekos reikšmių sutampa su `b` reikšme.
+
+    .. function:: startswith(a, b)
+
+        Sutrumpinta forma:
+
+        .. code-block:: python
+
+            a.startswith(b)
+
+        Sąlyga tenkinama, jei `a` simbolių eilutė prasideda `b` simbolių eilute.
+
+    .. function:: endswith(a, b)
+
+        Sutrumpinta forma:
+
+        .. code-block:: python
+
+            a.endswith(b)
+
+        Sąlyga tenkinama, jei `a` simbolių eilutė baigiasi `b` simbolių eilute.
+
+    .. function:: and(a, b)
+
+        Sutrumpinta forma:
+
+        .. code-block:: python
+
+            a & b
+
+        Sąlyga tenkinama, jei abi `a` ir `b` sąlygos tenkinamos.
+
+    .. function:: or(a, b)
+
+        Sutrumpinta forma:
+
+        .. code-block:: python
+
+            a | b
+
+        Sąlyga tenkinama, jei bent viena `a` arba `b` sąlyga tenkinama.
+
+    .. function:: sort(+a, -b)
 
         Rūšiuoti didėjimo tvarka  pagal `a` ir mažėjimo tvarka pagal `b`.
 
-    .. describe:: select(*props)
+    .. function:: select(*props)
 
         Pateikiant duomenis, grąžinamos tik nurodytos savybės.
 
-        Jei nenurodyta jokia savybė, įraukia visas, išskyrus daugiareikšmes savybes.
+        Jei nenurodyta jokia savybė, įtraukia visas, išskyrus daugiareikšmes
+        savybes.
 
-    .. describe:: include(*props)
+    .. function:: include(*props)
 
         Prie grąžinamų savybių, papildomai įtraukiamos nurodytos savybės. Gali
         būti naudojama kartu su `select()`, papildomai įtraukiant
         daugiareikšmes ar sudėtinių tipų savybės.
 
-    .. describe:: exclude(*props)
+    .. function:: exclude(*props)
 
         Pašalina savybę iš `select()` ar `expand()` funkcijos pagalba atrinktų
         savybių sąrašo.
 
-    .. describe:: expand(*props)
+    .. function:: expand(*props)
 
-        Veikia panašiai, kaip `include()`, tačiau įtraukia visas nurodyto sudėtinio tipo savybes.
+        Veikia panašiai, kaip `include()`, tačiau įtraukia visas nurodyto
+        sudėtinio tipo savybes.
 
         Jei nenurodyta konkreti savybė, įtraukia visų sudėtinių tipų savybes.
+
+        `expand()` veikia tik su tiesiogiai modeliui priklausančiomis savybėmis.
 
         .. seealso::
         
             - :ref:`prop-expand`
 
+    .. function:: extends(model, *props)
+
+        Įtraukia nurodyto `model` modelio `props` savybes.
+
+        Jei nenurodytas `model` ir `props`, įtraukia visas :data:`base` modelio savybes.
+
+        Jei nenurodyta `props`, įtraukia, visas `model` modelio savybes.
+
+    .. function:: limit(num)
+
+        Riboja gražinamų objektų skaičių iki nurodyti `num` skaičiaus.
+
+        Gali būti naudojamas su :func:`page`.
+
+    .. function:: page(*props)
+
+        Nurodo sekančio `next` puslapio reikšmę.
 
 Periodiškumas
 =============
@@ -934,7 +1039,12 @@ kelis jau aprašytus laukus.
 
     .. function:: query()
 
-        Skaido URI query dalį į parametrus.
+        Funkcija skirta darbui su URI query, skaido URI query dalį į parametrus
+        arba leidžia pakeisti duomenų šaltinio URI query naujomis reikšmimis.
+
+        .. seealso::
+
+            | :func:`param.query`
 
     .. function:: path()
 
@@ -954,6 +1064,11 @@ kelis jau aprašytus laukus.
             Šaknis (plačiau__).
 
             .. __: https://docs.python.org/3/library/pathlib.html#pathlib.PurePath.root
+
+        .. seealso::
+
+            | :func:`param.path`
+
 
 .. _kompleksinės-struktūros:
 
