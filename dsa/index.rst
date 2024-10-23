@@ -64,6 +64,7 @@ Turinys
     vienetai
     apibendrinimas
     identifikatoriai
+    modeliai/funkciniai
     branda
     prieiga
     saltiniai

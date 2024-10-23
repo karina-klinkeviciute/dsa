@@ -118,13 +118,34 @@ nei vieno dimensijos stulpelio.
 
     **Modelio bazė**
 
-    .. deprecated:: 0.2
-
-       Atskira modelio bazė naikinama. Nuo 0.2 versijos, modelio bazė nurodoma
-       :data:`model.type` stulpelyje.
-
     Kodinis bazinio modelio pavadinimas. Atitinka `rdfs:subClassOf`_ prasmę
-    (:data:`model` `rdfs:subClassOf` :data:`base`). Žiūrėti :ref:`base`.
+    (:data:`model` `rdfs:subClassOf` :data:`base`).
+
+    Šiame stulpelyje įrašomas kito :data:`model` stulpelyje įrašyto modelio
+    kodinis pavadinimas.
+
+    Galima nurodyti absoliutų modelio pavadinimą, kuris prasideda `/` simboliu,
+    taikoma, kai nurodomas bazinis modelis iš kito duomenų rinkinio,
+    pavyzdžiui:
+
+    .. admonition:: Pavyzdys
+
+        `/datasets/gov/example/Country`
+
+    Arba galima nurodyti reliatyvų pavadinimą, kuris neprasideda `/` simboliu,
+    taikoma, kai bazinis modelis yra tame pačiame duomenų rinkinyje, pavyzdžiui:
+
+    .. admonition:: Pavyzdys
+
+        `Country`
+
+    Jei `base` stulpelis neužpildytas, tada visi modeliai, neturintys `base`
+    yra laikomi baziniais modeliais.
+
+    .. seealso::
+
+        | :ref:`Baziniai modeliai <base>`
+        | :ref:`generalization`
 
 
 .. data:: model

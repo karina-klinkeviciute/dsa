@@ -8,7 +8,8 @@ Keitimų istorija
 1.1.0 (neišleista)
 ******************
 
-- Pridėtos `select()`, `expand()`, `include()` ir `exclude()` funkcijos.
+- Pridėtos `select()`, `expand()`, `include()`, `exclude()` ir `extends()`
+  funkcijos.
 
 1.0.0 (2024-10-22)
 ******************
