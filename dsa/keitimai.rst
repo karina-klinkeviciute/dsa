@@ -11,14 +11,12 @@ Keitimų istorija
 - Pridėtos `select()`, `expand()`, `include()`, `exclude()` ir `extends()`
   funkcijos.
 
+- Naujas skyrius :ref:`functional-models`.
+
+
 1.0.0 (2024-10-22)
 ******************
 
-- Panaikinta :ref:`base` dimensija, baziniai modeliai perkeliami į
-  :data:`model.type`.
-
-- Panaikinta :ref:`param` dimensija, parametrizavimas perkeltas prie
-  :ref:`property`, :data:`property.type` stulpelyje nurodant `param`.
 
 
 0.1.0 (2022-03-03)
