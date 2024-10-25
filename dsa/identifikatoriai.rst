@@ -112,6 +112,10 @@ Pavyzdyje `City` yra jungtinis modelis, kadangi `City` išvardintos ne tik
 `City` šiame pavyzdyje yra šakninis modelis, o `Country` yra modelis,
 prijungtas per `City/country` savybę.
 
+.. seealso::
+
+   | :ref:`Daliniai modeliai <func_model_part>` (`/:part`)
+
 
 .. _prop-expand:
 

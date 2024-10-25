@@ -351,11 +351,15 @@ savybių reikšmes.
    | :func:`sort`
 
 
-page
+.. _func_model_part:
+
+part
 ====
 
-Nurodo, kad duomenų šaltinis leidžia gauti duomenis ne visus vienu kartu, bet
-puslapiais.
+Nurodo, kad duomenų šaltinis neleidžia tiesiogiai pasiekti modelio duomenų ir
+šis modelis yra naudojamas tik kaip sudėtinė, vieno ar kelių kitų
+:ref:`jungtinių modelių <ref-denorm>`.
+
 
 .. admonition:: Pavyzdys
 

@@ -72,25 +72,36 @@ modelio duomenys gali būti pasiekiami tik per jungtinį modelį.
 
     **Struktūros aprašas**
 
-    ======== =========== ========= ======== =========== ===============
-    dataset  model       property  type     ref         source         
-    ======== =========== ========= ======== =========== ===============
-    \                              schema   xsd         country.xsd
-    xsd                                                                
-    ------------------------------ -------- ----------- ---------------
-    \        **Country**                                /country       
-    -------- --------------------- -------- ----------- ---------------
-    \                    name      string               \@name
-    \                    city[]    backref  City        city           
-    \        **City**                                                  
-    -------- --------------------- -------- ----------- ---------------
-    \                    name      string               \@name
-    \                    country   ref      Country                    
-    ======== =========== ========= ======== =========== ===============
+    ======== =========== ========= ======== ======== ============ ========= ======
+    dataset  model       property  type     ref      source       prepare   level 
+    ======== =========== ========= ======== ======== ============ ========= ======
+    \                              schema   xsd      country.xsd                  
+    xsd                                                                           
+    ------------------------------ -------- -------- ------------ --------- ------
+    \        **Country**                             /country               0     
+    -------- --------------------- -------- -------- ------------ --------- ------
+    \                    name      string            \@name                       
+    \                    cities[]  backref  City     city         expand()        
+    \        **City/:part**                                              0     
+    -------- --------------------- -------- -------- ------------ --------- ------
+    \                    name      string            \@name                 0     
+    ======== =========== ========= ======== ======== ============ ========= ======
 
 Pavyzdyje:
 
-- `Country` modelis yra :ref:`xsd_aggregate_model` ir jungtinio modelio :ref:`xsd_aggregate_root`.
+- `Country` modelis yra :ref:`xsd_aggregate_model` ir jungtinio modelio
+  :ref:`xsd_aggregate_root`.
+
+- `City` yra :ref:`xsd_aggregate_part`, kadangi tai žymi `/:part` žymė, taip
+  pat `City` neturi užpildyto :data:`model.source` stulpelio, tai reiškia, kad
+  tiesiogiai `City` duomenų gauti galimybės nėra, juos galima gauti tik per
+  `Country` jungtinį modelį, kurio sudėtyje yra ir `City`, prieinamas per
+  `Country/cities` savybę.
+
+- `Country/cities` savybė turi :func:`expand` funkciją įrašytą į
+  :data:`property.prepare`, kuri įtraukia visas tiesiogines `City` savybes į
+  jungtinį `Country` modelį.
+
 
 
 Elementai
