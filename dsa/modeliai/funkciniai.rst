@@ -49,7 +49,7 @@ duomenų šaltiniai `get_all_cities` ir `get_city_by_code`, nesusieti su
 loginiu modeliu.
 
 Norint susieti `get_all_cities` ir `get_city_by_code` duomenų šaltinius su
-loginiu modeliui, mums reikia panaudoti funkcinius modelis, kadangi duomenų
+loginiu modeliu, mums reikia panaudoti funkcinius modelius, kadangi duomenų
 šaltinis įgyvendina tik dalį funkcionalumo duomenims gauti.
 
 Galutinis pilnai susietas struktūros aprašas atrodys taip:
