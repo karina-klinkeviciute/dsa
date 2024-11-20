@@ -23,9 +23,13 @@ certifi==2024.2.2
 charset-normalizer==3.3.2
     # via requests
 click==8.1.7
-    # via uvicorn
+    # via
+    #   sphinxcontrib-versioning
+    #   uvicorn
 colorama==0.4.6
     # via sphinx-autobuild
+colorclass==2.2.2
+    # via sphinxcontrib-versioning
 docutils==0.20.1
     # via
     #   pydata-sphinx-theme
@@ -74,6 +78,7 @@ sphinx==7.3.7
     #   sphinx-examples
     #   sphinx-tabs
     #   sphinxcontrib-plantuml
+    #   sphinxcontrib-versioning
 sphinx-autobuild==2024.4.16
     # via -r requirements.in
 sphinx-book-theme==1.1.2
@@ -102,6 +107,8 @@ sphinxcontrib-qthelp==1.0.7
     # via sphinx
 sphinxcontrib-serializinghtml==1.1.10
     # via sphinx
+sphinxcontrib-versioning==2.2.1
+    # via -r requirements.in
 starlette==0.37.2
     # via sphinx-autobuild
 typing-extensions==4.11.0
