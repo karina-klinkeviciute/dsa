@@ -79,7 +79,7 @@ jobs:
             VERSION=${GITHUB_REF##*/}
             git pull origin gh-pages --allow-unrelated-histories || true
             mike deploy --push --branch gh-pages "$VERSION"
-            mike alias --push "$VERSION" latest
+            mike alias --push "$VERSION" latest || true
           # Deploy "dev" version from the main branch
           elif [ "${GITHUB_REF##*/}" == "main" ]; then
             git pull origin gh-pages --allow-unrelated-histories || true
