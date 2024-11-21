@@ -87,6 +87,3 @@ jobs:
             git pull origin gh-pages --allow-unrelated-histories || true
             mike deploy --push --branch gh-pages dev
           fi
-
-      - name: Upload to GitHub Pages
-        uses: actions/deploy-pages@v4
