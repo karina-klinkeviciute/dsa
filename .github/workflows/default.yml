@@ -66,6 +66,7 @@ jobs:
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
+          git config pull.rebase false
 
       - name: Deploy Documentation with mike
         env:
@@ -75,7 +76,8 @@ jobs:
           if [[ "${GITHUB_REF##*/}" == v* ]]; then
             VERSION=${GITHUB_REF##*/}
             git pull origin gh-pages || true
-            mike deploy --push --branch gh-pages "$VERSION" latest
+            mike deploy --push --branch gh-pages "$VERSION"
+            mike alias --push "$VERSION" latest
           # Deploy "dev" version from the main branch
           elif [ "${GITHUB_REF##*/}" == "main" ]; then
             git pull origin gh-pages || true
