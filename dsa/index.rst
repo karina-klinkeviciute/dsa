@@ -2,7 +2,11 @@
 
 Duomenų struktūros aprašas
 ##########################
+
 version:dev
+
+update 2
+
 Čia rasite *Duomenų struktūros aprašo* (:term:`DSA`) lentelės specifikaciją.
 
 :dfn:`Duomenų struktūros aprašas` yra lentelė skirta fizinio, loginio ir
