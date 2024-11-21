@@ -69,6 +69,7 @@ jobs:
           elif [ "${GITHUB_REF##*/}" == "main" ]; then
             mike deploy --push --branch gh-pages dev
             mike set-default --push latest
+          fi
 
   deploy:
     environment:
