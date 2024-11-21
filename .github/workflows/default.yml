@@ -53,6 +53,10 @@ jobs:
       - name: Build Documentation
         run: sphinx-build -b html dsa build -c .
 
+      - name: Create .nojekyll file
+        run: |
+          touch build/.nojekyll
+
       - name: Install mike
         run: python3 -m pip install mike
 
