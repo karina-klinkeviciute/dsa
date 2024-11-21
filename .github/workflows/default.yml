@@ -75,9 +75,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Clear any existing Git cache to prevent conflicts
-          git rm -r --cached . || true
-
           # Deploy the current version from the branch (e.g., v1.0, v1.1, etc.)
           if [[ "${GITHUB_REF##*/}" == v* ]]; then
             VERSION=${GITHUB_REF##*/}
@@ -91,7 +88,6 @@ jobs:
           fi
 
           # Ensure .nojekyll is committed to the gh-pages branch using mike
-          echo "Adding .nojekyll file to gh-pages branch"
           mike deploy --push --branch gh-pages --update .nojekyll
 
           # Debugging output to check current status
