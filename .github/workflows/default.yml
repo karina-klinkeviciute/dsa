@@ -74,9 +74,11 @@ jobs:
           # Deploy the current version from the branch (e.g., v1.0, v1.1, etc.)
           if [[ "${GITHUB_REF##*/}" == v* ]]; then
             VERSION=${GITHUB_REF##*/}
+            git pull origin gh-pages || true
             mike deploy --push --branch gh-pages "$VERSION" latest
           # Deploy "dev" version from the main branch
           elif [ "${GITHUB_REF##*/}" == "main" ]; then
+            git pull origin gh-pages || true
             mike deploy --push --branch gh-pages dev
             mike set-default --push latest
           fi
