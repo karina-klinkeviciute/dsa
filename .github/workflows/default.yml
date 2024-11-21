@@ -75,16 +75,25 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          # Clear any existing Git cache to prevent conflicts
+          git rm -r --cached . || true
+
           # Deploy the current version from the branch (e.g., v1.0, v1.1, etc.)
           if [[ "${GITHUB_REF##*/}" == v* ]]; then
             VERSION=${GITHUB_REF##*/}
-            git pull origin gh-pages --allow-unrelated-histories || true
-            mike deploy --push --branch gh-pages "$VERSION"
+            mike deploy --push --update --branch gh-pages "$VERSION"
             # Update the 'latest' alias to point to the highest version
             ALL_VERSIONS=$(mike list --branch gh-pages | grep -Eo 'v[0-9]+\.[0-9]+' | sort -V | tail -n 1)
             mike alias --push "$ALL_VERSIONS" latest
           # Deploy "dev" version from the main branch
           elif [ "${GITHUB_REF##*/}" == "main" ]; then
-            git pull origin gh-pages --allow-unrelated-histories || true
-            mike deploy --push --branch gh-pages dev
+            mike deploy --push --update --branch gh-pages dev
           fi
+
+          # Ensure .nojekyll is committed to the gh-pages branch using mike
+          echo "Adding .nojekyll file to gh-pages branch"
+          mike deploy --push --branch gh-pages --update .nojekyll
+
+          # Debugging output to check current status
+          echo "Deployment completed. Listing gh-pages branch content:"
+          git ls-remote --heads origin gh-pages
