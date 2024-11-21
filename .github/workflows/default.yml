@@ -43,18 +43,19 @@ jobs:
         uses: actions/cache@v3
         with:
           path: ${{ steps.pip-cache.outputs.dir }}
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}-v2
           restore-keys: |
             ${{ runner.os }}-pip-
 
       - name: Install dependencies
         run: python3 -m pip install -r ./requirements.txt
 
-      - name: Install missing Sphinx Tabs dependency
-        run: python3 -m pip install sphinx-tabs
-
       - name: Build Documentation
         run: sphinx-build -b html dsa build -c .
+
+      - name: Create .nojekyll file
+        run: |
+          touch build/.nojekyll
 
       - name: Install mike
         run: python3 -m pip install mike
@@ -77,13 +78,18 @@ jobs:
           # Deploy the current version from the branch (e.g., v1.0, v1.1, etc.)
           if [[ "${GITHUB_REF##*/}" == v* ]]; then
             VERSION=${GITHUB_REF##*/}
-            git pull origin gh-pages --allow-unrelated-histories || true
-            mike deploy --push --branch gh-pages "$VERSION"
+            mike deploy --push --update --branch gh-pages "$VERSION"
             # Update the 'latest' alias to point to the highest version
             ALL_VERSIONS=$(mike list --branch gh-pages | grep -Eo 'v[0-9]+\.[0-9]+' | sort -V | tail -n 1)
             mike alias --push "$ALL_VERSIONS" latest
           # Deploy "dev" version from the main branch
           elif [ "${GITHUB_REF##*/}" == "main" ]; then
-            git pull origin gh-pages --allow-unrelated-histories || true
-            mike deploy --push --branch gh-pages dev
+            mike deploy --push --update --branch gh-pages dev
           fi
+
+          # Ensure .nojekyll is committed to the gh-pages branch using mike
+          mike deploy --push --branch gh-pages --update .nojekyll
+
+          # Debugging output to check current status
+          echo "Deployment completed. Listing gh-pages branch content:"
+          git ls-remote --heads origin gh-pages
