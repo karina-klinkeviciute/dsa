@@ -57,6 +57,11 @@ jobs:
       - name: Install mike
         run: python3 -m pip install mike
 
+      - name: Create mkdocs config
+        run: |
+          echo "site_name: My Documentation" > mkdocs.yml
+          echo "docs_dir: build" >> mkdocs.yml
+
       - name: Deploy Documentation with mike
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
