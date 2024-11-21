@@ -1,98 +1,78 @@
-name: GitHub Pages
+.. default-role:: literal
 
-on:
-  push:
-    branches:
-      - main
-      - "v*" # Matches version branches like v1.0, v1.1, etc.
-  pull_request:
-  workflow_dispatch:
+Duomenų struktūros aprašas
+##########################
+version:dev
+Čia rasite *Duomenų struktūros aprašo* (:term:`DSA`) lentelės specifikaciją.
 
-permissions:
-  contents: write
-  pages: write
-  id-token: write
+:dfn:`Duomenų struktūros aprašas` yra lentelė skirta fizinio, loginio ir
+semantinio duomenų modelių susiejimui, prieigos lygio nustatymui ir duomenų
+brandos lygio vertinimui.
 
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+.. image:: _static/dsa_overview.png
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0  # Fetch all history to avoid unrelated histories issue
+:dfn:`Koncepcinis modelis` yra UML klasių diagrama, sudaryta laikantis
+`Conceptual model conventions (UML)`_ reikalavimų. Koncepcinis modelis laikomas
+kaip vienintelis tiesios šaltinis ir yra sudaromas remiantis teisės aktais,
+informacinės sistemos nuostatais, semantiniais žodynais ir duomenų modeliu iš
+duomenų šaltinio.
 
-      - name: Setup Python
-        uses: actions/setup-python@v3
-        with:
-          python-version: '3.10'
+:dfn:`Fizinis modelis` šio dokumento kontekste yra duomenų schema apibūdinanti
+kur ir kaip duomenys yra saugomi ir kaip juos pasiekti. Schema apibrėžianti
+duomenų modelį priklauso nuo duomenų saugojimo formato. Jei duomenys saugomi
+SQL duomenų bazėse, tada DSA lentelėje nurodomi lentelių ir stulpelių
+pavadinimai, XML atveju nurodomos XPath_ išraiškos, JSON atveju nurodomos
+JSONPath_ išraiškos. DSA lentelėje fizinis modelis nurodomas :ref:`source`
+stulpelyje.
 
-      - name: Upgrade pip
-        run: |
-          # install pip=>20.1 to use "pip cache dir"
-          python3 -m pip install --upgrade pip
+:dfn:`Loginis modelis` yra duomenų schema, kuri naudojama duomenų apsikeitimui
+UDTS_ protokolu, loginis modelis rengiamas pagal koncepcinį modelį ir yra
+artimas semantiniam modeliui, tačiau skirtas duomenų publikavimui per API.
+Loginis modelis siejamas su fiziniu ir semantiniu modeliais.
 
-      - name: Get pip cache dir
-        id: pip-cache
-        run: echo "dir=$(pip cache dir)" >> $GITHUB_OUTPUT
+:dfn:`Semantinis modelis` yra nepriklausomas nuo to, kaip duomenys saugomi ar
+perduodami fiziškai, siejamas su tarptautiniais standartais ir plačiai
+naudojamais sąvokų žodynais.
 
-      - name: Cache dependencies
-        uses: actions/cache@v3
-        with:
-          path: ${{ steps.pip-cache.outputs.dir }}
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}-v2
-          restore-keys: |
-            ${{ runner.os }}-pip-
 
-      - name: Install dependencies
-        run: python3 -m pip install -r ./requirements.txt
 
-      - name: Build Documentation
-        run: sphinx-build -b html dsa build -c .
+Specifikacijos
+**************
 
-      - name: Create .nojekyll file
-        run: |
-          touch build/.nojekyll
+- `Universali duomenų teikimo sąsaja`_ (UDTS)
+- `Duomenų katalogo Lietuvos taikymo profilis`_ (DCAT-AP-LT)
 
-      - name: Install mike
-        run: python3 -m pip install mike
 
-      - name: Create mkdocs config
-        run: |
-          echo "site_name: My Documentation" > mkdocs.yml
-          echo "docs_dir: build" >> mkdocs.yml
 
-      - name: Configure Git User
-        run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "github-actions@github.com"
-          git config pull.rebase false
+.. _UDTS: https://ivpk.github.io/uapi
+.. _Universali duomenų teikimo sąsaja: https://ivpk.github.io/uapi
+.. _Duomenų katalogo Lietuvos taikymo profilis: https://ivpk.github.io/DCAT-AP-LT
+.. _Conceptual model conventions (UML): https://semiceu.github.io/style-guide/1.0.0/gc-conceptual-model-conventions.html
 
-      - name: Deploy Documentation with mike
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          # Clear any existing Git cache to prevent conflicts
-          git rm -r --cached . || true
 
-          # Deploy the current version from the branch (e.g., v1.0, v1.1, etc.)
-          if [[ "${GITHUB_REF##*/}" == v* ]]; then
-            VERSION=${GITHUB_REF##*/}
-            git pull origin gh-pages --allow-unrelated-histories || true
-            mike deploy --push --update --branch gh-pages "$VERSION"
-            # Update the 'latest' alias to point to the highest version
-            ALL_VERSIONS=$(mike list --branch gh-pages | grep -Eo 'v[0-9]+\.[0-9]+' | sort -V | tail -n 1)
-            mike alias --push "$ALL_VERSIONS" latest
-          # Deploy "dev" version from the main branch
-          elif [ "${GITHUB_REF##*/}" == "main" ]; then
-            git pull origin gh-pages --allow-unrelated-histories || true
-            mike deploy --push --update --branch gh-pages dev
-          fi
+Turinys
+*******
 
-          # Ensure .nojekyll is committed to the gh-pages branch
-          git add build/.nojekyll
-          git commit -m "Add .nojekyll to gh-pages" || true
-          git push origin gh-pages || true
+.. toctree::
+    :maxdepth: 2
+
+    modelis
+    formatas
+    dimensijos
+    tipai
+    pavadinimai
+    vienetai
+    apibendrinimas
+    identifikatoriai
+    modeliai/funkciniai
+    branda
+    prieiga
+    saltiniai
+    vardu-erdves
+    zodynai
+    formules
+    savokos
+    keitimai
+
+.. _XPath: https://www.w3.org/TR/2010/REC-xpath20-20101214/
+.. _JSONPath: https://www.ietf.org/archive/id/draft-goessner-dispatch-jsonpath-00.html
