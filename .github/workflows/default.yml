@@ -103,6 +103,11 @@ jobs:
     # Run this only on 'main' branch.
     if: github.ref == 'refs/heads/main'
     steps:
+      - name: Download Documentation Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: github-pages
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
