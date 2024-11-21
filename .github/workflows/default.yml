@@ -88,6 +88,11 @@ jobs:
             mike deploy --push --branch gh-pages dev
           fi
 
+      - name: Upload Documentation Artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: ./build
+
   deploy:
     environment:
       name: github-pages
