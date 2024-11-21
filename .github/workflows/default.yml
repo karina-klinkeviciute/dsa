@@ -22,6 +22,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Fetch all history to avoid unrelated histories issue
 
       - name: Setup Python
         uses: actions/setup-python@v3
@@ -75,12 +77,12 @@ jobs:
           # Deploy the current version from the branch (e.g., v1.0, v1.1, etc.)
           if [[ "${GITHUB_REF##*/}" == v* ]]; then
             VERSION=${GITHUB_REF##*/}
-            git pull origin gh-pages || true
+            git pull origin gh-pages --allow-unrelated-histories || true
             mike deploy --push --branch gh-pages "$VERSION"
             mike alias --push "$VERSION" latest
           # Deploy "dev" version from the main branch
           elif [ "${GITHUB_REF##*/}" == "main" ]; then
-            git pull origin gh-pages || true
+            git pull origin gh-pages --allow-unrelated-histories || true
             mike deploy --push --branch gh-pages dev
             mike set-default --push latest
           fi
