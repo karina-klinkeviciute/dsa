@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -22,6 +22,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Fetch all history to avoid unrelated histories issue
 
       - name: Setup Python
         uses: actions/setup-python@v3
@@ -48,11 +50,25 @@ jobs:
       - name: Install dependencies
         run: python3 -m pip install -r ./requirements.txt
 
+      - name: Install missing Sphinx Tabs dependency
+        run: python3 -m pip install sphinx-tabs
+
       - name: Build Documentation
         run: sphinx-build -b html dsa build -c .
 
       - name: Install mike
         run: python3 -m pip install mike
+
+      - name: Create mkdocs config
+        run: |
+          echo "site_name: My Documentation" > mkdocs.yml
+          echo "docs_dir: build" >> mkdocs.yml
+
+      - name: Configure Git User
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git config pull.rebase false
 
       - name: Deploy Documentation with mike
         env:
@@ -61,21 +77,13 @@ jobs:
           # Deploy the current version from the branch (e.g., v1.0, v1.1, etc.)
           if [[ "${GITHUB_REF##*/}" == v* ]]; then
             VERSION=${GITHUB_REF##*/}
-            mike deploy --push --branch gh-pages "$VERSION" latest
+            git pull origin gh-pages --allow-unrelated-histories || true
+            mike deploy --push --branch gh-pages "$VERSION"
+            # Update the 'latest' alias to point to the highest version
+            ALL_VERSIONS=$(mike list --branch gh-pages | grep -Eo 'v[0-9]+\.[0-9]+' | sort -V | tail -n 1)
+            mike alias --push "$ALL_VERSIONS" latest
           # Deploy "dev" version from the main branch
           elif [ "${GITHUB_REF##*/}" == "main" ]; then
+            git pull origin gh-pages --allow-unrelated-histories || true
             mike deploy --push --branch gh-pages dev
-            mike set-default --push latest
-
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    # Run this only on 'main' branch.
-    if: github.ref == 'refs/heads/main'
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+          fi
