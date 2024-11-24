@@ -47,12 +47,6 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pip-
 
-      - name: Install pip-tools
-        run: python3 -m pip install pip-tools
-
-      - name: Compile requirements
-        run: pip-compile requirements.in
-
       - name: Install dependencies
         run: python3 -m pip install -r ./requirements.txt
 
