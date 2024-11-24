@@ -21,8 +21,8 @@ document.addEventListener("DOMContentLoaded", function () {
         window.location.href = baseUrl + selectedVersion + "/";
     });
 
-    // Add the selector to the sidebar under the menu
-    const sidebar = document.querySelector(".sphinxsidebarwrapper");
+    // Add the selector to the sidebar with class `.bd-sidebar-primary`
+    const sidebar = document.querySelector(".bd-sidebar-primary");
     if (sidebar) {
         const div = document.createElement("div");
         div.id = "version-selector-container";
