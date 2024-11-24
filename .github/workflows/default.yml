@@ -87,6 +87,12 @@ jobs:
             mike deploy --push --update --branch gh-pages dev
           fi
 
+          # Deploy version-specific alias
+          if [[ "${GITHUB_REF##*/}" == v* ]]; then
+            VERSION=${GITHUB_REF##*/}
+            mike alias --push "$VERSION" "$VERSION"
+          fi
+
           # Ensure .nojekyll is committed to the gh-pages branch using mike
           mike deploy --push --branch gh-pages --update .nojekyll
 
