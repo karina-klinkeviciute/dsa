@@ -70,6 +70,9 @@ jobs:
         run: |
           echo "site_name: My Documentation" > mkdocs.yml
           echo "docs_dir: build" >> mkdocs.yml
+          echo "plugins:" >> mkdocs.yml
+          echo "  - mike:" >> mkdocs.yml
+          echo "      version_selector: true" >> mkdocs.yml
 
       - name: Configure Git User
         run: |
