@@ -78,19 +78,13 @@ jobs:
           # Deploy the current version from the branch (e.g., v1.0, v1.1, etc.)
           if [[ "${GITHUB_REF##*/}" == v* ]]; then
             VERSION=${GITHUB_REF##*/}
-            mike deploy --push --update --branch gh-pages "$VERSION"
+            mike deploy --push --update --branch gh-pages "$VERSION" "$VERSION"
             # Update the 'latest' alias to point to the highest version
             ALL_VERSIONS=$(mike list --branch gh-pages | grep -Eo 'v[0-9]+\.[0-9]+' | sort -V | tail -n 1)
             mike alias --push "$ALL_VERSIONS" latest
           # Deploy "dev" version from the main branch
           elif [ "${GITHUB_REF##*/}" == "main" ]; then
             mike deploy --push --update --branch gh-pages dev
-          fi
-
-          # Deploy version-specific alias
-          if [[ "${GITHUB_REF##*/}" == v* ]]; then
-            VERSION=${GITHUB_REF##*/}
-            mike alias --push "$VERSION" "$VERSION"
           fi
 
           # Ensure .nojekyll is committed to the gh-pages branch using mike
