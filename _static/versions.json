@@ -1,0 +1,19 @@
+[
+  {
+    "version": ".nojekyll",
+    "title": ".nojekyll",
+    "aliases": []
+  },
+  {
+    "version": "dev",
+    "title": "dev",
+    "aliases": []
+  },
+  {
+    "version": "v1.0",
+    "title": "v1.0",
+    "aliases": [
+      "latest"
+    ]
+  }
+]
