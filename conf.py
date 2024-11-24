@@ -82,6 +82,10 @@ html_static_path = ['static']
 
 html_css_files = ['custom.css']
 
+html_js_files = [
+    'version-selector.js',
+]
+
 master_doc = 'index'
 
 smartquotes = False
