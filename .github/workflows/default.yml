@@ -94,6 +94,9 @@ jobs:
             mike deploy --push --update --branch gh-pages dev
           fi
 
+          # Update root to point to the latest version
+          mike set-default --push latest
+
           # Ensure .nojekyll is committed to the gh-pages branch using mike
           git checkout gh-pages
           touch .nojekyll
