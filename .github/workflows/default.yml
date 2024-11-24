@@ -97,11 +97,16 @@ jobs:
           # Create a JSON file with all versions for the version selector
           mike list --json --branch gh-pages > build/_static/versions.json
 
-          # Ensure .nojekyll is committed to the gh-pages branch using mike
+          # Debugging: Print the content of versions.json
+          echo "Content of versions.json:"
+          cat build/_static/versions.json
+
+          # Ensure .nojekyll and versions.json are committed to the gh-pages branch using mike
           git checkout gh-pages
+          cp build/_static/versions.json ./_static/versions.json
           touch .nojekyll
-          git add .nojekyll
-          git commit -m "Add .nojekyll to gh-pages" || true
+          git add .nojekyll _static/versions.json
+          git commit -m "Add .nojekyll and versions.json to gh-pages" || true
           git push origin gh-pages || true
 
           # Debugging output to check current status
