@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - "v*" # Matches version branches like v1.0, v1.1, etc.
+      - "*.*" # Matches version branches like v1.0, v1.1, etc.
   pull_request:
   workflow_dispatch:
 
@@ -79,12 +79,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           # Deploy the current version from the branch (e.g., v1.0, v1.1, etc.)
-          if [[ "${GITHUB_REF##*/}" == v* ]]; then
+          if [[ "${GITHUB_REF##*/}" == *.* ]]; then
             VERSION=${GITHUB_REF##*/}
-            # Deploy version to its specific path (e.g., /v1.0/)
+            # Deploy version to its specific path (e.g., /1.0/)
             mike deploy --push --update --branch gh-pages "$VERSION"
             # Update the 'latest' alias to point to the highest version
-            ALL_VERSIONS=$(mike list --branch gh-pages | grep -Eo 'v[0-9]+\.[0-9]+' | sort -V | tail -n 1)
+            ALL_VERSIONS=$(mike list --branch gh-pages | grep -Eo '[0-9]+\.[0-9]+' | sort -V | tail -n 1)
             mike alias --push "$ALL_VERSIONS" latest
           # Deploy "dev" version from the main branch
           elif [ "${GITHUB_REF##*/}" == "main" ]; then
@@ -97,11 +97,16 @@ jobs:
           # Create a JSON file with all versions for the version selector
           mike list --json --branch gh-pages > build/_static/versions.json
 
-          # Ensure .nojekyll is committed to the gh-pages branch using mike
+          # Debugging: Print the content of versions.json
+          echo "Content of versions.json:"
+          cat build/_static/versions.json
+
+          # Ensure .nojekyll and versions.json are committed to the gh-pages branch using mike
           git checkout gh-pages
+          cp build/_static/versions.json ./_static/versions.json
           touch .nojekyll
-          git add .nojekyll
-          git commit -m "Add .nojekyll to gh-pages" || true
+          git add .nojekyll _static/versions.json
+          git commit -m "Add .nojekyll and versions.json to gh-pages" || true
           git push origin gh-pages || true
 
           # Debugging output to check current status
