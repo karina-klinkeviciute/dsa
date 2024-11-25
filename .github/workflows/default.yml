@@ -85,8 +85,7 @@ jobs:
             mike deploy --push --update --branch gh-pages "$VERSION"
             # Update the 'latest' alias to point to the highest version
             ALL_VERSIONS=$(mike list --branch gh-pages | grep -Eo '[0-9]+\.[0-9]+' | sort -V | tail -n 1)
-            mike alias --remove latest || true
-            mike alias --push "$ALL_VERSIONS" latest
+            mike alias --rebase --push "$ALL_VERSIONS" latest
           # Deploy "dev" version from the main branch
           elif [ "${GITHUB_REF##*/}" == "main" ]; then
             mike deploy --push --update --branch gh-pages dev
