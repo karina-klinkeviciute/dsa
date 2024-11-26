@@ -6,13 +6,10 @@ on:
       - main
       - "*.*"
   pull_request:
-    branches:
-      - main
-      - "*.*"
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -25,41 +22,87 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Fetch all history to avoid unrelated histories issue
 
       - name: Setup Python
         uses: actions/setup-python@v3
         with:
           python-version: '3.10'
 
-      - name: Upgrade Pip
+      - name: Upgrade pip
         run: |
           python -m pip install --upgrade pip
+
+      - name: Get pip cache dir
+        id: pip-cache
+        run: echo "dir=$(pip cache dir)" >> $GITHUB_OUTPUT
+
+      - name: Cache dependencies
+        uses: actions/cache@v3
+        with:
+          path: ${{ steps.pip-cache.outputs.dir }}
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}-v3
+          restore-keys: |
+            ${{ runner.os }}-pip-
 
       - name: Install dependencies
         run: |
           python -m pip install -r ./requirements.txt
 
       - name: Build Documentation
-        run: |
-          sphinx-build -b html dsa build -c .
+        run: sphinx-build -b html dsa build -c .
 
-      - name: Create Empty MkDocs Config
+      - name: Create .nojekyll file
         run: |
-          echo "" > mkdocs.yml
+          touch build/.nojekyll
 
-      - name: Deploy Documentation with Mike
+      - name: Install mike
+        run: python -m pip install mike
+
+      - name: Create mkdocs config
+        run: |
+          echo "site_name: My Documentation" > mkdocs.yml
+          echo "docs_dir: build" >> mkdocs.yml
+          echo "plugins:" >> mkdocs.yml
+          echo "  - mike:" >> mkdocs.yml
+          echo "      version_selector: true" >> mkdocs.yml
+
+      - name: Configure Git User
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git config pull.rebase false
+
+      - name: Deploy Documentation with mike
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # Determine version from the branch name
-          if [[ "${GITHUB_REF##*/}" == "main" ]]; then
-            mike deploy draft --branch gh-pages 
-            mike set-default draft --branch gh-pages
-          else
-            VERSION="${GITHUB_REF##*/}"
-            mike deploy "$VERSION" --branch gh-pages
-            mike list --json | jq -r '.[].version' | sort -V | tail -n 1 | xargs -I {} mike set-default "{}" --branch gh-pages
+          # Deploy the current version from the branch (e.g., v1.0, v1.1, etc.)
+          if [[ "${GITHUB_REF##*/}" == *.* ]]; then
+            VERSION=${GITHUB_REF##*/}
+            # Deploy version to its specific path (e.g., /1.0/)
+            mike deploy --push --update --branch gh-pages "$VERSION"
+            # Update the 'latest' alias to point to the highest version
+            ALL_VERSIONS=$(mike list --branch gh-pages | grep -Eo '[0-9]+\.[0-9]+' | sort -V | tail -n 1)
+                      # Deploy "draft" version from the main branch
+          elif [ "${GITHUB_REF##*/}" == "main" ]; then
+            mike deploy --push --update --branch gh-pages draft
           fi
+
+          # Update root to point to the latest version
+          mike set-default --push "$ALL_VERSIONS"
+
+          # Create a JSON file with all versions for the version selector
+          mike list --json --branch gh-pages > build/_static/versions.json
+
+          # Ensure .nojekyll and versions.json are committed to the gh-pages branch using mike
+          git checkout gh-pages
+          cp build/_static/versions.json ./_static/versions.json
+          touch .nojekyll
+          git add .nojekyll _static/versions.json
+          git commit -m "Add .nojekyll and versions.json to gh-pages" || true
+          git push origin gh-pages || true
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
