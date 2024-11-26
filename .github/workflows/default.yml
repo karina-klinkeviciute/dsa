@@ -88,7 +88,7 @@ jobs:
           # Deploy "draft" version from the main branch
           elif [ "${GITHUB_REF##*/}" == "main" ]; then
             mike deploy --push --update --branch gh-pages draft
-            ALL_VERSIONS=draft
+            ALL_VERSIONS=$(mike list --branch gh-pages | grep -Eo '[0-9]+\.[0-9]+' | sort -V | tail -n 1)
           fi
 
           # Update root to point to the latest version
