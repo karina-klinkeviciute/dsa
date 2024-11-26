@@ -43,6 +43,10 @@ jobs:
         run: |
           sphinx-build -b html dsa build -c .
 
+      - name: Create Empty MkDocs Config
+        run: |
+          echo "" > mkdocs.yml
+
       - name: Deploy Documentation with Mike
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
