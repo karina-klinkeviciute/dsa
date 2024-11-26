@@ -49,7 +49,7 @@ jobs:
         run: |
           # Determine version from the branch name
           if [[ "${GITHUB_REF##*/}" == "main" ]]; then
-            mike deploy draft --branch gh-pages
+            mike deploy draft --branch gh-pages --src-dir build
             mike set-default draft --branch gh-pages
           else
             VERSION="${GITHUB_REF##*/}"
