@@ -53,8 +53,9 @@ jobs:
             mike set-default draft --branch gh-pages
           else
             VERSION="${GITHUB_REF##*/}"
-            mike deploy "$VERSION" --branch gh-pages 
-            mike list --json | jq -r '.[].version' | sort -V | tail -n 1 | xargs -I {} mike set-default "{}" --branch gh-pages 
+            mike deploy "$VERSION" --branch gh-pages
+            mike list --json | jq -r '.[].version' | sort -V | tail -n 1 | xargs -I {} mike set-default "{}" --branch gh-pages
+          fi
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
