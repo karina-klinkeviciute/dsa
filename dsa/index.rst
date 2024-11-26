@@ -3,6 +3,22 @@
 Duomenų struktūros aprašas
 ##########################
 
+- Ši versija: `Naujausias juodraštis`_
+
+- `Naujausia paskelbta versija`_
+
+- `Naujausias juodraštis`_
+
+- `Klaidų ir keitimų sekimas`_
+
+- Redaktorius: `VSSA`_
+
+.. _1.0: https://ivpk.github.io/dsa/1.0
+.. _Naujausia paskelbta versija: https://ivpk.github.io/dsa/
+.. _Naujausias juodraštis: https://ivpk.github.io/dsa/draft/
+.. _Klaidų ir keitimų sekimas: https://github.com/ivpk/dsa/issues
+.. _VSSA: https://vssa.lrv.lt/lt/
+
 Čia rasite *Duomenų struktūros aprašo* (:term:`DSA`) lentelės specifikaciją.
 
 :dfn:`Duomenų struktūros aprašas` yra lentelė skirta fizinio, loginio ir
