@@ -83,15 +83,18 @@ jobs:
             VERSION=${GITHUB_REF##*/}
             # Deploy version to its specific path (e.g., /1.0/)
             mike deploy --push --update --branch gh-pages "$VERSION"
-            # Update the 'latest' alias to point to the highest version
+            # Update the ALL_VERSIONS variable to get the highest version number
             ALL_VERSIONS=$(mike list --branch gh-pages | grep -Eo '[0-9]+\.[0-9]+' | sort -V | tail -n 1)
-                      # Deploy "draft" version from the main branch
+          # Deploy "draft" version from the main branch
           elif [ "${GITHUB_REF##*/}" == "main" ]; then
             mike deploy --push --update --branch gh-pages draft
+            ALL_VERSIONS=draft
           fi
 
           # Update root to point to the latest version
-          mike set-default --push "$ALL_VERSIONS"
+          if [ -n "$ALL_VERSIONS" ]; then
+            mike set-default --push "$ALL_VERSIONS"
+          fi
 
           # Create a JSON file with all versions for the version selector
           mike list --json --branch gh-pages > build/_static/versions.json
