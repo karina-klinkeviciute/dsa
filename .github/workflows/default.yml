@@ -50,12 +50,34 @@ jobs:
         run: |
           python -m pip install -r ./requirements.txt
 
-      - name: Build Documentation
+      - name: Build HTML Documentation
         run: sphinx-build -b html dsa build -c .
 
       - name: Create .nojekyll file
         run: |
           touch build/.nojekyll
+
+      - name: Install LaTeX and Required Packages
+        run: sudo apt-get update && sudo apt-get install -y texlive-latex-recommended texlive-fonts-recommended texlive-latex-extra
+
+      - name: Build PDF Documentation
+        run: sphinx-build -b latex dsa build/latex
+
+      - name: Compile LaTeX to PDF
+        run: |
+          cd build/latex
+          make
+          cd ../../
+
+      - name: Rename PDF
+        run: |
+          VERSION=${GITHUB_REF##*/}
+          if [[ "$VERSION" == *.* ]]; then
+            PDF_NAME="dsa_specifikacija_${VERSION//./_}.pdf"
+          elif [ "$VERSION" == "main" ]; then
+            PDF_NAME="dsa_specifikacija_draft.pdf"
+          fi
+          mv build/latex/*.pdf build/$PDF_NAME
 
       - name: Install mike
         run: python -m pip install mike
@@ -99,12 +121,14 @@ jobs:
           # Create a JSON file with all versions for the version selector
           mike list --json --branch gh-pages > build/_static/versions.json
 
-          # Ensure .nojekyll and versions.json are committed to the gh-pages branch using mike
+          # Ensure .nojekyll, versions.json, and the PDF are committed to the gh-pages branch using mike
           git checkout gh-pages
           cp build/_static/versions.json ./_static/versions.json
+          cp build/$PDF_NAME ./_static/pdf/
+          mkdir -p _static/pdf
           touch .nojekyll
-          git add .nojekyll _static/versions.json
-          git commit -m "Add .nojekyll and versions.json to gh-pages" || true
+          git add .nojekyll _static/versions.json _static/pdf/$PDF_NAME
+          git commit -m "Add .nojekyll, versions.json, and version-specific PDF to gh-pages" || true
           git push origin gh-pages || true
 
       - name: Upload artifact
