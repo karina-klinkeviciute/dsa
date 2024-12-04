@@ -51,17 +51,17 @@ jobs:
           python -m pip install -r ./requirements.txt
 
       - name: Build HTML Documentation
-        run: sphinx-build -b html dsa build -c .
+        run: sphinx-build -b html dsa build/html -c dsa
 
       - name: Create .nojekyll file
         run: |
-          touch build/.nojekyll
+          touch build/html/.nojekyll
 
       - name: Install LaTeX and Required Packages
         run: sudo apt-get update && sudo apt-get install -y texlive-latex-recommended texlive-fonts-recommended texlive-latex-extra
 
       - name: Build PDF Documentation
-        run: sphinx-build -b latex dsa build/latex
+        run: sphinx-build -b latex dsa build/latex -c dsa
 
       - name: Compile LaTeX to PDF
         run: |
@@ -77,7 +77,7 @@ jobs:
           elif [ "$VERSION" == "main" ]; then
             PDF_NAME="dsa_specifikacija_draft.pdf"
           fi
-          mv build/latex/*.pdf build/$PDF_NAME
+          mv build/latex/*.pdf build/html/$PDF_NAME
 
       - name: Install mike
         run: python -m pip install mike
@@ -85,7 +85,7 @@ jobs:
       - name: Create mkdocs config
         run: |
           echo "site_name: My Documentation" > mkdocs.yml
-          echo "docs_dir: build" >> mkdocs.yml
+          echo "docs_dir: build/html" >> mkdocs.yml
           echo "plugins:" >> mkdocs.yml
           echo "  - mike:" >> mkdocs.yml
           echo "      version_selector: true" >> mkdocs.yml
@@ -119,12 +119,12 @@ jobs:
           fi
 
           # Create a JSON file with all versions for the version selector
-          mike list --json --branch gh-pages > build/_static/versions.json
+          mike list --json --branch gh-pages > build/html/_static/versions.json
 
           # Ensure .nojekyll, versions.json, and the PDF are committed to the gh-pages branch using mike
           git checkout gh-pages
-          cp build/_static/versions.json ./_static/versions.json
-          cp build/$PDF_NAME ./_static/pdf/
+          cp build/html/_static/versions.json ./_static/versions.json
+          cp build/html/$PDF_NAME ./_static/pdf/
           mkdir -p _static/pdf
           touch .nojekyll
           git add .nojekyll _static/versions.json _static/pdf/$PDF_NAME
@@ -134,4 +134,4 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./build
+          path: ./build/html
