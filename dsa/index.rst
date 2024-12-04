@@ -7,17 +7,20 @@ Duomenų struktūros aprašas
 
 - `Naujausia paskelbta versija`_
 
-- `Naujausias juodraštis`_
+- `Naujausias redaktoriaus juodraštis`_
 
 - `Klaidų ir keitimų sekimas`_
 
 - Redaktorius: `VSSA`_
 
+- `Ši specifikacija PDF formatu`_
+
 .. _1.0: https://ivpk.github.io/dsa/1.0
 .. _Naujausia paskelbta versija: https://ivpk.github.io/dsa/
-.. _Naujausias juodraštis: https://ivpk.github.io/dsa/draft/
+.. _Naujausias redaktoriaus juodraštis: https://ivpk.github.io/dsa/draft/
 .. _Klaidų ir keitimų sekimas: https://github.com/ivpk/dsa/issues
 .. _VSSA: https://vssa.lrv.lt/lt/
+.. _Ši specifikacija PDF formatu: <_static/pdf/dsa_specifikacija_1_0.pdf>
 
 Čia rasite *Duomenų struktūros aprašo* (:term:`DSA`) lentelės specifikaciją.
 
