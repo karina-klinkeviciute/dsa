@@ -51,7 +51,7 @@ jobs:
           python -m pip install -r ./requirements.txt
 
       - name: Build HTML Documentation
-        run: sphinx-build -b html dsa build/html -c dsa
+        run: sphinx-build -b html dsa build/html
 
       - name: Create .nojekyll file
         run: |
@@ -61,7 +61,7 @@ jobs:
         run: sudo apt-get update && sudo apt-get install -y texlive-latex-recommended texlive-fonts-recommended texlive-latex-extra
 
       - name: Build PDF Documentation
-        run: sphinx-build -b latex dsa build/latex -c dsa
+        run: sphinx-build -b latex dsa build/latex
 
       - name: Compile LaTeX to PDF
         run: |
