@@ -31,8 +31,7 @@ jobs:
           python-version: '3.10'
 
       - name: Upgrade pip
-        run: |
-          python -m pip install --upgrade pip
+        run: python -m pip install --upgrade pip
 
       - name: Get pip cache dir
         id: pip-cache
@@ -47,15 +46,19 @@ jobs:
             ${{ runner.os }}-pip-
 
       - name: Install dependencies
-        run: |
-          python -m pip install -r ./requirements.txt
+        run: python -m pip install -r ./requirements.txt
+
+      - name: Install Sphinx Theme (sphinx_rtd_theme)
+        run: python -m pip install sphinx_rtd_theme
+
+      - name: Verify Static Directory Exists
+        run: mkdir -p dsa/static
 
       - name: Build HTML Documentation
         run: sphinx-build -b html dsa build/html
 
       - name: Create .nojekyll file
-        run: |
-          touch build/html/.nojekyll
+        run: touch build/html/.nojekyll
 
       - name: Install LaTeX and Required Packages
         run: sudo apt-get update && sudo apt-get install -y texlive-latex-recommended texlive-fonts-recommended texlive-latex-extra
