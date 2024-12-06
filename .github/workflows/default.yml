@@ -66,6 +66,9 @@ jobs:
       - name: Build PDF Documentation
         run: sphinx-build -b latex dsa build/latex
 
+      - name: Copy Static Files for LaTeX Build
+        run: cp -r dsa/static build/latex/static
+
       - name: Compile LaTeX to PDF
         run: |
           cd build/latex
@@ -122,15 +125,15 @@ jobs:
           fi
 
           # Create a JSON file with all versions for the version selector
-          mike list --json --branch gh-pages > build/html/_static/versions.json
+          mike list --json --branch gh-pages > build/html/static/versions.json
 
           # Ensure .nojekyll, versions.json, and the PDF are committed to the gh-pages branch using mike
           git checkout gh-pages
-          cp build/html/_static/versions.json ./_static/versions.json
-          cp build/html/$PDF_NAME ./_static/pdf/
-          mkdir -p _static/pdf
+          cp build/html/static/versions.json ./static/versions.json
+          cp build/html/$PDF_NAME ./static/pdf/
+          mkdir -p static/pdf
           touch .nojekyll
-          git add .nojekyll _static/versions.json _static/pdf/$PDF_NAME
+          git add .nojekyll static/versions.json static/pdf/$PDF_NAME
           git commit -m "Add .nojekyll, versions.json, and version-specific PDF to gh-pages" || true
           git push origin gh-pages || true
 
