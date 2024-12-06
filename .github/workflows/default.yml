@@ -61,7 +61,7 @@ jobs:
         run: touch build/html/.nojekyll
 
       - name: Install LaTeX and Required Packages
-        run: sudo apt-get update && sudo apt-get install -y texlive-latex-recommended texlive-fonts-recommended texlive-latex-extra
+        run: sudo apt-get update && sudo apt-get install -y texlive-latex-recommended texlive-fonts-recommended texlive-latex-extra latexmk
 
       - name: Build PDF Documentation
         run: sphinx-build -b latex dsa build/latex
