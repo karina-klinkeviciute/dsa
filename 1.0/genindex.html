@@ -1,0 +1,1329 @@
+
+<!DOCTYPE html>
+
+
+<html lang="lt" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Indeksas &#8212; DSA</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-examples.css?v=e236af4b" />
+    <link rel="stylesheet" type="text/css" href="_static/tabs.css?v=a5c4661c" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="_static/custom.css?v=f0eb6ae9" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="_static/documentation_options.js?v=4ee96f2e"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/tabs.js?v=3030b3cb"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script src="_static/translations.js?v=3b848cde"></script>
+    <script src="_static/design-tabs.js?v=36754332"></script>
+    <script src="https://unpkg.com/mermaid@10.2.0/dist/mermaid.min.js"></script>
+    <script>
+mermaid.initialize({
+    startOnLoad:true,
+    theme: 'neutral'
+});
+</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'genindex';</script>
+    <link rel="index" title="Indeksas" href="#" />
+    <link rel="search" title="Paieška" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="lt"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="index.html">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">DSA</p>
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Paieška" aria-label="Paieška" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Paieška</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="modelis.html">Koncepcinis modelis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="formatas.html">Lentelės formatas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dimensijos.html">Dimensijos</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="tipai.html">Duomenų tipai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pavadinimai.html">Kodiniai pavadinimai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vienetai.html">Matavimo vienetai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="identifikatoriai.html">Ryšiai tarp modelių</a></li>
+<li class="toctree-l1"><a class="reference internal" href="branda.html">Brandos lygiai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="prieiga.html">Prieigos lygiai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="saltiniai.html">Duomenų šaltiniai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="vardu-erdves.html">Vardų erdvės</a></li>
+<li class="toctree-l1"><a class="reference internal" href="zodynai.html">Išoriniai žodynai</a></li>
+<li class="toctree-l1"><a class="reference internal" href="formules.html">Formulės</a></li>
+<li class="toctree-l1"><a class="reference internal" href="savokos.html">Sąvokos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="keitimai.html">Keitimų istorija</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ivpk/dsa" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Šaltinio saugykla"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ivpk/dsa/issues/new?title=Issue%20on%20page%20%2Fgenindex.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Atidarykite problemą"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Pilno ekrano režimas"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Paieška" aria-label="Paieška" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1></h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+
+<h1 id="index">Indeksas</h1>
+
+<div class="genindex-jumpbox">
+ <a href="#A"><strong>A</strong></a>
+ | <a href="#B"><strong>B</strong></a>
+ | <a href="#C"><strong>C</strong></a>
+ | <a href="#D"><strong>D</strong></a>
+ | <a href="#E"><strong>E</strong></a>
+ | <a href="#F"><strong>F</strong></a>
+ | <a href="#G"><strong>G</strong></a>
+ | <a href="#H"><strong>H</strong></a>
+ | <a href="#I"><strong>I</strong></a>
+ | <a href="#J"><strong>J</strong></a>
+ | <a href="#K"><strong>K</strong></a>
+ | <a href="#L"><strong>L</strong></a>
+ | <a href="#M"><strong>M</strong></a>
+ | <a href="#N"><strong>N</strong></a>
+ | <a href="#O"><strong>O</strong></a>
+ | <a href="#P"><strong>P</strong></a>
+ | <a href="#Q"><strong>Q</strong></a>
+ | <a href="#R"><strong>R</strong></a>
+ | <a href="#S"><strong>S</strong></a>
+ | <a href="#T"><strong>T</strong></a>
+ | <a href="#U"><strong>U</strong></a>
+ | <a href="#V"><strong>V</strong></a>
+ | <a href="#W"><strong>W</strong></a>
+ | <a href="#X"><strong>X</strong></a>
+ | <a href="#Y"><strong>Y</strong></a>
+ | <a href="#Z"><strong>Z</strong></a>
+ 
+</div>
+<h2 id="A">A</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tipai.html#type.absent">absent (modulje type)</a>
+</li>
+      <li><a href="formatas.html#access">access (įtaisytasis kintamasis)</a>, <a href="prieiga.html#id0">[1]</a>
+
+      <ul>
+        <li><a href="dimensijos.html#base.access">(modulje base)</a>
+</li>
+        <li><a href="dimensijos.html#comment.access">(modulje comment)</a>
+</li>
+        <li><a href="dimensijos.html#dataset.access">(modulje dataset)</a>
+</li>
+        <li><a href="dimensijos.html#enum.access">(modulje enum)</a>
+</li>
+        <li><a href="dimensijos.html#model.access">(modulje model)</a>
+</li>
+        <li><a href="dimensijos.html#property.access">(modulje property)</a>
+</li>
+        <li><a href="dimensijos.html#resource.access">(modulje resource)</a>
+</li>
+      </ul></li>
+      <li><a href="formules.html#func.add">add() (modulyje func)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="savokos.html#term-ADK"><strong>ADK</strong></a>
+</li>
+      <li><a href="savokos.html#term-ADP"><strong>ADP</strong></a>
+</li>
+      <li><a href="savokos.html#term-ADS"><strong>ADS</strong></a>
+</li>
+      <li><a href="savokos.html#term-ADSA"><strong>ADSA</strong></a>
+</li>
+      <li><a href="formules.html#func.and">and() (modulyje func)</a>
+</li>
+      <li><a href="savokos.html#term-API"><strong>API</strong></a>
+</li>
+      <li><a href="savokos.html#term-aplinkos-kintamasis"><strong>aplinkos kintamasis</strong></a>
+</li>
+      <li><a href="tipai.html#type.array">array (modulje type)</a>
+</li>
+      <li><a href="savokos.html#term-atviru-duomenu-direktyva"><strong>atvirų duomenų direktyva</strong></a>
+</li>
+      <li><a href="savokos.html#term-aukstos-vertes-duomenys"><strong>aukštos vertės duomenys</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="B">B</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tipai.html#type.backref">backref (modulje type)</a>
+</li>
+      <li>
+    base
+
+      <ul>
+        <li><a href="dimensijos.html#module-base">module</a>
+</li>
+      </ul></li>
+      <li><a href="formatas.html#base">base (įtaisytasis kintamasis)</a>
+</li>
+      <li><a href="savokos.html#term-baze"><strong>bazė</strong></a>
+</li>
+      <li><a href="savokos.html#term-BDAR"><strong>BDAR</strong></a>
+</li>
+      <li><a href="tipai.html#type.binary">binary (modulje type)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="formules.html#func.bind">bind() (modulyje func)</a>
+</li>
+      <li><a href="dimensijos.html#param.prepare.body">body() (modulyje param.prepare)</a>
+</li>
+      <li><a href="tipai.html#type.boolean">boolean (modulje type)</a>
+</li>
+      <li><a href="savokos.html#term-brandos-lygis"><strong>brandos lygis</strong></a>
+</li>
+      <li>
+    built-in function
+
+      <ul>
+        <li><a href="saltiniai.html#connect">connect()</a>
+</li>
+        <li><a href="saltiniai.html#tabular">tabular()</a>
+</li>
+        <li><a href="saltiniai.html#id0">xpath()</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="C">C</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="formules.html#func.case">case() (modulyje func)</a>, <a href="formules.html#id7">[1]</a>
+</li>
+      <li><a href="formules.html#func.cast">cast() (modulyje func)</a>
+</li>
+      <li><a href="formules.html#func.choose">choose() (modulyje func)</a>
+</li>
+      <li>
+    comment
+
+      <ul>
+        <li><a href="dimensijos.html#module-comment">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    connect()
+
+      <ul>
+        <li><a href="saltiniai.html#connect">built-in function</a>
+</li>
+      </ul></li>
+      <li><a href="dimensijos.html#migrate.create">create() (modulyje migrate)</a>
+</li>
+      <li><a href="formules.html#func.cron">cron() (modulyje func)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="D">D</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="formules.html#func.daily">daily() (modulyje func)</a>
+</li>
+      <li>
+    dataset
+
+      <ul>
+        <li><a href="dimensijos.html#module-dataset">module</a>
+</li>
+      </ul></li>
+      <li><a href="formatas.html#dataset">dataset (įtaisytasis kintamasis)</a>
+</li>
+      <li><a href="tipai.html#type.date">date (modulje type)</a>
+</li>
+      <li><a href="formules.html#func.date">date() (modulyje func)</a>, <a href="formules.html#id0">[1]</a>
+</li>
+      <li><a href="tipai.html#type.datetime">datetime (modulje type)</a>
+</li>
+      <li><a href="formules.html#func.datetime">datetime() (modulyje func)</a>
+</li>
+      <li><a href="savokos.html#term-DCAT"><strong>DCAT</strong></a>
+</li>
+      <li><a href="savokos.html#term-DCAT-AP"><strong>DCAT-AP</strong></a>
+</li>
+      <li><a href="formules.html#func.decompress">decompress() (modulyje func)</a>
+</li>
+      <li><a href="dimensijos.html#migrate.delete">delete() (modulyje migrate)</a>
+</li>
+      <li><a href="formatas.html#description">description (įtaisytasis kintamasis)</a>
+
+      <ul>
+        <li><a href="dimensijos.html#comment.description">(modulje comment)</a>
+</li>
+        <li><a href="dimensijos.html#dataset.description">(modulje dataset)</a>
+</li>
+        <li><a href="dimensijos.html#enum.description">(modulje enum)</a>
+</li>
+        <li><a href="dimensijos.html#lang.description">(modulje lang)</a>
+</li>
+        <li><a href="dimensijos.html#migrate.description">(modulje migrate)</a>
+</li>
+        <li><a href="dimensijos.html#model.description">(modulje model)</a>
+</li>
+        <li><a href="dimensijos.html#prefix.description">(modulje prefix)</a>
+</li>
+        <li><a href="dimensijos.html#property.description">(modulje property)</a>
+</li>
+        <li><a href="dimensijos.html#resource.description">(modulje resource)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="formules.html#func.dict">dict() (modulyje func)</a>
+</li>
+      <li><a href="savokos.html#term-dideles-vertes-duomenys"><strong>didelės vertės duomenys</strong></a>
+</li>
+      <li><a href="savokos.html#term-dimensija"><strong>dimensija</strong></a>
+</li>
+      <li><a href="dimensijos.html#model.prepare.distinct">distinct() (modulyje model.prepare)</a>
+</li>
+      <li><a href="savokos.html#term-distribucija"><strong>distribucija</strong></a>
+</li>
+      <li><a href="formules.html#func.div">div() (modulyje func)</a>
+</li>
+      <li><a href="savokos.html#term-DOS"><strong>DOS</strong></a>
+</li>
+      <li><a href="savokos.html#term-DSA"><strong>DSA</strong></a>
+</li>
+      <li><a href="savokos.html#term-duomenu-katalogas"><strong>duomenų katalogas</strong></a>
+</li>
+      <li><a href="savokos.html#term-duomenu-rinkinys"><strong>duomenų rinkinys</strong></a>
+</li>
+      <li><a href="savokos.html#term-duomenu-serializavimo-formatas"><strong>duomenų serializavimo formatas</strong></a>
+</li>
+      <li><a href="savokos.html#term-duomenu-saltinis"><strong>duomenų šaltinis</strong></a>
+</li>
+      <li><a href="savokos.html#term-duomenu-valdymo-aktas"><strong>duomenų valdymo aktas</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="E">E</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    enum
+
+      <ul>
+        <li><a href="dimensijos.html#module-enum">module</a>
+</li>
+      </ul></li>
+      <li><a href="dimensijos.html#property.enum">enum (modulje property)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="formules.html#func.eq">eq() (modulyje func)</a>
+</li>
+      <li><a href="savokos.html#term-ETL"><strong>ETL</strong></a>
+</li>
+      <li><a href="savokos.html#term-Europos-saveikumo-karkasas"><strong>Europos sąveikumo karkasas</strong></a>
+</li>
+      <li><a href="formules.html#func.extract">extract() (modulyje func)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="F">F</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tipai.html#type.file">file (modulje type)</a>
+</li>
+      <li><a href="formules.html#func.file">file() (modulyje func)</a>
+</li>
+      <li><a href="dimensijos.html#migrate.filter">filter() (modulyje migrate)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="formules.html#func.first">first() (modulyje func)</a>
+</li>
+      <li>
+    func
+
+      <ul>
+        <li><a href="formules.html#module-func">module</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="G">G</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="formules.html#func.ge">ge() (modulyje func)</a>
+</li>
+      <li><a href="tipai.html#type.generic">generic (modulje type)</a>
+</li>
+      <li><a href="tipai.html#type.geometry">geometry (modulje type)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="formules.html#func.getattr">getattr() (modulyje func)</a>, <a href="formules.html#id13">[1]</a>
+</li>
+      <li><a href="formules.html#func.getitem">getitem() (modulyje func)</a>, <a href="formules.html#id14">[1]</a>
+</li>
+      <li><a href="formules.html#func.gt">gt() (modulyje func)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="H">H</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="formules.html#func.head">head() (modulyje func)</a>
+</li>
+      <li><a href="formules.html#func.header">header() (modulyje func)</a>
+
+      <ul>
+        <li><a href="dimensijos.html#param.prepare.header">(modulyje param.prepare)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="formules.html#func.hourly">hourly() (modulyje func)</a>
+</li>
+      <li><a href="dimensijos.html#resource.prepare.http">http() (modulyje resource.prepare)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="I">I</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="formatas.html#id">id (įtaisytasis kintamasis)</a>
+
+      <ul>
+        <li><a href="dimensijos.html#comment.id">(modulje comment)</a>
+</li>
+        <li><a href="dimensijos.html#dataset.id">(modulje dataset)</a>
+</li>
+        <li><a href="dimensijos.html#migrate.id">(modulje migrate)</a>
+</li>
+        <li><a href="dimensijos.html#resource.id">(modulje resource)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tipai.html#type.image">image (modulje type)</a>
+</li>
+      <li><a href="tipai.html#type.integer">integer (modulje type)</a>
+</li>
+      <li><a href="formules.html#func.item">item() (modulyje func)</a>
+</li>
+      <li><a href="savokos.html#term-iteratorius"><strong>iteratorius</strong></a>
+</li>
+      <li><a href="savokos.html#term-IVPK"><strong>IVPK</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="J">J</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="savokos.html#term-JSON"><strong>JSON</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="K">K</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="savokos.html#term-kanoniniai-duomenys"><strong>kanoniniai duomenys</strong></a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="savokos.html#term-kodinis-pavadinimas"><strong>kodinis pavadinimas</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="L">L</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    lang
+
+      <ul>
+        <li><a href="dimensijos.html#module-lang">module</a>
+</li>
+      </ul></li>
+      <li><a href="formules.html#func.le">le() (modulyje func)</a>
+</li>
+      <li><a href="formules.html#func.len">len() (modulyje func)</a>
+</li>
+      <li><a href="formatas.html#level">level (įtaisytasis kintamasis)</a>
+
+      <ul>
+        <li><a href="dimensijos.html#base.level">(modulje base)</a>
+</li>
+        <li><a href="dimensijos.html#comment.level">(modulje comment)</a>
+</li>
+        <li><a href="dimensijos.html#dataset.level">(modulje dataset)</a>
+</li>
+        <li><a href="dimensijos.html#model.level">(modulje model)</a>
+</li>
+        <li><a href="dimensijos.html#property.level">(modulje property)</a>
+</li>
+        <li><a href="dimensijos.html#resource.level">(modulje resource)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="formules.html#func.list">list() (modulyje func)</a>
+</li>
+      <li><a href="formules.html#func.lower">lower() (modulyje func)</a>
+</li>
+      <li><a href="formules.html#func.lt">lt() (modulyje func)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="M">M</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="savokos.html#term-manifestas"><strong>manifestas</strong></a>
+</li>
+      <li><a href="savokos.html#term-metaduomenys"><strong>metaduomenys</strong></a>
+</li>
+      <li>
+    migrate
+
+      <ul>
+        <li><a href="dimensijos.html#module-migrate">module</a>
+</li>
+      </ul></li>
+      <li><a href="formules.html#func.mod">mod() (modulyje func)</a>
+</li>
+      <li>
+    model
+
+      <ul>
+        <li><a href="dimensijos.html#module-model">module</a>
+</li>
+      </ul></li>
+      <li><a href="formatas.html#model">model (įtaisytasis kintamasis)</a>
+</li>
+      <li>
+    model.prepare
+
+      <ul>
+        <li><a href="dimensijos.html#module-model.prepare">module</a>
+</li>
+      </ul></li>
+      <li><a href="savokos.html#term-modelis"><strong>modelis</strong></a>
+</li>
+      <li>
+    module
+
+      <ul>
+        <li><a href="dimensijos.html#module-base">base</a>
+</li>
+        <li><a href="dimensijos.html#module-comment">comment</a>
+</li>
+        <li><a href="dimensijos.html#module-dataset">dataset</a>
+</li>
+        <li><a href="dimensijos.html#module-enum">enum</a>
+</li>
+        <li><a href="formules.html#module-func">func</a>
+</li>
+        <li><a href="dimensijos.html#module-lang">lang</a>
+</li>
+        <li><a href="dimensijos.html#module-migrate">migrate</a>
+</li>
+        <li><a href="dimensijos.html#module-model">model</a>
+</li>
+        <li><a href="dimensijos.html#module-model.prepare">model.prepare</a>
+</li>
+        <li><a href="dimensijos.html#module-param">param</a>
+</li>
+        <li><a href="dimensijos.html#module-param.prepare">param.prepare</a>
+</li>
+        <li><a href="dimensijos.html#module-prefix">prefix</a>
+</li>
+        <li><a href="dimensijos.html#module-property">property</a>
+</li>
+        <li><a href="dimensijos.html#module-resource">resource</a>
+</li>
+        <li><a href="dimensijos.html#module-resource.prepare">resource.prepare</a>
+</li>
+        <li><a href="dimensijos.html#module-switch">switch</a>
+</li>
+        <li><a href="tipai.html#module-type">type</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tipai.html#type.money">money (modulje type)</a>
+</li>
+      <li><a href="formules.html#func.monthly">monthly() (modulyje func)</a>
+</li>
+      <li><a href="formules.html#func.mul">mul() (modulyje func)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="N">N</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="formules.html#func.ne">ne() (modulyje func)</a>
+</li>
+      <li><a href="formules.html#func.negative">negative() (modulyje func)</a>
+</li>
+      <li><a href="savokos.html#term-normalizavimas"><strong>normalizavimas</strong></a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="formules.html#func.not">not() (modulyje func)</a>
+</li>
+      <li><a href="formules.html#func.null">null() (modulyje func)</a>
+</li>
+      <li><a href="tipai.html#type.number">number (modulje type)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="O">O</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tipai.html#type.object">object (modulje type)</a>
+</li>
+      <li><a href="savokos.html#term-objektas"><strong>objektas</strong></a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="formules.html#func.op">op() (modulyje func)</a>
+</li>
+      <li><a href="prieiga.html#open">open (įtaisytasis kintamasis)</a>
+</li>
+      <li><a href="formules.html#func.or">or() (modulyje func)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="P">P</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    param
+
+      <ul>
+        <li><a href="dimensijos.html#module-param">module</a>
+</li>
+      </ul></li>
+      <li><a href="formules.html#func.param">param() (modulyje func)</a>
+</li>
+      <li>
+    param.prepare
+
+      <ul>
+        <li><a href="dimensijos.html#module-param.prepare">module</a>
+</li>
+      </ul></li>
+      <li><a href="formules.html#func.path">path() (modulyje func)</a>
+</li>
+      <li><a href="savokos.html#term-pirminis-duomenu-saltinis"><strong>pirminis duomenų šaltinis</strong></a>
+</li>
+      <li><a href="formules.html#func.positive">positive() (modulyje func)</a>
+</li>
+      <li><a href="savokos.html#term-POSIX"><strong>POSIX</strong></a>
+</li>
+      <li>
+    prefix
+
+      <ul>
+        <li><a href="dimensijos.html#module-prefix">module</a>
+</li>
+      </ul></li>
+      <li><a href="formatas.html#prepare">prepare (įtaisytasis kintamasis)</a>
+
+      <ul>
+        <li><a href="dimensijos.html#comment.prepare">(modulje comment)</a>
+</li>
+        <li><a href="dimensijos.html#dataset.prepare">(modulje dataset)</a>
+</li>
+        <li><a href="dimensijos.html#enum.prepare">(modulje enum)</a>
+</li>
+        <li><a href="dimensijos.html#migrate.prepare">(modulje migrate)</a>
+</li>
+        <li><a href="dimensijos.html#model.prepare">(modulje model)</a>
+</li>
+        <li><a href="dimensijos.html#param.prepare">(modulje param)</a>
+</li>
+        <li><a href="dimensijos.html#property.prepare">(modulje property)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="savokos.html#term-prieigos-taskas"><strong>prieigos taškas</strong></a>
+</li>
+      <li><a href="prieiga.html#private">private (įtaisytasis kintamasis)</a>
+</li>
+      <li><a href="formules.html#func.prop">prop() (modulyje func)</a>
+</li>
+      <li>
+    property
+
+      <ul>
+        <li><a href="dimensijos.html#module-property">module</a>
+</li>
+      </ul></li>
+      <li><a href="formatas.html#property">property (įtaisytasis kintamasis)</a>
+
+      <ul>
+        <li><a href="dimensijos.html#model.property">(modulje model)</a>
+</li>
+      </ul></li>
+      <li><a href="prieiga.html#protected">protected (įtaisytasis kintamasis)</a>
+</li>
+      <li><a href="prieiga.html#public">public (įtaisytasis kintamasis)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="Q">Q</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="formules.html#func.query">query() (modulyje func)</a>
+
+      <ul>
+        <li><a href="dimensijos.html#param.prepare.query">(modulyje param.prepare)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="R">R</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="dimensijos.html#param.prepare.range">range() (modulyje param.prepare)</a>
+</li>
+      <li><a href="savokos.html#term-RDF"><strong>RDF</strong></a>
+</li>
+      <li><a href="formules.html#func.re">re() (modulyje func)</a>
+</li>
+      <li><a href="dimensijos.html#param.prepare.read">read() (modulyje param.prepare)</a>
+</li>
+      <li><a href="formatas.html#ref">ref (įtaisytasis kintamasis)</a>
+
+      <ul>
+        <li><a href="dimensijos.html#base.ref">(modulje base)</a>
+</li>
+        <li><a href="dimensijos.html#comment.ref">(modulje comment)</a>
+</li>
+        <li><a href="dimensijos.html#dataset.ref">(modulje dataset)</a>
+</li>
+        <li><a href="dimensijos.html#enum.ref">(modulje enum)</a>
+</li>
+        <li><a href="dimensijos.html#lang.ref">(modulje lang)</a>
+</li>
+        <li><a href="dimensijos.html#migrate.ref">(modulje migrate)</a>
+</li>
+        <li><a href="dimensijos.html#model.ref">(modulje model)</a>
+</li>
+        <li><a href="dimensijos.html#param.ref">(modulje param)</a>
+</li>
+        <li><a href="dimensijos.html#prefix.ref">(modulje prefix)</a>
+</li>
+        <li><a href="dimensijos.html#property.ref">(modulje property)</a>
+</li>
+        <li><a href="dimensijos.html#resource.ref">(modulje resource)</a>
+</li>
+        <li><a href="tipai.html#type.ref">(modulje type)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="savokos.html#term-reguliarioji-israiska"><strong>reguliarioji išraiška</strong></a>
+</li>
+      <li><a href="formules.html#func.replace">replace() (modulyje func)</a>
+</li>
+      <li>
+    resource
+
+      <ul>
+        <li><a href="dimensijos.html#module-resource">module</a>
+</li>
+      </ul></li>
+      <li><a href="formatas.html#resource">resource (įtaisytasis kintamasis)</a>
+</li>
+      <li>
+    resource.prepare
+
+      <ul>
+        <li><a href="dimensijos.html#module-resource.prepare">module</a>
+</li>
+      </ul></li>
+      <li><a href="savokos.html#term-REST-API"><strong>REST API</strong></a>
+</li>
+      <li><a href="formules.html#func.return">return() (modulyje func)</a>
+</li>
+      <li>
+    RFC
+
+      <ul>
+        <li><a href="formatas.html#index-0">RFC 4180</a>
+</li>
+        <li><a href="formatas.html#index-1">RFC 9562</a>, <a href="modelis.html#index-0">[1]</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="S">S</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="savokos.html#term-savybe"><strong>savybė</strong></a>
+</li>
+      <li><a href="formules.html#func.self">self() (modulyje func)</a>
+</li>
+      <li><a href="formules.html#func.set">set() (modulyje func)</a>, <a href="formules.html#id8">[1]</a>
+</li>
+      <li><a href="savokos.html#term-sisteminis-pavadinimas"><strong>sisteminis pavadinimas</strong></a>
+</li>
+      <li><a href="formatas.html#source">source (įtaisytasis kintamasis)</a>
+
+      <ul>
+        <li><a href="dimensijos.html#comment.source">(modulje comment)</a>
+</li>
+        <li><a href="dimensijos.html#dataset.source">(modulje dataset)</a>
+</li>
+        <li><a href="dimensijos.html#enum.source">(modulje enum)</a>
+</li>
+        <li><a href="dimensijos.html#model.source">(modulje model)</a>
+</li>
+        <li><a href="dimensijos.html#param.source">(modulje param)</a>
+</li>
+        <li><a href="dimensijos.html#property.source">(modulje property)</a>
+</li>
+        <li><a href="dimensijos.html#resource.source">(modulje resource)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="formules.html#func.split">split() (modulyje func)</a>
+</li>
+      <li><a href="formules.html#func.stack">stack() (modulyje func)</a>
+</li>
+      <li><a href="tipai.html#type.string">string (modulje type)</a>
+</li>
+      <li><a href="formules.html#func.strip">strip() (modulyje func)</a>
+</li>
+      <li><a href="formules.html#func.sub">sub() (modulyje func)</a>
+</li>
+      <li><a href="savokos.html#term-subjektas"><strong>subjektas</strong></a>
+</li>
+      <li><a href="formules.html#func.swap">swap() (modulyje func)</a>
+</li>
+      <li>
+    switch
+
+      <ul>
+        <li><a href="dimensijos.html#module-switch">module</a>
+</li>
+      </ul></li>
+      <li><a href="formules.html#func.switch">switch() (modulyje func)</a>
+</li>
+      <li><a href="dimensijos.html#switch.switch.prepare">switch.prepare (modulje switch)</a>
+</li>
+      <li><a href="dimensijos.html#switch.switch.source">switch.source (modulje switch)</a>
+</li>
+      <li><a href="savokos.html#term-SDSA"><strong>ŠDSA</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="T">T</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    tabular()
+
+      <ul>
+        <li><a href="saltiniai.html#tabular">built-in function</a>
+</li>
+      </ul></li>
+      <li><a href="formules.html#func.tail">tail() (modulyje func)</a>
+</li>
+      <li><a href="tipai.html#type.text">text (modulje type)</a>
+</li>
+      <li><a href="savokos.html#term-TGII"><strong>TGIĮ</strong></a>
+</li>
+      <li><a href="tipai.html#type.time">time (modulje type)</a>
+</li>
+      <li><a href="formatas.html#title">title (įtaisytasis kintamasis)</a>
+
+      <ul>
+        <li><a href="dimensijos.html#comment.title">(modulje comment)</a>
+</li>
+        <li><a href="dimensijos.html#dataset.title">(modulje dataset)</a>
+</li>
+        <li><a href="dimensijos.html#enum.title">(modulje enum)</a>
+</li>
+        <li><a href="dimensijos.html#lang.title">(modulje lang)</a>
+</li>
+        <li><a href="dimensijos.html#migrate.title">(modulje migrate)</a>
+</li>
+        <li><a href="dimensijos.html#model.title">(modulje model)</a>
+</li>
+        <li><a href="dimensijos.html#prefix.title">(modulje prefix)</a>
+</li>
+        <li><a href="dimensijos.html#property.title">(modulje property)</a>
+</li>
+        <li><a href="dimensijos.html#resource.title">(modulje resource)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="formules.html#func.tuple">tuple() (modulyje func)</a>
+</li>
+      <li>
+    type
+
+      <ul>
+        <li><a href="tipai.html#module-type">module</a>
+</li>
+      </ul></li>
+      <li><a href="formatas.html#type">type (įtaisytasis kintamasis)</a>
+
+      <ul>
+        <li><a href="dimensijos.html#dataset.type">(modulje dataset)</a>
+</li>
+        <li><a href="dimensijos.html#model.type">(modulje model)</a>
+</li>
+        <li><a href="dimensijos.html#property.type">(modulje property)</a>
+</li>
+        <li><a href="dimensijos.html#resource.type">(modulje resource)</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="U">U</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="dimensijos.html#migrate.update">update() (modulyje migrate)</a>
+</li>
+      <li><a href="formules.html#func.upper">upper() (modulyje func)</a>
+</li>
+      <li><a href="savokos.html#term-URI"><strong>URI</strong></a>
+</li>
+      <li><a href="formatas.html#uri">uri (įtaisytasis kintamasis)</a>
+
+      <ul>
+        <li><a href="dimensijos.html#comment.uri">(modulje comment)</a>
+</li>
+        <li><a href="dimensijos.html#model.uri">(modulje model)</a>
+</li>
+        <li><a href="dimensijos.html#prefix.uri">(modulje prefix)</a>
+</li>
+        <li><a href="dimensijos.html#property.uri">(modulje property)</a>
+</li>
+        <li><a href="tipai.html#type.uri">(modulje type)</a>
+</li>
+      </ul></li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="tipai.html#type.url">url (modulje type)</a>
+</li>
+      <li><a href="formules.html#func.url">url() (modulyje func)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="V">V</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="formules.html#func.var">var() (modulyje func)</a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="savokos.html#term-viesasis-zodynas"><strong>viešasis žodynas</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="W">W</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="savokos.html#term-web-servisas"><strong>web servisas</strong></a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="formules.html#func.weekly">weekly() (modulyje func)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="X">X</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li>
+    xpath()
+
+      <ul>
+        <li><a href="saltiniai.html#id0">built-in function</a>
+</li>
+      </ul></li>
+  </ul></td>
+</tr></table>
+
+<h2 id="Y">Y</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="savokos.html#term-YAML"><strong>YAML</strong></a>
+</li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="formules.html#func.yearly">yearly() (modulyje func)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="Z">Z</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="savokos.html#term-zodynas"><strong>žodynas</strong></a>
+</li>
+  </ul></td>
+</tr></table>
+
+
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Iki Informacinės visuomenės plėtros komitetas
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2019-2024, IVPK.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
