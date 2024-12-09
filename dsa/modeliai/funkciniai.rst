@@ -49,7 +49,7 @@ duomenų šaltiniai `get_all_cities` ir `get_city_by_code`, nesusieti su
 loginiu modeliu.
 
 Norint susieti `get_all_cities` ir `get_city_by_code` duomenų šaltinius su
-loginiu modeliui, mums reikia panaudoti funkcinius modelis, kadangi duomenų
+loginiu modeliu, mums reikia panaudoti funkcinius modelius, kadangi duomenų
 šaltinis įgyvendina tik dalį funkcionalumo duomenims gauti.
 
 Galutinis pilnai susietas struktūros aprašas atrodys taip:
@@ -79,7 +79,7 @@ datasets/gov/example
 duomenų modelis `City` yra siejamas su duomenų šaltiniu, kuris įgyvendina tam
 tikras duomenų skaitymo funkcijas.
 
-Duomenų skaitymo funkcijos sutampa su UDTS_ specifikacije aprašytais veiksmais,
+Duomenų skaitymo funkcijos sutampa su UDTS_ specifikacijoje aprašytais veiksmais,
 kuriuos galima atlikti su duomenimis.
 
 Funkciniai modeliai paveldi visas savybes iš pagrindinio modelio, tačiau gali
@@ -145,12 +145,12 @@ objekto identifikatorių.
 pagrindinio modelio arba gali būti nurodomas kitas pirminis raktas prie
 funkcinio modelio.
 
-Sąsajai su duomenų šaltiniu, pirminio rakto savybės turėtu nurodyti funkciją,
+Sąsajai su duomenų šaltiniu, pirminio rakto savybės turėtų nurodyti funkciją,
 kuri siejama su duomenų šaltinio parametrais. Konkrečiai, pavyzdyje aukščiau
 prie `City/:getone/code` savybės yra nurodyta `path()` funkcija
 :data:`proprty.prepare` stulpelyje, kuri nurodo, kad `code` savybė yra
 naudojama kaip duomenų šaltinio URI path parametras, pažymėtas
-:data:`resource.source` stulpelyje `{}` reistiniuose skliausteliuose, tuo pačiu
+:data:`resource.source` stulpelyje `{}` riestiniuose skliausteliuose, tuo pačiu
 pavadinimu, kaip ir :data:`property` pavadinimas.
 
 Per UDTS_ protokolą, bus tikimasi gauti tokią užklausią:
@@ -225,7 +225,7 @@ Dinaminiai filtrai
 ------------------
 
 Dinaminiai filtrai nurodo, kad duomenys pateikiami naudojanti filtrų reikšmes,
-kurias pateikia duomenų naudotojas, per UDTS_ užklausą, pateikit duomenys
+kurias pateikia duomenų naudotojas, per UDTS_ užklausą, pateikti duomenys
 konvertuojami ir perduodami duomenų šaltiniui.
 
 Dinaminiai filtrai veikia lygiai taip pat, kaip ir statiniai filtrai, tik
@@ -351,11 +351,15 @@ savybių reikšmes.
    | :func:`sort`
 
 
-page
+.. _func_model_part:
+
+part
 ====
 
-Nurodo, kad duomenų šaltinis leidžia gauti duomenis ne visus vienu kartu, bet
-puslapiais.
+Nurodo, kad duomenų šaltinis neleidžia tiesiogiai pasiekti modelio duomenų ir
+šis modelis yra naudojamas tik kaip sudėtinė, vieno ar kelių kitų
+:ref:`jungtinių modelių <ref-denorm>`.
+
 
 .. admonition:: Pavyzdys
 
