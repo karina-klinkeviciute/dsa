@@ -4,7 +4,7 @@ Duomenų struktūros aprašas
 ##########################
 
 Ši versija:
-    `DSA 1.0`_
+    `Naujausias redaktoriaus juodraštis`_
 Klaidų sekimas:
     `Github`_
 Redaktorius:
