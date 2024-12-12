@@ -94,7 +94,7 @@ perteklinis.
 objektą. Konkretus identifikatorius yra rezervuotas pavadinimas ir
 duomenų struktūros apraše nenurodomas.
 
-Pavyzdžiui vietoje `country_id`, kurio tipas yra `ref`, reikėŧų rašyti
+Pavyzdžiui vietoje `country_id`, kurio tipas yra `ref`, reikėtų rašyti
 `country`.
 
 == ========== ===== ========
