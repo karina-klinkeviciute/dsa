@@ -75,10 +75,10 @@ jobs:
           git config pull.rebase false
 
       # Install LaTeX dependencies for PDF creation
-      - name: Install LaTeX
+      - name: Install LaTeX and XeLaTeX
         run: |
           sudo apt-get update
-          sudo apt-get install -y texlive-latex-extra texlive-fonts-recommended texlive-latex-recommended latexmk xindy
+          sudo apt-get install -y texlive-xetex texlive-latex-extra texlive-fonts-recommended texlive-latex-recommended latexmk xindy
 
       # Build PDF Documentation
       - name: Build PDF Documentation
