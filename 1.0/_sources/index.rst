@@ -23,7 +23,7 @@ Naujausias redaktoriaus juodraštis:
 .. _Naujausias redaktoriaus juodraštis: https://ivpk.github.io/dsa/draft/
 .. _Github: https://github.com/ivpk/dsa/issues
 .. _VSSA: https://vssa.lrv.lt/lt/
-.. _PDF: /1.0/1.0.pdf
+.. _PDF: 1.0.pdf
 
 Čia rasite *Duomenų struktūros aprašo* (:term:`DSA`) lentelės specifikaciją.
 
