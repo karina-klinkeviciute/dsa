@@ -80,7 +80,7 @@ jobs:
       - name: Install LaTeX and XeLaTeX
         run: |
           sudo apt-get update
-          sudo apt-get install -y texlive-xetex texlive-latex-extra texlive-fonts-recommended texlive-latex-recommended latexmk xindy texlive-lang-european
+          sudo apt-get install -y texlive-xetex texlive-latex-extra texlive-fonts-recommended texlive-latex-recommended latexmk xindy texlive-lang-european fonts-freefont-ttf
 
       # Build PDF Documentation
       - name: Build PDF Documentation
