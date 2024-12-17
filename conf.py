@@ -113,4 +113,4 @@ latex_elements = {
 latex_documents = [
     ('index', 'DSA.tex', 'DSA Specifikacija', 'VSSA', 'manual'),
 ]
-latex_use_xindy = True
+latex_use_xindy = False
