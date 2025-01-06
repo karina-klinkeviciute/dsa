@@ -973,7 +973,7 @@ stulpelyje nurodyta, kad šis laukas naudoja vardinį `place` klasifikatorių.
 
 .. data:: level
 
-    Nurodo duomenų lauko brandos lygį. Žiūrėti :ref:`level`.
+    Nurodo klasifikatoriaus sąvokos brandos lygį. Žiūrėti :ref:`level`.
 
 
 
