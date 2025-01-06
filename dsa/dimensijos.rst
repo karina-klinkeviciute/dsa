@@ -987,7 +987,7 @@ stulpelyje nurodyta, kad šis laukas naudoja vardinį `place` klasifikatorių.
 
 .. data:: uri
 
-    Sąsaja su išoriniu žodynu. Žiūrėti :ref:`vocab`.
+    Sąsaja su išoriniu žodynu, pateikiant `skos:Concept` URI. Žiūrėti :ref:`vocab`.
 
 .. data:: title
 
