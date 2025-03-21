@@ -37,7 +37,7 @@ Pavyzdinis pavaiksliukas su aprašymais:
 * Legally binding Missing data - tais atvejais, kai duomenys yra Legally binding, tačiau fiziškai informacinėje sistemoje jų nėra, žymima atskirai.
 * Legally non binding - duomenys, kurių nėra nei teisės aktuose, jų nenurodo `ES Core žodynai`_, tačiau jie yra reikalingi Informacinės sistemos veikimui užtikrinti, tokie duomenys gali būti dubliuojami, kadangi teisiškai nėra priskirti jokiai informacinei sistemai, bet jie turėtu būti pažymėti ir gal būt bus perkelti į IS nuostatus. Žymėjimas "_" reiškia, kad duomenys, pagal nuostatus nepriklauso informacinei sistemai, todėl ir žymima brūkšneliu, kuris žymi, kad šie duomenys nėra reguliuojami. Analogiškai žymėjimas yra naudojamas RDF duomenyse, nurodant, kad objektas neturi subjekto, yra anonimis objektas, taip ir šuo atveju, klasė neturi oficialiai priskirtos informacinės sistemos. 
 
-Norint padėti naudotis šiuo šablonu, VSSA rekomenduoja UML diagramų kūrimui naudoti `Draw.io <draw.io>`_ diagramų kūrimo įrankį ir šiam įrankiui paruošė šio šablono `elementų biblioteką <static/UML%20(VSSA).xml>`_
+Norint padėti naudotis šiuo šablonu, VSSA rekomenduoja UML diagramų kūrimui naudoti `Draw.io <https://draw.io>`_ diagramų kūrimo įrankį ir šiam įrankiui paruošė šio šablono `elementų biblioteką <_static/UML%20(VSSA).xml>`_
 
 
 Reikia atkreipti dėmesį, kad koncepcinis modelis yra vienas, o jį atitinkančių
