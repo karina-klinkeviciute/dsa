@@ -4,7 +4,7 @@
 Dimensijos
 ##########
 
-Demensijos leidžia vienoje lentelėje sutalpinti kelias skirtingas lenteles
+Dimensijos leidžia vienoje lentelėje sutalpinti kelias skirtingas lenteles
 turinčias bendrų savybių.
 
 DSA lentelėje turime tokius dimensijų stulpelius:
@@ -76,7 +76,7 @@ pavadinimą.
 
 .. data:: id
 
-    Duomenų rinkinio arba duomenų erdvės identifikatorius.
+    Duomenų rinkinio arba duomenų erdvės unikalus identifikatorius.
 
 .. data:: type
 
@@ -141,7 +141,6 @@ pavadinimą.
 
     Duomenų rinkinio ar vardų erdvės aprašymas.
 
-.. .. _duomenų-šaltinis:
 .. _resource:
 
 resource
@@ -164,7 +163,7 @@ rinkinio kontekste.
 
 .. data:: id
 
-    Duomenų šaltinio unikalus identifikatorius UUID formatu.
+    Duomenų šaltinio unikalus identifikatorius.
 
 .. data:: type
 
