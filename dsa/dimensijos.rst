@@ -262,7 +262,7 @@ Funkcijos
 
 .. module:: resource
 
-.. function:: http(method="GET", body=form)
+.. function:: http(method="GET", body="form")
 
     Papildomi parametrai, reikaling konstruojant HTTP užklausas.
 
@@ -279,7 +279,7 @@ Funkcijos
         ======= =============
         `json`  Duomenys perduodami JSON formatu.
         `xml`   Duomenys perduodami XML formatu.
-        `from`  Duomenys perduodami `application/x-www-form-urlencoded` arba
+        `form`  Duomenys perduodami `application/x-www-form-urlencoded` arba
                 `multipart/form-data` (jei formoje pateikiami failai) formatu.
         ======= =============
 
