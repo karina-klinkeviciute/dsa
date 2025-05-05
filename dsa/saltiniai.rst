@@ -509,7 +509,7 @@ WSDL/SOAP
 
 .. admonition:: Pavyzdys
 
-    Duomenų šaltinis:
+    **Duomenų šaltinis:**
 
     .. code-block:: xml
 
@@ -529,7 +529,7 @@ WSDL/SOAP
             </ns0:Body>
         </ns0:Envelope>
 
-    WSDL:
+    **WSDL:**
 
     .. code-block:: xml
 
@@ -606,11 +606,11 @@ WSDL/SOAP
     \                 id                            integer                 id
     \                 name                          string                  name
     ========  ======  ============================  ========  ============  ============
-
+    |
     Struktūros apraše `resource.source` stulpelyje yra nurodomas WSDL dokumento adresas,
     o `model.source` stulpelyje nurodomi WSDL elementai, aprašantys konkretų duomenų rinkinį.
 
-    Reikia atkreipti dėmesį, kad `property.source stulpelyje aprašomi elementai turi sutapti
+    Reikia atkreipti dėmesį, kad `property.source` stulpelyje aprašomi elementai turi sutapti
     su duomenų šaltinyje esančių elementų pavadinimais.
 
     Pagal duomenų struktūros aprašą pateiktą aukščiau, kreipiantis į `/City`,
