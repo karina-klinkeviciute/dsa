@@ -1363,6 +1363,66 @@ prepare
     `x.field` arba `param(x).field`.
 
 
+.. function:: input(source, default=NA)
+
+    Generuoja Python dictionary, kuris bus naudojamas kuriant dokumentą, pateikiamą SOAP užklausos metu.
+
+    **Argumentai**
+
+    source
+        Nurodo Python dictionary raktą. Nurodomas :data:`param.source` stulpelyje.
+
+    default
+        Nurodo Python dictionary rakto `default` reikšmę, jei ji nėra nurodyta URI parametre.
+        Jei reikšmė nenurodyta nei URI, nei default - bus naudojama `NA` reikšmė.
+
+    .. admonition:: Pavyzdys (be URI parametrų)
+
+        **DSA:**
+
+        ========== ====== ====== ====================== =================
+        resource   type   ref    source                 prepare
+        ========== ====== ====== ====================== =================
+        resource1  soap          \https://example.com/
+        \          param         body/param1            `input("value1")`
+        \          param         body/param2            `input()`
+        ========== ====== ====== ====================== =================
+        |
+        Pagal pateiktą DSA bus sugeneruotas toks python dictionary:
+
+        .. code-block:: python
+
+            {
+                "body/param1": "value1",
+                "body/param2": NA,
+            }
+
+    .. admonition:: Pavyzdys (su URI parametrais)
+
+        **URI:** `https://example.com/?p1="first"`
+
+        **DSA:**
+
+        ========== ======= ======== ====== =========== ===================== ==================
+        resource   model   property type   ref         source                 prepare
+        ========== ======= ======== ====== =========== ===================== ==================
+        resource1                   soap               \https://example.com/
+        \                           param  parameter1  body/param1            `input("value1")`
+        \                           param  parameter2  body/param2            `input("value2")`
+        \                           param  parameter3  body/param3            `input()`
+        \          City
+        \                  p1       string                                    param(parameter1)
+        \                  p2       string                                    param(parameter2)
+        \                  p3       string                                    param(parameter3)
+        ========== ======= ======== ====== =========== ===================== ==================
+        |
+
+        Pagal pateiktą DSA ir URL bus sugeneruotas toks python dictionary:
+
+        .. code-block:: python
+
+            {"body": {"param1": "first", "param2": "value2", "param3": NA}}
+
 .. _switch:
 
 switch
