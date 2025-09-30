@@ -1112,7 +1112,7 @@ kelis jau aprašytus laukus.
                     },
                     {
                         "name": "Latvija",
-                        "code": "lt"
+                        "code": "lv"
                     },
                 ]
             }
