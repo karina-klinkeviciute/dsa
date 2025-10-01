@@ -1069,6 +1069,54 @@ kelis jau aprašytus laukus.
 
             | :func:`param.path`
 
+    .. function:: base64()
+
+        Funkcija skirta dekoduoti `base64` užšifruotus duomenis.
+
+        Tarkime, jei turime tokią duomenų lentelę, kurioje stulpelis `COUNTRY` yra užkoduotas `base64`:
+
+        ============ =======
+        COUNTRIES
+        --------------------
+        COUNTRY      CODE
+        ============ =======
+        TGlldHV2YQ== lt
+        TGF0dmlqYQ== lv
+        ============ =======
+
+        Naudodami prepare funkciją `base64`, galime dekoduoti `COUNTRY` stulpelio reikšmes:
+
+        +---+---+---+---+------------+---------+---------+-----------+----------+
+        | d | r | b | m | property   | type    | ref     | source    | prepare  |
+        +===+===+===+===+============+=========+=========+===========+==========+
+        | datasets/example/countries |         |         |           |          |
+        +---+---+---+---+------------+---------+---------+-----------+----------+
+        |   | salys                  | sql     |         | sqlite:// |          |
+        +---+---+---+---+------------+---------+---------+-----------+----------+
+        |   |   |   | Country        |         | code    | COUNTRIES |          |
+        +---+---+---+---+------------+---------+---------+-----------+----------+
+        |   |   |   |   | name       | string  |         | COUNTRY   | base64() |
+        +---+---+---+---+------------+---------+---------+-----------+----------+
+        |   |   |   |   | code       | string  |         | CODE      |          |
+        +---+---+---+---+------------+---------+---------+-----------+----------+
+
+        Pagal pateiktą DSA bus nuskaityti tokie duomenys:
+
+        .. code-block:: json
+
+            {
+                "_data": [
+                    {
+                        "name": "Lietuva",
+                        "code": "lt"
+                    },
+                    {
+                        "name": "Latvija",
+                        "code": "lv"
+                    },
+                ]
+            }
+
 
 .. _kompleksinės-struktūros:
 
@@ -1179,3 +1227,26 @@ count   results
 
 Šioje lentelėje stulpelių pavadinimai pateikti trijose eilutėse, todėl
 `model.prepare` reikėtų naudoti :func:`header(0, 1, 2) <header>`.
+
+
+.. _ref-resource-nesting:
+
+Duomenų šaltinių tarpusavio sąsaja
+==================================
+
+Situacijose, kai vienas duomenų resursas savyje aprašo kelis vidinius resursus
+(pvz: WSDL gali aprašyti kelis skirtingus SOAP servisus) galima naudoti duomenų
+tarpusavio sąsają, "vaikiniame" resurse nurodant formulę.
+
+.. describe:: resource.prepare
+
+    .. function:: wsdl(name)
+
+        :arg name: `wsdl` tipo resurso pavadinimas
+
+        Ši funkcija pagal `resource.source` nurodytus WSDL elementus nuskaito SOAP operaciją. WSDL failas
+        gaunamas iš susijusio resurso pavadinimu `name`.
+
+        .. seealso::
+
+            - :ref:`ref-soap` skaitymas.

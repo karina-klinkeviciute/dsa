@@ -4,7 +4,7 @@
 Dimensijos
 ##########
 
-Demensijos leidžia vienoje lentelėje sutalpinti kelias skirtingas lenteles
+Dimensijos leidžia vienoje lentelėje sutalpinti kelias skirtingas lenteles
 turinčias bendrų savybių.
 
 DSA lentelėje turime tokius dimensijų stulpelius:
@@ -76,7 +76,7 @@ pavadinimą.
 
 .. data:: id
 
-    Duomenų rinkinio arba duomenų erdvės identifikatorius.
+    Duomenų rinkinio arba duomenų erdvės unikalus identifikatorius.
 
 .. data:: type
 
@@ -130,7 +130,7 @@ pavadinimą.
 
 .. data:: access
 
-    Prieigos lygis, naudojamas pagal nutylėjimą viesiems šios vardų erdvės
+    Prieigos lygis, naudojamas pagal nutylėjimą visiems šios vardų erdvės
     elementams.
 
 .. data:: title
@@ -141,7 +141,6 @@ pavadinimą.
 
     Duomenų rinkinio ar vardų erdvės aprašymas.
 
-.. .. _duomenų-šaltinis:
 .. _resource:
 
 resource
@@ -164,7 +163,7 @@ rinkinio kontekste.
 
 .. data:: id
 
-    Duomenų šaltinio unikalus identifikatorius UUID formatu.
+    Duomenų šaltinio unikalus identifikatorius.
 
 .. data:: type
 
@@ -175,6 +174,8 @@ rinkinio kontekste.
     `csv`     CSV lentelės
     `json`    JSON resursai
     `xml`     XML resursai
+    `wsdl`    WSDL resursai
+    `soap`    SOAP resursai
     ========= ============================
 
 .. data:: ref
@@ -263,7 +264,7 @@ Funkcijos
 
 .. module:: resource
 
-.. function:: http(method="GET", body=form)
+.. function:: http(method="GET", body="form")
 
     Papildomi parametrai, reikaling konstruojant HTTP užklausas.
 
@@ -280,7 +281,7 @@ Funkcijos
         ======= =============
         `json`  Duomenys perduodami JSON formatu.
         `xml`   Duomenys perduodami XML formatu.
-        `from`  Duomenys perduodami `application/x-www-form-urlencoded` arba
+        `form`  Duomenys perduodami `application/x-www-form-urlencoded` arba
                 `multipart/form-data` (jei formoje pateikiami failai) formatu.
         ======= =============
 
@@ -971,12 +972,23 @@ stulpelyje nurodyta, kad šis laukas naudoja vardinį `place` klasifikatorių.
     `enum.prepare` reikšmės gali kartotis, tokiu būdu, kelios skirtingos
     `enum.source` reikšmės bus susietos su viena `enum.prepare` reikšme.
 
+.. data:: level
+
+    Nurodo klasifikatoriaus sąvokos brandos lygį. Žiūrėti :ref:`level`.
+
+
+
+
 .. data:: access
 
     Klasifikatoriams galima nurodyti skirtingas prieigos teises, tokiu
     atveju, naudotojas turintis `open` prieigą matys tik tuos duomenis,
     kurių klasifikatorių reikšmės turi `open` prieigos teises, visi kiti bus
     išfiltruoti.
+
+.. data:: uri
+
+    Sąsaja su išoriniu žodynu, pateikiant `skos:Concept` URI. Žiūrėti :ref:`vocab`.
 
 .. data:: title
 
@@ -1349,6 +1361,172 @@ source
 
 prepare
     `x.field` arba `param(x).field`.
+
+
+.. function:: input(source, default=NA)
+
+    Generuoja duomenis, pateikiamus SOAP užklausos metu.
+
+    **Argumentai**
+
+    source
+        Nurodomas :data:`param.source` stulpelyje. Nurodo kelią iki WSDL faile esančio elemento.
+        Kelias aprašomas XSD elementų vardais, atskirtais `/`, pradedant nuo elemento, esančio
+        WSDL `operation` -> `input` -> `message` -> `part` elemento viduje.
+
+        .. admonition:: Pavyzdys
+
+            Pagal žemiau pateiktą WSDL failo dalį, parametro "param1" kelias `param.source`
+            stulpelyje yra `request_model/param1`.
+
+            .. code-block::
+
+                <wsdl:definitions ...>
+                    <wsdl:types>
+                        ...
+                        <xs:schema targetNamespace="city_app">
+                            <xs:element name="CityInputRequest">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="request_model" type="tns:RequestModelType" minOccurs="0" nillable="true"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+
+                            <xs:complexType name="RequestModelType">
+                                <xs:sequence>
+                                    <xs:element name="param1" type="xs:string" minOccurs="0" nillable="true"/>
+                                    <xs:element name="param2" type="xs:string" minOccurs="0" nillable="true"/>
+                                </xs:sequence>
+                            </xs:complexType>
+                        </xs:schema>
+                    </wsdl:types>
+
+                    <wsdl:message name="CityInputRequest">
+                        <wsdl:part name="parameters" element="tns:CityInputRequest"/>
+                    </wsdl:message>
+
+                    <wsdl:portType name="CityPortType">
+                        <wsdl:operation name="CityOperation">
+                            <wsdl:input message="tns:CityInputRequest"/>
+                            <wsdl:output message="tns:CityOutputResponse"/>
+                        </wsdl:operation>
+                    </wsdl:portType>
+
+                    <wsdl:binding ...>
+                        ...
+                    </wsdl:binding>
+
+                    <wsdl:service ...>
+                        ...
+                    </wsdl:service>
+                </wsdl:definitions>
+
+
+    default
+        Nurodo elemento `default` reikšmę, kuri bus naudojama, jei reikšmė nėra nurodyta URI parametre.
+        Jei reikšmė nenurodyta nei URI, nei default - bus naudojama `NA` reikšmė.
+
+    .. admonition:: Pavyzdys (be URI parametrų)
+
+        **DSA:**
+
+        ========== ====== ====== ====================== =================
+        resource   type   ref    source                 prepare
+        ========== ====== ====== ====================== =================
+        resource1  soap          \https://example.com/
+        \          param         request_model/param1   `input("value1")`
+        \          param         request_model/param2   `input()`
+        ========== ====== ====== ====================== =================
+        |
+        Pagal pateiktą DSA bus sugeneruotas toks python dictionary:
+
+        .. code-block:: python
+
+            {"request_model": {"param1": "value1", "param2": None}}
+
+    .. admonition:: Pavyzdys (su URI parametrais)
+
+        **URI:** `https://example.com/?p1="first"`
+
+        **DSA:**
+
+        ========== ======= ======== ====== =========== ===================== ==================
+        resource   model   property type   ref         source                 prepare
+        ========== ======= ======== ====== =========== ===================== ==================
+        resource1                   soap               \https://example.com/
+        \                           param  parameter1  request_model/param1  `input("value1")`
+        \                           param  parameter2  request_model/param2  `input("value2")`
+        \                           param  parameter3  request_model/param3  `input()`
+        \          City
+        \                  p1       string                                    param(parameter1)
+        \                  p2       string                                    param(parameter2)
+        \                  p3       string                                    param(parameter3)
+        ========== ======= ======== ====== =========== ===================== ==================
+        |
+
+        Pagal pateiktą DSA ir URL bus sugeneruotas toks python dictionary:
+
+        .. code-block:: python
+
+            {"request_model": {"param1": "first", "param2": "value2", "param3": None}}
+
+
+.. function:: creds(key)
+
+    Skaito kliento duomenyse išsaugoto `key` atributo reikšmę.
+
+    Kliento duomenyse kiekvieno resurso atributai saugomi atskirai. Resursas identifikuojamas
+    pagal resurso pavadinimą.
+
+    **Argumentai**
+
+    key
+        Nurodo atributo pavadinimą kliento faile.
+
+    .. admonition:: Pavyzdys (be URI parametrų)
+
+        **Kliento failas:**
+
+        .. code-block:: yaml
+
+            client_id: 75d17c2f-d7b8-466f-90c7-466caa21582a
+            client_name: example_client
+            client_secret_hash: hashed_secret
+            scopes:
+              - spinta_getall
+            backends:
+              resource_one:
+                password: first password
+              resource_two:
+                password: second password
+
+        Kliento duomenyse yra išsaugoti resursai: `resource_one` ir `resource_two`. Abu resursai turi po atributą
+        tuo pačiu vardu `password`, bet skirtingomis reikšmėmis.
+
+        **DSA:**
+
+        ============= ======= ======== ====== =========== ===================== ===========================
+        resource      model   property type   ref         source                 prepare
+        ============= ======= ======== ====== =========== ===================== ===========================
+        resource_one                   soap               \https://example.com/
+        \                              param  parameter1  param1                `creds("password").input()`
+        \             Town
+        resource_two                   soap               \https://example.com/
+        \                              param  parameter2  param2                `creds("password").input()`
+        \             City
+        ============= ======= ======== ====== =========== ===================== ===========================
+        |
+
+        Pagal pateiktą DSA, Spinta užklausos metu, `creds()` funkcija iš kliento duomenų perskaitys
+        `password` reikšmes ir `input()` funkcijos pagalba, sugeneruos tokius Python dictionary:
+
+        * Kviečiant `Town`: `{"param1": "first password"}`
+        * Kviečiant `City`: `{"param2": "second password"}`
+
+        Apie kliento duomenų saugojimą daugiau skaityti Duomenų atvėrimo vadove, `Klientų atnaujinimas`_.
+
+        .. _Klientų atnaujinimas: https://atviriduomenys.readthedocs.io/agentas.html#agent-crud-update
 
 
 .. _switch:

@@ -160,6 +160,8 @@ JSON
     Žiūrėti :ref:`kompleksinės-struktūros`.
 
 
+.. _XPath: https://en.wikipedia.org/wiki/XPath
+
 XML
 ---
 
@@ -173,8 +175,7 @@ XML
 
 .. describe:: model.source
 
-    `XPath <https://en.wikipedia.org/wiki/XPath>`_ iki elementų sąrašo kuriame
-    yra modelio duomenys.
+    XPath_ iki elementų sąrašo kuriame yra modelio duomenys.
 
 .. describe:: model.prepare
 
@@ -186,8 +187,7 @@ XML
 
 .. describe:: property.source
 
-    `XPath <https://en.wikipedia.org/wiki/XPath>`_ iki elemento kuriame yra
-    duomenys.
+    XPath_ iki elemento kuriame yra duomenys.
 
     XPath nurodomas reliatyvus modeliui, arba kitai daugiareikšmei savybei,
     kurios sudėtyje savybė yra. Daugiareikšmės savybės žymimos `[]` simboliais
@@ -447,3 +447,361 @@ XLSX
 
 
 .. _UDTS: https://ivpk.github.io/uapi
+
+
+WSDL
+----
+
+Šiuo metu palaikoma tik `WSDL 1.1 versija`_.
+
+.. _`WSDL 1.1 versija`: https://www.w3.org/TR/2001/NOTE-wsdl-20010315
+
+Šaltinis inicializuoja WSDL klientą pagal `resource.source` nurodytą URI.
+
+
+.. note::
+    `wsdl` šaltinis skaito WSDL failą, aprašantį kitus duomenų šaltinius, todėl
+    pagrinde yra naudojamas kartu su kitais resursais, nurodant :ref:`ref-resource-nesting`.
+
+    Šiuo metu WSDL resursas naudojamas tik kartu su :ref:`ref-soap` resursu.
+
+
+.. describe:: resource.source
+
+    Pilnas WSDL adresas :term:`URI` formatu.
+
+.. describe:: resource.type
+
+    Galimos reikšmės: `wsdl`.
+
+
+.. _ref-soap:
+
+SOAP
+----
+
+.. describe:: resource.source
+
+    WSDL elementai, aprašantys konkretų duomenų rinkinį, atskirti tašku, naudojant tokį šabloną:
+
+    .. code-block:: text
+
+        Service.Port.PortType.Operation
+
+    Šablone naudojamų kintamųjų aprašymas:
+
+    .. describe:: Service
+
+        WSDL Service_ elemento pavadinimas.
+
+        .. _Service: https://www.w3.org/TR/2001/NOTE-wsdl-20010315#_services
+
+    .. describe:: Port
+
+        WSDL Port_ elemento pavadinimas.
+
+        .. _Port: https://www.w3.org/TR/2001/NOTE-wsdl-20010315#_ports
+
+    .. describe:: PortType
+
+        WSDL PortType_ elemento pavadinimas.
+
+        .. _PortType: https://www.w3.org/TR/2001/NOTE-wsdl-20010315#_porttypes
+
+    .. describe:: Operation
+
+        WSDL SOAP Operation_ elemento pavadinimas.
+
+        .. _Operation: https://www.w3.org/TR/2001/NOTE-wsdl-20010315#_soap:operation
+
+
+.. describe:: resource.type
+
+    Galimos reikšmės: `soap`.
+
+.. describe:: resource.prepare
+
+    Žiūrėti :ref:`ref-resource-nesting`.
+
+.. describe:: model.source
+
+    XPath_ iki elementų sąrašo, kuriame yra modelio duomenys.
+
+    .. note::
+        Kol kas nėra įgyvendinta. Naudoti `/`.
+
+.. describe:: property.source
+
+    XML elemento, kuriame nurodyti duomenys, pavadinimas duomenų šaltinyje.
+
+    .. note::
+        Svarbu pabrėžti, kad yra įgyvendintas tik vienareikšmių savybių skaitymas,
+        todėl duomenys, esantys duomenų šaltinio daugiareikšmėse savybėse, nebus nuskaityti.
+
+.. admonition:: Pavyzdys (be SOAP request duomenų)
+
+    **Duomenų šaltinis:**
+
+    .. code-block:: xml
+
+        <ns0:Envelope xmlns:ns0="http://schemas.xmlsoap.org/soap/envelope/"
+                      xmlns:ns1="city_app">
+            <ns0:Body>
+                <ns1:CityOutputResponse>
+                    <ns1:CityOutput>
+                        <ns1:id>100</ns1:id>
+                        <ns1:name>Name One</ns1:name>
+                    </ns1:CityOutput>
+                    <ns1:CityOutput>
+                        <ns1:id>101</ns1:id>
+                        <ns1:name>Name Two</ns1:name>
+                    </ns1:CityOutput>
+                </ns1:CityOutputResponse>
+            </ns0:Body>
+        </ns0:Envelope>
+
+    **WSDL:**
+
+    .. code-block:: xml
+
+        <wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                 xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                 xmlns:tns="city_app"
+                 targetNamespace="city_app"
+                 name="CityService">
+
+            <wsdl:types>
+                <xs:schema targetNamespace="city_app">
+                    <xs:element name="CityInputRequest"/>
+
+                    <xs:element name="CityOutputResponse">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="CityOutput" type="tns:CityOutput" minOccurs="0" maxOccurs="unbounded"/>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+
+                    <xs:complexType name="CityOutput">
+                        <xs:sequence>
+                            <xs:element name="id" type="xs:int"/>
+                            <xs:element name="name" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:schema>
+            </wsdl:types>
+
+            <wsdl:message name="CityInputRequest">
+                <wsdl:part name="parameters" element="tns:CityInputRequest"/>
+            </wsdl:message>
+            <wsdl:message name="CityOutputResponse">
+                <wsdl:part name="parameters" element="tns:CityOutputResponse"/>
+            </wsdl:message>
+
+            <wsdl:portType name="CityPortType">
+                <wsdl:operation name="CityOperation">
+                    <wsdl:input message="tns:CityInputRequest"/>
+                    <wsdl:output message="tns:CityOutputResponse"/>
+                </wsdl:operation>
+            </wsdl:portType>
+
+            <wsdl:binding name="CityServiceBinding" type="tns:CityPortType">
+                <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+                <wsdl:operation name="CityOperation">
+                    <soap:operation soapAction="urn:CityOperation"/>
+                    <wsdl:input>
+                        <soap:body use="literal"/>
+                    </wsdl:input>
+                    <wsdl:output>
+                        <soap:body use="literal"/>
+                    </wsdl:output>
+                </wsdl:operation>
+            </wsdl:binding>
+
+            <wsdl:service name="CityService">
+                <wsdl:port name="CityPort" binding="tns:CityServiceBinding">
+                    <soap:address location="http://example.com/city"/>
+                </wsdl:port>
+            </wsdl:service>
+        </wsdl:definitions>
+
+    Pagal aukščiau pateiktus duomenis ir WSDL aprašymą, duomenų struktūros aprašas atrodys taip:
+
+    ===========  ======  =========  ========  ====  ================================================  ================
+    resource     model   property   type      ref   source                                            prepare
+    ===========  ======  =========  ========  ====  ================================================  ================
+    towns_wsdl                      wsdl            http://example.com/city?wsdl
+    towns                           soap            CityService.CityPort.CityPortType.CityOperation   wsdl(towns_wsdl)
+    \            City                         id    /
+    -----------  ------  ---------  --------  ----  ------------------------------------------------  ----------------
+    \                    id         integer         id
+    \                    name       string          name
+    ===========  ======  =========  ========  ====  ================================================  ================
+    |
+    Struktūros apraše, aprašyti du ištekliai **towns_wsdl** ir **towns**, naudojantys :ref:`ref-resource-nesting`.
+
+    Resurso **towns_wsdl** `resource.source` stulpelyje yra nurodomas WSDL dokumento adresas. Šis resursas
+    inicializuos WSDL klientą.
+
+    Resurso **towns** `resource.source` stulpelyje nurodomi WSDL elementai,
+    aprašantys konkretų duomenų rinkinį. `resource.prepare` stulpelyje yra nurodoma `wsdl(towns_wsdl)` funkcija,
+    kuri grąžina SOAP operaciją, naudojant **towns_wsdl** resurse inicializuotą WSDL klientą ir WSDL elementus,
+    aprašytus `resource.source`.
+
+    Reikia atkreipti dėmesį, kad `property.source` stulpeliuose aprašomi elementai turi sutapti
+    su duomenų šaltinyje esančių elementų pavadinimais.
+
+    Pagal duomenų struktūros aprašą pateiktą aukščiau, kreipiantis į `/City`,
+    gausime tokius UDTS_ specifikaciją atitinkančius duomenis:
+
+    .. code-block:: json
+
+        {
+            "_data": [
+                {
+                    "_type": "City",
+                    "_id": "c1380514-549f-4cdd-b258-6fecc3a5bbda",
+                    "id": 100,
+                    "name": "Name One",
+                },
+                {
+                    "_type": "City",
+                    "_id": "5c02f700-6478-43a0-a147-959927cb3c1c",
+                    "id": 101,
+                    "name": "Name Two",
+                }
+            ]
+        }
+
+.. admonition:: Pavyzdys (su SOAP request duomenimis)
+
+    Remiantis ankstesniu pavyzdžiu, turint **WSDL**, papildytą `CityInputRequest` schema:
+
+    .. code-block:: xml
+        :emphasize-lines: 10-23
+
+        <wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                 xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                 xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                 xmlns:tns="city_app"
+                 targetNamespace="city_app"
+                 name="CityService">
+
+            <wsdl:types>
+                <xs:schema targetNamespace="city_app">
+                    <xs:element name="CityInputRequest">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="request_model" type="tns:RequestModelType" minOccurs="0" nillable="true"/>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+
+                    <xs:complexType name="RequestModelType">
+                        <xs:sequence>
+                            <xs:element name="param1" type="xs:string" minOccurs="0" nillable="true"/>
+                            <xs:element name="param2" type="xs:string" minOccurs="0" nillable="true"/>
+                        </xs:sequence>
+                    </xs:complexType>
+
+                    <xs:element name="CityOutputResponse">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element name="CityOutput" type="tns:CityOutput" minOccurs="0" maxOccurs="unbounded"/>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+
+                    <xs:complexType name="CityOutput">
+                        <xs:sequence>
+                            <xs:element name="id" type="xs:int"/>
+                            <xs:element name="name" type="xs:string"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:schema>
+            </wsdl:types>
+
+            <wsdl:message name="CityInputRequest">
+                <wsdl:part name="parameters" element="tns:CityInputRequest"/>
+            </wsdl:message>
+            <wsdl:message name="CityOutputResponse">
+                <wsdl:part name="parameters" element="tns:CityOutputResponse"/>
+            </wsdl:message>
+
+            <wsdl:portType name="CityPortType">
+                <wsdl:operation name="CityOperation">
+                    <wsdl:input message="tns:CityInputRequest"/>
+                    <wsdl:output message="tns:CityOutputResponse"/>
+                </wsdl:operation>
+            </wsdl:portType>
+
+            <wsdl:binding name="CityServiceBinding" type="tns:CityPortType">
+                <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+                <wsdl:operation name="CityOperation">
+                    <soap:operation soapAction="urn:CityOperation"/>
+                    <wsdl:input>
+                        <soap:body use="literal"/>
+                    </wsdl:input>
+                    <wsdl:output>
+                        <soap:body use="literal"/>
+                    </wsdl:output>
+                </wsdl:operation>
+            </wsdl:binding>
+
+            <wsdl:service name="CityService">
+                <wsdl:port name="CityPort" binding="tns:CityServiceBinding">
+                    <soap:address location="http://example.com/city"/>
+                </wsdl:port>
+            </wsdl:service>
+        </wsdl:definitions>
+
+    ir turint DSA, papildytą `resource.param` ir `property` eilutėmis:
+
+    ===========  ======  =========  ============  ============== ================================================  =====================
+    resource     model   property   type          ref            source                                            prepare
+    ===========  ======  =========  ============  ============== ================================================  =====================
+    towns_wsdl                      wsdl                         http://example.com/city?wsdl
+    towns                           soap                         CityService.CityPort.CityPortType.CityOperation   wsdl(towns_wsdl)
+    \                               **param**     **parameter1** **request_model/param1**                          **input("value1")**
+    \                               **param**     **parameter2** **request_model/param2**                          **input("value2")**
+    \            City                             id             /
+    \                    id         integer                      id
+    \                    name       string                       name
+    \                    **p1**     **string**                                                                     **param(parameter1)**
+    \                    **p2**     **string**                                                                     **param(parameter2)**
+    ===========  ======  =========  ============  ============== ================================================  =====================
+    |
+
+    kreipiantis į `/City?p1="first"`, bus suformuotas toks python dictionary, kurį
+    `Zeep` klientas perduos kaip SOAP request body:
+
+    .. code-block:: python
+
+        {"request_model": {"param1": "first", "param2": "value2"}}
+
+
+    ir gausime tokius UDTS_ specifikaciją atitinkančius duomenis:
+
+    .. code-block:: json
+
+        {
+            "_data": [
+                {
+                    "_type": "City",
+                    "_id": "c1380514-549f-4cdd-b258-6fecc3a5bbda",
+                    "id": 100,
+                    "name": "Name One",
+                    "p1": "first",
+                    "p2": "value2",
+                },
+                {
+                    "_type": "City",
+                    "_id": "5c02f700-6478-43a0-a147-959927cb3c1c",
+                    "id": 101,
+                    "name": "Name Two",
+                    "p1": "first",
+                    "p2": "value2",
+                }
+            ]
+        }
