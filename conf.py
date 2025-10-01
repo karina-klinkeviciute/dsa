@@ -108,15 +108,21 @@ latex_elements = {
 \setsansfont{DejaVu Sans}
 \setmonofont{DejaVu Sans Mono}
 ''',
-    # Let Sphinx wrap code lines in LaTeX
+
+    # Sphinx pusėje įjungiam kodo blokų laužymą (be fvset/fvextra)
     'sphinxsetup': 'verbatimwrapslines=true, verbatimwithframe=false',
 
     'preamble': r'''
 \usepackage{enumitem}\setlistdepth{9}
-\usepackage[hyphens]{url}
-\usepackage{hyperref}
+
+% Vietoje \usepackage[hyphens]{url}:
+\PassOptionsToPackage{hyphens}{url} % turi būti prieš hyperref/url įkėlimą
+% NEbekraunam nei url, nei hyperref čia — Sphinx juos įkelia pats.
+
 \emergencystretch=3em
 \sloppy
+% (nebūtina, bet jei norisi dar agresyvesnio URL laužymo:)
+% \Urlmuskip=0mu plus 1mu
 ''',
 }
 latex_documents = [
