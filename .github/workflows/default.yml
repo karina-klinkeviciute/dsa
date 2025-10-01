@@ -87,7 +87,9 @@ jobs:
         run: |
           sphinx-build -b latex dsa build/latex -c .
           cd build/latex
-          latexmk -pdf DSA.tex
+          echo "buf_size = 2000000" > texmf.cnf
+          export TEXMFCNF=".:${TEXMFCNF}"
+          latexmk -pdf -pdflatex='xelatex %O %S' -interaction=nonstopmode -file-line-error DSA.tex
           cd ../..
 
       - name: Determine Version
