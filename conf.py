@@ -114,6 +114,7 @@ latex_elements = {
     # Esamas preamble – galima truputį praplėsti URL/žodžių laužymui
     'preamble': r'''
 \usepackage{enumitem} \setlistdepth{9}
+\usepackage{fvextra}
 \usepackage[hyphens]{url}
 \usepackage{hyperref}
 \emergencystretch=3em
