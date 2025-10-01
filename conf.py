@@ -108,16 +108,15 @@ latex_elements = {
 \setsansfont{DejaVu Sans}
 \setmonofont{DejaVu Sans Mono}
 ''',
-    # Leidžia laužyti labai ilgas kodo/verbatim eilutes
-    'fvset': r'\fvset{breaklines=true,breakanywhere=true,tabsize=2}',
+    # Let Sphinx wrap code lines in LaTeX
+    'sphinxsetup': 'verbatimwrapslines=true, verbatimwithframe=false',
 
-    # Esamas preamble – galima truputį praplėsti URL/žodžių laužymui
     'preamble': r'''
-\usepackage{enumitem} \setlistdepth{9}
-\usepackage{fvextra}
+\usepackage{enumitem}\setlistdepth{9}
 \usepackage[hyphens]{url}
 \usepackage{hyperref}
 \emergencystretch=3em
+\sloppy
 ''',
 }
 latex_documents = [
