@@ -109,7 +109,7 @@ latex_elements = {
 \setmonofont{DejaVu Sans Mono}
 ''',
     # Leidžia laužyti labai ilgas kodo/verbatim eilutes
-    'fvset': r'\fvset{breaklines=true,breakanywhere=true,tabsize=2,obeytabs=true}',
+    'fvset': r'\fvset{breaklines=true,breakanywhere=true,tabsize=2}',
 
     # Esamas preamble – galima truputį praplėsti URL/žodžių laužymui
     'preamble': r'''
