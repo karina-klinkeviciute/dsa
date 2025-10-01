@@ -108,7 +108,16 @@ latex_elements = {
 \setsansfont{DejaVu Sans}
 \setmonofont{DejaVu Sans Mono}
 ''',
-    'preamble': r'''\usepackage{enumitem} \setlistdepth{9}'''
+    # Leidžia laužyti labai ilgas kodo/verbatim eilutes
+    'fvset': r'\fvset{breaklines=true,breakanywhere=true,tabsize=2,obeytabs=true}',
+
+    # Esamas preamble – galima truputį praplėsti URL/žodžių laužymui
+    'preamble': r'''
+\usepackage{enumitem} \setlistdepth{9}
+\usepackage[hyphens]{url}
+\usepackage{hyperref}
+\emergencystretch=3em
+''',
 }
 latex_documents = [
     ('index', 'DSA.tex', 'DSA Specifikacija', 'VSSA', 'manual'),
